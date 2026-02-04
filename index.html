@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora Laboral 2026 basada en el Estatuto de los Trabajadores. Calcula despido, finiquito, paro, IRPF y más. 100% gratuito, sin registro.">
+    <meta name="keywords" content="calculadora laboral 2026, estatuto trabajadores, despido improcedente, finiquito, paro, IRPF, sueldo neto">
+    <title>Calculadora Laboral 2026 | Estatuto de los Trabajadores | CalculaLoTuyo</title>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculalotuyo.es/">
+    <meta property="og:title" content="Calculadora Laboral 2026 | Estatuto de los Trabajadores | CalculaLoTuyo">
+    <meta property="og:description" content="Calculadora Laboral 2026 basada en el Estatuto de los Trabajadores. Calcula despido, finiquito, paro, IRPF y más. 100% gratuito, sin registro.">
+    <meta property="og:site_name" content="CalculaLoTuyo">
+    <meta property="og:locale" content="es_ES">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Calculadora Laboral 2026 | Estatuto de los Trabajadores | CalculaLoTuyo">
+    <meta name="twitter:description" content="Calculadora Laboral 2026 basada en el Estatuto de los Trabajadores. Calcula despido, finiquito, paro, IRPF y más. 100% gratuito, sin registro.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://calculalotuyo.es/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
+    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "CalculaLoTuyo",
+        "url": "https://calculalotuyo.es/",
+        "description": "Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026",
+        "inLanguage": "es",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://calculalotuyo.es/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+        <nav class="nav">
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/despido-improcedente">⚖️ Despido Improcedente</a>
+                    <a href="/despido-objetivo">📋 Despido Objetivo</a>
+                    <a href="/ere">📊 ERE / Colectivo</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/finiquito">💵 Finiquito</a>
+                    <a href="/paro">📊 Prestación Paro</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/sueldo-neto">🏦 Sueldo Neto</a>
+                    <a href="/irpf">📑 IRPF</a>
+                    <a href="/horas-extra">⏰ Horas Extra</a>
+                    <a href="/pagas-extra">🎁 Pagas Extra</a>
+                    <a href="/vacaciones">🏖️ Vacaciones</a>
+                    <a href="/subida-ipc">📈 Subida IPC</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/cuota-autonomos">💼 Cuota Mensual</a>
+                    <a href="/facturas">🧾 Facturas</a>
+                </div>
+            </div>
+            <a href="/sobre-el-proyecto" class="nav-link">Sobre el proyecto</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a>
+            <a href="/despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a>
+            <a href="/ere" class="mobile-nav-link">📊 ERE / Colectivo</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/finiquito" class="mobile-nav-link">💵 Finiquito</a>
+            <a href="/paro" class="mobile-nav-link">📊 Prestación Paro</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a>
+            <a href="/irpf" class="mobile-nav-link">📑 IRPF</a>
+            <a href="/horas-extra" class="mobile-nav-link">⏰ Horas Extra</a>
+            <a href="/pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a>
+            <a href="/vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a>
+            <a href="/subida-ipc" class="mobile-nav-link">📈 Subida IPC</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a>
+            <a href="/facturas" class="mobile-nav-link">🧾 Facturas</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <a href="/sobre-el-proyecto" class="mobile-nav-link" style="padding: 16px 0; border-top: 1px solid var(--border);">ℹ️ Sobre el proyecto</a>
+    </div>
+</nav>
+
+<main>
+    <!-- HERO SECTION - Diseño limpio y directo -->
+    <section class="hero-clean">
+        <div class="container">
+            <span class="hero-update">Actualizado febrero 2026</span>
+            <h1>Calculadora Laboral 2026<br><span class="hero-accent">según el Estatuto de los Trabajadores</span></h1>
+            <p class="hero-desc">Calcula tu indemnización por despido, finiquito, prestación por desempleo, IRPF y más. Algoritmos basados en la normativa vigente del BOE.</p>
+            <a href="#calculadoras" class="btn-hero">
+                Calcular ahora
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <p class="hero-trust">100% gratuito · Sin registro · Tus datos no salen de tu dispositivo</p>
+        </div>
+    </section>
+
+    <!-- TRUST BAR - Autoridad -->
+    <section class="trust-bar">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    <span>Basado en el <strong>BOE</strong></span>
+                </div>
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    <span>Cálculo <strong>local</strong></span>
+                </div>
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                    <span>Normativa <strong>2026</strong></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- CALCULADORAS - Diseño plano sin cards anidadas -->
+    <section class="section-flat" id="calculadoras">
+        <div class="container">
+            
+            <!-- DESPIDO -->
+            <div class="calc-group">
+                <div class="calc-group-header">
+                    <h2>⚖️ Despido e Indemnización</h2>
+                    <p>Calcula lo que te corresponde según el tipo de despido</p>
+                </div>
+                <div class="calc-list">
+                    <a href="/despido-improcedente" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Despido Improcedente</h3>
+                            <p>33 días/año · Máximo 24 mensualidades · Incluye tramo pre-2012</p>
+                        </div>
+                        <span class="calc-item-badge popular">Popular</span>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="/despido-objetivo" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Despido Objetivo</h3>
+                            <p>20 días/año · Máximo 12 mensualidades · Causas económicas u organizativas</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="/ere" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>ERE / Despido Colectivo</h3>
+                            <p>Simulador con mejoras pactadas · Indemnizaciones negociadas</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                </div>
+                <a href="/guia-despido" class="calc-group-guide">📚 Guía completa sobre despidos →</a>
+            </div>
+
+            <!-- LIQUIDACIÓN -->
+            <div class="calc-group">
+                <div class="calc-group-header">
+                    <h2>💵 Liquidación y Prestaciones</h2>
+                    <p>Finiquito y prestación por desempleo</p>
+                </div>
+                <div class="calc-list">
+                    <a href="/finiquito" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Finiquito</h3>
+                            <p>Salario pendiente + pagas extra prorrateadas + vacaciones no disfrutadas</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="/paro" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Prestación por Desempleo</h3>
+                            <p>Cuánto cobrarás y durante cuánto tiempo según tu cotización</p>
+                        </div>
+                        <span class="calc-item-badge popular">Popular</span>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                </div>
+                <a href="/guia-paro" class="calc-group-guide">📚 Guía completa sobre el paro →</a>
+            </div>
+
+            <div class="ad"></div>
+
+            <!-- NÓMINA -->
+            <div class="calc-group">
+                <div class="calc-group-header">
+                    <h2>🏦 Nómina y Retenciones</h2>
+                    <p>Entiende tu sueldo y calcula tus retenciones</p>
+                </div>
+                <div class="calc-list">
+                    <a href="/sueldo-neto" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Sueldo Bruto a Neto</h3>
+                            <p>Calcula tu sueldo real después de IRPF y Seguridad Social</p>
+                        </div>
+                        <span class="calc-item-badge popular">Popular</span>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="/irpf" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Calculadora IRPF 2026</h3>
+                            <p>Retención según situación personal, hijos a cargo y CCAA</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="/horas-extra" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Horas Extra</h3>
+                            <p>Cálculo con recargos por nocturnas, festivos y convenio</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="/pagas-extra" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Pagas Extraordinarias</h3>
+                            <p>Parte devengada de tus pagas de verano y navidad</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="/vacaciones" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Días de Vacaciones</h3>
+                            <p>Días generados, pendientes y su valor económico</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="/subida-ipc" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Subida IPC</h3>
+                            <p>Pérdida de poder adquisitivo y salario objetivo</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                </div>
+                <a href="/guia-sueldo-neto" class="calc-group-guide">📚 Guía completa sobre nóminas →</a>
+            </div>
+
+            <!-- AUTÓNOMOS -->
+            <div class="calc-group">
+                <div class="calc-group-header">
+                    <h2>💼 Autónomos</h2>
+                    <p>Cuota de la Seguridad Social y facturación</p>
+                </div>
+                <div class="calc-list">
+                    <a href="/cuota-autonomos" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Cuota de Autónomos 2026</h3>
+                            <p>Sistema por ingresos reales · Tarifa plana · Cuota cero CCAA</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="/facturas" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Calculadora de Facturas</h3>
+                            <p>IVA, retención IRPF y total a cobrar según cliente</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- GUÍAS DE AUTORIDAD -->
+    <section class="section-guides">
+        <div class="container">
+            <h2>📚 Guías Legales 2026</h2>
+            <p class="section-guides-desc">Información detallada basada en el Estatuto de los Trabajadores</p>
+            <div class="guides-grid">
+                <a href="/guia-despido" class="guide-card">
+                    <span class="guide-icon">⚖️</span>
+                    <h3>Guía del Despido en España</h3>
+                    <p>Tipos de despido, indemnizaciones, fiscalidad IRPF y casos especiales como IT o reducción de jornada.</p>
+                    <span class="guide-link">Leer guía completa →</span>
+                </a>
+                <a href="/guia-sueldo-neto" class="guide-card">
+                    <span class="guide-icon">🏦</span>
+                    <h3>Guía del Sueldo Neto</h3>
+                    <p>Cómo se calcula tu nómina, tramos IRPF 2026, cotizaciones y deducciones por situación personal.</p>
+                    <span class="guide-link">Leer guía completa →</span>
+                </a>
+                <a href="/guia-paro" class="guide-card">
+                    <span class="guide-icon">📊</span>
+                    <h3>Guía del Desempleo</h3>
+                    <p>Requisitos, duración, cuantía, compatibilidades y situaciones especiales como fijos-discontinuos.</p>
+                    <span class="guide-link">Leer guía completa →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE EL PROYECTO (teaser) -->
+    <section class="section-about-teaser">
+        <div class="container">
+            <div class="about-teaser">
+                <div class="about-teaser-icon">👩‍💻</div>
+                <div class="about-teaser-content">
+                    <h3>Sobre CalculaLoTuyo</h3>
+                    <p>Proyecto independiente creado para ofrecer <strong>transparencia laboral</strong>. Todos los algoritmos están basados estrictamente en la normativa del BOE, el SEPE y el Estatuto de los Trabajadores actualizado a 2026.</p>
+                    <a href="/sobre-el-proyecto" class="about-teaser-link">Conoce más sobre el proyecto →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="/despido-improcedente">Despido Improcedente</a>
+                <a href="/finiquito">Finiquito</a>
+                <a href="/paro">Prestación Paro</a>
+                <a href="/sueldo-neto">Sueldo Neto</a>
+                <a href="/irpf">IRPF</a>
+                <a href="/cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="/guia-despido">Guía del Despido</a>
+                <a href="/guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="/guia-paro">Guía del Paro</a>
+                <a href="/sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/terminos">Términos</a>
+                <a href="/aviso-legal">Aviso Legal</a>
+                <a href="/cookies">Cookies</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');if(menuBtn&&mobileNav){menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''})}document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open')})});
+</script>
+</body>
+</html>

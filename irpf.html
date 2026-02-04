@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora IRPF 2026: tramos estatales y autonómicos actualizados. Incluye situación familiar, hijos, discapacidad y deducciones. Tipo marginal y efectivo.">
+    <meta name="keywords" content="IRPF 2026, calculadora IRPF, tramos IRPF, tipo efectivo, retención nómina, declaración renta">
+    <title>Calculadora IRPF 2026 | Tramos y Retenciones | CalculaLoTuyo</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://calculalotuyo.es/irpf">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
+    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+        <nav class="nav">
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/despido-improcedente">⚖️ Despido Improcedente</a>
+                    <a href="/despido-objetivo">📋 Despido Objetivo</a>
+                    <a href="/ere">📊 ERE / Colectivo</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/finiquito">💵 Finiquito</a>
+                    <a href="/paro">📊 Prestación Paro</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/sueldo-neto">🏦 Sueldo Neto</a>
+                    <a href="/irpf">📑 IRPF</a>
+                    <a href="/horas-extra">⏰ Horas Extra</a>
+                    <a href="/pagas-extra">🎁 Pagas Extra</a>
+                    <a href="/vacaciones">🏖️ Vacaciones</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/cuota-autonomos">💼 Cuota Mensual</a>
+                    <a href="/facturas">🧾 Facturas</a>
+                </div>
+            </div>
+            <a href="/" class="nav-cta">Todas</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a>
+            <a href="/despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a>
+            <a href="/ere" class="mobile-nav-link">📊 ERE / Colectivo</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/finiquito" class="mobile-nav-link">💵 Finiquito</a>
+            <a href="/paro" class="mobile-nav-link">📊 Prestación Paro</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a>
+            <a href="/irpf" class="mobile-nav-link">📑 IRPF</a>
+            <a href="/horas-extra" class="mobile-nav-link">⏰ Horas Extra</a>
+            <a href="/pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a>
+            <a href="/vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a>
+            <a href="/facturas" class="mobile-nav-link">🧾 Facturas</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section class="hero-mini">
+        <div class="container">
+            <div class="hero-badge">📑 Tramos 2026</div>
+            <h1>Calculadora de IRPF<br><span class="highlight">¿Cuánto pagarás a Hacienda?</span></h1>
+            <p>Calcula tu retención con los tramos actualizados 2026, situación familiar, hijos y deducciones autonómicas.</p>
+        </div>
+    </section>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-title"><div class="card-icon">📝</div>Tus datos fiscales</div>
+                <form id="calc">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Ingresos brutos anuales</label>
+                            <input type="number" class="form-input" id="ingresos" placeholder="35000" required>
+                            <span class="form-hint">Salario bruto anual (con pagas extra incluidas)</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Comunidad Autónoma</label>
+                            <select class="form-select" id="ccaa">
+                                <option value="general">Territorio común</option>
+                                <option value="madrid">Madrid</option>
+                                <option value="cataluna">Cataluña</option>
+                                <option value="andalucia">Andalucía</option>
+                                <option value="valencia">Comunidad Valenciana</option>
+                                <option value="paisvasco">País Vasco</option>
+                                <option value="navarra">Navarra</option>
+                                <option value="galicia">Galicia</option>
+                                <option value="castillaleon">Castilla y León</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Situación familiar</label>
+                            <select class="form-select" id="situacion">
+                                <option value="soltero">Soltero/a sin hijos</option>
+                                <option value="casado1">Casado/a - un perceptor de rentas</option>
+                                <option value="casado2">Casado/a - dos perceptores</option>
+                                <option value="monoparental">Familia monoparental</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Número de hijos menores de 25 años</label>
+                            <select class="form-select" id="hijos">
+                                <option value="0">Sin hijos</option>
+                                <option value="1">1 hijo</option>
+                                <option value="2">2 hijos</option>
+                                <option value="3">3 hijos</option>
+                                <option value="4">4 o más hijos</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">¿Hijos menores de 3 años?</label>
+                            <select class="form-select" id="hijosMenores3">
+                                <option value="0">No</option>
+                                <option value="1">1 hijo menor de 3</option>
+                                <option value="2">2 o más menores de 3</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Discapacidad del contribuyente</label>
+                            <select class="form-select" id="discapacidad">
+                                <option value="0">Sin discapacidad</option>
+                                <option value="33">Entre 33% y 65%</option>
+                                <option value="65">65% o más</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Ascendientes a cargo (+65 años)</label>
+                            <select class="form-select" id="ascendientes">
+                                <option value="0">Ninguno</option>
+                                <option value="1">1 ascendiente</option>
+                                <option value="2">2 ascendientes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Edad del contribuyente</label>
+                            <select class="form-select" id="edad">
+                                <option value="normal">Menor de 65 años</option>
+                                <option value="65">65 años o más</option>
+                                <option value="75">75 años o más</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="disclaimer-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <p><strong>Nota:</strong> Este cálculo es orientativo. La retención real de tu nómina puede variar según tu contrato, pagos irregulares y situación específica.</p>
+                    </div>
+                    
+                    <button type="submit" class="btn">Calcular mi IRPF</button>
+                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                </form>
+
+                <div class="result" id="result">
+                    <div class="result-hero">
+                        <p class="result-label">IRPF anual estimado</p>
+                        <p class="result-value" id="total">0 €</p>
+                        <p class="result-sub" id="resultSub"></p>
+                    </div>
+                    
+                    <div class="result-breakdown">
+                        <div class="result-row bruto">
+                            <span class="result-row-label">📊 Tipo marginal</span>
+                            <span class="result-row-value" id="tipoMarginal">0%</span>
+                        </div>
+                        <div class="result-row exento">
+                            <span class="result-row-label">✅ Tipo efectivo real</span>
+                            <span class="result-row-value" id="tipoEfectivo">0%</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-row-label">💰 Neto anual (tras IRPF)</span>
+                            <span class="result-row-value" id="netoAnual">0 €</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-row-label">📅 Retención mensual</span>
+                            <span class="result-row-value" id="retencionMensual">0 €</span>
+                        </div>
+                    </div>
+
+                    <div class="result-grid" id="details"></div>
+                    
+                    <div class="fiscal-box" id="fiscalBox">
+                        <div class="fiscal-title">📊 Desglose por tramos</div>
+                        <div id="fiscalContent"></div>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button>
+                        <a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TABLA DE TRAMOS -->
+    <section class="section">
+        <div class="container">
+            <div class="info-card">
+                <h3>📋 Tramos IRPF 2026 (Territorio común)</h3>
+                <div class="tramos-table">
+                    <div class="tramo-row header">
+                        <span>Base liquidable</span>
+                        <span>Tipo estatal</span>
+                        <span>Tipo autonómico</span>
+                        <span>Total</span>
+                    </div>
+                    <div class="tramo-row">
+                        <span>Hasta 12.450€</span>
+                        <span>9,50%</span>
+                        <span>9,50%</span>
+                        <span class="total">19%</span>
+                    </div>
+                    <div class="tramo-row">
+                        <span>12.450€ - 20.200€</span>
+                        <span>12%</span>
+                        <span>12%</span>
+                        <span class="total">24%</span>
+                    </div>
+                    <div class="tramo-row">
+                        <span>20.200€ - 35.200€</span>
+                        <span>15%</span>
+                        <span>15%</span>
+                        <span class="total">30%</span>
+                    </div>
+                    <div class="tramo-row">
+                        <span>35.200€ - 60.000€</span>
+                        <span>18,50%</span>
+                        <span>18,50%</span>
+                        <span class="total">37%</span>
+                    </div>
+                    <div class="tramo-row">
+                        <span>60.000€ - 300.000€</span>
+                        <span>22,50%</span>
+                        <span>22,50%</span>
+                        <span class="total">45%</span>
+                    </div>
+                    <div class="tramo-row">
+                        <span>Más de 300.000€</span>
+                        <span>24,50%</span>
+                        <span>22,50%</span>
+                        <span class="total">47%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- EJEMPLO PRÁCTICO -->
+    <section class="section">
+        <div class="container">
+            <article class="seo-section">
+                <h2>📖 El caso de Ana: Entendiendo el IRPF con hijos</h2>
+                
+                <div class="example-box">
+                    <div class="example-header">
+                        <span class="example-icon">👩‍👧‍👦</span>
+                        <div>
+                            <strong>Ana, técnica de RRHH en Valencia</strong>
+                            <p>Casada con 2 hijos · Salario bruto: 38.000€/año</p>
+                        </div>
+                    </div>
+                    
+                    <div class="example-story">
+                        <p>Ana gana 38.000€ brutos anuales. Está casada y tiene 2 hijos (uno de 5 años y otro de 2 años). Su marido trabaja, así que son <strong>dos perceptores de rentas</strong>. Vive en la Comunidad Valenciana.</p>
+                    </div>
+
+                    <div class="example-calc">
+                        <h4>🧮 Cálculo de su IRPF:</h4>
+                        <div class="calc-steps">
+                            <div class="calc-step">
+                                <span class="step-num">1</span>
+                                <div>
+                                    <strong>Mínimo personal:</strong>
+                                    <p>5.550€ (contribuyente)</p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">2</span>
+                                <div>
+                                    <strong>Mínimo por descendientes:</strong>
+                                    <p>1º hijo: 2.400€ + 2º hijo: 2.700€ = <strong>5.100€</strong></p>
+                                    <p>+ Menor de 3 años: 2.800€ adicionales</p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">3</span>
+                                <div>
+                                    <strong>Base liquidable:</strong>
+                                    <p>38.000€ - 5.550€ - 5.100€ - 2.800€ = <strong>24.550€</strong></p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">4</span>
+                                <div>
+                                    <strong>Aplicación de tramos:</strong>
+                                    <p>Hasta 12.450€ × 19% = 2.365€</p>
+                                    <p>De 12.450€ a 20.200€ × 24% = 1.860€</p>
+                                    <p>De 20.200€ a 24.550€ × 30% = 1.305€</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="example-result">
+                            <div class="example-result-row">
+                                <span>IRPF total anual</span>
+                                <span class="amount">5.530 €</span>
+                            </div>
+                            <div class="example-result-row">
+                                <span>Tipo efectivo</span>
+                                <span class="amount">14,55%</span>
+                            </div>
+                            <div class="example-result-row">
+                                <span>Tipo marginal (tramo más alto)</span>
+                                <span class="amount">30%</span>
+                            </div>
+                            <div class="example-result-row total">
+                                <span>Neto anual</span>
+                                <span class="amount">32.470 €</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-tip">
+                        <strong>💡 Consejo de Ana:</strong> "Gracias a tener un hijo menor de 3 años, mi tipo efectivo baja del 18% al 14,55%. También puedo aplicar la deducción por maternidad de 1.200€/año adicionales si trabajo. ¡Revisa todas las deducciones a las que tienes derecho!"
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">❓ Preguntas frecuentes sobre el IRPF</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Qué diferencia hay entre tipo marginal y tipo efectivo?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p>Son dos conceptos muy diferentes:</p>
+                        <ul>
+                            <li><strong>Tipo marginal:</strong> Es el porcentaje que pagas por el <em>último euro</em> que ganas. Si tu base está en el tramo del 30%, tu tipo marginal es 30%.</li>
+                            <li><strong>Tipo efectivo:</strong> Es el porcentaje <em>real</em> que pagas sobre el total de tus ingresos. Como los tramos son progresivos, siempre es menor que el marginal.</li>
+                        </ul>
+                        <p><strong>Ejemplo:</strong> Con 35.000€ de base, tu tipo marginal es 30% pero tu tipo efectivo ronda el 17-18%.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Por qué mi retención en nómina es diferente al tipo efectivo?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p>La retención de la nómina es una <strong>estimación</strong> que hace la empresa. Puede diferir por varios motivos:</p>
+                        <ul>
+                            <li>Pagos irregulares (bonus, horas extra, comisiones)</li>
+                            <li>Cambios de salario durante el año</li>
+                            <li>Modelo 145 desactualizado (comunícalo a RRHH)</li>
+                            <li>Tipo mínimo obligatorio (2% para contratos temporales)</li>
+                        </ul>
+                        <p>La diferencia se <strong>regulariza en la declaración de la renta</strong>: te devolverán si retuvieron de más, o pagarás si retuvieron de menos.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Qué deducciones puedo aplicar en la declaración de la renta?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p>Las principales deducciones estatales son:</p>
+                        <ul>
+                            <li><strong>Por maternidad:</strong> Hasta 1.200€/año por hijo menor de 3 años (madres trabajadoras)</li>
+                            <li><strong>Por familia numerosa:</strong> 1.200€ (general) o 2.400€ (especial)</li>
+                            <li><strong>Por ascendientes/descendientes con discapacidad:</strong> Hasta 1.200€</li>
+                            <li><strong>Por inversión en vivienda:</strong> Si compraste antes de 2013</li>
+                            <li><strong>Planes de pensiones:</strong> Aportaciones hasta 1.500€/año</li>
+                        </ul>
+                        <p>Además, cada <strong>comunidad autónoma</strong> tiene deducciones propias (alquiler, guarderías, etc.).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Estoy obligado a hacer la declaración de la renta?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p><strong>NO estás obligado</strong> si cumples estos requisitos (2026):</p>
+                        <ul>
+                            <li>Ingresos de un solo pagador: menos de <strong>22.000€</strong></li>
+                            <li>Ingresos de varios pagadores: menos de <strong>15.000€</strong> (si el 2º y siguientes suman más de 1.500€)</li>
+                        </ul>
+                        <p><strong>Consejo:</strong> Aunque no estés obligado, puede interesarte hacerla si te retuvieron de más (te devolverán dinero) o tienes deducciones que aplicar.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Cómo afectan los hijos a mi IRPF?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p>Los hijos reducen tu base imponible a través del <strong>mínimo por descendientes</strong>:</p>
+                        <ul>
+                            <li>1º hijo: <strong>2.400€</strong></li>
+                            <li>2º hijo: <strong>2.700€</strong></li>
+                            <li>3º hijo: <strong>4.000€</strong></li>
+                            <li>4º y siguientes: <strong>4.500€</strong></li>
+                            <li>Menores de 3 años: <strong>+2.800€</strong> adicionales</li>
+                        </ul>
+                        <p>Si los dos padres trabajan, el mínimo se reparte al 50%. En familias monoparentales, lo aplica íntegramente el progenitor que convive con el hijo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- RELACIONADOS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">🔗 Calculadoras relacionadas</h2>
+            <p class="section-desc">Completa el análisis de tu situación fiscal</p>
+            
+            <div class="cards-grid">
+                <a href="/sueldo-neto" class="calc-card">
+                    <div class="calc-card-icon">🏦</div>
+                    <h3>Sueldo Neto</h3>
+                    <p>Calcula tu sueldo neto mensual con IRPF y Seguridad Social incluidos.</p>
+                    <span class="calc-card-link">Calcular neto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+                <a href="/cuota-autonomos" class="calc-card">
+                    <div class="calc-card-icon">💼</div>
+                    <h3>Cuota Autónomos</h3>
+                    <p>Si eres autónomo, calcula tu cuota mensual y las retenciones de tus facturas.</p>
+                    <span class="calc-card-link">Calcular cuota <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+                <a href="/subida-ipc" class="calc-card">
+                    <div class="calc-card-icon">📈</div>
+                    <h3>Subida por IPC</h3>
+                    <p>Calcula cuánto debería subir tu sueldo para mantener el poder adquisitivo.</p>
+                    <span class="calc-card-link">Calcular subida <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUENTES -->
+    <section class="section">
+        <div class="container">
+            <div class="source-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                <div>
+                    <strong>Base legal:</strong>
+                    <p><a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764" target="_blank">Ley 35/2006 del IRPF</a> y <a href="https://sede.agenciatributaria.gob.es" target="_blank">Agencia Tributaria</a>. Tramos actualizados para 2026.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="/despido-improcedente">Despido Improcedente</a>
+                <a href="/finiquito">Finiquito</a>
+                <a href="/paro">Prestación Paro</a>
+                <a href="/sueldo-neto">Sueldo Neto</a>
+                <a href="/irpf">IRPF</a>
+                <a href="/cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="/guia-despido">Guía del Despido</a>
+                <a href="/guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="/guia-paro">Guía del Paro</a>
+                <a href="/sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/terminos">Términos</a>
+                <a href="/aviso-legal">Aviso Legal</a>
+                <a href="/cookies">Cookies</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Navegación
+document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});
+document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
+const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');
+menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
+document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
+
+// Formateo
+const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
+const fmtPct=n=>n.toFixed(2)+'%';
+
+// TRAMOS IRPF 2026
+const tramosGenerales=[
+    {hasta:12450,tipo:0.19},
+    {hasta:20200,tipo:0.24},
+    {hasta:35200,tipo:0.30},
+    {hasta:60000,tipo:0.37},
+    {hasta:300000,tipo:0.45},
+    {hasta:Infinity,tipo:0.47}
+];
+
+// Mínimos personales y familiares 2026
+const minimos={
+    personal:5550,
+    personal65:6700,
+    personal75:8100,
+    hijo1:2400,
+    hijo2:2700,
+    hijo3:4000,
+    hijo4:4500,
+    hijoMenor3:2800,
+    ascendiente:1150,
+    ascendiente75:1400,
+    discapacidad33:3000,
+    discapacidad65:9000
+};
+
+// CÁLCULO PRINCIPAL
+document.getElementById('calc').onsubmit=function(e){
+    e.preventDefault();
+    
+    const ingresos=+document.getElementById('ingresos').value;
+    const ccaa=document.getElementById('ccaa').value;
+    const situacion=document.getElementById('situacion').value;
+    const hijos=+document.getElementById('hijos').value;
+    const hijosMenores3=+document.getElementById('hijosMenores3').value;
+    const discapacidad=+document.getElementById('discapacidad').value;
+    const ascendientes=+document.getElementById('ascendientes').value;
+    const edad=document.getElementById('edad').value;
+    
+    if(!ingresos){alert('Introduce tus ingresos');return}
+    
+    // 1. Calcular mínimo personal
+    let minimoPersonal=minimos.personal;
+    if(edad==='65')minimoPersonal=minimos.personal65;
+    if(edad==='75')minimoPersonal=minimos.personal75;
+    
+    // 2. Mínimo por descendientes
+    let minimoHijos=0;
+    if(hijos>=1)minimoHijos+=minimos.hijo1;
+    if(hijos>=2)minimoHijos+=minimos.hijo2;
+    if(hijos>=3)minimoHijos+=minimos.hijo3;
+    if(hijos>=4)minimoHijos+=minimos.hijo4;
+    minimoHijos+=hijosMenores3*minimos.hijoMenor3;
+    
+    // Si son 2 perceptores, dividir mínimo hijos entre 2
+    if(situacion==='casado2')minimoHijos=minimoHijos/2;
+    
+    // 3. Mínimo por ascendientes
+    let minimoAscendientes=ascendientes*minimos.ascendiente;
+    
+    // 4. Reducción por discapacidad
+    let reduccionDiscapacidad=0;
+    if(discapacidad===33)reduccionDiscapacidad=minimos.discapacidad33;
+    if(discapacidad===65)reduccionDiscapacidad=minimos.discapacidad65;
+    
+    // Total mínimos
+    const totalMinimos=minimoPersonal+minimoHijos+minimoAscendientes+reduccionDiscapacidad;
+    
+    // Base liquidable
+    const baseLiquidable=Math.max(0,ingresos-totalMinimos);
+    
+    // 5. Aplicar tramos
+    let irpfTotal=0;
+    let resto=baseLiquidable;
+    let anterior=0;
+    let tipoMarginal=0;
+    let desglose=[];
+    
+    for(const tramo of tramosGenerales){
+        const baseTramo=Math.min(resto,tramo.hasta-anterior);
+        if(baseTramo<=0)break;
+        
+        const cuota=baseTramo*tramo.tipo;
+        irpfTotal+=cuota;
+        tipoMarginal=tramo.tipo;
+        
+        desglose.push({
+            desde:anterior,
+            hasta:Math.min(tramo.hasta,baseLiquidable),
+            base:baseTramo,
+            tipo:tramo.tipo,
+            cuota:cuota
+        });
+        
+        resto-=baseTramo;
+        anterior=tramo.hasta;
+    }
+    
+    // Tipo efectivo
+    const tipoEfectivo=ingresos>0?(irpfTotal/ingresos)*100:0;
+    const netoAnual=ingresos-irpfTotal;
+    const retencionMensual=irpfTotal/12;
+    
+    // Mostrar resultados
+    document.getElementById('total').textContent=fmt(irpfTotal);
+    document.getElementById('resultSub').textContent='Sobre base liquidable de '+fmt(baseLiquidable);
+    document.getElementById('tipoMarginal').textContent=fmtPct(tipoMarginal*100);
+    document.getElementById('tipoEfectivo').textContent=fmtPct(tipoEfectivo);
+    document.getElementById('netoAnual').textContent=fmt(netoAnual);
+    document.getElementById('retencionMensual').textContent=fmt(retencionMensual);
+    
+    // Detalles
+    document.getElementById('details').innerHTML=`
+        <div class="result-item"><p class="result-item-label">Ingresos brutos</p><p class="result-item-value">${fmt(ingresos)}</p></div>
+        <div class="result-item"><p class="result-item-label">Mínimo personal</p><p class="result-item-value">-${fmt(minimoPersonal)}</p></div>
+        <div class="result-item"><p class="result-item-label">Mínimo hijos</p><p class="result-item-value">-${fmt(minimoHijos)}</p></div>
+        <div class="result-item"><p class="result-item-label">Base liquidable</p><p class="result-item-value">${fmt(baseLiquidable)}</p></div>
+    `;
+    
+    // Desglose por tramos
+    let fiscalHTML='';
+    for(const t of desglose){
+        fiscalHTML+=`<div class="fiscal-row"><span>${fmt(t.desde)} - ${fmt(t.hasta)} (${fmtPct(t.tipo*100)})</span><span>${fmt(t.cuota)}</span></div>`;
+    }
+    fiscalHTML+=`<div class="fiscal-row highlight"><span><strong>IRPF Total</strong></span><span><strong>${fmt(irpfTotal)}</strong></span></div>`;
+    document.getElementById('fiscalContent').innerHTML=fiscalHTML;
+    
+    // WhatsApp
+    const waText=`📑 Mi IRPF 2026:\n\n💰 Ingresos: ${fmt(ingresos)}\n📊 Base liquidable: ${fmt(baseLiquidable)}\n🧾 IRPF anual: ${fmt(irpfTotal)}\n✅ Tipo efectivo: ${fmtPct(tipoEfectivo)}\n💵 Neto anual: ${fmt(netoAnual)}\n\nhttps://calculalotuyo.es/irpf`;
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(waText);
+    
+    document.getElementById('result').classList.add('visible');
+    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+};
+
+document.getElementById('reset').onclick=function(){
+    document.getElementById('calc').reset();
+    document.getElementById('result').classList.remove('visible');
+    window.scrollTo({top:0,behavior:'smooth'});
+};
+</script>
+</body>
+</html>

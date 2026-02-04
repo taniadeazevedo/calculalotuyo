@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora ERE 2026: simula tu indemnización en despido colectivo. Días por año negociados, topes y fiscalidad. Basado en Art. 51 Estatuto Trabajadores.">
+    <meta name="keywords" content="ERE, despido colectivo, indemnización ERE, calculadora ERE, expediente regulación empleo 2026">
+    <title>Calculadora ERE 2026 | Despido Colectivo | CalculaLoTuyo</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://calculalotuyo.es/ere">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
+    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+        <nav class="nav">
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/despido-improcedente">⚖️ Despido Improcedente</a><a href="/despido-objetivo">📋 Despido Objetivo</a><a href="/ere">📊 ERE / Colectivo</a></div></div>
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/finiquito">💵 Finiquito</a><a href="/paro">📊 Prestación Paro</a></div></div>
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/sueldo-neto">🏦 Sueldo Neto</a><a href="/irpf">📑 IRPF</a><a href="/horas-extra">⏰ Horas Extra</a><a href="/pagas-extra">🎁 Pagas Extra</a><a href="/vacaciones">🏖️ Vacaciones</a></div></div>
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/cuota-autonomos">💼 Cuota Mensual</a><a href="/facturas">🧾 Facturas</a></div></div>
+            <a href="/" class="nav-cta">Todas</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a><a href="/despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a><a href="/ere" class="mobile-nav-link">📊 ERE / Colectivo</a></div></div>
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/finiquito" class="mobile-nav-link">💵 Finiquito</a><a href="/paro" class="mobile-nav-link">📊 Prestación Paro</a></div></div>
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a><a href="/irpf" class="mobile-nav-link">📑 IRPF</a><a href="/horas-extra" class="mobile-nav-link">⏰ Horas Extra</a><a href="/pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a><a href="/vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a></div></div>
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a><a href="/facturas" class="mobile-nav-link">🧾 Facturas</a></div></div>
+</nav>
+
+<main>
+    <section class="hero-mini">
+        <div class="container">
+            <div class="hero-badge">📊 ERE 2026</div>
+            <h1>¿Te afecta un ERE?<br><span class="highlight">Calcula tu indemnización</span></h1>
+            <p>Simulador de despido colectivo con días/año negociados. Mínimo legal 20 días, habitual 25-45 días.</p>
+        </div>
+    </section>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-title"><div class="card-icon">📝</div>Datos del ERE</div>
+                <form id="calc">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Salario bruto anual (con pagas)</label>
+                            <input type="number" class="form-input" id="salario" placeholder="32000" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fecha inicio contrato</label>
+                            <input type="date" class="form-input" id="inicio" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fecha efectiva del ERE</label>
+                            <input type="date" class="form-input" id="ere" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Días/año pactados en el ERE</label>
+                            <select class="form-select" id="diasAno">
+                                <option value="20">20 días (mínimo legal)</option>
+                                <option value="25">25 días</option>
+                                <option value="30">30 días</option>
+                                <option value="33" selected>33 días (habitual)</option>
+                                <option value="35">35 días</option>
+                                <option value="40">40 días</option>
+                                <option value="45">45 días (máximo habitual)</option>
+                            </select>
+                            <span class="form-hint">Consulta el acuerdo sindical de tu empresa</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">¿Hay tope de mensualidades?</label>
+                            <select class="form-select" id="topeMeses">
+                                <option value="0">Sin tope pactado</option>
+                                <option value="12">12 mensualidades</option>
+                                <option value="18">18 mensualidades</option>
+                                <option value="24">24 mensualidades</option>
+                                <option value="36">36 mensualidades</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Edad del trabajador</label>
+                            <select class="form-select" id="edad">
+                                <option value="normal">Menor de 50 años</option>
+                                <option value="50">50-54 años</option>
+                                <option value="55">55 años o más</option>
+                            </select>
+                            <span class="form-hint">Mayores de 55 pueden tener mejoras</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">¿Incluye convenio especial SS?</label>
+                            <select class="form-select" id="convenioSS">
+                                <option value="no">No</option>
+                                <option value="si">Sí (la empresa paga SS hasta jubilación)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="disclaimer-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <p><strong>Importante:</strong> Las condiciones del ERE se negocian entre empresa y sindicatos. Consulta el acuerdo final antes de firmar.</p>
+                    </div>
+                    
+                    <button type="submit" class="btn">Calcular indemnización</button>
+                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                </form>
+
+                <div class="result" id="result">
+                    <div class="result-hero">
+                        <p class="result-label">Indemnización ERE</p>
+                        <p class="result-value" id="total">0 €</p>
+                        <p class="result-sub" id="resultSub"></p>
+                    </div>
+                    <div class="result-breakdown">
+                        <div class="result-row bruto"><span class="result-row-label">💰 Indemnización bruta</span><span class="result-row-value" id="bruto">0 €</span></div>
+                        <div class="result-row exento"><span class="result-row-label">✅ Parte exenta IRPF</span><span class="result-row-value" id="exento">0 €</span></div>
+                        <div class="result-row" id="tributaRow" style="display:none;"><span class="result-row-label">📊 Parte que tributa</span><span class="result-row-value" id="tributa">0 €</span></div>
+                    </div>
+                    <div class="result-grid" id="details"></div>
+                    <div class="fiscal-box" id="fiscalBox"><div class="fiscal-title">📊 Desglose</div><div id="fiscalContent"></div></div>
+                    <div class="result-actions">
+                        <button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button>
+                        <a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- EJEMPLO -->
+    <section class="section">
+        <div class="container">
+            <article class="seo-section">
+                <h2>📖 El caso de Pedro: ERE en empresa tecnológica</h2>
+                <div class="example-box">
+                    <div class="example-header">
+                        <span class="example-icon">👨‍💻</span>
+                        <div><strong>Pedro, ingeniero de software en Madrid</strong><p>12 años de antigüedad · Salario: 55.000€ brutos/año</p></div>
+                    </div>
+                    <div class="example-story">
+                        <p>La multinacional de Pedro anunció un ERE que afectaba a 300 trabajadores. Tras negociaciones sindicales, se pactó una indemnización de <strong>35 días por año</strong> con tope de 24 mensualidades.</p>
+                    </div>
+                    <div class="example-calc">
+                        <h4>🧮 Cálculo:</h4>
+                        <div class="calc-steps">
+                            <div class="calc-step"><span class="step-num">1</span><div><strong>Salario diario:</strong><p>55.000€ ÷ 365 = <strong>150,68€/día</strong></p></div></div>
+                            <div class="calc-step"><span class="step-num">2</span><div><strong>Días de indemnización:</strong><p>35 días × 12 años = <strong>420 días</strong></p></div></div>
+                            <div class="calc-step"><span class="step-num">3</span><div><strong>Indemnización:</strong><p>150,68€ × 420 días = <strong>63.286€</strong></p></div></div>
+                            <div class="calc-step"><span class="step-num">4</span><div><strong>Verificar tope:</strong><p>24 mensualidades = 110.000€ → No aplica (63.286€ < 110.000€)</p></div></div>
+                        </div>
+                        <div class="example-result">
+                            <div class="example-result-row total"><span>Total indemnización</span><span class="amount">63.286 €</span></div>
+                            <div class="example-result-row exento"><span>✅ 100% exenta (< 180.000€)</span><span class="note">Sin retención IRPF</span></div>
+                        </div>
+                    </div>
+                    <div class="example-tip"><strong>💡 Consejo de Pedro:</strong> "Participé activamente en las asambleas sindicales. Conseguimos subir de 30 a 35 días/año y mantener el convenio especial con la SS para mayores de 55. ¡Infórmate y participa!"</div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">❓ Preguntas frecuentes sobre el ERE</h2>
+            <div class="faq-list">
+                <div class="faq-item"><button class="faq-q"><span>¿Qué es un ERE y cuándo se aplica?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Un <strong>Expediente de Regulación de Empleo (ERE)</strong> es un procedimiento legal para despidos colectivos. Se aplica cuando la empresa despide en 90 días a: 10+ trabajadores (empresas <100), 10% plantilla (100-300 trabajadores), o 30+ (>300 trabajadores). Requiere periodo de consultas con sindicatos y comunicación a la autoridad laboral.</p></div></div>
+                <div class="faq-item"><button class="faq-q"><span>¿Cuántos días por año me corresponden en un ERE?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>El <strong>mínimo legal es 20 días/año</strong> (como despido objetivo). Sin embargo, en la negociación sindical suelen conseguirse mejoras: lo habitual es entre 25 y 45 días/año, dependiendo de la situación económica de la empresa y la fuerza negociadora de los sindicatos.</p></div></div>
+                <div class="faq-item"><button class="faq-q"><span>¿La indemnización del ERE tributa?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Está <strong>exenta de IRPF hasta 180.000€</strong> (Art. 7.e LIRPF). Solo tributa el exceso sobre esa cantidad. En la mayoría de casos, la indemnización completa está exenta.</p></div></div>
+                <div class="faq-item"><button class="faq-q"><span>¿Qué es el convenio especial con la Seguridad Social?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Es un acuerdo por el que la empresa paga tus cotizaciones a la SS hasta que te jubiles o encuentres empleo. Es muy valioso para <strong>mayores de 55 años</strong>, ya que garantiza que no pierdes años de cotización ni se reduce tu pensión futura.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- RELACIONADOS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">🔗 Calculadoras relacionadas</h2>
+            <div class="cards-grid">
+                <a href="/despido-improcedente" class="calc-card"><div class="calc-card-icon">⚖️</div><h3>Despido Improcedente</h3><p>Si impugnas el ERE, compara con 33 días/año.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+                <a href="/finiquito" class="calc-card"><div class="calc-card-icon">💵</div><h3>Finiquito</h3><p>Además de indemnización, calcula tu liquidación.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+                <a href="/paro" class="calc-card"><div class="calc-card-icon">📊</div><h3>Prestación Paro</h3><p>Calcula tu desempleo tras el ERE.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section"><div class="container"><div class="source-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><div><strong>Base legal:</strong><p>Art. 51 del <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank">Estatuto de los Trabajadores</a> sobre despido colectivo.</p></div></div></div></section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="/despido-improcedente">Despido Improcedente</a>
+                <a href="/finiquito">Finiquito</a>
+                <a href="/paro">Prestación Paro</a>
+                <a href="/sueldo-neto">Sueldo Neto</a>
+                <a href="/irpf">IRPF</a>
+                <a href="/cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="/guia-despido">Guía del Despido</a>
+                <a href="/guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="/guia-paro">Guía del Paro</a>
+                <a href="/sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/terminos">Términos</a>
+                <a href="/aviso-legal">Aviso Legal</a>
+                <a href="/cookies">Cookies</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
+const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
+document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
+
+const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
+document.getElementById('ere').value=new Date().toISOString().split('T')[0];
+
+document.getElementById('calc').onsubmit=function(e){
+    e.preventDefault();
+    const sal=+document.getElementById('salario').value;
+    const ini=new Date(document.getElementById('inicio').value);
+    const ere=new Date(document.getElementById('ere').value);
+    const diasAno=+document.getElementById('diasAno').value;
+    const topeMeses=+document.getElementById('topeMeses').value;
+    
+    if(!sal||ini>=ere){alert('Revisa los datos');return}
+    
+    const dias=Math.ceil((ere-ini)/864e5);
+    const anos=dias/365;
+    const diario=sal/365;
+    const mensual=sal/12;
+    
+    let indem=diario*diasAno*anos;
+    let topado=false;
+    if(topeMeses>0){
+        const tope=mensual*topeMeses;
+        if(indem>tope){indem=tope;topado=true}
+    }
+    
+    const exencion=180000;
+    const exento=Math.min(indem,exencion);
+    const tributa=Math.max(0,indem-exencion);
+    
+    document.getElementById('total').textContent=fmt(indem);
+    document.getElementById('bruto').textContent=fmt(indem);
+    document.getElementById('exento').textContent=fmt(exento);
+    document.getElementById('resultSub').textContent=diasAno+' días/año · '+Math.floor(anos)+'a '+Math.floor((dias%365)/30)+'m'+(topado?' · Topado':'');
+    
+    document.getElementById('tributaRow').style.display=tributa>0?'flex':'none';
+    if(tributa>0)document.getElementById('tributa').textContent=fmt(tributa);
+    
+    document.getElementById('details').innerHTML=`<div class="result-item"><p class="result-item-label">Salario diario</p><p class="result-item-value">${fmtDec(diario)}</p></div><div class="result-item"><p class="result-item-label">Antigüedad</p><p class="result-item-value">${Math.floor(anos)}a ${Math.floor((dias%365)/30)}m</p></div><div class="result-item"><p class="result-item-label">Días totales</p><p class="result-item-value">${Math.round(diasAno*anos)} días</p></div>`;
+    
+    let fiscalHTML=`<div class="fiscal-row"><span>${diasAno} días × ${fmtDec(anos)} años × ${fmtDec(diario)}</span><span>${fmt(indem)}</span></div>`;
+    if(topado)fiscalHTML+=`<div class="fiscal-row warning"><span>⚠️ Topado a ${topeMeses} mensualidades</span><span>${fmt(mensual*topeMeses)}</span></div>`;
+    fiscalHTML+=`<div class="fiscal-row success"><span>✅ Exento IRPF</span><span>${fmt(exento)}</span></div><div class="fiscal-row highlight"><span><strong>Total</strong></span><span><strong>${fmt(indem)}</strong></span></div>`;
+    document.getElementById('fiscalContent').innerHTML=fiscalHTML;
+    
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(`📊 ERE:\n💰 Indemnización: ${fmt(indem)}\n📅 ${diasAno} días/año\n✅ Exento: ${fmt(exento)}\n\nhttps://calculalotuyo.es/ere`);
+    document.getElementById('result').classList.add('visible');
+    document.getElementById('result').scrollIntoView({behavior:'smooth'});
+};
+document.getElementById('reset').onclick=function(){document.getElementById('calc').reset();document.getElementById('result').classList.remove('visible');window.scrollTo({top:0,behavior:'smooth'})};
+</script>
+</body>
+</html>

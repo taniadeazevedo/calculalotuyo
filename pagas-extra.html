@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora pagas extra 2026: calcula tu paga de verano y navidad proporcional. Devengo mensual, prorrateo y qué hacer si te despiden antes de cobrarlas.">
+    <meta name="keywords" content="pagas extra, paga de verano, paga de navidad, pagas prorrateadas, calculadora pagas 2026">
+    <title>Calculadora Pagas Extra 2026 | Verano y Navidad | CalculaLoTuyo</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://calculalotuyo.es/pagas-extra">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
+    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+        <nav class="nav">
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/despido-improcedente">⚖️ Despido Improcedente</a><a href="/despido-objetivo">📋 Despido Objetivo</a><a href="/ere">📊 ERE / Colectivo</a></div></div>
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/finiquito">💵 Finiquito</a><a href="/paro">📊 Prestación Paro</a></div></div>
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/sueldo-neto">🏦 Sueldo Neto</a><a href="/irpf">📑 IRPF</a><a href="/horas-extra">⏰ Horas Extra</a><a href="/pagas-extra">🎁 Pagas Extra</a><a href="/vacaciones">🏖️ Vacaciones</a></div></div>
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/cuota-autonomos">💼 Cuota Mensual</a><a href="/facturas">🧾 Facturas</a></div></div>
+            <a href="/" class="nav-cta">Todas</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a><a href="/despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a><a href="/ere" class="mobile-nav-link">📊 ERE / Colectivo</a></div></div>
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/finiquito" class="mobile-nav-link">💵 Finiquito</a><a href="/paro" class="mobile-nav-link">📊 Prestación Paro</a></div></div>
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a><a href="/irpf" class="mobile-nav-link">📑 IRPF</a><a href="/horas-extra" class="mobile-nav-link">⏰ Horas Extra</a><a href="/pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a><a href="/vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a></div></div>
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a><a href="/facturas" class="mobile-nav-link">🧾 Facturas</a></div></div>
+</nav>
+
+<main>
+    <section class="hero-mini">
+        <div class="container">
+            <div class="hero-badge">🎁 Nómina 2026</div>
+            <h1>Calculadora Pagas Extra<br><span class="highlight">¿Cuánto te corresponde?</span></h1>
+            <p>Calcula tus pagas de verano y navidad proporcionales. Devengo: enero-junio y julio-diciembre.</p>
+        </div>
+    </section>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-title"><div class="card-icon">📝</div>Datos de tus pagas</div>
+                <form id="calc">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Salario base mensual</label>
+                            <input type="number" class="form-input" id="salario" placeholder="1800" required>
+                            <span class="form-hint">Sin complementos variables ni pagas</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fecha de inicio en la empresa</label>
+                            <input type="date" class="form-input" id="fechaInicio" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fecha de cálculo</label>
+                            <input type="date" class="form-input" id="fechaCalculo" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Número de pagas anuales</label>
+                            <select class="form-select" id="numPagas">
+                                <option value="14" selected>14 pagas (verano + navidad)</option>
+                                <option value="15">15 pagas (3 extra)</option>
+                                <option value="16">16 pagas (4 extra)</option>
+                                <option value="12">12 pagas (prorrateadas)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Periodo de devengo</label>
+                            <select class="form-select" id="devengo">
+                                <option value="semestral" selected>Semestral (lo habitual)</option>
+                                <option value="anual">Anual (todo el año)</option>
+                            </select>
+                            <span class="form-hint">Semestral: ene-jun y jul-dic · Anual: ene-dic</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">¿Ya has cobrado alguna paga este año?</label>
+                            <select class="form-select" id="pagasCobradas">
+                                <option value="0">Ninguna</option>
+                                <option value="1">Sí, la de verano (junio)</option>
+                                <option value="2">Ambas (verano y navidad)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="disclaimer-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <p><strong>Recuerda:</strong> Las pagas extra se devengan día a día. Si te vas antes de cobrarlas, te corresponde la parte proporcional en el <a href="/finiquito">finiquito</a>.</p>
+                    </div>
+                    
+                    <button type="submit" class="btn">Calcular pagas extra</button>
+                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                </form>
+
+                <div class="result" id="result">
+                    <div class="result-hero">
+                        <p class="result-label">Pagas extra acumuladas</p>
+                        <p class="result-value" id="total">0 €</p>
+                        <p class="result-sub" id="resultSub"></p>
+                    </div>
+                    <div class="result-breakdown">
+                        <div class="result-row"><span class="result-row-label">☀️ Paga verano (devengada)</span><span class="result-row-value" id="pagaVerano">0 €</span></div>
+                        <div class="result-row"><span class="result-row-label">🎄 Paga navidad (devengada)</span><span class="result-row-value" id="pagaNavidad">0 €</span></div>
+                        <div class="result-row bruto"><span class="result-row-label">💰 Total devengado</span><span class="result-row-value" id="totalDevengado">0 €</span></div>
+                    </div>
+                    <div class="result-grid" id="details"></div>
+                    <div class="fiscal-box" id="fiscalBox"><div class="fiscal-title">📊 Desglose mensual</div><div id="fiscalContent"></div></div>
+                    <div class="result-actions">
+                        <button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button>
+                        <a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- EJEMPLO -->
+    <section class="section">
+        <div class="container">
+            <article class="seo-section">
+                <h2>📖 El caso de Sergio: Cálculo de pagas en abril</h2>
+                <div class="example-box">
+                    <div class="example-header">
+                        <span class="example-icon">👨‍💼</span>
+                        <div><strong>Sergio, comercial en Sevilla</strong><p>Empezó el 1 de septiembre · Salario base: 2.000€/mes · 14 pagas</p></div>
+                    </div>
+                    <div class="example-story">
+                        <p>Sergio quiere saber cuánto lleva acumulado de pagas extra a día <strong>15 de abril</strong>. Entró a trabajar el 1 de septiembre del año anterior, así que ha trabajado más de un año. Su convenio tiene <strong>devengo semestral</strong>.</p>
+                    </div>
+                    <div class="example-calc">
+                        <h4>🧮 Cálculo paso a paso:</h4>
+                        <div class="calc-steps">
+                            <div class="calc-step"><span class="step-num">1</span><div><strong>Devengo mensual:</strong><p>2.000€ ÷ 6 meses = <strong>333,33€/mes</strong></p></div></div>
+                            <div class="calc-step"><span class="step-num">2</span><div><strong>Paga verano (ene-jun):</strong><p>3,5 meses devengados × 333,33€ = <strong>1.166,67€</strong></p></div></div>
+                            <div class="calc-step"><span class="step-num">3</span><div><strong>Paga navidad (jul-dic):</strong><p>Ya cobrada en diciembre = <strong>0€ pendiente</strong></p></div></div>
+                        </div>
+                        <div class="example-result">
+                            <div class="example-result-row"><span>Paga verano devengada</span><span class="amount">1.166,67 €</span></div>
+                            <div class="example-result-row"><span>Paga navidad (cobrada)</span><span class="amount">0 €</span></div>
+                            <div class="example-result-row total"><span>Total acumulado</span><span class="amount">1.166,67 €</span></div>
+                        </div>
+                    </div>
+                    <div class="example-tip"><strong>💡 Consejo de Sergio:</strong> "Si te despiden antes de junio, tienes derecho a la parte proporcional de la paga de verano en el finiquito. Cada mes trabajado = 1/6 de la paga (16,67%)."</div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">❓ Preguntas frecuentes sobre Pagas Extra</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-q"><span>¿Cuándo se cobran las pagas extra?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a">
+                        <p>Depende de cada convenio colectivo, pero lo más habitual es:</p>
+                        <ul>
+                            <li><strong>Paga de verano:</strong> Entre el 15 y 30 de junio</li>
+                            <li><strong>Paga de navidad:</strong> Entre el 15 y 24 de diciembre</li>
+                        </ul>
+                        <p>Algunos convenios permiten que la empresa pague <strong>antes de esas fechas</strong> o las <strong>prorratee mensualmente</strong> (12 pagas).</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q"><span>¿Qué es el devengo semestral vs anual?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a">
+                        <p>Son dos formas de calcular qué parte de la paga te corresponde:</p>
+                        <ul>
+                            <li><strong>Semestral (lo habitual):</strong> Cada paga se devenga en 6 meses. Verano = enero-junio; Navidad = julio-diciembre.</li>
+                            <li><strong>Anual:</strong> Cada paga se devenga durante todo el año (12 meses). Cada mes trabajado = 1/12 de cada paga.</li>
+                        </ul>
+                        <p>El semestral es más favorable si te vas a mitad de año (te llevas más paga proporcional).</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q"><span>¿Las pagas extra incluyen complementos?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a">
+                        <p>Depende de tu convenio colectivo:</p>
+                        <ul>
+                            <li>La mayoría incluyen solo <strong>salario base + antigüedad</strong></li>
+                            <li>Algunos incluyen <strong>complementos fijos</strong> (plus convenio, plus transporte...)</li>
+                            <li>Generalmente <strong>NO incluyen</strong> complementos variables (comisiones, horas extra, nocturnidad...)</li>
+                        </ul>
+                        <p>Revisa tu nómina: la casilla "Base paga extra" te indica qué cantidad se usa.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q"><span>¿Es mejor 12 pagas o 14 pagas?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a">
+                        <p><strong>El salario anual es el mismo</strong>, solo cambia cómo lo recibes:</p>
+                        <ul>
+                            <li><strong>14 pagas:</strong> Cobras menos cada mes pero tienes "extras" en junio y diciembre</li>
+                            <li><strong>12 pagas:</strong> Cobras más cada mes (las pagas van prorrateadas)</li>
+                        </ul>
+                        <p><strong>Ventaja de 14:</strong> Si te despiden o vas al paro, la paga proporcional incrementa tu finiquito. <strong>Ventaja de 12:</strong> Más dinero disponible mes a mes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- RELACIONADOS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">🔗 Calculadoras relacionadas</h2>
+            <div class="cards-grid">
+                <a href="/finiquito" class="calc-card"><div class="calc-card-icon">💵</div><h3>Finiquito</h3><p>Incluye pagas extra proporcionales en tu liquidación.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+                <a href="/sueldo-neto" class="calc-card"><div class="calc-card-icon">🏦</div><h3>Sueldo Neto</h3><p>Calcula tu nómina mensual con deducciones.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+                <a href="/irpf" class="calc-card"><div class="calc-card-icon">📑</div><h3>IRPF</h3><p>Las pagas extra afectan a tu retención anual.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section"><div class="container"><div class="source-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><div><strong>Base legal:</strong><p>Art. 31 del <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank">Estatuto de los Trabajadores</a>: "El trabajador tiene derecho a dos gratificaciones extraordinarias al año".</p></div></div></div></section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="/despido-improcedente">Despido Improcedente</a>
+                <a href="/finiquito">Finiquito</a>
+                <a href="/paro">Prestación Paro</a>
+                <a href="/sueldo-neto">Sueldo Neto</a>
+                <a href="/irpf">IRPF</a>
+                <a href="/cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="/guia-despido">Guía del Despido</a>
+                <a href="/guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="/guia-paro">Guía del Paro</a>
+                <a href="/sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/terminos">Términos</a>
+                <a href="/aviso-legal">Aviso Legal</a>
+                <a href="/cookies">Cookies</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
+const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
+document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
+
+const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
+
+document.getElementById('fechaCalculo').value=new Date().toISOString().split('T')[0];
+
+document.getElementById('calc').onsubmit=function(e){
+    e.preventDefault();
+    const salario=+document.getElementById('salario').value;
+    const fechaInicio=new Date(document.getElementById('fechaInicio').value);
+    const fechaCalculo=new Date(document.getElementById('fechaCalculo').value);
+    const numPagas=+document.getElementById('numPagas').value;
+    const devengo=document.getElementById('devengo').value;
+    const pagasCobradas=+document.getElementById('pagasCobradas').value;
+    
+    if(!salario||fechaInicio>=fechaCalculo){alert('Revisa los datos');return}
+    
+    const mesActual=fechaCalculo.getMonth(); // 0-11
+    const diaActual=fechaCalculo.getDate();
+    const añoCalculo=fechaCalculo.getFullYear();
+    
+    let pagaVerano=0,pagaNavidad=0;
+    const devengoPorMes=salario/6; // Para semestral
+    
+    if(numPagas>=14){
+        if(devengo==='semestral'){
+            // Paga verano (ene-jun)
+            if(mesActual<6){ // Antes de julio
+                const mesesVerano=mesActual+(diaActual/30);
+                // Si empezó este año, ajustar
+                if(fechaInicio.getFullYear()===añoCalculo&&fechaInicio.getMonth()<6){
+                    const mesesDesdeInicio=mesActual-fechaInicio.getMonth()+(diaActual-fechaInicio.getDate())/30;
+                    pagaVerano=Math.max(0,mesesDesdeInicio)*devengoPorMes;
+                }else{
+                    pagaVerano=mesesVerano*devengoPorMes;
+                }
+            }else if(pagasCobradas<1){
+                pagaVerano=salario; // Paga completa si no la ha cobrado
+            }
+            
+            // Paga navidad (jul-dic)
+            if(mesActual>=6){ // Julio o después
+                const mesesNavidad=(mesActual-6)+(diaActual/30);
+                // Si empezó después de julio, ajustar
+                if(fechaInicio.getFullYear()===añoCalculo&&fechaInicio.getMonth()>=6){
+                    const mesesDesdeInicio=(mesActual-fechaInicio.getMonth())+(diaActual-fechaInicio.getDate())/30;
+                    pagaNavidad=Math.max(0,mesesDesdeInicio)*devengoPorMes;
+                }else{
+                    pagaNavidad=mesesNavidad*devengoPorMes;
+                }
+            }
+        }else{
+            // Devengo anual: cada paga = 12 meses
+            const mesesAno=mesActual+(diaActual/30);
+            const devMensualAnual=salario/12;
+            if(pagasCobradas<1)pagaVerano=mesesAno*devMensualAnual;
+            if(pagasCobradas<2)pagaNavidad=mesesAno*devMensualAnual;
+        }
+    }
+    
+    // Ajustar si ya cobró pagas
+    if(pagasCobradas>=1)pagaVerano=0;
+    if(pagasCobradas>=2)pagaNavidad=0;
+    
+    const totalDevengado=pagaVerano+pagaNavidad;
+    
+    // Mostrar
+    document.getElementById('total').textContent=fmtDec(totalDevengado);
+    document.getElementById('pagaVerano').textContent=fmtDec(pagaVerano);
+    document.getElementById('pagaNavidad').textContent=fmtDec(pagaNavidad);
+    document.getElementById('totalDevengado').textContent=fmtDec(totalDevengado);
+    
+    const mesesPV=pagaVerano>0?Math.round(pagaVerano/devengoPorMes*10)/10:0;
+    const mesesPN=pagaNavidad>0?Math.round(pagaNavidad/devengoPorMes*10)/10:0;
+    document.getElementById('resultSub').textContent=(mesesPV?mesesPV+' meses verano':'')+(mesesPV&&mesesPN?' + ':'')+(mesesPN?mesesPN+' meses navidad':'');
+    
+    document.getElementById('details').innerHTML=`
+        <div class="result-item"><p class="result-item-label">Salario base paga</p><p class="result-item-value">${fmt(salario)}</p></div>
+        <div class="result-item"><p class="result-item-label">Devengo mensual</p><p class="result-item-value">${fmtDec(devengoPorMes)}</p></div>
+        <div class="result-item"><p class="result-item-label">Tipo devengo</p><p class="result-item-value">${devengo==='semestral'?'Semestral':'Anual'}</p></div>
+    `;
+    
+    let fiscalHTML=`
+        <div class="fiscal-row"><span>☀️ Paga verano</span><span>${fmtDec(pagaVerano)}</span></div>
+        <div class="fiscal-row"><span>🎄 Paga navidad</span><span>${fmtDec(pagaNavidad)}</span></div>
+        <div class="fiscal-row highlight"><span><strong>Total devengado</strong></span><span><strong>${fmtDec(totalDevengado)}</strong></span></div>
+    `;
+    document.getElementById('fiscalContent').innerHTML=fiscalHTML;
+    
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(`🎁 Mis pagas extra:\n☀️ Verano: ${fmtDec(pagaVerano)}\n🎄 Navidad: ${fmtDec(pagaNavidad)}\n💰 Total: ${fmtDec(totalDevengado)}\n\nhttps://calculalotuyo.es/pagas-extra`);
+    document.getElementById('result').classList.add('visible');
+    document.getElementById('result').scrollIntoView({behavior:'smooth'});
+};
+document.getElementById('reset').onclick=function(){document.getElementById('calc').reset();document.getElementById('result').classList.remove('visible');window.scrollTo({top:0,behavior:'smooth'})};
+</script>
+</body>
+</html>

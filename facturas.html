@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora facturas autónomos 2026: calcula IVA, retención IRPF y total a cobrar. Facturas con y sin retención, a empresas y particulares.">
+    <meta name="keywords" content="calculadora facturas autónomos, IVA factura, retención IRPF factura, factura sin retención, factura autónomo">
+    <title>Calculadora Facturas Autónomos 2026 | IVA y Retención | CalculaLoTuyo</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://calculalotuyo.es/facturas">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
+    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header"><div class="header-inner"><a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a><nav class="nav"><div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/despido-improcedente">⚖️ Despido Improcedente</a><a href="/despido-objetivo">📋 Despido Objetivo</a><a href="/ere">📊 ERE / Colectivo</a></div></div><div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/finiquito">💵 Finiquito</a><a href="/paro">📊 Prestación Paro</a></div></div><div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/sueldo-neto">🏦 Sueldo Neto</a><a href="/irpf">📑 IRPF</a><a href="/horas-extra">⏰ Horas Extra</a><a href="/pagas-extra">🎁 Pagas Extra</a><a href="/vacaciones">🏖️ Vacaciones</a></div></div><div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/cuota-autonomos">💼 Cuota Mensual</a><a href="/facturas">🧾 Facturas</a></div></div><a href="/" class="nav-cta">Todas</a></nav><button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button></div></header>
+<nav class="mobile-nav" id="mobileNav"><div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a><a href="/despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a><a href="/ere" class="mobile-nav-link">📊 ERE / Colectivo</a></div></div><div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/finiquito" class="mobile-nav-link">💵 Finiquito</a><a href="/paro" class="mobile-nav-link">📊 Prestación Paro</a></div></div><div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a><a href="/irpf" class="mobile-nav-link">📑 IRPF</a><a href="/horas-extra" class="mobile-nav-link">⏰ Horas Extra</a><a href="/pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a><a href="/vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a></div></div><div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a><a href="/facturas" class="mobile-nav-link">🧾 Facturas</a></div></div></nav>
+
+<main>
+    <section class="hero-mini"><div class="container"><div class="hero-badge">🧾 Autónomos 2026</div><h1>Calculadora Facturas<br><span class="highlight">¿Cuánto cobrarás realmente?</span></h1><p>Calcula el total de tus facturas con IVA y retención IRPF. Para empresas o particulares.</p></div></section>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-title"><div class="card-icon">📝</div>Datos de tu factura</div>
+                <form id="calc">
+                    <div class="form-grid">
+                        <div class="form-group"><label class="form-label">Base imponible (tus honorarios)</label><input type="number" class="form-input" id="base" placeholder="1000" required><span class="form-hint">Sin IVA ni retenciones</span></div>
+                        <div class="form-group"><label class="form-label">Tipo de IVA</label><select class="form-select" id="iva"><option value="21" selected>General (21%)</option><option value="10">Reducido (10%)</option><option value="4">Superreducido (4%)</option><option value="0">Exento (0%)</option></select></div>
+                        <div class="form-group"><label class="form-label">Cliente</label><select class="form-select" id="cliente"><option value="empresa" selected>Empresa o autónomo (con retención)</option><option value="particular">Particular (sin retención)</option><option value="extranjero">Extranjero UE (sin IVA)</option></select></div>
+                        <div class="form-group" id="retencionGroup"><label class="form-label">Retención IRPF</label><select class="form-select" id="irpf"><option value="15" selected>Estándar (15%)</option><option value="7">Nuevo autónomo (7%) - primeros 3 años</option><option value="0">Sin retención</option><option value="1">Retención 1% (módulos)</option><option value="2">Retención 2% (módulos)</option></select></div>
+                        <div class="form-group"><label class="form-label">Conceptos adicionales (gastos suplidos)</label><input type="number" class="form-input" id="gastos" placeholder="0" value="0"><span class="form-hint">Opcional: transporte, materiales...</span></div>
+                    </div>
+                    <div class="disclaimer-box"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg><p><strong>Recuerda:</strong> La retención es un pago anticipado del IRPF. Lo recuperas al hacer la declaración de la renta si has pagado de más.</p></div>
+                    <button type="submit" class="btn">Calcular factura</button>
+                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                </form>
+
+                <div class="result" id="result">
+                    <div class="result-hero"><p class="result-label">Total a cobrar</p><p class="result-value" id="total">0 €</p><p class="result-sub" id="resultSub"></p></div>
+                    <div class="result-breakdown">
+                        <div class="result-row"><span class="result-row-label">📋 Base imponible</span><span class="result-row-value" id="baseRes">0 €</span></div>
+                        <div class="result-row bruto"><span class="result-row-label">➕ IVA</span><span class="result-row-value" id="ivaRes">0 €</span></div>
+                        <div class="result-row" id="retencionRow"><span class="result-row-label">➖ Retención IRPF</span><span class="result-row-value" id="irpfRes">0 €</span></div>
+                        <div class="result-row exento"><span class="result-row-label">💰 Total factura</span><span class="result-row-value" id="totalFactura">0 €</span></div>
+                    </div>
+                    <div class="result-grid" id="details"></div>
+                    <div class="fiscal-box" id="fiscalBox"><div class="fiscal-title">📊 Desglose de la factura</div><div id="fiscalContent"></div></div>
+                    <div class="result-actions"><button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button><a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <section class="section"><div class="container"><article class="seo-section"><h2>📖 El caso de Andrea: Nueva autónoma diseñadora</h2>
+        <div class="example-box">
+            <div class="example-header"><span class="example-icon">👩‍🎨</span><div><strong>Andrea, diseñadora freelance en Málaga</strong><p>Nueva autónoma (retención 7%) · Factura a empresa</p></div></div>
+            <div class="example-story"><p>Andrea acaba de darse de alta como autónoma y va a emitir su primera factura a una agencia de marketing por un proyecto de diseño web de <strong>1.500€</strong>.</p></div>
+            <div class="example-calc"><h4>🧮 Cálculo de su factura:</h4>
+                <div class="calc-steps">
+                    <div class="calc-step"><span class="step-num">1</span><div><strong>Base imponible:</strong><p>Honorarios del proyecto = <strong>1.500€</strong></p></div></div>
+                    <div class="calc-step"><span class="step-num">2</span><div><strong>+ IVA 21%:</strong><p>1.500€ × 21% = <strong>+315€</strong></p></div></div>
+                    <div class="calc-step"><span class="step-num">3</span><div><strong>- Retención IRPF 7%:</strong><p>1.500€ × 7% = <strong>-105€</strong></p></div></div>
+                </div>
+                <div class="example-result">
+                    <div class="example-result-row"><span>Base imponible</span><span class="amount">1.500 €</span></div>
+                    <div class="example-result-row"><span>+ IVA (21%)</span><span class="amount">+315 €</span></div>
+                    <div class="example-result-row"><span>- Retención (7%)</span><span class="amount" style="color:var(--warning)">-105 €</span></div>
+                    <div class="example-result-row total"><span>Total a cobrar</span><span class="amount">1.710 €</span></div>
+                </div>
+            </div>
+            <div class="example-tip"><strong>💡 Consejo de Andrea:</strong> "Como soy nueva autónoma, puedo aplicar el 7% de retención los primeros 3 años en lugar del 15%. ¡Me viene genial para la liquidez! Eso sí, luego tendré que regularizarlo en la renta."</div>
+        </div>
+    </article></div></section>
+
+    <section class="section section-alt"><div class="container"><h2 class="section-title">❓ Preguntas frecuentes sobre Facturas</h2>
+        <div class="faq-list">
+            <div class="faq-item"><button class="faq-q"><span>¿Cuándo debo aplicar retención en mis facturas?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Debes aplicar retención IRPF cuando factures a <strong>empresas o autónomos</strong>. No apliques retención a:</p><ul><li>Particulares (personas físicas no profesionales)</li><li>Clientes extranjeros</li><li>Si estás en módulos con retención específica</li></ul></div></div>
+            <div class="faq-item"><button class="faq-q"><span>¿Qué retención debo aplicar: 7% o 15%?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Puedes aplicar el <strong>7% reducido</strong> si:</p><ul><li>Te has dado de alta por primera vez como autónomo</li><li>No habías ejercido la misma actividad en el año anterior</li><li>Es aplicable durante los <strong>3 primeros años</strong></li></ul><p>Después, la retención estándar es del <strong>15%</strong>.</p></div></div>
+            <div class="faq-item"><button class="faq-q"><span>¿Qué pasa con el IVA que cobro en las facturas?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>El IVA que cobras <strong>no es dinero tuyo</strong>: debes ingresarlo a Hacienda trimestralmente (modelo 303). Puedes restar el IVA de tus gastos deducibles:</p><ul><li><strong>IVA a ingresar</strong> = IVA cobrado - IVA soportado en gastos</li><li>Si el soportado es mayor, te lo devuelven o compensas</li></ul></div></div>
+            <div class="faq-item"><button class="faq-q"><span>¿Puedo facturar sin ser autónomo?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Existe un <strong>criterio de habitualidad</strong>: si facturas de forma puntual y por debajo del SMI, algunos interpretan que no es obligatorio. Sin embargo, la <strong>postura oficial</strong> de la SS es que debes estar de alta desde la primera factura. Te arriesgas a sanciones si no lo haces.</p></div></div>
+        </div>
+    </div></section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <section class="section"><div class="container"><h2 class="section-title">🔗 Calculadoras relacionadas</h2>
+        <div class="cards-grid">
+            <a href="/cuota-autonomos" class="calc-card"><div class="calc-card-icon">💼</div><h3>Cuota Autónomos</h3><p>Calcula tu cuota mensual según tus ingresos reales.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a href="/irpf" class="calc-card"><div class="calc-card-icon">📑</div><h3>IRPF</h3><p>Calcula tu declaración con las retenciones acumuladas.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a href="/sueldo-neto" class="calc-card"><div class="calc-card-icon">🏦</div><h3>Sueldo Neto</h3><p>Si también eres asalariado, calcula tu nómina.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+        </div>
+    </div></section>
+    <section class="section"><div class="container"><div class="source-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><div><strong>Base legal:</strong><p>Tipos de IVA: Ley 37/1992 del IVA. Retenciones: Art. 101 Ley 35/2006 del IRPF.</p></div></div></div></section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="/despido-improcedente">Despido Improcedente</a>
+                <a href="/finiquito">Finiquito</a>
+                <a href="/paro">Prestación Paro</a>
+                <a href="/sueldo-neto">Sueldo Neto</a>
+                <a href="/irpf">IRPF</a>
+                <a href="/cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="/guia-despido">Guía del Despido</a>
+                <a href="/guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="/guia-paro">Guía del Paro</a>
+                <a href="/sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/terminos">Términos</a>
+                <a href="/aviso-legal">Aviso Legal</a>
+                <a href="/cookies">Cookies</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
+const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
+document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
+
+const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
+
+// Mostrar/ocultar retención según cliente
+document.getElementById('cliente').addEventListener('change',function(){
+    const esEmpresa=this.value==='empresa';
+    document.getElementById('retencionGroup').style.display=esEmpresa?'block':'none';
+    if(this.value==='extranjero')document.getElementById('iva').value='0';
+});
+
+document.getElementById('calc').onsubmit=function(e){
+    e.preventDefault();
+    const base=+document.getElementById('base').value;
+    const ivaPct=+document.getElementById('iva').value;
+    const cliente=document.getElementById('cliente').value;
+    const irpfPct=cliente==='empresa'?+document.getElementById('irpf').value:0;
+    const gastos=+document.getElementById('gastos').value||0;
+    
+    if(!base){alert('Introduce la base imponible');return}
+    
+    const baseTotal=base+gastos;
+    const ivaImporte=baseTotal*ivaPct/100;
+    const irpfImporte=base*irpfPct/100; // Retención solo sobre honorarios, no gastos
+    const totalFactura=baseTotal+ivaImporte-irpfImporte;
+    
+    // Mostrar
+    document.getElementById('total').textContent=fmtDec(totalFactura);
+    document.getElementById('baseRes').textContent=fmtDec(baseTotal);
+    document.getElementById('ivaRes').textContent='+'+fmtDec(ivaImporte)+' ('+ivaPct+'%)';
+    document.getElementById('irpfRes').textContent=irpfPct>0?'-'+fmtDec(irpfImporte)+' ('+irpfPct+'%)':'0 €';
+    document.getElementById('totalFactura').textContent=fmtDec(totalFactura);
+    document.getElementById('resultSub').textContent=irpfPct>0?'Retención '+irpfPct+'% adelantada a Hacienda':'Sin retención IRPF';
+    
+    document.getElementById('retencionRow').style.display=irpfPct>0?'flex':'none';
+    
+    document.getElementById('details').innerHTML=`
+        <div class="result-item"><p class="result-item-label">IVA a ingresar</p><p class="result-item-value">${fmtDec(ivaImporte)}</p></div>
+        <div class="result-item"><p class="result-item-label">IRPF anticipado</p><p class="result-item-value">${fmtDec(irpfImporte)}</p></div>
+        <div class="result-item"><p class="result-item-label">Tu beneficio real</p><p class="result-item-value">${fmtDec(base)}</p></div>
+    `;
+    
+    document.getElementById('fiscalContent').innerHTML=`
+        <div class="fiscal-row"><span>Base imponible</span><span>${fmtDec(baseTotal)}</span></div>
+        <div class="fiscal-row"><span>+ IVA ${ivaPct}%</span><span>+${fmtDec(ivaImporte)}</span></div>
+        ${irpfPct>0?`<div class="fiscal-row warning"><span>- Retención IRPF ${irpfPct}%</span><span>-${fmtDec(irpfImporte)}</span></div>`:''}
+        <div class="fiscal-row highlight"><span><strong>Total factura</strong></span><span><strong>${fmtDec(totalFactura)}</strong></span></div>
+    `;
+    
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(`🧾 Factura:\n📋 Base: ${fmtDec(base)}\n➕ IVA: +${fmtDec(ivaImporte)}\n${irpfPct>0?`➖ IRPF: -${fmtDec(irpfImporte)}\n`:''}💰 Total: ${fmtDec(totalFactura)}\n\nhttps://calculalotuyo.es/facturas`);
+    document.getElementById('result').classList.add('visible');
+    document.getElementById('result').scrollIntoView({behavior:'smooth'});
+};
+document.getElementById('reset').onclick=function(){document.getElementById('calc').reset();document.getElementById('result').classList.remove('visible');window.scrollTo({top:0,behavior:'smooth'})};
+</script>
+</body>
+</html>

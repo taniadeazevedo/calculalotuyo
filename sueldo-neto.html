@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calcula tu sueldo neto 2026. Convierte salario bruto a neto con IRPF y Seguridad Social. Incluye situación familiar.">
+    <title>Calculadora Sueldo Bruto a Neto | CalculaLoTuyo 2026</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
+    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+        <nav class="nav">
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/despido-improcedente">⚖️ Despido Improcedente</a>
+                    <a href="/despido-objetivo">📋 Despido Objetivo</a>
+                    <a href="/ere">📊 ERE / Colectivo</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/finiquito">💵 Finiquito</a>
+                    <a href="/paro">📊 Prestación Paro</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/sueldo-neto">🏦 Sueldo Neto</a>
+                    <a href="/irpf">📑 IRPF</a>
+                    <a href="/horas-extra">⏰ Horas Extra</a>
+                    <a href="/pagas-extra">🎁 Pagas Extra</a>
+                    <a href="/vacaciones">🏖️ Vacaciones</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/cuota-autonomos">💼 Cuota Mensual</a>
+                    <a href="/facturas">🧾 Facturas</a>
+                </div>
+            </div>
+            <a href="/" class="nav-cta">Todas</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a>
+            <a href="/despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a>
+            <a href="/ere" class="mobile-nav-link">📊 ERE / Colectivo</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/finiquito" class="mobile-nav-link">💵 Finiquito</a>
+            <a href="/paro" class="mobile-nav-link">📊 Prestación Paro</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a>
+            <a href="/irpf" class="mobile-nav-link">📑 IRPF</a>
+            <a href="/horas-extra" class="mobile-nav-link">⏰ Horas Extra</a>
+            <a href="/pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a>
+            <a href="/vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a>
+            <a href="/facturas" class="mobile-nav-link">🧾 Facturas</a>
+        </div>
+    </div>
+</nav>
+<main>
+    <section class="hero-mini">
+        <div class="container">
+            <div class="hero-badge">🏦 Nómina 2026</div>
+            <h1>No te lleves sorpresas<br>Descubre cuánto llegarà a tu banco</h1>
+            <p>Calcula tu sueldo neto real con IRPF actualizado y deducciones por hijos.</p>
+        </div>
+    </section>
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-title"><div class="card-icon">📝</div>Introduce tus datos</div>
+                <form id="calc">
+                    <div class="form-grid">
+        <div class="form-group">
+            <label class="form-label">Salario bruto anual</label>
+            <input type="number" class="form-input" id="bruto" placeholder="30000" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Número de pagas</label>
+            <select class="form-select" id="pagas">
+                <option value="12">12 pagas</option>
+                <option value="14" selected>14 pagas</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Situación personal</label>
+            <select class="form-select" id="situacion">
+                <option value="soltero">Soltero/a</option>
+                <option value="casado1">Casado/a (1 perceptor)</option>
+                <option value="casado2">Casado/a (2 perceptores)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Hijos a cargo</label>
+            <select class="form-select" id="hijos">
+                <option value="0">Sin hijos</option>
+                <option value="1">1 hijo</option>
+                <option value="2">2 hijos</option>
+                <option value="3">3+ hijos</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Tipo de contrato</label>
+            <select class="form-select" id="contrato">
+                <option value="indefinido">Indefinido</option>
+                <option value="temporal">Temporal (&lt;1 año)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Edad</label>
+            <select class="form-select" id="edad">
+                <option value="normal">Menor de 65 años</option>
+                <option value="65">65 años o más</option>
+            </select>
+        </div>
+    </div>
+                    <div class="disclaimer-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <p><strong>Aviso:</strong> Cálculo orientativo basado en normativa vigente. <strong>No sustituye el asesoramiento profesional</strong>.</p>
+                    </div>
+                    <button type="submit" class="btn">Calcular ahora</button>
+                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                </form>
+                <div class="result" id="result">
+                    <div class="result-hero">
+                        <p class="result-label">Resultado estimado</p>
+                        <p class="result-value" id="total">0 €</p>
+                        <p class="result-sub" id="resultSub"></p>
+                    </div>
+                    <div class="result-grid" id="details"></div>
+                    <div class="fiscal-box" id="fiscalBox"><div class="fiscal-title">📊 Desglose</div><div id="fiscalContent"></div></div>
+                    <div class="result-actions">
+                        <button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button>
+                        <a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container"><div class="ad"></div></div>
+    <div class="container">
+        <article class="seo-section"><h2>📖 ¿Qué es el sueldo neto?</h2>
+<p>El <strong>sueldo neto</strong> es la cantidad que realmente recibes en tu cuenta bancaria después de aplicar las deducciones legales: cotizaciones a la Seguridad Social y retención del IRPF.</p>
+
+<div class="source-box">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+    <p><strong>Fuentes:</strong> <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764" target="_blank">Ley del IRPF</a> y <a href="https://www.seg-social.es" target="_blank">Seguridad Social</a>.</p>
+</div>
+
+<h2>🧮 Deducciones de tu nómina</h2>
+
+<h3>1. Seguridad Social (≈6,35%)</h3>
+<ul>
+    <li>Contingencias comunes: 4,70%</li>
+    <li>Desempleo: 1,55%</li>
+    <li>Formación profesional: 0,10%</li>
+</ul>
+
+<h3>2. IRPF (variable)</h3>
+<p>El porcentaje depende de tu salario, situación familiar y tipo de contrato. Los <strong>tramos 2026</strong>:</p>
+<table class="info-table">
+    <tr><th>Base imponible</th><th>Tipo</th></tr>
+    <tr><td>Hasta 12.450€</td><td>19%</td></tr>
+    <tr><td>12.450€ - 20.200€</td><td>24%</td></tr>
+    <tr><td>20.200€ - 35.200€</td><td>30%</td></tr>
+    <tr><td>35.200€ - 60.000€</td><td>37%</td></tr>
+    <tr><td>60.000€ - 300.000€</td><td>45%</td></tr>
+    <tr><td>Más de 300.000€</td><td>47%</td></tr>
+</table>
+
+<div class="example-box">
+    <h4>📊 Ejemplo: Carlos</h4>
+    <p>Carlos gana 30.000€ brutos/año, soltero, sin hijos, 14 pagas.</p>
+    <div class="calc-line">Seg. Social: 30.000€ × 6,35% = 1.905€</div>
+    <div class="calc-line">IRPF estimado: ≈4.000€</div>
+    <div class="calc-line">Neto anual: 30.000€ - 1.905€ - 4.000€ = 24.095€</div>
+    <p class="result-highlight">Neto mensual: 1.721€/mes (14 pagas)</p>
+</div>
+
+<h2>👨‍👩‍👧 Mínimo personal y familiar</h2>
+<p>El IRPF aplica un <strong>mínimo exento</strong> que depende de tu situación:</p>
+<ul>
+    <li>Mínimo personal: 5.550€</li>
+    <li>1er hijo: +2.400€</li>
+    <li>2º hijo: +2.700€</li>
+    <li>3er hijo y siguientes: +4.000€ cada uno</li>
+</ul>
+
+<h2>📋 Coste para la empresa</h2>
+<p>Por cada euro que recibes, la empresa paga aproximadamente un <strong>30% adicional</strong> en Seguridad Social a su cargo. Es decir, si tu bruto es 30.000€, el coste real para la empresa es de unos 39.000€.</p>
+
+<div class="legal-sources">
+    <h3>📚 Normativa aplicable</h3>
+    <div class="legal-sources-grid">
+        <a href="https://www.agenciatributaria.es" target="_blank" class="legal-source">Agencia Tributaria</a>
+        <a href="https://www.seg-social.es" target="_blank" class="legal-source">Seguridad Social</a>
+    </div>
+</div></article>
+    </div>
+    <div class="container"><div class="ad"></div></div>
+    <div class="container">
+        <section class="faq"><h2>❓ Preguntas frecuentes</h2><div class="faq-item"><button class="faq-q">¿Por qué mi IRPF es diferente al de mi compañero?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">La retención depende de situación personal: hijos, estado civil, tipo de contrato. Dos sueldos iguales pueden tener retenciones muy diferentes.</div></div><div class="faq-item"><button class="faq-q">¿Puedo pedir que me retengan más?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Sí, puedes solicitar mayor retención para evitar sustos en la declaración de la renta.</div></div><div class="faq-item"><button class="faq-q">¿12 o 14 pagas?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">El neto anual es igual. Con 14 pagas cobras menos cada mes pero recibes 2 pagas extra.</div></div></section>
+        <section class="related"><h2>📱 Calculadoras relacionadas</h2><div class="related-grid"><a href="/irpf" class="related-card"><h4>📑 IRPF 2026</h4><p>Calcula tu retención por tramos</p></a><a href="/pagas-extra" class="related-card"><h4>🎁 Pagas Extra</h4><p>Importe de tus pagas extraordinarias</p></a></div></section>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="/despido-improcedente">Despido Improcedente</a>
+                <a href="/finiquito">Finiquito</a>
+                <a href="/paro">Prestación Paro</a>
+                <a href="/sueldo-neto">Sueldo Neto</a>
+                <a href="/irpf">IRPF</a>
+                <a href="/cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="/guia-despido">Guía del Despido</a>
+                <a href="/guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="/guia-paro">Guía del Paro</a>
+                <a href="/sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/terminos">Términos</a>
+                <a href="/aviso-legal">Aviso Legal</a>
+                <a href="/cookies">Cookies</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+<script>
+document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
+const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n);
+document.getElementById('calc').onsubmit=function(e){
+    e.preventDefault();
+    const bruto=+document.getElementById('bruto').value;
+    const pagas=+document.getElementById('pagas').value;
+    const hijos=+document.getElementById('hijos').value;
+    const contrato=document.getElementById('contrato').value;
+    
+    // Seguridad Social (6.35%)
+    const ss=bruto*0.0635;
+    const baseIrpf=bruto-ss;
+    
+    // Mínimo personal y familiar
+    let minimo=5550; // Personal
+    if(hijos>=1)minimo+=2400; // 1er hijo
+    if(hijos>=2)minimo+=2700; // 2º hijo
+    if(hijos>=3)minimo+=4000+2800*(hijos-2); // 3º y siguientes
+    
+    // IRPF por tramos
+    const baseImponible=Math.max(0,baseIrpf-minimo);
+    const tramos=[[12450,0.19],[20200,0.24],[35200,0.30],[60000,0.37],[300000,0.45],[Infinity,0.47]];
+    let irpf=0,resto=baseImponible,ant=0;
+    for(const[lim,tipo]of tramos){
+        const tr=Math.min(resto,lim-ant);
+        if(tr<=0)break;
+        irpf+=tr*tipo;resto-=tr;ant=lim;
+    }
+    
+    // Retención mínima para temporales
+    if(contrato==='temporal'&&(irpf/bruto)<0.02)irpf=bruto*0.02;
+    
+    const netoAnual=bruto-ss-irpf;
+    const netoMes=netoAnual/pagas;
+    const tipoEfectivo=(irpf/bruto)*100;
+    const costeEmpresa=bruto*(1+0.30); // +30% aprox SS empresa
+    
+    document.getElementById('total').textContent=fmt(netoMes)+'/mes';
+    document.getElementById('resultSub').textContent='Neto anual: '+fmt(netoAnual);
+    document.getElementById('details').innerHTML=
+        '<div class="result-item"><p class="result-item-label">Bruto anual</p><p class="result-item-value">'+fmt(bruto)+'</p></div>'+
+        '<div class="result-item"><p class="result-item-label">IRPF anual</p><p class="result-item-value">'+fmt(irpf)+'</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Seg. Social</p><p class="result-item-value">'+fmt(ss)+'</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Tipo efectivo</p><p class="result-item-value">'+tipoEfectivo.toFixed(1)+'%</p></div>';
+    document.getElementById('fiscalContent').innerHTML=
+        '<div class="fiscal-row"><span>Salario bruto</span><span>'+fmt(bruto)+'</span></div>'+
+        '<div class="fiscal-row"><span>(-) Seguridad Social (6,35%)</span><span>-'+fmt(ss)+'</span></div>'+
+        '<div class="fiscal-row"><span>(-) IRPF</span><span>-'+fmt(irpf)+'</span></div>'+
+        '<div class="fiscal-row highlight"><span>Neto anual</span><span>'+fmt(netoAnual)+'</span></div>'+
+        '<div class="fiscal-row"><span>Coste empresa (aprox)</span><span>'+fmt(costeEmpresa)+'</span></div>';
+    document.getElementById('result').classList.add('visible');
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent('Mi sueldo neto: '+fmt(netoMes)+'/mes\nhttps://calculalotuyo.es/sueldo-neto');
+};
+document.getElementById('reset').onclick=function(){document.getElementById('calc').reset();document.getElementById('result').classList.remove('visible')};
+</script>
+</body>
+</html>

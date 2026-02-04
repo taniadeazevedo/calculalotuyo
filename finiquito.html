@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora de finiquito 2026: salario pendiente, vacaciones no disfrutadas y pagas extra proporcionales. Incluye retención IRPF y desglose detallado.">
+    <meta name="keywords" content="finiquito, calculadora finiquito, vacaciones no disfrutadas, pagas proporcionales, liquidación laboral 2026">
+    <title>Calculadora de Finiquito 2026 | Liquidación Laboral | CalculaLoTuyo</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://calculalotuyo.es/finiquito">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
+    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+        <nav class="nav">
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/despido-improcedente">⚖️ Despido Improcedente</a>
+                    <a href="/despido-objetivo">📋 Despido Objetivo</a>
+                    <a href="/ere">📊 ERE / Colectivo</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/finiquito">💵 Finiquito</a>
+                    <a href="/paro">📊 Prestación Paro</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/sueldo-neto">🏦 Sueldo Neto</a>
+                    <a href="/irpf">📑 IRPF</a>
+                    <a href="/horas-extra">⏰ Horas Extra</a>
+                    <a href="/pagas-extra">🎁 Pagas Extra</a>
+                    <a href="/vacaciones">🏖️ Vacaciones</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/cuota-autonomos">💼 Cuota Mensual</a>
+                    <a href="/facturas">🧾 Facturas</a>
+                </div>
+            </div>
+            <a href="/" class="nav-cta">Todas</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a>
+            <a href="/despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a>
+            <a href="/ere" class="mobile-nav-link">📊 ERE / Colectivo</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/finiquito" class="mobile-nav-link">💵 Finiquito</a>
+            <a href="/paro" class="mobile-nav-link">📊 Prestación Paro</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a>
+            <a href="/irpf" class="mobile-nav-link">📑 IRPF</a>
+            <a href="/horas-extra" class="mobile-nav-link">⏰ Horas Extra</a>
+            <a href="/pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a>
+            <a href="/vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a>
+            <a href="/facturas" class="mobile-nav-link">🧾 Facturas</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section class="hero-mini">
+        <div class="container">
+            <div class="hero-badge">💵 Actualizado 2026</div>
+            <h1>Calculadora de Finiquito<br><span class="highlight">¿Cuánto te deben?</span></h1>
+            <p>Calcula el salario pendiente, vacaciones no disfrutadas y pagas extra proporcionales. Con retención IRPF incluida.</p>
+        </div>
+    </section>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-title"><div class="card-icon">📝</div>Datos de tu contrato</div>
+                <form id="calc">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Salario bruto mensual</label>
+                            <input type="number" class="form-input" id="salario" placeholder="1800" required>
+                            <span class="form-hint">Sin incluir pagas extra</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fecha de alta en la empresa</label>
+                            <input type="date" class="form-input" id="fechaAlta" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fecha de baja (último día)</label>
+                            <input type="date" class="form-input" id="fechaBaja" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Motivo de la baja</label>
+                            <select class="form-select" id="motivoBaja">
+                                <option value="despido">Despido (improcedente/objetivo)</option>
+                                <option value="finContrato">Fin de contrato temporal</option>
+                                <option value="voluntaria">Baja voluntaria</option>
+                                <option value="mutuo">Mutuo acuerdo</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tipo de pagas extra</label>
+                            <select class="form-select" id="tipoPagas">
+                                <option value="14">14 pagas (2 extra: junio y diciembre)</option>
+                                <option value="12">12 pagas (prorrateadas)</option>
+                                <option value="15">15 pagas o más</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Días de vacaciones anuales</label>
+                            <input type="number" class="form-input" id="diasVacAnuales" value="30" min="22" max="45">
+                            <span class="form-hint">Mínimo legal: 30 días naturales (22 laborables)</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Días de vacaciones ya disfrutados este año</label>
+                            <input type="number" class="form-input" id="diasVacDisfrutados" value="0" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Retención IRPF de tu nómina (%)</label>
+                            <input type="number" class="form-input" id="irpf" value="15" step="0.1" min="0" max="47">
+                            <span class="form-hint">Mira tu última nómina</span>
+                        </div>
+                    </div>
+                    
+                    <div class="disclaimer-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <p><strong>Recuerda:</strong> El finiquito es <strong>independiente de la indemnización</strong> por despido. Te corresponde SIEMPRE que termines una relación laboral, incluso en baja voluntaria.</p>
+                    </div>
+                    
+                    <button type="submit" class="btn">Calcular mi finiquito</button>
+                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                </form>
+
+                <div class="result" id="result">
+                    <div class="result-hero">
+                        <p class="result-label">Finiquito neto estimado</p>
+                        <p class="result-value" id="total">0 €</p>
+                        <p class="result-sub" id="resultSub"></p>
+                    </div>
+                    
+                    <div class="result-breakdown">
+                        <div class="result-row bruto">
+                            <span class="result-row-label">💰 Finiquito bruto</span>
+                            <span class="result-row-value" id="bruto">0 €</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-row-label">📅 Salario días trabajados</span>
+                            <span class="result-row-value" id="salarioDias">0 €</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="result-row-label">🏖️ Vacaciones no disfrutadas</span>
+                            <span class="result-row-value" id="vacaciones">0 €</span>
+                        </div>
+                        <div class="result-row" id="pagasRow">
+                            <span class="result-row-label">🎁 Pagas extra proporcionales</span>
+                            <span class="result-row-value" id="pagas">0 €</span>
+                        </div>
+                        <div class="result-row tributa">
+                            <span class="result-row-label">📊 Retención IRPF</span>
+                            <span class="result-row-value" id="retencion">-0 €</span>
+                        </div>
+                    </div>
+
+                    <div class="result-grid" id="details"></div>
+                    
+                    <div class="fiscal-box" id="fiscalBox">
+                        <div class="fiscal-title">📊 Desglose completo</div>
+                        <div id="fiscalContent"></div>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button>
+                        <a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- EJEMPLO PRÁCTICO -->
+    <section class="section">
+        <div class="container">
+            <article class="seo-section">
+                <h2>📖 El caso de Carlos: Finiquito tras baja voluntaria</h2>
+                
+                <div class="example-box">
+                    <div class="example-header">
+                        <span class="example-icon">👨‍💻</span>
+                        <div>
+                            <strong>Carlos, desarrollador en Madrid</strong>
+                            <p>Baja voluntaria el 15 de marzo · Salario: 2.200€ brutos/mes · 14 pagas</p>
+                        </div>
+                    </div>
+                    
+                    <div class="example-story">
+                        <p>Carlos encontró una mejor oferta y presentó su <strong>baja voluntaria</strong> con 15 días de preaviso. Llevaba trabajando desde el 1 de septiembre del año anterior (6 meses y 15 días). No había cogido ningún día de vacaciones.</p>
+                    </div>
+
+                    <div class="example-calc">
+                        <h4>🧮 Cálculo de su finiquito:</h4>
+                        <div class="calc-steps">
+                            <div class="calc-step">
+                                <span class="step-num">1</span>
+                                <div>
+                                    <strong>Salario días de marzo (1-15):</strong>
+                                    <p>2.200€ ÷ 30 días × 15 días = <strong>1.100€</strong></p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">2</span>
+                                <div>
+                                    <strong>Vacaciones no disfrutadas:</strong>
+                                    <p>30 días/año ÷ 12 × 6,5 meses = 16,25 días</p>
+                                    <p>73,33€/día × 16,25 días = <strong>1.192€</strong></p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">3</span>
+                                <div>
+                                    <strong>Paga extra proporcional (2 pagas):</strong>
+                                    <p>Paga verano: 2.200€ ÷ 6 × 2,5 meses = 917€</p>
+                                    <p>Paga navidad: 2.200€ ÷ 6 × 2,5 meses = 917€</p>
+                                    <p>Total pagas: <strong>1.834€</strong></p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">4</span>
+                                <div>
+                                    <strong>Retención IRPF (15%):</strong>
+                                    <p>(1.100 + 1.192 + 1.834) × 15% = <strong>-619€</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="example-result">
+                            <div class="example-result-row">
+                                <span>Salario marzo</span>
+                                <span class="amount">1.100 €</span>
+                            </div>
+                            <div class="example-result-row">
+                                <span>Vacaciones</span>
+                                <span class="amount">1.192 €</span>
+                            </div>
+                            <div class="example-result-row">
+                                <span>Pagas extra</span>
+                                <span class="amount">1.834 €</span>
+                            </div>
+                            <div class="example-result-row">
+                                <span>- IRPF (15%)</span>
+                                <span class="amount" style="color:var(--warning)">-619 €</span>
+                            </div>
+                            <div class="example-result-row total">
+                                <span>Finiquito neto</span>
+                                <span class="amount">3.507 €</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-tip">
+                        <strong>💡 Consejo de Carlos:</strong> "Revisé que el finiquito incluyera las vacaciones proporcionales. Muchas empresas 'olvidan' incluirlas o las calculan mal. Tienes derecho a 2,5 días por mes trabajado (30 días/año ÷ 12)."
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">❓ Preguntas frecuentes sobre el Finiquito</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Qué conceptos debe incluir el finiquito?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p>El finiquito debe incluir <strong>todos los conceptos pendientes de pago</strong>:</p>
+                        <ul>
+                            <li><strong>Salario:</strong> Los días trabajados del mes en curso que aún no te han pagado</li>
+                            <li><strong>Vacaciones:</strong> Los días generados y no disfrutados (2,5 días por mes trabajado)</li>
+                            <li><strong>Pagas extra:</strong> La parte proporcional devengada si no están prorrateadas</li>
+                            <li><strong>Otros:</strong> Horas extra pendientes, comisiones, incentivos, etc.</li>
+                        </ul>
+                        <p>⚠️ <strong>Importante:</strong> El finiquito NO incluye la indemnización por despido, que es un concepto aparte.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿El finiquito tributa en IRPF?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p><strong>Sí, el finiquito tributa íntegramente como rendimiento del trabajo</strong>. A diferencia de la indemnización por despido (que está exenta hasta 180.000€), el finiquito es salario diferido y tributa al tipo de retención habitual.</p>
+                        <p>La empresa aplicará la retención IRPF que tengas en nómina. Si el finiquito es elevado, es posible que te retengan más de lo habitual para evitar sorpresas en la declaración de la renta.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Tengo derecho a finiquito si me voy voluntariamente?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p><strong>Sí, siempre tienes derecho al finiquito</strong>, independientemente del motivo de la baja:</p>
+                        <ul>
+                            <li>✅ Baja voluntaria</li>
+                            <li>✅ Despido (procedente, improcedente u objetivo)</li>
+                            <li>✅ Fin de contrato temporal</li>
+                            <li>✅ Jubilación</li>
+                            <li>✅ Mutuo acuerdo</li>
+                        </ul>
+                        <p>El finiquito es simplemente el <strong>pago de lo que ya has trabajado</strong> y aún no has cobrado. Es tuyo por derecho.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Debo firmar el finiquito? ¿Qué pasa si no estoy de acuerdo?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p><strong>Tienes derecho a revisarlo antes de firmar</strong>. Si no estás de acuerdo:</p>
+                        <ul>
+                            <li>Puedes firmar añadiendo <strong>"No conforme"</strong> junto a tu firma</li>
+                            <li>Puedes solicitar la presencia de un <strong>representante sindical</strong></li>
+                            <li>Tienes <strong>1 año</strong> para reclamar cantidades que consideres incorrectas</li>
+                        </ul>
+                        <p>⚠️ Si firmas sin añadir "no conforme", se entiende que aceptas las cantidades. Revisa bien los cálculos con nuestra calculadora antes de firmar.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Cuándo me tienen que pagar el finiquito?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p>La ley no establece un plazo concreto, pero la jurisprudencia indica que debe pagarse <strong>en el momento de la extinción del contrato</strong> o en un plazo muy breve.</p>
+                        <p>En la práctica:</p>
+                        <ul>
+                            <li>Lo habitual es recibirlo el <strong>último día de trabajo</strong> o junto a la última nómina</li>
+                            <li>Si se retrasa más de 1-2 semanas, puedes reclamar <strong>intereses de demora</strong></li>
+                            <li>Si no te pagan, tienes <strong>1 año</strong> para reclamar judicialmente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- RELACIONADOS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">🔗 Calculadoras relacionadas</h2>
+            <p class="section-desc">Completa el cálculo de tu liquidación laboral</p>
+            
+            <div class="cards-grid">
+                <a href="/despido-improcedente" class="calc-card">
+                    <div class="calc-card-icon">⚖️</div>
+                    <h3>Indemnización por Despido</h3>
+                    <p>Si te han despedido, además del finiquito te corresponde indemnización. Calcula cuánto.</p>
+                    <span class="calc-card-link">Calcular indemnización <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+                <a href="/paro" class="calc-card">
+                    <div class="calc-card-icon">📊</div>
+                    <h3>Prestación por Desempleo</h3>
+                    <p>Calcula cuánto cobrarás de paro mensualmente y durante cuánto tiempo.</p>
+                    <span class="calc-card-link">Calcular paro <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+                <a href="/vacaciones" class="calc-card">
+                    <div class="calc-card-icon">🏖️</div>
+                    <h3>Días de Vacaciones</h3>
+                    <p>Verifica cuántos días de vacaciones has generado y cuántos te deben pagar.</p>
+                    <span class="calc-card-link">Calcular vacaciones <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUENTES -->
+    <section class="section">
+        <div class="container">
+            <div class="source-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                <div>
+                    <strong>Base legal:</strong>
+                    <p>Art. 49.2 del <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank">Estatuto de los Trabajadores</a> y Art. 38 sobre vacaciones anuales retribuidas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="/despido-improcedente">Despido Improcedente</a>
+                <a href="/finiquito">Finiquito</a>
+                <a href="/paro">Prestación Paro</a>
+                <a href="/sueldo-neto">Sueldo Neto</a>
+                <a href="/irpf">IRPF</a>
+                <a href="/cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="/guia-despido">Guía del Despido</a>
+                <a href="/guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="/guia-paro">Guía del Paro</a>
+                <a href="/sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/terminos">Términos</a>
+                <a href="/aviso-legal">Aviso Legal</a>
+                <a href="/cookies">Cookies</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Navegación
+document.querySelectorAll('[data-dropdown]').forEach(dd=>{
+    const btn=dd.querySelector('[data-dropdown-btn]');
+    btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')});
+});
+document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
+const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');
+menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
+document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        const item=btn.parentElement;
+        const w=item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+        if(!w)item.classList.add('open');
+    });
+});
+
+// Formateo
+const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
+
+// Fecha por defecto
+document.getElementById('fechaBaja').value=new Date().toISOString().split('T')[0];
+
+// CÁLCULO PRINCIPAL
+document.getElementById('calc').onsubmit=function(e){
+    e.preventDefault();
+    
+    const salarioMensual=+document.getElementById('salario').value;
+    const fechaAlta=new Date(document.getElementById('fechaAlta').value);
+    const fechaBaja=new Date(document.getElementById('fechaBaja').value);
+    const motivoBaja=document.getElementById('motivoBaja').value;
+    const tipoPagas=+document.getElementById('tipoPagas').value;
+    const diasVacAnuales=+document.getElementById('diasVacAnuales').value;
+    const diasVacDisfrutados=+document.getElementById('diasVacDisfrutados').value;
+    const irpfPct=+document.getElementById('irpf').value;
+    
+    if(!salarioMensual||fechaAlta>=fechaBaja){alert('Por favor, revisa los datos');return}
+    
+    // Cálculos base
+    const salarioDiario=salarioMensual/30;
+    const diaDelMes=fechaBaja.getDate();
+    
+    // 1. Salario días trabajados del mes
+    const salarioDias=salarioDiario*diaDelMes;
+    
+    // 2. Vacaciones no disfrutadas
+    // Calculamos meses trabajados en el año natural
+    const inicioAno=new Date(fechaBaja.getFullYear(),0,1);
+    const fechaRef=fechaAlta>inicioAno?fechaAlta:inicioAno;
+    const mesesTrabajadosAno=((fechaBaja-fechaRef)/(1000*60*60*24*30.44));
+    const diasVacGenerados=(diasVacAnuales/12)*mesesTrabajadosAno;
+    const diasVacPendientes=Math.max(0,diasVacGenerados-diasVacDisfrutados);
+    const vacacionesPago=salarioDiario*diasVacPendientes;
+    
+    // 3. Pagas extra proporcionales
+    let pagasExtra=0;
+    if(tipoPagas>=14){
+        // Paga de verano (devengo ene-jun) y navidad (devengo jul-dic)
+        const mesActual=fechaBaja.getMonth(); // 0-11
+        
+        // Paga verano
+        let mesesPagaVerano=0;
+        if(mesActual<6){ // Antes de julio
+            mesesPagaVerano=mesActual+1+(diaDelMes/30);
+        }else{
+            mesesPagaVerano=0; // Ya cobrada en junio
+        }
+        
+        // Paga navidad
+        let mesesPagaNavidad=0;
+        if(mesActual>=6){ // Julio o después
+            mesesPagaNavidad=(mesActual-6)+1+(diaDelMes/30);
+        }else{
+            mesesPagaNavidad=0;
+        }
+        
+        // Si entró este año, ajustar
+        if(fechaAlta.getFullYear()===fechaBaja.getFullYear()){
+            const mesAlta=fechaAlta.getMonth();
+            if(mesActual<6&&mesAlta<6){
+                mesesPagaVerano=Math.max(0,mesesPagaVerano-(mesAlta+(fechaAlta.getDate()/30)));
+            }
+            if(mesActual>=6&&mesAlta>=6){
+                mesesPagaNavidad=Math.max(0,mesesPagaNavidad-(mesAlta-6+(fechaAlta.getDate()/30)));
+            }
+        }
+        
+        const pagaVerano=(salarioMensual/6)*Math.min(6,mesesPagaVerano);
+        const pagaNavidad=(salarioMensual/6)*Math.min(6,mesesPagaNavidad);
+        pagasExtra=pagaVerano+pagaNavidad;
+        
+        // Si hay más de 14 pagas
+        if(tipoPagas>14){
+            pagasExtra=pagasExtra*((tipoPagas-12)/2);
+        }
+    }
+    // Si son 12 pagas prorrateadas, no hay pagas extra pendientes
+    
+    // Totales
+    const brutTotal=salarioDias+vacacionesPago+pagasExtra;
+    const retencionIRPF=brutTotal*(irpfPct/100);
+    const netoTotal=brutTotal-retencionIRPF;
+    
+    // Mostrar resultados
+    document.getElementById('total').textContent=fmt(netoTotal);
+    document.getElementById('bruto').textContent=fmt(brutTotal);
+    document.getElementById('salarioDias').textContent=fmt(salarioDias);
+    document.getElementById('vacaciones').textContent=fmt(vacacionesPago);
+    document.getElementById('pagas').textContent=fmt(pagasExtra);
+    document.getElementById('retencion').textContent='-'+fmt(retencionIRPF);
+    
+    document.getElementById('pagasRow').style.display=tipoPagas>=14?'flex':'none';
+    
+    let subtext=diaDelMes+' días trabajados';
+    if(diasVacPendientes>0)subtext+=' · '+Math.round(diasVacPendientes)+' días vacaciones';
+    document.getElementById('resultSub').textContent=subtext;
+    
+    // Detalles
+    document.getElementById('details').innerHTML=`
+        <div class="result-item"><p class="result-item-label">Salario diario</p><p class="result-item-value">${fmtDec(salarioDiario)}</p></div>
+        <div class="result-item"><p class="result-item-label">Días mes trabajados</p><p class="result-item-value">${diaDelMes} días</p></div>
+        <div class="result-item"><p class="result-item-label">Vacaciones pendientes</p><p class="result-item-value">${Math.round(diasVacPendientes*10)/10} días</p></div>
+        <div class="result-item"><p class="result-item-label">Tipo IRPF aplicado</p><p class="result-item-value">${irpfPct}%</p></div>
+    `;
+    
+    // Fiscal
+    let fiscalHTML=`
+        <div class="fiscal-row"><span>Salario días trabajados</span><span>${fmt(salarioDias)}</span></div>
+        <div class="fiscal-row"><span>Vacaciones (${Math.round(diasVacPendientes*10)/10} días)</span><span>${fmt(vacacionesPago)}</span></div>
+    `;
+    if(tipoPagas>=14){
+        fiscalHTML+=`<div class="fiscal-row"><span>Pagas extra proporcionales</span><span>${fmt(pagasExtra)}</span></div>`;
+    }
+    fiscalHTML+=`
+        <div class="fiscal-row"><span><strong>Finiquito bruto</strong></span><span><strong>${fmt(brutTotal)}</strong></span></div>
+        <div class="fiscal-row warning"><span>- Retención IRPF (${irpfPct}%)</span><span>-${fmt(retencionIRPF)}</span></div>
+        <div class="fiscal-row highlight"><span><strong>Finiquito neto</strong></span><span><strong>${fmt(netoTotal)}</strong></span></div>
+    `;
+    document.getElementById('fiscalContent').innerHTML=fiscalHTML;
+    
+    // WhatsApp
+    const waText=`💵 Mi finiquito:\n\n📅 Salario: ${fmt(salarioDias)}\n🏖️ Vacaciones: ${fmt(vacacionesPago)}\n${tipoPagas>=14?`🎁 Pagas: ${fmt(pagasExtra)}\n`:''}\n💰 Bruto: ${fmt(brutTotal)}\n📊 IRPF: -${fmt(retencionIRPF)}\n✅ Neto: ${fmt(netoTotal)}\n\nhttps://calculalotuyo.es/finiquito`;
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(waText);
+    
+    document.getElementById('result').classList.add('visible');
+    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+};
+
+document.getElementById('reset').onclick=function(){
+    document.getElementById('calc').reset();
+    document.getElementById('result').classList.remove('visible');
+    window.scrollTo({top:0,behavior:'smooth'});
+};
+</script>
+</body>
+</html>

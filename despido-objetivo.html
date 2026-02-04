@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora despido objetivo 2026: 20 días por año trabajado, máximo 12 mensualidades. Incluye preaviso de 15 días, fiscalidad IRPF y exención hasta 180.000€.">
+    <meta name="keywords" content="despido objetivo, indemnización 20 días, causas económicas, preaviso 15 días, calculadora despido 2026">
+    <title>Calculadora Despido Objetivo 2026 | 20 días/año | CalculaLoTuyo</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://calculalotuyo.es/despido-objetivo">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
+    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+        <nav class="nav">
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/despido-improcedente">⚖️ Despido Improcedente</a>
+                    <a href="/despido-objetivo">📋 Despido Objetivo</a>
+                    <a href="/ere">📊 ERE / Colectivo</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/finiquito">💵 Finiquito</a>
+                    <a href="/paro">📊 Prestación Paro</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/sueldo-neto">🏦 Sueldo Neto</a>
+                    <a href="/irpf">📑 IRPF</a>
+                    <a href="/horas-extra">⏰ Horas Extra</a>
+                    <a href="/pagas-extra">🎁 Pagas Extra</a>
+                    <a href="/vacaciones">🏖️ Vacaciones</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/cuota-autonomos">💼 Cuota Mensual</a>
+                    <a href="/facturas">🧾 Facturas</a>
+                </div>
+            </div>
+            <a href="/" class="nav-cta">Todas</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a>
+            <a href="/despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a>
+            <a href="/ere" class="mobile-nav-link">📊 ERE / Colectivo</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/finiquito" class="mobile-nav-link">💵 Finiquito</a>
+            <a href="/paro" class="mobile-nav-link">📊 Prestación Paro</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a>
+            <a href="/irpf" class="mobile-nav-link">📑 IRPF</a>
+            <a href="/horas-extra" class="mobile-nav-link">⏰ Horas Extra</a>
+            <a href="/pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a>
+            <a href="/vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a>
+            <a href="/facturas" class="mobile-nav-link">🧾 Facturas</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section class="hero-mini">
+        <div class="container">
+            <div class="hero-badge">📋 Actualizado 2026</div>
+            <h1>Despido Objetivo<br><span class="highlight">20 días por año trabajado</span></h1>
+            <p>Calcula tu indemnización por causas económicas, técnicas, organizativas o de producción. Incluye preaviso y fiscalidad.</p>
+        </div>
+    </section>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-title"><div class="card-icon">📝</div>Introduce tus datos</div>
+                <form id="calc">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Salario bruto anual (con pagas extra)</label>
+                            <input type="number" class="form-input" id="salario" placeholder="28000" required>
+                            <span class="form-hint">Si tienes 14 pagas, suma las 2 extra al anual</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fecha de inicio del contrato</label>
+                            <input type="date" class="form-input" id="inicio" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Fecha efectiva del despido</label>
+                            <input type="date" class="form-input" id="despido" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Causa del despido objetivo</label>
+                            <select class="form-select" id="causa">
+                                <option value="economicas">Causas económicas (pérdidas)</option>
+                                <option value="tecnicas">Causas técnicas (automatización)</option>
+                                <option value="organizativas">Causas organizativas (reestructuración)</option>
+                                <option value="produccion">Causas de producción (bajada demanda)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">¿Te han dado preaviso de 15 días?</label>
+                            <select class="form-select" id="preaviso">
+                                <option value="si">Sí, me avisaron con 15+ días</option>
+                                <option value="no">No, menos de 15 días de preaviso</option>
+                                <option value="parcial">Parcial (indicar días abajo)</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="diasPreavisoGroup" style="display:none;">
+                            <label class="form-label">Días de preaviso recibidos</label>
+                            <input type="number" class="form-input" id="diasPreaviso" placeholder="5" min="0" max="14">
+                        </div>
+                    </div>
+                    
+                    <div class="disclaimer-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <p><strong>Importante:</strong> El despido objetivo solo es válido si la empresa acredita la causa. Si no está justificado, puede ser declarado <a href="/despido-improcedente">improcedente</a> (33 días/año).</p>
+                    </div>
+                    
+                    <button type="submit" class="btn">Calcular indemnización</button>
+                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                </form>
+
+                <div class="result" id="result">
+                    <div class="result-hero">
+                        <p class="result-label">Total a recibir</p>
+                        <p class="result-value" id="total">0 €</p>
+                        <p class="result-sub" id="resultSub"></p>
+                    </div>
+                    
+                    <div class="result-breakdown">
+                        <div class="result-row bruto">
+                            <span class="result-row-label">💰 Indemnización bruta</span>
+                            <span class="result-row-value" id="bruto">0 €</span>
+                        </div>
+                        <div class="result-row" id="preavisoRow" style="display:none;">
+                            <span class="result-row-label">📅 Compensación preaviso</span>
+                            <span class="result-row-value" id="preavisoVal">0 €</span>
+                        </div>
+                        <div class="result-row exento">
+                            <span class="result-row-label">✅ Parte exenta IRPF</span>
+                            <span class="result-row-value" id="exento">0 €</span>
+                        </div>
+                        <div class="result-row tributa" id="tributaRow" style="display:none;">
+                            <span class="result-row-label">📊 Parte que tributa</span>
+                            <span class="result-row-value" id="tributa">0 €</span>
+                        </div>
+                    </div>
+
+                    <div class="result-grid" id="details"></div>
+                    
+                    <div class="fiscal-box" id="fiscalBox">
+                        <div class="fiscal-title">📊 Desglose fiscal detallado</div>
+                        <div id="fiscalContent"></div>
+                    </div>
+                    
+                    <div class="result-actions">
+                        <button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button>
+                        <a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- EJEMPLO PRÁCTICO -->
+    <section class="section">
+        <div class="container">
+            <article class="seo-section">
+                <h2>📖 El caso de María: Despido objetivo por causas económicas</h2>
+                
+                <div class="example-box">
+                    <div class="example-header">
+                        <span class="example-icon">👩‍💼</span>
+                        <div>
+                            <strong>María, administrativa en una PYME de Barcelona</strong>
+                            <p>7 años y 4 meses de antigüedad · Salario: 26.000€ brutos/año</p>
+                        </div>
+                    </div>
+                    
+                    <div class="example-story">
+                        <p>La empresa de María llevaba dos años con pérdidas y tuvo que reestructurarse. Le comunicaron el despido objetivo por <strong>causas económicas</strong> con solo 10 días de preaviso (en lugar de los 15 obligatorios).</p>
+                    </div>
+
+                    <div class="example-calc">
+                        <h4>🧮 Cálculo paso a paso:</h4>
+                        <div class="calc-steps">
+                            <div class="calc-step">
+                                <span class="step-num">1</span>
+                                <div>
+                                    <strong>Salario diario:</strong>
+                                    <p>26.000€ ÷ 365 = <strong>71,23€/día</strong></p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">2</span>
+                                <div>
+                                    <strong>Antigüedad en años:</strong>
+                                    <p>7 años + 4 meses = <strong>7,33 años</strong></p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">3</span>
+                                <div>
+                                    <strong>Indemnización (20 días/año):</strong>
+                                    <p>71,23€ × 20 días × 7,33 años = <strong>10.444€</strong></p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">4</span>
+                                <div>
+                                    <strong>Compensación preaviso (5 días faltantes):</strong>
+                                    <p>71,23€ × 5 días = <strong>356€</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="example-result">
+                            <div class="example-result-row">
+                                <span>Indemnización</span>
+                                <span class="amount">10.444 €</span>
+                            </div>
+                            <div class="example-result-row">
+                                <span>+ Preaviso</span>
+                                <span class="amount">356 €</span>
+                            </div>
+                            <div class="example-result-row total">
+                                <span>Total a recibir</span>
+                                <span class="amount">10.800 €</span>
+                            </div>
+                            <div class="example-result-row exento">
+                                <span>✅ 100% exento de IRPF</span>
+                                <span class="note">(inferior a 180.000€)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-tip">
+                        <strong>💡 Consejo de María:</strong> "Pedí la carta de despido por escrito y verifiqué que la causa económica estaba bien documentada. Como la empresa sí tenía pérdidas reales, acepté el despido objetivo. Si no hubiera estado justificado, podría haberlo impugnado como <a href="/despido-improcedente">improcedente</a> y cobrar 33 días/año."
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">❓ Preguntas frecuentes sobre Despido Objetivo</h2>
+            
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Qué diferencia hay entre despido objetivo e improcedente?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p>La diferencia principal está en la <strong>justificación y la indemnización</strong>:</p>
+                        <ul>
+                            <li><strong>Despido objetivo:</strong> La empresa tiene una causa legal (económica, técnica, organizativa o de producción) y paga <strong>20 días por año</strong> con máximo de 12 mensualidades.</li>
+                            <li><strong>Despido improcedente:</strong> No hay causa justificada o el procedimiento es incorrecto. La indemnización sube a <strong>33 días por año</strong> con máximo de 24 mensualidades.</li>
+                        </ul>
+                        <p>Si crees que tu despido objetivo no está bien justificado, tienes <strong>20 días hábiles</strong> para impugnarlo ante el Juzgado de lo Social.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿La indemnización por despido objetivo tributa en IRPF?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p>La indemnización por despido objetivo está <strong>exenta de IRPF hasta 180.000€</strong> (Art. 7.e LIRPF). Como la inmensa mayoría de indemnizaciones no llegan a esa cifra, en la práctica <strong>no pagarás impuestos</strong>.</p>
+                        <p>Sin embargo, hay excepciones:</p>
+                        <ul>
+                            <li>Si la indemnización supera 180.000€, el exceso tributa como rendimiento del trabajo</li>
+                            <li>La compensación por falta de preaviso <strong>sí tributa</strong> como salario normal</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Qué pasa si la empresa no me da los 15 días de preaviso?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p>Según el <strong>Art. 53.1.c del Estatuto de los Trabajadores</strong>, la empresa debe darte un preaviso mínimo de 15 días. Si no lo hace:</p>
+                        <ul>
+                            <li>Debe <strong>compensarte económicamente</strong> con el salario correspondiente a los días de preaviso no dados</li>
+                            <li>Esta compensación se calcula como: <em>Salario diario × días de preaviso faltantes</em></li>
+                            <li>A diferencia de la indemnización, esta compensación <strong>sí tributa en IRPF</strong></li>
+                        </ul>
+                        <p>Durante el preaviso, tienes derecho a <strong>6 horas semanales retribuidas</strong> para buscar nuevo empleo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-q">
+                        <span>¿Puedo cobrar el paro después de un despido objetivo?</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <p><strong>Sí, tienes derecho a la prestación por desempleo</strong> siempre que cumplas los requisitos:</p>
+                        <ul>
+                            <li>Haber cotizado al menos <strong>360 días</strong> en los últimos 6 años</li>
+                            <li>Estar inscrito como demandante de empleo en el SEPE</li>
+                            <li>No haber rechazado ofertas de empleo adecuadas</li>
+                        </ul>
+                        <p>El despido objetivo es una <strong>situación legal de desempleo</strong>, por lo que no hay ningún problema para solicitar el paro. Calcula tu prestación con nuestra <a href="/paro">calculadora de paro</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- RELACIONADOS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">🔗 Calculadoras relacionadas</h2>
+            <p class="section-desc">Completa el cálculo de tu situación laboral</p>
+            
+            <div class="cards-grid">
+                <a href="/despido-improcedente" class="calc-card">
+                    <div class="calc-card-icon">⚖️</div>
+                    <h3>Despido Improcedente</h3>
+                    <p>Si impugnas el despido objetivo y ganas, la indemnización sube a 33 días/año.</p>
+                    <span class="calc-card-link">Calcular improcedente <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+                <a href="/finiquito" class="calc-card">
+                    <div class="calc-card-icon">💵</div>
+                    <h3>Finiquito</h3>
+                    <p>Además de la indemnización, te corresponde finiquito: salario pendiente, vacaciones y pagas.</p>
+                    <span class="calc-card-link">Calcular finiquito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+                <a href="/paro" class="calc-card">
+                    <div class="calc-card-icon">📊</div>
+                    <h3>Prestación por Desempleo</h3>
+                    <p>Calcula cuánto cobrarás de paro y durante cuántos meses según tu cotización.</p>
+                    <span class="calc-card-link">Calcular paro <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUENTES -->
+    <section class="section">
+        <div class="container">
+            <div class="source-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+                <div>
+                    <strong>Base legal:</strong>
+                    <p>Art. 52 y 53 del <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank">Estatuto de los Trabajadores</a>. Exención IRPF: Art. 7.e de la <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764" target="_blank">Ley 35/2006 del IRPF</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="/despido-improcedente">Despido Improcedente</a>
+                <a href="/finiquito">Finiquito</a>
+                <a href="/paro">Prestación Paro</a>
+                <a href="/sueldo-neto">Sueldo Neto</a>
+                <a href="/irpf">IRPF</a>
+                <a href="/cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="/guia-despido">Guía del Despido</a>
+                <a href="/guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="/guia-paro">Guía del Paro</a>
+                <a href="/sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/terminos">Términos</a>
+                <a href="/aviso-legal">Aviso Legal</a>
+                <a href="/cookies">Cookies</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Navegación
+document.querySelectorAll('[data-dropdown]').forEach(dd=>{
+    const btn=dd.querySelector('[data-dropdown-btn]');
+    btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')});
+});
+document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
+const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');
+menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
+document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+        const item=btn.parentElement;
+        const w=item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+        if(!w)item.classList.add('open');
+    });
+});
+
+// Campos condicionales
+document.getElementById('preaviso').addEventListener('change',function(){
+    document.getElementById('diasPreavisoGroup').style.display=this.value==='parcial'?'block':'none';
+});
+
+// Formateo
+const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
+
+// Fecha por defecto
+document.getElementById('despido').value=new Date().toISOString().split('T')[0];
+
+// CÁLCULO PRINCIPAL
+document.getElementById('calc').onsubmit=function(e){
+    e.preventDefault();
+    
+    const salario=+document.getElementById('salario').value;
+    const fechaInicio=new Date(document.getElementById('inicio').value);
+    const fechaDespido=new Date(document.getElementById('despido').value);
+    const preaviso=document.getElementById('preaviso').value;
+    const diasPreavisoRecibidos=+document.getElementById('diasPreaviso').value||0;
+    
+    if(!salario||fechaInicio>=fechaDespido){alert('Por favor, revisa los datos');return}
+    
+    // Cálculos
+    const diasTrabajados=Math.ceil((fechaDespido-fechaInicio)/86400000);
+    const anosAntiguedad=diasTrabajados/365;
+    const salarioDiario=salario/365;
+    const salarioMensual=salario/12;
+    
+    // Topes SMI 2026
+    const smiDiario=42.62;
+    const topeSalarioDiario=smiDiario*3;
+    const salarioDiarioTope=Math.min(salarioDiario,topeSalarioDiario);
+    
+    // Indemnización: 20 días/año, máx 12 mensualidades
+    let indemnizacion=salarioDiarioTope*20*anosAntiguedad;
+    const topeMaximo=salarioMensual*12;
+    const topado=indemnizacion>topeMaximo;
+    if(topado)indemnizacion=topeMaximo;
+    
+    // Preaviso
+    let compensacionPreaviso=0,diasPreavisoFaltantes=0;
+    if(preaviso==='no'){diasPreavisoFaltantes=15;compensacionPreaviso=salarioDiario*15}
+    else if(preaviso==='parcial'&&diasPreavisoRecibidos<15){diasPreavisoFaltantes=15-diasPreavisoRecibidos;compensacionPreaviso=salarioDiario*diasPreavisoFaltantes}
+    
+    // Fiscalidad
+    const exencionMaxima=180000;
+    const parteExenta=Math.min(indemnizacion,exencionMaxima);
+    const parteTributa=Math.max(0,indemnizacion-exencionMaxima);
+    const total=indemnizacion+compensacionPreaviso;
+    
+    // Mostrar resultados
+    document.getElementById('total').textContent=fmt(total);
+    document.getElementById('bruto').textContent=fmt(indemnizacion);
+    document.getElementById('exento').textContent=fmt(parteExenta);
+    
+    let subtext='20 días/año · '+(topado?'Topado a 12 mensualidades':Math.floor(anosAntiguedad)+'a '+Math.floor((diasTrabajados%365)/30)+'m');
+    document.getElementById('resultSub').textContent=subtext;
+    
+    document.getElementById('preavisoRow').style.display=compensacionPreaviso>0?'flex':'none';
+    if(compensacionPreaviso>0)document.getElementById('preavisoVal').textContent='+'+fmt(compensacionPreaviso);
+    
+    document.getElementById('tributaRow').style.display=parteTributa>0?'flex':'none';
+    if(parteTributa>0)document.getElementById('tributa').textContent=fmt(parteTributa);
+    
+    document.getElementById('details').innerHTML=`
+        <div class="result-item"><p class="result-item-label">Salario diario</p><p class="result-item-value">${fmtDec(salarioDiario)}</p></div>
+        <div class="result-item"><p class="result-item-label">Antigüedad</p><p class="result-item-value">${Math.floor(anosAntiguedad)}a ${Math.floor((diasTrabajados%365)/30)}m</p></div>
+        <div class="result-item"><p class="result-item-label">Días indemnización</p><p class="result-item-value">${Math.round(20*anosAntiguedad)} días</p></div>
+        ${salarioDiario>topeSalarioDiario?`<div class="result-item"><p class="result-item-label">⚠️ Salario topado</p><p class="result-item-value">${fmtDec(topeSalarioDiario)}/día</p></div>`:''}
+    `;
+    
+    let fiscalHTML=`<div class="fiscal-row"><span>Indemnización bruta</span><span>${fmt(indemnizacion)}</span></div>`;
+    if(compensacionPreaviso>0)fiscalHTML+=`<div class="fiscal-row"><span>+ Preaviso (${diasPreavisoFaltantes} días)</span><span>${fmt(compensacionPreaviso)}</span></div><div class="fiscal-row warning"><span>⚠️ El preaviso SÍ tributa</span><span></span></div>`;
+    fiscalHTML+=`<div class="fiscal-row success"><span>✅ Exento IRPF</span><span>${fmt(parteExenta)}</span></div>`;
+    if(parteTributa>0)fiscalHTML+=`<div class="fiscal-row warning"><span>📊 Tributa</span><span>${fmt(parteTributa)}</span></div>`;
+    fiscalHTML+=`<div class="fiscal-row highlight"><span><strong>Total</strong></span><span><strong>${fmt(total)}</strong></span></div>`;
+    document.getElementById('fiscalContent').innerHTML=fiscalHTML;
+    
+    const waText=`💼 Despido objetivo:\n📋 Indemnización: ${fmt(indemnizacion)}\n${compensacionPreaviso>0?`📅 + Preaviso: ${fmt(compensacionPreaviso)}\n`:''}💰 Total: ${fmt(total)}\n✅ Exento: ${fmt(parteExenta)}\n\nhttps://calculalotuyo.es/despido-objetivo`;
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(waText);
+    
+    document.getElementById('result').classList.add('visible');
+    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+};
+
+document.getElementById('reset').onclick=function(){
+    document.getElementById('calc').reset();
+    document.getElementById('result').classList.remove('visible');
+    document.getElementById('preavisoRow').style.display='none';
+    document.getElementById('tributaRow').style.display='none';
+    document.getElementById('diasPreavisoGroup').style.display='none';
+    window.scrollTo({top:0,behavior:'smooth'});
+};
+</script>
+</body>
+</html>

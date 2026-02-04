@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculadora horas extra 2026: calcula el pago de tus horas extraordinarias con recargo legal. Incluye horas nocturnas, festivos y límite anual de 80 horas.">
+    <meta name="keywords" content="horas extra, calculadora horas extraordinarias, recargo horas extra, horas nocturnas, límite 80 horas">
+    <title>Calculadora Horas Extra 2026 | Recargos y Límites | CalculaLoTuyo</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="canonical" href="https://calculalotuyo.es/horas-extra">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
+    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+        <nav class="nav">
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/despido-improcedente">⚖️ Despido Improcedente</a><a href="/despido-objetivo">📋 Despido Objetivo</a><a href="/ere">📊 ERE / Colectivo</a></div></div>
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/finiquito">💵 Finiquito</a><a href="/paro">📊 Prestación Paro</a></div></div>
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/sueldo-neto">🏦 Sueldo Neto</a><a href="/irpf">📑 IRPF</a><a href="/horas-extra">⏰ Horas Extra</a><a href="/pagas-extra">🎁 Pagas Extra</a><a href="/vacaciones">🏖️ Vacaciones</a></div></div>
+            <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="/cuota-autonomos">💼 Cuota Mensual</a><a href="/facturas">🧾 Facturas</a></div></div>
+            <a href="/" class="nav-cta">Todas</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a><a href="/despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a><a href="/ere" class="mobile-nav-link">📊 ERE / Colectivo</a></div></div>
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/finiquito" class="mobile-nav-link">💵 Finiquito</a><a href="/paro" class="mobile-nav-link">📊 Prestación Paro</a></div></div>
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a><a href="/irpf" class="mobile-nav-link">📑 IRPF</a><a href="/horas-extra" class="mobile-nav-link">⏰ Horas Extra</a><a href="/pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a><a href="/vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a></div></div>
+    <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="/cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a><a href="/facturas" class="mobile-nav-link">🧾 Facturas</a></div></div>
+</nav>
+
+<main>
+    <section class="hero-mini">
+        <div class="container">
+            <div class="hero-badge">⏰ Nómina 2026</div>
+            <h1>Calculadora Horas Extra<br><span class="highlight">¿Cuánto valen tus horas?</span></h1>
+            <p>Calcula el pago de tus horas extraordinarias con los recargos legales. Límite: 80 horas anuales.</p>
+        </div>
+    </section>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-title"><div class="card-icon">📝</div>Datos de tus horas extra</div>
+                <form id="calc">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Salario bruto mensual</label>
+                            <input type="number" class="form-input" id="salario" placeholder="1800" required>
+                            <span class="form-hint">Sin incluir pagas extra</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Horas semanales de contrato</label>
+                            <select class="form-select" id="horasContrato">
+                                <option value="40">40 horas (jornada completa)</option>
+                                <option value="37.5">37,5 horas</option>
+                                <option value="35">35 horas</option>
+                                <option value="30">30 horas (parcial)</option>
+                                <option value="20">20 horas (parcial)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Horas extra realizadas</label>
+                            <input type="number" class="form-input" id="horasExtra" placeholder="10" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Tipo de hora extra</label>
+                            <select class="form-select" id="tipoHora">
+                                <option value="normal">Normal (día laborable)</option>
+                                <option value="nocturna">Nocturna (22:00-06:00)</option>
+                                <option value="festivo">Festivo o domingo</option>
+                                <option value="festivoNocturna">Festivo + Nocturna</option>
+                                <option value="fuerza">Fuerza mayor (sin límite)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Recargo según convenio</label>
+                            <select class="form-select" id="recargo">
+                                <option value="0">Sin recargo (mínimo legal)</option>
+                                <option value="25">+25% (común en convenios)</option>
+                                <option value="50">+50%</option>
+                                <option value="75" selected>+75% (habitual)</option>
+                                <option value="100">+100% (el doble)</option>
+                            </select>
+                            <span class="form-hint">Consulta tu convenio colectivo</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Horas extra ya hechas este año</label>
+                            <input type="number" class="form-input" id="horasAcumuladas" value="0" min="0">
+                            <span class="form-hint">Límite legal: 80 horas/año</span>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">¿Compensación en tiempo libre?</label>
+                            <select class="form-select" id="compensacion">
+                                <option value="dinero">Pago en dinero</option>
+                                <option value="tiempo">Compensación en tiempo (4 meses)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="disclaimer-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <p><strong>Importante:</strong> El límite de 80 horas extra anuales es obligatorio (Art. 35.2 ET). Las de fuerza mayor no computan.</p>
+                    </div>
+                    
+                    <button type="submit" class="btn">Calcular horas extra</button>
+                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                </form>
+
+                <div class="result" id="result">
+                    <div class="result-hero">
+                        <p class="result-label">Total horas extra</p>
+                        <p class="result-value" id="total">0 €</p>
+                        <p class="result-sub" id="resultSub"></p>
+                    </div>
+                    <div class="result-breakdown">
+                        <div class="result-row bruto"><span class="result-row-label">💰 Importe bruto</span><span class="result-row-value" id="bruto">0 €</span></div>
+                        <div class="result-row"><span class="result-row-label">⏱️ Valor hora base</span><span class="result-row-value" id="horaBase">0 €</span></div>
+                        <div class="result-row"><span class="result-row-label">⬆️ Valor hora con recargo</span><span class="result-row-value" id="horaRecargo">0 €</span></div>
+                        <div class="result-row" id="limiteRow" style="display:none;"><span class="result-row-label">⚠️ Aviso límite</span><span class="result-row-value" id="limiteAviso"></span></div>
+                    </div>
+                    <div class="result-grid" id="details"></div>
+                    <div class="fiscal-box" id="fiscalBox"><div class="fiscal-title">📊 Desglose</div><div id="fiscalContent"></div></div>
+                    <div class="result-actions">
+                        <button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button>
+                        <a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- EJEMPLO PRÁCTICO -->
+    <section class="section">
+        <div class="container">
+            <article class="seo-section">
+                <h2>📖 El caso de Laura: Horas extra en hostelería</h2>
+                <div class="example-box">
+                    <div class="example-header">
+                        <span class="example-icon">👩‍🍳</span>
+                        <div><strong>Laura, camarera en Barcelona</strong><p>Jornada completa · Salario: 1.500€/mes · Convenio hostelería</p></div>
+                    </div>
+                    <div class="example-story">
+                        <p>Laura trabaja en un restaurante y durante la temporada alta hizo <strong>15 horas extra</strong> en un mes, de las cuales 5 fueron en festivo. Su convenio establece un recargo del <strong>75% para horas normales</strong> y <strong>100% para festivos</strong>.</p>
+                    </div>
+                    <div class="example-calc">
+                        <h4>🧮 Cálculo de sus horas extra:</h4>
+                        <div class="calc-steps">
+                            <div class="calc-step"><span class="step-num">1</span><div><strong>Valor hora base:</strong><p>1.500€ ÷ (40h × 4,33 semanas) = <strong>8,66€/hora</strong></p></div></div>
+                            <div class="calc-step"><span class="step-num">2</span><div><strong>10 horas normales (+75%):</strong><p>8,66€ × 1,75 × 10 = <strong>151,55€</strong></p></div></div>
+                            <div class="calc-step"><span class="step-num">3</span><div><strong>5 horas festivo (+100%):</strong><p>8,66€ × 2,00 × 5 = <strong>86,60€</strong></p></div></div>
+                        </div>
+                        <div class="example-result">
+                            <div class="example-result-row"><span>Horas normales (10h)</span><span class="amount">151,55 €</span></div>
+                            <div class="example-result-row"><span>Horas festivo (5h)</span><span class="amount">86,60 €</span></div>
+                            <div class="example-result-row total"><span>Total bruto</span><span class="amount">238,15 €</span></div>
+                            <div class="example-result-row"><span>- IRPF (~15%)</span><span class="amount" style="color:var(--warning)">-35,72 €</span></div>
+                            <div class="example-result-row total"><span>Total neto (aprox)</span><span class="amount">202,43 €</span></div>
+                        </div>
+                    </div>
+                    <div class="example-tip"><strong>💡 Consejo de Laura:</strong> "Siempre apunto mis horas extra en el móvil con foto del cuadrante. Si la empresa no las refleja en nómina, tengo pruebas. Las horas extra deben aparecer <strong>desglosadas</strong> en tu nómina."</div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">❓ Preguntas frecuentes sobre Horas Extra</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-q"><span>¿Es obligatorio hacer horas extra si me lo pide la empresa?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a">
+                        <p><strong>No, las horas extra son voluntarias</strong> salvo en dos casos:</p>
+                        <ul>
+                            <li><strong>Fuerza mayor:</strong> Prevenir o reparar siniestros, daños urgentes (incendios, inundaciones...)</li>
+                            <li><strong>Pactadas:</strong> Si están en tu contrato o convenio colectivo</li>
+                        </ul>
+                        <p>Negarte a hacer horas extra voluntarias <strong>no puede ser motivo de despido ni sanción</strong>.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q"><span>¿Cuál es el límite legal de horas extra?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a">
+                        <p>El <strong>Art. 35.2 del Estatuto de los Trabajadores</strong> establece:</p>
+                        <ul>
+                            <li>Máximo <strong>80 horas extra al año</strong></li>
+                            <li>Las de <strong>fuerza mayor no computan</strong> para este límite</li>
+                            <li>Las <strong>compensadas con descanso</strong> en 4 meses tampoco computan</li>
+                        </ul>
+                        <p>Si superas el límite, la empresa puede ser sancionada con multas de 626€ a 6.250€.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q"><span>¿Las horas extra tributan más que el salario normal?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a">
+                        <p><strong>No, tributan igual</strong>. Las horas extra son rendimiento del trabajo y se les aplica la misma retención IRPF que a tu salario. Sin embargo, hay diferencias en cotización:</p>
+                        <ul>
+                            <li><strong>Horas extra normales:</strong> Cotizan al 23,6% (empresa) + 4,7% (trabajador)</li>
+                            <li><strong>Horas extra fuerza mayor:</strong> Cotizan al 12% (empresa) + 2% (trabajador)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q"><span>¿Puedo elegir entre dinero o tiempo libre?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                    <div class="faq-a">
+                        <p>Depende de lo que diga tu <strong>convenio colectivo</strong>. Si no especifica nada:</p>
+                        <ul>
+                            <li>La empresa puede elegir compensar en <strong>tiempo de descanso equivalente</strong></li>
+                            <li>Debe disfrutarse en los <strong>4 meses siguientes</strong></li>
+                            <li>Si no se compensa en ese plazo, debe pagarse</li>
+                        </ul>
+                        <p>Algunos convenios dan prioridad al trabajador para elegir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <!-- RELACIONADOS -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">🔗 Calculadoras relacionadas</h2>
+            <div class="cards-grid">
+                <a href="/sueldo-neto" class="calc-card"><div class="calc-card-icon">🏦</div><h3>Sueldo Neto</h3><p>Calcula tu salario neto mensual con todas las deducciones.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+                <a href="/irpf" class="calc-card"><div class="calc-card-icon">📑</div><h3>IRPF</h3><p>Calcula tu retención anual y tipo efectivo.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+                <a href="/finiquito" class="calc-card"><div class="calc-card-icon">💵</div><h3>Finiquito</h3><p>Incluye horas extra pendientes en tu liquidación.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section"><div class="container"><div class="source-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><div><strong>Base legal:</strong><p>Art. 35 del <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank">Estatuto de los Trabajadores</a> sobre horas extraordinarias.</p></div></div></div></section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="/despido-improcedente">Despido Improcedente</a>
+                <a href="/finiquito">Finiquito</a>
+                <a href="/paro">Prestación Paro</a>
+                <a href="/sueldo-neto">Sueldo Neto</a>
+                <a href="/irpf">IRPF</a>
+                <a href="/cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="/guia-despido">Guía del Despido</a>
+                <a href="/guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="/guia-paro">Guía del Paro</a>
+                <a href="/sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/terminos">Términos</a>
+                <a href="/aviso-legal">Aviso Legal</a>
+                <a href="/cookies">Cookies</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
+const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
+document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
+
+const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
+
+// Recargos por tipo
+const recargosBase={normal:0,nocturna:0.25,festivo:0.50,festivoNocturna:0.75,fuerza:0};
+
+document.getElementById('calc').onsubmit=function(e){
+    e.preventDefault();
+    const salario=+document.getElementById('salario').value;
+    const horasContrato=+document.getElementById('horasContrato').value;
+    const horasExtra=+document.getElementById('horasExtra').value;
+    const tipoHora=document.getElementById('tipoHora').value;
+    const recargoConvenio=+document.getElementById('recargo').value/100;
+    const horasAcumuladas=+document.getElementById('horasAcumuladas').value;
+    const compensacion=document.getElementById('compensacion').value;
+    
+    if(!salario||!horasExtra){alert('Revisa los datos');return}
+    
+    // Cálculo hora base
+    const horasMes=horasContrato*4.33;
+    const horaBase=salario/horasMes;
+    
+    // Recargo total = base tipo + convenio
+    const recargoTipo=recargosBase[tipoHora]||0;
+    const recargoTotal=recargoConvenio+recargoTipo;
+    const horaConRecargo=horaBase*(1+recargoTotal);
+    
+    // Total
+    const totalBruto=horaConRecargo*horasExtra;
+    
+    // Verificar límite 80 horas
+    const totalAcumulado=horasAcumuladas+horasExtra;
+    const superaLimite=tipoHora!=='fuerza'&&totalAcumulado>80;
+    
+    // Mostrar
+    document.getElementById('total').textContent=fmtDec(totalBruto);
+    document.getElementById('bruto').textContent=fmtDec(totalBruto);
+    document.getElementById('horaBase').textContent=fmtDec(horaBase);
+    document.getElementById('horaRecargo').textContent=fmtDec(horaConRecargo);
+    
+    let sub=horasExtra+' horas × '+fmtDec(horaConRecargo)+'/h';
+    if(recargoTotal>0)sub+=' (+'+Math.round(recargoTotal*100)+'% recargo)';
+    document.getElementById('resultSub').textContent=sub;
+    
+    if(superaLimite){
+        document.getElementById('limiteRow').style.display='flex';
+        document.getElementById('limiteAviso').textContent='Superas 80h/año ('+totalAcumulado+'h)';
+        document.getElementById('limiteRow').classList.add('warning');
+    }else{
+        document.getElementById('limiteRow').style.display='none';
+    }
+    
+    document.getElementById('details').innerHTML=`
+        <div class="result-item"><p class="result-item-label">Jornada mensual</p><p class="result-item-value">${horasMes.toFixed(0)}h</p></div>
+        <div class="result-item"><p class="result-item-label">Recargo aplicado</p><p class="result-item-value">+${Math.round(recargoTotal*100)}%</p></div>
+        <div class="result-item"><p class="result-item-label">Horas año</p><p class="result-item-value">${totalAcumulado}/80</p></div>
+    `;
+    
+    let fiscalHTML=`
+        <div class="fiscal-row"><span>${horasExtra}h × ${fmtDec(horaBase)} (base)</span><span>${fmtDec(horaBase*horasExtra)}</span></div>
+        <div class="fiscal-row"><span>+ Recargo ${Math.round(recargoTotal*100)}%</span><span>${fmtDec(totalBruto-horaBase*horasExtra)}</span></div>
+        <div class="fiscal-row highlight"><span><strong>Total bruto</strong></span><span><strong>${fmtDec(totalBruto)}</strong></span></div>
+    `;
+    if(compensacion==='tiempo'){
+        fiscalHTML+=`<div class="fiscal-row success"><span>💤 O compensar con ${horasExtra}h libres</span><span>4 meses plazo</span></div>`;
+    }
+    document.getElementById('fiscalContent').innerHTML=fiscalHTML;
+    
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(`⏰ Horas extra:\n${horasExtra}h × ${fmtDec(horaConRecargo)}/h\n💰 Total: ${fmtDec(totalBruto)}\n\nhttps://calculalotuyo.es/horas-extra`);
+    document.getElementById('result').classList.add('visible');
+    document.getElementById('result').scrollIntoView({behavior:'smooth'});
+};
+document.getElementById('reset').onclick=function(){document.getElementById('calc').reset();document.getElementById('result').classList.remove('visible');window.scrollTo({top:0,behavior:'smooth'})};
+</script>
+</body>
+</html>

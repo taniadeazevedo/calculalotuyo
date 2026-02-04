@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calcula tu prestación por desempleo 2026. Cuánto cobrarás de paro y durante cuánto tiempo según cotización e hijos.">
+    <title>Calculadora Prestación por Desempleo | CalculaLoTuyo 2026</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
+    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+        <nav class="nav">
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/despido-improcedente">⚖️ Despido Improcedente</a>
+                    <a href="/despido-objetivo">📋 Despido Objetivo</a>
+                    <a href="/ere">📊 ERE / Colectivo</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/finiquito">💵 Finiquito</a>
+                    <a href="/paro">📊 Prestación Paro</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/sueldo-neto">🏦 Sueldo Neto</a>
+                    <a href="/irpf">📑 IRPF</a>
+                    <a href="/horas-extra">⏰ Horas Extra</a>
+                    <a href="/pagas-extra">🎁 Pagas Extra</a>
+                    <a href="/vacaciones">🏖️ Vacaciones</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/cuota-autonomos">💼 Cuota Mensual</a>
+                    <a href="/facturas">🧾 Facturas</a>
+                </div>
+            </div>
+            <a href="/" class="nav-cta">Todas</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a>
+            <a href="/despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a>
+            <a href="/ere" class="mobile-nav-link">📊 ERE / Colectivo</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/finiquito" class="mobile-nav-link">💵 Finiquito</a>
+            <a href="/paro" class="mobile-nav-link">📊 Prestación Paro</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a>
+            <a href="/irpf" class="mobile-nav-link">📑 IRPF</a>
+            <a href="/horas-extra" class="mobile-nav-link">⏰ Horas Extra</a>
+            <a href="/pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a>
+            <a href="/vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a>
+            <a href="/facturas" class="mobile-nav-link">🧾 Facturas</a>
+        </div>
+    </div>
+</nav>
+<main>
+    <section class="hero-mini">
+        <div class="container">
+            <div class="hero-badge">📊 Desempleo 2026</div>
+            <h1>¿Cuánto cobrarás de paro?<br>Calcula tu prestación exacta</h1>
+            <p>Duración y cuantía según tu cotización. Incluye topes por hijos a cargo.</p>
+        </div>
+    </section>
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-title"><div class="card-icon">📝</div>Introduce tus datos</div>
+                <form id="calc">
+                    <div class="form-grid">
+        <div class="form-group">
+            <label class="form-label">Base reguladora diaria (€)</label>
+            <input type="number" class="form-input" id="base" placeholder="70" step="0.01" required>
+            <span class="form-hint">Suma bases cotización últimos 180 días ÷ 180</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Días cotizados (últimos 6 años)</label>
+            <input type="number" class="form-input" id="cotizados" placeholder="720" required>
+            <span class="form-hint">Mínimo 360 días para tener derecho</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Hijos a cargo</label>
+            <select class="form-select" id="hijos">
+                <option value="0">Sin hijos a cargo</option>
+                <option value="1">1 hijo a cargo</option>
+                <option value="2">2 o más hijos a cargo</option>
+            </select>
+            <span class="form-hint">Afecta a los topes máximo y mínimo</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Tipo de desempleo</label>
+            <select class="form-select" id="tipo">
+                <option value="total">Total</option>
+                <option value="parcial">Parcial (reducción jornada)</option>
+            </select>
+        </div>
+    </div>
+                    <div class="disclaimer-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <p><strong>Aviso:</strong> Cálculo orientativo basado en normativa vigente. <strong>No sustituye el asesoramiento profesional</strong>.</p>
+                    </div>
+                    <button type="submit" class="btn">Calcular ahora</button>
+                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                </form>
+                <div class="result" id="result">
+                    <div class="result-hero">
+                        <p class="result-label">Resultado estimado</p>
+                        <p class="result-value" id="total">0 €</p>
+                        <p class="result-sub" id="resultSub"></p>
+                    </div>
+                    <div class="result-grid" id="details"></div>
+                    <div class="fiscal-box" id="fiscalBox"><div class="fiscal-title">📊 Desglose</div><div id="fiscalContent"></div></div>
+                    <div class="result-actions">
+                        <button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button>
+                        <a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container"><div class="ad"></div></div>
+    <div class="container">
+        <article class="seo-section"><h2>📖 ¿Qué es la prestación por desempleo?</h2>
+<p>La <strong>prestación contributiva por desempleo</strong> (paro) es una ayuda económica para trabajadores que han perdido su empleo de forma involuntaria. Está gestionada por el <a href="https://www.sepe.es" target="_blank">SEPE</a> y su cuantía depende de tu base de cotización y tiempo trabajado.</p>
+
+<div class="source-box">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>
+    <p><strong>Fuente:</strong> <a href="https://www.sepe.es/HomeSepe/Personas/Distribucion/Prestaciones/cuanto-cuando-702.html" target="_blank">SEPE - Cuantías y duración</a>.</p>
+</div>
+
+<h2>✅ Requisitos</h2>
+<ul>
+    <li>Haber cotizado al menos <strong>360 días</strong> en los últimos 6 años</li>
+    <li>Estar en situación legal de desempleo (despido, fin de contrato)</li>
+    <li>Estar inscrito como demandante de empleo</li>
+    <li>No haber cumplido la edad de jubilación</li>
+</ul>
+
+<h2>🧮 ¿Cómo se calcula?</h2>
+
+<h3>Cuantía</h3>
+<ul>
+    <li><strong>Primeros 6 meses:</strong> 70% de la base reguladora</li>
+    <li><strong>Desde el mes 7:</strong> 50% de la base reguladora</li>
+</ul>
+
+<h3>Topes según hijos a cargo (CRÍTICO)</h3>
+<table class="info-table">
+    <tr><th>Situación</th><th>Tope máximo</th><th>Tope mínimo</th></tr>
+    <tr><td>Sin hijos</td><td>1.050€</td><td>480€</td></tr>
+    <tr><td>1 hijo</td><td>1.200€</td><td>642€</td></tr>
+    <tr><td>2+ hijos</td><td>1.350€</td><td>642€</td></tr>
+</table>
+
+<h3>Duración</h3>
+<table class="info-table">
+    <tr><th>Días cotizados</th><th>Meses de paro</th></tr>
+    <tr><td>360 - 539</td><td>4 meses</td></tr>
+    <tr><td>540 - 719</td><td>6 meses</td></tr>
+    <tr><td>720 - 899</td><td>8 meses</td></tr>
+    <tr><td>900 - 1079</td><td>10 meses</td></tr>
+    <tr><td>1080 - 1259</td><td>12 meses</td></tr>
+    <tr><td>2160+</td><td>24 meses (máximo)</td></tr>
+</table>
+
+<div class="example-box">
+    <h4>📊 Ejemplo: Pedro</h4>
+    <p>Pedro cotizó 4 años (1.440 días), base reguladora de 80€/día, sin hijos.</p>
+    <div class="calc-line">Base mensual: 80€ × 30 = 2.400€</div>
+    <div class="calc-line">70% = 1.680€ → Tope sin hijos: 1.050€</div>
+    <div class="calc-line">Duración: 16 meses</div>
+    <p class="result-highlight">Paro: 1.050€/mes (primeros 6 meses)</p>
+</div>
+
+<h2>📋 Cómo solicitar el paro</h2>
+<ol>
+    <li>Inscríbete como demandante de empleo en tu oficina del SEPE</li>
+    <li>Solicita la prestación en los <strong>15 días hábiles</strong> siguientes al despido</li>
+    <li>Presenta: DNI, certificado de empresa, documento de despido</li>
+</ol>
+
+<div class="legal-sources">
+    <h3>📚 Más información</h3>
+    <div class="legal-sources-grid">
+        <a href="https://sede.sepe.gob.es/citaprevia/solicitudCitaPrevia.do" target="_blank" class="legal-source">Pedir cita SEPE</a>
+        <a href="https://www.sepe.es/HomeSepe/Personas/Distribucion/Prestaciones.html" target="_blank" class="legal-source">Todas las prestaciones</a>
+    </div>
+</div></article>
+    </div>
+    <div class="container"><div class="ad"></div></div>
+    <div class="container">
+        <section class="faq"><h2>❓ Preguntas frecuentes</h2><div class="faq-item"><button class="faq-q">¿Cuánto tarda en llegar el paro?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Normalmente entre 15-30 días desde la solicitud. El primer pago suele ser proporcional.</div></div><div class="faq-item"><button class="faq-q">¿Puedo trabajar mientras cobro el paro?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Si trabajas a tiempo parcial, puedes compatibilizar. Si es a tiempo completo, se suspende.</div></div><div class="faq-item"><button class="faq-q">¿Qué es el subsidio por desempleo?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Es una ayuda asistencial para cuando se acaba el paro contributivo. Cuantía fija del 80% del IPREM.</div></div></section>
+        <section class="related"><h2>📱 Calculadoras relacionadas</h2><div class="related-grid"><a href="/despido-improcedente" class="related-card"><h4>⚖️ Despido Improcedente</h4><p>Calcula tu indemnización</p></a><a href="/finiquito" class="related-card"><h4>💵 Finiquito</h4><p>Tu liquidación completa</p></a></div></section>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="/despido-improcedente">Despido Improcedente</a>
+                <a href="/finiquito">Finiquito</a>
+                <a href="/paro">Prestación Paro</a>
+                <a href="/sueldo-neto">Sueldo Neto</a>
+                <a href="/irpf">IRPF</a>
+                <a href="/cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="/guia-despido">Guía del Despido</a>
+                <a href="/guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="/guia-paro">Guía del Paro</a>
+                <a href="/sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/terminos">Términos</a>
+                <a href="/aviso-legal">Aviso Legal</a>
+                <a href="/cookies">Cookies</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+<script>
+document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
+const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n);
+document.getElementById('calc').onsubmit=function(e){
+    e.preventDefault();
+    const base=+document.getElementById('base').value;
+    const cotizados=+document.getElementById('cotizados').value;
+    const hijos=+document.getElementById('hijos').value;
+    
+    if(cotizados<360){alert('Necesitas mínimo 360 días cotizados');return}
+    
+    // Duración según días cotizados
+    const tabla=[[360,120],[540,180],[720,240],[900,300],[1080,360],[1260,420],[1440,480],[1620,540],[1800,600],[1980,660],[2160,720]];
+    let duracion=120;
+    for(const[dias,dur]of tabla){if(cotizados>=dias)duracion=dur}
+    
+    // Base mensual
+    const baseM=base*30;
+    
+    // Cuantía primeros 6 meses (70%)
+    const cuantia70=baseM*0.70;
+    // Cuantía desde mes 7 (50%)
+    const cuantia50=baseM*0.50;
+    
+    // IPREM 2026 (aproximado)
+    const iprem=600;
+    
+    // Topes según hijos (CRÍTICO)
+    let topeMax,topeMin;
+    if(hijos==0){topeMax=iprem*1.75;topeMin=iprem*0.80}
+    else if(hijos==1){topeMax=iprem*2;topeMin=iprem*1.07}
+    else{topeMax=iprem*2.25;topeMin=iprem*1.07}
+    
+    // Aplicar topes
+    let paro70=Math.max(topeMin,Math.min(cuantia70,topeMax));
+    let paro50=Math.max(topeMin,Math.min(cuantia50,topeMax));
+    
+    const mesesDuracion=duracion/30;
+    
+    document.getElementById('total').textContent=fmt(paro70)+'/mes';
+    document.getElementById('resultSub').textContent='Primeros 6 meses (70%). Luego '+fmt(paro50)+'/mes';
+    document.getElementById('details').innerHTML=
+        '<div class="result-item"><p class="result-item-label">Duración</p><p class="result-item-value">'+mesesDuracion+' meses</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Base mensual</p><p class="result-item-value">'+fmt(baseM)+'</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Tope máximo</p><p class="result-item-value">'+fmt(topeMax)+'</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Tope mínimo</p><p class="result-item-value">'+fmt(topeMin)+'</p></div>';
+    document.getElementById('fiscalContent').innerHTML=
+        '<div class="fiscal-row"><span>Meses 1-6 (70%)</span><span>'+fmt(paro70)+'/mes</span></div>'+
+        '<div class="fiscal-row"><span>Meses 7+ (50%)</span><span>'+fmt(paro50)+'/mes</span></div>'+
+        '<div class="fiscal-row"><span>Total estimado prestación</span><span>'+fmt(paro70*Math.min(6,mesesDuracion)+paro50*Math.max(0,mesesDuracion-6))+'</span></div>';
+    document.getElementById('result').classList.add('visible');
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent('Mi paro: '+fmt(paro70)+'/mes\nhttps://calculalotuyo.es/paro');
+};
+document.getElementById('reset').onclick=function(){document.getElementById('calc').reset();document.getElementById('result').classList.remove('visible')};
+</script>
+</body>
+</html>

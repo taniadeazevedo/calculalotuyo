@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calcula tu cuota de autónomos 2026 según ingresos reales. Incluye tarifa plana, cuota cero por CCAA y autónomo societario.">
+    <title>Calculadora Cuota Autónomos 2026 | CalculaLoTuyo 2026</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
+    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+        <nav class="nav">
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/despido-improcedente">⚖️ Despido Improcedente</a>
+                    <a href="/despido-objetivo">📋 Despido Objetivo</a>
+                    <a href="/ere">📊 ERE / Colectivo</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/finiquito">💵 Finiquito</a>
+                    <a href="/paro">📊 Prestación Paro</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/sueldo-neto">🏦 Sueldo Neto</a>
+                    <a href="/irpf">📑 IRPF</a>
+                    <a href="/horas-extra">⏰ Horas Extra</a>
+                    <a href="/pagas-extra">🎁 Pagas Extra</a>
+                    <a href="/vacaciones">🏖️ Vacaciones</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="/cuota-autonomos">💼 Cuota Mensual</a>
+                    <a href="/facturas">🧾 Facturas</a>
+                </div>
+            </div>
+            <a href="/" class="nav-cta">Todas</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a>
+            <a href="/despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a>
+            <a href="/ere" class="mobile-nav-link">📊 ERE / Colectivo</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/finiquito" class="mobile-nav-link">💵 Finiquito</a>
+            <a href="/paro" class="mobile-nav-link">📊 Prestación Paro</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a>
+            <a href="/irpf" class="mobile-nav-link">📑 IRPF</a>
+            <a href="/horas-extra" class="mobile-nav-link">⏰ Horas Extra</a>
+            <a href="/pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a>
+            <a href="/vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="/cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a>
+            <a href="/facturas" class="mobile-nav-link">🧾 Facturas</a>
+        </div>
+    </div>
+</nav>
+<main>
+    <section class="hero-mini">
+        <div class="container">
+            <div class="hero-badge">💼 Autónomos 2026</div>
+            <h1>¿Cuánto pagarás de cuota?<br>Nuevo sistema por ingresos reales</h1>
+            <p>Incluye tarifa plana, cuota cero por comunidad autónoma y autónomo societario.</p>
+        </div>
+    </section>
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-title"><div class="card-icon">📝</div>Introduce tus datos</div>
+                <form id="calc">
+                    <div class="form-grid">
+        <div class="form-group">
+            <label class="form-label">Rendimiento neto mensual (€)</label>
+            <input type="number" class="form-input" id="ingresos" placeholder="2000" required>
+            <span class="form-hint">Ingresos - gastos deducibles</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Comunidad Autónoma</label>
+            <select class="form-select" id="ccaa">
+                <option value="normal">Resto de España</option>
+                <option value="cuota0">Madrid / Andalucía / Murcia (Cuota Cero)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">¿Es tu primer año como autónomo?</label>
+            <select class="form-select" id="primerAno">
+                <option value="no">No</option>
+                <option value="si">Sí (Tarifa Plana 80€)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label">Tipo de autónomo</label>
+            <select class="form-select" id="tipo">
+                <option value="normal">Autónomo persona física (7% gastos)</option>
+                <option value="societario">Autónomo societario (3% gastos)</option>
+            </select>
+        </div>
+    </div>
+                    <div class="disclaimer-box">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                        <p><strong>Aviso:</strong> Cálculo orientativo basado en normativa vigente. <strong>No sustituye el asesoramiento profesional</strong>.</p>
+                    </div>
+                    <button type="submit" class="btn">Calcular ahora</button>
+                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                </form>
+                <div class="result" id="result">
+                    <div class="result-hero">
+                        <p class="result-label">Resultado estimado</p>
+                        <p class="result-value" id="total">0 €</p>
+                        <p class="result-sub" id="resultSub"></p>
+                    </div>
+                    <div class="result-grid" id="details"></div>
+                    <div class="fiscal-box" id="fiscalBox"><div class="fiscal-title">📊 Desglose</div><div id="fiscalContent"></div></div>
+                    <div class="result-actions">
+                        <button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button>
+                        <a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container"><div class="ad"></div></div>
+    <div class="container">
+        <article class="seo-section"><h2>📖 Sistema de cotización por ingresos reales</h2>
+<p>Desde 2023, los autónomos cotizan según sus <strong>ingresos reales</strong> con un sistema de 15 tramos. La cuota mensual varía entre 230€ y 590€ aproximadamente, dependiendo de tu rendimiento neto.</p>
+
+<div class="source-box">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <p><strong>Fuente:</strong> <a href="https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/CotizacionRecaudacionTrabajadores/36537" target="_blank">Seguridad Social - Bases de cotización autónomos</a>.</p>
+</div>
+
+<h2>💰 Tarifa Plana</h2>
+<p>Si es tu <strong>primer alta como autónomo</strong> (o no has estado de alta en los últimos 2 años), tienes derecho a la Tarifa Plana:</p>
+<ul>
+    <li><strong>Primer año:</strong> 80€/mes</li>
+    <li><strong>Segundo año:</strong> Cuota reducida si rendimientos bajos</li>
+</ul>
+
+<h2>🏛️ Cuota Cero por Comunidad Autónoma</h2>
+<p>Algunas comunidades bonifican el 100% de la cuota durante el primer año:</p>
+<ul>
+    <li><strong>Madrid:</strong> Cuota 0€ primer año</li>
+    <li><strong>Andalucía:</strong> Cuota 0€ primer año</li>
+    <li><strong>Murcia:</strong> Cuota 0€ primer año</li>
+    <li>Otras CCAA tienen bonificaciones parciales</li>
+</ul>
+
+<h2>🧮 Gastos de difícil justificación</h2>
+<p>Antes de calcular tu tramo, puedes deducir un porcentaje de gastos sin justificar:</p>
+<ul>
+    <li><strong>Autónomo persona física:</strong> 7% de gastos</li>
+    <li><strong>Autónomo societario:</strong> 3% de gastos</li>
+</ul>
+
+<table class="info-table">
+    <tr><th>Rendimiento neto</th><th>Cuota 2026</th></tr>
+    <tr><td>Hasta 670€</td><td>230€</td></tr>
+    <tr><td>670€ - 900€</td><td>260€</td></tr>
+    <tr><td>900€ - 1.166€</td><td>275€</td></tr>
+    <tr><td>1.166€ - 1.500€</td><td>291€-294€</td></tr>
+    <tr><td>1.500€ - 2.030€</td><td>310€-370€</td></tr>
+    <tr><td>2.030€ - 3.620€</td><td>390€-465€</td></tr>
+    <tr><td>Más de 4.720€</td><td>530€-590€</td></tr>
+</table>
+
+<div class="legal-sources">
+    <h3>📚 Más información</h3>
+    <div class="legal-sources-grid">
+        <a href="https://www.seg-social.es" target="_blank" class="legal-source">Seguridad Social</a>
+        <a href="https://sede.agenciatributaria.gob.es" target="_blank" class="legal-source">Agencia Tributaria</a>
+    </div>
+</div></article>
+    </div>
+
+    <!-- EJEMPLO PRÁCTICO -->
+    <section class="section">
+        <div class="container">
+            <article class="seo-section">
+                <h2>📖 El caso de Lucía: De diseñadora freelance a autónoma</h2>
+                <div class="example-box">
+                    <div class="example-header">
+                        <span class="example-icon">👩‍🎨</span>
+                        <div>
+                            <strong>Lucía, diseñadora gráfica en Sevilla</strong>
+                            <p>Nueva autónoma · Ingresos previstos: 1.800€/mes · Andalucía (Cuota Cero)</p>
+                        </div>
+                    </div>
+                    <div class="example-story">
+                        <p>Lucía llevaba tiempo haciendo trabajos freelance y decidió darse de alta como autónoma. Prevé facturar unos <strong>1.800€ netos/mes</strong> después de gastos. Es su primera vez como autónoma.</p>
+                    </div>
+                    <div class="example-calc">
+                        <h4>🧮 Cálculo de su cuota:</h4>
+                        <div class="calc-steps">
+                            <div class="calc-step">
+                                <span class="step-num">1</span>
+                                <div>
+                                    <strong>Rendimiento neto anual:</strong>
+                                    <p>1.800€ × 12 meses = <strong>21.600€/año</strong></p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">2</span>
+                                <div>
+                                    <strong>Tramo de cotización:</strong>
+                                    <p>1.800€/mes → Tramo 9: Base cotización ~1.700€</p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">3</span>
+                                <div>
+                                    <strong>Cuota normal (31,2%):</strong>
+                                    <p>1.700€ × 31,2% = <strong>~370€/mes</strong></p>
+                                </div>
+                            </div>
+                            <div class="calc-step">
+                                <span class="step-num">4</span>
+                                <div>
+                                    <strong>Pero... ¡es nueva autónoma!</strong>
+                                    <p>Tarifa Plana: <strong>80€/mes</strong> el primer año</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="example-result">
+                            <div class="example-result-row">
+                                <span>Cuota sin bonificación</span>
+                                <span class="amount">370 €/mes</span>
+                            </div>
+                            <div class="example-result-row">
+                                <span>Tarifa Plana (1er año)</span>
+                                <span class="amount" style="color:var(--success)">80 €/mes</span>
+                            </div>
+                            <div class="example-result-row total">
+                                <span>+ Cuota Cero Andalucía</span>
+                                <span class="amount" style="color:var(--success)">0 €/mes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="example-tip">
+                        <strong>💡 Consejo de Lucía:</strong> "Solicité la Tarifa Plana al darme de alta y además la Cuota Cero de Andalucía. El primer año no pago nada de SS. Eso sí, guardo dinero para cuando acabe el segundo año y tenga que pagar la cuota real según mis ingresos."
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+    <div class="container">
+        <section class="faq"><h2>❓ Preguntas frecuentes</h2><div class="faq-item"><button class="faq-q">¿Puedo cambiar de tramo durante el año?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Sí, puedes solicitar cambio de base hasta 6 veces al año si tus ingresos varían.</div></div><div class="faq-item"><button class="faq-q">¿Qué pasa si gano más de lo previsto?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">En la regularización anual, la Seguridad Social ajustará tu cuota según ingresos reales.</div></div><div class="faq-item"><button class="faq-q">¿El autónomo societario tiene cuota mínima mayor?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Sí, los autónomos societarios tienen una base mínima superior, aproximadamente 350€/mes.</div></div></section>
+        <section class="related"><h2>📱 Calculadoras relacionadas</h2><div class="related-grid"><a href="/facturas" class="related-card"><h4>🧾 Facturas</h4><p>Calcula IVA y retención de tus facturas</p></a><a href="/irpf" class="related-card"><h4>📑 IRPF</h4><p>Tu retención anual</p></a></div></section>
+    </div>
+</main>
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-mark">CL</div>CalculaLoTuyo</a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="/despido-improcedente">Despido Improcedente</a>
+                <a href="/finiquito">Finiquito</a>
+                <a href="/paro">Prestación Paro</a>
+                <a href="/sueldo-neto">Sueldo Neto</a>
+                <a href="/irpf">IRPF</a>
+                <a href="/cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="/guia-despido">Guía del Despido</a>
+                <a href="/guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="/guia-paro">Guía del Paro</a>
+                <a href="/sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/terminos">Términos</a>
+                <a href="/aviso-legal">Aviso Legal</a>
+                <a href="/cookies">Cookies</a>
+                <a href="/contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+<script>
+document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
+const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
+const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n);
+document.getElementById('calc').onsubmit=function(e){
+    e.preventDefault();
+    const ingresos=+document.getElementById('ingresos').value;
+    const ccaa=document.getElementById('ccaa').value;
+    const primerAno=document.getElementById('primerAno').value;
+    const tipo=document.getElementById('tipo').value;
+    
+    // Gastos difícil justificación
+    const gastos=tipo==='societario'?0.03:0.07;
+    const rendimiento=ingresos*(1-gastos);
+    
+    // Tramos 2026 (simplificado)
+    const tramos=[
+        [670,230],[900,260],[1166,275],[1300,291],[1500,294],[1700,310],
+        [1850,350],[2030,370],[2330,390],[2760,415],[3190,440],[3620,465],
+        [4050,490],[4720,530],[Infinity,590]
+    ];
+    
+    let cuota=230; // mínima
+    for(const[limite,c]of tramos){if(rendimiento<=limite){cuota=c;break}}
+    
+    // Tarifa plana primer año
+    if(primerAno==='si'){cuota=80}
+    
+    // Cuota cero CCAA (primer año)
+    if(ccaa==='cuota0'&&primerAno==='si'){cuota=0}
+    
+    // Autónomo societario tiene base mínima mayor
+    if(tipo==='societario'&&cuota<350)cuota=350;
+    
+    const anual=cuota*12;
+    
+    document.getElementById('total').textContent=fmt(cuota)+'/mes';
+    document.getElementById('resultSub').textContent='Cuota anual: '+fmt(anual);
+    document.getElementById('details').innerHTML=
+        '<div class="result-item"><p class="result-item-label">Rendimiento</p><p class="result-item-value">'+fmt(rendimiento)+'</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Gastos deducidos</p><p class="result-item-value">'+(gastos*100)+'%</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Tarifa plana</p><p class="result-item-value">'+(primerAno==='si'?'Sí':'No')+'</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Cuota Cero</p><p class="result-item-value">'+(ccaa==='cuota0'&&primerAno==='si'?'Sí':'No')+'</p></div>';
+    document.getElementById('fiscalContent').innerHTML=
+        '<div class="fiscal-row"><span>Ingresos declarados</span><span>'+fmt(ingresos)+'</span></div>'+
+        '<div class="fiscal-row"><span>Gastos difícil justificación</span><span>-'+fmt(ingresos*gastos)+'</span></div>'+
+        '<div class="fiscal-row"><span>Rendimiento neto</span><span>'+fmt(rendimiento)+'</span></div>'+
+        '<div class="fiscal-row highlight"><span>Cuota mensual</span><span>'+fmt(cuota)+'</span></div>';
+    document.getElementById('result').classList.add('visible');
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent('Mi cuota autónomos: '+fmt(cuota)+'/mes\nhttps://calculalotuyo.es/cuota-autonomos');
+};
+document.getElementById('reset').onclick=function(){document.getElementById('calc').reset();document.getElementById('result').classList.remove('visible')};
+</script>
+</body>
+</html>
