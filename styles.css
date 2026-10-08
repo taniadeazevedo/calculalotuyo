@@ -2178,7 +2178,7 @@ body {
     border-radius: 6px;
 }
 
-.tramo-row.header {
+.tramo-row.tramo-head {
     background: var(--accent);
     color: #fff;
     font-weight: 600;
