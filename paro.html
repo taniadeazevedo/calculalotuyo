@@ -266,7 +266,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="footer-copy">© 2026 CalculaLoTuyo.es · Hecho con ♥ en España</p>
+            <p class="footer-copy">© 2026 CalculaLoTuyo · Hecho con ♥ en España</p>
             <div class="footer-external">
                 <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
                 <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
@@ -330,7 +330,7 @@ document.getElementById('calc').onsubmit=function(e){
         '<div class="fiscal-row"><span>Meses 7+ (60%)</span><span>'+fmt(paro60)+'/mes</span></div>'+
         '<div class="fiscal-row"><span>Total estimado prestación</span><span>'+fmt(paro70*Math.min(6,mesesDuracion)+paro60*Math.max(0,mesesDuracion-6))+'</span></div>';
     document.getElementById('result').classList.add('visible');
-    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent('Mi paro: '+fmt(paro70)+'/mes\nhttps://calculalotuyo.es/paro');
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent('Mi paro: '+fmt(paro70)+'/mes\nhttps://taniadeazevedo.github.io/calculalotuyo/paro');
 };
 document.getElementById('reset').onclick=function(){document.getElementById('calc').reset();document.getElementById('result').classList.remove('visible')};
 </script>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://calculalotuyo.es/sitemap.xml
+Sitemap: https://taniadeazevedo.github.io/calculalotuyo/sitemap.xml
