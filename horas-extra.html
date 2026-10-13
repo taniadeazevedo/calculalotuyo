@@ -6,16 +6,63 @@
     <meta name="description" content="Calculadora horas extra 2026: calcula el pago de tus horas extraordinarias con recargo legal. Incluye horas nocturnas, festivos y límite anual de 80 horas.">
     <meta name="keywords" content="horas extra, calculadora horas extraordinarias, recargo horas extra, horas nocturnas, límite 80 horas">
     <title>Calculadora Horas Extra 2026 | Recargos y Límites | CalculaLoTuyo</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://taniadeazevedo.github.io/calculalotuyo/horas-extra">
+    <meta property="og:title" content="Calculadora Horas Extra 2026 | Recargos y Límites | CalculaLoTuyo">
+    <meta property="og:description" content="Calculadora horas extra 2026: calcula el pago de tus horas extraordinarias con recargo legal. Incluye horas nocturnas, festivos y límite anual de 80 horas.">
+    <meta property="og:site_name" content="CalculaLoTuyo">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://taniadeazevedo.github.io/calculalotuyo/horas-extra">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
-    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Es obligatorio hacer horas extra si me lo pide la empresa?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No, las horas extra son voluntarias salvo en dos casos: Fuerza mayor: Prevenir o reparar siniestros, daños urgentes (incendios, inundaciones...) Pactadas: Si están en tu contrato o convenio colectivo Negarte a hacer horas extra voluntarias no puede ser motivo de despido ni sanción ."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuál es el límite legal de horas extra?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El Art. 35.2 del Estatuto de los Trabajadores establece: Máximo 80 horas extra al año Las de fuerza mayor no computan para este límite Las compensadas con descanso en 4 meses tampoco computan Si superas el límite, la empresa puede ser sancionada con multas de 626€ a 6.250€."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Las horas extra tributan más que el salario normal?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No, tributan igual . Las horas extra son rendimiento del trabajo y se les aplica la misma retención IRPF que a tu salario. Sin embargo, hay diferencias en cotización: Horas extra normales: Cotizan al 23,6% (empresa) + 4,7% (trabajador) Horas extra fuerza mayor: Cotizan al 12% (empresa) + 2% (trabajador)"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Puedo elegir entre dinero o tiempo libre?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Depende de lo que diga tu convenio colectivo . Si no especifica nada: La empresa puede elegir compensar en tiempo de descanso equivalente Debe disfrutarse en los 4 meses siguientes Si no se compensa en ese plazo, debe pagarse Algunos convenios dan prioridad al trabajador para elegir."
+   }
+  }
+ ]
+}
+    </script>
 </head>
 <body>
 <header class="header">
@@ -54,12 +101,12 @@
                 <form id="calc">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label">Salario bruto mensual</label>
+                            <label class="form-label" for="salario">Salario bruto mensual</label>
                             <input type="number" class="form-input" id="salario" placeholder="1800" required>
                             <span class="form-hint">Sin incluir pagas extra</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Horas semanales de contrato</label>
+                            <label class="form-label" for="horasContrato">Horas semanales de contrato</label>
                             <select class="form-select" id="horasContrato">
                                 <option value="40">40 horas (jornada completa)</option>
                                 <option value="37.5">37,5 horas</option>
@@ -69,11 +116,11 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Horas extra realizadas</label>
+                            <label class="form-label" for="horasExtra">Horas extra realizadas</label>
                             <input type="number" class="form-input" id="horasExtra" placeholder="10" min="1" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Tipo de hora extra</label>
+                            <label class="form-label" for="tipoHora">Tipo de hora extra</label>
                             <select class="form-select" id="tipoHora">
                                 <option value="normal">Normal (día laborable)</option>
                                 <option value="nocturna">Nocturna (22:00-06:00)</option>
@@ -83,7 +130,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Recargo según convenio</label>
+                            <label class="form-label" for="recargo">Recargo según convenio</label>
                             <select class="form-select" id="recargo">
                                 <option value="0">Sin recargo (mínimo legal)</option>
                                 <option value="25">+25% (común en convenios)</option>
@@ -94,12 +141,12 @@
                             <span class="form-hint">Consulta tu convenio colectivo</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Horas extra ya hechas este año</label>
+                            <label class="form-label" for="horasAcumuladas">Horas extra ya hechas este año</label>
                             <input type="number" class="form-input" id="horasAcumuladas" value="0" min="0">
                             <span class="form-hint">Límite legal: 80 horas/año</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">¿Compensación en tiempo libre?</label>
+                            <label class="form-label" for="compensacion">¿Compensación en tiempo libre?</label>
                             <select class="form-select" id="compensacion">
                                 <option value="dinero">Pago en dinero</option>
                                 <option value="tiempo">Compensación en tiempo (4 meses)</option>
@@ -293,15 +340,8 @@
     </div>
 </footer>
 
+<script src="site.js"></script>
 <script>
-document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
-const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
-document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
-document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
-
-const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
-
 // Recargos por tipo
 const recargosBase={normal:0,nocturna:0.25,festivo:0.50,festivoNocturna:0.75,fuerza:0};
 
@@ -315,7 +355,7 @@ document.getElementById('calc').onsubmit=function(e){
     const horasAcumuladas=+document.getElementById('horasAcumuladas').value;
     const compensacion=document.getElementById('compensacion').value;
     
-    if(!salario||!horasExtra){alert('Revisa los datos');return}
+    if(!salario||!horasExtra){mostrarError('Revisa los datos');return}
     
     // Cálculo hora base
     const horasMes=horasContrato*4.33;

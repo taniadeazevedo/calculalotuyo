@@ -6,16 +6,63 @@
     <meta name="description" content="Calculadora pagas extra 2026: calcula tu paga de verano y navidad proporcional. Devengo mensual, prorrateo y qué hacer si te despiden antes de cobrarlas.">
     <meta name="keywords" content="pagas extra, paga de verano, paga de navidad, pagas prorrateadas, calculadora pagas 2026">
     <title>Calculadora Pagas Extra 2026 | Verano y Navidad | CalculaLoTuyo</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://taniadeazevedo.github.io/calculalotuyo/pagas-extra">
+    <meta property="og:title" content="Calculadora Pagas Extra 2026 | Verano y Navidad | CalculaLoTuyo">
+    <meta property="og:description" content="Calculadora pagas extra 2026: calcula tu paga de verano y navidad proporcional. Devengo mensual, prorrateo y qué hacer si te despiden antes de cobrarlas.">
+    <meta property="og:site_name" content="CalculaLoTuyo">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://taniadeazevedo.github.io/calculalotuyo/pagas-extra">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
-    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Cuándo se cobran las pagas extra?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Depende de cada convenio colectivo, pero lo más habitual es: Paga de verano: Entre el 15 y 30 de junio Paga de navidad: Entre el 15 y 24 de diciembre Algunos convenios permiten que la empresa pague antes de esas fechas o las prorratee mensualmente (12 pagas)."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué es el devengo semestral vs anual?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Son dos formas de calcular qué parte de la paga te corresponde: Semestral (lo habitual): Cada paga se devenga en 6 meses. Verano = enero-junio; Navidad = julio-diciembre. Anual: Cada paga se devenga durante todo el año (12 meses). Cada mes trabajado = 1/12 de cada paga. El semestral es más favorable si te vas a mitad de año (te llevas más paga proporcional)."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Las pagas extra incluyen complementos?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Depende de tu convenio colectivo: La mayoría incluyen solo salario base + antigüedad Algunos incluyen complementos fijos (plus convenio, plus transporte...) Generalmente NO incluyen complementos variables (comisiones, horas extra, nocturnidad...) Revisa tu nómina: la casilla \"Base paga extra\" te indica qué cantidad se usa."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Es mejor 12 pagas o 14 pagas?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El salario anual es el mismo , solo cambia cómo lo recibes: 14 pagas: Cobras menos cada mes pero tienes \"extras\" en junio y diciembre 12 pagas: Cobras más cada mes (las pagas van prorrateadas) Ventaja de 14: Si te despiden o vas al paro, la paga proporcional incrementa tu finiquito. Ventaja de 12: Más dinero disponible mes a mes."
+   }
+  }
+ ]
+}
+    </script>
 </head>
 <body>
 <header class="header">
@@ -54,20 +101,20 @@
                 <form id="calc">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label">Salario base mensual</label>
+                            <label class="form-label" for="salario">Salario base mensual</label>
                             <input type="number" class="form-input" id="salario" placeholder="1800" required>
                             <span class="form-hint">Sin complementos variables ni pagas</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Fecha de inicio en la empresa</label>
+                            <label class="form-label" for="fechaInicio">Fecha de inicio en la empresa</label>
                             <input type="date" class="form-input" id="fechaInicio" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Fecha de cálculo</label>
+                            <label class="form-label" for="fechaCalculo">Fecha de cálculo</label>
                             <input type="date" class="form-input" id="fechaCalculo" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Número de pagas anuales</label>
+                            <label class="form-label" for="numPagas">Número de pagas anuales</label>
                             <select class="form-select" id="numPagas">
                                 <option value="14" selected>14 pagas (verano + navidad)</option>
                                 <option value="15">15 pagas (3 extra)</option>
@@ -76,15 +123,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Periodo de devengo</label>
+                            <label class="form-label" for="devengo">Periodo de devengo</label>
                             <select class="form-select" id="devengo">
                                 <option value="semestral" selected>Semestral (lo habitual)</option>
                                 <option value="anual">Anual (todo el año)</option>
                             </select>
-                            <span class="form-hint">Semestral: ene-jun y jul-dic · Anual: ene-dic</span>
+                            <span class="form-hint">Semestral: ene-jun y jul-dic · Anual: verano jul-jun, navidad ene-dic</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">¿Ya has cobrado alguna paga este año?</label>
+                            <label class="form-label" for="pagasCobradas">¿Ya has cobrado alguna paga este año?</label>
                             <select class="form-select" id="pagasCobradas">
                                 <option value="0">Ninguna</option>
                                 <option value="1">Sí, la de verano (junio)</option>
@@ -276,15 +323,8 @@
     </div>
 </footer>
 
+<script src="site.js"></script>
 <script>
-document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
-const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
-document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
-document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
-
-const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
-
 document.getElementById('fechaCalculo').value=new Date().toISOString().split('T')[0];
 
 document.getElementById('calc').onsubmit=function(e){
@@ -296,54 +336,38 @@ document.getElementById('calc').onsubmit=function(e){
     const devengo=document.getElementById('devengo').value;
     const pagasCobradas=+document.getElementById('pagasCobradas').value;
     
-    if(!salario||fechaInicio>=fechaCalculo){alert('Revisa los datos');return}
+    if(!salario||fechaInicio>=fechaCalculo){mostrarError('Revisa los datos');return}
     
-    const mesActual=fechaCalculo.getMonth(); // 0-11
-    const diaActual=fechaCalculo.getDate();
-    const añoCalculo=fechaCalculo.getFullYear();
-    
-    let pagaVerano=0,pagaNavidad=0;
-    const devengoPorMes=salario/6; // Para semestral
-    
-    if(numPagas>=14){
-        if(devengo==='semestral'){
-            // Paga verano (ene-jun)
-            if(mesActual<6){ // Antes de julio
-                const mesesVerano=mesActual+(diaActual/30);
-                // Si empezó este año, ajustar
-                if(fechaInicio.getFullYear()===añoCalculo&&fechaInicio.getMonth()<6){
-                    const mesesDesdeInicio=mesActual-fechaInicio.getMonth()+(diaActual-fechaInicio.getDate())/30;
-                    pagaVerano=Math.max(0,mesesDesdeInicio)*devengoPorMes;
-                }else{
-                    pagaVerano=mesesVerano*devengoPorMes;
-                }
-            }else if(pagasCobradas<1){
-                pagaVerano=salario; // Paga completa si no la ha cobrado
-            }
-            
-            // Paga navidad (jul-dic)
-            if(mesActual>=6){ // Julio o después
-                const mesesNavidad=(mesActual-6)+(diaActual/30);
-                // Si empezó después de julio, ajustar
-                if(fechaInicio.getFullYear()===añoCalculo&&fechaInicio.getMonth()>=6){
-                    const mesesDesdeInicio=(mesActual-fechaInicio.getMonth())+(diaActual-fechaInicio.getDate())/30;
-                    pagaNavidad=Math.max(0,mesesDesdeInicio)*devengoPorMes;
-                }else{
-                    pagaNavidad=mesesNavidad*devengoPorMes;
-                }
-            }
-        }else{
-            // Devengo anual: cada paga = 12 meses
-            const mesesAno=mesActual+(diaActual/30);
-            const devMensualAnual=salario/12;
-            if(pagasCobradas<1)pagaVerano=mesesAno*devMensualAnual;
-            if(pagasCobradas<2)pagaNavidad=mesesAno*devMensualAnual;
-        }
+    const DIA=864e5;                                       // milisegundos de un día
+    const anio=fechaCalculo.getUTCFullYear();
+    const fecha=(a,m,d)=>new Date(Date.UTC(a,m,d));
+    // Parte de una paga ya generada: días trabajados dentro de su periodo de devengo / días del periodo
+    function devengado(ini,fin){
+        const desde=fechaInicio>ini?fechaInicio:ini;      // si entró a mitad de periodo, cuenta desde su alta
+        const hasta=fechaCalculo<fin?fechaCalculo:fin;    // si el periodo ya acabó, cuenta entero
+        if(hasta<desde)return 0;
+        return salario*((hasta-desde)/DIA+1)/((fin-ini)/DIA+1);
     }
-    
-    // Ajustar si ya cobró pagas
-    if(pagasCobradas>=1)pagaVerano=0;
-    if(pagasCobradas>=2)pagaNavidad=0;
+    let pagaVerano=0,pagaNavidad=0;
+    if(numPagas>=14){
+        const antesDeJulio=fechaCalculo.getUTCMonth()<6;
+        if(devengo==='semestral'){
+            // Verano: 1 ene - 30 jun · Navidad: 1 jul - 31 dic
+            if(antesDeJulio||pagasCobradas<1)pagaVerano=devengado(fecha(anio,0,1),fecha(anio,5,30));
+            pagaNavidad=devengado(fecha(anio,6,1),fecha(anio,11,31));
+        }else{
+            // Anual. Verano: 1 jul (año anterior) - 30 jun · Navidad: 1 ene - 31 dic
+            if(antesDeJulio){
+                pagaVerano=devengado(fecha(anio-1,6,1),fecha(anio,5,30));
+            }else{
+                pagaVerano=devengado(fecha(anio,6,1),fecha(anio+1,5,30));                       // ya corre la del año siguiente
+                if(pagasCobradas<1)pagaVerano+=devengado(fecha(anio-1,6,1),fecha(anio,5,30));   // más la de junio sin cobrar
+            }
+            pagaNavidad=devengado(fecha(anio,0,1),fecha(anio,11,31));
+        }
+        if(antesDeJulio&&pagasCobradas>=1)pagaVerano=0;   // indica que ya la ha cobrado
+        if(pagasCobradas>=2)pagaNavidad=0;
+    }
     
     const totalDevengado=pagaVerano+pagaNavidad;
     
@@ -353,6 +377,7 @@ document.getElementById('calc').onsubmit=function(e){
     document.getElementById('pagaNavidad').textContent=fmtDec(pagaNavidad);
     document.getElementById('totalDevengado').textContent=fmtDec(totalDevengado);
     
+    const devengoPorMes=salario/(devengo==='semestral'?6:12); // lo que se genera de cada paga al mes
     const mesesPV=pagaVerano>0?Math.round(pagaVerano/devengoPorMes*10)/10:0;
     const mesesPN=pagaNavidad>0?Math.round(pagaNavidad/devengoPorMes*10)/10:0;
     document.getElementById('resultSub').textContent=(mesesPV?mesesPV+' meses verano':'')+(mesesPV&&mesesPN?' + ':'')+(mesesPN?mesesPN+' meses navidad':'');

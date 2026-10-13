@@ -6,16 +6,63 @@
     <meta name="description" content="Calculadora ERE 2026: simula tu indemnización en despido colectivo. Días por año negociados, topes y fiscalidad. Basado en Art. 51 Estatuto Trabajadores.">
     <meta name="keywords" content="ERE, despido colectivo, indemnización ERE, calculadora ERE, expediente regulación empleo 2026">
     <title>Calculadora ERE 2026 | Despido Colectivo | CalculaLoTuyo</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://taniadeazevedo.github.io/calculalotuyo/ere">
+    <meta property="og:title" content="Calculadora ERE 2026 | Despido Colectivo | CalculaLoTuyo">
+    <meta property="og:description" content="Calculadora ERE 2026: simula tu indemnización en despido colectivo. Días por año negociados, topes y fiscalidad. Basado en Art. 51 Estatuto Trabajadores.">
+    <meta property="og:site_name" content="CalculaLoTuyo">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://taniadeazevedo.github.io/calculalotuyo/ere">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
-    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Qué es un ERE y cuándo se aplica?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Un Expediente de Regulación de Empleo (ERE) es un procedimiento legal para despidos colectivos. Se aplica cuando la empresa despide en 90 días a: 10+ trabajadores (empresas 300 trabajadores). Requiere periodo de consultas con sindicatos y comunicación a la autoridad laboral."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuántos días por año me corresponden en un ERE?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El mínimo legal es 20 días/año (como despido objetivo). Sin embargo, en la negociación sindical suelen conseguirse mejoras: lo habitual es entre 25 y 45 días/año, dependiendo de la situación económica de la empresa y la fuerza negociadora de los sindicatos."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿La indemnización del ERE tributa?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Está exenta de IRPF hasta 180.000€ (Art. 7.e LIRPF). Solo tributa el exceso sobre esa cantidad. En la mayoría de casos, la indemnización completa está exenta."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué es el convenio especial con la Seguridad Social?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Es un acuerdo por el que la empresa paga tus cotizaciones a la SS hasta que te jubiles o encuentres empleo. Es muy valioso para mayores de 55 años , ya que garantiza que no pierdes años de cotización ni se reduce tu pensión futura."
+   }
+  }
+ ]
+}
+    </script>
 </head>
 <body>
 <header class="header">
@@ -54,19 +101,19 @@
                 <form id="calc">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label">Salario bruto anual (con pagas)</label>
+                            <label class="form-label" for="salario">Salario bruto anual (con pagas)</label>
                             <input type="number" class="form-input" id="salario" placeholder="32000" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Fecha inicio contrato</label>
+                            <label class="form-label" for="inicio">Fecha inicio contrato</label>
                             <input type="date" class="form-input" id="inicio" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Fecha efectiva del ERE</label>
+                            <label class="form-label" for="ere">Fecha efectiva del ERE</label>
                             <input type="date" class="form-input" id="ere" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Días/año pactados en el ERE</label>
+                            <label class="form-label" for="diasAno">Días/año pactados en el ERE</label>
                             <select class="form-select" id="diasAno">
                                 <option value="20">20 días (mínimo legal)</option>
                                 <option value="25">25 días</option>
@@ -79,7 +126,7 @@
                             <span class="form-hint">Consulta el acuerdo sindical de tu empresa</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">¿Hay tope de mensualidades?</label>
+                            <label class="form-label" for="topeMeses">¿Hay tope de mensualidades?</label>
                             <select class="form-select" id="topeMeses">
                                 <option value="0">Sin tope pactado</option>
                                 <option value="12">12 mensualidades</option>
@@ -89,7 +136,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Edad del trabajador</label>
+                            <label class="form-label" for="edad">Edad del trabajador</label>
                             <select class="form-select" id="edad">
                                 <option value="normal">Menor de 50 años</option>
                                 <option value="50">50-54 años</option>
@@ -98,7 +145,7 @@
                             <span class="form-hint">Mayores de 55 pueden tener mejoras</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">¿Incluye convenio especial SS?</label>
+                            <label class="form-label" for="convenioSS">¿Incluye convenio especial SS?</label>
                             <select class="form-select" id="convenioSS">
                                 <option value="no">No</option>
                                 <option value="si">Sí (la empresa paga SS hasta jubilación)</option>
@@ -248,14 +295,10 @@
     </div>
 </footer>
 
+<script src="site.js"></script>
+<script src="datos-2026.js"></script>
+<script src="despido.js"></script>
 <script>
-document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
-const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
-document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
-document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
-
-const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
 document.getElementById('ere').value=new Date().toISOString().split('T')[0];
 
 document.getElementById('calc').onsubmit=function(e){
@@ -266,10 +309,11 @@ document.getElementById('calc').onsubmit=function(e){
     const diasAno=+document.getElementById('diasAno').value;
     const topeMeses=+document.getElementById('topeMeses').value;
     
-    if(!sal||ini>=ere){alert('Revisa los datos');return}
+    if(!sal||ini>=ere){mostrarError('Revisa los datos');return}
     
-    const dias=Math.ceil((ere-ini)/864e5);
-    const anos=dias/365;
+    // Antigüedad prorrateada por meses, igual que en el resto de despidos (despido.js)
+    const meses=mesesProrrateados(ini,diaSiguiente(ere));
+    const anos=meses/12;
     const diario=sal/365;
     const mensual=sal/12;
     
@@ -280,19 +324,20 @@ document.getElementById('calc').onsubmit=function(e){
         if(indem>tope){indem=tope;topado=true}
     }
     
-    const exencion=180000;
-    const exento=Math.min(indem,exencion);
-    const tributa=Math.max(0,indem-exencion);
+    // Exento de IRPF: como máximo lo que correspondería por despido improcedente, con tope de 180.000 €
+    const legal=indemnizacionImprocedente(sal,ini,ere).importe;
+    const exento=Math.min(indem,legal,DATOS.irpf.exencionDespido);
+    const tributa=indem-exento;
     
     document.getElementById('total').textContent=fmt(indem);
     document.getElementById('bruto').textContent=fmt(indem);
     document.getElementById('exento').textContent=fmt(exento);
-    document.getElementById('resultSub').textContent=diasAno+' días/año · '+Math.floor(anos)+'a '+Math.floor((dias%365)/30)+'m'+(topado?' · Topado':'');
+    document.getElementById('resultSub').textContent=diasAno+' días/año · '+Math.floor(anos)+'a '+(meses%12)+'m'+(topado?' · Topado':'');
     
     document.getElementById('tributaRow').style.display=tributa>0?'flex':'none';
     if(tributa>0)document.getElementById('tributa').textContent=fmt(tributa);
     
-    document.getElementById('details').innerHTML=`<div class="result-item"><p class="result-item-label">Salario diario</p><p class="result-item-value">${fmtDec(diario)}</p></div><div class="result-item"><p class="result-item-label">Antigüedad</p><p class="result-item-value">${Math.floor(anos)}a ${Math.floor((dias%365)/30)}m</p></div><div class="result-item"><p class="result-item-label">Días totales</p><p class="result-item-value">${Math.round(diasAno*anos)} días</p></div>`;
+    document.getElementById('details').innerHTML=`<div class="result-item"><p class="result-item-label">Salario diario</p><p class="result-item-value">${fmtDec(diario)}</p></div><div class="result-item"><p class="result-item-label">Antigüedad</p><p class="result-item-value">${Math.floor(anos)}a ${meses%12}m</p></div><div class="result-item"><p class="result-item-label">Días totales</p><p class="result-item-value">${Math.round(diasAno*anos)} días</p></div>`;
     
     let fiscalHTML=`<div class="fiscal-row"><span>${diasAno} días × ${fmtDec(anos)} años × ${fmtDec(diario)}</span><span>${fmt(indem)}</span></div>`;
     if(topado)fiscalHTML+=`<div class="fiscal-row warning"><span>⚠️ Topado a ${topeMeses} mensualidades</span><span>${fmt(mensual*topeMeses)}</span></div>`;

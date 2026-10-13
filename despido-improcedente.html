@@ -5,15 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Calcula tu indemnización por despido improcedente 2026. 33 días/año, máximo 24 mensualidades. Incluye fiscalidad y tramo pre-2012.">
     <title>Calculadora Despido Improcedente | CalculaLoTuyo 2026</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://taniadeazevedo.github.io/calculalotuyo/despido-improcedente">
+    <meta property="og:title" content="Calculadora Despido Improcedente | CalculaLoTuyo 2026">
+    <meta property="og:description" content="Calcula tu indemnización por despido improcedente 2026. 33 días/año, máximo 24 mensualidades. Incluye fiscalidad y tramo pre-2012.">
+    <meta property="og:site_name" content="CalculaLoTuyo">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://taniadeazevedo.github.io/calculalotuyo/despido-improcedente">
+    <meta property="og:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
-    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Diferencia entre despido improcedente y nulo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "El nulo obliga a readmisión con salarios de tramitación. El improcedente permite elegir entre readmisión o indemnización."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Tengo derecho a paro?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí, siempre que hayas cotizado al menos 360 días en los últimos 6 años."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Puedo negociar más?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí, la indemnización legal es el mínimo. Puedes negociar más en conciliación."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Finiquito e indemnización son lo mismo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. El finiquito es la liquidación (salario, vacaciones, pagas). La indemnización es compensación adicional por el despido."
+   }
+  }
+ ]
+}
+    </script>
 </head>
 <body>
 <header class="header">
@@ -94,7 +142,7 @@
 <main>
     <section class="hero-mini">
         <div class="container">
-            <div class="hero-badge">⚖️ Actualizado 2026</div>
+            <div class="hero-badge">⚖️ Actualizado octubre 2026</div>
             <h1>¿Te han despedido?<br>Calcula tu indemnización exacta</h1>
             <p>Asegúrate de que no te pagan de menos. Incluye desglose fiscal y salarios de tramitación.</p>
         </div>
@@ -106,20 +154,20 @@
                 <form id="calc">
                     <div class="form-grid">
         <div class="form-group">
-            <label class="form-label">Salario bruto anual (con pagas)</label>
+            <label class="form-label" for="salario">Salario bruto anual (con pagas)</label>
             <input type="number" class="form-input" id="salario" placeholder="28000" required>
             <span class="form-hint">Incluye pagas extra prorrateadas</span>
         </div>
         <div class="form-group">
-            <label class="form-label">Fecha inicio contrato</label>
+            <label class="form-label" for="inicio">Fecha inicio contrato</label>
             <input type="date" class="form-input" id="inicio" required>
         </div>
         <div class="form-group">
-            <label class="form-label">Fecha despido</label>
+            <label class="form-label" for="despido">Fecha despido</label>
             <input type="date" class="form-input" id="despido" required>
         </div>
         <div class="form-group">
-            <label class="form-label">Tipo de contrato</label>
+            <label class="form-label" for="tipo">Tipo de contrato</label>
             <select class="form-select" id="tipo">
                 <option value="post">Desde 12/02/2012 (33 días/año)</option>
                 <option value="pre">Anterior 12/02/2012 (45+33 días)</option>
@@ -259,20 +307,12 @@
         </div>
     </div>
 </footer>
+<script src="site.js"></script>
+<script src="datos-2026.js"></script>
+<script src="despido.js"></script>
 <script>
-document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
-const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n);
 document.getElementById('despido').value=new Date().toISOString().split('T')[0];
-// Meses entre dos fechas; la fracción de mes cuenta como mes completo (art. 56 ET)
-function mesesProrrateados(desde,hasta){
-    let m=(hasta.getUTCFullYear()-desde.getUTCFullYear())*12+hasta.getUTCMonth()-desde.getUTCMonth();
-    if(hasta.getUTCDate()<desde.getUTCDate())m--;              // el último mes no está completo
-    const ref=new Date(desde);ref.setUTCMonth(ref.getUTCMonth()+m);
-    if(hasta>ref)m++;                                          // sobran días: se redondea al alza
-    return Math.max(0,m);
-}
-const corte=new Date('2012-02-12');                            // entrada en vigor de la reforma laboral
+const corte=CORTE_2012;                                    // 12/02/2012 (definido en despido.js)
 // El tipo de contrato se deduce de la fecha de inicio
 document.getElementById('inicio').addEventListener('change',function(){
     if(this.value)document.getElementById('tipo').value=new Date(this.value)<corte?'pre':'post';
@@ -282,38 +322,22 @@ document.getElementById('calc').onsubmit=function(e){
     const sal=+document.getElementById('salario').value;
     const ini=new Date(document.getElementById('inicio').value);
     const des=new Date(document.getElementById('despido').value);
-    if(!sal||isNaN(ini)||isNaN(des)||ini>=des){alert('Revisa los datos');return}
-    const pre=ini<corte;
-    const fin=new Date(des.getTime()+864e5);                   // el día del despido también cuenta
-    const diario=sal/365;
-    // Días de salario generados en cada tramo
-    const mesesPre=pre?mesesProrrateados(ini,corte):0;
-    const mesesPost=mesesProrrateados(pre?corte:ini,fin);
-    const diasPre=mesesPre*45/12;                              // 45 días por año hasta el 11/02/2012
-    const diasPost=mesesPost*33/12;                            // 33 días por año desde el 12/02/2012
-    const tramoPre=diario*diasPre,tramoPost=diario*diasPost;
-    // Topes: 720 días de salario; si el tramo anterior a 2012 ya los supera, ese importe (máx. 42 mensualidades)
-    let diasIndem,topeApl='';
-    if(pre&&diasPre>720){
-        diasIndem=Math.min(diasPre,1260);
-        topeApl=diasPre>1260?'42 mens.':'Tramo pre-2012';
-    }else{
-        diasIndem=diasPre+diasPost;
-        if(diasIndem>720){diasIndem=720;topeApl='720 días'}
-    }
-    const indem=diario*diasIndem;
-    const mesesTot=mesesPre+mesesPost;
+    if(!sal||isNaN(ini)||isNaN(des)||ini>=des){mostrarError('Revisa los datos');return}
+    // El cálculo legal (tramos, prorrateo por meses y topes) está en despido.js
+    const r=indemnizacionImprocedente(sal,ini,des);
+    const pre=r.pre,indem=r.importe,topeApl=r.tope,mesesTot=r.meses;
     const anos=Math.floor(mesesTot/12);const meses=mesesTot%12;
-    const exento=Math.min(180000,indem);const tributa=Math.max(0,indem-180000);
+    const exencion=DATOS.irpf.exencionDespido;
+    const exento=Math.min(exencion,indem);const tributa=Math.max(0,indem-exencion);
     document.getElementById('total').textContent=fmt(indem);
     document.getElementById('resultSub').textContent=tributa>0?'Exceso tributa: '+fmt(tributa):'Exenta de IRPF';
     document.getElementById('details').innerHTML=
-        '<div class="result-item"><p class="result-item-label">Salario diario</p><p class="result-item-value">'+fmtDec(diario)+'</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Salario diario</p><p class="result-item-value">'+fmtDec(r.diario)+'</p></div>'+
         '<div class="result-item"><p class="result-item-label">Antigüedad</p><p class="result-item-value">'+anos+'a '+meses+'m</p></div>'+
         '<div class="result-item"><p class="result-item-label">Días/año</p><p class="result-item-value">'+(pre?'45+33':'33')+'</p></div>'+
         '<div class="result-item"><p class="result-item-label">Tope</p><p class="result-item-value">'+(topeApl||'No')+'</p></div>';
     let fc='<div class="fiscal-row"><span>Indemnización bruta</span><span>'+fmt(indem)+'</span></div>';
-    if(pre)fc+='<div class="fiscal-row"><span>└ Tramo pre-2012 ('+mesesPre+' meses)</span><span>'+fmt(tramoPre)+'</span></div><div class="fiscal-row"><span>└ Tramo post-2012 ('+mesesPost+' meses)</span><span>'+fmt(tramoPost)+'</span></div>';
+    if(pre)fc+='<div class="fiscal-row"><span>└ Tramo pre-2012 ('+r.mesesPre+' meses)</span><span>'+fmt(r.tramoPre)+'</span></div><div class="fiscal-row"><span>└ Tramo post-2012 ('+r.mesesPost+' meses)</span><span>'+fmt(r.tramoPost)+'</span></div>';
     if(topeApl)fc+='<div class="fiscal-row"><span>Tope legal aplicado</span><span>'+topeApl+'</span></div>';
     fc+='<div class="fiscal-row"><span>Exento IRPF</span><span>'+fmt(exento)+'</span></div>';
     if(tributa>0)fc+='<div class="fiscal-row"><span>Tributa</span><span style="color:var(--warning)">'+fmt(tributa)+'</span></div>';

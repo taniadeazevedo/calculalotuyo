@@ -14,19 +14,19 @@
     <meta property="og:site_name" content="CalculaLoTuyo">
     <meta property="og:locale" content="es_ES">
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Calculadora Laboral 2026 | Estatuto de los Trabajadores | CalculaLoTuyo">
     <meta name="twitter:description" content="Calculadora Laboral 2026 basada en el Estatuto de los Trabajadores. Calcula despido, finiquito, paro, IRPF y más. 100% gratuito, sin registro.">
+    <meta property="og:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://taniadeazevedo.github.io/calculalotuyo/">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
-    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -36,12 +36,7 @@
         "name": "CalculaLoTuyo",
         "url": "https://taniadeazevedo.github.io/calculalotuyo/",
         "description": "Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026",
-        "inLanguage": "es",
-        "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://taniadeazevedo.github.io/calculalotuyo/?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-        }
+        "inLanguage": "es"
     }
     </script>
 </head>
@@ -132,7 +127,7 @@
     <!-- HERO SECTION - Diseño limpio y directo -->
     <section class="hero-clean">
         <div class="container">
-            <span class="hero-update">Actualizado 2026</span>
+            <span class="hero-update">Actualizado en octubre de 2026</span>
             <h1>Calculadora Laboral 2026<br><span class="hero-accent">según el Estatuto de los Trabajadores</span></h1>
             <p class="hero-desc">Calcula tu indemnización por despido, finiquito, prestación por desempleo, IRPF y más. Algoritmos basados en la normativa vigente del BOE.</p>
             <a href="#calculadoras" class="btn-hero">
@@ -404,8 +399,6 @@
     </div>
 </footer>
 
-<script>
-document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');if(menuBtn&&mobileNav){menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''})}document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open')})});
-</script>
+<script src="site.js"></script>
 </body>
 </html>

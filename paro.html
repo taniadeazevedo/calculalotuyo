@@ -5,15 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Calcula tu prestación por desempleo 2026. Cuánto cobrarás de paro y durante cuánto tiempo según cotización e hijos.">
     <title>Calculadora Prestación por Desempleo | CalculaLoTuyo 2026</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://taniadeazevedo.github.io/calculalotuyo/paro">
+    <meta property="og:title" content="Calculadora Prestación por Desempleo | CalculaLoTuyo 2026">
+    <meta property="og:description" content="Calcula tu prestación por desempleo 2026. Cuánto cobrarás de paro y durante cuánto tiempo según cotización e hijos.">
+    <meta property="og:site_name" content="CalculaLoTuyo">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://taniadeazevedo.github.io/calculalotuyo/paro">
+    <meta property="og:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
-    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Cuánto tarda en llegar el paro?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Normalmente entre 15-30 días desde la solicitud. El primer pago suele ser proporcional."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Puedo trabajar mientras cobro el paro?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Si trabajas a tiempo parcial, puedes compatibilizar. Si es a tiempo completo, se suspende."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué es el subsidio por desempleo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Es una ayuda asistencial para cuando se acaba el paro contributivo. Cuantía fija del 80% del IPREM."
+   }
+  }
+ ]
+}
+    </script>
 </head>
 <body>
 <header class="header">
@@ -106,17 +146,17 @@
                 <form id="calc">
                     <div class="form-grid">
         <div class="form-group">
-            <label class="form-label">Base reguladora diaria (€)</label>
+            <label class="form-label" for="base">Base reguladora diaria (€)</label>
             <input type="number" class="form-input" id="base" placeholder="70" step="0.01" required>
             <span class="form-hint">Suma bases cotización últimos 180 días ÷ 180</span>
         </div>
         <div class="form-group">
-            <label class="form-label">Días cotizados (últimos 6 años)</label>
+            <label class="form-label" for="cotizados">Días cotizados (últimos 6 años)</label>
             <input type="number" class="form-input" id="cotizados" placeholder="720" required>
             <span class="form-hint">Mínimo 360 días para tener derecho</span>
         </div>
         <div class="form-group">
-            <label class="form-label">Hijos a cargo</label>
+            <label class="form-label" for="hijos">Hijos a cargo</label>
             <select class="form-select" id="hijos">
                 <option value="0">Sin hijos a cargo</option>
                 <option value="1">1 hijo a cargo</option>
@@ -125,7 +165,7 @@
             <span class="form-hint">Afecta a los topes máximo y mínimo</span>
         </div>
         <div class="form-group">
-            <label class="form-label">Tipo de desempleo</label>
+            <label class="form-label" for="tipo">Tipo de desempleo</label>
             <select class="form-select" id="tipo">
                 <option value="total">Total</option>
                 <option value="parcial">Parcial (reducción jornada)</option>
@@ -278,39 +318,36 @@
         </div>
     </div>
 </footer>
+<script src="site.js"></script>
+<script src="datos-2026.js"></script>
 <script>
-document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
-const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n);
 document.getElementById('calc').onsubmit=function(e){
     e.preventDefault();
     const base=+document.getElementById('base').value;
     const cotizados=+document.getElementById('cotizados').value;
     const hijos=+document.getElementById('hijos').value;
     
-    if(cotizados<360){alert('Necesitas mínimo 360 días cotizados');return}
+    if(cotizados<360){mostrarError('Necesitas mínimo 360 días cotizados');return}
     
     // Duración según días cotizados
-    const tabla=[[360,120],[540,180],[720,240],[900,300],[1080,360],[1260,420],[1440,480],[1620,540],[1800,600],[1980,660],[2160,720]];
+    const P=DATOS.paro;                                   // cifras en datos-2026.js
     let duracion=120;
-    for(const[dias,dur]of tabla){if(cotizados>=dias)duracion=dur}
+    for(const[dias,dur]of P.duracion){if(cotizados>=dias)duracion=dur}
     
     // Base mensual
     const baseM=base*30;
     
     // Cuantía primeros 6 meses (70%)
-    const cuantia70=baseM*0.70;
+    const cuantia70=baseM*P.porcentajeInicial;
     // Cuantía desde el día 181 (60 %)
-    const cuantia60=baseM*0.60;
+    const cuantia60=baseM*P.porcentajeDespues;
     
     // IPREM 2026 (600 €/mes) incrementado en 1/6: es la referencia de los topes
-    const iprem=600*7/6;
+    const iprem=DATOS.iprem*7/6;
     
     // Topes según hijos (CRÍTICO)
-    let topeMax,topeMin;
-    if(hijos==0){topeMax=iprem*1.75;topeMin=iprem*0.80}
-    else if(hijos==1){topeMax=iprem*2;topeMin=iprem*1.07}
-    else{topeMax=iprem*2.25;topeMin=iprem*1.07}
+    const col=Math.min(hijos,2);                          // columna de la tabla: 0, 1 o 2+ hijos
+    const topeMax=iprem*P.topeMaximo[col],topeMin=iprem*P.topeMinimo[col];
     
     // Aplicar topes
     let paro70=Math.max(topeMin,Math.min(cuantia70,topeMax));

@@ -6,16 +6,63 @@
     <meta name="description" content="Calculadora despido objetivo 2026: 20 días por año trabajado, máximo 12 mensualidades. Incluye preaviso de 15 días, fiscalidad IRPF y exención hasta 180.000€.">
     <meta name="keywords" content="despido objetivo, indemnización 20 días, causas económicas, preaviso 15 días, calculadora despido 2026">
     <title>Calculadora Despido Objetivo 2026 | 20 días/año | CalculaLoTuyo</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://taniadeazevedo.github.io/calculalotuyo/despido-objetivo">
+    <meta property="og:title" content="Calculadora Despido Objetivo 2026 | 20 días/año | CalculaLoTuyo">
+    <meta property="og:description" content="Calculadora despido objetivo 2026: 20 días por año trabajado, máximo 12 mensualidades. Incluye preaviso de 15 días, fiscalidad IRPF y exención hasta 180.000€.">
+    <meta property="og:site_name" content="CalculaLoTuyo">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://taniadeazevedo.github.io/calculalotuyo/despido-objetivo">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
-    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Qué diferencia hay entre despido objetivo e improcedente?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "La diferencia principal está en la justificación y la indemnización : Despido objetivo: La empresa tiene una causa legal (económica, técnica, organizativa o de producción) y paga 20 días por año con máximo de 12 mensualidades. Despido improcedente: No hay causa justificada o el procedimiento es incorrecto. La indemnización sube a 33 días por año con máximo de 24 mensualidades. Si crees que tu despido objetivo no está bien justificado, tienes 20 días hábiles para impugnarlo ante el Juzgado de lo Social."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿La indemnización por despido objetivo tributa en IRPF?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "La indemnización por despido objetivo está exenta de IRPF hasta 180.000€ (Art. 7.e LIRPF). Como la inmensa mayoría de indemnizaciones no llegan a esa cifra, en la práctica no pagarás impuestos . Sin embargo, hay excepciones: Si la indemnización supera 180.000€, el exceso tributa como rendimiento del trabajo La compensación por falta de preaviso sí tributa como salario normal"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué pasa si la empresa no me da los 15 días de preaviso?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Según el Art. 53.1.c del Estatuto de los Trabajadores , la empresa debe darte un preaviso mínimo de 15 días. Si no lo hace: Debe compensarte económicamente con el salario correspondiente a los días de preaviso no dados Esta compensación se calcula como: Salario diario × días de preaviso faltantes A diferencia de la indemnización, esta compensación sí tributa en IRPF Durante el preaviso, tienes derecho a 6 horas semanales retribuidas para buscar nuevo empleo."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Puedo cobrar el paro después de un despido objetivo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí, tienes derecho a la prestación por desempleo siempre que cumplas los requisitos: Haber cotizado al menos 360 días en los últimos 6 años Estar inscrito como demandante de empleo en el SEPE No haber rechazado ofertas de empleo adecuadas El despido objetivo es una situación legal de desempleo , por lo que no hay ningún problema para solicitar el paro. Calcula tu prestación con nuestra calculadora de paro ."
+   }
+  }
+ ]
+}
+    </script>
 </head>
 <body>
 <header class="header">
@@ -97,7 +144,7 @@
 <main>
     <section class="hero-mini">
         <div class="container">
-            <div class="hero-badge">📋 Actualizado 2026</div>
+            <div class="hero-badge">📋 Actualizado octubre 2026</div>
             <h1>Despido Objetivo<br><span class="highlight">20 días por año trabajado</span></h1>
             <p>Calcula tu indemnización por causas económicas, técnicas, organizativas o de producción. Incluye preaviso y fiscalidad.</p>
         </div>
@@ -110,20 +157,20 @@
                 <form id="calc">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label">Salario bruto anual (con pagas extra)</label>
+                            <label class="form-label" for="salario">Salario bruto anual (con pagas extra)</label>
                             <input type="number" class="form-input" id="salario" placeholder="28000" required>
                             <span class="form-hint">Si tienes 14 pagas, suma las 2 extra al anual</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Fecha de inicio del contrato</label>
+                            <label class="form-label" for="inicio">Fecha de inicio del contrato</label>
                             <input type="date" class="form-input" id="inicio" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Fecha efectiva del despido</label>
+                            <label class="form-label" for="despido">Fecha efectiva del despido</label>
                             <input type="date" class="form-input" id="despido" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Causa del despido objetivo</label>
+                            <label class="form-label" for="causa">Causa del despido objetivo</label>
                             <select class="form-select" id="causa">
                                 <option value="economicas">Causas económicas (pérdidas)</option>
                                 <option value="tecnicas">Causas técnicas (automatización)</option>
@@ -132,7 +179,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">¿Te han dado preaviso de 15 días?</label>
+                            <label class="form-label" for="preaviso">¿Te han dado preaviso de 15 días?</label>
                             <select class="form-select" id="preaviso">
                                 <option value="si">Sí, me avisaron con 15+ días</option>
                                 <option value="no">No, menos de 15 días de preaviso</option>
@@ -140,7 +187,7 @@
                             </select>
                         </div>
                         <div class="form-group" id="diasPreavisoGroup" style="display:none;">
-                            <label class="form-label">Días de preaviso recibidos</label>
+                            <label class="form-label" for="diasPreaviso">Días de preaviso recibidos</label>
                             <input type="number" class="form-input" id="diasPreaviso" placeholder="5" min="0" max="14">
                         </div>
                     </div>
@@ -441,35 +488,14 @@
     </div>
 </footer>
 
+<script src="site.js"></script>
+<script src="datos-2026.js"></script>
+<script src="despido.js"></script>
 <script>
-// Navegación
-document.querySelectorAll('[data-dropdown]').forEach(dd=>{
-    const btn=dd.querySelector('[data-dropdown-btn]');
-    btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')});
-});
-document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
-const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');
-menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
-document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
-
-// FAQ
-document.querySelectorAll('.faq-q').forEach(btn=>{
-    btn.addEventListener('click',()=>{
-        const item=btn.parentElement;
-        const w=item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-        if(!w)item.classList.add('open');
-    });
-});
-
 // Campos condicionales
 document.getElementById('preaviso').addEventListener('change',function(){
     document.getElementById('diasPreavisoGroup').style.display=this.value==='parcial'?'block':'none';
 });
-
-// Formateo
-const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
 
 // Fecha por defecto
 document.getElementById('despido').value=new Date().toISOString().split('T')[0];
@@ -484,16 +510,12 @@ document.getElementById('calc').onsubmit=function(e){
     const preaviso=document.getElementById('preaviso').value;
     const diasPreavisoRecibidos=+document.getElementById('diasPreaviso').value||0;
     
-    if(!salario||fechaInicio>=fechaDespido){alert('Por favor, revisa los datos');return}
+    if(!salario||fechaInicio>=fechaDespido){mostrarError('Por favor, revisa los datos');return}
     
     // Cálculos
     const diasTrabajados=Math.ceil((fechaDespido-fechaInicio)/86400000);
     // Antigüedad en meses: los periodos inferiores a un año se prorratean por meses (la fracción cuenta como mes)
-    const fin=new Date(fechaDespido.getTime()+86400000);       // el día del despido también cuenta
-    let mesesAntiguedad=(fin.getUTCFullYear()-fechaInicio.getUTCFullYear())*12+fin.getUTCMonth()-fechaInicio.getUTCMonth();
-    if(fin.getUTCDate()<fechaInicio.getUTCDate())mesesAntiguedad--;
-    const ref=new Date(fechaInicio);ref.setUTCMonth(ref.getUTCMonth()+mesesAntiguedad);
-    if(fin>ref)mesesAntiguedad++;
+    const mesesAntiguedad=mesesProrrateados(fechaInicio,diaSiguiente(fechaDespido)); // función de despido.js
     const anosAntiguedad=mesesAntiguedad/12;
     const salarioDiario=salario/365;
     const salarioMensual=salario/12;
@@ -511,7 +533,7 @@ document.getElementById('calc').onsubmit=function(e){
     else if(preaviso==='parcial'&&diasPreavisoRecibidos<15){diasPreavisoFaltantes=15-diasPreavisoRecibidos;compensacionPreaviso=salarioDiario*diasPreavisoFaltantes}
     
     // Fiscalidad
-    const exencionMaxima=180000;
+    const exencionMaxima=DATOS.irpf.exencionDespido;
     const parteExenta=Math.min(indemnizacion,exencionMaxima);
     const parteTributa=Math.max(0,indemnizacion-exencionMaxima);
     const total=indemnizacion+compensacionPreaviso;

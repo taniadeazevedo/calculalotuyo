@@ -5,15 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Calcula tu cuota de autónomos 2026 según ingresos reales. Incluye tarifa plana, cuota cero por CCAA y autónomo societario.">
     <title>Calculadora Cuota Autónomos 2026 | CalculaLoTuyo 2026</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://taniadeazevedo.github.io/calculalotuyo/cuota-autonomos">
+    <meta property="og:title" content="Calculadora Cuota Autónomos 2026 | CalculaLoTuyo 2026">
+    <meta property="og:description" content="Calcula tu cuota de autónomos 2026 según ingresos reales. Incluye tarifa plana, cuota cero por CCAA y autónomo societario.">
+    <meta property="og:site_name" content="CalculaLoTuyo">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://taniadeazevedo.github.io/calculalotuyo/cuota-autonomos">
+    <meta property="og:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
-    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Puedo cambiar de tramo durante el año?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí, puedes solicitar cambio de base hasta 6 veces al año si tus ingresos varían."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué pasa si gano más de lo previsto?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "En la regularización anual, la Seguridad Social ajustará tu cuota según ingresos reales."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿El autónomo societario tiene cuota mínima mayor?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Sí, los autónomos societarios tienen una base mínima superior, aproximadamente 350€/mes."
+   }
+  }
+ ]
+}
+    </script>
 </head>
 <body>
 <header class="header">
@@ -106,26 +146,26 @@
                 <form id="calc">
                     <div class="form-grid">
         <div class="form-group">
-            <label class="form-label">Rendimiento neto mensual (€)</label>
+            <label class="form-label" for="ingresos">Rendimiento neto mensual (€)</label>
             <input type="number" class="form-input" id="ingresos" placeholder="2000" required>
             <span class="form-hint">Ingresos - gastos deducibles</span>
         </div>
         <div class="form-group">
-            <label class="form-label">Comunidad Autónoma</label>
+            <label class="form-label" for="ccaa">Comunidad Autónoma</label>
             <select class="form-select" id="ccaa">
                 <option value="normal">Resto de España</option>
-                <option value="cuota0">Madrid / Andalucía / Murcia (Cuota Cero)</option>
+                <option value="cuota0">Mi comunidad tiene Cuota Cero</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="form-label">¿Es tu primer año como autónomo?</label>
+            <label class="form-label" for="primerAno">¿Es tu primer año como autónomo?</label>
             <select class="form-select" id="primerAno">
                 <option value="no">No</option>
                 <option value="si">Sí (Tarifa Plana 88,64€)</option>
             </select>
         </div>
         <div class="form-group">
-            <label class="form-label">Tipo de autónomo</label>
+            <label class="form-label" for="tipo">Tipo de autónomo</label>
             <select class="form-select" id="tipo">
                 <option value="normal">Autónomo persona física (7% gastos)</option>
                 <option value="societario">Autónomo societario (3% gastos)</option>
@@ -173,13 +213,8 @@
 </ul>
 
 <h2>🏛️ Cuota Cero por Comunidad Autónoma</h2>
-<p>Algunas comunidades bonifican el 100% de la cuota durante el primer año:</p>
-<ul>
-    <li><strong>Madrid:</strong> Cuota 0€ primer año</li>
-    <li><strong>Andalucía:</strong> Cuota 0€ primer año</li>
-    <li><strong>Murcia:</strong> Cuota 0€ primer año</li>
-    <li>Otras CCAA tienen bonificaciones parciales</li>
-</ul>
+<p>Varias comunidades devuelven el 100% de la tarifa plana durante el primer año (y a veces el segundo): en 2026 la mantienen, entre otras, <strong>Madrid, Andalucía, Murcia, Canarias, Cantabria, Aragón, Galicia, Castilla-La Mancha, Castilla y León, La Rioja, Baleares y Extremadura</strong>.</p>
+<p>No es automática: es una subvención que se solicita a la comunidad, con requisitos propios (empadronamiento, plazos, mantener la actividad). Consulta la convocatoria de la tuya.</p>
 
 <h2>🧮 Gastos de difícil justificación</h2>
 <p>Antes de calcular tu tramo, puedes deducir un porcentaje de gastos sin justificar:</p>
@@ -338,10 +373,9 @@
         </div>
     </div>
 </footer>
+<script src="site.js"></script>
+<script src="datos-2026.js"></script>
 <script>
-document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
-const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR'}).format(n);
 document.getElementById('calc').onsubmit=function(e){
     e.preventDefault();
     const ingresos=+document.getElementById('ingresos').value;
@@ -353,20 +387,15 @@ document.getElementById('calc').onsubmit=function(e){
     const gastos=tipo==='societario'?0.03:0.07;
     const rendimiento=ingresos*(1-gastos);
     
-    // Tramos 2026: [rendimiento neto máximo del tramo, base mínima de cotización]
-    const tramos=[
-        [670,653.59],[900,718.95],[1166.69,849.67],[1300,950.98],[1500,960.78],[1700,960.78],
-        [1850,1143.79],[2030,1209.15],[2330,1274.51],[2760,1356.21],[3190,1437.91],[3620,1519.61],
-        [4050,1601.31],[6000,1732.03],[Infinity,1928.10]
-    ];
-    const tipoCotizacion=0.315; // 28,30 comunes + 1,30 profesionales + 0,90 cese + 0,10 FP + 0,90 MEI
+    const A=DATOS.autonomos;                              // tramos y tipos en datos-2026.js
+    const tramos=A.tramos;                                // [rendimiento máximo del tramo, base mínima]
     let base=tramos[0][1];
     for(const[limite,b]of tramos){if(rendimiento<=limite){base=b;break}}
     // El autónomo societario no puede cotizar por menos de 1.000 €
-    if(tipo==='societario'&&base<1000)base=1000;
-    let cuota=base*tipoCotizacion;
+    if(tipo==='societario'&&base<A.baseMinimaSocietario)base=A.baseMinimaSocietario;
+    let cuota=base*A.tipo;
     // Tarifa plana primer año: 80 € + MEI
-    if(primerAno==='si'){cuota=88.64}
+    if(primerAno==='si'){cuota=A.tarifaPlana}
     // Cuota cero CCAA (primer año): la comunidad devuelve la tarifa plana
     if(ccaa==='cuota0'&&primerAno==='si'){cuota=0}
     

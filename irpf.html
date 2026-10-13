@@ -6,16 +6,71 @@
     <meta name="description" content="Calculadora IRPF 2026: tramos estatales y autonómicos actualizados. Incluye situación familiar, hijos, discapacidad y deducciones. Tipo marginal y efectivo.">
     <meta name="keywords" content="IRPF 2026, calculadora IRPF, tramos IRPF, tipo efectivo, retención nómina, declaración renta">
     <title>Calculadora IRPF 2026 | Tramos y Retenciones | CalculaLoTuyo</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://taniadeazevedo.github.io/calculalotuyo/irpf">
+    <meta property="og:title" content="Calculadora IRPF 2026 | Tramos y Retenciones | CalculaLoTuyo">
+    <meta property="og:description" content="Calculadora IRPF 2026: tramos estatales y autonómicos actualizados. Incluye situación familiar, hijos, discapacidad y deducciones. Tipo marginal y efectivo.">
+    <meta property="og:site_name" content="CalculaLoTuyo">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://taniadeazevedo.github.io/calculalotuyo/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://taniadeazevedo.github.io/calculalotuyo/irpf">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- ANALYTICS: Reemplaza G-Z1JPGHYYP6 por tu ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1JPGHYYP6"></script>
-    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-Z1JPGHYYP6");</script>
-    <!-- ADSENSE: Reemplaza ca-pub-4853214655991551 por tu ID -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Qué diferencia hay entre tipo marginal y tipo efectivo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Son dos conceptos muy diferentes: Tipo marginal: Es el porcentaje que pagas por el último euro que ganas. Si tu base está en el tramo del 30%, tu tipo marginal es 30%. Tipo efectivo: Es el porcentaje real que pagas sobre el total de tus ingresos. Como los tramos son progresivos, siempre es menor que el marginal. Ejemplo: Con 35.000€ de base, tu tipo marginal es 30% pero tu tipo efectivo ronda el 17-18%."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Por qué mi retención en nómina es diferente al tipo efectivo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "La retención de la nómina es una estimación que hace la empresa. Puede diferir por varios motivos: Pagos irregulares (bonus, horas extra, comisiones) Cambios de salario durante el año Modelo 145 desactualizado (comunícalo a RRHH) Tipo mínimo obligatorio (2% para contratos temporales) La diferencia se regulariza en la declaración de la renta : te devolverán si retuvieron de más, o pagarás si retuvieron de menos."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué deducciones puedo aplicar en la declaración de la renta?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Las principales deducciones estatales son: Por maternidad: Hasta 1.200€/año por hijo menor de 3 años (madres trabajadoras) Por familia numerosa: 1.200€ (general) o 2.400€ (especial) Por ascendientes/descendientes con discapacidad: Hasta 1.200€ Por inversión en vivienda: Si compraste antes de 2013 Planes de pensiones: Aportaciones hasta 1.500€/año Además, cada comunidad autónoma tiene deducciones propias (alquiler, guarderías, etc.)."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Estoy obligado a hacer la declaración de la renta?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "NO estás obligado si cumples estos requisitos (2026): Ingresos de un solo pagador: menos de 22.000€ Ingresos de varios pagadores: menos de 15.000€ (si el 2º y siguientes suman más de 1.500€) Consejo: Aunque no estés obligado, puede interesarte hacerla si te retuvieron de más (te devolverán dinero) o tienes deducciones que aplicar."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cómo afectan los hijos a mi IRPF?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Los hijos reducen tu base imponible a través del mínimo por descendientes : 1º hijo: 2.400€ 2º hijo: 2.700€ 3º hijo: 4.000€ 4º y siguientes: 4.500€ Menores de 3 años: +2.800€ adicionales Si los dos padres trabajan, el mínimo se reparte al 50%. En familias monoparentales, lo aplica íntegramente el progenitor que convive con el hijo."
+   }
+  }
+ ]
+}
+    </script>
 </head>
 <body>
 <header class="header">
@@ -110,12 +165,12 @@
                 <form id="calc">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label">Ingresos brutos anuales</label>
+                            <label class="form-label" for="ingresos">Ingresos brutos anuales</label>
                             <input type="number" class="form-input" id="ingresos" placeholder="35000" required>
                             <span class="form-hint">Salario bruto anual (con pagas extra incluidas)</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Situación familiar</label>
+                            <label class="form-label" for="situacion">Situación familiar</label>
                             <select class="form-select" id="situacion">
                                 <option value="soltero">Soltero/a sin hijos</option>
                                 <option value="casado1">Casado/a - un perceptor de rentas</option>
@@ -124,7 +179,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Número de hijos menores de 25 años</label>
+                            <label class="form-label" for="hijos">Número de hijos menores de 25 años</label>
                             <select class="form-select" id="hijos">
                                 <option value="0">Sin hijos</option>
                                 <option value="1">1 hijo</option>
@@ -134,7 +189,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">¿Hijos menores de 3 años?</label>
+                            <label class="form-label" for="hijosMenores3">¿Hijos menores de 3 años?</label>
                             <select class="form-select" id="hijosMenores3">
                                 <option value="0">No</option>
                                 <option value="1">1 hijo menor de 3</option>
@@ -142,7 +197,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Discapacidad del contribuyente</label>
+                            <label class="form-label" for="discapacidad">Discapacidad del contribuyente</label>
                             <select class="form-select" id="discapacidad">
                                 <option value="0">Sin discapacidad</option>
                                 <option value="33">Entre 33% y 65%</option>
@@ -150,7 +205,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Ascendientes a cargo (+65 años)</label>
+                            <label class="form-label" for="ascendientes">Ascendientes a cargo (+65 años)</label>
                             <select class="form-select" id="ascendientes">
                                 <option value="0">Ninguno</option>
                                 <option value="1">1 ascendiente</option>
@@ -158,7 +213,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">Edad del contribuyente</label>
+                            <label class="form-label" for="edad">Edad del contribuyente</label>
                             <select class="form-select" id="edad">
                                 <option value="normal">Menor de 65 años</option>
                                 <option value="65">65 años o más</option>
@@ -543,19 +598,10 @@
     </div>
 </footer>
 
+<script src="site.js"></script>
+<script src="datos-2026.js"></script>
 <script src="irpf-2026.js"></script>
 <script>
-// Navegación
-document.querySelectorAll('[data-dropdown]').forEach(dd=>{const btn=dd.querySelector('[data-dropdown-btn]');btn.addEventListener('click',e=>{e.stopPropagation();const w=dd.classList.contains('open');document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open'));if(!w)dd.classList.add('open')})});
-document.addEventListener('click',()=>document.querySelectorAll('[data-dropdown]').forEach(d=>d.classList.remove('open')));
-const menuBtn=document.getElementById('menuBtn'),mobileNav=document.getElementById('mobileNav');
-menuBtn.addEventListener('click',()=>{menuBtn.classList.toggle('active');mobileNav.classList.toggle('open');document.body.style.overflow=mobileNav.classList.contains('open')?'hidden':''});
-document.querySelectorAll('[data-mobile-toggle]').forEach(btn=>{btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'))});
-document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const w=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));if(!w)item.classList.add('open')})});
-
-// Formateo
-const fmt=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n);
-const fmtDec=n=>new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',minimumFractionDigits:2}).format(n);
 const fmtPct=n=>n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+'%';
 
 // CÁLCULO PRINCIPAL (la fórmula vive en irpf-2026.js, compartida con sueldo-neto)
@@ -564,7 +610,7 @@ document.getElementById('calc').onsubmit=function(e){
 
     const ingresos=+document.getElementById('ingresos').value;
     const situacion=document.getElementById('situacion').value;
-    if(!ingresos||ingresos<=0){alert('Introduce tus ingresos brutos anuales');return}
+    if(!ingresos||ingresos<=0){mostrarError('Introduce tus ingresos brutos anuales');return}
     
     const r=calcularRetencion({
         bruto:ingresos,
