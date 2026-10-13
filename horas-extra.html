@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4853214655991551">
     <meta name="description" content="Calculadora horas extra 2026: calcula el pago de tus horas extraordinarias con recargo legal. Incluye horas nocturnas, festivos y límite anual de 80 horas.">
     <meta name="keywords" content="horas extra, calculadora horas extraordinarias, recargo horas extra, horas nocturnas, límite 80 horas">
     <title>Calculadora Horas Extra 2026 | Recargos y Límites | CalculaLoTuyo</title>
@@ -41,7 +42,7 @@
    "name": "¿Cuál es el límite legal de horas extra?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "El Art. 35.2 del Estatuto de los Trabajadores establece: Máximo 80 horas extra al año Las de fuerza mayor no computan para este límite Las compensadas con descanso en 4 meses tampoco computan Si superas el límite, la empresa puede ser sancionada con multas de 626€ a 6.250€."
+    "text": "El Art. 35.2 del Estatuto de los Trabajadores establece: Máximo 80 horas extra al año Las de fuerza mayor no computan para este límite Las compensadas con descanso en 4 meses tampoco computan Si superas el límite, la empresa puede ser sancionada con multas de 751€ a 7.500€."
    }
   },
   {
@@ -74,6 +75,7 @@
             <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="sueldo-neto">🏦 Sueldo Neto</a><a href="irpf">📑 IRPF</a><a href="horas-extra">⏰ Horas Extra</a><a href="pagas-extra">🎁 Pagas Extra</a><a href="vacaciones">🏖️ Vacaciones</a></div></div>
             <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="cuota-autonomos">💼 Cuota Mensual</a><a href="facturas">🧾 Facturas</a></div></div>
             <a href="./" class="nav-cta">Todas</a>
+            <a href="guias" class="nav-link">Guías</a>
         </nav>
         <button class="menu-btn" id="menuBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
@@ -83,6 +85,9 @@
     <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="finiquito" class="mobile-nav-link">💵 Finiquito</a><a href="paro" class="mobile-nav-link">📊 Prestación Paro</a></div></div>
     <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a><a href="irpf" class="mobile-nav-link">📑 IRPF</a><a href="horas-extra" class="mobile-nav-link">⏰ Horas Extra</a><a href="pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a><a href="vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a></div></div>
     <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a><a href="facturas" class="mobile-nav-link">🧾 Facturas</a></div></div>
+    <div class="mobile-nav-section">
+        <a href="guias" class="mobile-nav-link" style="padding: 16px 0; border-top: 1px solid var(--border);">📚 Guías</a>
+    </div>
 </nav>
 
 <main>
@@ -103,7 +108,7 @@
                         <div class="form-group">
                             <label class="form-label" for="salario">Salario bruto mensual</label>
                             <input type="number" class="form-input" id="salario" placeholder="1800" required>
-                            <span class="form-hint">Sin incluir pagas extra</span>
+                            <span class="form-hint">Con las pagas extra prorrateadas (bruto anual ÷ 12)</span>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="horasContrato">Horas semanales de contrato</label>
@@ -128,6 +133,7 @@
                                 <option value="festivoNocturna">Festivo + Nocturna</option>
                                 <option value="fuerza">Fuerza mayor (sin límite)</option>
                             </select>
+                            <span class="form-hint">Recargos orientativos: nocturna +25 %, festivo +50 %. Lo que manda es tu convenio</span>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="recargo">Recargo según convenio</label>
@@ -156,7 +162,7 @@
                     
                     <div class="disclaimer-box">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                        <p><strong>Importante:</strong> El límite de 80 horas extra anuales es obligatorio (Art. 35.2 ET). Las de fuerza mayor no computan.</p>
+                        <p><strong>Importante:</strong> El límite de 80 horas extra anuales es obligatorio (Art. 35.2 ET). Las de fuerza mayor no computan. Con contrato a tiempo parcial no se pueden hacer horas extra (salvo fuerza mayor): lo que trabajas de más son horas complementarias (Art. 12.4 ET).</p>
                     </div>
                     
                     <button type="submit" class="btn">Calcular horas extra</button>
@@ -247,7 +253,7 @@
                             <li>Las de <strong>fuerza mayor no computan</strong> para este límite</li>
                             <li>Las <strong>compensadas con descanso</strong> en 4 meses tampoco computan</li>
                         </ul>
-                        <p>Si superas el límite, la empresa puede ser sancionada con multas de 626€ a 6.250€.</p>
+                        <p>Si superas el límite, la empresa puede ser sancionada con multas de 751€ a 7.500€.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -315,6 +321,7 @@
                 <a href="guia-despido">Guía del Despido</a>
                 <a href="guia-sueldo-neto">Guía del Sueldo Neto</a>
                 <a href="guia-paro">Guía del Paro</a>
+                <a href="guias">Todas las guías</a>
                 <a href="sobre-el-proyecto">Sobre el Proyecto</a>
             </div>
             <div class="footer-col">

@@ -63,8 +63,10 @@ function calcularRetencion(d){
     if(d.discapacidad===65)gastos+=7750;
     const rendimientoNeto=Math.max(0,bruto-ss-gastos);
 
-    // 2. Reducciones: rendimientos del trabajo y 600 € si hay más de dos hijos
-    const reduccion=reduccionTrabajo(rendimientoNeto)+(hijos>2?600:0);
+    // 2. Reducciones: rendimientos del trabajo y 600 € si hay más de dos hijos.
+    // La reducción del art. 20 se mira sobre bruto - cotizaciones, SIN restar los 2.000 € de gastos
+    // (así lo hace el algoritmo de retenciones de la Agencia Tributaria: RNT = RETRIB - COTIZACIONES)
+    const reduccion=reduccionTrabajo(Math.max(0,bruto-ss))+(hijos>2?600:0);
     const base=Math.max(0,rendimientoNeto-reduccion);
 
     // 3. Mínimo personal y familiar
@@ -76,7 +78,7 @@ function calcularRetencion(d){
     minimoHijos+=(d.hijosMenores3||0)*f.minimoHijoMenor3;               // extra por cada menor de 3 años
     if(!d.hijosPorEntero)minimoHijos/=2;                  // si lo comparten los dos progenitores
     const minimoAscendientes=(d.ascendientes||0)*f.minimoAscendiente;
-    const minimoDiscapacidad=d.discapacidad===33?3000:d.discapacidad===65?9000:0;
+    const minimoDiscapacidad=d.discapacidad===33?3000:d.discapacidad===65?12000:0; // 65 %: 9.000 € + 3.000 € de gastos de asistencia
     const minimo=minimoPersonal+minimoHijos+minimoAscendientes+minimoDiscapacidad;
 
     // 4. Cuota = escala sobre la base - escala sobre el mínimo (el mínimo NO se resta de la base)
@@ -93,8 +95,9 @@ function calcularRetencion(d){
     if(exento)cuota=0;
     else if(limite43)cuota=tope43;
 
-    // 6. Tipo de retención (2 decimales) con mínimo del 2 % en contratos de menos de un año
-    let tipo=bruto>0?Math.round(cuota/bruto*10000)/100:0;
+    // 6. Tipo de retención con mínimo del 2 % en contratos de menos de un año.
+    // Hacienda trunca el tipo al segundo decimal (no redondea); el 1e-9 evita que 16,42 se quede en 16,41
+    let tipo=bruto>0?Math.floor(cuota/bruto*10000+1e-9)/100:0;
     const minimoTemporal=d.contrato==='temporal'&&tipo<2;
     if(minimoTemporal)tipo=2;
     const irpf=bruto*tipo/100;

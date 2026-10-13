@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4853214655991551">
     <meta name="description" content="Calcula tu prestación por desempleo 2026. Cuánto cobrarás de paro y durante cuánto tiempo según cotización e hijos.">
     <title>Calculadora Prestación por Desempleo | CalculaLoTuyo 2026</title>
     <meta property="og:type" content="website">
@@ -40,7 +41,7 @@
    "name": "¿Puedo trabajar mientras cobro el paro?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Si trabajas a tiempo parcial, puedes compatibilizar. Si es a tiempo completo, se suspende."
+    "text": "Si empiezas a jornada completa, la prestación se suspende y la reanudas al terminar el contrato. A tiempo parcial puedes cobrar la parte proporcional. Además, las prestaciones nacidas desde el 1 de abril de 2025 pueden dar derecho al Complemento de Apoyo al Empleo, con el que el SEPE sigue pagando una parte mientras trabajas (máximo 180 días). Comunica siempre el alta al SEPE."
    }
   },
   {
@@ -48,7 +49,7 @@
    "name": "¿Qué es el subsidio por desempleo?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Es una ayuda asistencial para cuando se acaba el paro contributivo. Cuantía fija del 80% del IPREM."
+    "text": "Es una ayuda asistencial para cuando se acaba el paro contributivo o no has cotizado lo suficiente. Desde noviembre de 2024 la cuantía baja con el tiempo: 95% del IPREM los primeros 180 días (570€), 90% hasta el día 360 (540€) y 80% después (480€). El subsidio para mayores de 52 años es siempre del 80%."
    }
   }
  ]
@@ -93,6 +94,7 @@
                 </div>
             </div>
             <a href="./" class="nav-cta">Todas</a>
+            <a href="guias" class="nav-link">Guías</a>
         </nav>
         <button class="menu-btn" id="menuBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
@@ -130,6 +132,9 @@
             <a href="facturas" class="mobile-nav-link">🧾 Facturas</a>
         </div>
     </div>
+    <div class="mobile-nav-section">
+        <a href="guias" class="mobile-nav-link" style="padding: 16px 0; border-top: 1px solid var(--border);">📚 Guías</a>
+    </div>
 </nav>
 <main>
     <section class="hero-mini">
@@ -163,13 +168,6 @@
                 <option value="2">2 o más hijos a cargo</option>
             </select>
             <span class="form-hint">Afecta a los topes máximo y mínimo</span>
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="tipo">Tipo de desempleo</label>
-            <select class="form-select" id="tipo">
-                <option value="total">Total</option>
-                <option value="parcial">Parcial (reducción jornada)</option>
-            </select>
         </div>
     </div>
                     <div class="disclaimer-box">
@@ -221,7 +219,7 @@
     <li><strong>Desde el día 181:</strong> 60% de la base reguladora</li>
 </ul>
 
-<h3>Topes según hijos a cargo (CRÍTICO)</h3>
+<h3>Topes según hijos a cargo</h3>
 <table class="info-table">
     <tr><th>Situación</th><th>Tope máximo</th><th>Tope mínimo</th></tr>
     <tr><td>Sin hijos</td><td>1.225€</td><td>560€</td></tr>
@@ -238,6 +236,11 @@
     <tr><td>720 - 899</td><td>8 meses</td></tr>
     <tr><td>900 - 1079</td><td>10 meses</td></tr>
     <tr><td>1080 - 1259</td><td>12 meses</td></tr>
+    <tr><td>1260 - 1439</td><td>14 meses</td></tr>
+    <tr><td>1440 - 1619</td><td>16 meses</td></tr>
+    <tr><td>1620 - 1799</td><td>18 meses</td></tr>
+    <tr><td>1800 - 1979</td><td>20 meses</td></tr>
+    <tr><td>1980 - 2159</td><td>22 meses</td></tr>
     <tr><td>2160+</td><td>24 meses (máximo)</td></tr>
 </table>
 
@@ -253,7 +256,7 @@
 
 <h2>📋 Cómo solicitar el paro</h2>
 <ol>
-    <li>Inscríbete como demandante de empleo en tu oficina del SEPE</li>
+    <li>Inscríbete como demandante de empleo en el servicio de empleo de tu comunidad autónoma</li>
     <li>Solicita la prestación en los <strong>15 días hábiles</strong> siguientes al despido</li>
     <li>Presenta: DNI, certificado de empresa, documento de despido</li>
 </ol>
@@ -268,7 +271,7 @@
     </div>
     <div class="container"><div class="ad"></div></div>
     <div class="container">
-        <section class="faq"><h2>❓ Preguntas frecuentes</h2><div class="faq-item"><button class="faq-q">¿Cuánto tarda en llegar el paro?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Normalmente entre 15-30 días desde la solicitud. El primer pago suele ser proporcional.</div></div><div class="faq-item"><button class="faq-q">¿Puedo trabajar mientras cobro el paro?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Si trabajas a tiempo parcial, puedes compatibilizar. Si es a tiempo completo, se suspende.</div></div><div class="faq-item"><button class="faq-q">¿Qué es el subsidio por desempleo?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Es una ayuda asistencial para cuando se acaba el paro contributivo. Cuantía fija del 80% del IPREM.</div></div></section>
+        <section class="faq"><h2>❓ Preguntas frecuentes</h2><div class="faq-item"><button class="faq-q">¿Cuánto tarda en llegar el paro?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Normalmente entre 15-30 días desde la solicitud. El primer pago suele ser proporcional.</div></div><div class="faq-item"><button class="faq-q">¿Puedo trabajar mientras cobro el paro?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Si empiezas a jornada completa, la prestación se suspende y la reanudas al terminar el contrato. A tiempo parcial puedes cobrar la parte proporcional. Además, las prestaciones nacidas desde el 1 de abril de 2025 pueden dar derecho al Complemento de Apoyo al Empleo, con el que el SEPE sigue pagando una parte mientras trabajas (máximo 180 días). Comunica siempre el alta al SEPE.</div></div><div class="faq-item"><button class="faq-q">¿Qué es el subsidio por desempleo?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Es una ayuda asistencial para cuando se acaba el paro contributivo o no has cotizado lo suficiente. Desde noviembre de 2024 la cuantía baja con el tiempo: 95% del IPREM los primeros 180 días (570€), 90% hasta el día 360 (540€) y 80% después (480€). El subsidio para mayores de 52 años es siempre del 80%.</div></div></section>
         <section class="related"><h2>📱 Calculadoras relacionadas</h2><div class="related-grid"><a href="despido-improcedente" class="related-card"><h4>⚖️ Despido Improcedente</h4><p>Calcula tu indemnización</p></a><a href="finiquito" class="related-card"><h4>💵 Finiquito</h4><p>Tu liquidación completa</p></a></div></section>
     </div>
 </main>
@@ -294,6 +297,7 @@
                 <a href="guia-despido">Guía del Despido</a>
                 <a href="guia-sueldo-neto">Guía del Sueldo Neto</a>
                 <a href="guia-paro">Guía del Paro</a>
+                <a href="guias">Todas las guías</a>
                 <a href="sobre-el-proyecto">Sobre el Proyecto</a>
             </div>
             <div class="footer-col">
@@ -327,6 +331,7 @@ document.getElementById('calc').onsubmit=function(e){
     const cotizados=+document.getElementById('cotizados').value;
     const hijos=+document.getElementById('hijos').value;
     
+    if(!base||base<=0){mostrarError('Introduce tu base reguladora diaria');return}
     if(cotizados<360){mostrarError('Necesitas mínimo 360 días cotizados');return}
     
     // Duración según días cotizados
@@ -345,7 +350,7 @@ document.getElementById('calc').onsubmit=function(e){
     // IPREM 2026 (600 €/mes) incrementado en 1/6: es la referencia de los topes
     const iprem=DATOS.iprem*7/6;
     
-    // Topes según hijos (CRÍTICO)
+    // Topes según hijos
     const col=Math.min(hijos,2);                          // columna de la tabla: 0, 1 o 2+ hijos
     const topeMax=iprem*P.topeMaximo[col],topeMin=iprem*P.topeMinimo[col];
     
@@ -365,7 +370,8 @@ document.getElementById('calc').onsubmit=function(e){
     document.getElementById('fiscalContent').innerHTML=
         '<div class="fiscal-row"><span>Meses 1-6 (70%)</span><span>'+fmt(paro70)+'/mes</span></div>'+
         '<div class="fiscal-row"><span>Meses 7+ (60%)</span><span>'+fmt(paro60)+'/mes</span></div>'+
-        '<div class="fiscal-row"><span>Total estimado prestación</span><span>'+fmt(paro70*Math.min(6,mesesDuracion)+paro60*Math.max(0,mesesDuracion-6))+'</span></div>';
+        '<div class="fiscal-row"><span>(-) Tu cotización a la Seguridad Social (4,70 % de la base)</span><span>-'+fmt(baseM*DATOS.cotizacion.comunes)+'/mes</span></div>'+
+        '<div class="fiscal-row"><span>Total estimado prestación (bruto)</span><span>'+fmt(paro70*Math.min(6,mesesDuracion)+paro60*Math.max(0,mesesDuracion-6))+'</span></div>';
     document.getElementById('result').classList.add('visible');
     document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent('Mi paro: '+fmt(paro70)+'/mes\nhttps://taniadeazevedo.github.io/calculalotuyo/paro');
 };

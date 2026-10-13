@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4853214655991551">
     <meta name="description" content="Calculadora de finiquito 2026: salario pendiente, vacaciones no disfrutadas y pagas extra proporcionales. Incluye retención IRPF y desglose detallado.">
     <meta name="keywords" content="finiquito, calculadora finiquito, vacaciones no disfrutadas, pagas proporcionales, liquidación laboral 2026">
     <title>Calculadora de Finiquito 2026 | Liquidación Laboral | CalculaLoTuyo</title>
@@ -110,6 +111,7 @@
                 </div>
             </div>
             <a href="./" class="nav-cta">Todas</a>
+            <a href="guias" class="nav-link">Guías</a>
         </nav>
         <button class="menu-btn" id="menuBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
@@ -146,6 +148,9 @@
             <a href="cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a>
             <a href="facturas" class="mobile-nav-link">🧾 Facturas</a>
         </div>
+    </div>
+    <div class="mobile-nav-section">
+        <a href="guias" class="mobile-nav-link" style="padding: 16px 0; border-top: 1px solid var(--border);">📚 Guías</a>
     </div>
 </nav>
 
@@ -517,6 +522,7 @@
                 <a href="guia-despido">Guía del Despido</a>
                 <a href="guia-sueldo-neto">Guía del Sueldo Neto</a>
                 <a href="guia-paro">Guía del Paro</a>
+                <a href="guias">Todas las guías</a>
                 <a href="sobre-el-proyecto">Sobre el Proyecto</a>
             </div>
             <div class="footer-col">
@@ -568,7 +574,12 @@ document.getElementById('calc').onsubmit=function(e){
     const diaDelMes=fechaBaja.getDate();
     
     // 1. Salario días trabajados del mes
-    const salarioDias=salarioDiario*diaDelMes;
+    // Los meses se pagan como 30 días: si la baja es el último día del mes se cobra el mes entero
+    const ultimoDiaMes=new Date(fechaBaja.getFullYear(),fechaBaja.getMonth()+1,0).getDate();
+    let diasMes=diaDelMes===ultimoDiaMes?30:Math.min(diaDelMes,30);
+    // Si entró en la empresa este mismo mes, solo cuentan los días desde el alta
+    if(fechaAlta.getFullYear()===fechaBaja.getFullYear()&&fechaAlta.getMonth()===fechaBaja.getMonth())diasMes=Math.max(0,diasMes-(fechaAlta.getDate()-1));
+    const salarioDias=salarioDiario*diasMes;
     
     // 2. Vacaciones no disfrutadas
     // Calculamos meses trabajados en el año natural
@@ -588,7 +599,7 @@ document.getElementById('calc').onsubmit=function(e){
         // Paga verano
         let mesesPagaVerano=0;
         if(mesActual<6){ // Antes de julio
-            mesesPagaVerano=mesActual+(diaDelMes/30); // meses completos + fracción del mes de la baja
+            mesesPagaVerano=mesActual+Math.min(1,diaDelMes/30); // meses completos + fracción del mes de la baja
         }else{
             mesesPagaVerano=0; // Ya cobrada en junio
         }
@@ -596,7 +607,7 @@ document.getElementById('calc').onsubmit=function(e){
         // Paga navidad
         let mesesPagaNavidad=0;
         if(mesActual>=6){ // Julio o después
-            mesesPagaNavidad=(mesActual-6)+(diaDelMes/30);
+            mesesPagaNavidad=(mesActual-6)+Math.min(1,diaDelMes/30);
         }else{
             mesesPagaNavidad=0;
         }
@@ -641,14 +652,14 @@ document.getElementById('calc').onsubmit=function(e){
     
     document.getElementById('pagasRow').style.display=tipoPagas>=14?'flex':'none';
     
-    let subtext=diaDelMes+' días trabajados';
+    let subtext=diasMes+' días trabajados';
     if(diasVacPendientes>0)subtext+=' · '+Math.round(diasVacPendientes)+' días vacaciones';
     document.getElementById('resultSub').textContent=subtext;
     
     // Detalles
     document.getElementById('details').innerHTML=`
         <div class="result-item"><p class="result-item-label">Salario diario</p><p class="result-item-value">${fmtDec(salarioDiario)}</p></div>
-        <div class="result-item"><p class="result-item-label">Días mes trabajados</p><p class="result-item-value">${diaDelMes} días</p></div>
+        <div class="result-item"><p class="result-item-label">Días mes trabajados</p><p class="result-item-value">${diasMes} días</p></div>
         <div class="result-item"><p class="result-item-label">Vacaciones pendientes</p><p class="result-item-value">${Math.round(diasVacPendientes*10)/10} días</p></div>
         <div class="result-item"><p class="result-item-label">Tipo IRPF aplicado</p><p class="result-item-value">${irpfPct}%</p></div>
     `;
@@ -667,6 +678,13 @@ document.getElementById('calc').onsubmit=function(e){
         <div class="fiscal-row warning"><span>- Seguridad Social (6,50%)</span><span>-${fmt(cotizacionSS)}</span></div>
         <div class="fiscal-row highlight"><span><strong>Finiquito neto</strong></span><span><strong>${fmt(netoTotal)}</strong></span></div>
     `;
+    // Fin de contrato temporal: aparte del finiquito hay una indemnización de 12 días por año (art. 49.1.c ET)
+    if(motivoBaja==='temporal'){
+        const diasContrato=Math.round((fechaBaja-fechaAlta)/864e5)+1;
+        const salarioDiaConPagas=salarioMensual*Math.max(12,tipoPagas)/365;   // el salario regulador incluye las pagas
+        const indemTemporal=salarioDiaConPagas*12*diasContrato/365;
+        fiscalHTML+=`<div class="fiscal-row success"><span>➕ Aparte: indemnización por fin de contrato (12 días/año, sin IRPF)</span><span>${fmt(indemTemporal)}</span></div>`;
+    }
     document.getElementById('fiscalContent').innerHTML=fiscalHTML;
     
     // WhatsApp

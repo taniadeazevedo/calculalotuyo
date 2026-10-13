@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4853214655991551">
     <meta name="description" content="Calculadora ERE 2026: simula tu indemnización en despido colectivo. Días por año negociados, topes y fiscalidad. Basado en Art. 51 Estatuto Trabajadores.">
     <meta name="keywords" content="ERE, despido colectivo, indemnización ERE, calculadora ERE, expediente regulación empleo 2026">
     <title>Calculadora ERE 2026 | Despido Colectivo | CalculaLoTuyo</title>
@@ -49,7 +50,7 @@
    "name": "¿La indemnización del ERE tributa?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Está exenta de IRPF hasta 180.000€ (Art. 7.e LIRPF). Solo tributa el exceso sobre esa cantidad. En la mayoría de casos, la indemnización completa está exenta."
+    "text": "Está exenta de IRPF hasta lo que te correspondería por despido improcedente (33 días por año, máximo 24 mensualidades), con un tope de 180.000€ (Art. 7.e LIRPF). Si en el ERE se pactan más días, la diferencia tributa como rendimiento del trabajo."
    }
   },
   {
@@ -57,7 +58,7 @@
    "name": "¿Qué es el convenio especial con la Seguridad Social?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Es un acuerdo por el que la empresa paga tus cotizaciones a la SS hasta que te jubiles o encuentres empleo. Es muy valioso para mayores de 55 años , ya que garantiza que no pierdes años de cotización ni se reduce tu pensión futura."
+    "text": "Es un acuerdo por el que la empresa sigue pagando tus cotizaciones para que el despido no reduzca tu pensión. Es obligatorio para los trabajadores de 55 años o más en los despidos colectivos de empresas que no están en concurso (Art. 51.9 ET): la empresa cotiza hasta que cumples 63 años, o 61 si el ERE es por causas económicas. A partir de ahí puedes seguir pagándolo tú."
    }
   }
  ]
@@ -74,6 +75,7 @@
             <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="sueldo-neto">🏦 Sueldo Neto</a><a href="irpf">📑 IRPF</a><a href="horas-extra">⏰ Horas Extra</a><a href="pagas-extra">🎁 Pagas Extra</a><a href="vacaciones">🏖️ Vacaciones</a></div></div>
             <div class="nav-dropdown" data-dropdown><button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="nav-dropdown-menu"><a href="cuota-autonomos">💼 Cuota Mensual</a><a href="facturas">🧾 Facturas</a></div></div>
             <a href="./" class="nav-cta">Todas</a>
+            <a href="guias" class="nav-link">Guías</a>
         </nav>
         <button class="menu-btn" id="menuBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
@@ -83,6 +85,9 @@
     <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="finiquito" class="mobile-nav-link">💵 Finiquito</a><a href="paro" class="mobile-nav-link">📊 Prestación Paro</a></div></div>
     <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a><a href="irpf" class="mobile-nav-link">📑 IRPF</a><a href="horas-extra" class="mobile-nav-link">⏰ Horas Extra</a><a href="pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a><a href="vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a></div></div>
     <div class="mobile-nav-section"><button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="mobile-nav-links"><a href="cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a><a href="facturas" class="mobile-nav-link">🧾 Facturas</a></div></div>
+    <div class="mobile-nav-section">
+        <a href="guias" class="mobile-nav-link" style="padding: 16px 0; border-top: 1px solid var(--border);">📚 Guías</a>
+    </div>
 </nav>
 
 <main>
@@ -209,7 +214,7 @@
                         </div>
                         <div class="example-result">
                             <div class="example-result-row total"><span>Total indemnización</span><span class="amount">63.286 €</span></div>
-                            <div class="example-result-row exento"><span>✅ 100% exenta (< 180.000€)</span><span class="note">Sin retención IRPF</span></div>
+                            <div class="example-result-row exento"><span>✅ Exentos 59.669 € (lo que daría un improcedente: 33 días/año)</span><span class="note">Tributan los 3.617 € restantes</span></div>
                         </div>
                     </div>
                     <div class="example-tip"><strong>💡 Consejo de Pedro:</strong> "Participé activamente en las asambleas sindicales. Conseguimos subir de 30 a 35 días/año y mantener el convenio especial con la SS para mayores de 55. ¡Infórmate y participa!"</div>
@@ -225,8 +230,8 @@
             <div class="faq-list">
                 <div class="faq-item"><button class="faq-q"><span>¿Qué es un ERE y cuándo se aplica?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Un <strong>Expediente de Regulación de Empleo (ERE)</strong> es un procedimiento legal para despidos colectivos. Se aplica cuando la empresa despide en 90 días a: 10+ trabajadores (empresas <100), 10% plantilla (100-300 trabajadores), o 30+ (>300 trabajadores). Requiere periodo de consultas con sindicatos y comunicación a la autoridad laboral.</p></div></div>
                 <div class="faq-item"><button class="faq-q"><span>¿Cuántos días por año me corresponden en un ERE?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>El <strong>mínimo legal es 20 días/año</strong> (como despido objetivo). Sin embargo, en la negociación sindical suelen conseguirse mejoras: lo habitual es entre 25 y 45 días/año, dependiendo de la situación económica de la empresa y la fuerza negociadora de los sindicatos.</p></div></div>
-                <div class="faq-item"><button class="faq-q"><span>¿La indemnización del ERE tributa?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Está <strong>exenta de IRPF hasta 180.000€</strong> (Art. 7.e LIRPF). Solo tributa el exceso sobre esa cantidad. En la mayoría de casos, la indemnización completa está exenta.</p></div></div>
-                <div class="faq-item"><button class="faq-q"><span>¿Qué es el convenio especial con la Seguridad Social?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Es un acuerdo por el que la empresa paga tus cotizaciones a la SS hasta que te jubiles o encuentres empleo. Es muy valioso para <strong>mayores de 55 años</strong>, ya que garantiza que no pierdes años de cotización ni se reduce tu pensión futura.</p></div></div>
+                <div class="faq-item"><button class="faq-q"><span>¿La indemnización del ERE tributa?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Está exenta de IRPF <strong>hasta lo que te correspondería por despido improcedente</strong> (33 días por año, máximo 24 mensualidades), con un tope de 180.000€ (Art. 7.e LIRPF). Si en el ERE se pactan más días, la diferencia tributa como rendimiento del trabajo.</p></div></div>
+                <div class="faq-item"><button class="faq-q"><span>¿Qué es el convenio especial con la Seguridad Social?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Es un acuerdo por el que la empresa sigue pagando tus cotizaciones para que el despido no reduzca tu pensión. Es <strong>obligatorio para los trabajadores de 55 años o más</strong> en los despidos colectivos de empresas que no están en concurso (Art. 51.9 ET): la empresa cotiza hasta que cumples 63 años, o 61 si el ERE es por causas económicas. A partir de ahí puedes seguir pagándolo tú.</p></div></div>
             </div>
         </div>
     </section>
@@ -270,6 +275,7 @@
                 <a href="guia-despido">Guía del Despido</a>
                 <a href="guia-sueldo-neto">Guía del Sueldo Neto</a>
                 <a href="guia-paro">Guía del Paro</a>
+                <a href="guias">Todas las guías</a>
                 <a href="sobre-el-proyecto">Sobre el Proyecto</a>
             </div>
             <div class="footer-col">
