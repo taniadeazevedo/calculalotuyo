@@ -679,7 +679,7 @@ document.getElementById('calc').onsubmit=function(e){
         <div class="fiscal-row highlight"><span><strong>Finiquito neto</strong></span><span><strong>${fmt(netoTotal)}</strong></span></div>
     `;
     // Fin de contrato temporal: aparte del finiquito hay una indemnización de 12 días por año (art. 49.1.c ET)
-    if(motivoBaja==='temporal'){
+    if(motivoBaja==='finContrato'){
         const diasContrato=Math.round((fechaBaja-fechaAlta)/864e5)+1;
         const salarioDiaConPagas=salarioMensual*Math.max(12,tipoPagas)/365;   // el salario regulador incluye las pagas
         const indemTemporal=salarioDiaConPagas*12*diasContrato/365;
