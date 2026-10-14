@@ -76,6 +76,13 @@ function mostrarError(mensaje){
 // Al volver a calcular se borra el error anterior (se ejecuta antes que el cálculo de la página)
 const formCalc=document.getElementById('calc');
 if(formCalc)formCalc.addEventListener('submit',()=>mostrarError(''),true);
+// Después de calcular, la página baja sola hasta el resultado (en el móvil quedaba escondido debajo del formulario)
+if(formCalc)formCalc.addEventListener('submit',()=>{
+    setTimeout(()=>{                                 // espera a que la calculadora haya pintado el resultado
+        const resultado=document.getElementById('result');
+        if(resultado&&resultado.classList.contains('visible'))resultado.scrollIntoView({behavior:'smooth',block:'start'});
+    },60);
+});
 
 // ---------- Correo de contacto ----------
 // La dirección no está escrita entera en el HTML para que no la recojan los robots de spam
