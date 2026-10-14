@@ -3855,3 +3855,11 @@ main { padding-bottom: 64px; }
     .guide-toc ol { columns: 2; column-gap: 40px; }
     .guide-toc li { break-inside: avoid; }
 }
+
+/* --- Móvil: que la tarjeta de la calculadora no tape el subtítulo de la cabecera --- */
+@media (max-width: 700px) {
+    .hero-mini { padding-bottom: 64px; }
+}
+/* Datos de autor, fecha y lectura de las guías: separados de sus iconos y entre sí */
+.guide-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px; }
+.guide-meta span { display: inline-flex; align-items: center; gap: 6px; }
