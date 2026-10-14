@@ -3771,3 +3771,63 @@ input[type="date"] {
 /* --- Página de guías: aire entre los grupos de temas --- */
 .section-guides h2 + .guides-grid { margin-top: 24px; }
 .section-guides .guides-grid + h2 { margin-top: 56px; }
+
+/* =====================================================================
+   SISTEMA DE FONDOS ÚNICO
+   Regla: la página es gris claro (--bg); el contenido va en tarjetas blancas
+   con borde fino; solo el menú, la cabecera de cada página y el pie ocupan
+   todo el ancho. Así no aparecen franjas blancas con huecos grises entre ellas.
+   ===================================================================== */
+
+/* Misma cabecera en las cuatro plantillas: calculadoras, portada, páginas legales y guías */
+.hero-mini,
+.hero-clean,
+.page-header,
+.guide-header {
+    background-color: transparent;
+    background-image:
+        radial-gradient(rgba(79,70,229,0.10) 1px, transparent 1px),
+        linear-gradient(180deg, #EEF2FF 0%, var(--bg) 100%);
+    background-size: 24px 24px, 100% 100%;
+    border-bottom: 0;
+}
+
+/* Bloques que antes eran franjas blancas a todo lo ancho: ahora transparentes */
+.section-guides,
+.section-alt {
+    background: transparent;
+}
+.guide-card { background: var(--card); }            /* las tarjetas sí son blancas, sobre el gris */
+#guias-relacionadas { border-top: 0; padding: 32px 0 16px; }
+
+/* El pie empieza justo donde acaba el contenido (antes asomaba una franja gris de 48px) */
+.footer { margin-top: 0; }
+main { padding-bottom: 64px; }
+
+/* Guías: índice y texto en tarjetas centradas, con un ancho cómodo de lectura */
+.guide-toc {
+    background: transparent;
+    border-bottom: 0;
+    padding: 32px 0 0;
+}
+.guide-content {
+    background: transparent;
+    box-shadow: none;
+    padding: 24px 0 0;
+}
+.guide-toc > .container,
+.guide-content > .container {
+    max-width: 860px;                                /* unas 75 letras por línea: lo más cómodo para leer */
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+.guide-toc > .container { padding: 24px 32px; }
+.guide-content > .container { padding: 48px; }
+.guide-header .container { max-width: 860px; }      /* el título alineado con el texto */
+
+@media (max-width: 700px) {
+    .guide-toc > .container { margin: 0 16px; padding: 20px; }
+    .guide-content > .container { margin: 0 16px; padding: 28px 20px; }
+    main { padding-bottom: 40px; }
+}
