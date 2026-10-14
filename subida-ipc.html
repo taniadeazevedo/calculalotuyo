@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="https://calculalotuyo.es/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://calculalotuyo.es/subida-ipc">
-    <link rel="stylesheet" href="styles.css?v=20261014c">
+    <link rel="stylesheet" href="styles.css?v=20261014d">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -298,7 +298,7 @@
     </div>
 </footer>
 
-<script src="site.js?v=20261014c"></script>
+<script src="site.js?v=20261014d"></script>
 <script src="datos-2026.js"></script>
 <script>
 // IPC histórico
@@ -351,7 +351,7 @@ document.getElementById('calc').onsubmit=function(e){
     }
     
     document.getElementById('details').innerHTML=`
-        <div class="result-item"><p class="result-item-label">IPC aplicado</p><p class="result-item-value">${ipc.toLocaleString('es-ES')}% × ${anos} años</p></div>
+        <div class="result-item"><p class="result-item-label">IPC aplicado</p><p class="result-item-value">${ipc.toLocaleString('es-ES')}% × ${anos} ${anos===1?'año':'años'}</p></div>
         <div class="result-item"><p class="result-item-label">Factor acumulado</p><p class="result-item-value">×${factorAcumulado.toLocaleString('es-ES',{minimumFractionDigits:3,maximumFractionDigits:3})}</p></div>
         <div class="result-item"><p class="result-item-label">Subida mensual</p><p class="result-item-value">+${fmt(subidaNecesaria/14)}</p></div>
     `;

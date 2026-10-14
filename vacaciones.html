@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="https://calculalotuyo.es/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://calculalotuyo.es/vacaciones">
-    <link rel="stylesheet" href="styles.css?v=20261014c">
+    <link rel="stylesheet" href="styles.css?v=20261014d">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -310,7 +310,7 @@
     </div>
 </footer>
 
-<script src="site.js?v=20261014c"></script>
+<script src="site.js?v=20261014d"></script>
 <script>
 document.getElementById('fechaCalculo').value=new Date().toISOString().split('T')[0];
 
@@ -357,8 +357,8 @@ document.getElementById('calc').onsubmit=function(e){
     document.getElementById('resultSub').textContent='Equivalente a '+fmtDec(valorEconomico);
     
     document.getElementById('details').innerHTML=`
-        <div class="result-item"><p class="result-item-label">Días por mes</p><p class="result-item-value">${(diasPorMes).toFixed(2)}</p></div>
-        <div class="result-item"><p class="result-item-label">Meses trabajados</p><p class="result-item-value">${mesesTrabajados.toFixed(1)}</p></div>
+        <div class="result-item"><p class="result-item-label">Días por mes</p><p class="result-item-value">${diasPorMes.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})}</p></div>
+        <div class="result-item"><p class="result-item-label">Meses trabajados</p><p class="result-item-value">${un1(mesesTrabajados)}</p></div>
         <div class="result-item"><p class="result-item-label">Valor día</p><p class="result-item-value">${fmtDec(salarioDiario)}</p></div>
     `;
     
