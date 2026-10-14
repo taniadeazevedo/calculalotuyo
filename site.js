@@ -1,6 +1,6 @@
 // =====================================================================
 // JavaScript común a todas las páginas: formato de euros, menú,
-// preguntas frecuentes, errores de formulario y aviso de cookies.
+// preguntas frecuentes, errores de formulario y consentimiento de cookies.
 // =====================================================================
 
 // ---------- Formato de euros ----------
@@ -85,62 +85,33 @@ document.querySelectorAll('[data-correo]').forEach(el=>{
     if(el.tagName==='A')el.href='mailto:'+correo;
 });
 
-// ---------- Cookies: Analytics y AdSense solo con consentimiento ----------
+// ---------- Cookies: el aviso lo muestra Google (CMP certificada de AdSense) ----------
+// El script de AdSense va fijo en el <head> de cada página y trae el mensaje de
+// consentimiento que configuramos en AdSense > Privacidad y mensajes.
 const ID_ANALYTICS='G-Z1JPGHYYP6';
-const ID_ADSENSE='ca-pub-4853214655991551';
-const CLAVE_COOKIES='clt-cookies';                   // guarda 'si' o 'no' en el navegador
 
-function leerConsentimiento(){
-    try{return localStorage.getItem(CLAVE_COOKIES)}catch(e){return null}   // modo privado: sin almacenamiento
-}
-function guardarConsentimiento(valor){
-    try{localStorage.setItem(CLAVE_COOKIES,valor)}catch(e){}
-}
-function cargarScript(src,atributos){
-    const s=document.createElement('script');
-    s.async=true;s.src=src;
-    Object.assign(s,atributos||{});
-    document.head.appendChild(s);
-}
-let tercerosCargados=false;
-function cargarTerceros(){
-    if(tercerosCargados)return;                      // no cargarlos dos veces
-    tercerosCargados=true;
-    window.dataLayer=window.dataLayer||[];
-    window.gtag=function(){dataLayer.push(arguments)};
-    gtag('js',new Date());
-    gtag('config',ID_ANALYTICS);
-    cargarScript('https://www.googletagmanager.com/gtag/js?id='+ID_ANALYTICS);
-    cargarScript('https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client='+ID_ADSENSE,{crossOrigin:'anonymous'});
-}
-function mostrarAvisoCookies(){
-    if(document.getElementById('cookieBanner'))return;
-    const aviso=document.createElement('div');
-    aviso.id='cookieBanner';
-    aviso.className='cookie-banner';
-    aviso.setAttribute('role','dialog');
-    aviso.setAttribute('aria-label','Aviso de cookies');
-    aviso.innerHTML=
-        '<p>Usamos cookies de Google Analytics y Google AdSense para medir las visitas y mostrar publicidad. '+
-        'Solo se activan si las aceptas. <a href="cookies">Ver la política de cookies</a></p>'+
-        '<div class="cookie-banner-actions">'+
-        '<button type="button" class="cookie-btn" data-respuesta="no">Rechazar</button>'+
-        '<button type="button" class="cookie-btn cookie-btn-primary" data-respuesta="si">Aceptar</button>'+
-        '</div>';
-    aviso.addEventListener('click',e=>{
-        const respuesta=e.target.dataset.respuesta;
-        if(!respuesta)return;                        // clic en el texto, no en un botón
-        const anterior=leerConsentimiento();
-        guardarConsentimiento(respuesta);
-        aviso.remove();
-        if(respuesta==='si')cargarTerceros();
-        else if(anterior==='si')location.reload();   // al retirar el permiso se recarga sin los scripts
-    });
-    document.body.appendChild(aviso);
-}
-// Al entrar: si ya aceptó, se cargan; si no ha contestado, se pregunta
-const consentimiento=leerConsentimiento();
-if(consentimiento==='si')cargarTerceros();
-else if(consentimiento===null)mostrarAvisoCookies();
-// Cualquier elemento con data-cookies vuelve a abrir el aviso para cambiar la decisión
-document.querySelectorAll('[data-cookies]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();mostrarAvisoCookies()}));
+// Google Analytics con el modo de consentimiento: por defecto todo denegado,
+// y el mensaje de Google lo actualiza cuando el visitante acepta
+window.dataLayer=window.dataLayer||[];               // cola de órdenes que lee gtag.js
+window.gtag=function(){dataLayer.push(arguments)};   // función estándar de Google para enviar órdenes
+gtag('consent','default',{                           // estado inicial: sin permiso
+    ad_storage:'denied',                             // cookies de publicidad
+    ad_user_data:'denied',                           // enviar datos de usuario a Google para anuncios
+    ad_personalization:'denied',                     // anuncios personalizados
+    analytics_storage:'denied',                      // cookies de analítica
+    wait_for_update:500                              // espera medio segundo a que responda el aviso
+});
+gtag('js',new Date());                               // marca el momento de carga
+gtag('config',ID_ANALYTICS);                         // activa Analytics con nuestro identificador
+const scriptAnalytics=document.createElement('script');   // crea la etiqueta <script> de Analytics
+scriptAnalytics.async=true;                          // que no frene la carga de la página
+scriptAnalytics.src='https://www.googletagmanager.com/gtag/js?id='+ID_ANALYTICS;
+document.head.appendChild(scriptAnalytics);          // la añade al <head>
+
+// Cualquier enlace con data-cookies vuelve a abrir el mensaje de Google para cambiar la decisión
+window.googlefc=window.googlefc||{};                 // objeto que crea el mensaje de Google
+googlefc.callbackQueue=googlefc.callbackQueue||[];   // cola de tareas que se ejecutan cuando esté listo
+document.querySelectorAll('[data-cookies]').forEach(el=>el.addEventListener('click',e=>{
+    e.preventDefault();                              // que el enlace "#" no salte arriba
+    googlefc.callbackQueue.push(()=>googlefc.showRevocationMessage());   // muestra otra vez el mensaje
+}));
