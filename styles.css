@@ -3831,3 +3831,27 @@ main { padding-bottom: 64px; }
     .guide-content > .container { margin: 0 16px; padding: 28px 20px; }
     main { padding-bottom: 40px; }
 }
+
+/* =====================================================================
+   COHERENCIA DE TÍTULOS Y ESPACIOS
+   ===================================================================== */
+
+/* Cabecera de páginas legales, contacto y guías: centrada como el resto */
+.page-header { text-align: center; padding: 100px 0 48px; }
+.page-header p { max-width: 680px; margin-left: auto; margin-right: auto; color: var(--text2); }
+
+/* Todos los títulos de bloque, alineados a la izquierda como los de las calculadoras */
+.section-guides h2,
+.section-guides-desc { text-align: left; }
+.section-guides h2 { font-size: 1.35rem; }
+
+/* Bloques de las calculadoras: menos hueco entre uno y otro (antes 64 px arriba y 64 abajo se sumaban) */
+.section { padding: 32px 0; }
+.calc-section + .container + .section,
+.calc-section + .section { padding-top: 48px; }
+
+/* Índice de las guías en dos columnas en pantallas anchas */
+@media (min-width: 760px) {
+    .guide-toc ol { columns: 2; column-gap: 40px; }
+    .guide-toc li { break-inside: avoid; }
+}
