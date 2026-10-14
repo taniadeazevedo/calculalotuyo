@@ -25,7 +25,7 @@
 }
 
 body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; /* fuente del sistema: carga al instante */
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
@@ -303,7 +303,7 @@ body {
     border-radius: 50px;
     font-size: 0.85rem;
     font-weight: 500;
-    color: var(--success);
+    color: #047857;           /* verde más oscuro: contraste suficiente para texto pequeño */
     margin-bottom: 24px;
 }
 
@@ -1012,6 +1012,7 @@ body {
     box-shadow: 0 12px 20px -5px rgba(0,0,0,0.05);
 }
 
+.related-card h3,
 .related-card h4 {
     font-size: 1rem;
     font-weight: 600;
@@ -1374,7 +1375,7 @@ body {
     border-radius: 8px;
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--success);
+    color: #047857;           /* verde más oscuro: contraste suficiente para texto pequeño */
 }
 
 .badge-dot {

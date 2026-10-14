@@ -122,7 +122,7 @@ function mostrarAvisoCookies(){
     aviso.setAttribute('aria-label','Aviso de cookies');
     aviso.innerHTML=
         '<p>Usamos cookies de Google Analytics y Google AdSense para medir las visitas y mostrar publicidad. '+
-        'Solo se activan si las aceptas. <a href="cookies">Más información</a></p>'+
+        'Solo se activan si las aceptas. <a href="cookies">Ver la política de cookies</a></p>'+
         '<div class="cookie-banner-actions">'+
         '<button type="button" class="cookie-btn" data-respuesta="no">Rechazar</button>'+
         '<button type="button" class="cookie-btn cookie-btn-primary" data-respuesta="si">Aceptar</button>'+
