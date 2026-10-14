@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="https://calculalotuyo.es/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://calculalotuyo.es/finiquito">
-    <link rel="stylesheet" href="styles.css?v=20261014">
+    <link rel="stylesheet" href="styles.css?v=20261014b">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -177,11 +177,11 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="fechaAlta">Fecha de alta en la empresa</label>
-                            <input type="date" class="form-input" id="fechaAlta" required>
+                            <input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="fechaAlta" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="fechaBaja">Fecha de baja (último día)</label>
-                            <input type="date" class="form-input" id="fechaBaja" required>
+                            <input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="fechaBaja" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="motivoBaja">Motivo de la baja</label>
@@ -576,7 +576,7 @@
     </div>
 </footer>
 
-<script src="site.js?v=20261014"></script>
+<script src="site.js?v=20261014b"></script>
 <script src="datos-2026.js"></script>
 <script>
 // Fecha por defecto
@@ -680,14 +680,15 @@ document.getElementById('calc').onsubmit=function(e){
     
     document.getElementById('pagasRow').style.display=tipoPagas>=14?'flex':'none';
     
-    let subtext=diasMes+' días trabajados';
-    if(diasVacPendientes>0)subtext+=' · '+Math.round(diasVacPendientes)+' días vacaciones';
+    const nombreMes=fechaBaja.toLocaleDateString('es-ES',{month:'long'});   // p. ej. «octubre»
+    let subtext=diasMes+' días de '+nombreMes+' por cobrar';
+    if(diasVacPendientes>0)subtext+=' · '+(Math.round(diasVacPendientes*10)/10).toLocaleString('es-ES')+' días de vacaciones pendientes';
     document.getElementById('resultSub').textContent=subtext;
     
     // Detalles
     document.getElementById('details').innerHTML=`
         <div class="result-item"><p class="result-item-label">Salario diario</p><p class="result-item-value">${fmtDec(salarioDiario)}</p></div>
-        <div class="result-item"><p class="result-item-label">Días mes trabajados</p><p class="result-item-value">${diasMes} días</p></div>
+        <div class="result-item"><p class="result-item-label">Días del último mes</p><p class="result-item-value">${diasMes} días</p></div>
         <div class="result-item"><p class="result-item-label">Vacaciones pendientes</p><p class="result-item-value">${Math.round(diasVacPendientes*10)/10} días</p></div>
         <div class="result-item"><p class="result-item-label">Tipo IRPF aplicado</p><p class="result-item-value">${irpfPct}%</p></div>
     `;

@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="https://calculalotuyo.es/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://calculalotuyo.es/vacaciones">
-    <link rel="stylesheet" href="styles.css?v=20261014">
+    <link rel="stylesheet" href="styles.css?v=20261014b">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -158,8 +158,8 @@
                     <div class="form-grid">
                         <div class="form-group"><label class="form-label" for="salario">Salario bruto mensual</label><input type="number" class="form-input" id="salario" placeholder="1800" required><span class="form-hint">Para calcular valor económico</span></div>
                         <div class="form-group"><label class="form-label" for="diasConvenio">Días vacaciones según convenio (al año)</label><select class="form-select" id="diasConvenio"><option value="30" selected>30 días naturales (mínimo legal)</option><option value="22">22 días laborables</option><option value="23">23 días laborables</option><option value="25">25 días laborables</option><option value="27">27 días laborables</option></select></div>
-                        <div class="form-group"><label class="form-label" for="fechaInicio">Fecha inicio en empresa</label><input type="date" class="form-input" id="fechaInicio" required></div>
-                        <div class="form-group"><label class="form-label" for="fechaCalculo">Fecha de cálculo</label><input type="date" class="form-input" id="fechaCalculo" required></div>
+                        <div class="form-group"><label class="form-label" for="fechaInicio">Fecha inicio en empresa</label><input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="fechaInicio" required></div>
+                        <div class="form-group"><label class="form-label" for="fechaCalculo">Fecha de cálculo</label><input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="fechaCalculo" required></div>
                         <div class="form-group"><label class="form-label" for="diasDisfrutados">Días ya disfrutados este año</label><input type="number" class="form-input" id="diasDisfrutados" value="0" min="0"></div>
                         <div class="form-group"><label class="form-label" for="tipoDias">¿Tipo de días?</label><select class="form-select" id="tipoDias"><option value="naturales">Días naturales</option><option value="laborables">Días laborables</option></select></div>
                     </div>
@@ -310,7 +310,7 @@
     </div>
 </footer>
 
-<script src="site.js?v=20261014"></script>
+<script src="site.js?v=20261014b"></script>
 <script>
 document.getElementById('fechaCalculo').value=new Date().toISOString().split('T')[0];
 

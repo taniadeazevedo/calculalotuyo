@@ -3863,3 +3863,16 @@ main { padding-bottom: 64px; }
 /* Datos de autor, fecha y lectura de las guías: separados de sus iconos y entre sí */
 .guide-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 20px; }
 .guide-meta span { display: inline-flex; align-items: center; gap: 6px; }
+
+/* --- Tablas de ejemplo y desgloses: sin línea doble antes del total --- */
+.example-result-row:has(+ .example-result-row.total) { border-bottom: none; }   /* la fila de encima del total ya no pinta su línea */
+
+/* --- Cabecera de las calculadoras: más aire entre el subtítulo y la tarjeta --- */
+.hero-mini { padding-bottom: 88px; }               /* la tarjeta sube 40 px: quedan unos 48 px libres */
+.hero-mini p { max-width: 640px; margin-left: auto; margin-right: auto; }
+@media (max-width: 700px) {
+    .hero-mini { padding-bottom: 80px; }
+}
+
+/* --- Avisos de error de fecha del navegador y campos inválidos: borde rojo suave --- */
+.form-input:invalid:not(:placeholder-shown) { border-color: #DC2626; }
