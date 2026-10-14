@@ -90,6 +90,7 @@ body {
 }
 
 .nav-link {
+    white-space: nowrap;           /* que «Sobre el proyecto» no se parta en dos líneas */
     display: flex;
     align-items: center;
     gap: 4px;
@@ -284,7 +285,7 @@ body {
     background: var(--bg);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1040px) {
     .nav { display: none; }
     .menu-btn { display: flex; }
     .mobile-nav { display: block; }
