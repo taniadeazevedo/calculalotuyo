@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="https://calculalotuyo.es/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://calculalotuyo.es/vacaciones">
-    <link rel="stylesheet" href="styles.css?v=20261014b">
+    <link rel="stylesheet" href="styles.css?v=20261014c">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -310,7 +310,7 @@
     </div>
 </footer>
 
-<script src="site.js?v=20261014b"></script>
+<script src="site.js?v=20261014c"></script>
 <script>
 document.getElementById('fechaCalculo').value=new Date().toISOString().split('T')[0];
 
@@ -319,6 +319,8 @@ document.getElementById('diasConvenio').addEventListener('change',function(){
     document.getElementById('tipoDias').value=this.value==='30'?'naturales':'laborables';
 });
 
+// Número con un decimal y coma española (23,6)
+const un1=x=>(Math.round(x*10)/10).toLocaleString('es-ES');
 document.getElementById('calc').onsubmit=function(e){
     e.preventDefault();
     const salario=+document.getElementById('salario').value;
@@ -347,10 +349,10 @@ document.getElementById('calc').onsubmit=function(e){
     const valorEconomico=salarioDiario*diasPendientes;
     
     // Mostrar
-    document.getElementById('total').textContent=Math.round(diasPendientes*10)/10+' días';
-    document.getElementById('generados').textContent=Math.round(diasGenerados*10)/10+' días';
+    document.getElementById('total').textContent=un1(diasPendientes)+' días';
+    document.getElementById('generados').textContent=un1(diasGenerados)+' días';
     document.getElementById('disfrutados').textContent=diasDisfrutados+' días';
-    document.getElementById('pendientes').textContent=Math.round(diasPendientes*10)/10+' días';
+    document.getElementById('pendientes').textContent=un1(diasPendientes)+' días';
     document.getElementById('valor').textContent=fmtDec(valorEconomico);
     document.getElementById('resultSub').textContent='Equivalente a '+fmtDec(valorEconomico);
     
@@ -361,12 +363,12 @@ document.getElementById('calc').onsubmit=function(e){
     `;
     
     document.getElementById('fiscalContent').innerHTML=`
-        <div class="fiscal-row"><span>${Math.round(diasGenerados*10)/10} días × ${fmtDec(salarioDiario)}/día</span><span>${fmtDec(diasGenerados*salarioDiario)}</span></div>
+        <div class="fiscal-row"><span>${un1(diasGenerados)} días × ${fmtDec(salarioDiario)}/día</span><span>${fmtDec(diasGenerados*salarioDiario)}</span></div>
         <div class="fiscal-row"><span>- Disfrutados (${diasDisfrutados} días)</span><span>-${fmtDec(diasDisfrutados*salarioDiario)}</span></div>
         <div class="fiscal-row highlight"><span><strong>Valor pendiente</strong></span><span><strong>${fmtDec(valorEconomico)}</strong></span></div>
     `;
     
-    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(`🏖️ Vacaciones:\n📅 Pendientes: ${Math.round(diasPendientes*10)/10} días\n💰 Valor: ${fmtDec(valorEconomico)}\n\nhttps://calculalotuyo.es/vacaciones`);
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(`🏖️ Vacaciones:\n📅 Pendientes: ${un1(diasPendientes)} días\n💰 Valor: ${fmtDec(valorEconomico)}\n\nhttps://calculalotuyo.es/vacaciones`);
     document.getElementById('result').classList.add('visible');
     document.getElementById('result').scrollIntoView({behavior:'smooth'});
 };

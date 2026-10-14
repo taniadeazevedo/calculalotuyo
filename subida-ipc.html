@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="https://calculalotuyo.es/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://calculalotuyo.es/subida-ipc">
-    <link rel="stylesheet" href="styles.css?v=20261014b">
+    <link rel="stylesheet" href="styles.css?v=20261014c">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -298,7 +298,7 @@
     </div>
 </footer>
 
-<script src="site.js?v=20261014b"></script>
+<script src="site.js?v=20261014c"></script>
 <script src="datos-2026.js"></script>
 <script>
 // IPC histórico
@@ -340,7 +340,7 @@ document.getElementById('calc').onsubmit=function(e){
     document.getElementById('salarioActual').textContent=fmt(salario);
     document.getElementById('subidaNecesaria').textContent='+'+fmt(subidaNecesaria);
     document.getElementById('salarioObjetivo').textContent=fmt(salarioObjetivo);
-    document.getElementById('resultSub').textContent='+'+porcentajeSubida.toFixed(1)+'% para mantener poder adquisitivo';
+    document.getElementById('resultSub').textContent='+'+porcentajeSubida.toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1})+'% para mantener poder adquisitivo';
     
     if(subidaOfrecida>0){
         document.getElementById('comparativaRow').style.display='flex';
@@ -351,18 +351,18 @@ document.getElementById('calc').onsubmit=function(e){
     }
     
     document.getElementById('details').innerHTML=`
-        <div class="result-item"><p class="result-item-label">IPC aplicado</p><p class="result-item-value">${ipc}% × ${anos}a</p></div>
-        <div class="result-item"><p class="result-item-label">Factor acumulado</p><p class="result-item-value">×${factorAcumulado.toFixed(3)}</p></div>
+        <div class="result-item"><p class="result-item-label">IPC aplicado</p><p class="result-item-value">${ipc.toLocaleString('es-ES')}% × ${anos} años</p></div>
+        <div class="result-item"><p class="result-item-label">Factor acumulado</p><p class="result-item-value">×${factorAcumulado.toLocaleString('es-ES',{minimumFractionDigits:3,maximumFractionDigits:3})}</p></div>
         <div class="result-item"><p class="result-item-label">Subida mensual</p><p class="result-item-value">+${fmt(subidaNecesaria/14)}</p></div>
     `;
     
     document.getElementById('fiscalContent').innerHTML=`
         <div class="fiscal-row warning"><span>💸 Pérdida si no te suben</span><span>-${fmt(subidaNecesaria)}/año</span></div>
         <div class="fiscal-row warning"><span>📉 Pérdida mensual</span><span>-${fmt(subidaNecesaria/12)}/mes</span></div>
-        <div class="fiscal-row highlight"><span><strong>Subida necesaria</strong></span><span><strong>+${porcentajeSubida.toFixed(1)}%</strong></span></div>
+        <div class="fiscal-row highlight"><span><strong>Subida necesaria</strong></span><span><strong>+${porcentajeSubida.toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1})}%</strong></span></div>
     `;
     
-    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(`📈 Subida IPC:\n💰 Salario actual: ${fmt(salario)}\n📊 Debería ser: ${fmt(salarioObjetivo)}\n⬆️ Subida necesaria: +${porcentajeSubida.toFixed(1)}%\n\nhttps://calculalotuyo.es/subida-ipc`);
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(`📈 Subida IPC:\n💰 Salario actual: ${fmt(salario)}\n📊 Debería ser: ${fmt(salarioObjetivo)}\n⬆️ Subida necesaria: +${porcentajeSubida.toLocaleString('es-ES',{minimumFractionDigits:1,maximumFractionDigits:1})}%\n\nhttps://calculalotuyo.es/subida-ipc`);
     document.getElementById('result').classList.add('visible');
     document.getElementById('result').scrollIntoView({behavior:'smooth'});
 };

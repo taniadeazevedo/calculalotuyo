@@ -21,7 +21,7 @@
     <meta name="twitter:image" content="https://calculalotuyo.es/og-image.png">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="canonical" href="https://calculalotuyo.es/pagas-extra">
-    <link rel="stylesheet" href="styles.css?v=20261014b">
+    <link rel="stylesheet" href="styles.css?v=20261014c">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -417,7 +417,7 @@
     </div>
 </footer>
 
-<script src="site.js?v=20261014b"></script>
+<script src="site.js?v=20261014c"></script>
 <script>
 document.getElementById('fechaCalculo').value=new Date().toISOString().split('T')[0];
 
@@ -474,7 +474,7 @@ document.getElementById('calc').onsubmit=function(e){
     const devengoPorMes=salario/(devengo==='semestral'?6:12); // lo que se genera de cada paga al mes
     const mesesPV=pagaVerano>0?Math.round(pagaVerano/devengoPorMes*10)/10:0;
     const mesesPN=pagaNavidad>0?Math.round(pagaNavidad/devengoPorMes*10)/10:0;
-    document.getElementById('resultSub').textContent=(mesesPV?mesesPV+' meses verano':'')+(mesesPV&&mesesPN?' + ':'')+(mesesPN?mesesPN+' meses navidad':'');
+    document.getElementById('resultSub').textContent=(mesesPV?mesesPV.toLocaleString('es-ES')+' meses de verano':'')+(mesesPV&&mesesPN?' + ':'')+(mesesPN?mesesPN.toLocaleString('es-ES')+' meses de Navidad':'');
     
     document.getElementById('details').innerHTML=`
         <div class="result-item"><p class="result-item-label">Salario base paga</p><p class="result-item-value">${fmt(salario)}</p></div>
