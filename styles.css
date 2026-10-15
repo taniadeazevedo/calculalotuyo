@@ -3876,3 +3876,8 @@ main { padding-bottom: 64px; }
 
 /* --- Avisos de error de fecha del navegador y campos inválidos: borde rojo suave --- */
 .form-input:invalid:not(:placeholder-shown) { border-color: #DC2626; }
+
+/* --- Logotipo: icono de calculadora + «Calcula» en negro y «LoTuyo» en el color de la marca --- */
+img.logo-mark { background: none; border-radius: 8px; display: block; }
+.logo { font-weight: 700; letter-spacing: -0.01em; }
+.logo-accent { color: var(--accent); }
