@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#4F46E5">
-    <link rel="stylesheet" href="styles.css?v=20261015b">
+    <link rel="stylesheet" href="styles.css?v=20261015c">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -52,6 +52,25 @@
     "@type": "Answer",
     "text": "Sí, los autónomos societarios tienen una base mínima de 1.000€, lo que supone una cuota mínima de unos 315€/mes."
    }
+  }
+ ]
+}
+    </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Inicio",
+   "item": "https://calculalotuyo.es/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Cuota de autónomos"
   }
  ]
 }
@@ -86,6 +105,9 @@
                     <a href="pagas-extra">🎁 Pagas Extra</a>
                     <a href="vacaciones">🏖️ Vacaciones</a>
                     <a href="subida-ipc">📈 Subida IPC</a>
+                    <a href="neto-a-bruto">🔁 Neto a Bruto</a>
+                    <a href="reduccion-jornada">👶 Reducción de Jornada</a>
+                    <a href="baja-medica">🩺 Baja Médica</a>
                 </div>
             </div>
             <div class="nav-dropdown" data-dropdown>
@@ -126,6 +148,9 @@
             <a href="pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a>
             <a href="vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a>
             <a href="subida-ipc" class="mobile-nav-link">📈 Subida IPC</a>
+            <a href="neto-a-bruto" class="mobile-nav-link">🔁 Neto a Bruto</a>
+            <a href="reduccion-jornada" class="mobile-nav-link">👶 Reducción de Jornada</a>
+            <a href="baja-medica" class="mobile-nav-link">🩺 Baja Médica</a>
         </div>
     </div>
     <div class="mobile-nav-section">
@@ -143,9 +168,11 @@
 <main>
     <section class="hero-mini">
         <div class="container">
+            <nav class="breadcrumb" aria-label="Estás en"><a href="./">Inicio</a> <span class="breadcrumb-sep">›</span> <span aria-current="page">Cuota de autónomos</span></nav>
             <div class="hero-badge">💼 Autónomos 2026</div>
             <h1>¿Cuánto pagarás de cuota?<br>Nuevo sistema por ingresos reales</h1>
             <p>Incluye tarifa plana, cuota cero por comunidad autónoma y autónomo societario.</p>
+            <p class="hero-meta">📅 Revisado el 15 de octubre de 2026 · ✍️ <a href="sobre-el-proyecto">Tania de Azevedo</a></p>
         </div>
     </section>
     <section class="calc-section">
@@ -414,7 +441,7 @@
         </div>
     </div>
 </footer>
-<script src="site.js?v=20261014d"></script>
+<script src="site.js?v=20261015c"></script>
 <script src="datos-2026.js"></script>
 <script>
 document.getElementById('calc').onsubmit=function(e){

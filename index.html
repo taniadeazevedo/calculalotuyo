@@ -28,7 +28,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#4F46E5">
     <link rel="canonical" href="https://calculalotuyo.es/">
-    <link rel="stylesheet" href="styles.css?v=20261015b">
+    <link rel="stylesheet" href="styles.css?v=20261015c">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -40,6 +40,34 @@
         "description": "Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026",
         "inLanguage": "es"
     }
+    </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://calculalotuyo.es/#organizacion",
+   "name": "CalculaLoTuyo",
+   "url": "https://calculalotuyo.es/",
+   "logo": "https://calculalotuyo.es/logo-512.png",
+   "founder": {
+    "@type": "Person",
+    "name": "Tania de Azevedo"
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://calculalotuyo.es/#web",
+   "name": "CalculaLoTuyo",
+   "url": "https://calculalotuyo.es/",
+   "inLanguage": "es-ES",
+   "publisher": {
+    "@id": "https://calculalotuyo.es/#organizacion"
+   }
+  }
+ ]
+}
     </script>
 </head>
 <body>
@@ -71,6 +99,9 @@
                     <a href="pagas-extra">🎁 Pagas Extra</a>
                     <a href="vacaciones">🏖️ Vacaciones</a>
                     <a href="subida-ipc">📈 Subida IPC</a>
+                    <a href="neto-a-bruto">🔁 Neto a Bruto</a>
+                    <a href="reduccion-jornada">👶 Reducción de Jornada</a>
+                    <a href="baja-medica">🩺 Baja Médica</a>
                 </div>
             </div>
             <div class="nav-dropdown" data-dropdown>
@@ -112,6 +143,9 @@
             <a href="pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a>
             <a href="vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a>
             <a href="subida-ipc" class="mobile-nav-link">📈 Subida IPC</a>
+            <a href="neto-a-bruto" class="mobile-nav-link">🔁 Neto a Bruto</a>
+            <a href="reduccion-jornada" class="mobile-nav-link">👶 Reducción de Jornada</a>
+            <a href="baja-medica" class="mobile-nav-link">🩺 Baja Médica</a>
         </div>
     </div>
     <div class="mobile-nav-section">
@@ -133,7 +167,7 @@
         <div class="container">
             <span class="hero-update">Actualizado en octubre de 2026</span>
             <h1>Calculadora Laboral 2026<br><span class="hero-accent">según el Estatuto de los Trabajadores</span></h1>
-            <p class="hero-desc">Calcula tu indemnización por despido, finiquito, prestación por desempleo, IRPF y más, con 13 guías que explican cada derecho. Algoritmos basados en la normativa vigente del BOE.</p>
+            <p class="hero-desc">Calcula tu indemnización por despido, finiquito, prestación por desempleo, IRPF y más, con 16 calculadoras y 13 guías que explican cada derecho. Algoritmos basados en la normativa vigente del BOE.</p>
             <a href="#calculadoras" class="btn-hero">
                 Calcular ahora
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -276,6 +310,27 @@
                         <div class="calc-item-info">
                             <h3>Subida IPC</h3>
                             <p>Pérdida de poder adquisitivo y salario objetivo</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="neto-a-bruto" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>De neto a bruto</h3>
+                            <p>Qué bruto pedir para cobrar un neto al mes</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="reduccion-jornada" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Reducción de Jornada</h3>
+                            <p>Tu sueldo neto si reduces la jornada por cuidado</p>
+                        </div>
+                        <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                    </a>
+                    <a href="baja-medica" class="calc-item">
+                        <div class="calc-item-info">
+                            <h3>Baja Médica</h3>
+                            <p>Cuánto cobras durante la incapacidad temporal</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
@@ -424,6 +479,6 @@
     </div>
 </footer>
 
-<script src="site.js?v=20261014d"></script>
+<script src="site.js?v=20261015c"></script>
 </body>
 </html>

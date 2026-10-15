@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#4F46E5">
-    <link rel="stylesheet" href="styles.css?v=20261015b">
+    <link rel="stylesheet" href="styles.css?v=20261015c">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -52,6 +52,25 @@
     "@type": "Answer",
     "text": "Es una ayuda asistencial para cuando se acaba el paro contributivo o no has cotizado lo suficiente. Desde noviembre de 2024 la cuantía baja con el tiempo: 95% del IPREM los primeros 180 días (570€), 90% hasta el día 360 (540€) y 80% después (480€). El subsidio para mayores de 52 años es siempre del 80%."
    }
+  }
+ ]
+}
+    </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Inicio",
+   "item": "https://calculalotuyo.es/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Prestación por desempleo"
   }
  ]
 }
@@ -86,6 +105,9 @@
                     <a href="pagas-extra">🎁 Pagas Extra</a>
                     <a href="vacaciones">🏖️ Vacaciones</a>
                     <a href="subida-ipc">📈 Subida IPC</a>
+                    <a href="neto-a-bruto">🔁 Neto a Bruto</a>
+                    <a href="reduccion-jornada">👶 Reducción de Jornada</a>
+                    <a href="baja-medica">🩺 Baja Médica</a>
                 </div>
             </div>
             <div class="nav-dropdown" data-dropdown>
@@ -126,6 +148,9 @@
             <a href="pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a>
             <a href="vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a>
             <a href="subida-ipc" class="mobile-nav-link">📈 Subida IPC</a>
+            <a href="neto-a-bruto" class="mobile-nav-link">🔁 Neto a Bruto</a>
+            <a href="reduccion-jornada" class="mobile-nav-link">👶 Reducción de Jornada</a>
+            <a href="baja-medica" class="mobile-nav-link">🩺 Baja Médica</a>
         </div>
     </div>
     <div class="mobile-nav-section">
@@ -143,9 +168,11 @@
 <main>
     <section class="hero-mini">
         <div class="container">
+            <nav class="breadcrumb" aria-label="Estás en"><a href="./">Inicio</a> <span class="breadcrumb-sep">›</span> <span aria-current="page">Prestación por desempleo</span></nav>
             <div class="hero-badge">📊 Desempleo 2026</div>
             <h1>¿Cuánto cobrarás de paro?<br>Calcula tu prestación exacta</h1>
             <p>Duración y cuantía según tu cotización. Incluye topes por hijos a cargo.</p>
+            <p class="hero-meta">📅 Revisado el 15 de octubre de 2026 · ✍️ <a href="sobre-el-proyecto">Tania de Azevedo</a></p>
         </div>
     </section>
     <section class="calc-section">
@@ -281,7 +308,7 @@
     <div class="container"><div class="ad"></div></div>
     <div class="container">
         <section class="faq"><h2>❓ Preguntas frecuentes</h2><div class="faq-item"><button class="faq-q">¿Cuánto tarda en llegar el paro?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Normalmente entre 15-30 días desde la solicitud. El primer pago suele ser proporcional.</div></div><div class="faq-item"><button class="faq-q">¿Puedo trabajar mientras cobro el paro?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Si empiezas a jornada completa, la prestación se suspende y la reanudas al terminar el contrato. A tiempo parcial puedes cobrar la parte proporcional. Además, las prestaciones nacidas desde el 1 de abril de 2025 pueden dar derecho al Complemento de Apoyo al Empleo, con el que el SEPE sigue pagando una parte mientras trabajas (máximo 180 días). Comunica siempre el alta al SEPE.</div></div><div class="faq-item"><button class="faq-q">¿Qué es el subsidio por desempleo?<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a">Es una ayuda asistencial para cuando se acaba el paro contributivo o no has cotizado lo suficiente. Desde noviembre de 2024 la cuantía baja con el tiempo: 95% del IPREM los primeros 180 días (570€), 90% hasta el día 360 (540€) y 80% después (480€). El subsidio para mayores de 52 años es siempre del 80%.</div></div></section>
-        <section class="related"><h2>📱 Calculadoras relacionadas</h2><div class="related-grid"><a href="despido-improcedente" class="related-card"><h3>⚖️ Despido Improcedente</h3><p>Calcula tu indemnización</p></a><a href="finiquito" class="related-card"><h3>💵 Finiquito</h3><p>Tu liquidación completa</p></a></div></section>
+        <section class="related"><h2>📱 Calculadoras relacionadas</h2><div class="related-grid"><a href="baja-medica" class="related-card"><h3>🩺 Baja Médica</h3><p>Cuánto cobras de baja</p></a><a href="despido-improcedente" class="related-card"><h3>⚖️ Despido Improcedente</h3><p>Calcula tu indemnización</p></a><a href="finiquito" class="related-card"><h3>💵 Finiquito</h3><p>Tu liquidación completa</p></a></div></section>
     </div>
     <section class="section-guides" id="guias-relacionadas">
         <div class="container">
@@ -358,7 +385,7 @@
         </div>
     </div>
 </footer>
-<script src="site.js?v=20261014d"></script>
+<script src="site.js?v=20261015c"></script>
 <script src="datos-2026.js"></script>
 <script>
 document.getElementById('calc').onsubmit=function(e){
