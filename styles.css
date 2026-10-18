@@ -3890,3 +3890,18 @@ img.logo-mark { background: none; border-radius: 8px; display: block; }
 /* --- Fecha de revisión y autora en la cabecera de las calculadoras --- */
 .hero-meta { font-size: 0.82rem; color: var(--text2); margin-top: 10px !important; }
 .hero-meta a { color: var(--accent); text-decoration: none; }
+
+/* ===== Calculadora de días laborables: festivos de la zona ===== */
+.festivos-zona { margin-top: 8px; margin-bottom: 20px; }          /* separa este bloque del resto del formulario */
+.festivo-add { display: flex; gap: 8px; }                          /* fecha y botón "+ Añadir" en la misma fila */
+.festivo-add .form-input { flex: 1; min-width: 0; }                /* la fecha ocupa el hueco que sobra */
+.festivo-add .btn-secondary { flex-shrink: 0; white-space: nowrap; }   /* el botón no se aplasta en el móvil */
+.festivo-lista { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; padding: 0; }   /* fechas añadidas en forma de etiquetas */
+.festivo-lista li { display: inline-flex; align-items: center; gap: 4px; background: var(--bg); border: 1px solid var(--border); border-radius: 999px; padding: 4px 6px 4px 12px; font-size: 0.85rem; }   /* cada etiqueta, redondeada */
+.festivo-lista button { border: 0; background: none; cursor: pointer; font-size: 1.1rem; line-height: 1; color: var(--muted); padding: 0 4px; }   /* la "×" para quitar */
+.festivo-lista button:hover { color: var(--text); }                /* la "×" se oscurece al pasar el ratón */
+
+/* ===== Portada: apartado "Calendario" separado de las calculadoras laborales ===== */
+.section-calendario { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }   /* franja blanca para que se vea que es otra cosa */
+.section-calendario .calc-group { margin-bottom: 0; }              /* sin hueco extra al final de la franja */
+.form-group[hidden] { display: none; }                             /* los campos ocultos se ocultan de verdad (el display del grupo pisaba el atributo hidden) */

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-4853214655991551">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>
+    <meta name="description" content="Calcula cuántos días laborables hay entre dos fechas o qué día termina un plazo de X días laborables, descontando fines de semana y festivos nacionales.">
+    <meta name="keywords" content="días laborables entre dos fechas, calculadora días laborables, días hábiles, sumar días laborables, días laborables 2027">
+    <title>Calculadora de Días Laborables entre dos fechas (2026 y 2027)</title>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculalotuyo.es/dias-laborables">
+    <meta property="og:title" content="Calculadora de Días Laborables entre dos fechas (2026 y 2027)">
+    <meta property="og:description" content="Calcula cuántos días laborables hay entre dos fechas o qué día termina un plazo de X días laborables, descontando fines de semana y festivos nacionales.">
+    <meta property="og:site_name" content="CalculaLoTuyo">
+    <meta property="og:locale" content="es_ES">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="https://calculalotuyo.es/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:image" content="https://calculalotuyo.es/og-image.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#4F46E5">
+    <link rel="canonical" href="https://calculalotuyo.es/dias-laborables">
+    <link rel="stylesheet" href="styles.css?v=20261018a">
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "¿Qué diferencia hay entre días laborables y días hábiles?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Los días laborables son los que se trabaja según tu calendario laboral (normalmente de lunes a viernes, o de lunes a sábado en algunos sectores). Los días hábiles son los que cuentan para los plazos con la Administración: según el artículo 30 de la Ley 39/2015 son inhábiles los sábados, los domingos y los festivos."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Cuántos días laborables tiene un año?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Un año tiene unos 260 días de lunes a viernes. Si se quitan los festivos que caen entre semana (hasta 14 al año: nacionales, autonómicos y locales), quedan entre 247 y 253 días laborables, según tu comunidad y tu municipio."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Por qué no aparecen los festivos de mi comunidad o de mi ciudad?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "La calculadora descuenta sola las fiestas nacionales, que son iguales en toda España. Los festivos autonómicos y locales cambian cada año y en cada sitio, así que puedes añadirlos tú en el apartado de festivos de tu zona."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "¿Qué pasa si un festivo cae en domingo?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Cuando una fiesta nacional cae en domingo, cada comunidad autónoma puede trasladarla al lunes o sustituirla por otra fiesta propia. Si tu comunidad la ha pasado al lunes, añade ese lunes como festivo de tu zona."
+   }
+  }
+ ]
+}
+    </script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Inicio",
+   "item": "https://calculalotuyo.es/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Días laborables"
+  }
+ ]
+}
+    </script>
+</head>
+<body>
+<header class="header">
+    <div class="header-inner">
+        <a href="./" class="logo"><img src="favicon.svg" class="logo-mark" width="32" height="32" alt=""><span class="logo-text">Calcula<span class="logo-accent">LoTuyo</span></span></a>
+        <nav class="nav">
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Despido <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="despido-improcedente">⚖️ Despido Improcedente</a>
+                    <a href="despido-objetivo">📋 Despido Objetivo</a>
+                    <a href="ere">📊 ERE / Colectivo</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="finiquito">💵 Finiquito</a>
+                    <a href="paro">📊 Prestación Paro</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Nómina <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="sueldo-neto">🏦 Sueldo Neto</a>
+                    <a href="irpf">📑 IRPF</a>
+                    <a href="horas-extra">⏰ Horas Extra</a>
+                    <a href="pagas-extra">🎁 Pagas Extra</a>
+                    <a href="vacaciones">🏖️ Vacaciones</a>
+                    <a href="subida-ipc">📈 Subida IPC</a>
+                    <a href="neto-a-bruto">🔁 Neto a Bruto</a>
+                    <a href="reduccion-jornada">👶 Reducción de Jornada</a>
+                    <a href="baja-medica">🩺 Baja Médica</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link" data-dropdown-btn>Autónomos <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="cuota-autonomos">💼 Cuota Mensual</a>
+                    <a href="facturas">🧾 Facturas</a>
+                </div>
+            </div>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link active" data-dropdown-btn>Calendario <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <div class="nav-dropdown-menu">
+                    <a href="dias-laborables" aria-current="page">📅 Días laborables</a>
+                </div>
+            </div>
+            <a href="guias" class="nav-link">Guías</a>
+            <a href="sobre-el-proyecto" class="nav-link">Sobre el proyecto</a>
+        </nav>
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Despido <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="despido-improcedente" class="mobile-nav-link">⚖️ Despido Improcedente</a>
+            <a href="despido-objetivo" class="mobile-nav-link">📋 Despido Objetivo</a>
+            <a href="ere" class="mobile-nav-link">📊 ERE / Colectivo</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="finiquito" class="mobile-nav-link">💵 Finiquito</a>
+            <a href="paro" class="mobile-nav-link">📊 Prestación Paro</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Nómina <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="sueldo-neto" class="mobile-nav-link">🏦 Sueldo Neto</a>
+            <a href="irpf" class="mobile-nav-link">📑 IRPF</a>
+            <a href="horas-extra" class="mobile-nav-link">⏰ Horas Extra</a>
+            <a href="pagas-extra" class="mobile-nav-link">🎁 Pagas Extra</a>
+            <a href="vacaciones" class="mobile-nav-link">🏖️ Vacaciones</a>
+            <a href="subida-ipc" class="mobile-nav-link">📈 Subida IPC</a>
+            <a href="neto-a-bruto" class="mobile-nav-link">🔁 Neto a Bruto</a>
+            <a href="reduccion-jornada" class="mobile-nav-link">👶 Reducción de Jornada</a>
+            <a href="baja-medica" class="mobile-nav-link">🩺 Baja Médica</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Autónomos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="cuota-autonomos" class="mobile-nav-link">💼 Cuota Mensual</a>
+            <a href="facturas" class="mobile-nav-link">🧾 Facturas</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <button class="mobile-nav-title" data-mobile-toggle>Calendario <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <div class="mobile-nav-links">
+            <a href="dias-laborables" class="mobile-nav-link" aria-current="page">📅 Días laborables</a>
+        </div>
+    </div>
+    <div class="mobile-nav-section">
+        <a href="guias" class="mobile-nav-link" style="padding: 16px 0; border-top: 1px solid var(--border);">📚 Guías</a>
+        <a href="sobre-el-proyecto" class="mobile-nav-link" style="padding: 16px 0;">ℹ️ Sobre el proyecto</a>
+    </div>
+</nav>
+
+<main>
+    <section class="hero-mini"><div class="container"><nav class="breadcrumb" aria-label="Estás en"><a href="./">Inicio</a> <span class="breadcrumb-sep">›</span> <span aria-current="page">Días laborables</span></nav><div class="hero-badge">📅 Calendario</div><h1>Calculadora de Días Laborables<br><span class="highlight">¿Cuántos días se trabaja entre dos fechas?</span></h1><p>Cuenta los días laborables entre dos fechas o calcula qué día termina un plazo. Descuenta fines de semana y fiestas nacionales, y puedes añadir los festivos de tu comunidad y tu municipio.</p>
+            <p class="hero-meta">📅 Revisado el 18 de octubre de 2026 · ✍️ <a href="sobre-el-proyecto">Tania de Azevedo</a></p></div></section>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <div class="card-title"><div class="card-icon">📝</div>¿Qué quieres calcular?</div>
+                <form id="calc">
+                    <div class="form-grid">
+                        <div class="form-group"><label class="form-label" for="modo">Tipo de cálculo</label><select class="form-select" id="modo"><option value="contar" selected>Contar días laborables entre dos fechas</option><option value="sumar">Sumar días laborables a una fecha</option></select></div>
+                        <div class="form-group"><label class="form-label" for="semana">Días que se trabajan</label><select class="form-select" id="semana"><option value="5" selected>De lunes a viernes</option><option value="6">De lunes a sábado</option></select></div>
+                        <div class="form-group"><label class="form-label" for="fechaInicio">Fecha de inicio</label><input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="fechaInicio" required></div>
+                        <div class="form-group" id="grupoFin"><label class="form-label" for="fechaFin">Fecha final</label><input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="fechaFin"><span class="form-hint">Se cuentan las dos fechas, la de inicio y la final</span></div>
+                        <div class="form-group" id="grupoDias" hidden><label class="form-label" for="numDias">Días laborables a sumar</label><input type="number" class="form-input" id="numDias" placeholder="20" min="1" max="2000"><span class="form-hint">Se empieza a contar el día siguiente a la fecha de inicio</span></div>
+                        <div class="form-group"><label class="form-label" for="juevesSanto">Jueves Santo</label><select class="form-select" id="juevesSanto"><option value="si" selected>Es festivo en mi comunidad</option><option value="no">No es festivo (por ejemplo, Cataluña)</option></select><span class="form-hint">Lo deciden las comunidades; en casi todas es festivo</span></div>
+                    </div>
+                    <div class="form-group festivos-zona">
+                        <label class="form-label" for="nuevoFestivo">Festivos de tu comunidad y tu municipio (opcional)</label>
+                        <div class="festivo-add"><input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="nuevoFestivo"><button type="button" class="btn-secondary" id="addFestivo">+ Añadir</button></div>
+                        <span class="form-hint">Las fiestas nacionales ya están incluidas. Añade aquí las de tu zona, una a una.</span>
+                        <ul class="festivo-lista" id="listaFestivos"></ul>
+                    </div>
+                    <button type="submit" class="btn">Calcular días laborables</button>
+                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                </form>
+
+                <div class="result" id="result">
+                    <div class="result-hero"><p class="result-label" id="totalLabel">Días laborables</p><p class="result-value" id="total">0 días</p><p class="result-sub" id="resultSub"></p></div>
+                    <div class="result-breakdown">
+                        <div class="result-row"><span class="result-row-label">📆 Días naturales</span><span class="result-row-value" id="naturales">0</span></div>
+                        <div class="result-row"><span class="result-row-label" id="descansoLabel">🛋️ Sábados y domingos</span><span class="result-row-value" id="descanso">0</span></div>
+                        <div class="result-row"><span class="result-row-label">🎉 Festivos entre semana</span><span class="result-row-value" id="festivos">0</span></div>
+                        <div class="result-row bruto"><span class="result-row-label">💼 Días laborables</span><span class="result-row-value" id="laborables">0</span></div>
+                    </div>
+                    <div class="fiscal-box" id="fiscalBox"><div class="fiscal-title">🎉 Festivos que se han descontado</div><div id="fiscalContent"></div></div>
+                    <div class="result-actions"><button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button><a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <section class="section"><div class="container"><article class="seo-section"><h2>📖 El caso de Ainhoa: los días laborables de diciembre</h2>
+        <div class="example-box">
+            <div class="example-header"><span class="example-icon">👩‍💼</span><div><strong>Ainhoa, administrativa en Bilbao</strong><p>Trabaja de lunes a viernes · Quiere saber cuántos días trabaja en diciembre de 2026</p></div></div>
+            <div class="example-story"><p>Ainhoa tiene que repartir las tareas del mes y necesita saber cuántos días laborables tiene diciembre de 2026, del 1 al 31.</p></div>
+            <div class="example-calc"><h4>🧮 Cálculo:</h4>
+                <div class="calc-steps">
+                    <div class="calc-step"><span class="step-num">1</span><div><strong>Días naturales:</strong><p>Del 1 al 31 de diciembre = <strong>31 días</strong></p></div></div>
+                    <div class="calc-step"><span class="step-num">2</span><div><strong>Fines de semana:</strong><p>4 sábados y 4 domingos = <strong>8 días</strong></p></div></div>
+                    <div class="calc-step"><span class="step-num">3</span><div><strong>Festivos entre semana:</strong><p>8 de diciembre (martes) y 25 de diciembre (viernes) = <strong>2 días</strong>. El 6 de diciembre cae en domingo, así que ya estaba descontado.</p></div></div>
+                    <div class="calc-step"><span class="step-num">4</span><div><strong>Días laborables:</strong><p>31 − 8 − 2 = <strong>21 días</strong></p></div></div>
+                </div>
+                <div class="example-result">
+                    <div class="example-result-row total"><span>Días laborables en diciembre de 2026</span><span class="amount">21 días</span></div>
+                </div>
+            </div>
+            <div class="example-tip"><strong>💡 Consejo de Ainhoa:</strong> "Si tu comunidad pasa al lunes 7 el festivo del domingo 6, añádelo en la calculadora y te saldrán 20."</div>
+        </div>
+    </article>
+        <article class="seo-section"><h2>🗓️ Qué festivos descuenta la calculadora</h2>
+<p>Descuenta sola las <strong>fiestas nacionales</strong>, que son las mismas en toda España y se repiten cada año:</p>
+<ul><li>1 de enero (Año Nuevo) y 6 de enero (Epifanía del Señor)</li><li>Viernes Santo (cambia de fecha cada año, y se calcula solo)</li><li>1 de mayo (Fiesta del Trabajo) y 15 de agosto (Asunción de la Virgen)</li><li>12 de octubre (Fiesta Nacional de España) y 1 de noviembre (Todos los Santos)</li><li>6 de diciembre (Día de la Constitución), 8 de diciembre (Inmaculada Concepción) y 25 de diciembre (Navidad)</li></ul>
+<p>El <strong>Jueves Santo</strong> lo eligen las comunidades autónomas y es festivo en casi todas; por eso puedes quitarlo. En total hay como máximo <strong>14 festivos al año</strong>: los nacionales, los de tu comunidad y <strong>2 locales</strong> de tu municipio (art. 37.2 del Estatuto de los Trabajadores). Los autonómicos y los locales cambian cada año, así que conviene consultarlos en el boletín oficial de tu comunidad o en tu ayuntamiento y añadirlos a mano.</p>
+<h2>⚖️ Días laborables y días hábiles no son lo mismo</h2>
+<ul><li><strong>Días laborables:</strong> los que se trabaja según tu calendario. Normalmente de lunes a viernes, pero en comercio u hostelería el sábado suele ser laborable.</li><li><strong>Días hábiles administrativos:</strong> los que cuentan en los plazos con la Administración (Hacienda, Seguridad Social, ayuntamientos…). Desde la Ley 39/2015, los sábados son inhábiles, así que equivalen a la opción «de lunes a viernes».</li><li><strong>Días hábiles judiciales:</strong> además de fines de semana y festivos, son inhábiles el 24 y el 31 de diciembre y, para casi todos los trámites, el mes de agosto. Para un plazo judicial, consulta con un abogado.</li></ul>
+<h2>⏳ Cómo se cuenta un plazo de días laborables</h2>
+<p>Con la opción «Sumar días laborables», la calculadora empieza a contar el <strong>día siguiente</strong> a la fecha de inicio, que es como se cuentan los plazos legales: si te notifican algo un lunes, el primer día del plazo es el martes. Si el último día cayera en festivo o fin de semana, el plazo pasa al siguiente día laborable, y la calculadora ya lo tiene en cuenta porque solo cuenta días laborables.</p>
+<p>Si buscas cuántos días de vacaciones te quedan, usa la <a href="vacaciones">calculadora de vacaciones</a>.</p></article></div></section>
+
+    <section class="section section-alt"><div class="container"><h2 class="section-title">❓ Preguntas frecuentes sobre días laborables</h2>
+        <div class="faq-list">
+            <div class="faq-item"><button class="faq-q"><span>¿Qué diferencia hay entre días laborables y días hábiles?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Los <strong>días laborables</strong> son los que se trabaja según tu calendario laboral (normalmente de lunes a viernes, o de lunes a sábado en algunos sectores). Los <strong>días hábiles</strong> son los que cuentan para los plazos con la Administración: según el <strong>artículo 30 de la Ley 39/2015</strong> son inhábiles los sábados, los domingos y los festivos.</p></div></div>
+            <div class="faq-item"><button class="faq-q"><span>¿Cuántos días laborables tiene un año?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Un año tiene unos <strong>260 días de lunes a viernes</strong>. Si se quitan los festivos que caen entre semana (hasta 14 al año: nacionales, autonómicos y locales), quedan <strong>entre 247 y 253 días laborables</strong>, según tu comunidad y tu municipio.</p></div></div>
+            <div class="faq-item"><button class="faq-q"><span>¿Por qué no aparecen los festivos de mi comunidad o de mi ciudad?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>La calculadora descuenta sola las <strong>fiestas nacionales</strong>, que son iguales en toda España. Los festivos autonómicos y locales cambian cada año y en cada sitio, así que puedes <strong>añadirlos tú</strong> en el apartado de festivos de tu zona.</p></div></div>
+            <div class="faq-item"><button class="faq-q"><span>¿Qué pasa si un festivo cae en domingo?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Cuando una fiesta nacional cae en domingo, cada comunidad autónoma puede <strong>trasladarla al lunes</strong> o sustituirla por otra fiesta propia. Si tu comunidad la ha pasado al lunes, añade ese lunes como festivo de tu zona.</p></div></div>
+        </div>
+    </div></section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <section class="section"><div class="container"><h2 class="section-title">🔗 También te puede servir</h2>
+        <div class="cards-grid">
+            <a href="vacaciones" class="calc-card"><div class="calc-card-icon">🏖️</div><h3>Vacaciones</h3><p>Cuántos días de vacaciones te quedan y cuánto valen.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a href="horas-extra" class="calc-card"><div class="calc-card-icon">⏰</div><h3>Horas Extra</h3><p>Cuánto debes cobrar por cada hora extraordinaria.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a href="guia-jornada" class="calc-card"><div class="calc-card-icon">⏱️</div><h3>Guía de la jornada</h3><p>Horas máximas, descansos y registro horario.</p><span class="calc-card-link">Leer guía <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+        </div>
+    </div></section>
+    <section class="section"><div class="container"><div class="source-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><div><strong>Base legal:</strong><p>Art. 37.2 del <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank">Estatuto de los Trabajadores</a> (fiestas laborales), art. 45 del Real Decreto 2001/1983 (fiestas nacionales) y art. 30 de la <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-10565" target="_blank">Ley 39/2015</a> (días hábiles).</p></div></div></div></section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid-4">
+            <div class="footer-brand">
+                <a href="./" class="logo"><img src="favicon.svg" class="logo-mark" width="32" height="32" alt=""><span class="logo-text">Calcula<span class="logo-accent">LoTuyo</span></span></a>
+                <p class="footer-desc">Calculadoras laborales gratuitas basadas en el Estatuto de los Trabajadores y normativa 2026.</p>
+                <div class="footer-badge"><span class="badge-dot"></span>Normativa 2026</div>
+            </div>
+            <div class="footer-col">
+                <h4>Calculadoras</h4>
+                <a href="despido-improcedente">Despido Improcedente</a>
+                <a href="finiquito">Finiquito</a>
+                <a href="paro">Prestación Paro</a>
+                <a href="sueldo-neto">Sueldo Neto</a>
+                <a href="irpf">IRPF</a>
+                <a href="cuota-autonomos">Cuota Autónomos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Guías</h4>
+                <a href="guia-despido">Guía del Despido</a>
+                <a href="guia-sueldo-neto">Guía del Sueldo Neto</a>
+                <a href="guia-paro">Guía del Paro</a>
+                <a href="guias">Todas las guías</a>
+                <a href="smi-2026">SMI 2026</a>
+                <a href="iprem-2026">IPREM 2026</a>
+                <a href="sobre-el-proyecto">Sobre el Proyecto</a>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacidad">Privacidad</a>
+                <a href="terminos">Términos</a>
+                <a href="aviso-legal">Aviso Legal</a>
+                <a href="cookies">Cookies</a>
+                <a href="#" data-cookies>Gestionar cookies</a>
+                <a href="contacto">Contacto</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copy">© 2026 CalculaLoTuyo · Hecho con ♥ en España</p>
+            <div class="footer-external">
+                <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank" rel="noopener">BOE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+                <a href="https://www.sepe.es" target="_blank" rel="noopener">SEPE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            </div>
+        </div>
+        <div class="footer-disclaimer">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <p><strong>Aviso:</strong> Cálculos orientativos basados en normativa vigente. No sustituyen el asesoramiento de un abogado laboralista.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="site.js?v=20261015c"></script>
+<script>
+// =====================================================================
+// CALCULADORA DE DÍAS LABORABLES
+// Trabajamos siempre con fechas en UTC (hora 00:00 de Londres) para que
+// los cambios de hora de marzo y octubre no descuadren los días.
+// =====================================================================
+
+const DIA=864e5;                                     // milisegundos que tiene un día (86.400.000)
+
+// Convierte "2026-12-25" en una fecha UTC
+const leerFecha=txt=>{
+    const [a,m,d]=txt.split('-').map(Number);        // separa año, mes y día y los pasa a número
+    return new Date(Date.UTC(a,m-1,d));              // en JavaScript los meses empiezan en 0 (enero = 0)
+};
+// Convierte una fecha UTC en "2026-12-25" (sirve como clave para buscar festivos)
+const clave=f=>f.toISOString().slice(0,10);
+// Fecha bonita en español: "viernes, 25 de diciembre de 2026"
+const bonita=f=>f.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
+// Fecha corta: "25/12/2026"
+const corta=f=>f.toLocaleDateString('es-ES',{timeZone:'UTC'});
+
+// ---------- Domingo de Pascua ----------
+// Algoritmo clásico (de Meeus) que da el domingo de Pascua de cualquier año.
+// De él salen Jueves Santo (3 días antes) y Viernes Santo (2 días antes).
+function pascua(a){
+    const b=a%19,c=Math.floor(a/100),d=a%100;        // posición en el ciclo lunar y siglo
+    const e=Math.floor(c/4),f=c%4,g=Math.floor((c+8)/25);
+    const h=Math.floor((c-g+1)/3);
+    const i=(19*b+c-e-h+15)%30;                      // días hasta la luna llena de primavera
+    const k=Math.floor(d/4),l=d%4;
+    const m=(32+2*f+2*k-i-l)%7;                      // días hasta el domingo siguiente
+    const n=Math.floor((b+11*i+22*m)/451);
+    const mes=Math.floor((i+m-7*n+114)/31);          // 3 = marzo, 4 = abril
+    const dia=(i+m-7*n+114)%31+1;
+    return new Date(Date.UTC(a,mes-1,dia));
+}
+
+// ---------- Fiestas nacionales de un año ----------
+// Devuelve un objeto { "2026-12-25": "Navidad", ... }
+function festivosNacionales(a,conJuevesSanto){
+    const p=pascua(a);                               // domingo de Pascua de ese año
+    const lista={};                                  // aquí vamos guardando los festivos
+    const poner=(mes,dia,nombre)=>{lista[clave(new Date(Date.UTC(a,mes-1,dia)))]=nombre};
+    poner(1,1,'Año Nuevo');
+    poner(1,6,'Epifanía del Señor');
+    lista[clave(new Date(p-2*DIA))]='Viernes Santo';            // 2 días antes de Pascua
+    if(conJuevesSanto)lista[clave(new Date(p-3*DIA))]='Jueves Santo';   // 3 días antes, si se elige
+    poner(5,1,'Fiesta del Trabajo');
+    poner(8,15,'Asunción de la Virgen');
+    poner(10,12,'Fiesta Nacional de España');
+    poner(11,1,'Todos los Santos');
+    poner(12,6,'Día de la Constitución');
+    poner(12,8,'Inmaculada Concepción');
+    poner(12,25,'Navidad');
+    return lista;
+}
+
+// ---------- Festivos de la zona que añade la persona ----------
+const festivosZona=new Set();                        // un Set guarda cada fecha una sola vez
+const listaHTML=document.getElementById('listaFestivos');
+
+// Pinta la lista de festivos añadidos, cada uno con su botón para quitarlo
+function pintarZona(){
+    listaHTML.innerHTML=[...festivosZona].sort()     // de más antiguo a más reciente
+        .map(f=>`<li>${corta(leerFecha(f))} <button type="button" data-quitar="${f}" aria-label="Quitar ${corta(leerFecha(f))}">×</button></li>`)
+        .join('');
+}
+// Botón "+ Añadir": mete la fecha elegida en la lista
+document.getElementById('addFestivo').onclick=function(){
+    const campo=document.getElementById('nuevoFestivo');
+    if(!campo.value)return;                          // si no hay fecha, no hace nada
+    festivosZona.add(campo.value);                   // la guarda (si ya estaba, no se repite)
+    campo.value='';                                  // deja el campo vacío para el siguiente
+    pintarZona();
+};
+// Clic en una "×": quita ese festivo
+listaHTML.onclick=function(e){
+    const fecha=e.target.dataset.quitar;             // la fecha va guardada en el propio botón
+    if(!fecha)return;                                // el clic no fue en una "×"
+    festivosZona.delete(fecha);
+    pintarZona();
+};
+
+// ---------- Cambiar entre "contar" y "sumar" ----------
+const modo=document.getElementById('modo');
+modo.onchange=function(){
+    const sumar=this.value==='sumar';
+    document.getElementById('grupoFin').hidden=sumar;       // en "sumar" no hace falta fecha final
+    document.getElementById('grupoDias').hidden=!sumar;     // y sí el número de días
+};
+
+// Por defecto: hoy como fecha de inicio
+document.getElementById('fechaInicio').value=new Date().toISOString().split('T')[0];
+
+// ---------- ¿Qué es cada día? ----------
+// Devuelve 'descanso', el nombre del festivo, o null si es laborable
+function tipoDeDia(f,dias,cacheFestivos,conJS){
+    const sem=f.getUTCDay();                         // 0 = domingo, 6 = sábado
+    if(sem===0||(sem===6&&dias===5))return 'descanso';   // domingo siempre; sábado solo si se trabaja L-V
+    const a=f.getUTCFullYear();
+    if(!cacheFestivos[a])cacheFestivos[a]=festivosNacionales(a,conJS);   // calcula cada año una sola vez
+    const k=clave(f);
+    if(cacheFestivos[a][k])return cacheFestivos[a][k];   // fiesta nacional
+    if(festivosZona.has(k))return 'Festivo de tu zona';  // festivo añadido a mano
+    return null;                                     // día laborable
+}
+
+// ---------- Calcular ----------
+document.getElementById('calc').onsubmit=function(e){
+    e.preventDefault();                              // que el formulario no recargue la página
+    const dias=+document.getElementById('semana').value;         // 5 o 6 días de trabajo
+    const conJS=document.getElementById('juevesSanto').value==='si';
+    const txtInicio=document.getElementById('fechaInicio').value;
+    if(!txtInicio){mostrarError('Elige la fecha de inicio');return}
+    const inicio=leerFecha(txtInicio);
+    const cache={};                                  // festivos nacionales ya calculados por año
+    let fin,laborables=0,descanso=0;
+    const festivosVistos=[];                         // festivos que caen en día de trabajo
+
+    if(modo.value==='contar'){
+        const txtFin=document.getElementById('fechaFin').value;
+        if(!txtFin){mostrarError('Elige la fecha final');return}
+        fin=leerFecha(txtFin);
+        if(fin<inicio){mostrarError('La fecha final tiene que ser posterior a la de inicio');return}
+        if(fin-inicio>15*366*DIA){mostrarError('Elige un periodo de 15 años como máximo');return}
+        // Recorremos día a día, de la fecha de inicio a la final (las dos incluidas)
+        for(let f=new Date(inicio);f<=fin;f=new Date(+f+DIA)){
+            const t=tipoDeDia(f,dias,cache,conJS);
+            if(t===null)laborables++;                // día de trabajo
+            else if(t==='descanso')descanso++;       // fin de semana
+            else festivosVistos.push([f,t]);         // festivo entre semana
+        }
+    }else{
+        const n=Math.floor(+document.getElementById('numDias').value);
+        if(!n||n<1||n>2000){mostrarError('Escribe entre 1 y 2.000 días laborables');return}
+        // Avanzamos desde el día siguiente hasta juntar n días laborables
+        fin=new Date(inicio);
+        while(laborables<n){
+            fin=new Date(+fin+DIA);                  // un día más
+            const t=tipoDeDia(fin,dias,cache,conJS);
+            if(t===null)laborables++;
+            else if(t==='descanso')descanso++;
+            else festivosVistos.push([fin,t]);
+        }
+    }
+
+    // Días naturales del periodo: en "contar" se incluye el inicio; en "sumar", no
+    const naturales=Math.round((fin-inicio)/DIA)+(modo.value==='contar'?1:0);
+    const nombreDescanso=dias===5?'sábados y domingos':'domingos';
+
+    // ---------- Mostrar el resultado ----------
+    if(modo.value==='contar'){
+        document.getElementById('totalLabel').textContent='Días laborables';
+        document.getElementById('total').textContent=laborables.toLocaleString('es-ES')+(laborables===1?' día':' días');
+        document.getElementById('resultSub').textContent=`Del ${corta(inicio)} al ${corta(fin)}, ambos incluidos`;
+    }else{
+        document.getElementById('totalLabel').textContent='El plazo termina el';
+        document.getElementById('total').textContent=corta(fin);
+        document.getElementById('resultSub').textContent=bonita(fin);   // con el día de la semana
+    }
+    document.getElementById('naturales').textContent=naturales.toLocaleString('es-ES');
+    document.getElementById('descanso').textContent=descanso.toLocaleString('es-ES');
+    document.getElementById('descansoLabel').textContent='🛋️ '+nombreDescanso[0].toUpperCase()+nombreDescanso.slice(1);   // "Sábados y domingos" o "Domingos", con mayúscula
+    document.getElementById('festivos').textContent=festivosVistos.length;
+    document.getElementById('laborables').textContent=laborables.toLocaleString('es-ES');
+
+    // Lista de festivos descontados (si hay muchos, enseñamos los 40 primeros)
+    document.getElementById('fiscalBox').hidden=!festivosVistos.length;
+    document.getElementById('fiscalContent').innerHTML=festivosVistos.slice(0,40)
+        .map(([f,nombre])=>`<div class="fiscal-row"><span>${nombre}</span><span>${corta(f)}</span></div>`)
+        .join('')+(festivosVistos.length>40?`<div class="fiscal-row"><span>… y ${festivosVistos.length-40} más</span><span></span></div>`:'');
+
+    // Texto para compartir por WhatsApp
+    const texto=modo.value==='contar'
+        ?`📅 Del ${corta(inicio)} al ${corta(fin)} hay ${laborables} días laborables`
+        :`📅 ${laborables} días laborables desde el ${corta(inicio)}: el plazo termina el ${bonita(fin)}`;
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(texto+'\n\nhttps://calculalotuyo.es/dias-laborables');
+    document.getElementById('result').classList.add('visible');   // enseña la caja de resultado
+};
+
+// "Nueva consulta": limpia todo y vuelve arriba
+document.getElementById('reset').onclick=function(){
+    document.getElementById('calc').reset();         // vacía los campos
+    festivosZona.clear();pintarZona();               // borra los festivos añadidos
+    modo.onchange.call(modo);                        // vuelve a mostrar los campos de "contar"
+    document.getElementById('fechaInicio').value=new Date().toISOString().split('T')[0];
+    document.getElementById('result').classList.remove('visible');
+    window.scrollTo({top:0,behavior:'smooth'});
+};
+</script>
+</body>
+</html>
