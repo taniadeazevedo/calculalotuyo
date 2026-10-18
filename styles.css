@@ -3905,3 +3905,66 @@ img.logo-mark { background: none; border-radius: 8px; display: block; }
 .section-calendario { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }   /* franja blanca para que se vea que es otra cosa */
 .section-calendario .calc-group { margin-bottom: 0; }              /* sin hueco extra al final de la franja */
 .form-group[hidden] { display: none; }                             /* los campos ocultos se ocultan de verdad (el display del grupo pisaba el atributo hidden) */
+
+/* ===== Puentes 2027 ===== */
+.aviso-ccaa { background: var(--warning-bg); border-radius: 12px; padding: 12px 16px; margin: 16px 0; font-size: 0.9rem; color: var(--text2); }   /* nota especial de Canarias o Cataluña */
+.puentes-titulo { font-size: 1.1rem; margin: 28px 0 12px; color: var(--text); }   /* títulos "Tus puentes" y "Tu calendario" */
+.puentes-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }   /* tarjetas en columnas que se adaptan al ancho */
+.puente { display: flex; gap: 14px; align-items: center; border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; background: var(--card); }   /* cada puente */
+.puente-gratis { border-color: var(--success); background: var(--success-bg); }   /* los que no gastan vacaciones, en verde */
+.puente-dias { flex-shrink: 0; width: 64px; text-align: center; }   /* el número grande de días libres */
+.puente-dias strong { display: block; font-size: 1.8rem; line-height: 1; color: var(--accent); }
+.puente-gratis .puente-dias strong { color: var(--success); }
+.puente-dias span { font-size: 0.7rem; color: var(--muted); }
+.puente-info p { margin: 0; font-size: 0.85rem; color: var(--text2); }   /* fechas y días que coges */
+.puente-info .puente-nombre { font-weight: 700; color: var(--text); }   /* nombre del festivo */
+.cal-leyenda { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.8rem; color: var(--muted); margin-bottom: 12px; }   /* leyenda de colores */
+.cal-leyenda span { display: inline-flex; align-items: center; gap: 6px; }
+.cal-leyenda i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }   /* cuadradito de color */
+.cal-anual { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px 12px; margin-bottom: 20px; }   /* los 12 meses en rejilla (2 por fila en el móvil) */
+.cal-mes h4 { text-transform: capitalize; font-size: 0.9rem; margin-bottom: 6px; color: var(--text); }   /* nombre del mes */
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }   /* 7 columnas: de lunes a domingo */
+.cal-dia { text-align: center; font-size: 0.75rem; padding: 4px 0; border-radius: 4px; color: var(--text2); }   /* cada día */
+.cal-cab { font-weight: 700; color: var(--muted); }   /* letras L M X J V S D */
+.cal-finde, .cal-leyenda .cal-finde { background: var(--bg); color: var(--muted); }   /* sábados y domingos, en gris */
+.cal-festivo, .cal-leyenda .cal-festivo { background: #DC2626; color: #fff; font-weight: 700; }   /* festivos, en rojo */
+.cal-puente, .cal-leyenda .cal-puente { background: var(--accent); color: #fff; font-weight: 700; }   /* días de puente, en el color de la marca */
+.tabla-wrap { overflow-x: auto; margin: 16px 0; }   /* en el móvil, la tabla se desliza en vez de romper la página */
+.tabla-festivos { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.tabla-festivos th, .tabla-festivos td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.tabla-festivos td:first-child { font-weight: 600; white-space: nowrap; }   /* nombre de la comunidad en una línea */
+
+/* =====================================================================
+   SECCIÓN CALENDARIO: color propio (verde azulado) para que no se
+   confunda con las calculadoras laborales
+   ===================================================================== */
+
+/* --- Menú de escritorio: botón aparte, separado por una línea --- */
+.nav-cal { margin-left: 8px; padding-left: 14px; border-left: 1px solid var(--border); }   /* línea vertical que lo separa del resto */
+.nav .nav-cal .nav-link { background: #0F766E; color: #fff; border-radius: 999px; padding: 8px 16px; font-weight: 600; }   /* píldora verde azulada */
+.nav .nav-cal .nav-link:hover,
+.nav .nav-cal .nav-link.active { background: #115E59; color: #fff; }   /* un poco más oscura al pasar el ratón o si estás dentro */
+.nav-cal .nav-dropdown-menu a[aria-current="page"] { color: #0F766E; }   /* página actual dentro del desplegable */
+
+/* --- Menú del móvil: bloque destacado al final --- */
+.mobile-nav-cal { background: #F0FDFA; border: 1px solid #99F6E4; border-radius: 12px; padding: 0 14px; margin-top: 12px; }   /* caja verde azulada muy clara */
+.mobile-nav-cal .mobile-nav-title { color: #0F766E; font-weight: 700; }   /* título en el color del calendario */
+.mobile-nav-cal .mobile-nav-link[aria-current="page"] { color: #0F766E; }
+
+/* --- Páginas del calendario: se cambia el color de la marca por el verde azulado --- */
+body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, enlaces y detalles usan este color */
+.tema-calendario .hero-mini {                                       /* cabecera con tinte verde azulado */
+    background-image:
+        radial-gradient(rgba(15,118,110,0.12) 1px, transparent 1px),
+        linear-gradient(180deg, #CCFBF1 0%, var(--bg) 100%);
+}
+.tema-calendario .hero-mini h1 .highlight { background: linear-gradient(135deg, #0F766E, #0891B2); -webkit-background-clip: text; background-clip: text; }   /* segunda línea del título en degradado verde azulado */
+.tema-calendario .hero-badge { background: #0F766E; border-color: #0F766E; color: #fff; }   /* etiqueta "📅 Calendario" bien visible */
+.tema-calendario .result-hero { background: linear-gradient(135deg, #134E4A 0%, #0F766E 100%); box-shadow: 0 12px 28px -12px rgba(19,78,74,0.55); }   /* caja del resultado */
+.tema-calendario .btn:hover { box-shadow: 0 8px 20px rgba(15,118,110,0.3); }   /* sombra del botón a juego */
+.tema-calendario .result-hero::after { content: "Fuente: BOE · las fiestas locales pueden cambiar"; }   /* aviso adaptado: aquí no hay cálculo legal */
+
+/* --- Portada: la franja del calendario también en verde azulado --- */
+.section-calendario { background: #F0FDFA; border-color: #99F6E4; }   /* fondo verde azulado muy claro */
+.section-calendario .calc-group-header h2 { color: #0F766E; }   /* título "Calendario y fechas" */
+.section-calendario .calc-item:hover { border-color: #0F766E; }   /* borde al pasar el ratón */
