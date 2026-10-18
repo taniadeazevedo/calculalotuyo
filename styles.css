@@ -3994,3 +3994,16 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
 #calBloque[hidden] { display: none; }
 #calBloque .cal-mes h4 { text-transform: none; }              /* el título ya llega con mayúscula: así no sale "De" */
 @media (min-width: 700px) { .cal-anual { grid-template-columns: repeat(4, 1fr); gap: 20px 24px; } }   /* en pantallas grandes: 4 meses por fila, 3 filas */
+
+/* ===== Páginas SEO del calendario 2027 ===== */
+.cal-resumen { grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); }   /* 2 o 3 cifras, según la página */
+.enlaces-ccaa { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }   /* botones de las comunidades */
+.enlaces-ccaa a { padding: 7px 14px; border: 1px solid #99F6E4; background: #F0FDFA; color: #0F766E; border-radius: 999px; font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+.enlaces-ccaa a:hover { background: #0F766E; color: #fff; }        /* se rellena al pasar el ratón */
+.calc-section .result-actions .btn { width: auto; display: inline-flex; text-decoration: none; }   /* botón-enlace al final de la tarjeta */
+.tabla-corta { max-width: 420px; }                                 /* tablas de 2 columnas, más estrechas */
+.tabla-ss td:not(:first-child), .tabla-ss th:not(:first-child) { text-align: center; }   /* ✅ centrados en la tabla de Semana Santa */
+.barras { display: grid; gap: 6px; margin: 8px 0 12px; }           /* gráfico de barras de días por mes */
+.barra-fila { display: flex; align-items: center; gap: 10px; }
+.barra-nombre { width: 34px; font-size: 0.8rem; color: var(--muted); text-transform: capitalize; }   /* "ene", "feb"… */
+.barra { background: #0F766E; color: #fff; font-size: 0.78rem; font-weight: 700; border-radius: 6px; padding: 4px 8px; text-align: right; }   /* la barra, con el número dentro */

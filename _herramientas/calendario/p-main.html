@@ -1,0 +1,67 @@
+<main>
+    <section class="hero-mini"><div class="container"><nav class="breadcrumb" aria-label="Estás en"><a href="./">Inicio</a> <span class="breadcrumb-sep">›</span> <span aria-current="page">Puentes 2027</span></nav><div class="hero-badge">📅 Calendario</div><h1>Puentes 2027<br><span class="highlight">y festivos de tu comunidad</span></h1><p>Elige tu comunidad y te enseñamos tus festivos de 2027 y qué días puente puedes pedir para tener más días libres seguidos.</p>
+            <p class="hero-meta">📅 Revisado el 18 de octubre de 2026 · ✍️ <a href="sobre-el-proyecto">Tania de Azevedo</a></p></div></section>
+
+    <section class="calc-section">
+        <div class="container">
+            <div class="card">
+                <form id="calc" class="cal-form" onsubmit="return false">
+                    <div class="form-group"><label class="form-label" for="ccaa">📍 Tu comunidad</label><select class="form-select" id="ccaa"></select></div>
+                    <details class="festivos-zona">
+                        <summary>＋ Añadir las fiestas de tu municipio</summary>
+                        <div class="festivo-add"><input type="date" min="2027-01-01" max="2027-12-31" class="form-input" id="nuevoFestivo" aria-label="Fiesta local"><button type="button" class="btn-secondary" id="addFestivo">+ Añadir</button></div>
+                        <ul class="festivo-lista" id="listaFestivos"></ul>
+                    </details>
+                </form>
+
+                <div class="result visible" id="result">
+                    <div class="cal-resumen"><div><strong id="nFestivos">0</strong><span>festivos</span></div><div><strong id="nEntreSemana">0</strong><span>entre semana</span></div><div><strong id="nPuentes">0</strong><span>puentes</span></div></div>
+                    <div class="aviso-ccaa" id="nota" hidden></div>
+                    <h3 class="puentes-titulo">🗓️ Calendario 2027 · <span id="nombreCCAA"></span></h3>
+                    <div class="cal-leyenda"><span><i class="cal-festivo"></i>Festivo</span><span><i class="cal-puente"></i>Día puente: si lo pides, enlazas días libres</span><span><i class="cal-finde"></i>Fin de semana</span></div>
+                    <div class="cal-anual" id="calendario"></div>
+                    <h3 class="puentes-titulo">🏖️ Tus puentes</h3>
+                    <div class="puentes-lista" id="puentes"></div>
+                    <details class="lista-festivos"><summary>Ver la lista de festivos</summary><div id="fiscalContent"></div></details>
+                    <div class="result-actions"><a href="#" class="btn-wa" id="wa" target="_blank">📱 Compartir por WhatsApp</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <section class="section"><div class="container"><article class="seo-section"><h2>🏖️ Los grandes puentes de 2027 en toda España</h2>
+<p>Sirven para casi toda España:</p>
+{{GRANDES}}
+<p class="nota-corta">El 1 de mayo y el 25 de diciembre caen en sábado, y el 15 de agosto en domingo: no dan puente (algunas comunidades pasan el 15 de agosto al lunes 16).</p>
+<h2>🗺️ Festivos propios de cada comunidad en 2027</h2>
+
+<div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Comunidad</th><th>Festivos propios en 2027</th></tr></thead><tbody>
+{{TABLA}}
+</tbody></table></div>
+<p>A todos ellos se suman <strong>2 fiestas locales</strong> de cada municipio, que publica cada comunidad o provincia por separado. En total, nunca más de <strong>14 festivos al año</strong> (art. 37.2 del Estatuto de los Trabajadores).</p>
+<h2>🧮 Cómo calculamos los puentes</h2>
+<p>Buscamos los días sueltos entre un festivo y un fin de semana y te enseñamos las combinaciones de hasta 4 días de vacaciones que más días libres seguidos te dan.</p>
+<p>Mira también el <a href="calendario-laboral-2027">calendario laboral 2027</a> completo y las fechas de la <a href="semana-santa-2027">Semana Santa 2027</a>. ¿Necesitas contar días entre dos fechas? Usa la <a href="dias-laborables">calculadora de días laborables</a>. ¿Quieres saber cuántas vacaciones te quedan? Mira la <a href="vacaciones">calculadora de vacaciones</a>.</p></article></div></section>
+
+    <section class="section section-alt"><div class="container"><h2 class="section-title">❓ Preguntas frecuentes sobre los festivos de 2027</h2>
+        <div class="faq-list">
+            <div class="faq-item"><button class="faq-q"><span>¿Cuántos festivos hay en 2027?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Cada comunidad tiene <strong>12 festivos</strong> en 2027 (Canarias, 11 más la fiesta de cada isla), y a ellos se suman <strong>2 fiestas locales</strong> de cada municipio. Ocho son iguales en toda España: 1 de enero, Viernes Santo, 1 de mayo, 12 de octubre, 1 de noviembre y 6, 8 y 25 de diciembre. El 6 de enero también lo tienen todas las comunidades.</p></div></div>
+            <div class="faq-item"><button class="faq-q"><span>¿Cuándo es Semana Santa en 2027?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>En 2027 la Semana Santa es pronto: el <strong>Jueves Santo es el 25 de marzo</strong>, el <strong>Viernes Santo el 26</strong> y el <strong>Domingo de Pascua el 28</strong>. El Lunes de Pascua, 29 de marzo, es festivo en Baleares, Cataluña, Navarra, País Vasco, La Rioja y la Comunitat Valenciana.</p></div></div>
+            <div class="faq-item"><button class="faq-q"><span>¿Cuál es el mejor puente de 2027?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>El de <strong>diciembre</strong>: el 6 cae en lunes y el 8 en miércoles. Si pides solo el martes 7, descansas del sábado 4 al miércoles 8, y con el jueves 9 y el viernes 10 enlazas <strong>9 días seguidos gastando 3</strong> de vacaciones.</p></div></div>
+            <div class="faq-item"><button class="faq-q"><span>¿Por qué no aparecen las fiestas de mi pueblo o ciudad?</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>Las 2 fiestas locales de cada municipio no salen en el BOE: las publica cada comunidad o provincia en su boletín, y algunas todavía no lo han hecho. Cuando las sepas, añádelas en <strong>«Festivos de tu municipio»</strong> y la calculadora recalculará tus puentes.</p></div></div>
+        </div>
+    </div></section>
+
+    <div class="container"><div class="ad"></div></div>
+
+    <section class="section"><div class="container"><h2 class="section-title">🔗 También te puede servir</h2>
+        <div class="cards-grid">
+            <a href="dias-laborables" class="calc-card"><div class="calc-card-icon">📅</div><h3>Días laborables</h3><p>Cuántos días se trabaja entre dos fechas o cuándo acaba un plazo.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a href="vacaciones" class="calc-card"><div class="calc-card-icon">🏖️</div><h3>Vacaciones</h3><p>Cuántos días de vacaciones te quedan y cuánto valen.</p><span class="calc-card-link">Calcular <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+            <a href="guia-permisos" class="calc-card"><div class="calc-card-icon">📅</div><h3>Guía de permisos</h3><p>Los días de permiso pagado que te reconoce la ley.</p><span class="calc-card-link">Leer guía <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></a>
+        </div>
+    </div></section>
+    <section class="section"><div class="container"><div class="source-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><div><strong>Fuente:</strong><p><a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-21254" target="_blank">Resolución de 8 de octubre de 2026</a> de la Dirección General de Trabajo, por la que se publica la relación de fiestas laborales para el año 2027 (BOE núm. 254, de 13 de octubre de 2026), y art. 37.2 del <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank">Estatuto de los Trabajadores</a>.</p></div></div></div></section>
+</main>

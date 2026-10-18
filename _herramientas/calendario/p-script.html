@@ -1,0 +1,186 @@
+<script src="site.js?v=20261015c"></script>
+<script src="festivos-2027.js?v=20261018a"></script>
+<script>
+// =====================================================================
+// PUENTES 2027
+// Los festivos de cada comunidad están en festivos-2027.js (sacados del BOE).
+// Fechas siempre en UTC para que los cambios de hora no descuadren los días.
+// =====================================================================
+
+const DIA=864e5;                                     // milisegundos de un día
+const AÑO=2027;
+const leerFecha=txt=>{const [a,m,d]=txt.split('-').map(Number);return new Date(Date.UTC(a,m-1,d))};   // "2027-03-25" → fecha
+const clave=f=>f.toISOString().slice(0,10);          // fecha → "2027-03-25"
+// "jue 25 mar" (día de la semana, día y mes abreviados)
+const corta=f=>f.toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short',timeZone:'UTC'}).replace(/\./g,'').replace(',','');
+const MAX_VACACIONES=4;                              // como mucho proponemos puentes de 4 días de vacaciones
+
+// ---------- Rellenar el desplegable de comunidades ----------
+const selCCAA=document.getElementById('ccaa');
+// Primera opción: los festivos que tienen TODAS las comunidades (se calculan solos a partir de los datos)
+const todas=Object.values(FESTIVOS_2027);
+const ESPANA={nombre:'Toda España',festivos:todas[0].festivos.filter(([f])=>todas.every(c=>c.festivos.some(([g])=>g===f)))};
+const datosDe=id=>id==='espana'?ESPANA:FESTIVOS_2027[id];   // devuelve los datos de la opción elegida
+selCCAA.add(new Option('Toda España (festivos comunes)','espana'));
+Object.entries(FESTIVOS_2027)                        // pares [clave, datos] de cada comunidad
+    .sort((a,b)=>a[1].nombre.localeCompare(b[1].nombre,'es'))   // por orden alfabético
+    .forEach(([id,c])=>selCCAA.add(new Option(c.nombre,id)));   // una opción por comunidad
+
+// ---------- Festivos del municipio (los añade la persona) ----------
+const festivosLocales=new Set();                     // cada fecha una sola vez
+const listaHTML=document.getElementById('listaFestivos');
+function pintarLocales(){
+    listaHTML.innerHTML=[...festivosLocales].sort()
+        .map(f=>`<li>${corta(leerFecha(f))} <button type="button" data-quitar="${f}" aria-label="Quitar">×</button></li>`)
+        .join('');
+}
+document.getElementById('addFestivo').onclick=function(){
+    const campo=document.getElementById('nuevoFestivo');
+    if(!campo.value.startsWith(AÑO+'-'))return;      // solo fechas de 2027
+    festivosLocales.add(campo.value);
+    campo.value='';
+    pintarLocales();
+    calcular();                                      // recalcula al momento
+};
+listaHTML.onclick=function(e){
+    const f=e.target.dataset.quitar;
+    if(!f)return;
+    festivosLocales.delete(f);
+    pintarLocales();
+    calcular();
+};
+
+// ---------- Buscar los puentes ----------
+// Devuelve una lista de puentes: {inicio, fin, dias (seguidos libres), coger (fechas de vacaciones), festivo (nombre)}
+function buscarPuentes(festivos){
+    // 1) Una ficha por cada día, desde unos días antes de 2027 hasta unos días después
+    const desde=Date.UTC(AÑO-1,11,26),hasta=Date.UTC(AÑO+1,0,6);
+    const dias=[];
+    for(let t=desde;t<=hasta;t+=DIA){
+        const f=new Date(t),sem=f.getUTCDay();       // 0 = domingo, 6 = sábado
+        const fest=festivos[clave(f)];               // nombre del festivo, o undefined
+        dias.push({f,libre:sem===0||sem===6||!!fest,fest,entreSemana:!!fest&&sem>0&&sem<6});
+    }
+    // 2) Juntamos los días libres seguidos en "bloques" (un fin de semana, un fin de semana largo…)
+    const bloques=[];
+    dias.forEach((d,i)=>{
+        if(!d.libre)return;                          // los laborables no forman bloque
+        const ultimo=bloques[bloques.length-1];
+        if(ultimo&&ultimo.fin===i-1)ultimo.fin=i;    // pegado al bloque anterior: lo alarga
+        else bloques.push({ini:i,fin:i});            // si no, empieza un bloque nuevo
+    });
+    // 3) Probamos a unir bloques gastando los laborables que hay en medio
+    const candidatos=[];
+    for(let a=0;a<bloques.length;a++){
+        let coger=[];                                // laborables que habría que pedir
+        for(let b=a;b<bloques.length;b++){
+            if(b>a)for(let i=bloques[b-1].fin+1;i<bloques[b].ini;i++)coger.push(i);   // hueco entre bloques
+            if(coger.length>MAX_VACACIONES)break;    // demasiadas vacaciones: no seguimos alargando
+            const tramo=dias.slice(bloques[a].ini,bloques[b].fin+1);
+            const nombres=[...new Set(tramo.filter(d=>d.entreSemana).map(d=>d.fest))];   // festivos entre semana del tramo (sin repetir)
+            if(!nombres.length)continue;             // sin festivo entre semana no es un puente
+            if(tramo[0].f.getUTCFullYear()!==AÑO&&tramo[tramo.length-1].f.getUTCFullYear()!==AÑO)continue;   // fuera de 2027
+            if(!coger.length&&tramo.length<3)continue;    // sin vacaciones, solo cuenta si son 3 días o más
+            if(coger.length&&tramo.length<2.5*coger.length)continue;   // tiene que compensar: cada día que coges, al menos 2,5 libres (si no, es una semana de vacaciones normal)
+            candidatos.push({inicio:tramo[0].f,fin:tramo[tramo.length-1].f,dias:tramo.length,
+                coger:coger.map(i=>dias[i].f),festivo:nombres.join(' y '),a:bloques[a].ini,b:bloques[b].fin});
+        }
+    }
+    // 4) Quitamos los que no compensan: si otro puente que se solapa da los mismos
+    //    o más días libres gastando las mismas o menos vacaciones, este sobra
+    const solapan=(x,y)=>x.a<=y.b&&y.a<=x.b;
+    const mejor=(x,y)=>x.coger.length<=y.coger.length&&x.dias>=y.dias&&(x.coger.length<y.coger.length||x.dias>y.dias);
+    return candidatos
+        .filter(c=>!candidatos.some(o=>o!==c&&solapan(o,c)&&mejor(o,c)))
+        .sort((x,y)=>x.inicio-y.inicio||x.coger.length-y.coger.length);   // por fecha y, a igualdad, menos vacaciones primero
+}
+
+// ---------- Calendario de los 12 meses ----------
+function pintarCalendario(festivos,diasPuente){
+    const meses=[];
+    for(let m=0;m<12;m++){
+        const primero=new Date(Date.UTC(AÑO,m,1));
+        const nombre=primero.toLocaleDateString('es-ES',{month:'long',timeZone:'UTC'});
+        const huecos=(primero.getUTCDay()+6)%7;      // huecos antes del día 1 (la semana empieza en lunes)
+        const total=new Date(Date.UTC(AÑO,m+1,0)).getUTCDate();   // días del mes (el "día 0" del mes siguiente es el último de este)
+        let celdas='<span class="cal-dia cal-cab">L</span><span class="cal-dia cal-cab">M</span><span class="cal-dia cal-cab">X</span><span class="cal-dia cal-cab">J</span><span class="cal-dia cal-cab">V</span><span class="cal-dia cal-cab">S</span><span class="cal-dia cal-cab">D</span>';
+        celdas+='<span class="cal-dia"></span>'.repeat(huecos);   // huecos vacíos al principio
+        for(let d=1;d<=total;d++){
+            const f=new Date(Date.UTC(AÑO,m,d)),k=clave(f),sem=f.getUTCDay();
+            let clase='';
+            if(festivos[k])clase='cal-festivo';                 // festivo: lo más importante
+            else if(diasPuente.has(k))clase='cal-puente';       // día de vacaciones para el puente
+            else if(sem===0||sem===6)clase='cal-finde';         // fin de semana
+            const titulo=festivos[k]?` title="${festivos[k]}"`:'';   // al pasar el ratón, el nombre del festivo
+            celdas+=`<span class="cal-dia ${clase}"${titulo}>${d}</span>`;
+        }
+        meses.push(`<div class="cal-mes"><h4>${nombre}</h4><div class="cal-grid">${celdas}</div></div>`);
+    }
+    document.getElementById('calendario').innerHTML=meses.join('');
+}
+
+// ---------- Tira de días de un puente (cuadraditos de colores) ----------
+const LETRAS='DLMXJVS';                              // inicial de cada día; getUTCDay() da 0 = domingo
+function tira(inicio,fin,festivos,coger){
+    let html='';
+    for(let t=+inicio;t<=+fin;t+=DIA){              // un cuadradito por cada día del puente
+        const f=new Date(t),k=clave(f),sem=f.getUTCDay();
+        const clase=festivos[k]?'cal-festivo':coger.has(k)?'cal-puente':'cal-finde';   // rojo, color del calendario o gris
+        html+=`<span class="tira-dia ${clase}"><small>${LETRAS[sem]}</small>${f.getUTCDate()}</span>`;
+    }
+    return `<div class="tira">${html}</div>`;
+}
+
+// ---------- Calcular y enseñar todo ----------
+function calcular(){
+    const id=selCCAA.value;
+    const ccaa=datosDe(id);
+    // Todos los festivos en un objeto {fecha: nombre}: los de la comunidad y los locales
+    const festivos={};
+    ccaa.festivos.forEach(([f,n])=>festivos[f]=n);
+    festivosLocales.forEach(f=>{if(!festivos[f])festivos[f]='Fiesta local'});
+
+    const puentes=buscarPuentes(festivos);
+    const conVacaciones=puentes.filter(p=>p.coger.length);       // los que piden algún día
+    const diasPuente=new Set(conVacaciones.filter(p=>p.coger.length===1).flatMap(p=>p.coger.map(clave)));   // en el calendario marcamos los de 1 día, los más rentables
+
+    // Las tres cifras de arriba: festivos, cuántos caen entre semana y puentes
+    const entreSemana=Object.keys(festivos).filter(f=>{const s=leerFecha(f).getUTCDay();return s>0&&s<6}).length;
+    document.getElementById('nFestivos').textContent=Object.keys(festivos).length;
+    document.getElementById('nEntreSemana').textContent=entreSemana;
+    document.getElementById('nPuentes').textContent=puentes.length;
+    document.getElementById('nombreCCAA').textContent=ccaa.nombre;
+
+    // Aviso especial de la comunidad (Canarias, Cataluña), si lo hay
+    const nota=document.getElementById('nota');
+    nota.hidden=!NOTAS_2027[id];
+    nota.textContent=NOTAS_2027[id]?'ℹ️ '+NOTAS_2027[id]:'';
+
+    // Tarjeta de cada puente
+    document.getElementById('puentes').innerHTML=puentes.map(p=>{
+        const pides=p.coger.length
+            ?`Si pides <strong>${p.coger.length} ${p.coger.length===1?'día':'días'}</strong> de vacaciones`
+            :'<strong>Sin gastar vacaciones</strong>';
+        return `<div class="puente${p.coger.length?'':' puente-gratis'}"><div class="puente-dias"><strong>${p.dias}</strong><span>días libres</span></div><div class="puente-info"><p class="puente-nombre">${p.festivo}</p><p>${pides}</p></div>${tira(p.inicio,p.fin,festivos,new Set(p.coger.map(clave)))}</div>`;
+    }).join('')||'<p>No hay puentes con estos festivos.</p>';
+
+    pintarCalendario(festivos,diasPuente);
+
+    // Lista de festivos con su día de la semana (desplegable)
+    document.getElementById('fiscalContent').innerHTML=Object.keys(festivos).sort()
+        .map(f=>`<div class="fiscal-row"><span>${festivos[f]}</span><span>${corta(leerFecha(f))}</span></div>`).join('');
+
+    // Texto para WhatsApp: los 3 puentes que más días dan
+    const top=[...puentes].sort((x,y)=>y.dias-x.dias).slice(0,3)
+        .map(p=>`• ${p.festivo}: ${p.dias} días (${corta(p.inicio)} – ${corta(p.fin)})${p.coger.length?`, pidiendo ${p.coger.length} de vacaciones`:''}`).join('\n');
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(`🏖️ Puentes 2027 en ${ccaa.nombre}:\n${top}\n\nhttps://calculalotuyo.es/puentes-2027`);
+    document.getElementById('result').classList.add('visible');
+}
+
+selCCAA.onchange=calcular;                           // al cambiar de comunidad se repinta todo
+const pedida=new URLSearchParams(location.search).get('ccaa');   // viene de una página de comunidad: puentes-2027?ccaa=madrid
+if(pedida&&FESTIVOS_2027[pedida])selCCAA.value=pedida;          // solo si es una comunidad que existe
+calcular();                                          // al abrir la página ya se ve el calendario
+</script>
+</body>
+</html>
