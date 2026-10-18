@@ -24,7 +24,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#0F766E">
     <link rel="canonical" href="https://calculalotuyo.es/dias-laborables">
-    <link rel="stylesheet" href="styles.css?v=20261018c">
+    <link rel="stylesheet" href="styles.css?v=20261018d">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -132,7 +132,7 @@
                 <button class="nav-link active" data-dropdown-btn>📅 Calendario 2027 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
                 <div class="nav-dropdown-menu">
                     <a href="dias-laborables" aria-current="page">📅 Días laborables</a>
-                    <a href="puentes-2027">🌉 Puentes 2027</a>
+                    <a href="puentes-2027">🗓️ Puentes 2027</a>
                 </div>
             </div>
         </nav>
@@ -184,7 +184,7 @@
         <button class="mobile-nav-title" data-mobile-toggle>📅 Calendario 2027 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="mobile-nav-links">
             <a href="dias-laborables" class="mobile-nav-link" aria-current="page">📅 Días laborables</a>
-            <a href="puentes-2027" class="mobile-nav-link">🌉 Puentes 2027</a>
+            <a href="puentes-2027" class="mobile-nav-link">🗓️ Puentes 2027</a>
         </div>
     </div>
 </nav>
@@ -223,6 +223,11 @@
                         <div class="result-row"><span class="result-row-label" id="descansoLabel">🛋️ Sábados y domingos</span><span class="result-row-value" id="descanso">0</span></div>
                         <div class="result-row"><span class="result-row-label">🎉 Festivos entre semana</span><span class="result-row-value" id="festivos">0</span></div>
                         <div class="result-row bruto"><span class="result-row-label">💼 Días laborables</span><span class="result-row-value" id="laborables">0</span></div>
+                    </div>
+                    <div id="calBloque">
+                        <h3 class="puentes-titulo">🗓️ Tu periodo en el calendario</h3>
+                        <div class="cal-leyenda"><span><i class="cal-lab"></i>Día laborable</span><span><i class="cal-festivo"></i>Festivo</span><span><i class="cal-finde"></i>Descanso</span></div>
+                        <div class="cal-anual" id="calendario"></div>
                     </div>
                     <div class="fiscal-box" id="fiscalBox"><div class="fiscal-title">🎉 Festivos que se han descontado</div><div id="fiscalContent"></div></div>
                     <div class="result-actions"><button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button><a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a></div>
@@ -430,6 +435,37 @@ document.getElementById('fechaInicio').value=new Date().toISOString().split('T')
 
 // ---------- ¿Qué es cada día? ----------
 // Devuelve 'descanso', el nombre del festivo, o null si es laborable
+// ---------- Calendario de colores del periodo calculado ----------
+// Pinta los meses que toca el periodo (como mucho 12): laborables, festivos y descansos
+function pintarPeriodo(desde,hasta,dias,cache,conJS){
+    const bloque=document.getElementById('calBloque');
+    const meses=(hasta.getUTCFullYear()-desde.getUTCFullYear())*12+hasta.getUTCMonth()-desde.getUTCMonth()+1;   // cuántos meses toca
+    bloque.hidden=meses>12;                          // con más de un año sería demasiado largo: no se enseña
+    if(meses>12)return;
+    let html='';
+    for(let i=0;i<meses;i++){
+        const a=desde.getUTCFullYear(),m=desde.getUTCMonth()+i;      // mes i a partir del primero (Date.UTC ajusta si pasa de diciembre)
+        const primero=new Date(Date.UTC(a,m,1));
+        const nombre=primero.toLocaleDateString('es-ES',{month:'long',year:'numeric',timeZone:'UTC'});   // "diciembre de 2026"
+        const titulo=nombre[0].toUpperCase()+nombre.slice(1);       // "Diciembre de 2026" (solo la primera en mayúscula)
+        const huecos=(primero.getUTCDay()+6)%7;      // huecos antes del día 1 (la semana empieza en lunes)
+        const total=new Date(Date.UTC(a,m+1,0)).getUTCDate();       // días del mes
+        let celdas=['L','M','X','J','V','S','D'].map(l=>`<span class="cal-dia cal-cab">${l}</span>`).join('');
+        celdas+='<span class="cal-dia"></span>'.repeat(huecos);
+        for(let d=1;d<=total;d++){
+            const f=new Date(Date.UTC(a,m,d));
+            let clase='cal-fuera';                   // fuera del periodo: apagado
+            if(f>=desde&&f<=hasta){
+                const t=tipoDeDia(f,dias,cache,conJS);
+                clase=t===null?'cal-lab':t==='descanso'?'cal-finde':'cal-festivo';
+            }
+            celdas+=`<span class="cal-dia ${clase}">${d}</span>`;
+        }
+        html+=`<div class="cal-mes"><h4>${titulo}</h4><div class="cal-grid">${celdas}</div></div>`;
+    }
+    document.getElementById('calendario').innerHTML=html;
+}
+
 function tipoDeDia(f,dias,cacheFestivos,conJS){
     const sem=f.getUTCDay();                         // 0 = domingo, 6 = sábado
     if(sem===0||(sem===6&&dias===5))return 'descanso';   // domingo siempre; sábado solo si se trabaja L-V
@@ -483,6 +519,11 @@ document.getElementById('calc').onsubmit=function(e){
     // Días naturales del periodo: en "contar" se incluye el inicio; en "sumar", no
     const naturales=Math.round((fin-inicio)/DIA)+(modo.value==='contar'?1:0);
     const nombreDescanso=dias===5?'sábados y domingos':'domingos';
+
+    // ---------- Calendario del periodo ----------
+    // En "contar" se pintan las dos fechas; en "sumar", desde el día siguiente al de inicio
+    const desde=modo.value==='contar'?inicio:new Date(+inicio+DIA);
+    pintarPeriodo(desde,fin,dias,cache,conJS);
 
     // ---------- Mostrar el resultado ----------
     if(modo.value==='contar'){

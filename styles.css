@@ -3968,3 +3968,29 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
 .section-calendario { background: #F0FDFA; border-color: #99F6E4; }   /* fondo verde azulado muy claro */
 .section-calendario .calc-group-header h2 { color: #0F766E; }   /* título "Calendario y fechas" */
 .section-calendario .calc-item:hover { border-color: #0F766E; }   /* borde al pasar el ratón */
+
+/* ===== Puentes 2027, versión visual ===== */
+.cal-form { display: grid; gap: 4px; }                             /* selector y fiestas locales, juntos */
+.festivos-zona summary, .lista-festivos summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 0.9rem; padding: 6px 0; }   /* textos que se despliegan al pulsar */
+.festivos-zona[open] summary { margin-bottom: 8px; }
+.cal-resumen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0 8px; }   /* las tres cifras grandes */
+.cal-resumen div { background: #F0FDFA; border: 1px solid #99F6E4; border-radius: 12px; padding: 12px 6px; text-align: center; }
+.cal-resumen strong { display: block; font-size: 1.9rem; line-height: 1; color: #0F766E; }   /* el número */
+.cal-resumen span { font-size: 0.78rem; color: var(--muted); }   /* "festivos", "entre semana", "puentes" */
+.puente { flex-wrap: wrap; }                                       /* la tira de días baja a su propia línea */
+.tira { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 3px; }   /* cuadraditos de los días del puente */
+.tira-dia { width: 30px; text-align: center; border-radius: 6px; font-size: 0.78rem; font-weight: 700; padding: 3px 0; line-height: 1.15; }
+.tira-dia small { display: block; font-size: 0.6rem; font-weight: 500; opacity: 0.85; }   /* letra del día de la semana */
+.puente-nota { font-size: 0.78rem !important; color: var(--muted) !important; }   /* aclaración pequeña en la tarjeta */
+.nota-corta { font-size: 0.85rem; color: var(--muted); margin-top: 12px; }
+.lista-festivos { margin: 8px 0 20px; }                            /* lista de festivos plegada */
+.lista-festivos .fiscal-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
+.cal-form .festivos-zona { margin: 0; }                            /* sin hueco extra bajo "Añadir las fiestas" */
+.cal-form + .result { margin-top: 4px; padding-top: 0; border-top: 0; }   /* el calendario va pegado al selector, sin línea ni hueco */
+.puente-info { flex: 1; min-width: 0; }                            /* el nombre se queda al lado del número aunque sea largo */
+.puente-dias { width: 56px; }
+.cal-lab, .cal-leyenda .cal-lab { background: #CCFBF1; color: #0F766E; font-weight: 700; }   /* días laborables del periodo, verde azulado claro */
+.cal-fuera { opacity: 0.3; }                                       /* días fuera del periodo, apagados */
+#calBloque[hidden] { display: none; }
+#calBloque .cal-mes h4 { text-transform: none; }              /* el título ya llega con mayúscula: así no sale "De" */
+@media (min-width: 700px) { .cal-anual { grid-template-columns: repeat(4, 1fr); gap: 20px 24px; } }   /* en pantallas grandes: 4 meses por fila, 3 filas */

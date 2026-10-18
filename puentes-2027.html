@@ -24,7 +24,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#0F766E">
     <link rel="canonical" href="https://calculalotuyo.es/puentes-2027">
-    <link rel="stylesheet" href="styles.css?v=20261018c">
+    <link rel="stylesheet" href="styles.css?v=20261018d">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -95,7 +95,7 @@
                 <button class="nav-link active" data-dropdown-btn>📅 Calendario 2027 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
                 <div class="nav-dropdown-menu">
                     <a href="dias-laborables">📅 Días laborables</a>
-                    <a href="puentes-2027" aria-current="page">🌉 Puentes 2027</a>
+                    <a href="puentes-2027" aria-current="page">🗓️ Puentes 2027</a>
                 </div>
             </div>
         </nav>
@@ -147,7 +147,7 @@
         <button class="mobile-nav-title" data-mobile-toggle>📅 Calendario 2027 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="mobile-nav-links">
             <a href="dias-laborables" class="mobile-nav-link">📅 Días laborables</a>
-            <a href="puentes-2027" class="mobile-nav-link" aria-current="page">🌉 Puentes 2027</a>
+            <a href="puentes-2027" class="mobile-nav-link" aria-current="page">🗓️ Puentes 2027</a>
         </div>
     </div>
 </nav>
@@ -159,31 +159,25 @@
     <section class="calc-section">
         <div class="container">
             <div class="card">
-                <div class="card-title"><div class="card-icon">🗺️</div>¿Dónde trabajas?</div>
-                <form id="calc">
-                    <div class="form-grid">
-                        <div class="form-group"><label class="form-label" for="ccaa">Comunidad autónoma</label><select class="form-select" id="ccaa" required><option value="" selected disabled>Elige tu comunidad</option></select></div>
-                    </div>
-                    <div class="form-group festivos-zona">
-                        <label class="form-label" for="nuevoFestivo">Festivos de tu municipio (opcional)</label>
-                        <div class="festivo-add"><input type="date" min="2027-01-01" max="2027-12-31" class="form-input" id="nuevoFestivo"><button type="button" class="btn-secondary" id="addFestivo">+ Añadir</button></div>
-                        <span class="form-hint">Cada municipio tiene 2 fiestas locales. Si las sabes, añádelas y saldrán más puentes.</span>
+                <form id="calc" class="cal-form" onsubmit="return false">
+                    <div class="form-group"><label class="form-label" for="ccaa">📍 Tu comunidad</label><select class="form-select" id="ccaa"></select></div>
+                    <details class="festivos-zona">
+                        <summary>＋ Añadir las fiestas de tu municipio</summary>
+                        <div class="festivo-add"><input type="date" min="2027-01-01" max="2027-12-31" class="form-input" id="nuevoFestivo" aria-label="Fiesta local"><button type="button" class="btn-secondary" id="addFestivo">+ Añadir</button></div>
                         <ul class="festivo-lista" id="listaFestivos"></ul>
-                    </div>
-                    <button type="submit" class="btn">Ver mis puentes de 2027</button>
-                    <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+                    </details>
                 </form>
 
-                <div class="result" id="result">
-                    <div class="result-hero"><p class="result-label" id="totalLabel">Puentes en 2027</p><p class="result-value" id="total">0</p><p class="result-sub" id="resultSub"></p></div>
+                <div class="result visible" id="result">
+                    <div class="cal-resumen"><div><strong id="nFestivos">0</strong><span>festivos</span></div><div><strong id="nEntreSemana">0</strong><span>entre semana</span></div><div><strong id="nPuentes">0</strong><span>puentes</span></div></div>
                     <div class="aviso-ccaa" id="nota" hidden></div>
-                    <h3 class="puentes-titulo">🌉 Tus puentes</h3>
-                    <div class="puentes-lista" id="puentes"></div>
-                    <h3 class="puentes-titulo">🗓️ Tu calendario de 2027</h3>
+                    <h3 class="puentes-titulo">🗓️ Calendario 2027 · <span id="nombreCCAA"></span></h3>
                     <div class="cal-leyenda"><span><i class="cal-festivo"></i>Festivo</span><span><i class="cal-puente"></i>Día que coges para el puente</span><span><i class="cal-finde"></i>Fin de semana</span></div>
                     <div class="cal-anual" id="calendario"></div>
-                    <div class="fiscal-box"><div class="fiscal-title">🎉 Tus festivos de 2027</div><div id="fiscalContent"></div></div>
-                    <div class="result-actions"><button type="button" class="btn-secondary" id="reset">🔄 Otra comunidad</button><a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a></div>
+                    <h3 class="puentes-titulo">🏖️ Tus puentes</h3>
+                    <div class="puentes-lista" id="puentes"></div>
+                    <details class="lista-festivos"><summary>Ver la lista de festivos</summary><div id="fiscalContent"></div></details>
+                    <div class="result-actions"><a href="#" class="btn-wa" id="wa" target="_blank">📱 Compartir por WhatsApp</a></div>
                 </div>
             </div>
         </div>
@@ -191,21 +185,12 @@
 
     <div class="container"><div class="ad"></div></div>
 
-    <section class="section"><div class="container"><article class="seo-section"><h2>🌉 Los grandes puentes de 2027 en toda España</h2>
-<p>Estos festivos son comunes a todas las comunidades, así que los puentes sirven para casi todo el país:</p>
-<ul>
-<li><strong>Año Nuevo, viernes 1 de enero:</strong> fin de semana largo de 3 días.</li>
-<li><strong>Reyes, miércoles 6 de enero:</strong> si coges el lunes 4 y el martes 5, enlazas 6 días seguidos, del viernes 1 al miércoles 6.</li>
-<li><strong>Semana Santa, del jueves 25 al domingo 28 de marzo:</strong> 4 días seguidos en casi toda España. En Baleares, Cataluña, Navarra, País Vasco, La Rioja y la Comunitat Valenciana el lunes 29 también es festivo. En Cataluña y la Comunitat Valenciana el Jueves Santo no lo es.</li>
-<li><strong>1 de mayo:</strong> cae en sábado, así que en 2027 no da puente.</li>
-<li><strong>15 de agosto:</strong> cae en domingo. Andalucía, Aragón, Asturias, Canarias, Castilla y León y la Comunidad de Madrid lo pasan al lunes 16, y Extremadura al lunes 11 de octubre.</li>
-<li><strong>Fiesta Nacional, martes 12 de octubre:</strong> cogiendo el lunes 11 tienes 4 días.</li>
-<li><strong>Todos los Santos, lunes 1 de noviembre:</strong> fin de semana largo de 3 días.</li>
-<li><strong>Constitución e Inmaculada, lunes 6 y miércoles 8 de diciembre:</strong> el acueducto del año. Cogiendo solo el martes 7 descansas 5 días, del sábado 4 al miércoles 8; si añades el jueves 9 y el viernes 10, son 9 días seguidos con 3 de vacaciones.</li>
-<li><strong>Navidad:</strong> el 25 de diciembre cae en sábado y no da puente.</li>
-</ul>
+    <section class="section"><div class="container"><article class="seo-section"><h2>🏖️ Los grandes puentes de 2027 en toda España</h2>
+<p>Sirven para casi toda España:</p>
+<div class="puentes-lista"><div class="puente"><div class="puente-dias"><strong>6</strong><span>días libres</span></div><div class="puente-info"><p class="puente-nombre">Año Nuevo y Reyes</p><p>Coges <strong>2 días</strong></p></div><div class="tira"><span class="tira-dia cal-festivo"><small>V</small>1</span><span class="tira-dia cal-finde"><small>S</small>2</span><span class="tira-dia cal-finde"><small>D</small>3</span><span class="tira-dia cal-puente"><small>L</small>4</span><span class="tira-dia cal-puente"><small>M</small>5</span><span class="tira-dia cal-festivo"><small>X</small>6</span></div></div><div class="puente puente-gratis"><div class="puente-dias"><strong>4</strong><span>días libres</span></div><div class="puente-info"><p class="puente-nombre">Semana Santa</p><p><strong>Sin gastar vacaciones</strong></p><p class="puente-nota">En 6 comunidades el lunes 29 también es festivo</p></div><div class="tira"><span class="tira-dia cal-festivo"><small>J</small>25</span><span class="tira-dia cal-festivo"><small>V</small>26</span><span class="tira-dia cal-finde"><small>S</small>27</span><span class="tira-dia cal-finde"><small>D</small>28</span></div></div><div class="puente"><div class="puente-dias"><strong>4</strong><span>días libres</span></div><div class="puente-info"><p class="puente-nombre">Fiesta Nacional</p><p>Coges <strong>1 día</strong></p></div><div class="tira"><span class="tira-dia cal-finde"><small>S</small>9</span><span class="tira-dia cal-finde"><small>D</small>10</span><span class="tira-dia cal-puente"><small>L</small>11</span><span class="tira-dia cal-festivo"><small>M</small>12</span></div></div><div class="puente puente-gratis"><div class="puente-dias"><strong>3</strong><span>días libres</span></div><div class="puente-info"><p class="puente-nombre">Todos los Santos</p><p><strong>Sin gastar vacaciones</strong></p></div><div class="tira"><span class="tira-dia cal-finde"><small>S</small>30</span><span class="tira-dia cal-finde"><small>D</small>31</span><span class="tira-dia cal-festivo"><small>L</small>1</span></div></div><div class="puente"><div class="puente-dias"><strong>9</strong><span>días libres</span></div><div class="puente-info"><p class="puente-nombre">Constitución e Inmaculada</p><p>Coges <strong>3 días</strong></p><p class="puente-nota">El mejor puente del año</p></div><div class="tira"><span class="tira-dia cal-finde"><small>S</small>4</span><span class="tira-dia cal-finde"><small>D</small>5</span><span class="tira-dia cal-festivo"><small>L</small>6</span><span class="tira-dia cal-puente"><small>M</small>7</span><span class="tira-dia cal-festivo"><small>X</small>8</span><span class="tira-dia cal-puente"><small>J</small>9</span><span class="tira-dia cal-puente"><small>V</small>10</span><span class="tira-dia cal-finde"><small>S</small>11</span><span class="tira-dia cal-finde"><small>D</small>12</span></div></div></div>
+<p class="nota-corta">El 1 de mayo y el 25 de diciembre caen en sábado, y el 15 de agosto en domingo: no dan puente (algunas comunidades pasan el 15 de agosto al lunes 16).</p>
 <h2>🗺️ Festivos propios de cada comunidad en 2027</h2>
-<p>Además de los festivos comunes (1 y 6 de enero, Viernes Santo, 1 de mayo, 12 de octubre, 1 de noviembre y 6, 8 y 25 de diciembre), cada comunidad tiene los suyos:</p>
+
 <div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Comunidad</th><th>Festivos propios en 2027</th></tr></thead><tbody>
 <tr><td>Andalucía</td><td>Día de Andalucía (1 de marzo); Jueves Santo (25 de marzo); Lunes siguiente al 15 de agosto (16 de agosto)</td></tr>
 <tr><td>Aragón</td><td>Jueves Santo (25 de marzo); San Jorge/Día de Aragón (23 de abril); Lunes siguiente al 15 de agosto (16 de agosto)</td></tr>
@@ -229,7 +214,7 @@
 </tbody></table></div>
 <p>A todos ellos se suman <strong>2 fiestas locales</strong> de cada municipio, que publica cada comunidad o provincia por separado. En total, nunca más de <strong>14 festivos al año</strong> (art. 37.2 del Estatuto de los Trabajadores).</p>
 <h2>🧮 Cómo calculamos los puentes</h2>
-<p>La calculadora busca los días laborables (de lunes a viernes) que quedan sueltos entre un festivo y un fin de semana, o entre dos festivos. Te propone las combinaciones de <strong>hasta 4 días de vacaciones</strong> que más días libres seguidos te dan, y quita las que no compensan. Si en tu empresa se trabaja el sábado o tu convenio da días de libre disposición, los puentes pueden cambiar.</p>
+<p>Buscamos los días sueltos entre un festivo y un fin de semana y te enseñamos las combinaciones de hasta 4 días de vacaciones que más días libres seguidos te dan.</p>
 <p>¿Necesitas contar días entre dos fechas? Usa la <a href="dias-laborables">calculadora de días laborables</a>. ¿Quieres saber cuántas vacaciones te quedan? Mira la <a href="vacaciones">calculadora de vacaciones</a>.</p></article></div></section>
 
     <section class="section section-alt"><div class="container"><h2 class="section-title">❓ Preguntas frecuentes sobre los festivos de 2027</h2>
@@ -323,6 +308,11 @@ const MAX_VACACIONES=4;                              // como mucho proponemos pu
 
 // ---------- Rellenar el desplegable de comunidades ----------
 const selCCAA=document.getElementById('ccaa');
+// Primera opción: los festivos que tienen TODAS las comunidades (se calculan solos a partir de los datos)
+const todas=Object.values(FESTIVOS_2027);
+const ESPANA={nombre:'Toda España',festivos:todas[0].festivos.filter(([f])=>todas.every(c=>c.festivos.some(([g])=>g===f)))};
+const datosDe=id=>id==='espana'?ESPANA:FESTIVOS_2027[id];   // devuelve los datos de la opción elegida
+selCCAA.add(new Option('Toda España (festivos comunes)','espana'));
 Object.entries(FESTIVOS_2027)                        // pares [clave, datos] de cada comunidad
     .sort((a,b)=>a[1].nombre.localeCompare(b[1].nombre,'es'))   // por orden alfabético
     .forEach(([id,c])=>selCCAA.add(new Option(c.nombre,id)));   // una opción por comunidad
@@ -341,14 +331,14 @@ document.getElementById('addFestivo').onclick=function(){
     festivosLocales.add(campo.value);
     campo.value='';
     pintarLocales();
-    if(selCCAA.value)calcular();                     // si ya hay comunidad, recalcula al momento
+    calcular();                                      // recalcula al momento
 };
 listaHTML.onclick=function(e){
     const f=e.target.dataset.quitar;
     if(!f)return;
     festivosLocales.delete(f);
     pintarLocales();
-    if(selCCAA.value)calcular();
+    calcular();
 };
 
 // ---------- Buscar los puentes ----------
@@ -420,11 +410,22 @@ function pintarCalendario(festivos,diasPuente){
     document.getElementById('calendario').innerHTML=meses.join('');
 }
 
+// ---------- Tira de días de un puente (cuadraditos de colores) ----------
+const LETRAS='DLMXJVS';                              // inicial de cada día; getUTCDay() da 0 = domingo
+function tira(inicio,fin,festivos,coger){
+    let html='';
+    for(let t=+inicio;t<=+fin;t+=DIA){              // un cuadradito por cada día del puente
+        const f=new Date(t),k=clave(f),sem=f.getUTCDay();
+        const clase=festivos[k]?'cal-festivo':coger.has(k)?'cal-puente':'cal-finde';   // rojo, color del calendario o gris
+        html+=`<span class="tira-dia ${clase}"><small>${LETRAS[sem]}</small>${f.getUTCDate()}</span>`;
+    }
+    return `<div class="tira">${html}</div>`;
+}
+
 // ---------- Calcular y enseñar todo ----------
 function calcular(){
     const id=selCCAA.value;
-    if(!id){mostrarError('Elige tu comunidad autónoma');return}
-    const ccaa=FESTIVOS_2027[id];
+    const ccaa=datosDe(id);
     // Todos los festivos en un objeto {fecha: nombre}: los de la comunidad y los locales
     const festivos={};
     ccaa.festivos.forEach(([f,n])=>festivos[f]=n);
@@ -434,10 +435,12 @@ function calcular(){
     const conVacaciones=puentes.filter(p=>p.coger.length);       // los que piden algún día
     const diasPuente=new Set(conVacaciones.filter(p=>p.coger.length===1).flatMap(p=>p.coger.map(clave)));   // en el calendario marcamos los de 1 día, los más rentables
 
-    // Cabecera del resultado
-    document.getElementById('total').textContent=puentes.length+(puentes.length===1?' puente':' puentes');
+    // Las tres cifras de arriba: festivos, cuántos caen entre semana y puentes
     const entreSemana=Object.keys(festivos).filter(f=>{const s=leerFecha(f).getUTCDay();return s>0&&s<6}).length;
-    document.getElementById('resultSub').textContent=`${ccaa.nombre}: ${Object.keys(festivos).length} festivos, ${entreSemana} de ellos entre semana`;
+    document.getElementById('nFestivos').textContent=Object.keys(festivos).length;
+    document.getElementById('nEntreSemana').textContent=entreSemana;
+    document.getElementById('nPuentes').textContent=puentes.length;
+    document.getElementById('nombreCCAA').textContent=ccaa.nombre;
 
     // Aviso especial de la comunidad (Canarias, Cataluña), si lo hay
     const nota=document.getElementById('nota');
@@ -446,39 +449,27 @@ function calcular(){
 
     // Tarjeta de cada puente
     document.getElementById('puentes').innerHTML=puentes.map(p=>{
-        const rango=`${corta(p.inicio)} – ${corta(p.fin)}`;
         const pides=p.coger.length
-            ?`Coges <strong>${p.coger.length} ${p.coger.length===1?'día':'días'}</strong> (${p.coger.map(corta).join(', ')})`
+            ?`Coges <strong>${p.coger.length} ${p.coger.length===1?'día':'días'}</strong>`
             :'<strong>Sin gastar vacaciones</strong>';
-        return `<div class="puente${p.coger.length?'':' puente-gratis'}"><div class="puente-dias"><strong>${p.dias}</strong><span>días libres</span></div><div class="puente-info"><p class="puente-nombre">${p.festivo}</p><p>${rango}</p><p>${pides}</p></div></div>`;
+        return `<div class="puente${p.coger.length?'':' puente-gratis'}"><div class="puente-dias"><strong>${p.dias}</strong><span>días libres</span></div><div class="puente-info"><p class="puente-nombre">${p.festivo}</p><p>${pides}</p></div>${tira(p.inicio,p.fin,festivos,new Set(p.coger.map(clave)))}</div>`;
     }).join('')||'<p>No hay puentes con estos festivos.</p>';
 
     pintarCalendario(festivos,diasPuente);
 
-    // Lista de festivos con su día de la semana
+    // Lista de festivos con su día de la semana (desplegable)
     document.getElementById('fiscalContent').innerHTML=Object.keys(festivos).sort()
         .map(f=>`<div class="fiscal-row"><span>${festivos[f]}</span><span>${corta(leerFecha(f))}</span></div>`).join('');
 
     // Texto para WhatsApp: los 3 puentes que más días dan
     const top=[...puentes].sort((x,y)=>y.dias-x.dias).slice(0,3)
         .map(p=>`• ${p.festivo}: ${p.dias} días (${corta(p.inicio)} – ${corta(p.fin)})${p.coger.length?`, cogiendo ${p.coger.length}`:''}`).join('\n');
-    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(`🌉 Puentes 2027 en ${ccaa.nombre}:\n${top}\n\nhttps://calculalotuyo.es/puentes-2027`);
+    document.getElementById('wa').href='https://wa.me/?text='+encodeURIComponent(`🏖️ Puentes 2027 en ${ccaa.nombre}:\n${top}\n\nhttps://calculalotuyo.es/puentes-2027`);
     document.getElementById('result').classList.add('visible');
 }
 
-document.getElementById('calc').onsubmit=function(e){e.preventDefault();calcular()};   // botón "Ver mis puentes"
-selCCAA.onchange=function(){                         // al cambiar de comunidad se recalcula solo
-    calcular();
-    document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});   // y baja hasta el resultado
-};
-
-// "Otra comunidad": limpia y vuelve arriba
-document.getElementById('reset').onclick=function(){
-    document.getElementById('calc').reset();
-    festivosLocales.clear();pintarLocales();
-    document.getElementById('result').classList.remove('visible');
-    window.scrollTo({top:0,behavior:'smooth'});
-};
+selCCAA.onchange=calcular;                           // al cambiar de comunidad se repinta todo
+calcular();                                          // al abrir la página ya se ve el calendario (Toda España)
 </script>
 </body>
 </html>
