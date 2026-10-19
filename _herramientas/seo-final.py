@@ -14,7 +14,7 @@ SECCIONES = [
 # ---- 2) Calculadoras (las 16 laborales y las 2 del calendario)
 CALCULADORAS = ['despido-improcedente', 'despido-objetivo', 'ere', 'finiquito', 'paro', 'sueldo-neto', 'irpf', 'horas-extra',
                 'pagas-extra', 'vacaciones', 'subida-ipc', 'cuota-autonomos', 'facturas', 'baja-medica', 'reduccion-jornada',
-                'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion']
+                'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion', 'obligado-a-declarar-renta']
 
 cambiadas = 0
 for f in glob.glob('*.html'):

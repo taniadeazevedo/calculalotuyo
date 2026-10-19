@@ -80,6 +80,17 @@ const DATOS={
         anticipadaCotizados:35       // …con al menos 35 años cotizados
     },
 
+    // Obligación de declarar la renta de 2026 (Ley 35/2006 del IRPF, art. 96, comprobado en el BOE el 19/10/2026)
+    renta:{
+        trabajoUnPagador:22000,      // sueldos, paro y pensiones de un solo pagador (art. 96.2.a)
+        trabajoVariosPagadores:15876,// con más de un pagador, pensión de tu ex, pagador que no retiene o tipo fijo (art. 96.3)
+        segundoPagador:1500,         // si lo cobrado del 2.º y demás pagadores no pasa de esto, sigue valiendo el límite de 22.000 € (art. 96.3.a.1.º)
+        capital:1600,                // intereses, dividendos y ventas de fondos con retención (art. 96.2.b)
+        imputadas:1000,              // viviendas vacías (rentas imputadas), letras del Tesoro y ayudas públicas (art. 96.2.c)
+        totalMinimo:1000,            // con menos de esto en total nunca hay que declarar (art. 96.2, último párrafo)
+        perdidas:500                 // …siempre que las pérdidas patrimoniales sean de menos de 500 €
+    },
+
     // IPC interanual de diciembre de cada año (INE)
     ipc:{2022:5.7,2023:3.1,2024:2.8,2025:2.9}
 };

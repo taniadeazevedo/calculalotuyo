@@ -10,5 +10,7 @@ python3 _herramientas/calendario/gen-seo.py >/dev/null && python3 _herramientas/
 python3 _herramientas/modelos/gen-modelos.py   # sin python-docx/openpyxl solo rehace las páginas, no los archivos
 python3 _herramientas/jubilacion/gen-jubilacion.py
 python3 _herramientas/informe/gen-informe.py
+python3 _herramientas/renta/gen-renta.py
 python3 _herramientas/seo-final.py
+python3 _herramientas/menu.py              # el mismo menú en todas las páginas (después de generarlas)
 python3 _herramientas/buscador.py           # índice del buscador (buscar.json), siempre al final

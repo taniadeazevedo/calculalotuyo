@@ -4168,3 +4168,16 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
 .r-emp, .reparto-leyenda .r-emp { background: #64748B; }          /* Seguridad Social de la empresa, en gris azulado */
 @media (max-width: 600px) { .inf-fila { grid-template-columns: 1fr; gap: 3px; } }   /* en el móvil, el sueldo encima de la barra */
 .fila-local td { background: #F0FDFA; font-weight: 600; }                 /* fiestas locales de la ciudad, resaltadas en la tabla */
+
+/* =====================================================================
+   MENÚ ORDENADO (20/10/2026): «Calculadoras» abre un panel con grupos
+   ===================================================================== */
+.nav-mega .nav-dropdown-menu { display: grid; grid-template-columns: repeat(3, minmax(190px, auto)); gap: 0 12px; padding: 14px; }   /* 3 columnas: sueldo · despido y paro · bajas y autónomos */
+.mega-col { display: flex; flex-direction: column; }                    /* cada columna, un grupo debajo de otro */
+.mega-titulo { margin: 8px 14px 4px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text3, #6B7280); }   /* título pequeño del grupo */
+.mega-col .mega-titulo:not(:first-child) { margin-top: 16px; }         /* aire entre «Bajas y jubilación» y «Autónomos» */
+.nav-mega .nav-dropdown-menu .mega-todas { grid-column: 1 / -1; margin-top: 8px; border-top: 1px solid var(--border); border-radius: 0 0 8px 8px; color: var(--accent); font-weight: 600; text-align: center; }   /* enlace a todas, a lo ancho */
+.mobile-nav-grupo { margin: 4px 8px 0; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text3, #6B7280); }   /* «CALCULADORAS» encima de los grupos del móvil */
+.mobile-nav-sueltos { padding: 8px 0; }                                  /* Renta, Guías y Modelos: enlaces directos */
+.mobile-nav-sueltos .mobile-nav-link { padding: 14px 8px; font-weight: 600; color: var(--text); }   /* con el mismo peso que los títulos de grupo */
+.nav-mega .nav-dropdown-menu a { white-space: nowrap; }                    /* «Despido improcedente» en una sola línea */

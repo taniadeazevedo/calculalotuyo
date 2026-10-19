@@ -1,0 +1,167 @@
+# Genera «¿Tengo que hacer la declaración de la renta?» (obligado-a-declarar-renta.html), con un comprobador.
+# Los límites vienen de datos-2026.js (DATOS.renta), comprobados en el BOE (Ley 35/2006, art. 96).
+# Uso: python3 _herramientas/renta/gen-renta.py
+import os, sys
+AQUI = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(AQUI, '..'))
+from plantilla import pagina, REVISADO, AD
+
+SLUG = 'obligado-a-declarar-renta'
+REV = REVISADO.format(fecha='20 de octubre de 2026')
+LEY = '<a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764#a96" target="_blank" rel="noopener">Ley 35/2006 del IRPF, art. 96</a>'
+IMV = '<a href="https://www.boe.es/buscar/act.php?id=BOE-A-2021-21007" target="_blank" rel="noopener">Ley 19/2021 del ingreso mínimo vital, art. 36</a>'
+FUENTE = f'{LEY} (límites de 22.000 €, 15.876 €, 1.600 € y 1.000 €; versión vigente para la renta de 2026) y {IMV} (obligación de declarar de quien cobra el ingreso mínimo vital).'
+SINO = '<option value="no" selected>No</option><option value="si">Sí</option>'   # opciones de las preguntas de sí o no
+
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">🧾 Renta 2026 · se presenta en 2027</div><h1>¿Tengo que hacer la declaración de la renta?<br><span class="highlight">compruébalo en 1 minuto</span></h1><p>Responde a unas preguntas sobre lo que cobraste en 2026 y te decimos si estás obligado a presentarla y por qué.</p>
+            {REV}</div></section>
+
+    <section class="calc-section"><div class="container"><div class="card">
+        <div class="card-title"><div class="card-icon">📝</div>Lo que cobraste en 2026</div>
+        <form id="calc">
+            <div class="form-grid">
+                <div class="form-group"><label class="form-label" for="trabajo">Sueldos, paro y pensiones (en bruto)</label><input type="number" class="form-input" id="trabajo" placeholder="20000" min="0" required><span class="form-hint">Todo junto, antes de quitar el IRPF y la Seguridad Social</span></div>
+                <div class="form-group"><label class="form-label" for="pagadores">¿Quién te lo pagó?</label><select class="form-select" id="pagadores"><option value="1" selected>Una sola empresa o entidad</option><option value="2">Dos o más (también el paro o la Seguridad Social)</option></select></div>
+                <div class="form-group" id="g-segundo" hidden><label class="form-label" for="segundo">Lo que cobraste de todos menos del que más te pagó</label><input type="number" class="form-input" id="segundo" placeholder="3000" min="0"><span class="form-hint">Ejemplo: 14.000 € de tu empresa y 3.000 € de paro → pon 3.000</span></div>
+                <div class="form-group"><label class="form-label" for="especial">¿Te pasa alguna de estas?</label><select class="form-select" id="especial"><option value="no" selected>No, ninguna</option><option value="ex">Cobro una pensión compensatoria de mi ex</option><option value="sinret">Alguien me pagó sin retenerme IRPF (p. ej. una familia por trabajo en el hogar)</option><option value="fijo">Cobro por cursos, conferencias o como consejero</option></select></div>
+                <div class="form-group"><label class="form-label" for="autonomo">¿Has sido autónomo en algún momento de 2026?</label><select class="form-select" id="autonomo">{SINO}</select></div>
+                <div class="form-group"><label class="form-label" for="imv">¿Cobras el ingreso mínimo vital?</label><select class="form-select" id="imv">{SINO}</select></div>
+                <div class="form-group"><label class="form-label" for="plan">¿Aportaste a un plan de pensiones y quieres desgravarlo?</label><select class="form-select" id="plan">{SINO}</select></div>
+                <div class="form-group"><label class="form-label" for="capital">Intereses, dividendos y venta de fondos de inversión</label><input type="number" class="form-input" id="capital" placeholder="0" min="0"><span class="form-hint">Lo que te dio el banco o el bróker. Si no tienes, déjalo vacío</span></div>
+                <div class="form-group"><label class="form-label" for="otros">¿Tienes otros ingresos?</label><select class="form-select" id="otros"><option value="no" selected>No</option><option value="si">Sí: alquiler, venta de una vivienda, de acciones o de criptomonedas…</option></select></div>
+                <div class="form-group" id="g-otrosimp" hidden><label class="form-label" for="otrosimp">¿Cuánto ganaste con ellos?</label><input type="number" class="form-input" id="otrosimp" placeholder="1500" min="0"><span class="form-hint">Lo que ingresaste menos lo que pagaste (más o menos)</span></div>
+                <div class="form-group"><label class="form-label" for="vivienda">¿Tienes una vivienda vacía que no es tu casa?</label><select class="form-select" id="vivienda">{SINO}</select></div>
+                <div class="form-group" id="g-catastral" hidden><label class="form-label" for="catastral">Su valor catastral</label><input type="number" class="form-input" id="catastral" placeholder="80000" min="0"><span class="form-hint">Viene en el recibo del IBI. Si tienes varias, súmalos</span></div>
+                <div class="form-group" id="g-revisado" hidden><label class="form-label" for="revisado">¿Se han revisado hace poco los valores catastrales de tu municipio?</label><select class="form-select" id="revisado"><option value="no" selected>No o no lo sé (se cuenta el 2 %)</option><option value="si">Sí (se cuenta el 1,1 %)</option></select><span class="form-hint">Lo indica tu ayuntamiento o la sede del Catastro</span></div>
+            </div>
+            <button type="submit" class="btn">¿Tengo que declarar?</button>
+            <p class="btn-text"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% privado · Tus datos no salen de tu dispositivo</p>
+        </form>
+        <div class="result" id="result">
+            <div class="result-hero"><p class="result-label">Renta de 2026</p><p class="result-value" id="total">—</p><p class="result-sub" id="resultSub"></p></div>
+            <div class="fiscal-box"><div class="fiscal-title">🔍 Por qué</div><div id="fiscalContent"></div></div>
+            <div class="aviso-ccaa" id="consejos"></div>
+            <div class="result-actions"><button type="button" class="btn-secondary" id="reset">🔄 Nueva consulta</button><a href="#" class="btn-wa" id="wa" target="_blank">📱 WhatsApp</a></div>
+        </div>
+    </div></div></section>
+''' + AD + f'''
+    <section class="section"><div class="container"><article class="seo-section">
+<h2>🔢 Los límites de la renta 2026</h2>
+<div class="cifras"><div><strong>22.000 €</strong><span>con un solo pagador</span></div><div><strong>15.876 €</strong><span>con dos o más pagadores*</span></div><div><strong>1.600 €</strong><span>de intereses, dividendos y fondos</span></div></div>
+<p class="nota-corta">* Solo si lo que cobraste del segundo y demás pagadores pasa de 1.500 € en total. Si no, el límite sigue siendo 22.000 €.</p>
+<p>Si <strong>solo</strong> cobraste sueldos, paro o pensiones y no pasas de estas cantidades, <strong>no estás obligado</strong> a declarar. Son los límites de la renta de 2026, la que se presenta en la primavera de 2027.</p>
+<div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Lo que cobraste en 2026</th><th>No declaras si no pasa de…</th></tr></thead><tbody>
+<tr><td>Sueldo, paro o pensión de <strong>un solo pagador</strong></td><td><strong>22.000 €</strong></td></tr>
+<tr><td>De <strong>dos o más pagadores</strong>, y del 2.º y siguientes, más de 1.500 €</td><td><strong>15.876 €</strong></td></tr>
+<tr><td>De dos o más pagadores, y del 2.º y siguientes, 1.500 € o menos</td><td><strong>22.000 €</strong></td></tr>
+<tr><td>Cobras una pensión compensatoria de tu ex</td><td><strong>15.876 €</strong></td></tr>
+<tr><td>Un pagador que no tenía que retenerte IRPF (como una familia, por trabajo en el hogar)</td><td><strong>15.876 €</strong></td></tr>
+<tr><td>Intereses, dividendos y ventas de fondos de inversión (con retención)</td><td><strong>1.600 €</strong></td></tr>
+<tr><td>Viviendas vacías (rentas imputadas), letras del Tesoro y ayudas públicas</td><td><strong>1.000 €</strong></td></tr>
+</tbody></table></div>
+
+<h2>👥 Dos pagadores: el caso más frecuente</h2>
+<p>Tienes dos pagadores si en 2026 cobraste de <strong>más de una empresa o entidad</strong>: cambiaste de trabajo, cobraste el <strong>paro</strong> (el SEPE cuenta como pagador), estuviste en un <strong>ERTE</strong> o cobraste una baja pagada directamente por la mutua o la Seguridad Social.</p>
+<div class="calc-steps">
+    <div class="calc-step"><span class="step-num">1</span><div><strong>Ordena los pagadores</strong><p>El que más te pagó es el primero. Por ejemplo: tu empresa, 14.000 €, y el paro, 3.000 €.</p></div></div>
+    <div class="calc-step"><span class="step-num">2</span><div><strong>Suma lo de los demás</strong><p>Si del segundo y siguientes cobraste <strong>1.500 € o menos</strong>, tu límite sigue siendo 22.000 €. En el ejemplo son 3.000 €, así que el límite baja a <strong>15.876 €</strong>.</p></div></div>
+    <div class="calc-step"><span class="step-num">3</span><div><strong>Compara el total</strong><p>14.000 + 3.000 = 17.000 €, que pasa de 15.876 €: <strong>tiene que declarar</strong>. Si hubiera cobrado 15.000 € en total, no estaría obligado.</p></div></div>
+</div>
+<p>Los pensionistas con dos pensiones mantienen el límite de 22.000 € si la Seguridad Social les aplica la retención conjunta (es lo habitual cuando todas las pensiones son públicas).</p>
+
+<h2>✅ Tienes que declarar siempre si…</h2>
+<ul>
+<li>Has estado <strong>de alta como autónomo</strong> en algún momento del año, aunque sea un día.</li>
+<li>Cobras el <strong>ingreso mínimo vital</strong> (tú y todas las personas de tu unidad de convivencia).</li>
+<li>Has aportado a un <strong>plan de pensiones</strong> (o a un patrimonio protegido de una persona con discapacidad) y quieres que te reduzca el impuesto.</li>
+<li>Tienes derecho a la <strong>deducción por doble imposición internacional</strong> (pagaste impuestos en otro país por rentas que también tributan aquí).</li>
+<li>Tienes otros ingresos, como un <strong>alquiler</strong> o la <strong>venta de una vivienda, de acciones o de criptomonedas</strong> con ganancias, y todo junto pasa de 1.000 €.</li>
+</ul>
+<p>Al revés: si en total no llegas a <strong>1.000 €</strong> de ingresos y tus pérdidas son de menos de 500 €, nunca tienes que declarar.</p>
+
+<h2>💡 Aunque no estés obligado, te puede convenir</h2>
+<p>Si te <strong>retuvieron IRPF</strong> en la nómina y no estás obligado, presentar la declaración puede salirte <strong>a devolver</strong>: es la única forma de recuperar lo que te retuvieron de más. Pasa a menudo si trabajaste solo una parte del año, si tienes hijos o si pagas alquiler en una comunidad con deducciones. Mira el borrador en la web de la Agencia Tributaria: si sale a devolver, preséntalo; si sale a pagar y no estás obligado, no hace falta.</p>
+<p>Para saber cuánto te retienen ahora, usa la <a href="irpf">calculadora de retención de IRPF</a> o la de <a href="sueldo-neto">sueldo neto</a>.</p>
+
+<h2>📅 ¿Cuándo se presenta?</h2>
+<p>La renta de 2026 se presenta en <strong>2027</strong>. Normalmente la campaña empieza a <strong>principios de abril</strong> y termina el <strong>30 de junio</strong>. La Agencia Tributaria publica las fechas exactas a principios de año; cuando salgan, las pondremos aquí.</p>
+</article></div></section>
+
+<script>
+// =====================================================================
+// ¿TENGO QUE DECLARAR? Los límites están en datos-2026.js (DATOS.renta).
+// Espera a DOMContentLoaded porque site.js y datos-2026.js se cargan al final de la página.
+// =====================================================================
+document.addEventListener('DOMContentLoaded',()=>{{
+const R=DATOS.renta;
+const g=id=>document.getElementById(id);
+const num=id=>Math.max(0,+g(id).value||0);                        // número de un campo (vacío = 0)
+// Muestra u oculta un campo según la respuesta de otro
+const ver=(sel,grupo,valor)=>{{const f=()=>g(grupo).hidden=g(sel).value!==valor;g(sel).addEventListener('change',f);f()}};
+ver('pagadores','g-segundo','2');
+ver('otros','g-otrosimp','si');
+ver('vivienda','g-catastral','si');
+ver('vivienda','g-revisado','si');
+
+g('calc').onsubmit=function(e){{
+    e.preventDefault();
+    if(g('trabajo').value===''){{mostrarError('Pon lo que cobraste de sueldos, paro o pensiones (0 si nada)');return}}
+    const trabajo=num('trabajo'), varios=g('pagadores').value==='2', segundo=num('segundo');
+    const especial=g('especial').value, capital=num('capital');
+    const otros=g('otros').value==='si'?num('otrosimp'):0;
+    const imputadas=g('vivienda').value==='si'?num('catastral')*(g('revisado').value==='si'?0.011:0.02):0;   // renta imputada: 2 % del valor catastral, o 1,1 % si se revisó hace poco (art. 85)
+    const total=trabajo+capital+otros+imputadas;
+    // Límite de sueldos según los pagadores y los casos especiales
+    let limite=R.trabajoUnPagador, motivoLimite='un solo pagador';
+    if(varios&&segundo>R.segundoPagador){{limite=R.trabajoVariosPagadores;motivoLimite='dos o más pagadores, y del segundo y siguientes cobraste más de '+fmt(R.segundoPagador)}}
+    else if(varios){{motivoLimite='dos o más pagadores, pero del segundo y siguientes no pasaste de '+fmt(R.segundoPagador)}}
+    if(especial!=='no'){{limite=R.trabajoVariosPagadores;motivoLimite={{ex:'cobras una pensión compensatoria de tu ex',sinret:'un pagador no te retenía IRPF',fijo:'cobras rendimientos con retención fija (cursos, conferencias, consejos)'}}[especial]}}
+
+    // Motivos por los que SÍ hay que declarar (cada uno con su explicación)
+    const si=[];
+    if(g('autonomo').value==='si')si.push('Has estado de alta como <strong>autónomo</strong>: hay que declarar siempre.');
+    if(g('imv').value==='si')si.push('Cobras el <strong>ingreso mínimo vital</strong>: hay que declarar siempre.');
+    if(g('plan').value==='si')si.push('Para desgravar el <strong>plan de pensiones</strong> tienes que presentar la declaración.');
+    if(total>R.totalMinimo){{
+        if(trabajo>limite)si.push('Tus sueldos, paro y pensiones ('+fmt(trabajo)+') pasan del límite de <strong>'+fmt(limite)+'</strong> ('+motivoLimite+').');
+        if(capital>R.capital)si.push('Tus intereses, dividendos y fondos ('+fmt(capital)+') pasan de <strong>'+fmt(R.capital)+'</strong>.');
+        if(imputadas>R.imputadas)si.push('La renta de tu vivienda vacía (unos '+fmt(imputadas)+') pasa de <strong>'+fmt(R.imputadas)+'</strong>.');
+        if(otros>0)si.push('Tienes ingresos de <strong>alquiler o de ventas</strong>, y todo junto pasa de '+fmt(R.totalMinimo)+'.');
+    }}
+    const obligado=si.length>0;
+    g('total').textContent=obligado?'Sí, tienes que declarar':'No estás obligado';
+    g('total').style.color=obligado?'#FCD34D':'#6EE7B7';               // amarillo si toca declarar, verde si no (claros: van sobre fondo morado)
+    g('resultSub').textContent=obligado?'La presentas en la campaña de la primavera de 2027':'Pero mira abajo si te conviene presentarla';
+    // Por qué: los motivos, o la comprobación de cada límite
+    const fila=(t,v)=>'<div class="fiscal-row"><span>'+t+'</span><span>'+v+'</span></div>';
+    g('fiscalContent').innerHTML=obligado?si.map(m=>'<p class="nota-corta">• '+m+'</p>').join(''):
+        fila('Sueldos, paro y pensiones',fmt(trabajo)+' de '+fmt(limite)+' ✓')+
+        (capital?fila('Intereses, dividendos y fondos',fmt(capital)+' de '+fmt(R.capital)+' ✓'):'')+
+        (imputadas?fila('Vivienda vacía (renta imputada)',fmt(imputadas)+' de '+fmt(R.imputadas)+' ✓'):'')+
+        (otros?fila('Todo junto, con los otros ingresos',fmt(total)+' de '+fmt(R.totalMinimo)+' ✓'):'')+
+        fila('Tu límite de sueldos',motivoLimite);
+    g('consejos').innerHTML=obligado?
+        'ℹ️ Estar obligado no significa pagar: muchas declaraciones obligatorias salen <strong>a devolver</strong>. Lo verás en el borrador de la Agencia Tributaria.':
+        '💡 Si te retuvieron IRPF en la nómina, haz el borrador igualmente: si sale <strong>a devolver</strong>, preséntalo para recuperar ese dinero. Si sale a pagar, no hace falta.';
+    g('wa').href='https://wa.me/?text='+encodeURIComponent('🧾 ¿Tengo que hacer la renta? '+(obligado?'Sí':'No estoy obligado')+'\\nCompruébalo: https://calculalotuyo.es/{SLUG}');
+    g('result').classList.add('visible');
+    g('result').scrollIntoView({{behavior:'smooth',block:'start'}});
+}};
+g('reset').onclick=()=>{{g('calc').reset();['g-segundo','g-otrosimp','g-catastral','g-revisado'].forEach(i=>g(i).hidden=true);g('result').classList.remove('visible');window.scrollTo({{top:0,behavior:'smooth'}})}};
+}});
+</script>
+<script src="datos-2026.js?v=20261020a"></script>
+'''
+faqs = [
+    ('¿Cuánto tienes que ganar para hacer la declaración de la renta?', 'Con un solo pagador, más de <strong>22.000 € brutos</strong> al año. Con dos o más pagadores, más de <strong>15.876 €</strong> si del segundo y siguientes cobraste más de 1.500 €. Son los límites de la renta de 2026, que se presenta en 2027.'),
+    ('¿El paro cuenta como segundo pagador?', 'Sí. Si en el mismo año cobraste de una empresa y del paro (SEPE), tienes dos pagadores. Si el paro (o lo que cobraste del pagador que menos te pagó) pasa de 1.500 €, tu límite baja a <strong>15.876 €</strong>.'),
+    ('¿Si soy autónomo tengo que hacer la renta?', 'Sí, siempre, aunque solo hayas estado de alta un día del año y aunque hayas ganado poco.'),
+    ('¿Si no estoy obligado puedo presentar la declaración?', 'Sí, y te conviene si te sale <strong>a devolver</strong>: es la forma de recuperar lo que te retuvieron de más en la nómina.'),
+    ('¿Cuándo se presenta la renta de 2026?', 'En 2027. La campaña suele ir de <strong>principios de abril al 30 de junio</strong>. La Agencia Tributaria publica las fechas exactas a principios de año.'),
+    ('¿Si cobro el ingreso mínimo vital tengo que declarar?', 'Sí. Quien cobra el ingreso mínimo vital, y todas las personas de su unidad de convivencia, tienen que presentar la declaración cada año.'),
+]
+nombre = pagina(SLUG, '¿Tengo que hacer la declaración de la renta? Límites 2026',
+    'Comprueba en 1 minuto si estás obligado a hacer la renta de 2026: 22.000 € con un pagador, 15.876 € con dos, autónomos, paro, ingreso mínimo vital y cuándo te conviene aunque no estés obligado.',
+    'obligado a declarar renta, tengo que hacer la declaración de la renta, límite renta 2026, cuánto hay que ganar para hacer la renta, dos pagadores renta, renta 2026',
+    [('¿Tengo que declarar la renta?', None)], cuerpo, faqs, FUENTE)
+print('creada:', nombre)

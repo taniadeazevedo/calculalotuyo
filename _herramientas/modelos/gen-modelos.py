@@ -86,8 +86,9 @@ def crear_docx(m, ruta):
     d.save(ruta)
 
 # ================================================================ Excel
-FINO = Side(style='thin', color='D1D5DB'); BORDE = Border(left=FINO, right=FINO, top=FINO, bottom=FINO)
-AMARILLO = PatternFill('solid', fgColor='FEF9C3'); CABEZA = PatternFill('solid', fgColor='EEF2FF')
+if ARCHIVOS:                                          # estilos del Excel: solo si está openpyxl
+    FINO = Side(style='thin', color='D1D5DB'); BORDE = Border(left=FINO, right=FINO, top=FINO, bottom=FINO)
+    AMARILLO = PatternFill('solid', fgColor='FEF9C3'); CABEZA = PatternFill('solid', fgColor='EEF2FF')
 
 def excel_factura(ruta):
     wb = openpyxl.Workbook(); wb.properties.creator = ''; ws = wb.active; ws.title = 'Factura'
