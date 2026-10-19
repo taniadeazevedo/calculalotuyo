@@ -8,3 +8,4 @@ node _herramientas/despido/calcular.js >/dev/null && python3 _herramientas/despi
 python3 _herramientas/calendario/gen-seo.py >/dev/null && python3 _herramientas/calendario/build-puentes.py
 python3 _herramientas/modelos/gen-modelos.py   # sin python-docx/openpyxl solo rehace las páginas, no los archivos
 python3 _herramientas/seo-final.py
+python3 _herramientas/buscador.py           # índice del buscador (buscar.json), siempre al final

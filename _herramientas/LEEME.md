@@ -33,3 +33,10 @@ y marcado de calculadora). Las imágenes se diseñan en `_herramientas/og/*.html
 La clave está en el archivo `<clave>.txt` de la raíz (no lo borres). También están en la raíz
 `BingSiteAuth.xml` (verificación de Bing Webmaster Tools) y `llms.txt` (resumen de la web para las IA:
 si cambian las cifras en enero, actualízalo también).
+
+## Buscador
+
+El buscador (lupa del menú, caja de la portada y tecla «/») está en `site.js` y usa `buscar.json`,
+que crea `python3 _herramientas/buscador.py` con todas las páginas. `regenerar.sh` lo rehace al final.
+Si añades una página a mano, vuelve a lanzar `buscador.py` para que salga en las búsquedas.
+Sinónimos y palabras de relleno: constantes `SINONIMOS` y `VACIAS` de `site.js`.
