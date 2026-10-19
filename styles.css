@@ -4090,3 +4090,35 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
     .header-inner > .nav > .nav-cal { margin-left: auto; }         /* …y otro igual antes de «Calendario 2027»: los enlaces quedan centrados */
 }
 .nav-cal .nav-dropdown-menu { left: auto; right: 0; }               /* el desplegable del calendario se abre hacia la izquierda: nunca se sale por la derecha */
+
+/* =====================================================================
+   MODELOS DESCARGABLES
+   ===================================================================== */
+.descargas { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }   /* botones de descarga, uno por formato */
+.boton-descarga { display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: 10px; align-items: center; padding: 14px 16px; border-radius: 12px; background: var(--accent); color: #fff; text-decoration: none; transition: background .15s, transform .15s; }
+.boton-descarga:hover { background: var(--accent-h); transform: translateY(-2px); }
+.boton-descarga span { grid-row: 1 / 3; font-size: 1.6rem; }       /* icono grande a la izquierda */
+.boton-descarga strong { font-size: 0.95rem; }                    /* «Descargar en Word» */
+.boton-descarga small { font-size: 0.75rem; opacity: .85; }        /* «.docx · 37 KB» */
+.descargas-nota { margin: 10px 0 0; }
+.hueco { background: #FEF08A; border-radius: 3px; padding: 0 2px; }   /* lo que hay que rellenar, en amarillo como en el Word */
+.doc-cabecera { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.doc-cabecera .puentes-titulo { margin: 0; }
+.documento { background: #fff; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 10px 30px -18px rgba(15,23,42,.45); padding: 40px 44px; margin-top: 14px; font-size: 0.95rem; line-height: 1.65; color: var(--text); }   /* el modelo, como una hoja de papel */
+.documento p { margin: 0 0 12px; }
+.documento .doc-titulo { font-weight: 700; }
+.documento .doc-firma { margin-top: 18px; }
+.documento ul { margin: 0 0 12px 20px; }
+.doc-tabla { width: 100%; border-collapse: collapse; margin: 8px 0 14px; font-size: 0.85rem; }
+.doc-tabla th, .doc-tabla td { border: 1px solid var(--border-h); padding: 6px 8px; text-align: left; }
+.doc-tabla th { background: #EEF2FF; }
+@media (max-width: 600px) { .documento { padding: 22px 18px; font-size: 0.9rem; } }
+/* --- Página «Modelos»: rejilla de tarjetas --- */
+.modelos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.modelo-card { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border: 1px solid var(--border); border-radius: 14px; background: var(--card); text-decoration: none; color: var(--text); transition: border-color .15s, transform .15s; }
+.modelo-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.modelo-icono { font-size: 1.6rem; }
+.modelo-card strong { font-size: 1rem; }
+.modelo-card span:not(.modelo-icono) { font-size: 0.85rem; color: var(--muted); }
+.modelo-card small { margin-top: auto; padding-top: 6px; font-size: 0.75rem; color: var(--accent); font-weight: 600; }   /* formatos disponibles */
+@media (min-width: 861px) { #modelos-portada .modelos-grid { grid-template-columns: repeat(3, 1fr); } }   /* 6 modelos en la portada = 2 filas completas de 3 */

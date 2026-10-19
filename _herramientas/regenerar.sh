@@ -6,4 +6,5 @@ node _herramientas/sueldos/calcular.js >/dev/null && python3 _herramientas/sueld
 node _herramientas/paro/calcular.js >/dev/null && python3 _herramientas/paro/gen-paro.py
 node _herramientas/despido/calcular.js >/dev/null && python3 _herramientas/despido/gen-despido.py
 python3 _herramientas/calendario/gen-seo.py >/dev/null && python3 _herramientas/calendario/build-puentes.py
+python3 _herramientas/modelos/gen-modelos.py   # sin python-docx/openpyxl solo rehace las páginas, no los archivos
 python3 _herramientas/seo-final.py
