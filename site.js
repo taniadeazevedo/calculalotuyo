@@ -184,7 +184,8 @@ function buscar(consulta,cuantas){
         for(const w of palabras){
             const variantes=[w,...(SINONIMOS[w]||[])];                        // la palabra y sus sinónimos
             const en=lista=>variantes.some(v=>empieza(lista,v));
-            if(en(p.pt)){puntos+=6;encontradas++}                             // en el título vale más
+            if(empieza(p.pt,w)){puntos+=8;encontradas++}                      // la palabra tal cual en el título: lo que más vale
+            else if(en(p.pt)){puntos+=5;encontradas++}                        // un sinónimo en el título, algo menos
             else if(en(p.pk)){puntos+=3;encontradas++}                        // en las palabras clave, algo menos
             else if(en(p.pd)){puntos+=1;encontradas++}                        // en la descripción, lo mínimo
         }
