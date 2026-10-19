@@ -82,7 +82,7 @@ def pagina(nombre, titulo, desc, keywords, miga, cuerpo, faqs):
     <section class="section"><div class="container"><div class="source-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><div><strong>Cómo lo calculamos:</strong><p>{FUENTE}</p></div></div></div></section>
 </main>
 
-{FOOT}<script src="site.js?v=20261015c"></script>
+{FOOT}<script src="site.js?v=20261019a"></script>
 </body>
 </html>
 '''

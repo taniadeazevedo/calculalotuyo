@@ -110,10 +110,17 @@ gtag('consent','default',{                           // estado inicial: sin perm
 });
 gtag('js',new Date());                               // marca el momento de carga
 gtag('config',ID_ANALYTICS);                         // activa Analytics con nuestro identificador
-const scriptAnalytics=document.createElement('script');   // crea la etiqueta <script> de Analytics
-scriptAnalytics.async=true;                          // que no frene la carga de la página
-scriptAnalytics.src='https://www.googletagmanager.com/gtag/js?id='+ID_ANALYTICS;
-document.head.appendChild(scriptAnalytics);          // la añade al <head>
+// El script de Analytics se descarga cuando la página ya se ve (evento «load»):
+// así no compite con el contenido en móviles con conexión lenta.
+// Las órdenes de arriba esperan en dataLayer y se envían en cuanto llega.
+function cargarAnalytics(){
+    const scriptAnalytics=document.createElement('script');   // crea la etiqueta <script> de Analytics
+    scriptAnalytics.async=true;                      // que no frene nada mientras se descarga
+    scriptAnalytics.src='https://www.googletagmanager.com/gtag/js?id='+ID_ANALYTICS;
+    document.head.appendChild(scriptAnalytics);      // la añade al <head>
+}
+if(document.readyState==='complete')cargarAnalytics();         // la página ya había terminado de cargar
+else window.addEventListener('load',cargarAnalytics,{once:true});   // si no, espera a que termine (una sola vez)
 
 // Cualquier enlace con data-cookies vuelve a abrir el mensaje de Google para cambiar la decisión
 window.googlefc=window.googlefc||{};                 // objeto que crea el mensaje de Google
