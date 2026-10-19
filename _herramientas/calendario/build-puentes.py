@@ -1,6 +1,6 @@
 import glob, json, os, re, sys
 S = os.path.dirname(os.path.abspath(__file__))
-os.chdir(os.path.expanduser('~/Desktop/calculalotuyo'))
+os.chdir(os.path.join(S, '..', '..'))   # la raíz de la web (dos carpetas por encima de este script)
 r = lambda n: open(f'{S}/{n}', encoding='utf-8').read()
 
 # ---- 1) Menú: "Puentes 2027" debajo de "Días laborables" en todas las páginas

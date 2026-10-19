@@ -4157,3 +4157,14 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
 .busca-cerrar { flex-shrink: 0; width: 52px; border: 0; border-radius: 14px; background: var(--card); color: var(--text2); font-size: 1.1rem; cursor: pointer; }
 .busca-ventana .busca-lista { margin-top: 8px; }
 .busca-404 { margin-bottom: 12px; }
+@media (min-width: 861px) { .situaciones { grid-template-columns: repeat(3, 1fr); } }   /* 9 situaciones = 3 filas completas de 3 */
+
+/* ===== Informe para prensa ===== */
+.inf-barras { display: grid; gap: 8px; margin: 12px 0; }
+.inf-fila { display: grid; grid-template-columns: 112px 1fr; align-items: center; gap: 10px; }   /* sueldo | barra */
+.inf-nombre { font-size: 0.82rem; color: var(--text2); white-space: nowrap; }
+.inf-barra { margin: 0; height: 26px; }
+.inf-barra .r-neto { color: #fff; font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; padding-left: 8px; }   /* % neto dentro de la barra */
+.r-emp, .reparto-leyenda .r-emp { background: #64748B; }          /* Seguridad Social de la empresa, en gris azulado */
+@media (max-width: 600px) { .inf-fila { grid-template-columns: 1fr; gap: 3px; } }   /* en el móvil, el sueldo encima de la barra */
+.fila-local td { background: #F0FDFA; font-weight: 600; }                 /* fiestas locales de la ciudad, resaltadas en la tabla */

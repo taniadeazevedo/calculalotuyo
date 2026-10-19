@@ -7,7 +7,7 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(AQUI, '..'))
 sys.path.insert(0, AQUI)
 from plantilla import pagina, REVISADO, AD, RAIZ
-from modelos import MODELOS
+from modelos import MODELOS, CASOS
 try:
     import docx, openpyxl
     from docx.shared import Pt, Cm, RGBColor
@@ -151,6 +151,109 @@ def excel_registro(ruta):
     ws[f'A{tot + 4}'].font = Font(size=8, color='6B7280')
     wb.save(ruta)
 
+def excel_rectificativa(ruta):
+    wb = openpyxl.Workbook(); wb.properties.creator = ''; ws = wb.active; ws.title = 'Rectificativa'
+    for col, ancho in zip('ABCD', (40, 18, 18, 16)): ws.column_dimensions[col].width = ancho
+    ws['A1'] = 'FACTURA RECTIFICATIVA'; ws['A1'].font = Font(bold=True, size=18)
+    datos = [('Número (serie de rectificativas)', 'R-2026-001'), ('Fecha de emisión', '[fecha]'), ('Factura que se rectifica (n.º y fecha)', '[2026-015 de fecha …]'),
+             ('Motivo', '[error en el importe / descuento / devolución…]'), ('', ''), ('EMISOR', ''), ('Nombre y NIF', '[Tu nombre · NIF]'),
+             ('CLIENTE', ''), ('Nombre y NIF', '[Cliente · NIF]')]
+    for i, (k, v) in enumerate(datos, start=3):
+        ws[f'A{i}'] = k; ws[f'B{i}'] = v
+        if k.isupper(): ws[f'A{i}'].font = Font(bold=True)
+        if v: ws[f'B{i}'].fill = AMARILLO
+    f0 = 14
+    for j, c in enumerate(['Concepto', 'Importe anterior (€)', 'Importe correcto (€)', 'Diferencia (€)']):
+        cel = ws.cell(row=f0, column=j + 1, value=c); cel.font = Font(bold=True); cel.fill = CABEZA; cel.border = BORDE
+    for r in range(f0 + 1, f0 + 6):
+        for j in range(4): ws.cell(row=r, column=j + 1).border = BORDE
+        for j in range(3): ws.cell(row=r, column=j + 1).fill = AMARILLO
+        for j in (2, 3): ws.cell(row=r, column=j).number_format = '#,##0.00 €'
+        ws.cell(row=r, column=4, value=f'=IF(OR(B{r}="",C{r}=""),"",C{r}-B{r})').number_format = '#,##0.00 €'   # nuevo − anterior
+    ws[f'A{f0 + 1}'] = 'Descripción'; ws[f'B{f0 + 1}'] = 1000; ws[f'C{f0 + 1}'] = 800
+    t = f0 + 7
+    filas = [('Base imponible (diferencia)', f'=SUM(D{f0 + 1}:D{f0 + 5})'), ('Tipo de IVA', 0.21), ('IVA', f'=D{t}*D{t + 1}'),
+             ('Retención de IRPF (0 % si el cliente es un particular)', 0.15), ('Retención', f'=-D{t}*D{t + 3}'), ('TOTAL', f'=D{t}+D{t + 2}+D{t + 4}')]
+    for i, (k, v) in enumerate(filas):
+        ws[f'A{t + i}'] = k; ws[f'D{t + i}'] = v
+        ws[f'D{t + i}'].number_format = '0%' if isinstance(v, float) else '#,##0.00 €'
+        if isinstance(v, float): ws[f'D{t + i}'].fill = AMARILLO
+    ws[f'A{t + 5}'].font = ws[f'D{t + 5}'].font = Font(bold=True, size=13)
+    ws[f'A{t + 7}'] = 'Rellena solo las celdas amarillas: el resto se calcula solo. Si baja el importe, el total sale en negativo.'
+    ws[f'A{t + 7}'].font = Font(size=8, color='6B7280')
+    wb.save(ruta)
+
+def excel_presupuesto(ruta):
+    wb = openpyxl.Workbook(); wb.properties.creator = ''; ws = wb.active; ws.title = 'Presupuesto'
+    for col, ancho in zip('ABCD', (46, 12, 14, 16)): ws.column_dimensions[col].width = ancho
+    ws['A1'] = 'PRESUPUESTO'; ws['A1'].font = Font(bold=True, size=18)
+    datos = [('Número', 'P-2026-001'), ('Fecha', '[fecha]'), ('Válido hasta', '[fecha]'), ('', ''), ('DE', ''), ('Nombre y NIF', '[Tu nombre · NIF]'),
+             ('Contacto', '[teléfono · correo]'), ('', ''), ('PARA', ''), ('Cliente', '[Nombre del cliente]')]
+    for i, (k, v) in enumerate(datos, start=3):
+        ws[f'A{i}'] = k; ws[f'B{i}'] = v
+        if k.isupper(): ws[f'A{i}'].font = Font(bold=True)
+        if v: ws[f'B{i}'].fill = AMARILLO
+    f0 = 15
+    for j, c in enumerate(['Concepto', 'Cantidad', 'Precio (€)', 'Importe (€)']):
+        cel = ws.cell(row=f0, column=j + 1, value=c); cel.font = Font(bold=True); cel.fill = CABEZA; cel.border = BORDE
+    for r in range(f0 + 1, f0 + 9):
+        for j in range(4): ws.cell(row=r, column=j + 1).border = BORDE
+        for j in range(3): ws.cell(row=r, column=j + 1).fill = AMARILLO
+        ws.cell(row=r, column=3).number_format = '#,##0.00 €'
+        ws.cell(row=r, column=4, value=f'=IF(OR(B{r}="",C{r}=""),"",B{r}*C{r})').number_format = '#,##0.00 €'
+    ws[f'A{f0 + 1}'] = 'Descripción del trabajo'; ws[f'B{f0 + 1}'] = 1; ws[f'C{f0 + 1}'] = 500
+    t = f0 + 10
+    filas = [('Base imponible', f'=SUM(D{f0 + 1}:D{f0 + 8})'), ('Tipo de IVA', 0.21), ('IVA', f'=D{t}*D{t + 1}'), ('TOTAL', f'=D{t}+D{t + 2}')]
+    for i, (k, v) in enumerate(filas):
+        ws[f'A{t + i}'] = k; ws[f'D{t + i}'] = v
+        ws[f'D{t + i}'].number_format = '0%' if isinstance(v, float) else '#,##0.00 €'
+        if isinstance(v, float): ws[f'D{t + i}'].fill = AMARILLO
+    ws[f'A{t + 3}'].font = ws[f'D{t + 3}'].font = Font(bold=True, size=13)
+    ws[f'A{t + 5}'] = 'Condiciones: [plazo de entrega] · [forma de pago]'; ws[f'A{t + 5}'].fill = AMARILLO
+    ws[f'A{t + 7}'] = 'Aceptado por el cliente (firma y fecha): ______________________'
+    wb.save(ruta)
+
+def excel_nomina(ruta):
+    wb = openpyxl.Workbook(); wb.properties.creator = ''; ws = wb.active; ws.title = 'Nómina'
+    for col, ancho in zip('ABC', (44, 14, 16)): ws.column_dimensions[col].width = ancho
+    ws['A1'] = 'RECIBO DE SALARIOS (orientativo)'; ws['A1'].font = Font(bold=True, size=16)
+    for i, (k, v) in enumerate([('Empresa (nombre y CIF)', '[empresa]'), ('Persona trabajadora (nombre y DNI)', '[nombre]'), ('Periodo', '[mes y año]')], start=3):
+        ws[f'A{i}'] = k; ws[f'B{i}'] = v; ws[f'B{i}'].fill = AMARILLO
+    def fila(r, texto, valor, formato='#,##0.00 €', amarilla=False, negrita=False):
+        ws[f'A{r}'] = texto; c = ws[f'C{r}']; c.value = valor; c.number_format = formato
+        if amarilla: c.fill = AMARILLO
+        if negrita: ws[f'A{r}'].font = c.font = Font(bold=True)
+    ws['A7'] = 'DEVENGOS'; ws['A7'].font = Font(bold=True); ws['A7'].fill = CABEZA
+    fila(8, 'Salario base', 1500, amarilla=True)
+    fila(9, 'Complementos', 0, amarilla=True)
+    fila(10, 'Horas extra', 0, amarilla=True)
+    fila(11, 'Total devengado', '=SUM(C8:C10)', negrita=True)
+    ws['A13'] = 'BASE DE COTIZACIÓN'; ws['A13'].font = Font(bold=True); ws['A13'].fill = CABEZA
+    fila(14, '¿Pagas extra prorrateadas en la nómina? (escribe SI o NO)', 'NO', formato='@', amarilla=True)
+    fila(15, 'Número de pagas extra al año', 2, formato='0', amarilla=True)
+    fila(16, 'Parte de las pagas extra (si no van prorrateadas)', '=IF(UPPER(C14)="SI",0,(C8+C9)*C15/12)')
+    fila(17, 'Base de contingencias comunes (sin horas extra)', '=C8+C9+C16', negrita=True)
+    fila(18, 'Base de desempleo y formación (con horas extra)', '=C17+C10')
+    ws['A19'] = 'DEDUCCIONES (tipos de 2026)'; ws['A19'].font = Font(bold=True); ws['A19'].fill = CABEZA
+    # [concepto, tipo, base sobre la que se aplica]
+    tipos = [('Contingencias comunes', 0.047, 'C17'), ('Desempleo (1,60 % si el contrato es temporal)', 0.0155, 'C18'),
+             ('Formación profesional', 0.001, 'C18'), ('MEI', 0.0015, 'C17'), ('Horas extra (cotización propia)', 0.047, 'C10')]
+    for i, (k, tp, b) in enumerate(tipos):
+        r = 20 + i; ws[f'A{r}'] = k; ws[f'B{r}'] = tp; ws[f'B{r}'].number_format = '0.00%'
+        if i == 1: ws[f'B{r}'].fill = AMARILLO
+        ws[f'C{r}'] = f'={b}*B{r}'; ws[f'C{r}'].number_format = '#,##0.00 €'
+    ws['A25'] = 'IRPF (pon tu porcentaje)'; ws['B25'] = 0.12; ws['B25'].number_format = '0.00%'; ws['B25'].fill = AMARILLO
+    ws['C25'] = '=C11*B25'; ws['C25'].number_format = '#,##0.00 €'
+    fila(26, 'Total deducciones', '=SUM(C20:C25)', negrita=True)
+    fila(28, 'LÍQUIDO A PERCIBIR', '=C11-C26', negrita=True)
+    ws['A28'].font = ws['C28'].font = Font(bold=True, size=14)
+    ws['A30'] = 'Orientativa: no incluye casos especiales (bajas, embargos, atrasos, horas extra por fuerza mayor…).'
+    ws['A30'].font = Font(size=8, color='6B7280')
+    wb.save(ruta)
+
+EXCEL = {'factura-autonomo': excel_factura, 'registro-jornada': excel_registro, 'factura-rectificativa': excel_rectificativa,
+         'presupuesto-autonomo': excel_presupuesto, 'plantilla-nomina': excel_nomina}
+
 # ================================================================ PDF (con Chrome, sin ventanas)
 def crear_pdf(m, ruta):
     cuerpo = doc_html(m, filas_registro=(m['slug'] == 'registro-jornada'))
@@ -181,7 +284,7 @@ for m in MODELOS:
         for f in m['formatos']:
             if f == 'docx': crear_docx(m, base + '.docx')
             if f == 'pdf': crear_pdf(m, base + '.pdf')
-            if f == 'xlsx': (excel_factura if m['slug'] == 'factura-autonomo' else excel_registro)(base + '.xlsx')
+            if f == 'xlsx': EXCEL[m['slug']](base + '.xlsx')
     botones = ''.join(f'<a href="descargas/{m["slug"]}.{f}" class="boton-descarga" download><span aria-hidden="true">{NOMBRE_FORMATO[f][0]}</span><strong>Descargar en {NOMBRE_FORMATO[f][1]}</strong><small>.{f} · {peso(base + "." + f)}</small></a>' for f in m['formatos'])
     extra = ''
     if m.get('tabla_extra'):
@@ -191,6 +294,8 @@ for m in MODELOS:
     rel = '<div class="enlaces-sueldo">' + ''.join(f'<a href="{u}">{t}</a>' for u, t in m['rel']) + '</div>'
     pasos = ''.join(f'<div class="calc-step"><span class="step-num">{i}</span><div><strong>{t}</strong><p>{x}</p></div></div>' for i, (t, x) in enumerate(m['pasos'], 1))
     errores = ''.join(f'<li>{e}</li>' for e in m['errores'])
+    extra_kw, lista_casos = CASOS.get(m['slug'], ('', []))
+    casos = ('<h2>💡 Casos frecuentes</h2>' + ''.join(f'<h3>{t}</h3><p>{x}</p>' for t, x in lista_casos)) if lista_casos else ''
     cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📄 Modelo gratis</div><h1>{m["h1"]}<br><span class="highlight">{m["sub"]}</span></h1><p>{m["intro"]}</p>
             {REV}</div></section>
 
@@ -205,6 +310,7 @@ for m in MODELOS:
     <section class="section"><div class="container"><article class="seo-section">
 <h2>✍️ Cómo rellenarlo</h2>
 <div class="calc-steps">{pasos}</div>
+{casos}
 <h2>⚠️ Errores frecuentes</h2>
 <ul>{errores}</ul>
 <h2>⚖️ Qué dice la ley</h2>
@@ -224,7 +330,7 @@ document.getElementById('copiar').addEventListener('click',async function(){{
 }});
 </script>
 '''
-    gen.append(pagina(f'modelo-{m["slug"]}', m['titulo'], m['desc'], m['kw'], [('Modelos', 'modelos'), (m['corto'], None)], cuerpo, m['faqs'], FUENTE_GEN, ''))
+    gen.append(pagina(f'modelo-{m["slug"]}', m['titulo'], m['desc'], m['kw'] + extra_kw, [('Modelos', 'modelos'), (m['corto'], None)], cuerpo, m['faqs'], FUENTE_GEN, ''))
 
 # ================================================================ Página «Modelos»
 tarjetas = ''.join(f'<a href="modelo-{m["slug"]}" class="modelo-card"><span class="modelo-icono" aria-hidden="true">{m["icono"]}</span><strong>{m["corto"]}</strong><span>{m["intro"]}</span><small>{" · ".join(NOMBRE_FORMATO[f][1] for f in m["formatos"])}</small></a>' for m in MODELOS)

@@ -65,6 +65,21 @@ const DATOS={
         ]
     },
 
+    // Jubilación (Ley General de la Seguridad Social, comprobado en el BOE el 19/10/2026)
+    jubilacion:{
+        pensionMaxima:3359.60,       // al mes, en 14 pagas, pensiones que empiezan en 2026 (Real Decreto-ley 3/2026, art. 1)
+        minimoMeses:180,             // 15 años cotizados como mínimo (art. 205.1.b)
+        // Edad ordinaria según el año en que te jubilas (disp. transitoria 7.ª):
+        // [año, meses cotizados para jubilarte a los 65, edad si no llegas (en meses)]
+        edades:[[2025,459,800],[2026,459,802],[2027,462,804]],   // 2025: 66a 8m · 2026: 66a 10m · desde 2027: 67 años (con 38a 6m cotizados, a los 65)
+        // Porcentaje por meses cotizados después de los 15 primeros años (disp. transitoria 9.ª y art. 210.1)
+        // [hasta el año, [meses al primer tipo, primer tipo], [meses al segundo tipo, segundo tipo]]
+        escala:[[2026,[49,0.21],[209,0.19]],[9999,[248,0.19],[16,0.18]]],
+        demora:4,                    // +4 % por cada año completo trabajado después de la edad ordinaria (art. 210.2)
+        anticipadaAnios:2,           // jubilación anticipada voluntaria: hasta 2 años antes (art. 208)
+        anticipadaCotizados:35       // …con al menos 35 años cotizados
+    },
+
     // IPC interanual de diciembre de cada año (INE)
     ipc:{2022:5.7,2023:3.1,2024:2.8,2025:2.9}
 };
