@@ -1,6 +1,9 @@
-<script src="site.js?v=20261019a"></script>
-<script src="festivos-2027.js?v=20261018a"></script>
+<script src="site.js?v=20261019a" defer></script>
+<script src="festivos-2027.js?v=20261018a" defer></script>
 <script>
+// «defer» en los dos scripts de arriba: el navegador pinta la página primero y los ejecuta después.
+// Por eso todo este código espera a DOMContentLoaded, que llega cuando esos dos ya se han ejecutado.
+document.addEventListener('DOMContentLoaded',()=>{
 // =====================================================================
 // PUENTES 2027
 // Los festivos de cada comunidad están en festivos-2027.js (sacados del BOE).
@@ -181,6 +184,7 @@ selCCAA.onchange=calcular;                           // al cambiar de comunidad 
 const pedida=new URLSearchParams(location.search).get('ccaa');   // viene de una página de comunidad: puentes-2027?ccaa=madrid
 if(pedida&&FESTIVOS_2027[pedida])selCCAA.value=pedida;          // solo si es una comunidad que existe
 calcular();                                          // al abrir la página ya se ve el calendario
+});                                                  // fin de DOMContentLoaded
 </script>
 </body>
 </html>
