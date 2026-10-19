@@ -23,7 +23,6 @@ os.makedirs(DESC, exist_ok=True)
 HUECO = re.compile(r'(\[[^\]]+\])')                    # lo que va entre corchetes se rellena
 REV = REVISADO.format(fecha='19 de octubre de 2026')
 NOMBRE_FORMATO = {'docx': ('📝', 'Word'), 'pdf': ('📕', 'PDF'), 'xlsx': ('📊', 'Excel')}
-AVISO = 'Modelo orientativo de calculalotuyo.es. Revisa tu convenio colectivo, que puede mejorar lo que dice la ley.'
 
 # ================================================================ HTML del documento (página y PDF)
 def con_huecos(t):
@@ -83,7 +82,7 @@ def crear_docx(m, ruta):
                     t.cell(i, j).text = c
                     if i == 0: t.cell(i, j).paragraphs[0].runs[0].bold = True
             d.add_paragraph()
-    pie = d.add_paragraph(); r = pie.add_run(AVISO); r.font.size = Pt(8); r.font.color.rgb = RGBColor(0x6B, 0x72, 0x80)
+    d.core_properties.author = ''; d.core_properties.comments = ''; d.core_properties.title = m['corto']   # sin datos ocultos raros al abrirlo
     d.save(ruta)
 
 # ================================================================ Excel
@@ -91,7 +90,7 @@ FINO = Side(style='thin', color='D1D5DB'); BORDE = Border(left=FINO, right=FINO,
 AMARILLO = PatternFill('solid', fgColor='FEF9C3'); CABEZA = PatternFill('solid', fgColor='EEF2FF')
 
 def excel_factura(ruta):
-    wb = openpyxl.Workbook(); ws = wb.active; ws.title = 'Factura'
+    wb = openpyxl.Workbook(); wb.properties.creator = ''; ws = wb.active; ws.title = 'Factura'
     for col, ancho in zip('ABCD', (46, 12, 14, 16)): ws.column_dimensions[col].width = ancho
     ws['A1'] = 'FACTURA'; ws['A1'].font = Font(bold=True, size=18)
     datos = [('Número de factura', '2026-001'), ('Fecha de emisión', '01/01/2026'), ('', ''),
@@ -119,12 +118,12 @@ def excel_factura(ruta):
         if isinstance(v, float): ws[f'D{t + i}'].fill = AMARILLO
     ws[f'A{t + 5}'].font = ws[f'D{t + 5}'].font = Font(bold=True, size=13)
     ws[f'A{t + 7}'] = 'Forma de pago: transferencia a la cuenta [IBAN] antes del [fecha].'
-    ws[f'A{t + 9}'] = 'Rellena solo las celdas amarillas: el resto se calcula solo. ' + AVISO
+    ws[f'A{t + 9}'] = 'Rellena solo las celdas amarillas: el resto se calcula solo.'
     ws[f'A{t + 9}'].font = Font(size=8, color='6B7280')
     wb.save(ruta)
 
 def excel_registro(ruta):
-    wb = openpyxl.Workbook(); ws = wb.active; ws.title = 'Registro'
+    wb = openpyxl.Workbook(); wb.properties.creator = ''; ws = wb.active; ws.title = 'Registro'
     for col, ancho in zip('ABCDEFG', (8, 11, 13, 12, 11, 11, 30)): ws.column_dimensions[col].width = ancho
     ws['A1'] = 'REGISTRO DE JORNADA'; ws['A1'].font = Font(bold=True, size=16)
     for i, k in enumerate(['Empresa', 'Persona trabajadora', 'Mes y año'], start=3):
@@ -148,7 +147,7 @@ def excel_registro(ruta):
     ws[f'E{tot}'] = 'Total del mes'; ws[f'E{tot}'].font = Font(bold=True)
     ws[f'F{tot}'] = f'=SUM(F{f0 + 1}:F{f0 + 31})'; ws[f'F{tot}'].number_format = '[h]:mm'; ws[f'F{tot}'].font = Font(bold=True)
     ws[f'A{tot + 2}'] = 'Firma de la persona trabajadora: ____________      Firma de la empresa: ____________'
-    ws[f'A{tot + 4}'] = 'Escribe las horas como 9:00. Rellena solo las celdas amarillas. ' + AVISO
+    ws[f'A{tot + 4}'] = 'Escribe las horas como 9:00. Rellena solo las celdas amarillas.'
     ws[f'A{tot + 4}'].font = Font(size=8, color='6B7280')
     wb.save(ruta)
 
@@ -163,7 +162,7 @@ def crear_pdf(m, ruta):
     table {{ width: 100%; border-collapse: collapse; margin: 6pt 0 12pt; }} th, td {{ border: 1px solid #999; padding: 3pt 5pt; font-size: 10pt; text-align: left; }}
     th {{ background: #EEF2FF; }} .aviso {{ font-size: 8pt; color: #6B7280; margin-top: 18pt; }}
     {'@page { margin: 12mm 16mm; } td, th { padding: 1pt 5pt; font-size: 9pt; line-height: 1.3; } body { font-size: 10pt; line-height: 1.35; } p { margin-bottom: 5pt; } .doc-firma { margin-top: 8pt; } .aviso { margin-top: 8pt; }' if m['slug'] == 'registro-jornada' else ''}
-    </style></head><body>{cuerpo}<p class="aviso">{AVISO}</p></body></html>'''
+    </style><title>{H.escape(m['corto'])}</title></head><body>{cuerpo}</body></html>'''
     with tempfile.NamedTemporaryFile('w', suffix='.html', delete=False, encoding='utf-8') as t:
         t.write(pagina_html)
     subprocess.run([CHROME, '--headless=new', '--disable-gpu', '--no-pdf-header-footer', f'--print-to-pdf={ruta}', 'file://' + t.name],
