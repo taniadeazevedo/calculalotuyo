@@ -3,7 +3,7 @@ import datetime as dt, glob, json, os, re, html as H
 S = os.path.dirname(os.path.abspath(__file__))
 os.chdir(os.path.expanduser('~/Desktop/calculalotuyo'))
 HOY = '2026-10-18'
-CSS = re.search(r'styles\.css\?v=[0-9a-z]+', open('index.html', encoding='utf-8').read()).group(0)
+CSS = re.search(r'styles(?:\.min)?\.css\?v=[0-9a-z]+', open('index.html', encoding='utf-8').read()).group(0)
 MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 SEM = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo']
 D = dt.date

@@ -4,7 +4,7 @@
 import json, os, re, html as H
 AQUI = os.path.dirname(os.path.abspath(__file__))
 os.chdir(os.path.join(AQUI, '..', '..'))
-CSS = re.search(r'styles\.css\?v=[0-9a-z]+', open('index.html', encoding='utf-8').read()).group(0)
+CSS = re.search(r'styles(?:\.min)?\.css\?v=[0-9a-z]+', open('index.html', encoding='utf-8').read()).group(0)
 R = json.load(open(f'{AQUI}/sueldos.json'))
 DAT = {int(k): v for k, v in R['datos'].items()}
 SMI = R['smi']
