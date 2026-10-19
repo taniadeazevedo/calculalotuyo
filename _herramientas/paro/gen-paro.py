@@ -75,7 +75,7 @@ for s in PAGINAS:
         ('¿Cuánto tiempo puedo cobrar el paro?', 'Entre <strong>4 meses</strong> (con 1 año cotizado) y <strong>2 años</strong> (con 6 años cotizados), según los días que hayas trabajado en los últimos 6 años.'),
         ('¿Cambia el paro si tengo hijos?', f'Sube el máximo (de {e(TOP[0]["max"])} € a {e(TOP[1]["max"])} € con un hijo y {e(TOP[2]["max"])} € con dos o más) y el mínimo (de {e(TOP[0]["min"])} € a {e(TOP[1]["min"])} €). Si tu paro no llegaba al máximo, no cambia.'),
     ]
-    gen.append(pagina(slug(s), f'Paro con {e(s)} € de sueldo: {e(c0["m70"])} € al mes (2026)', f'Si cobras {e(s)} € brutos al mes, tu paro en 2026 es de {e(c0["m70"])} € al mes los 6 primeros meses y {e(c0["m60"])} € después. Con hijos, en 12 o 14 pagas y cuánto dura.', f'paro con {s} euros, cuánto cobro de paro si gano {s}, paro {s} euros brutos, prestación desempleo {s}', MIGA_PARO + [('Tabla del paro', 'tabla-paro-2026'), (f'Paro con {e(s)} €', None)], cuerpo, faqs, FUENTE, 'Liquidación'))
+    gen.append(pagina(slug(s), f'Paro con {e(s)} € de sueldo: {e(c0["m70"])} € al mes (2026)', f'Si cobras {e(s)} € brutos al mes, tu paro en 2026 es de {e(c0["m70"])} € al mes los 6 primeros meses y {e(c0["m60"])} € después. Con hijos, en 12 o 14 pagas y cuánto dura.', f'paro con {s} euros, cuánto cobro de paro si gano {s}, paro {s} euros brutos, prestación desempleo {s}', MIGA_PARO + [('Tabla del paro', 'tabla-paro-2026'), (f'Paro con {e(s)} €', None)], cuerpo, faqs, FUENTE, 'Paro y finiquito'))
 
 # ================================================================ 2) TABLA DEL PARO
 filas = ''
@@ -108,7 +108,7 @@ faqs = [
     ('¿Cuánto es el paro máximo en 2026?', f'<strong>{e(TOP[0]["max"])} € al mes</strong> sin hijos, {e(TOP[1]["max"])} € con un hijo y {e(TOP[2]["max"])} € con dos o más.'),
     ('¿Por qué cobro menos paro a partir del séptimo mes?', 'Porque la ley fija el 70 % de la base los 180 primeros días y el <strong>60 %</strong> a partir del día 181.'),
 ]
-gen.append(pagina('tabla-paro-2026', 'Tabla del paro 2026: cuánto cobras según tu sueldo', f'Tabla del paro 2026: cuánto cobras de prestación por desempleo con cada sueldo, de {e(SMI_MES)} a 5.000 € brutos al mes, en 12 y 14 pagas.', 'tabla paro 2026, cuánto cobro de paro, prestación por desempleo 2026, paro según sueldo', MIGA_PARO + [('Tabla del paro 2026', None)], cuerpo, faqs, FUENTE, 'Liquidación'))
+gen.append(pagina('tabla-paro-2026', 'Tabla del paro 2026: cuánto cobras según tu sueldo', f'Tabla del paro 2026: cuánto cobras de prestación por desempleo con cada sueldo, de {e(SMI_MES)} a 5.000 € brutos al mes, en 12 y 14 pagas.', 'tabla paro 2026, cuánto cobro de paro, prestación por desempleo 2026, paro según sueldo', MIGA_PARO + [('Tabla del paro 2026', None)], cuerpo, faqs, FUENTE, 'Paro y finiquito'))
 
 # ================================================================ 3) PARO MÁXIMO Y MÍNIMO
 filas = ''.join(f'<tr><td>{n}</td><td><strong>{e(TOP[i]["max"])} €</strong></td><td>{e(TOP[i]["min"])} €</td></tr>' for i, n in enumerate(['Sin hijos', '1 hijo', '2 o más hijos']))
@@ -137,7 +137,7 @@ faqs = [
     ('¿Cuál es el paro mínimo en 2026?', f'<strong>{e(TOP[0]["min"])} € al mes</strong> sin hijos y {e(TOP[1]["min"])} € con hijos a cargo, a jornada completa.'),
     ('¿Por qué no ha subido el paro máximo?', 'Porque depende del IPREM, que lleva varios años congelado en 600 € al mes. Si sube el IPREM, suben los topes.'),
 ]
-gen.append(pagina('paro-maximo-minimo-2026', f'Paro máximo y mínimo 2026: de {e(TOP[0]["min"])} a {e(TOP[2]["max"])} € al mes', f'Paro máximo 2026: {e(TOP[0]["max"])} € sin hijos, {e(TOP[1]["max"])} € con un hijo y {e(TOP[2]["max"])} € con dos. Paro mínimo: {e(TOP[0]["min"])} € o {e(TOP[1]["min"])} € con hijos. Y desde qué sueldo se cobra.', 'paro máximo 2026, paro mínimo 2026, tope paro 2026, cuánto es lo máximo de paro', MIGA_PARO + [('Paro máximo y mínimo 2026', None)], cuerpo, faqs, FUENTE, 'Liquidación'))
+gen.append(pagina('paro-maximo-minimo-2026', f'Paro máximo y mínimo 2026: de {e(TOP[0]["min"])} a {e(TOP[2]["max"])} € al mes', f'Paro máximo 2026: {e(TOP[0]["max"])} € sin hijos, {e(TOP[1]["max"])} € con un hijo y {e(TOP[2]["max"])} € con dos. Paro mínimo: {e(TOP[0]["min"])} € o {e(TOP[1]["min"])} € con hijos. Y desde qué sueldo se cobra.', 'paro máximo 2026, paro mínimo 2026, tope paro 2026, cuánto es lo máximo de paro', MIGA_PARO + [('Paro máximo y mínimo 2026', None)], cuerpo, faqs, FUENTE, 'Paro y finiquito'))
 
 # ================================================================ 4) CUÁNTO PARO ME CORRESPONDE (DURACIÓN)
 filas = ''.join(f'<tr><td>{"Desde " if j == len(DUR) - 1 else ""}{e(c)} días <small>({txt_anios(c)})</small></td><td><strong>{e(p / 30)} meses</strong></td></tr>' for j, (c, p) in enumerate(DUR))
@@ -167,7 +167,7 @@ faqs = [
     ('¿Cuál es el máximo de paro que se puede cobrar?', '<strong>2 años</strong> (720 días), si has cotizado 6 años (2.160 días) o más en los últimos 6 años.'),
     ('¿Qué pasa si no he cotizado 360 días?', 'No tienes derecho al paro contributivo, pero puedes tener derecho a un <strong>subsidio por desempleo</strong> si cumples sus requisitos. Pregunta en el SEPE.'),
 ]
-gen.append(pagina('cuanto-paro-me-corresponde', '¿Cuánto paro me corresponde? Tabla de duración 2026', 'Cuánto paro te corresponde según lo cotizado: con 1 año, 4 meses; con 2 años, 8 meses; con 6 años, el máximo de 2 años. Tabla completa y qué días cuentan.', 'cuánto paro me corresponde, duración del paro, si he trabajado 1 año cuánto paro me corresponde, días cotizados paro', MIGA_PARO + [('Cuánto paro me corresponde', None)], cuerpo, faqs, FUENTE, 'Liquidación'))
+gen.append(pagina('cuanto-paro-me-corresponde', '¿Cuánto paro me corresponde? Tabla de duración 2026', 'Cuánto paro te corresponde según lo cotizado: con 1 año, 4 meses; con 2 años, 8 meses; con 6 años, el máximo de 2 años. Tabla completa y qué días cuentan.', 'cuánto paro me corresponde, duración del paro, si he trabajado 1 año cuánto paro me corresponde, días cotizados paro', MIGA_PARO + [('Cuánto paro me corresponde', None)], cuerpo, faqs, FUENTE, 'Paro y finiquito'))
 
 json.dump(gen, open(f'{AQUI}/generadas.json', 'w'))
 print(len(gen), 'páginas:', ', '.join(gen))

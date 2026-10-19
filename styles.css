@@ -4037,3 +4037,47 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
 .barras .barra-fila .barra-nombre.barra-larga { min-width: 118px; }
 .barras .barra { min-width: max-content; }                       /* la barra corta se estira lo justo para que se lea su número */
 @media (max-width: 480px) { .tabla-sueldos { font-size: 0.82rem; } .tabla-sueldos th, .tabla-sueldos td { padding: 7px 4px; } }   /* tablas de cifras: un poco más pequeñas en el móvil para que quepan */
+
+/* =====================================================================
+   PORTADA (rediseño): se entra por la situación de la persona
+   ===================================================================== */
+.hero-situaciones { padding: 104px 0 40px; }                       /* cabecera más corta: lo importante son los botones */
+.hero-situaciones h1 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); }
+.situaciones-titulo { font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 28px 0 14px; }   /* «¿Qué te ha pasado?» */
+.situaciones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 980px; margin: 0 auto 20px; text-align: left; }   /* 4 columnas en ordenador */
+.situacion { display: flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 14px; text-decoration: none; color: var(--text); transition: border-color .15s, box-shadow .15s, transform .15s; }   /* cada botón de situación */
+.situacion:hover { border-color: var(--accent); box-shadow: 0 8px 20px -10px rgba(79,70,229,.45); transform: translateY(-2px); }
+.situacion-icono { font-size: 1.7rem; line-height: 1; flex-shrink: 0; }   /* emoji grande a la izquierda */
+.situacion-texto { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.situacion-texto strong { font-size: 0.95rem; line-height: 1.25; }  /* «Me han despedido» */
+.situacion-texto span { font-size: 0.8rem; color: var(--muted); line-height: 1.3; }   /* «Cuánto me corresponde» */
+.situacion-cal { border-color: #99F6E4; background: #F0FDFA; }     /* el calendario mantiene su color propio */
+.situacion-cal:hover { border-color: #0F766E; box-shadow: 0 8px 20px -10px rgba(15,118,110,.45); }
+@media (max-width: 860px) { .situaciones { grid-template-columns: repeat(2, 1fr); } }   /* 2 columnas en tablet y móvil */
+@media (max-width: 380px) { .situacion { padding: 12px 10px; gap: 8px; } .situacion-icono { font-size: 1.4rem; } }
+
+/* --- Títulos de bloque de la portada --- */
+.bloque-titulo { font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+.bloque-desc { color: var(--muted); margin-bottom: 18px; }
+#calculadoras .bloque-titulo { margin-bottom: 24px; }
+
+/* --- Calculadoras en cuadrícula (antes, una fila larga cada una) --- */
+#calculadoras .calc-list, #calendario .calc-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 10px; }
+#calculadoras .calc-item, #calendario .calc-item { height: 100%; }   /* todas las tarjetas de una fila, igual de altas */
+.calc-item-badge.popular { background: var(--accent); color: #fff; }   /* «Popular» más visible */
+
+/* --- Respuestas rápidas: la respuesta se ve sin entrar --- */
+.rapidas { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.rapida { display: flex; flex-direction: column; gap: 4px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; text-decoration: none; transition: border-color .15s, transform .15s; }
+.rapida:hover { border-color: var(--accent); transform: translateY(-2px); }
+.rapida-pregunta { font-size: 0.85rem; color: var(--muted); }      /* «30.000 € brutos» */
+.rapida-respuesta { font-size: 1.45rem; color: var(--accent); line-height: 1.2; }   /* «1.927 € al mes» */
+.rapida-enlace { font-size: 0.8rem; color: var(--text2); margin-top: 4px; }   /* enlace a la tabla completa */
+@media (max-width: 600px) {                                         /* móvil: respuestas rápidas de 2 en 2, más compactas */
+    .rapidas { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .rapida { padding: 12px; }
+    .rapida-respuesta { font-size: 1.1rem; }
+    .rapida-pregunta, .rapida-enlace { font-size: 0.75rem; }
+}
+#respuestas { padding-top: 32px; }
+#calculadoras .calc-item p, #calendario .calc-item p, #calculadoras .calc-item h3 { white-space: normal; overflow: visible; text-overflow: clip; }   /* en la cuadrícula el texto baja de línea en vez de cortarse con «…» */

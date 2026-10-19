@@ -28,7 +28,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#4F46E5">
     <link rel="canonical" href="https://calculalotuyo.es/">
-    <link rel="stylesheet" href="styles.css?v=20261019c">
+    <link rel="stylesheet" href="styles.css?v=20261019d">
 
     <!-- Schema.org -->
     <script type="application/ld+json">
@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="nav-dropdown" data-dropdown>
-                <button class="nav-link" data-dropdown-btn>Liquidación <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+                <button class="nav-link" data-dropdown-btn>Paro y finiquito <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
                 <div class="nav-dropdown-menu">
                     <a href="finiquito">💵 Finiquito</a>
                     <a href="paro">📊 Prestación Paro</a>
@@ -136,7 +136,7 @@
         </div>
     </div>
     <div class="mobile-nav-section">
-        <button class="mobile-nav-title" data-mobile-toggle>Liquidación <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="mobile-nav-title" data-mobile-toggle>Paro y finiquito <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="mobile-nav-links">
             <a href="finiquito" class="mobile-nav-link">💵 Finiquito</a>
             <a href="paro" class="mobile-nav-link">📊 Prestación Paro</a>
@@ -178,57 +178,60 @@
 </nav>
 
 <main>
-    <!-- HERO SECTION - Diseño limpio y directo -->
-    <section class="hero-clean">
+    <!-- CABECERA: se entra por lo que te ha pasado, no por el nombre legal de la calculadora -->
+    <section class="hero-clean hero-situaciones">
         <div class="container">
             <span class="hero-update">Actualizado en octubre de 2026</span>
-            <h1>Calculadora Laboral 2026<br><span class="hero-accent">según el Estatuto de los Trabajadores</span></h1>
-            <p class="hero-desc">Calcula tu indemnización por despido, finiquito, prestación por desempleo, IRPF y más, con 16 calculadoras y 13 guías que explican cada derecho. Algoritmos basados en la normativa vigente del BOE.</p>
-            <a href="#calculadoras" class="btn-hero">
-                Calcular ahora
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <p class="hero-trust">100% gratuito · Sin registro · Tus datos no salen de tu dispositivo</p>
-        </div>
-    </section>
-
-    <!-- TRUST BAR - Autoridad -->
-    <section class="trust-bar">
-        <div class="container">
-            <div class="trust-items">
-                <div class="trust-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    <span>Basado en el <strong>BOE</strong></span>
-                </div>
-                <div class="trust-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                    <span>Cálculo <strong>local</strong></span>
-                </div>
-                <div class="trust-item">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-                    <span>Normativa <strong>2026</strong></span>
-                </div>
+            <h1>Calculadoras laborales 2026<br><span class="hero-accent">despido, paro, finiquito y sueldo neto</span></h1>
+            <h2 class="situaciones-titulo">¿Qué te ha pasado?</h2>
+            <div class="situaciones">
+                <a href="despido-improcedente" class="situacion"><span class="situacion-icono" aria-hidden="true">😟</span><span class="situacion-texto"><strong>Me han despedido</strong><span>Cuánto me corresponde</span></span></a>
+                <a href="finiquito" class="situacion"><span class="situacion-icono" aria-hidden="true">👋</span><span class="situacion-texto"><strong>Me voy de la empresa</strong><span>Calcula tu finiquito</span></span></a>
+                <a href="paro" class="situacion"><span class="situacion-icono" aria-hidden="true">📉</span><span class="situacion-texto"><strong>Me he quedado en paro</strong><span>Cuánto cobraré y cuánto tiempo</span></span></a>
+                <a href="sueldo-neto" class="situacion"><span class="situacion-icono" aria-hidden="true">💶</span><span class="situacion-texto"><strong>¿Cuánto cobraré en neto?</strong><span>Tu sueldo de bruto a neto</span></span></a>
+                <a href="baja-medica" class="situacion"><span class="situacion-icono" aria-hidden="true">🩺</span><span class="situacion-texto"><strong>Estoy de baja</strong><span>Cuánto cobro durante la baja</span></span></a>
+                <a href="reduccion-jornada" class="situacion"><span class="situacion-icono" aria-hidden="true">👶</span><span class="situacion-texto"><strong>Quiero reducir jornada</strong><span>Cómo queda mi sueldo</span></span></a>
+                <a href="cuota-autonomos" class="situacion"><span class="situacion-icono" aria-hidden="true">💼</span><span class="situacion-texto"><strong>Soy autónomo/a</strong><span>Mi cuota a la Seguridad Social</span></span></a>
+                <a href="calendario-laboral-2027" class="situacion situacion-cal"><span class="situacion-icono" aria-hidden="true">📅</span><span class="situacion-texto"><strong>Festivos y puentes</strong><span>Calendario laboral 2027</span></span></a>
             </div>
+            <p class="hero-trust">Basado en el BOE · 100% gratis · Sin registro · Tus datos no salen de tu dispositivo</p>
         </div>
     </section>
 
     <div class="container"><div class="ad"></div></div>
 
+    <!-- RESPUESTAS RÁPIDAS: la respuesta a la vista, y enlace a la tabla completa -->
+    <section class="section-flat" id="respuestas">
+        <div class="container">
+            <h2 class="bloque-titulo">⚡ Respuestas rápidas</h2>
+            <p class="bloque-desc">Lo que más se busca, ya calculado con las cifras de 2026</p>
+            <div class="rapidas">
+                <a href="sueldo-bruto-a-neto-2026" class="rapida"><span class="rapida-pregunta">30.000 € brutos</span><strong class="rapida-respuesta">1.927 € al mes</strong><span class="rapida-enlace">Tabla de sueldo bruto a neto →</span></a>
+                <a href="tabla-paro-2026" class="rapida"><span class="rapida-pregunta">Paro con 1.500 €</span><strong class="rapida-respuesta">1.225 € al mes</strong><span class="rapida-enlace">Tabla del paro 2026 →</span></a>
+                <a href="indemnizacion-despido-5-anos" class="rapida"><span class="rapida-pregunta">Despido con 5 años</span><strong class="rapida-respuesta">165 días de sueldo</strong><span class="rapida-enlace">Tabla de indemnización por despido →</span></a>
+                <a href="cuanto-paro-me-corresponde" class="rapida"><span class="rapida-pregunta">2 años cotizados</span><strong class="rapida-respuesta">8 meses de paro</strong><span class="rapida-enlace">Cuánto paro me corresponde →</span></a>
+                <a href="paro-maximo-minimo-2026" class="rapida"><span class="rapida-pregunta">Paro máximo</span><strong class="rapida-respuesta">1.225 € al mes</strong><span class="rapida-enlace">Paro máximo y mínimo 2026 →</span></a>
+                <a href="smi-2026" class="rapida"><span class="rapida-pregunta">Salario mínimo</span><strong class="rapida-respuesta">1.221 € en 14 pagas</strong><span class="rapida-enlace">SMI 2026 →</span></a>
+            </div>
+        </div>
+    </section>
+
     <!-- CALCULADORAS - Diseño plano sin cards anidadas -->
     <section class="section-flat" id="calculadoras">
         <div class="container">
+            <h2 class="bloque-titulo">🧮 Todas las calculadoras</h2>
             
             <!-- DESPIDO -->
             <div class="calc-group">
                 <div class="calc-group-header">
-                    <h2>⚖️ Despido e Indemnización</h2>
-                    <p>Calcula lo que te corresponde según el tipo de despido</p>
+                    <h2>⚖️ Despido</h2>
+                    <p>Si te han despedido o te van a despedir</p>
                 </div>
                 <div class="calc-list">
                     <a href="despido-improcedente" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Despido Improcedente</h3>
-                            <p>33 días/año · Máximo 24 mensualidades · Incluye tramo pre-2012</p>
+                            <p>33 días por año trabajado. El caso más habitual</p>
                         </div>
                         <span class="calc-item-badge popular">Popular</span>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
@@ -236,14 +239,14 @@
                     <a href="despido-objetivo" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Despido Objetivo</h3>
-                            <p>20 días/año · Máximo 12 mensualidades · Causas económicas u organizativas</p>
+                            <p>20 días por año, por causas económicas o de la empresa</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="ere" class="calc-item">
                         <div class="calc-item-info">
                             <h3>ERE / Despido Colectivo</h3>
-                            <p>Simulador con mejoras pactadas · Indemnizaciones negociadas</p>
+                            <p>Despido colectivo, con las mejoras que se negocien</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
@@ -254,21 +257,21 @@
             <!-- LIQUIDACIÓN -->
             <div class="calc-group">
                 <div class="calc-group-header">
-                    <h2>💵 Liquidación y Prestaciones</h2>
-                    <p>Finiquito y prestación por desempleo</p>
+                    <h2>💵 Paro y finiquito</h2>
+                    <p>Al terminar un trabajo</p>
                 </div>
                 <div class="calc-list">
                     <a href="finiquito" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Finiquito</h3>
-                            <p>Salario pendiente + pagas extra prorrateadas + vacaciones no disfrutadas</p>
+                            <p>Lo que te deben al irte: sueldo, vacaciones y pagas extra</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="paro" class="calc-item">
                         <div class="calc-item-info">
-                            <h3>Prestación por Desempleo</h3>
-                            <p>Cuánto cobrarás y durante cuánto tiempo según tu cotización</p>
+                            <h3>Paro (prestación por desempleo)</h3>
+                            <p>Cuánto cobrarás y durante cuánto tiempo</p>
                         </div>
                         <span class="calc-item-badge popular">Popular</span>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
@@ -282,14 +285,14 @@
             <!-- NÓMINA -->
             <div class="calc-group">
                 <div class="calc-group-header">
-                    <h2>🏦 Nómina y Retenciones</h2>
-                    <p>Entiende tu sueldo y calcula tus retenciones</p>
+                    <h2>🏦 Tu nómina</h2>
+                    <p>Sueldo, retenciones, horas extra y vacaciones</p>
                 </div>
                 <div class="calc-list">
                     <a href="sueldo-neto" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Sueldo Bruto a Neto</h3>
-                            <p>Calcula tu sueldo real después de IRPF y Seguridad Social</p>
+                            <p>Lo que te queda de verdad cada mes</p>
                         </div>
                         <span class="calc-item-badge popular">Popular</span>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
@@ -297,56 +300,56 @@
                     <a href="irpf" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Calculadora IRPF 2026</h3>
-                            <p>Retención según situación personal, hijos a cargo y CCAA</p>
+                            <p>Cuánto te retienen según tu situación</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="horas-extra" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Horas Extra</h3>
-                            <p>Cálculo con recargos por nocturnas, festivos y convenio</p>
+                            <p>Cuánto te deben pagar por cada hora</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="pagas-extra" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Pagas Extraordinarias</h3>
-                            <p>Parte devengada de tus pagas de verano y navidad</p>
+                            <p>Cuánto llevas generado de verano y Navidad</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="vacaciones" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Días de Vacaciones</h3>
-                            <p>Días generados, pendientes y su valor económico</p>
+                            <p>Días que te quedan y cuánto valen</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="subida-ipc" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Subida IPC</h3>
-                            <p>Pérdida de poder adquisitivo y salario objetivo</p>
+                            <p>Cuánto debería subir tu sueldo con la inflación</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="neto-a-bruto" class="calc-item">
                         <div class="calc-item-info">
                             <h3>De neto a bruto</h3>
-                            <p>Qué bruto pedir para cobrar un neto al mes</p>
+                            <p>Qué bruto pedir para cobrar lo que quieres</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="reduccion-jornada" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Reducción de Jornada</h3>
-                            <p>Tu sueldo neto si reduces la jornada por cuidado</p>
+                            <p>Cómo queda tu sueldo si reduces horas</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="baja-medica" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Baja Médica</h3>
-                            <p>Cuánto cobras durante la incapacidad temporal</p>
+                            <p>Cuánto cobras estando de baja</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
@@ -358,20 +361,20 @@
             <div class="calc-group">
                 <div class="calc-group-header">
                     <h2>💼 Autónomos</h2>
-                    <p>Cuota de la Seguridad Social y facturación</p>
+                    <p>Tu cuota y tus facturas</p>
                 </div>
                 <div class="calc-list">
                     <a href="cuota-autonomos" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Cuota de Autónomos 2026</h3>
-                            <p>Sistema por ingresos reales · Tarifa plana · Cuota cero CCAA</p>
+                            <p>Tu cuota según lo que ganas, con tarifa plana</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="facturas" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Calculadora de Facturas</h3>
-                            <p>IVA, retención IRPF y total a cobrar según cliente</p>
+                            <p>IVA y retención: cuánto cobrar al cliente</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
@@ -393,21 +396,21 @@
                     <a href="calendario-laboral-2027" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Calendario laboral 2027</h3>
-                            <p>Festivos de toda España y de cada comunidad · Días laborables · Semana Santa</p>
+                            <p>Festivos de toda España y de tu comunidad</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="puentes-2027" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Puentes 2027 por comunidad</h3>
-                            <p>Festivos oficiales del BOE · Días puente para enlazar · Calendario anual</p>
+                            <p>Qué días puente puedes aprovechar</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
                     <a href="dias-laborables" class="calc-item">
                         <div class="calc-item-info">
                             <h3>Calculadora de Días Laborables</h3>
-                            <p>Días laborables entre dos fechas · Plazos en días laborables · Festivos nacionales incluidos</p>
+                            <p>Cuántos días se trabaja entre dos fechas</p>
                         </div>
                         <svg class="calc-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
                     </a>
