@@ -28,7 +28,7 @@ for f in glob.glob('*.html'):
         ld = json.dumps({'@context': 'https://schema.org', '@type': 'WebApplication', 'name': titulo, 'url': f'https://calculalotuyo.es/{nombre}',
                          'description': desc, 'applicationCategory': 'FinanceApplication', 'operatingSystem': 'Cualquiera (navegador web)',
                          'inLanguage': 'es-ES', 'isAccessibleForFree': True, 'offers': {'@type': 'Offer', 'price': '0', 'priceCurrency': 'EUR'},
-                         'author': {'@type': 'Person', 'name': 'Tania de Azevedo', 'url': 'https://calculalotuyo.es/sobre-el-proyecto'}}, ensure_ascii=False, indent=1)
+                         'author': {'@type': 'Organization', 'name': 'CalculaLoTuyo', 'url': 'https://calculalotuyo.es/'}}, ensure_ascii=False, indent=1)
         s = s.replace('</head>', f'    <script type="application/ld+json">\n{ld}\n    </script>\n</head>', 1)
     if s != o:
         open(f, 'w', encoding='utf-8').write(s); cambiadas += 1

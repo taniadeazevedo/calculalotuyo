@@ -4081,3 +4081,5 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
 }
 #respuestas { padding-top: 32px; }
 #calculadoras .calc-item p, #calendario .calc-item p, #calculadoras .calc-item h3 { white-space: normal; overflow: visible; text-overflow: clip; }   /* en la cuadrícula el texto baja de línea en vez de cortarse con «…» */
+.situaciones { max-width: none; margin: 0 0 20px; }               /* mismo ancho que el resto de bloques de la portada */
+@media (min-width: 861px) { .rapidas { grid-template-columns: repeat(3, 1fr); } }   /* 6 respuestas = 2 filas completas de 3 */

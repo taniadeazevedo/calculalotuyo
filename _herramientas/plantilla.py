@@ -18,7 +18,7 @@ _NAV = _v[_v.index('<body>') + len('<body>\n'):_v.index('<main>')].replace(' ari
 _FOOT = _v[_v.index('<footer'):_v.index('<script src="site.js')]
 _CSS = re.search(r'styles\.css\?v=[0-9a-z]+', leer('index.html')).group(0)
 _limpio = lambda t: re.sub(r'<[^>]+>', '', t)
-REVISADO = '<p class="hero-meta">📅 Revisado el {fecha} · ✍️ <a href="sobre-el-proyecto">Tania de Azevedo</a></p>'
+REVISADO = '<p class="hero-meta">📅 Revisado el {fecha} · ✍️ <a href="sobre-el-proyecto">CalculaLoTuyo</a></p>'
 AD = '\n    <div class="container"><div class="ad"></div></div>\n'
 
 def faq_html(faqs):

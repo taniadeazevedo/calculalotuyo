@@ -169,7 +169,7 @@ def pagina(slug, titulo, desc, keywords, miga, cuerpo, faqs, fuente):
     return slug
 
 FUENTE_BOE = '<a href="https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-21254" target="_blank">Resolución de 8 de octubre de 2026</a> de la Dirección General de Trabajo, por la que se publica la relación de fiestas laborales para el año 2027 (BOE núm. 254, de 13 de octubre de 2026).'
-REVISADO = '<p class="hero-meta">📅 Revisado el 18 de octubre de 2026 · ✍️ <a href="sobre-el-proyecto">Tania de Azevedo</a></p>'
+REVISADO = '<p class="hero-meta">📅 Revisado el 18 de octubre de 2026 · ✍️ <a href="sobre-el-proyecto">CalculaLoTuyo</a></p>'
 def hero(miga_html_placeholder, h1, sub, p):
     return f'    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📅 Calendario 2027</div><h1>{h1}<br><span class="highlight">{sub}</span></h1><p>{p}</p>\n            {REVISADO}</div></section>\n'
 def resumen(cifras):

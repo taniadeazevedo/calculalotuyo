@@ -89,7 +89,7 @@ def pagina(nombre, titulo, desc, keywords, miga, cuerpo, faqs):
     open(f'{nombre}.html', 'w', encoding='utf-8').write(texto)
     return nombre
 
-REVISADO = '<p class="hero-meta">📅 Revisado el 19 de octubre de 2026 · ✍️ <a href="sobre-el-proyecto">Tania de Azevedo</a></p>'
+REVISADO = '<p class="hero-meta">📅 Revisado el 19 de octubre de 2026 · ✍️ <a href="sobre-el-proyecto">CalculaLoTuyo</a></p>'
 AD = '\n    <div class="container"><div class="ad"></div></div>\n'
 CTA = '<div class="result-actions"><a href="sueldo-neto" class="btn">🏦 Calcular con mis datos</a></div>'
 generadas = []
