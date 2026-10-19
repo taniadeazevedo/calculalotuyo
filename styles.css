@@ -4084,3 +4084,9 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
 .situaciones { max-width: none; margin: 0 0 20px; }               /* mismo ancho que el resto de bloques de la portada */
 @media (min-width: 861px) { .rapidas { grid-template-columns: repeat(3, 1fr); } }   /* 6 respuestas = 2 filas completas de 3 */
 .header-inner { max-width: 1200px; }                              /* el menú, con el mismo ancho que el contenido (.container) */
+@media (min-width: 1041px) {                                        /* solo en ordenador (en móvil el menú es la hamburguesa) */
+    .header-inner > .nav { flex: 1; margin-left: 24px; }           /* el menú ocupa todo el hueco entre el logo y el final */
+    .header-inner > .nav > :first-child { margin-left: auto; }     /* margen automático a la izquierda de «Despido»… */
+    .header-inner > .nav > .nav-cal { margin-left: auto; }         /* …y otro igual antes de «Calendario 2027»: los enlaces quedan centrados */
+}
+.nav-cal .nav-dropdown-menu { left: auto; right: 0; }               /* el desplegable del calendario se abre hacia la izquierda: nunca se sale por la derecha */
