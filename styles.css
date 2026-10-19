@@ -4036,3 +4036,4 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
 .barras .barra-fila .barra-nombre { width: auto; min-width: 34px; }
 .barras .barra-fila .barra-nombre.barra-larga { min-width: 118px; }
 .barras .barra { min-width: max-content; }                       /* la barra corta se estira lo justo para que se lea su número */
+@media (max-width: 480px) { .tabla-sueldos { font-size: 0.82rem; } .tabla-sueldos th, .tabla-sueldos td { padding: 7px 4px; } }   /* tablas de cifras: un poco más pequeñas en el móvil para que quepan */
