@@ -24,3 +24,12 @@ y marcado de calculadora). Las imágenes se diseñan en `_herramientas/og/*.html
 
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
       --window-size=1200,630 --screenshot=og-paro.png file:///ruta/_herramientas/og/og-paro.html
+
+## Avisar a Bing (IndexNow) después de publicar
+
+    python3 _herramientas/indexnow.py                          # todas las páginas del sitemap
+    python3 _herramientas/indexnow.py paro tabla-paro-2026     # solo las que hayas cambiado
+
+La clave está en el archivo `<clave>.txt` de la raíz (no lo borres). También están en la raíz
+`BingSiteAuth.xml` (verificación de Bing Webmaster Tools) y `llms.txt` (resumen de la web para las IA:
+si cambian las cifras en enero, actualízalo también).

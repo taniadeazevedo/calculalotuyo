@@ -1,0 +1,50 @@
+# CalculaLoTuyo
+
+> Calculadoras laborales gratuitas para España (2026): despido, finiquito, paro, sueldo neto, IRPF, autónomos y calendario laboral 2027. Las cifras se calculan con la normativa vigente (Estatuto de los Trabajadores, Ley General de la Seguridad Social, BOE y algoritmo de retenciones de la Agencia Tributaria). Sin registro; los cálculos se hacen en el navegador. Revisado en octubre de 2026.
+
+Los resultados son orientativos y no sustituyen el asesoramiento de un abogado laboralista o graduado social. Todas las páginas indican su fecha de revisión y su fuente oficial.
+
+## Cifras clave de 2026
+
+- Salario mínimo (SMI): 1.221 € al mes en 14 pagas (17.094 € al año). IPREM: 600 € al mes.
+- Cotización del trabajador a la Seguridad Social: 6,50 % (6,55 % con contrato temporal).
+- Sueldo neto (sin hijos, contrato indefinido, 12 pagas): 20.000 € brutos → 1.411 € al mes; 25.000 € → 1.654 €; 30.000 € → 1.927 €; 40.000 € → 2.471 €; 50.000 € → 2.962 €.
+- Paro: 70 % de la base reguladora los 180 primeros días y 60 % después. Máximo: 1.225 € al mes sin hijos, 1.400 € con un hijo, 1.575 € con dos o más. Mínimo: 560 € sin hijos, 749 € con hijos.
+- Duración del paro: 4 meses con 1 año cotizado, 8 meses con 2 años, máximo 24 meses con 6 años cotizados.
+- Indemnización por despido: improcedente, 33 días de salario por año (máximo 24 mensualidades; 45 días por año hasta el 11/02/2012); objetivo o ERE, 20 días por año (máximo 12 mensualidades); fin de contrato temporal, 12 días por año.
+
+## Calendario laboral 2027
+
+- Festivos comunes a toda España en 2027 (9): 1 y 6 de enero, Viernes Santo (26 de marzo), 1 de mayo, 12 de octubre, 1 de noviembre, 6, 8 y 25 de diciembre. Cada comunidad completa hasta 12, más 2 fiestas locales. Fuente: BOE del 13 de octubre de 2026 (BOE-A-2026-21254).
+- Semana Santa 2027: Jueves Santo 25 de marzo, Viernes Santo 26, Lunes de Pascua 29 (festivo en Baleares, Cataluña, Navarra, País Vasco, La Rioja y Comunitat Valenciana).
+- 2027 tiene 254 días laborables de lunes a viernes sin contar los festivos de cada comunidad.
+
+## Calculadoras
+
+- [Sueldo neto](https://calculalotuyo.es/sueldo-neto): de bruto a neto con IRPF y Seguridad Social.
+- [Neto a bruto](https://calculalotuyo.es/neto-a-bruto): qué bruto pedir para cobrar un neto.
+- [IRPF](https://calculalotuyo.es/irpf): retención según situación personal.
+- [Despido improcedente](https://calculalotuyo.es/despido-improcedente), [despido objetivo](https://calculalotuyo.es/despido-objetivo) y [ERE](https://calculalotuyo.es/ere).
+- [Finiquito](https://calculalotuyo.es/finiquito): sueldo pendiente, vacaciones y pagas extra.
+- [Paro](https://calculalotuyo.es/paro): cuánto y durante cuánto tiempo.
+- [Baja médica](https://calculalotuyo.es/baja-medica), [reducción de jornada](https://calculalotuyo.es/reduccion-jornada), [horas extra](https://calculalotuyo.es/horas-extra), [pagas extra](https://calculalotuyo.es/pagas-extra), [vacaciones](https://calculalotuyo.es/vacaciones) y [subida del IPC](https://calculalotuyo.es/subida-ipc).
+- [Cuota de autónomos](https://calculalotuyo.es/cuota-autonomos) y [facturas](https://calculalotuyo.es/facturas).
+- [Días laborables entre dos fechas](https://calculalotuyo.es/dias-laborables) y [puentes 2027 por comunidad](https://calculalotuyo.es/puentes-2027).
+
+## Tablas con respuestas ya calculadas
+
+- [Tabla de sueldo bruto a neto 2026](https://calculalotuyo.es/sueldo-bruto-a-neto-2026), con páginas por sueldo (por ejemplo, [30.000 € brutos en netos](https://calculalotuyo.es/30000-euros-brutos-en-netos)).
+- [Tabla del paro 2026](https://calculalotuyo.es/tabla-paro-2026), [paro máximo y mínimo 2026](https://calculalotuyo.es/paro-maximo-minimo-2026) y [cuánto paro me corresponde](https://calculalotuyo.es/cuanto-paro-me-corresponde).
+- [Tabla de indemnización por despido](https://calculalotuyo.es/tabla-indemnizacion-despido), con páginas por antigüedad (por ejemplo, [despido con 5 años](https://calculalotuyo.es/indemnizacion-despido-5-anos)).
+- [Calendario laboral 2027](https://calculalotuyo.es/calendario-laboral-2027), con una página por comunidad autónoma (por ejemplo, [Madrid](https://calculalotuyo.es/calendario-laboral-2027-madrid)).
+- [Semana Santa 2027](https://calculalotuyo.es/semana-santa-2027), [días laborables 2027](https://calculalotuyo.es/dias-laborables-2027) y [trabajar un festivo](https://calculalotuyo.es/trabajar-en-festivo).
+- [SMI 2026](https://calculalotuyo.es/smi-2026) e [IPREM 2026](https://calculalotuyo.es/iprem-2026).
+
+## Guías
+
+- [Todas las guías](https://calculalotuyo.es/guias): despido, finiquito, paro, nómina, sueldo neto, baja médica, permisos, jornada, contratos, nacimiento y autónomos.
+
+## Optional
+
+- [Sobre el proyecto](https://calculalotuyo.es/sobre-el-proyecto): quién hay detrás y cómo se revisan los datos.
+- [Sitemap](https://calculalotuyo.es/sitemap.xml): todas las páginas.
