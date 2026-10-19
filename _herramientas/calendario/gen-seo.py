@@ -22,6 +22,15 @@ boe_slug = {'Andalucía': 'andalucia', 'Aragón': 'aragon', 'Asturias': 'asturia
 for k, v in boe.items():
     CCAA[boe_slug[k]]['propios'] = {f for f, n, m in v if m == '***'}   # fiestas propias de la comunidad
 ORDEN = sorted(CCAA, key=lambda s: CCAA[s]['nombre'])
+# Fiestas locales oficiales (fiestas-locales-2027.json) y páginas de ciudades ya generadas (ciudades-generadas.json)
+_loc = os.path.join(S, 'fiestas-locales-2027.json'); _gen = os.path.join(S, 'ciudades-generadas.json')
+LOCALES = json.load(open(_loc, encoding='utf-8'))['ciudades'] if os.path.exists(_loc) else []
+CIUDADES = json.load(open(_gen, encoding='utf-8')) if os.path.exists(_gen) else {}   # {slug: [ciudad, ccaa]}
+LOCAL_CCAA = {}                                       # Ceuta y Melilla: sus fiestas locales se suman a su página
+for _c in LOCALES:
+    if _c['ccaa'] in ('ceuta', 'melilla') and _c.get('estado') == 'publicado' and _c.get('url'):
+        LOCAL_CCAA[_c['ccaa']] = _c
+ciudades_de = lambda cc: sorted(((sl, v[0]) for sl, v in CIUDADES.items() if v[1] == cc), key=lambda x: x[1])
 COMUNES = {k: n for k, n in CCAA['madrid']['festivos'].items() if all(k in CCAA[s]['festivos'] for s in CCAA)}
 assert len(COMUNES) == 9, COMUNES
 # nombre corto para enlaces y títulos ("Madrid" en vez de "Comunidad de Madrid")
@@ -202,6 +211,7 @@ cuerpo = hero('', 'Calendario laboral 2027', 'festivos de toda España', 'Los fe
 <h2>📋 Los 9 festivos que hay en toda España en 2027</h2>
 <div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Fecha</th><th>Festivo</th></tr></thead><tbody>{filas_nac}</tbody></table></div>
 <p>Además, cada comunidad tiene sus propios festivos (hasta completar 12) y cada municipio <strong>2 fiestas locales</strong>. El 1 de mayo y el 25 de diciembre caen en sábado, y el 15 de agosto en domingo.</p>
+{('<h2>🏙️ Calendario laboral 2027 por ciudades</h2><p>Ciudades con sus fiestas locales ya publicadas en el boletín oficial (iremos añadiendo el resto según se publiquen):</p><div class="enlaces-ccaa">' + ''.join(f'<a href="{sl}">{v[0]}</a>' for sl, v in sorted(CIUDADES.items(), key=lambda x: x[1][0])) + '</div>') if CIUDADES else ''}
 <h2>🗺️ Festivos y días laborables de 2027 por comunidad</h2>
 <div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Comunidad</th><th>Festivos</th><th>Entre semana</th><th>Días laborables*</th></tr></thead><tbody>{filas_ccaa}</tbody></table></div>
 <p class="nota-corta">* De lunes a viernes, sin contar las 2 fiestas locales de cada municipio.</p>
@@ -228,6 +238,9 @@ generadas.append(pagina('calendario-laboral-2027', 'Calendario laboral 2027: fes
 SS = {'2027-03-25': 'Jueves Santo', '2027-03-29': 'Lunes de Pascua'}
 for s in ORDEN:
     c = CCAA[s]; fest = c['festivos']; nom = c['nombre']; corto = CORTO[s]
+    loc = LOCAL_CCAA.get(s)
+    if loc:
+        fest = dict(fest); fest.update({f: n for f, n in loc['fiestas']})   # suma las 2 fiestas locales
     nom = {'madrid': 'la Comunidad de Madrid', 'murcia': 'la Región de Murcia', 'valencia': 'la Comunitat Valenciana', 'pais-vasco': 'el País Vasco'}.get(s, nom)   # con artículo dentro de las frases
     ps = puentes(fest)
     lab = [laborables_mes(fest, m) for m in range(1, 13)]
@@ -248,7 +261,11 @@ for s in ORDEN:
         n0 = len(p0['coger'])
         como = f'si pides {n0} {"día" if n0 == 1 else "días"} de vacaciones' if n0 else 'sin gastar vacaciones'
         frase_propio = f' Y gracias a {"sus fiestas propias" if len(c["propios"]) > 1 else "su fiesta propia"}, {como} tienes otro puente de {p0["dias"]} días, del {larga(p0["ini"])} al {larga(p0["fin"])}.'
-    filas = ''.join(f'<tr><td>{cap(larga(fecha(k)))}</td><td>{H.escape(n)}</td><td>{"Propio de " + corto if k in c["propios"] else "Nacional"}</td></tr>' for k, n in sorted(fest.items()))
+    locales_cc = {f for f, n in loc['fiestas']} if loc else set()
+    filas = ''.join(f'<tr{" class=fila-local" if k in locales_cc else ""}><td>{cap(larga(fecha(k)))}</td><td>{H.escape(n)}</td><td>{"Local" if k in locales_cc else ("Propio de " + corto if k in c["propios"] else "Nacional")}</td></tr>' for k, n in sorted(fest.items()))
+    texto_local = (f'<p>Incluye las <strong>2 fiestas locales</strong> de {corto}, publicadas en el {H.escape(loc["fuente"])} (<a href="{H.escape(loc["url"])}" target="_blank" rel="noopener">ver publicación</a>).</p>') if loc else '<p>A estos se suman las <strong>2 fiestas locales</strong> de cada municipio, que se publican en el boletín oficial de la comunidad o de la provincia.</p>'
+    mis_ciudades = ciudades_de(s)
+    bloque_ciudades = ('<h2>🏙️ Calendario 2027 de las ciudades de ' + c['nombre'] + '</h2><p>Con sus fiestas locales ya publicadas:</p><div class="enlaces-ccaa">' + ''.join(f'<a href="{sl}">{n}</a>' for sl, n in mis_ciudades) + '</div>') if mis_ciudades else ''
     filas_lab = ''.join(f'<tr><td>{cap(MESES[m])}</td><td>{lab[m]}</td></tr>' for m in range(12))
     mas = max(range(12), key=lambda m: lab[m]); menos = min(range(12), key=lambda m: lab[m])
     nota = f'<div class="aviso-ccaa">ℹ️ {NOTAS[s]}</div>' if s in NOTAS else ''
@@ -275,7 +292,8 @@ for s in ORDEN:
 <h2>🎉 Festivos de {nom} en 2027</h2>
 {intro}
 <div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Fecha</th><th>Festivo</th><th>Tipo</th></tr></thead><tbody>{filas}</tbody></table></div>
-<p>A estos se suman las <strong>2 fiestas locales</strong> de cada municipio, que se publican en el boletín oficial de la comunidad o de la provincia.</p>
+{texto_local}
+{bloque_ciudades}
 <h2>🏖️ Puentes de 2027 en {nom}</h2>
 <p>{"El puente que más compensa es <strong>" + H.escape(mejor["nombre"]) + "</strong>: si pides " + str(len(mejor["coger"])) + (" día" if len(mejor["coger"]) == 1 else " días") + " de vacaciones, descansas " + str(mejor["dias"]) + " días seguidos." if mejor else ""} En Semana Santa {ss_txt}, así que descansas {ss_dias}.{frase_propio}</p>
 {tarjetas([tarjeta(p, fest) for p in ps])}

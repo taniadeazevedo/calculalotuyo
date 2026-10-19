@@ -11,7 +11,7 @@ exec(fuente_gen[:corte])                              # carga datos del BOE, pue
 RUTA = RUTA_ARG or os.path.join(AQUI, 'fiestas-locales-2027.json')
 datos = json.load(open(RUTA, encoding='utf-8'))
 slugify = lambda t: re.sub(r'[^a-z0-9]+', '-', unicodedata.normalize('NFD', t.lower()).encode('ascii', 'ignore').decode()).strip('-')
-publicadas = [c for c in datos['ciudades'] if c.get('estado') == 'publicado' and len(c.get('fiestas', [])) >= 1 and c.get('url')]
+publicadas = [c for c in datos['ciudades'] if c.get('estado') == 'publicado' and len(c.get('fiestas', [])) >= 1 and c.get('url') and c['ccaa'] not in ('ceuta', 'melilla')]   # en Ceuta y Melilla la ciudad es la comunidad: sus fiestas locales van en esa página
 
 def slug_ciudad(c):
     s = slugify(c['ciudad'])
@@ -60,7 +60,9 @@ for c in publicadas:
             (f'¿Cuántos días laborables tiene 2027 en {ciudad}?', f'<strong>{sum(lab)} días</strong> de lunes a viernes, descontando todos los festivos.')]
     fuente = FUENTE_BOE + f' Fiestas locales: {H.escape(c["fuente"])} (<a href="{H.escape(c["url"])}" target="_blank" rel="noopener">enlace</a>).'
     paginas[sl] = (ciudad, c['ccaa'])
-    pagina(sl, f'Calendario laboral 2027 {ciudad}: festivos locales y puentes', f'Festivos de {ciudad} en 2027 con las fiestas locales oficiales ({lista_loc[:60]}…), los de {cc["nombre"]}, puentes y días laborables por mes.',
+    titulo = f'Calendario laboral 2027 {ciudad}: festivos locales y puentes'
+    if len(titulo) > 60: titulo = f'Calendario laboral 2027 {ciudad}: festivos'   # que Google no lo corte
+    pagina(sl, titulo, f'Festivos de {ciudad} en 2027 con las fiestas locales oficiales ({lista_loc[:60]}…), los de {cc["nombre"]}, puentes y días laborables por mes.',
            f'calendario laboral 2027 {ciudad.lower()}, festivos {ciudad.lower()} 2027, fiestas locales {ciudad.lower()} 2027, puentes 2027 {ciudad.lower()}',
            ciudad, cuerpo, faqs, fuente)
 json.dump(paginas, open(os.path.join(AQUI, 'ciudades-generadas.json'), 'w', encoding='utf-8'), ensure_ascii=False)

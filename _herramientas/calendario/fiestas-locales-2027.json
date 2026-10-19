@@ -1,0 +1,779 @@
+{
+ "actualizado": "2026-10-19",
+ "ciudades": [
+  {
+   "ciudad": "Almería",
+   "provincia": "Almería",
+   "ccaa": "andalucia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Cádiz",
+   "provincia": "Cádiz",
+   "ccaa": "andalucia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Córdoba",
+   "provincia": "Córdoba",
+   "ccaa": "andalucia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Granada",
+   "provincia": "Granada",
+   "ccaa": "andalucia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Huelva",
+   "provincia": "Huelva",
+   "ccaa": "andalucia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Jaén",
+   "provincia": "Jaén",
+   "ccaa": "andalucia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Málaga",
+   "provincia": "Málaga",
+   "ccaa": "andalucia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Sevilla",
+   "provincia": "Sevilla",
+   "ccaa": "andalucia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Jerez de la Frontera",
+   "provincia": "Cádiz",
+   "ccaa": "andalucia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Marbella",
+   "provincia": "Málaga",
+   "ccaa": "andalucia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Huesca",
+   "provincia": "Huesca",
+   "ccaa": "aragon",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Teruel",
+   "provincia": "Teruel",
+   "ccaa": "aragon",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Zaragoza",
+   "provincia": "Zaragoza",
+   "ccaa": "aragon",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Oviedo",
+   "provincia": "Asturias",
+   "ccaa": "asturias",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-05-18",
+     "Martes de Campo"
+    ],
+    [
+     "2027-09-21",
+     "San Mateo"
+    ]
+   ],
+   "fuente": "BOPA n.º 110 de 10/6/2026 (Resolución de 22 de mayo de 2026)",
+   "url": "https://miprincipado.asturias.es/bopa/2026/06/10/2026-04656.pdf"
+  },
+  {
+   "ciudad": "Gijón",
+   "provincia": "Asturias",
+   "ccaa": "asturias",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-02-09",
+     "Carnaval/Antroxu"
+    ],
+    [
+     "2027-06-29",
+     "San Pedro"
+    ]
+   ],
+   "fuente": "BOPA n.º 110 de 10/6/2026 (Resolución de 22 de mayo de 2026)",
+   "url": "https://miprincipado.asturias.es/bopa/2026/06/10/2026-04656.pdf"
+  },
+  {
+   "ciudad": "Palma",
+   "provincia": "Illes Balears",
+   "ccaa": "baleares",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-01-20",
+     "Sant Sebastià"
+    ],
+    [
+     "2027-06-24",
+     "Sant Joan"
+    ]
+   ],
+   "fuente": "BOIB n.º 122 de 29/9/2026 (Resolución de la consejera de Trabajo, Función Pública y Diálogo Social)",
+   "url": "https://www.caib.es/eboibfront/ca/2026/12335/720377/resolucio-de-la-consellera-de-treball-funcio-publi"
+  },
+  {
+   "ciudad": "Las Palmas de Gran Canaria",
+   "provincia": "Las Palmas",
+   "ccaa": "canarias",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-02-09",
+     "Martes de Carnaval"
+    ],
+    [
+     "2027-06-24",
+     "Fundación de la Ciudad"
+    ]
+   ],
+   "fuente": "BOC n.º 168 de 21/8/2026 (Orden de 7 de agosto de 2026)",
+   "url": "https://www.gobiernodecanarias.org/boc/2026/168/3035.html"
+  },
+  {
+   "ciudad": "Santa Cruz de Tenerife",
+   "provincia": "Santa Cruz de Tenerife",
+   "ccaa": "canarias",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-02-23",
+     "Martes de Carnaval"
+    ],
+    [
+     "2027-05-03",
+     "Día de la Cruz"
+    ]
+   ],
+   "fuente": "BOC n.º 168 de 21/8/2026 (Orden de 7 de agosto de 2026)",
+   "url": "https://www.gobiernodecanarias.org/boc/2026/168/3035.html"
+  },
+  {
+   "ciudad": "Santander",
+   "provincia": "Cantabria",
+   "ccaa": "cantabria",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Albacete",
+   "provincia": "Albacete",
+   "ccaa": "castilla-la-mancha",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Ciudad Real",
+   "provincia": "Ciudad Real",
+   "ccaa": "castilla-la-mancha",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Cuenca",
+   "provincia": "Cuenca",
+   "ccaa": "castilla-la-mancha",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Guadalajara",
+   "provincia": "Guadalajara",
+   "ccaa": "castilla-la-mancha",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Toledo",
+   "provincia": "Toledo",
+   "ccaa": "castilla-la-mancha",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Ávila",
+   "provincia": "Ávila",
+   "ccaa": "castilla-y-leon",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-05-03",
+     "San Segundo"
+    ],
+    [
+     "2027-10-15",
+     "Santa Teresa de Jesús"
+    ]
+   ],
+   "fuente": "BOP de Ávila n.º 129 de 8/7/2026 (Oficina Territorial de Trabajo, anuncio 1448/26)",
+   "url": "https://trabajoyprevencion.jcyl.es/web/jcyl/binarios/674/652/PUBLICACION%20FIESTAS%20BOP%20AVILA.pdf"
+  },
+  {
+   "ciudad": "Burgos",
+   "provincia": "Burgos",
+   "ccaa": "castilla-y-leon",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "León",
+   "provincia": "León",
+   "ccaa": "castilla-y-leon",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-06-24",
+     "San Juan"
+    ],
+    [
+     "2027-10-05",
+     "San Froilán"
+    ]
+   ],
+   "fuente": "BOP de León n.º 144 de 31/7/2026 (Resolución de 20/7/2026 de la Oficina Territorial de Trabajo)",
+   "url": "https://bop.dipuleon.es/publica/buscador-anuncios/anuncio/Festivos-locales-de-los-Municipios-de-la-Provincia-de-Leon-para-2027/"
+  },
+  {
+   "ciudad": "Palencia",
+   "provincia": "Palencia",
+   "ccaa": "castilla-y-leon",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-02-02",
+     "La Candelaria"
+    ],
+    [
+     "2027-09-02",
+     "San Antolín"
+    ]
+   ],
+   "fuente": "BOP de Palencia n.º 83 de 13/7/2026 (Acuerdo de la Oficina Territorial de Trabajo de 7/7/2026)",
+   "url": "https://trabajoyprevencion.jcyl.es/web/jcyl/binarios/124/555/PUBLICACION%20BOP%20FIESTAS%20LOCALES%202027%2013-7-2026.pdf"
+  },
+  {
+   "ciudad": "Salamanca",
+   "provincia": "Salamanca",
+   "ccaa": "castilla-y-leon",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-06-12",
+     "San Juan de Sahagún"
+    ],
+    [
+     "2027-09-08",
+     "Virgen de la Vega"
+    ]
+   ],
+   "fuente": "BOP de Salamanca n.º 129 de 8/7/2026 (Acuerdo de 1/7/2026 de la Oficina Territorial de Trabajo)",
+   "url": "https://sede.diputaciondesalamanca.gob.es/documentacion/bop/2026/20260708/BOP-SA-20260708-001.pdf"
+  },
+  {
+   "ciudad": "Segovia",
+   "provincia": "Segovia",
+   "ccaa": "castilla-y-leon",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-06-29",
+     "San Pedro"
+    ],
+    [
+     "2027-10-25",
+     "San Frutos"
+    ]
+   ],
+   "fuente": "BOP de Segovia n.º 80 de 6/7/2026 (Oficina Territorial de Trabajo)",
+   "url": "https://trabajoyprevencion.jcyl.es/web/jcyl/binarios/629/351/BOP%20Fiestas%20locales.pdf"
+  },
+  {
+   "ciudad": "Soria",
+   "provincia": "Soria",
+   "ccaa": "castilla-y-leon",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-06-24",
+     "San Juan"
+    ],
+    [
+     "2027-10-02",
+     "San Saturio"
+    ]
+   ],
+   "fuente": "BOP de Soria n.º 81 de 15/7/2026 (Oficina Territorial de Trabajo, 7/7/2026)",
+   "url": "https://trabajoyprevencion.jcyl.es/web/jcyl/binarios/704/771/BOP%20n.%C2%BA%2081.pdf"
+  },
+  {
+   "ciudad": "Valladolid",
+   "provincia": "Valladolid",
+   "ccaa": "castilla-y-leon",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Zamora",
+   "provincia": "Zamora",
+   "ccaa": "castilla-y-leon",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-05-17",
+     "La Hiniesta"
+    ],
+    [
+     "2027-06-29",
+     "San Pedro"
+    ]
+   ],
+   "fuente": "BOP de Zamora n.º 88 de 31/7/2026 (Oficina Territorial de Trabajo; republicación íntegra corregida del BOP n.º 87 de 27/7/2026)",
+   "url": "https://trabajoyprevencion.jcyl.es/web/jcyl/binarios/329/517/PUBLICACI%C3%93N%20CALENDARIO%20LABORAL%20EN%20BOP%202027%20CORREGIDO%20(31-07-2026).pdf"
+  },
+  {
+   "ciudad": "Barcelona",
+   "provincia": "Barcelona",
+   "ccaa": "cataluna",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Girona",
+   "provincia": "Girona",
+   "ccaa": "cataluna",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Lleida",
+   "provincia": "Lleida",
+   "ccaa": "cataluna",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Tarragona",
+   "provincia": "Tarragona",
+   "ccaa": "cataluna",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "L'Hospitalet de Llobregat",
+   "provincia": "Barcelona",
+   "ccaa": "cataluna",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Badalona",
+   "provincia": "Barcelona",
+   "ccaa": "cataluna",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Terrassa",
+   "provincia": "Barcelona",
+   "ccaa": "cataluna",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Sabadell",
+   "provincia": "Barcelona",
+   "ccaa": "cataluna",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Badajoz",
+   "provincia": "Badajoz",
+   "ccaa": "extremadura",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Cáceres",
+   "provincia": "Cáceres",
+   "ccaa": "extremadura",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "A Coruña",
+   "provincia": "A Coruña",
+   "ccaa": "galicia",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-02-09",
+     "Martes de Entroido"
+    ],
+    [
+     "2027-06-24",
+     "San Xoán"
+    ]
+   ],
+   "fuente": "BOP da Coruña n.º 187 de 30/9/2026 (Resolución del Departamento Territorial de la Consellería de Emprego, Comercio e Emigración, anuncio 2026/6291)",
+   "url": "https://bop.dacoruna.gal/bopportal/publicado/2026/09/30/2026_0000006291.pdf"
+  },
+  {
+   "ciudad": "Lugo",
+   "provincia": "Lugo",
+   "ccaa": "galicia",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-02-09",
+     "Martes de Entroido"
+    ],
+    [
+     "2027-10-05",
+     "San Froilán"
+    ]
+   ],
+   "fuente": "BOP de Lugo n.º 221 de 26/9/2026 (Resolución de la Dirección Territorial de Lugo de la Consellería de Emprego, Comercio e Emigración)",
+   "url": "https://deputacionlugo.gal/sites/deputacionlugo.org/files/inline-files/26-09-2026.pdf"
+  },
+  {
+   "ciudad": "Ourense",
+   "provincia": "Ourense",
+   "ccaa": "galicia",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-02-09",
+     "Martes de Carnaval"
+    ],
+    [
+     "2027-11-11",
+     "San Martiño"
+    ]
+   ],
+   "fuente": "BOP de Ourense n.º 197 de 14/10/2026 (Calendario laboral 2027 de la provincia, Consellería de Emprego, Comercio e Emigración)",
+   "url": "https://bop.depourense.es/portalapi/api/edicto/descargar/pdf/352736/idioma/es"
+  },
+  {
+   "ciudad": "Pontevedra",
+   "provincia": "Pontevedra",
+   "ccaa": "galicia",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-02-10",
+     "Mércores de Cinza"
+    ],
+    [
+     "2027-03-29",
+     "San Cibrán"
+    ]
+   ],
+   "fuente": "BOP de Pontevedra (BOPPO) n.º 192 de 6/10/2026 (Calendario laboral da provincia de Pontevedra para o ano 2027, Xunta de Galicia)",
+   "url": "https://boppo.depo.gal/detalle/-/boppo/2026/10/06/2026071521/an.bop.PONTEVEDRA.20261006.2026071521.pdf"
+  },
+  {
+   "ciudad": "Vigo",
+   "provincia": "Pontevedra",
+   "ccaa": "galicia",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-03-29",
+     "Reconquista"
+    ],
+    [
+     "2027-08-16",
+     "San Roque"
+    ]
+   ],
+   "fuente": "BOP de Pontevedra (BOPPO) n.º 192 de 6/10/2026 (Calendario laboral da provincia de Pontevedra para o ano 2027, Xunta de Galicia)",
+   "url": "https://boppo.depo.gal/detalle/-/boppo/2026/10/06/2026071521/an.bop.PONTEVEDRA.20261006.2026071521.pdf"
+  },
+  {
+   "ciudad": "Madrid",
+   "provincia": "Madrid",
+   "ccaa": "madrid",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Móstoles",
+   "provincia": "Madrid",
+   "ccaa": "madrid",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Alcalá de Henares",
+   "provincia": "Madrid",
+   "ccaa": "madrid",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Getafe",
+   "provincia": "Madrid",
+   "ccaa": "madrid",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Murcia",
+   "provincia": "Murcia",
+   "ccaa": "murcia",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-03-30",
+     "Bando de la Huerta"
+    ],
+    [
+     "2027-09-14",
+     "Romería de la Fuensanta"
+    ]
+   ],
+   "fuente": "BORM n.º 171 de 27/7/2026 (Resolución de la Dirección General de Trabajo, anuncio 3718, NPE A-270726-3718)",
+   "url": "https://www.borm.es/services/anuncio/ano/2026/numero/3718/pdf"
+  },
+  {
+   "ciudad": "Cartagena",
+   "provincia": "Murcia",
+   "ccaa": "murcia",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-01-07",
+     "Fiesta local"
+    ],
+    [
+     "2027-09-24",
+     "Carthagineses y Romanos"
+    ]
+   ],
+   "fuente": "BORM n.º 171 de 27/7/2026 (Resolución de la Dirección General de Trabajo, anuncio 3718, NPE A-270726-3718)",
+   "url": "https://www.borm.es/services/anuncio/ano/2026/numero/3718/pdf"
+  },
+  {
+   "ciudad": "Pamplona",
+   "provincia": "Navarra",
+   "ccaa": "navarra",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Vitoria-Gasteiz",
+   "provincia": "Araba/Álava",
+   "ccaa": "pais-vasco",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Bilbao",
+   "provincia": "Bizkaia",
+   "ccaa": "pais-vasco",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "San Sebastián",
+   "provincia": "Gipuzkoa",
+   "ccaa": "pais-vasco",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Logroño",
+   "provincia": "La Rioja",
+   "ccaa": "la-rioja",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-06-11",
+     "San Bernabé"
+    ],
+    [
+     "2027-09-21",
+     "San Mateo"
+    ]
+   ],
+   "fuente": "BOR n.º 160 de 21/8/2026 (Calendario laboral de fiestas locales 2027, Dirección General de Trabajo y Salud Laboral)",
+   "url": "https://ias1.larioja.org/boletin/Bor_Boletin_visor_Servlet?referencia=41863576-1-PDF-579228-X"
+  },
+  {
+   "ciudad": "Alicante",
+   "provincia": "Alicante",
+   "ccaa": "valencia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Castellón de la Plana",
+   "provincia": "Castellón",
+   "ccaa": "valencia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Valencia",
+   "provincia": "Valencia",
+   "ccaa": "valencia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Elche",
+   "provincia": "Alicante",
+   "ccaa": "valencia",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Ceuta",
+   "provincia": "Ceuta",
+   "ccaa": "ceuta",
+   "estado": "pendiente",
+   "fiestas": [],
+   "fuente": "",
+   "url": ""
+  },
+  {
+   "ciudad": "Melilla",
+   "provincia": "Melilla",
+   "ccaa": "melilla",
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-09-08",
+     "Virgen de la Victoria"
+    ],
+    [
+     "2027-09-17",
+     "Día de Melilla"
+    ]
+   ],
+   "fuente": "BOME Extraordinario n.º 43 de 30/9/2026 (Acuerdo del Consejo de Gobierno de 24/9/2026, CVE BOME-AX-2026-108)",
+   "url": "https://bomemelilla.es/bome/descargar/BOME-AX-2026-108.pdf"
+  }
+ ]
+}
