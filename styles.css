@@ -4007,3 +4007,20 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
 .barra-fila { display: flex; align-items: center; gap: 10px; }
 .barra-nombre { width: 34px; font-size: 0.8rem; color: var(--muted); text-transform: capitalize; }   /* "ene", "feb"… */
 .barra { background: #0F766E; color: #fff; font-size: 0.78rem; font-weight: 700; border-radius: 6px; padding: 4px 8px; text-align: right; }   /* la barra, con el número dentro */
+
+/* ===== Páginas «X € brutos en netos» ===== */
+.cifras { display: grid; grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); gap: 10px; margin-bottom: 8px; }   /* las tres cifras grandes */
+.cifras div { background: #EEF2FF; border: 1px solid #C7D2FE; border-radius: 12px; padding: 12px 6px; text-align: center; }
+.cifras strong { display: block; font-size: 1.6rem; line-height: 1.1; color: var(--accent); }
+.cifras span { font-size: 0.78rem; color: var(--muted); }
+.reparto { display: flex; height: 28px; border-radius: 8px; overflow: hidden; margin: 8px 0 10px; }   /* barra partida: neto, Seguridad Social e IRPF */
+.r-neto { background: #059669; } .r-ss { background: #F59E0B; } .r-irpf { background: #DC2626; }
+.reparto-leyenda { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.85rem; color: var(--text2); }
+.reparto-leyenda span { display: inline-flex; align-items: center; gap: 6px; }
+.reparto-leyenda i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }   /* cuadradito de color */
+.enlaces-sueldo { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }   /* botones de otros sueldos */
+.enlaces-sueldo a { padding: 7px 14px; border: 1px solid #C7D2FE; background: #EEF2FF; color: var(--accent); border-radius: 999px; font-size: 0.85rem; font-weight: 600; text-decoration: none; }
+.enlaces-sueldo a:hover { background: var(--accent); color: #fff; }
+.tabla-sueldos td, .tabla-sueldos th { white-space: nowrap; }      /* las cifras no se parten en dos líneas */
+.cifras strong { font-size: clamp(1.15rem, 5.2vw, 1.6rem); white-space: nowrap; }   /* la cifra y el "€" siempre en la misma línea */
+.tabla-sueldos th, .tabla-sueldos td { padding: 8px 6px; }   /* columnas más juntas para que quepan en el móvil */

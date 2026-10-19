@@ -3,7 +3,7 @@ import datetime as dt, glob, json, os, re, html as H
 S = os.path.dirname(os.path.abspath(__file__))
 os.chdir(os.path.expanduser('~/Desktop/calculalotuyo'))
 HOY = '2026-10-18'
-CSS = 'styles.css?v=20261018e'
+CSS = re.search(r'styles\.css\?v=[0-9a-z]+', open('index.html', encoding='utf-8').read()).group(0)
 MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 SEM = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo']
 D = dt.date
@@ -294,7 +294,7 @@ for s in ORDEN:
     ]
     if propios:
         faqs.insert(1, (f'¿Cuál es la fiesta propia de {nom} en 2027?', f'{cap(lista_propios)}.'))
-    generadas.append(pagina(f'calendario-laboral-2027-{s}', f'Calendario laboral 2027 {corto}: festivos y puentes', f'Festivos de {nom} en 2027 según el BOE ({len(fest)} días), puentes que puedes aprovechar y días laborables por mes. Con calendario visual.', f'calendario laboral 2027 {corto.lower()}, festivos 2027 {corto.lower()}, puentes 2027 {corto.lower()}, días laborables 2027 {corto.lower()}', corto, cuerpo, faqs, FUENTE_BOE))
+    generadas.append(pagina(f'calendario-laboral-2027-{s}', f'Calendario laboral 2027 {corto}: festivos y puentes' if len(corto) < 18 else f'Calendario laboral 2027 {corto}: festivos', f'Festivos de {nom} en 2027 según el BOE ({len(fest)} días), puentes que puedes aprovechar y días laborables por mes. Con calendario visual.', f'calendario laboral 2027 {corto.lower()}, festivos 2027 {corto.lower()}, puentes 2027 {corto.lower()}, días laborables 2027 {corto.lower()}', corto, cuerpo, faqs, FUENTE_BOE))
 
 # ================================================================ 3) SEMANA SANTA 2027
 filas_ss = ''
