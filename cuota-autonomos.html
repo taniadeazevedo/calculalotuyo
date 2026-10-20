@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#4F46E5">
-    <link rel="stylesheet" href="styles.min.css?v=20261020b">
+    <link rel="stylesheet" href="styles.min.css?v=20261020c">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -179,9 +179,9 @@
                 <form id="calc">
                     <div class="form-grid">
         <div class="form-group">
-            <label class="form-label" for="ingresos">Rendimiento neto mensual (€)</label>
+            <label class="form-label" for="ingresos">¿Cuánto ganas al mes? (ingresos menos gastos)</label>
             <input type="number" class="form-input" id="ingresos" placeholder="2000" required>
-            <span class="form-hint">Ingresos - gastos deducibles</span>
+            <span class="form-hint">Lo que facturas menos los gastos del negocio, sin IVA</span>
         </div>
         <div class="form-group">
             <label class="form-label" for="ccaa">Comunidad Autónoma</label>
@@ -198,7 +198,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label class="form-label" for="tipo">Tipo de autónomo</label>
+            <label class="form-label" for="tipo">¿Cómo trabajas?</label>
             <select class="form-select" id="tipo">
                 <option value="normal">Autónomo persona física (7% gastos)</option>
                 <option value="societario">Autónomo societario (3% gastos)</option>
@@ -445,7 +445,7 @@
         </div>
     </div>
 </footer>
-<script src="site.js?v=20261020a"></script>
+<script src="site.js?v=20261020b"></script>
 <script src="datos-2026.js?v=20261020b"></script>
 <script>
 document.getElementById('calc').onsubmit=function(e){

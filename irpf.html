@@ -24,7 +24,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#4F46E5">
     <link rel="canonical" href="https://calculalotuyo.es/irpf">
-    <link rel="stylesheet" href="styles.min.css?v=20261020b">
+    <link rel="stylesheet" href="styles.min.css?v=20261020c">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -198,21 +198,21 @@
                 <form id="calc">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label" for="ingresos">Ingresos brutos anuales</label>
+                            <label class="form-label" for="ingresos">Sueldo bruto al año</label>
                             <input type="number" class="form-input" id="ingresos" placeholder="35000" required>
                             <span class="form-hint">Salario bruto anual (con pagas extra incluidas)</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="situacion">Situación familiar</label>
+                            <label class="form-label" for="situacion">Tu situación</label>
                             <select class="form-select" id="situacion">
                                 <option value="soltero">Soltero/a sin hijos</option>
-                                <option value="casado1">Casado/a - un perceptor de rentas</option>
-                                <option value="casado2">Casado/a - dos perceptores</option>
+                                <option value="casado1">Casado/a (solo cobra uno de los dos)</option>
+                                <option value="casado2">Casado/a (cobráis los dos)</option>
                                 <option value="monoparental">Familia monoparental</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="hijos">Número de hijos menores de 25 años</label>
+                            <label class="form-label" for="hijos">Hijos menores de 25 años</label>
                             <select class="form-select" id="hijos">
                                 <option value="0">Sin hijos</option>
                                 <option value="1">1 hijo</option>
@@ -221,41 +221,42 @@
                                 <option value="4">4 o más hijos</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                    <details class="mas-opciones"><summary>Más opciones (si no las tocas, usamos lo habitual)</summary><div class="form-grid"><div class="form-group">
                             <label class="form-label" for="hijosMenores3">¿Hijos menores de 3 años?</label>
                             <select class="form-select" id="hijosMenores3">
                                 <option value="0">No</option>
                                 <option value="1">1 hijo menor de 3</option>
                                 <option value="2">2 o más menores de 3</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="discapacidad">Discapacidad del contribuyente</label>
+                        </div><div class="form-group">
+                            <label class="form-label" for="discapacidad">¿Tienes alguna discapacidad?</label>
                             <select class="form-select" id="discapacidad">
                                 <option value="0">Sin discapacidad</option>
                                 <option value="33">Entre 33% y 65%</option>
                                 <option value="65">65% o más</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="ascendientes">Ascendientes a cargo (+65 años)</label>
+                        </div><div class="form-group">
+                            <label class="form-label" for="ascendientes">Padres o abuelos mayores de 65 que viven contigo</label>
                             <select class="form-select" id="ascendientes">
                                 <option value="0">Ninguno</option>
                                 <option value="1">1 ascendiente</option>
                                 <option value="2">2 ascendientes</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="edad">Edad del contribuyente</label>
+                        </div><div class="form-group">
+                            <label class="form-label" for="edad">Tu edad</label>
                             <select class="form-select" id="edad">
                                 <option value="normal">Menor de 65 años</option>
                                 <option value="65">65 años o más</option>
                                 <option value="75">75 años o más</option>
                             </select>
-                        </div>
-                    </div>
-                    
-                    <div class="disclaimer-box">
+                        </div></div></details>
+<div class="disclaimer-box">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                         <p><strong>Nota:</strong> Calculamos la retención de nómina del territorio común (no aplica en País Vasco ni Navarra). Este cálculo es orientativo. La retención real de tu nómina puede variar según tu contrato, pagos irregulares y situación específica.</p>
                     </div>
@@ -666,7 +667,7 @@
     </div>
 </footer>
 
-<script src="site.js?v=20261020a"></script>
+<script src="site.js?v=20261020b"></script>
 <script src="datos-2026.js?v=20261020b"></script>
 <script src="irpf-2026.js"></script>
 <script>

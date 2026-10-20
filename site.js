@@ -319,7 +319,7 @@ const RECORDAR={
     'despido-improcedente':{salario:'brutoAnual',inicio:'alta'}, 'despido-objetivo':{salario:'brutoAnual',inicio:'alta'},
     'ere':{salario:'brutoAnual',inicio:'alta'}, 'subida-ipc':{salario:'brutoAnual'}, 'sueldo-neto':{bruto:'brutoAnual'},
     'reduccion-jornada':{bruto:'brutoAnual'}, 'jubilacion':{sueldo:'brutoAnual'}, 'irpf':{ingresos:'brutoAnual'},
-    'finiquito':{salario:'brutoMes',fechaAlta:'alta'}, 'horas-extra':{salario:'brutoMes'}, 'vacaciones':{salario:'brutoMes'}
+    'finiquito':{salario:'brutoMes',fechaAlta:'alta'}, 'paro':{sueldoMes:'brutoMes'}, 'horas-extra':{salario:'brutoMes'}, 'vacaciones':{salario:'brutoMes'}
 };
 const leerDatos=()=>{try{return JSON.parse(localStorage.getItem('clt-datos'))||{}}catch(e){return {}}};   // puede fallar en modo privado
 const campos=RECORDAR[PAGINA], form=document.getElementById('calc');

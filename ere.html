@@ -24,7 +24,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#4F46E5">
     <link rel="canonical" href="https://calculalotuyo.es/ere">
-    <link rel="stylesheet" href="styles.min.css?v=20261020b">
+    <link rel="stylesheet" href="styles.min.css?v=20261020c">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -190,19 +190,19 @@
                 <form id="calc">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label" for="salario">Salario bruto anual (con pagas)</label>
+                            <label class="form-label" for="salario">Sueldo bruto al año (con las pagas extra)</label>
                             <input type="number" class="form-input" id="salario" placeholder="32000" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="inicio">Fecha inicio contrato</label>
+                            <label class="form-label" for="inicio">¿Cuándo empezaste en la empresa?</label>
                             <input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="inicio" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="ere">Fecha efectiva del ERE</label>
+                            <label class="form-label" for="ere">¿Qué día sales de la empresa?</label>
                             <input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="ere" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="diasAno">Días/año pactados en el ERE</label>
+                            <label class="form-label" for="diasAno">¿Cuántos días por año trabajado os pagan?</label>
                             <select class="form-select" id="diasAno">
                                 <option value="20">20 días (mínimo legal)</option>
                                 <option value="25">25 días</option>
@@ -214,8 +214,13 @@
                             </select>
                             <span class="form-hint">Consulta el acuerdo sindical de tu empresa</span>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="topeMeses">¿Hay tope de mensualidades?</label>
+                        
+                        
+                        
+                    </div>
+                    
+                    <details class="mas-opciones"><summary>Más opciones (si no las tocas, usamos lo habitual)</summary><div class="form-grid"><div class="form-group">
+                            <label class="form-label" for="topeMeses">¿Hay un máximo pactado?</label>
                             <select class="form-select" id="topeMeses">
                                 <option value="0">Sin tope pactado</option>
                                 <option value="12">12 mensualidades</option>
@@ -223,26 +228,22 @@
                                 <option value="24">24 mensualidades</option>
                                 <option value="36">36 mensualidades</option>
                             </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="edad">Edad del trabajador</label>
+                        </div><div class="form-group">
+                            <label class="form-label" for="edad">Tu edad</label>
                             <select class="form-select" id="edad">
                                 <option value="normal">Menor de 50 años</option>
                                 <option value="50">50-54 años</option>
                                 <option value="55">55 años o más</option>
                             </select>
                             <span class="form-hint">Mayores de 55 pueden tener mejoras</span>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="convenioSS">¿Incluye convenio especial SS?</label>
+                        </div><div class="form-group">
+                            <label class="form-label" for="convenioSS">¿La empresa te paga la Seguridad Social hasta jubilarte?</label>
                             <select class="form-select" id="convenioSS">
                                 <option value="no">No</option>
                                 <option value="si">Sí (la empresa paga SS hasta jubilación)</option>
                             </select>
-                        </div>
-                    </div>
-                    
-                    <div class="disclaimer-box">
+                        </div></div></details>
+<div class="disclaimer-box">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                         <p><strong>Importante:</strong> Las condiciones del ERE se negocian entre empresa y sindicatos. Consulta el acuerdo final antes de firmar.</p>
                     </div>
@@ -426,7 +427,7 @@
     </div>
 </footer>
 
-<script src="site.js?v=20261020a"></script>
+<script src="site.js?v=20261020b"></script>
 <script src="datos-2026.js?v=20261020b"></script>
 <script src="despido.js"></script>
 <script>

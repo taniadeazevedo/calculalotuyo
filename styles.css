@@ -4207,3 +4207,28 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
 .hero-mini .respuesta-corta { text-align: left; max-width: 720px; color: var(--text); }   /* en la cabecera los párrafos van centrados: esta caja, alineada a la izquierda */
 .result-actions { flex-wrap: wrap; }                                  /* con 3 botones, en móvil bajan de línea en vez de apretarse */
 .result-actions .btn-secondary, .result-actions .btn-wa, .result-actions .btn { flex: 1 1 140px; white-space: nowrap; }   /* cada botón, al menos 140 px y el texto en una línea */
+
+/* «Más opciones»: los campos poco usados, plegados (con su valor habitual ya puesto) */
+.mas-opciones { margin: 4px 0 18px; border: 1px dashed var(--border); border-radius: 12px; padding: 0 14px; }   /* recuadro discreto */
+.mas-opciones summary { cursor: pointer; padding: 12px 0; font-size: 0.9rem; font-weight: 600; color: var(--accent); list-style: none; }   /* el texto que se pulsa */
+.mas-opciones summary::-webkit-details-marker { display: none; }        /* sin el triángulo del navegador… */
+.mas-opciones summary::before { content: "＋ "; }                       /* …con un «+» */
+.mas-opciones[open] summary::before { content: "− "; }                  /* y un «−» al abrirlo */
+.mas-opciones[open] { padding-bottom: 14px; }
+
+/* 📱 En el móvil, el formulario se ve antes: cabecera de las calculadoras más compacta */
+@media (max-width: 640px) {
+    .hero-mini { padding-top: 76px; padding-bottom: 52px; }            /* lo justo para no quedar debajo del menú fijo (abajo, el hueco que tapa la tarjeta, que sube 40 px) */
+    .hero-mini .hero-badge { display: none; }                           /* la etiqueta de colores sobra en el móvil */
+    .hero-mini .breadcrumb { margin-bottom: 6px; }
+    .hero-mini h1 { margin-bottom: 8px; }
+    .hero-mini .container:has(.respuesta-corta) > p:not([class]) { display: none; }   /* si hay respuesta rápida, el texto de introducción sobra */
+    .hero-mini .respuesta-corta { font-size: 0.85rem; padding: 10px 12px; margin: 8px auto; }   /* respuesta rápida más compacta */
+    .hero-mini .hero-meta { font-size: 0.72rem; margin-top: 4px; }      /* «Revisado el…» pequeño */
+}
+
+/* Portada: guías y modelos en etiquetas (ocupan mucho menos que las tarjetas) */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.chips a { padding: 9px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--card); color: var(--text); text-decoration: none; font-size: 0.88rem; transition: border-color .15s; }   /* cada guía o modelo, una píldora */
+.chips a:hover { border-color: var(--accent); }
+.chips .chip-mas { color: var(--accent); font-weight: 600; border-color: transparent; background: none; }   /* «Ver todas…», como enlace */

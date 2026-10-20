@@ -40,6 +40,8 @@
 ## 🧭 Mejoras de uso (hecho el 20/10/2026)
 - [x] «Respuesta rápida» arriba de 18 calculadoras (`_herramientas/respuestas.py`: revisar las cifras en enero).
 - [x] «¿Y ahora qué?», botón «Guardar en PDF» y recordar el sueldo entre calculadoras (en `site.js`).
+- [x] Más fácil de usar: el paro pide el sueldo (no la base reguladora), «Más opciones» en 10 formularios y palabras normales (`_herramientas/formularios.py`), formulario más arriba en el móvil y portada un 32 % más corta.
+- [ ] 👩 Prueba con 3–5 personas que no sean del sector, en el móvil y sin ayudarlas: «te despiden tras 5 años cobrando 1.800 €, ¿cuánto te toca?» y «¿cuánto paro cobrarías?». Apunta dónde se atascan.
 
 ## 🗓️ Enero de 2027 (hay tarea programada el 11/01)
 - [ ] 🤖 Límites de la renta en `datos-2026.js` → `renta` (si cambian) y escala de rentas imputadas de 2027 si se convalida el RDL 29/2026.

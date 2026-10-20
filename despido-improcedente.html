@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#4F46E5">
-    <link rel="stylesheet" href="styles.min.css?v=20261020b">
+    <link rel="stylesheet" href="styles.min.css?v=20261020c">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -187,23 +187,23 @@
                 <form id="calc">
                     <div class="form-grid">
         <div class="form-group">
-            <label class="form-label" for="salario">Salario bruto anual (con pagas)</label>
+            <label class="form-label" for="salario">Sueldo bruto al año (con las pagas extra)</label>
             <input type="number" class="form-input" id="salario" placeholder="28000" required>
-            <span class="form-hint">Incluye pagas extra prorrateadas</span>
+            <span class="form-hint">Lo que cobras al año antes de descuentos</span>
         </div>
         <div class="form-group">
-            <label class="form-label" for="inicio">Fecha inicio contrato</label>
+            <label class="form-label" for="inicio">¿Cuándo empezaste en la empresa?</label>
             <input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="inicio" required>
         </div>
         <div class="form-group">
-            <label class="form-label" for="despido">Fecha despido</label>
+            <label class="form-label" for="despido">¿Qué día te despidieron?</label>
             <input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="despido" required>
         </div>
         <div class="form-group">
-            <label class="form-label" for="tipo">Tipo de contrato</label>
+            <label class="form-label" for="tipo">¿Empezaste antes del 12 de febrero de 2012?</label>
             <select class="form-select" id="tipo">
-                <option value="post">Desde 12/02/2012 (33 días/año)</option>
-                <option value="pre">Anterior 12/02/2012 (45+33 días)</option>
+                <option value="post">No (33 días por año)</option>
+                <option value="pre">Sí (45 días por año hasta 2012 y 33 después)</option>
             </select>
         </div>
     </div>
@@ -383,7 +383,7 @@
         </div>
     </div>
 </footer>
-<script src="site.js?v=20261020a"></script>
+<script src="site.js?v=20261020b"></script>
 <script src="datos-2026.js?v=20261020b"></script>
 <script src="despido.js"></script>
 <script>

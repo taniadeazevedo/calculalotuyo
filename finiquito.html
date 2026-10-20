@@ -24,7 +24,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#4F46E5">
     <link rel="canonical" href="https://calculalotuyo.es/finiquito">
-    <link rel="stylesheet" href="styles.min.css?v=20261020b">
+    <link rel="stylesheet" href="styles.min.css?v=20261020c">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -198,20 +198,20 @@
                 <form id="calc">
                     <div class="form-grid">
                         <div class="form-group">
-                            <label class="form-label" for="salario">Salario bruto mensual</label>
+                            <label class="form-label" for="salario">Sueldo bruto al mes</label>
                             <input type="number" class="form-input" id="salario" placeholder="1800" required>
                             <span class="form-hint">Sin incluir pagas extra</span>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="fechaAlta">Fecha de alta en la empresa</label>
+                            <label class="form-label" for="fechaAlta">¿Cuándo empezaste en la empresa?</label>
                             <input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="fechaAlta" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="fechaBaja">Fecha de baja (último día)</label>
+                            <label class="form-label" for="fechaBaja">¿Cuál es tu último día?</label>
                             <input type="date" min="1950-01-01" max="2099-12-31" class="form-input" id="fechaBaja" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="motivoBaja">Motivo de la baja</label>
+                            <label class="form-label" for="motivoBaja">¿Por qué te vas?</label>
                             <select class="form-select" id="motivoBaja">
                                 <option value="despido">Despido (improcedente/objetivo)</option>
                                 <option value="finContrato">Fin de contrato temporal</option>
@@ -219,31 +219,32 @@
                                 <option value="mutuo">Mutuo acuerdo</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="tipoPagas">Tipo de pagas extra</label>
-                            <select class="form-select" id="tipoPagas">
-                                <option value="14">14 pagas (2 extra: junio y diciembre)</option>
-                                <option value="12">12 pagas (prorrateadas)</option>
-                                <option value="15">15 pagas o más</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="diasVacAnuales">Días de vacaciones anuales</label>
-                            <input type="number" class="form-input" id="diasVacAnuales" value="30" min="22" max="45">
-                            <span class="form-hint">Mínimo legal: 30 días naturales (22 laborables)</span>
-                        </div>
+                        
+                        
                         <div class="form-group">
                             <label class="form-label" for="diasVacDisfrutados">Días de vacaciones ya disfrutados este año</label>
                             <input type="number" class="form-input" id="diasVacDisfrutados" value="0" min="0">
                         </div>
-                        <div class="form-group">
-                            <label class="form-label" for="irpf">Retención IRPF de tu nómina (%)</label>
-                            <input type="number" class="form-input" id="irpf" value="15" step="0.1" min="0" max="47">
-                            <span class="form-hint">Mira tu última nómina</span>
-                        </div>
+                        
                     </div>
                     
-                    <div class="disclaimer-box">
+                    <details class="mas-opciones"><summary>Más opciones (si no las tocas, usamos lo habitual)</summary><div class="form-grid"><div class="form-group">
+                            <label class="form-label" for="tipoPagas">¿Cuántas pagas cobras al año?</label>
+                            <select class="form-select" id="tipoPagas">
+                                <option value="14">14 pagas (2 extra: junio y diciembre)</option>
+                                <option value="12">12 pagas (las extra van incluidas cada mes)</option>
+                                <option value="15">15 pagas o más</option>
+                            </select>
+                        </div><div class="form-group">
+                            <label class="form-label" for="diasVacAnuales">Días de vacaciones al año</label>
+                            <input type="number" class="form-input" id="diasVacAnuales" value="30" min="22" max="45">
+                            <span class="form-hint">Mínimo legal: 30 días naturales (22 laborables)</span>
+                        </div><div class="form-group">
+                            <label class="form-label" for="irpf">% de IRPF que te quitan en la nómina</label>
+                            <input type="number" class="form-input" id="irpf" value="15" step="0.1" min="0" max="47">
+                            <span class="form-hint">Mira tu última nómina</span>
+                        </div></div></details>
+<div class="disclaimer-box">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                         <p><strong>Recuerda:</strong> El finiquito es <strong>independiente de la indemnización</strong> por despido. Te corresponde SIEMPRE que termines una relación laboral, incluso en baja voluntaria.</p>
                     </div>
@@ -610,7 +611,7 @@
     </div>
 </footer>
 
-<script src="site.js?v=20261020a"></script>
+<script src="site.js?v=20261020b"></script>
 <script src="datos-2026.js?v=20261020b"></script>
 <script>
 // Fecha por defecto

@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <meta name="theme-color" content="#4F46E5">
-    <link rel="stylesheet" href="styles.min.css?v=20261020b">
+    <link rel="stylesheet" href="styles.min.css?v=20261020c">
     <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -168,7 +168,7 @@
             <div class="hero-badge">📊 Desempleo 2026</div>
             <h1>¿Cuánto cobrarás de paro?<br>Calcula tu prestación exacta</h1>
             <p>Duración y cuantía según tu cotización. Incluye topes por hijos a cargo.</p>
-            <p class="respuesta-corta"><span>⚡ Respuesta rápida</span>Cobras el <strong>70 % de tu base reguladora los primeros 180 días y el 60 % después</strong>, entre 560 € y 1.225 € al mes sin hijos (2026). Con 1 año cotizado tienes 4 meses de paro; con 6 años, el máximo de 2 años.</p>
+            <p class="respuesta-corta"><span>⚡ Respuesta rápida</span>Cobras el <strong>70 % de lo que cotizabas (más o menos, tu sueldo bruto) los 6 primeros meses y el 60 % después</strong>, entre 560 € y 1.225 € al mes sin hijos (2026). Con 1 año cotizado tienes 4 meses de paro; con 6 años, el máximo de 2 años.</p>
             <p class="hero-meta">📅 Revisado el 15 de octubre de 2026 · ✍️ <a href="sobre-el-proyecto">CalculaLoTuyo</a></p>
         </div>
     </section>
@@ -179,25 +179,52 @@
                 <form id="calc">
                     <div class="form-grid">
         <div class="form-group">
-            <label class="form-label" for="base">Base reguladora diaria (€)</label>
-            <input type="number" class="form-input" id="base" placeholder="70" step="0.01" required>
-            <span class="form-hint">Suma bases cotización últimos 180 días ÷ 180</span>
+            <label class="form-label" for="sueldoMes">¿Cuánto cobrabas al mes, en bruto?</label>
+            <input type="number" class="form-input" id="sueldoMes" placeholder="1800" min="0" step="0.01">
+            <span class="form-hint">Lo que pone «Total devengado» en tu nómina, antes de descuentos</span>
         </div>
         <div class="form-group">
-            <label class="form-label" for="cotizados">Días cotizados (últimos 6 años)</label>
-            <input type="number" class="form-input" id="cotizados" placeholder="720" required>
-            <span class="form-hint">Mínimo 360 días para tener derecho</span>
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="hijos">Hijos a cargo</label>
-            <select class="form-select" id="hijos">
-                <option value="0">Sin hijos a cargo</option>
-                <option value="1">1 hijo a cargo</option>
-                <option value="2">2 o más hijos a cargo</option>
+            <label class="form-label" for="pagas">¿Cuántas pagas al año?</label>
+            <select class="form-select" id="pagas">
+                <option value="14">14 (dos pagas extra aparte)</option>
+                <option value="12">12 (las pagas extra van incluidas cada mes)</option>
             </select>
-            <span class="form-hint">Afecta a los topes máximo y mínimo</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="anios">¿Cuánto has trabajado en los últimos 6 años?</label>
+            <select class="form-select" id="anios">
+                <option value="0">Menos de 1 año</option>
+                <option value="1" selected>1 año</option><option value="2">2 años</option><option value="3">3 años</option>
+                <option value="4">4 años</option><option value="5">5 años</option><option value="6">6 años o más</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="meses">y meses</label>
+            <select class="form-select" id="meses">
+                <option value="0">0 meses</option><option value="3">3 meses</option><option value="6">6 meses</option><option value="9">9 meses</option>
+            </select>
+            <span class="form-hint">Cuenta todos los trabajos, aunque fueran en empresas distintas</span>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="hijos">Hijos a tu cargo</label>
+            <select class="form-select" id="hijos">
+                <option value="0">Ninguno</option>
+                <option value="1">1 hijo</option>
+                <option value="2">2 o más hijos</option>
+            </select>
+            <span class="form-hint">Cambia lo máximo y lo mínimo que puedes cobrar</span>
         </div>
     </div>
+                    <details class="mas-opciones">
+                        <summary>Más opciones: si sabes tu base reguladora</summary>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label" for="base">Base reguladora diaria (€)</label>
+                                <input type="number" class="form-input" id="base" placeholder="70" step="0.01">
+                                <span class="form-hint">Viene en la resolución del SEPE. Si la pones, se usa en vez del sueldo</span>
+                            </div>
+                        </div>
+                    </details>
                     <div class="disclaimer-box">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                         <p><strong>Aviso:</strong> Cálculo orientativo basado en normativa vigente. <strong>No sustituye el asesoramiento profesional</strong>.</p>
@@ -393,17 +420,21 @@
         </div>
     </div>
 </footer>
-<script src="site.js?v=20261020a"></script>
+<script src="site.js?v=20261020b"></script>
 <script src="datos-2026.js?v=20261020b"></script>
 <script>
 document.getElementById('calc').onsubmit=function(e){
     e.preventDefault();
-    const base=+document.getElementById('base').value;
-    const cotizados=+document.getElementById('cotizados').value;
-    const hijos=+document.getElementById('hijos').value;
+    const g=id=>document.getElementById(id);
+    const sueldo=+g('sueldoMes').value, pagas=+g('pagas').value;
+    // Base reguladora diaria: la que pongas en «Más opciones» o, si no, la que sale de tu sueldo
+    // (base de cotización al mes = sueldo + la parte de las pagas extra, con el tope de la base máxima; ÷ 30 días)
+    const base=+g('base').value||Math.min(sueldo*pagas/12,DATOS.cotizacion.baseMaximaMes)/30;
+    const cotizados=(+g('anios').value*12+(+g('meses').value))*30;   // tiempo trabajado en días (meses de 30 días, como el SEPE)
+    const hijos=+g('hijos').value;
     
-    if(!base||base<=0){mostrarError('Introduce tu base reguladora diaria');return}
-    if(cotizados<360){mostrarError('Necesitas mínimo 360 días cotizados');return}
+    if(!base||base<=0){mostrarError('Pon lo que cobrabas al mes en bruto');return}
+    if(cotizados<360){mostrarError('Necesitas haber trabajado al menos 1 año en los últimos 6 para cobrar el paro. Mira si te corresponde el subsidio');return}
     
     // Duración según días cotizados
     const P=DATOS.paro;                                   // cifras en datos-2026.js
@@ -435,7 +466,7 @@ document.getElementById('calc').onsubmit=function(e){
     document.getElementById('resultSub').textContent='Primeros 6 meses (70%). Luego '+fmt(paro60)+'/mes (60%)';
     document.getElementById('details').innerHTML=
         '<div class="result-item"><p class="result-item-label">Duración</p><p class="result-item-value">'+mesesDuracion+' meses</p></div>'+
-        '<div class="result-item"><p class="result-item-label">Base mensual</p><p class="result-item-value">'+fmt(baseM)+'</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Base reguladora al mes</p><p class="result-item-value">'+fmt(baseM)+'</p></div>'+
         '<div class="result-item"><p class="result-item-label">Tope máximo</p><p class="result-item-value">'+fmt(topeMax)+'</p></div>'+
         '<div class="result-item"><p class="result-item-label">Tope mínimo</p><p class="result-item-value">'+fmt(topeMin)+'</p></div>';
     document.getElementById('fiscalContent').innerHTML=
