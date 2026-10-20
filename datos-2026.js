@@ -91,6 +91,12 @@ const DATOS={
         perdidas:500                 // …siempre que las pérdidas patrimoniales sean de menos de 500 €
     },
 
+    // Premios de lotería (Ley 35/2006 del IRPF, disposición adicional 33.ª, comprobado en el BOE el 20/10/2026)
+    loteria:{
+        exento:40000,                // cada décimo, fracción o apuesta: los primeros 40.000 € no pagan (apartado 2)
+        tipo:20                      // el resto paga un 20 %, que te retienen al cobrar (apartados 4 y 6)
+    },
+
     // IPC interanual de diciembre de cada año (INE)
     ipc:{2022:5.7,2023:3.1,2024:2.8,2025:2.9}
 };

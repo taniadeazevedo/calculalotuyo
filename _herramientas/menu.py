@@ -11,23 +11,24 @@ FLECHA_M = FLECHA.replace('width="10" height="10"', 'width="12" height="12"')   
 GRUPOS = [
     ('💶 Sueldo y nómina', [('sueldo-neto', '🏦 Sueldo neto'), ('neto-a-bruto', '🔁 Neto a bruto'), ('irpf', '📑 Retención de IRPF'),
                            ('horas-extra', '⏰ Horas extra'), ('pagas-extra', '🎁 Pagas extra'), ('vacaciones', '🏖️ Vacaciones'),
-                           ('subida-ipc', '📈 Subida del IPC'), ('reduccion-jornada', '🕒 Reducción de jornada')]),
+                           ('subida-ipc', '📈 Subida del IPC'), ('reduccion-jornada', '🕒 Reducción de jornada'),
+                           ('sueldo-funcionario-2026', '🏛️ Sueldo de funcionarios')]),
     ('⚖️ Despido y paro', [('despido-improcedente', '⚖️ Despido improcedente'), ('despido-objetivo', '📋 Despido objetivo'),
                           ('ere', '📊 ERE / colectivo'), ('finiquito', '💵 Finiquito'), ('paro', '📊 Paro')]),
     ('🩺 Bajas y jubilación', [('baja-medica', '🩺 Baja médica'), ('jubilacion', '🌅 Jubilación')]),
     ('💼 Autónomos', [('cuota-autonomos', '💼 Cuota de autónomos'), ('facturas', '🧾 Facturas')]),
 ]
 CALENDARIO = [('calendario-laboral-2027', '📆 Calendario laboral 2027'), ('dias-laborables', '📅 Días laborables'), ('puentes-2027', '🗓️ Puentes 2027')]
-RENTA = 'obligado-a-declarar-renta'          # «Renta» es un enlace directo; cuando haya más páginas será un desplegable
+HACIENDA = [('obligado-a-declarar-renta', '🧾 ¿Tengo que hacer la renta?'), ('loteria-navidad-hacienda', '🎄 Lotería: cuánto se queda Hacienda')]
 
 # Sección de cada página según su nombre: la primera regla que encaja gana
 SECCION = [
-    ('renta', r'^(obligado-a-declarar-renta|renta-.*)$'),
+    ('hacienda', r'^(obligado-a-declarar-renta|renta-.*|loteria-.*)$'),
     ('guias', r'^guia.*$'),
     ('modelos', r'^modelo.*$'),
     ('calendario', r'^(calendario-laboral-2027.*|dias-laborables.*|puentes-2027|semana-santa-2027|trabajar-en-festivo)$'),
     ('calculadoras', r'^(' + '|'.join(p for _, ls in GRUPOS for p, _ in ls) +
-     r'|\d+-euros-brutos-en-netos|sueldo-bruto-a-neto-2026|paro-.*|tabla-paro-2026|cuanto-paro-me-corresponde|indemnizacion-despido-.*|tabla-indemnizacion-despido)$'),
+     r'|\d+-euros-brutos-en-netos|paga-extra-navidad-2026|sueldo-funcionario-2026|sueldo-bruto-a-neto-2026|paro-.*|tabla-paro-2026|cuanto-paro-me-corresponde|indemnizacion-despido-.*|tabla-indemnizacion-despido)$'),
 ]
 
 def menus(pag, raiz=''):
@@ -47,7 +48,12 @@ def menus(pag, raiz=''):
                     <a href="{h('./#calculadoras') if not raiz else '/#calculadoras'}" class="mega-todas">Ver todas las calculadoras →</a>
                 </div>
             </div>
-            <a href="{h(RENTA)}" class="nav-link{act('renta')}"{cur(RENTA)}>Renta</a>
+            <div class="nav-dropdown" data-dropdown>
+                <button class="nav-link{act('hacienda')}" data-dropdown-btn>Hacienda {FLECHA}</button>
+                <div class="nav-dropdown-menu">
+                    {''.join(f'<a href="{h(p)}"{cur(p)}>{x}</a>' for p, x in HACIENDA)}
+                </div>
+            </div>
             <a href="{h('guias')}" class="nav-link{act('guias')}"{cur('guias')}>Guías</a>
             <a href="{h('modelos')}" class="nav-link{act('modelos')}"{cur('modelos')}>Modelos</a>
             <div class="nav-dropdown nav-cal" data-dropdown>
@@ -66,8 +72,11 @@ def menus(pag, raiz=''):
     </div>''' for t, ls in GRUPOS)
     movil = f'''<nav class="mobile-nav" id="mobileNav">
     <p class="mobile-nav-grupo">Calculadoras</p>{grupos_m}
+    <div class="mobile-nav-section{abierto(HACIENDA)}">
+        <button class="mobile-nav-title" data-mobile-toggle>🏛️ Hacienda {FLECHA_M}</button>
+        <div class="mobile-nav-links">{''.join(f'<a href="{h(p)}" class="mobile-nav-link"{cur(p)}>{x}</a>' for p, x in HACIENDA)}</div>
+    </div>
     <div class="mobile-nav-section mobile-nav-sueltos">
-        <a href="{h(RENTA)}" class="mobile-nav-link"{cur(RENTA)}>🧾 Renta: ¿tengo que declarar?</a>
         <a href="{h('guias')}" class="mobile-nav-link"{cur('guias')}>📚 Guías</a>
         <a href="{h('modelos')}" class="mobile-nav-link"{cur('modelos')}>📄 Modelos gratis</a>
     </div>

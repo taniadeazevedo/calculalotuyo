@@ -10,7 +10,7 @@
 - [x] 👩 Decidir la revisión de ciudades → programada los días 1 y 15 de cada mes, a las 10:00, hasta enero (tarea «calculalotuyo-ciudades-fiestas-locales»).
 
 ## 📣 Conseguir enlaces y visitas (gratis)
-- [ ] 🤖 Preparar el correo para periodistas y blogs de finanzas con el informe (informe-sueldo-coste-empresa-2026).
+- [x] 🤖 Correo para periodistas y blogs de finanzas: borrador en `_herramientas/correo-prensa.md`.
 - [ ] 👩 Enviarlo.
 - [ ] 👩 Responder en Reddit (r/spain, r/askspain) y foros cuando la pregunta encaje, con el enlace exacto (pásame la pregunta y te escribo la respuesta).
 - [ ] 🤖 Imágenes para Pinterest de los modelos y del calendario 2027.
@@ -32,6 +32,15 @@
 - [ ] 🤖 Noviembre–febrero: calculadora «¿Me sale a pagar o a devolver?» (escala estatal + las 17 autonómicas, comprobadas en sus boletines) y convertir «Renta» del menú en desplegable.
 - [ ] 🤖 Marzo de 2027: fechas exactas de la campaña (las publica la Agencia Tributaria) y repaso de la página.
 
+## 🎄 Navidad (hecho el 20/10/2026)
+- [x] 🤖 `loteria-navidad-hacienda` (calculadora) y `paga-extra-navidad-2026`. Generador `_herramientas/navidad/gen-navidad.py`.
+- [ ] 🤖 Noviembre: comprobar los importes de los premios en el programa oficial de Loterías y Apuestas del Estado (ahora salen de prensa; el impuesto sí está comprobado en el BOE).
+- [ ] 🤖 Enero de 2027: adaptar la página de la lotería a El Niño (6 de enero) y cambiar la paga extra a 2027.
+
+## 🧭 Mejoras de uso (hecho el 20/10/2026)
+- [x] «Respuesta rápida» arriba de 18 calculadoras (`_herramientas/respuestas.py`: revisar las cifras en enero).
+- [x] «¿Y ahora qué?», botón «Guardar en PDF» y recordar el sueldo entre calculadoras (en `site.js`).
+
 ## 🗓️ Enero de 2027 (hay tarea programada el 11/01)
 - [ ] 🤖 Límites de la renta en `datos-2026.js` → `renta` (si cambian) y escala de rentas imputadas de 2027 si se convalida el RDL 29/2026.
 - [ ] 🤖 Cifras de 2027 en `datos-2026.js` (SMI, IPREM, cotizaciones, bases, pensión máxima) y `irpf-2026.js`.
@@ -40,7 +49,8 @@
 - [ ] 🤖 Hacerlo en los primeros días de enero: quien publica antes las cifras nuevas se lleva el tráfico.
 
 ## 🧱 Contenido nuevo (por orden de prioridad)
-- [ ] 🤖 «¿Cuánto cobra un/a…?» (enfermera, policía, profesor, bombero, médico…), con sueldos públicos oficiales.
+- [x] 🤖 `sueldo-funcionario-2026`: tablas oficiales de Hacienda por grupo (20/10/2026). Generador `_herramientas/funcionarios/`. En enero, con la tabla de 2027.
+- [ ] 🤖 «¿Cuánto cobra un/a…?» por profesión (policía, profesor, enfermera…): necesita las tablas oficiales de cada cuerpo o comunidad.
 - [ ] 🤖 Novedades 2027 (SMI 2027, pensiones 2027, cambios laborales), en diciembre y enero.
 - [ ] 🤖 Guías «Qué hacer si…» (me despiden, me quedo en paro, me pongo de baja, nace mi hijo).
 - [ ] 🤖 Tablas salariales por convenio (hostelería, comercio, limpieza, metal…): mucho tráfico, pero mucho mantenimiento.

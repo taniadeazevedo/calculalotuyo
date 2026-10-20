@@ -137,7 +137,7 @@ g('calc').onsubmit=function(e){{
 g('reset').onclick=()=>{{g('calc').reset();g('result').classList.remove('visible');window.scrollTo({{top:0,behavior:'smooth'}})}};
 }});
 </script>
-<script src="datos-2026.js?v=20261020a"></script>
+<script src="datos-2026.js?v=20261020b"></script>
 '''
 faqs = [
     ('¿A qué edad me puedo jubilar en 2027?', 'A los <strong>67 años</strong>, o a los <strong>65</strong> si tienes al menos <strong>38 años y 6 meses cotizados</strong>. En 2026 es a los 66 años y 10 meses, o a los 65 con 38 años y 3 meses cotizados.'),

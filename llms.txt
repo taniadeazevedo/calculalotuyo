@@ -12,6 +12,8 @@ Los resultados son orientativos y no sustituyen el asesoramiento de un abogado l
 - Paro: 70 % de la base reguladora los 180 primeros días y 60 % después. Máximo: 1.225 € al mes sin hijos, 1.400 € con un hijo, 1.575 € con dos o más. Mínimo: 560 € sin hijos, 749 € con hijos.
 - Duración del paro: 4 meses con 1 año cotizado, 8 meses con 2 años, máximo 24 meses con 6 años cotizados.
 - Renta de 2026 (se presenta en 2027): no hay que declarar con sueldos, paro o pensiones de hasta 22.000 € de un solo pagador, o 15.876 € con dos o más pagadores si del segundo y siguientes se cobraron más de 1.500 €. Autónomos y quien cobra el ingreso mínimo vital declaran siempre. Fuente: Ley 35/2006 del IRPF, art. 96.
+- Premios de lotería (Loterías y Apuestas del Estado, ONCE, Cruz Roja y loterías autonómicas): los primeros 40.000 € de cada décimo o apuesta están exentos y el resto paga un 20 % que se retiene al cobrar; no se incluyen en la renta. Del Gordo de Navidad (400.000 € por décimo) llegan 328.000 €. Fuente: Ley 35/2006 del IRPF, disposición adicional 33.ª.
+- Sueldo base de los funcionarios en 2026 (al mes, sin complementos): A1 1.387,24 €, A2 1.199,52 €, B 1.048,55 €, C1 900,63 €, C2 749,58 €, E 686,07 €. Subida de 2026: 1,5 % (+0,5 % si el IPC llega al 1,5 %). Fuente: Ministerio de Hacienda, Real Decreto-ley 14/2025.
 - Indemnización por despido: improcedente, 33 días de salario por año (máximo 24 mensualidades; 45 días por año hasta el 11/02/2012); objetivo o ERE, 20 días por año (máximo 12 mensualidades); fin de contrato temporal, 12 días por año.
 
 ## Calendario laboral 2027
@@ -30,6 +32,7 @@ Los resultados son orientativos y no sustituyen el asesoramiento de un abogado l
 - [Paro](https://calculalotuyo.es/paro): cuánto y durante cuánto tiempo.
 - [Baja médica](https://calculalotuyo.es/baja-medica), [reducción de jornada](https://calculalotuyo.es/reduccion-jornada), [horas extra](https://calculalotuyo.es/horas-extra), [pagas extra](https://calculalotuyo.es/pagas-extra), [vacaciones](https://calculalotuyo.es/vacaciones) y [subida del IPC](https://calculalotuyo.es/subida-ipc).
 - [¿Tengo que hacer la declaración de la renta?](https://calculalotuyo.es/obligado-a-declarar-renta): comprobador con los límites de la renta de 2026.
+- [Lotería de Navidad: cuánto se queda Hacienda](https://calculalotuyo.es/loteria-navidad-hacienda) y [paga extra de Navidad 2026](https://calculalotuyo.es/paga-extra-navidad-2026).
 - [Cuota de autónomos](https://calculalotuyo.es/cuota-autonomos) y [facturas](https://calculalotuyo.es/facturas).
 - [Días laborables entre dos fechas](https://calculalotuyo.es/dias-laborables) y [puentes 2027 por comunidad](https://calculalotuyo.es/puentes-2027).
 
@@ -40,6 +43,7 @@ Los resultados son orientativos y no sustituyen el asesoramiento de un abogado l
 - [Tabla de indemnización por despido](https://calculalotuyo.es/tabla-indemnizacion-despido), con páginas por antigüedad (por ejemplo, [despido con 5 años](https://calculalotuyo.es/indemnizacion-despido-5-anos)).
 - [Calendario laboral 2027](https://calculalotuyo.es/calendario-laboral-2027), con una página por comunidad autónoma (por ejemplo, [Madrid](https://calculalotuyo.es/calendario-laboral-2027-madrid)).
 - [Semana Santa 2027](https://calculalotuyo.es/semana-santa-2027), [días laborables 2027](https://calculalotuyo.es/dias-laborables-2027) y [trabajar un festivo](https://calculalotuyo.es/trabajar-en-festivo).
+- [Sueldo de un funcionario 2026](https://calculalotuyo.es/sueldo-funcionario-2026): tablas por grupo, trienios y complemento de destino.
 - [SMI 2026](https://calculalotuyo.es/smi-2026) e [IPREM 2026](https://calculalotuyo.es/iprem-2026).
 
 ## Guías

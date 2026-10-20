@@ -7,14 +7,14 @@ os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 # ---- 1) Imagen de cada sección: la primera regla que encaja gana
 SECCIONES = [
     ('og-calendario.png', r'^(dias-laborables|puentes-2027|calendario-laboral-2027.*|semana-santa-2027|dias-laborables-2027|trabajar-en-festivo)$'),
-    ('og-sueldo.png', r'^(sueldo-neto|irpf|neto-a-bruto|sueldo-bruto-a-neto-2026|\d+-euros-brutos-en-netos|guia-sueldo-neto|guia-nomina)$'),
+    ('og-sueldo.png', r'^(sueldo-neto|irpf|paga-extra-navidad-2026|sueldo-funcionario-2026|neto-a-bruto|sueldo-bruto-a-neto-2026|\d+-euros-brutos-en-netos|guia-sueldo-neto|guia-nomina)$'),
     ('og-paro.png', r'^(paro|guia-paro|tabla-paro-2026|paro-maximo-minimo-2026|cuanto-paro-me-corresponde|paro-con-\d+-euros)$'),
     ('og-despido.png', r'^(despido-improcedente|despido-objetivo|ere|guia-despido|guia-despido-disciplinario|tabla-indemnizacion-despido|indemnizacion-despido-\d+-anos)$'),
 ]
 # ---- 2) Calculadoras (las 16 laborales y las 2 del calendario)
 CALCULADORAS = ['despido-improcedente', 'despido-objetivo', 'ere', 'finiquito', 'paro', 'sueldo-neto', 'irpf', 'horas-extra',
                 'pagas-extra', 'vacaciones', 'subida-ipc', 'cuota-autonomos', 'facturas', 'baja-medica', 'reduccion-jornada',
-                'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion', 'obligado-a-declarar-renta']
+                'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion', 'obligado-a-declarar-renta', 'loteria-navidad-hacienda']
 
 cambiadas = 0
 for f in glob.glob('*.html'):

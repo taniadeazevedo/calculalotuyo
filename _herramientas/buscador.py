@@ -7,7 +7,7 @@ FUERA = {'404', 'gracias'}                              # páginas que no deben 
 def tipo(slug):
     """Categoría, icono y peso (las calculadoras salen antes que las páginas de detalle)."""
     calc = {'despido-improcedente', 'despido-objetivo', 'ere', 'finiquito', 'paro', 'sueldo-neto', 'irpf', 'horas-extra', 'pagas-extra',
-            'vacaciones', 'subida-ipc', 'cuota-autonomos', 'facturas', 'baja-medica', 'reduccion-jornada', 'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion', 'obligado-a-declarar-renta'}
+            'vacaciones', 'subida-ipc', 'cuota-autonomos', 'facturas', 'baja-medica', 'reduccion-jornada', 'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion', 'obligado-a-declarar-renta', 'loteria-navidad-hacienda'}
     if slug in calc: return 'Calculadora', '🧮', 3
     if slug.startswith('modelo'): return 'Modelo gratis', '📄', 2.2
     if slug.startswith('guia') or slug == 'guias': return 'Guía', '📚', 1.6

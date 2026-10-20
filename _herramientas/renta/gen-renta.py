@@ -150,7 +150,7 @@ g('calc').onsubmit=function(e){{
 g('reset').onclick=()=>{{g('calc').reset();['g-segundo','g-otrosimp','g-catastral','g-revisado'].forEach(i=>g(i).hidden=true);g('result').classList.remove('visible');window.scrollTo({{top:0,behavior:'smooth'}})}};
 }});
 </script>
-<script src="datos-2026.js?v=20261020a"></script>
+<script src="datos-2026.js?v=20261020b"></script>
 '''
 faqs = [
     ('¿Cuánto tienes que ganar para hacer la declaración de la renta?', 'Con un solo pagador, más de <strong>22.000 € brutos</strong> al año. Con dos o más pagadores, más de <strong>15.876 €</strong> si del segundo y siguientes cobraste más de 1.500 €. Son los límites de la renta de 2026, que se presenta en 2027.'),

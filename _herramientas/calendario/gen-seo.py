@@ -172,7 +172,7 @@ def pagina(slug, titulo, desc, keywords, miga, cuerpo, faqs, fuente):
     <section class="section"><div class="container"><div class="source-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><div><strong>Fuente:</strong><p>{fuente}</p></div></div></div></section>
 </main>
 '''
-    todo = head + nav + '<main>\n' + cuerpo + faq + '\n' + FOOT + '<script src="site.js?v=20261019c"></script>\n</body>\n</html>\n'
+    todo = head + nav + '<main>\n' + cuerpo + faq + '\n' + FOOT + '<script src="site.js?v=20261020a"></script>\n</body>\n</html>\n'
     todo = todo.replace(' de el ', ' del ').replace(' a el ', ' al ').replace('En 2027, la ', 'En 2027, la ').replace('>En 2027, el ', '>En 2027, el ')
     open(f'{slug}.html', 'w', encoding='utf-8').write(todo)
     return slug

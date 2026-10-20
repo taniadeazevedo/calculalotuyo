@@ -267,3 +267,82 @@ document.addEventListener('keydown',e=>{
     if(e.key==='/'&&!escribiendo){e.preventDefault();abrirBuscador()}          // tecla «/»: abre el buscador desde cualquier sitio
     if(e.key==='Escape')cerrarBuscador();                                      // Esc: lo cierra
 });
+
+// =====================================================================
+// DESPUÉS DEL RESULTADO: «¿Y ahora qué?», guardar en PDF y recordar datos
+// =====================================================================
+const PAGINA=location.pathname.split('/').pop().replace('.html','')||'index';   // nombre de la página («paro», «finiquito»…)
+
+// ---------- «¿Y ahora qué?»: el siguiente paso lógico después de cada calculadora ----------
+// [enlace, texto] · Se muestra debajo del resultado (dentro de #result, así solo se ve al calcular)
+const SIGUIENTE={
+    'despido-improcedente':[['paro','📊 ¿Cuánto paro vas a cobrar?'],['finiquito','💵 Calcula también tu finiquito'],['modelo-reclamacion-cantidades','📄 Modelo para reclamar lo que te deben']],
+    'despido-objetivo':[['paro','📊 ¿Cuánto paro vas a cobrar?'],['despido-improcedente','⚖️ ¿Y si el despido fuera improcedente?'],['finiquito','💵 Calcula también tu finiquito']],
+    'ere':[['paro','📊 ¿Cuánto paro vas a cobrar?'],['finiquito','💵 Calcula también tu finiquito'],['jubilacion','🌅 Si te queda poco, mira tu jubilación']],
+    'finiquito':[['paro','📊 ¿Te quedas en paro? Mira cuánto cobras'],['despido-improcedente','⚖️ Si te han despedido: tu indemnización'],['modelo-carta-baja-voluntaria','📄 Modelo de carta de baja voluntaria']],
+    'paro':[['tabla-paro-2026','📋 Tabla del paro según tu sueldo'],['cuanto-paro-me-corresponde','⏳ Cuánto tiempo de paro te corresponde'],['obligado-a-declarar-renta','🧾 Con paro y trabajo, ¿tienes que hacer la renta?']],
+    'sueldo-neto':[['pagas-extra','🎁 Calcula tus pagas extra'],['irpf','📑 Revisa tu retención de IRPF'],['obligado-a-declarar-renta','🧾 ¿Tienes que hacer la renta?']],
+    'irpf':[['sueldo-neto','🏦 Mira tu sueldo neto al mes'],['obligado-a-declarar-renta','🧾 ¿Tienes que hacer la renta?'],['neto-a-bruto','🔁 Qué bruto pedir para un neto']],
+    'neto-a-bruto':[['sueldo-neto','🏦 Comprueba el neto de ese bruto'],['sueldo-bruto-a-neto-2026','📋 Tabla de bruto a neto 2026'],['subida-ipc','📈 Cuánto debería subirte el sueldo']],
+    'horas-extra':[['sueldo-neto','🏦 Mira tu sueldo neto al mes'],['modelo-registro-jornada','📄 Plantilla de registro de jornada'],['guia-jornada','📚 Guía de jornada y horas extra']],
+    'pagas-extra':[['paga-extra-navidad-2026','🎄 Paga extra de Navidad 2026'],['sueldo-neto','🏦 Mira tu sueldo neto al mes'],['finiquito','💵 Si te vas: tu finiquito']],
+    'vacaciones':[['modelo-solicitud-vacaciones','📄 Modelo para pedir vacaciones'],['puentes-2027','🗓️ Puentes 2027: dónde te cunden más'],['finiquito','💵 Si te vas: vacaciones en el finiquito']],
+    'subida-ipc':[['sueldo-neto','🏦 Mira cuánto es en neto'],['neto-a-bruto','🔁 Qué bruto pedir para un neto'],['guia-nomina','📚 Guía para entender tu nómina']],
+    'baja-medica':[['guia-baja-medica','📚 Guía de la baja médica'],['sueldo-neto','🏦 Tu sueldo neto normal'],['finiquito','💵 Si te despiden estando de baja: finiquito']],
+    'reduccion-jornada':[['modelo-solicitud-reduccion-jornada','📄 Modelo para pedir la reducción'],['modelo-adaptacion-jornada','📄 Modelo para adaptar tu horario'],['guia-nacimiento','📚 Guía de nacimiento y cuidado']],
+    'jubilacion':[['sueldo-neto','🏦 Tu sueldo neto actual'],['paro','📊 Si te quedas sin trabajo antes: el paro'],['obligado-a-declarar-renta','🧾 Con pensión, ¿tienes que hacer la renta?']],
+    'cuota-autonomos':[['facturas','🧾 Calcula tus facturas con IVA e IRPF'],['modelo-factura-autonomo','📄 Plantilla de factura gratis'],['guia-autonomos','📚 Guía para autónomos']],
+    'facturas':[['modelo-factura-autonomo','📄 Plantilla de factura gratis'],['cuota-autonomos','💼 Tu cuota de autónomos'],['modelo-presupuesto-autonomo','📄 Plantilla de presupuesto']],
+    'obligado-a-declarar-renta':[['irpf','📑 Revisa tu retención de IRPF'],['loteria-navidad-hacienda','🎄 Lotería: cuánto se queda Hacienda'],['sueldo-neto','🏦 Tu sueldo neto']],
+    'loteria-navidad-hacienda':[['obligado-a-declarar-renta','🧾 ¿Tienes que hacer la renta?'],['paga-extra-navidad-2026','🎁 Paga extra de Navidad 2026'],['puentes-2027','🗓️ Puentes 2027 para gastarlo']]
+};
+const resultado=document.getElementById('result');
+if(resultado&&SIGUIENTE[PAGINA]){
+    const caja=document.createElement('div');
+    caja.className='siguiente';
+    caja.innerHTML='<p class="siguiente-titulo">👉 ¿Y ahora qué?</p>'+SIGUIENTE[PAGINA].map(([h,t])=>'<a href="'+h+'">'+t+'</a>').join('');
+    resultado.appendChild(caja);                       // queda dentro del resultado: solo se ve después de calcular
+}
+
+// ---------- Guardar el resultado en PDF (usa «Imprimir» del navegador → «Guardar como PDF») ----------
+const acciones=resultado&&resultado.querySelector('.result-actions');
+if(acciones){
+    const b=document.createElement('button');
+    b.type='button'; b.className='btn-secondary btn-pdf'; b.textContent='🖨️ Guardar en PDF';
+    b.addEventListener('click',()=>window.print());    // la hoja de estilos de impresión deja solo el resultado
+    acciones.insertBefore(b,acciones.querySelector('.btn-wa'));   // entre «Nueva consulta» y «WhatsApp»
+}
+
+// ---------- Recordar tus datos entre calculadoras (solo en este navegador, nunca se envían) ----------
+// Página → {campo: dato guardado}. «brutoAnual» y «brutoMes» se comparten entre calculadoras distintas.
+const RECORDAR={
+    'despido-improcedente':{salario:'brutoAnual',inicio:'alta'}, 'despido-objetivo':{salario:'brutoAnual',inicio:'alta'},
+    'ere':{salario:'brutoAnual',inicio:'alta'}, 'subida-ipc':{salario:'brutoAnual'}, 'sueldo-neto':{bruto:'brutoAnual'},
+    'reduccion-jornada':{bruto:'brutoAnual'}, 'jubilacion':{sueldo:'brutoAnual'}, 'irpf':{ingresos:'brutoAnual'},
+    'finiquito':{salario:'brutoMes',fechaAlta:'alta'}, 'horas-extra':{salario:'brutoMes'}, 'vacaciones':{salario:'brutoMes'}
+};
+const leerDatos=()=>{try{return JSON.parse(localStorage.getItem('clt-datos'))||{}}catch(e){return {}}};   // puede fallar en modo privado
+const campos=RECORDAR[PAGINA], form=document.getElementById('calc');
+if(campos&&form){
+    const guardado=leerDatos(); let rellenados=0;
+    Object.entries(campos).forEach(([id,clave])=>{
+        const el=document.getElementById(id);
+        if(el&&!el.value&&guardado[clave]){el.value=guardado[clave];rellenados++}   // solo rellena campos vacíos
+    });
+    if(rellenados){                                    // avisa y deja borrarlo
+        const aviso=document.createElement('p');
+        aviso.className='aviso-recordado';
+        aviso.innerHTML='✨ Hemos rellenado algunos datos con lo que pusiste en otra calculadora (solo se guarda en este dispositivo). <button type="button">Borrar mis datos</button>';
+        aviso.querySelector('button').addEventListener('click',()=>{
+            try{localStorage.removeItem('clt-datos')}catch(e){}
+            Object.keys(campos).forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});
+            aviso.remove();
+        });
+        form.insertBefore(aviso,form.firstChild);
+    }
+    form.addEventListener('submit',()=>{                // al calcular, guarda lo que has puesto
+        const datos=leerDatos();
+        Object.entries(campos).forEach(([id,clave])=>{const el=document.getElementById(id);if(el&&el.value)datos[clave]=el.value});
+        try{localStorage.setItem('clt-datos',JSON.stringify(datos))}catch(e){}
+    });
+}

@@ -4181,3 +4181,29 @@ body.tema-calendario { --accent: #0F766E; --accent-h: #115E59; }   /* botones, e
 .mobile-nav-sueltos { padding: 8px 0; }                                  /* Renta, Guías y Modelos: enlaces directos */
 .mobile-nav-sueltos .mobile-nav-link { padding: 14px 8px; font-weight: 600; color: var(--text); }   /* con el mismo peso que los títulos de grupo */
 .nav-mega .nav-dropdown-menu a { white-space: nowrap; }                    /* «Despido improcedente» en una sola línea */
+
+/* ⚡ Respuesta rápida arriba de cada calculadora (la frase que citan Google y las IAs) */
+.respuesta-corta { max-width: 720px; margin: 18px auto 14px; padding: 14px 18px; background: var(--card); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: 12px; text-align: left; font-size: 0.95rem; line-height: 1.55; color: var(--text); }   /* caja blanca con raya de color a la izquierda */
+.respuesta-corta span { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }   /* etiqueta «RESPUESTA RÁPIDA» */
+
+/* 👉 «¿Y ahora qué?» debajo del resultado */
+.siguiente { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); display: grid; gap: 8px; }   /* enlaces en lista */
+.siguiente-titulo { font-weight: 700; color: var(--text); margin: 0 0 4px; }
+.siguiente a { display: block; padding: 12px 14px; border: 1px solid var(--border); border-radius: 10px; color: var(--text); text-decoration: none; font-weight: 500; background: var(--card); transition: border-color .15s, background .15s; }   /* cada paso, como un botón suave */
+.siguiente a:hover { border-color: var(--accent); background: var(--bg); }
+.aviso-recordado { font-size: 0.82rem; color: var(--text2); background: var(--bg); border-radius: 8px; padding: 8px 12px; margin: 0 0 14px; }   /* «Hemos rellenado algunos datos…» */
+.aviso-recordado button { background: none; border: none; color: var(--accent); text-decoration: underline; cursor: pointer; font: inherit; padding: 0; }   /* «Borrar mis datos» como enlace */
+
+/* 🖨️ Al imprimir o guardar en PDF: solo el resultado */
+@media print {
+    .header, .mobile-nav, footer, .footer, .ad, .hero-mini, form, #calc, .seo-section, .section, .faq-list, .result-actions, .siguiente, .breadcrumb, .busca-modal { display: none !important; }   /* fuera todo lo que no es el resultado */
+    body { background: #fff !important; }
+    .calc-section { padding: 0 !important; }
+    .card { box-shadow: none !important; border: none !important; }
+    .result { display: block !important; opacity: 1 !important; }
+    .result-hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }   /* que el recuadro de color salga también en papel */
+    .calc-section::before { content: "CalculaLoTuyo · resultado orientativo, calculado con las cifras oficiales de 2026"; display: block; font-size: 12px; color: #6B7280; margin-bottom: 12px; }   /* cabecera del PDF */
+}
+.hero-mini .respuesta-corta { text-align: left; max-width: 720px; color: var(--text); }   /* en la cabecera los párrafos van centrados: esta caja, alineada a la izquierda */
+.result-actions { flex-wrap: wrap; }                                  /* con 3 botones, en móvil bajan de línea en vez de apretarse */
+.result-actions .btn-secondary, .result-actions .btn-wa, .result-actions .btn { flex: 1 1 140px; white-space: nowrap; }   /* cada botón, al menos 140 px y el texto en una línea */
