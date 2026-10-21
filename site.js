@@ -404,8 +404,9 @@ async function compartirImagen(){
     ctx.fillStyle=g; ctx.fillRect(0,0,T,T);
     ctx.fillStyle='rgba(255,255,255,0.08)'; ctx.beginPath(); ctx.arc(T*0.9,T*0.1,260,0,7); ctx.fill();   // círculo decorativo
     // Marca arriba
-    ctx.fillStyle='#fff'; ctx.font='700 46px '+fuente; ctx.textBaseline='top';
-    ctx.fillText('CalculaLoTuyo',80,80);
+    ctx.textBaseline='top';
+    try{const logo=new Image(); logo.src='/favicon.svg?v=2'; await logo.decode(); ctx.drawImage(logo,80,70,72,72)}catch(e){}   // el logo, si carga
+    ctx.fillStyle='#fff'; ctx.font='700 46px '+fuente; ctx.fillText('CalculaLoTuyo',172,82);
     // Qué se ha calculado: el título de la página sin «Calculadora…» ni lo que va tras los dos puntos
     const tema=limpio(document.title.split(/[:|]/)[0].replace(/^Calculadora (del |de |de la )?/i,''));
     const etiqueta=limpio((document.querySelector('#result .result-label')||{}).textContent);

@@ -16,12 +16,15 @@ CALCULADORAS = ['despido-improcedente', 'despido-objetivo', 'ere', 'finiquito', 
                 'pagas-extra', 'vacaciones', 'subida-ipc', 'cuota-autonomos', 'facturas', 'baja-medica', 'reduccion-jornada',
                 'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion', 'obligado-a-declarar-renta', 'loteria-navidad-hacienda']
 
+VERSION_OG = 2                                  # súbelo cuando cambien las imágenes para compartir (logo nuevo: 2, 21/10/2026)
 cambiadas = 0
 for f in glob.glob('*.html'):
     nombre = f[:-5]
     s = o = open(f, encoding='utf-8').read()
     img = next((i for i, patron in SECCIONES if re.match(patron, nombre)), 'og-image.png')
-    s = re.sub(r'(https://calculalotuyo\.es/)og-[a-z]+\.png', rf'\g<1>{img}', s)      # og:image y twitter:image
+    s = re.sub(r'(https://calculalotuyo\.es/)og-[a-z]+\.png(?:\?v=\d+)?', rf'\g<1>{img}?v={VERSION_OG}', s)      # og:image y twitter:image (con ?v=: al cambiar la imagen, WhatsApp y las redes la vuelven a bajar)
+    s = re.sub(r'logo-512\.png(?:\?v=\d+)?', f'logo-512.png?v={VERSION_OG}', s)   # logo de los datos para Google
+    s = re.sub(r'(favicon\.svg|favicon-32\.png|apple-touch-icon\.png)(?:\?v=\d+)?"', rf'\1?v={VERSION_OG}"', s)   # el logo de la pestaña, del móvil y de la cabecera: que no se quede el antiguo guardado
     if nombre in CALCULADORAS and '"WebApplication"' not in s:
         titulo = H.unescape(re.search(r'<title>(.*?)</title>', s).group(1))
         desc = H.unescape(re.search(r'name="description" content="(.*?)"', s).group(1))
