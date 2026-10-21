@@ -12,7 +12,7 @@
 ## ✉️ Correo profesional (21/10/2026)
 - [x] 👩 Strato → Correo electrónico → crear la redirección de **contacto@calculalotuyo.es** a tu Gmail (el dominio ya usa el correo de Strato). Probar enviando un correo de prueba.
 - [x] 🤖 Publicada la web con contacto@calculalotuyo.es (contacto, privacidad y aviso legal), el 21/10/2026.
-- [ ] 👩 Después: enviar una vez el formulario de contacto y confirmar el correo de activación de FormSubmit que llegará a contacto@.
+- [x] 👩 Formulario de contacto activado con contacto@ (FormSubmit) y redirección de Strato a Gmail funcionando (filtro «Desviar a» + «Mantener»; submissions@formsubmit.co en remitentes seguros). Ojo: lo que te envías desde tu propio Gmail no se ve en la bandeja de entrada.
 - [ ] 👩 Opcional: en Gmail → Configuración → Cuentas → «Enviar como» contacto@calculalotuyo.es, para responder desde esa dirección (necesita el servidor SMTP de Strato).
 
 ## 📣 Conseguir enlaces y visitas (gratis)
