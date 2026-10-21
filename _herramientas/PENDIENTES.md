@@ -47,6 +47,8 @@
 - [x] «Respuesta rápida» arriba de 18 calculadoras (`_herramientas/respuestas.py`: revisar las cifras en enero).
 - [x] «¿Y ahora qué?», botón «Guardar en PDF» y recordar el sueldo entre calculadoras (en `site.js`).
 - [x] Más fácil de usar: el paro pide el sueldo (no la base reguladora), «Más opciones» en 10 formularios y palabras normales (`_herramientas/formularios.py`), formulario más arriba en el móvil y portada un 32 % más corta.
+- [x] Iconos propios en vez de emojis (`_herramientas/iconos.py` + `iconos.svg`), página `como-calculamos`, informe con marcado Dataset (licencia CC BY 4.0) y botón «Compartir imagen» en los resultados (21/10/2026).
+- [x] Pruebas automáticas: `node _herramientas/pruebas/pruebas.js` (las lanza regenerar.sh). 10 casos calculados a mano + 17 «fotos». En enero, tras cambiar las cifras, las fotos avisarán: revisar cada cambio y, si está bien, `node _herramientas/pruebas/pruebas.js --foto`.
 - [ ] 👩 Prueba con 3–5 personas que no sean del sector, en el móvil y sin ayudarlas: «te despiden tras 5 años cobrando 1.800 €, ¿cuánto te toca?» y «¿cuánto paro cobrarías?». Apunta dónde se atascan.
 
 ## ⚡ Velocidad (21/10/2026)

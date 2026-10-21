@@ -65,7 +65,7 @@ cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}
 <li>Calculado con el mismo motor que nuestra <a href="sueldo-neto">calculadora de sueldo neto</a>. Puedes ver cada sueldo en detalle en la <a href="sueldo-bruto-a-neto-2026">tabla de sueldo bruto a neto</a>.</li>
 </ul>
 <h2>📰 Cómo citar este informe</h2>
-<div class="aviso-ccaa">Puedes usar estos datos y gráficos libremente citando la fuente con un enlace:<br><strong>{cita}</strong></div>
+<div class="aviso-ccaa">Puedes usar estos datos y gráficos libremente citando la fuente con un enlace (licencia <a href="https://creativecommons.org/licenses/by/4.0/deed.es" target="_blank" rel="noopener">CC BY 4.0</a>):<br><strong>{cita}</strong></div>
 <p>Si eres periodista y necesitas otro cálculo (otro sueldo, con hijos, con contrato temporal…), escríbenos desde la página de <a href="contacto">contacto</a>.</p>
 </article></div></section>
 '''
@@ -77,4 +77,14 @@ pagina(SLUG, 'Informe 2026: lo que cuesta un trabajador y lo que cobra',
        'coste empresa trabajador 2026, cuánto cuesta un trabajador a la empresa, cuña fiscal España, cotizaciones empresa 2026, informe sueldo neto',
        [('Informe 2026', None)], cuerpo, faqs,
        'Cálculo propio de CalculaLoTuyo con las cifras oficiales de 2026: Orden PJC/297/2026 (cotizaciones) y algoritmo de retenciones de la Agencia Tributaria.', 'Nómina')
+# Marcado «Dataset»: Google sabe que el CSV son datos citables (sale en Google Dataset Search)
+ld_datos = json.dumps({'@context': 'https://schema.org', '@type': 'Dataset', 'name': 'Coste de un trabajador para la empresa y sueldo neto por salario bruto (España, 2026)',
+    'description': f'Para cada sueldo bruto anual de {e(SMI)} € a 60.000 €: coste para la empresa, cotizaciones de empresa y trabajador, retención de IRPF, neto anual y porcentaje del coste que llega al trabajador. Cálculo con las cifras oficiales de 2026.',
+    'url': f'https://calculalotuyo.es/{SLUG}', 'keywords': ['sueldo neto', 'coste empresa', 'cotizaciones', 'IRPF', 'España', '2026'],
+    'license': 'https://creativecommons.org/licenses/by/4.0/', 'isAccessibleForFree': True, 'inLanguage': 'es-ES',
+    'temporalCoverage': '2026', 'spatialCoverage': {'@type': 'Place', 'name': 'España'},
+    'creator': {'@type': 'Organization', 'name': 'CalculaLoTuyo', 'url': 'https://calculalotuyo.es/'},
+    'distribution': [{'@type': 'DataDownload', 'encodingFormat': 'text/csv', 'contentUrl': 'https://calculalotuyo.es/datos/sueldo-coste-empresa-2026.csv'}]}, ensure_ascii=False, indent=1)
+ruta = os.path.join(RAIZ, SLUG + '.html'); html = open(ruta, encoding='utf-8').read()
+open(ruta, 'w', encoding='utf-8').write(html.replace('</head>', f'    <script type="application/ld+json">\n{ld_datos}\n    </script>\n</head>', 1))
 print('creado:', SLUG, '· neto/coste 30.000 =', round(f30['pct_neto'], 1))

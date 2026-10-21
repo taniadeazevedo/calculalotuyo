@@ -350,3 +350,90 @@ if(campos&&form){
         try{localStorage.setItem('clt-datos',JSON.stringify(datos))}catch(e){}
     });
 }
+
+// ---------- Iconos propios en vez de emojis ----------
+// El HTML ya llega con iconos (lo hace _herramientas/iconos.py). Esto cambia los emojis que el JavaScript
+// pinta después (resultados, buscador, «¿Y ahora qué?»), con el mismo mapa emoji → icono.
+// ICONOS-INICIO (lo escribe _herramientas/iconos.py: no tocar a mano)
+const ICONOS={"📅":"calendar","📆":"calendar-days","🗓️":"calendar-range","📊":"chart-column","⚖️":"scale","💼":"briefcase","🧾":"receipt","🩺":"stethoscope","🏛️":"landmark","🏖️":"tree-palm","💶":"euro","📋":"clipboard-list","🏦":"wallet","💵":"banknote","🕒":"clock","📑":"file-text","⏰":"alarm-clock","🎁":"gift","📈":"trending-up","🔁":"repeat","🎄":"tree-pine","🌅":"sunset","📚":"library","📄":"file-text","✍️":"pen-line","❓":"circle-help","❔":"circle-help","🧮":"calculator","✅":"circle-check","📝":"pencil-line","🎉":"party-popper","⏱️":"timer","🔄":"rotate-ccw","⚠️":"triangle-alert","📱":"smartphone","💡":"lightbulb","🔗":"link","🗺️":"map","📖":"book-open","⚡":"zap","🚪":"door-open","✉️":"mail","🤝":"handshake","⏸️":"circle-pause","📕":"file-down","👀":"eye","💰":"piggy-bank","⏳":"hourglass","📉":"trending-down","🏙️":"building-2","📜":"scroll-text","📌":"pin","💻":"laptop","🔍":"search","🔎":"search","🎨":"palette","👥":"users","📬":"mailbox","📍":"map-pin","📰":"newspaper","🥇":"medal","🥈":"medal","🥉":"medal","🔧":"wrench","😟":"frown","👋":"hand","⏩":"fast-forward","☀️":"sun","🛋️":"sofa","🏢":"building","🔢":"hash","📏":"ruler","🛡️":"shield-check","🏨":"hotel","🎯":"target","🔒":"lock","⚙️":"settings","✈️":"plane","📥":"download","🔑":"key-round","🧪":"flask-conical","🎟️":"ticket","⬆️":"arrow-up","➕":"plus","➖":"minus","👶":"baby","👧":"user","👦":"user","👩":"user","👨":"user","👨‍👩‍👧":"users","👩‍👧‍👦":"users","👨‍🔧":"user","👩‍🍳":"user","👩‍💼":"user","👨‍💼":"user","👩‍💻":"user","👨‍💻":"user","👩‍⚕️":"user","👨‍⚕️":"user","🎓":"graduation-cap","🏠":"house","🚗":"car","🍼":"baby","💳":"credit-card","📞":"phone","🌍":"globe","❌":"circle-x","⭐":"star","🔔":"bell","📦":"package","🖨️":"printer","✨":"sparkles","👉":"arrow-right","🏥":"hospital","💊":"pill","🤒":"thermometer","🏗️":"hard-hat","🛒":"shopping-cart","🍽️":"utensils","📧":"mail","🗂️":"folder-open","🧭":"compass","🧑":"user","👤":"user","👩‍🎨":"user","🖼️":"image"};
+// ICONOS-FIN
+const EMOJI_RE=/(?:[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{231A}-\u{23FF}]\u{FE0F}?)(?:\u{200D}[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]\u{FE0F}?)*/gu;
+function iconizar(raiz){
+    const nodos=[], recorrido=document.createTreeWalker(raiz,NodeFilter.SHOW_TEXT,{
+        acceptNode:n=>n.parentElement&&n.parentElement.closest('script,style,option,textarea,select')?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});
+    const hay=new RegExp(EMOJI_RE.source,'u');            // copia sin «g»: con «g», test() recuerda la posición y falla a saltos
+    while(recorrido.nextNode())if(hay.test(recorrido.currentNode.nodeValue))nodos.push(recorrido.currentNode);
+    nodos.forEach(n=>{                                    // cada texto con emojis se parte en texto + iconos
+        EMOJI_RE.lastIndex=0;
+        const html=n.nodeValue.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])).replace(EMOJI_RE,e=>{
+            const nombre=ICONOS[e]||ICONOS[e.replace(/️/g,'')]||ICONOS[e+'️'];
+            return nombre?'<svg class="ico" aria-hidden="true"><use href="/iconos.svg#i-'+nombre+'"/></svg>':e;
+        });
+        if(!html.includes('<svg'))return;                // ningún emoji con icono (p. ej. «♥»): no se toca, o se repetiría sin fin
+        const t=document.createElement('template'); t.innerHTML=html; n.replaceWith(t.content);
+    });
+}
+if(typeof ICONOS!=='undefined'&&'MutationObserver' in window){
+    new MutationObserver(cambios=>cambios.forEach(c=>{
+        c.addedNodes.forEach(n=>{if(n.nodeType===1)iconizar(n);else if(n.nodeType===3&&n.parentElement)iconizar(n.parentElement)});
+        if(c.type==='characterData'&&c.target.parentElement)iconizar(c.target.parentElement);
+    })).observe(document.body,{childList:true,subtree:true,characterData:true});
+    iconizar(document.body);                              // por si quedó alguno en la página
+}
+
+// ---------- Compartir el resultado como imagen (tarjeta con el logo para WhatsApp o Instagram) ----------
+// Se dibuja en el móvil de cada uno (canvas): no se envía nada a ningún servidor.
+if(acciones&&document.getElementById('total')){
+    const b=document.createElement('button');
+    b.type='button'; b.className='btn-secondary btn-imagen'; b.textContent='🖼️ Compartir imagen';
+    b.addEventListener('click',compartirImagen);
+    acciones.insertBefore(b,acciones.querySelector('.btn-wa'));
+}
+// Parte un texto en líneas que quepan en «ancho» píxeles
+function lineas(ctx,texto,ancho){
+    const palabras=texto.split(' '),res=[];let l='';
+    palabras.forEach(p=>{const prueba=l?l+' '+p:p;if(ctx.measureText(prueba).width>ancho&&l){res.push(l);l=p}else l=prueba});
+    if(l)res.push(l);return res;
+}
+async function compartirImagen(){
+    const T=1080, c=document.createElement('canvas'); c.width=c.height=T;
+    const ctx=c.getContext('2d'), fuente='-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif';
+    const limpio=t=>(t||'').replace(EMOJI_RE,'').replace(/\s+/g,' ').trim();   // sin emojis (en la imagen no se ven bien)
+    // Fondo: el mismo degradado morado que el recuadro del resultado
+    const g=ctx.createLinearGradient(0,0,T,T); g.addColorStop(0,'#312E81'); g.addColorStop(1,'#6D28D9');
+    ctx.fillStyle=g; ctx.fillRect(0,0,T,T);
+    ctx.fillStyle='rgba(255,255,255,0.08)'; ctx.beginPath(); ctx.arc(T*0.9,T*0.1,260,0,7); ctx.fill();   // círculo decorativo
+    // Marca arriba
+    ctx.fillStyle='#fff'; ctx.font='700 46px '+fuente; ctx.textBaseline='top';
+    ctx.fillText('CalculaLoTuyo',80,80);
+    // Qué se ha calculado: el título de la página sin «Calculadora…» ni lo que va tras los dos puntos
+    const tema=limpio(document.title.split(/[:|]/)[0].replace(/^Calculadora (del |de |de la )?/i,''));
+    const etiqueta=limpio((document.querySelector('#result .result-label')||{}).textContent);
+    const total=limpio(document.getElementById('total').textContent);
+    const sub=limpio((document.getElementById('resultSub')||{}).textContent);
+    // Medidas de cada bloque, para centrarlos en el hueco entre la marca y el pie
+    ctx.font='700 58px '+fuente; const lTema=lineas(ctx,tema.charAt(0).toUpperCase()+tema.slice(1),T-160).slice(0,2);
+    let tam=170; ctx.font='800 '+tam+'px '+fuente;
+    while(ctx.measureText(total).width>T-160&&tam>60){tam-=8;ctx.font='800 '+tam+'px '+fuente}   // que la cifra quepa en una línea
+    ctx.font='500 40px '+fuente; const lSub=lineas(ctx,sub,T-160).slice(0,3);
+    const alto=lTema.length*72+40+(etiqueta?60:0)+tam+30+lSub.length*54;
+    let y=180+(T-170-180-alto)/2;
+    ctx.fillStyle='#fff'; ctx.font='700 58px '+fuente; lTema.forEach(l=>{ctx.fillText(l,80,y);y+=72}); y+=40;
+    if(etiqueta){ctx.fillStyle='rgba(255,255,255,0.7)';ctx.font='600 34px '+fuente;ctx.fillText(etiqueta.toUpperCase(),80,y);y+=60}
+    ctx.fillStyle='#fff'; ctx.font='800 '+tam+'px '+fuente; ctx.fillText(total,80,y); y+=tam+30;
+    ctx.fillStyle='rgba(255,255,255,0.85)'; ctx.font='500 40px '+fuente; lSub.forEach(l=>{ctx.fillText(l,80,y);y+=54});
+    // Pie: dónde calcularlo
+    ctx.fillStyle='rgba(255,255,255,0.15)'; ctx.fillRect(0,T-170,T,170);
+    ctx.fillStyle='#fff'; ctx.font='600 40px '+fuente;
+    ctx.fillText('Calcula el tuyo gratis en',80,T-140);
+    ctx.font='800 44px '+fuente; ctx.fillText('calculalotuyo.es/'+PAGINA,80,T-88);
+    // Compartir (móvil) o descargar (ordenador)
+    const blob=await new Promise(r=>c.toBlob(r,'image/png'));
+    const archivo=new File([blob],'calculalotuyo-'+PAGINA+'.png',{type:'image/png'});
+    if(navigator.canShare&&navigator.canShare({files:[archivo]})){
+        try{await navigator.share({files:[archivo],text:'Calculado en https://calculalotuyo.es/'+PAGINA})}catch(e){}   // si cancela, no pasa nada
+    }else{
+        const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=archivo.name; a.click();
+        setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+    }
+}

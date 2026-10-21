@@ -94,6 +94,11 @@ for f in sorted(glob.glob('*.html')):
     nav, movil = menus(pag, '/' if pag == '404' else '')
     s = re.sub(r'<nav class="nav">.*?</nav>', lambda m: nav, s, count=1, flags=re.S)                               # menú de ordenador
     s = re.sub(r'<nav class="mobile-nav" id="mobileNav">.*?\n</nav>', lambda m: movil, s, count=1, flags=re.S)     # menú del móvil
+    # «Cómo calculamos»: en el pie (tras «Sobre el Proyecto») y en la línea «Revisado el… · CalculaLoTuyo»
+    if 'como-calculamos">Cómo calculamos' not in s:
+        s = re.sub(r'(<a href="/?sobre-el-proyecto">Sobre el Proyecto</a>)', lambda m: m.group(1) + m.group(1).replace('sobre-el-proyecto', 'como-calculamos').replace('Sobre el Proyecto', 'Cómo calculamos'), s, count=1)
+    if pag != 'como-calculamos':
+        s = re.sub(r'(<p class="hero-meta">.*?<a href="sobre-el-proyecto">CalculaLoTuyo</a>)(</p>)', r'\1 · <a href="como-calculamos">Cómo calculamos</a>\2', s, count=1) if 'href="como-calculamos">Cómo calculamos</a></p>' not in s else s
     if s != o:
         open(f, 'w', encoding='utf-8').write(s); cambiadas += 1
 print('menú actualizado en', cambiadas, 'páginas')

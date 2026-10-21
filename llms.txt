@@ -52,5 +52,6 @@ Los resultados son orientativos y no sustituyen el asesoramiento de un abogado l
 
 ## Optional
 
+- [Cómo calculamos](https://calculalotuyo.es/como-calculamos): fuentes oficiales de cada calculadora y método de revisión.
 - [Sobre el proyecto](https://calculalotuyo.es/sobre-el-proyecto): quién hay detrás y cómo se revisan los datos.
 - [Sitemap](https://calculalotuyo.es/sitemap.xml): todas las páginas.
