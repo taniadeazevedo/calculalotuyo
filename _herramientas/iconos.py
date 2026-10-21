@@ -75,6 +75,8 @@ for f in sorted(glob.glob('*.html')):
             a, b = p.index('>') + 1, p.rindex('<')
             partes[k] = p[:a] + cambiar_texto(p[a:b], True).lstrip() + p[b:]      # en un desplegable no cabe un SVG: se quita el emoji
     nuevo = s[:i] + ''.join(partes)
+    # Ejemplos con personas («El caso de Pedro…»): en el círculo, el icono genérico de persona
+    nuevo = re.sub(r'(<span class="example-icon">)(?:(?!</span>).)*(</span>)', lambda m: m.group(1) + svg('user') + m.group(2), nuevo, flags=re.S)
     if nuevo != s:
         open(f, 'w', encoding='utf-8').write(nuevo); cambiadas += 1
 

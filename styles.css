@@ -4246,3 +4246,11 @@ h1 .ico, h2 .ico, h3 .ico, .card-title .ico, .bloque-titulo .ico, .mega-titulo .
 .situacion-cal .situacion-icono .ico { color: #0F766E; }
 .card-icon .ico, .guide-icon .ico, .modelo-icono .ico, .example-icon .ico, .about-mission-icon .ico, .source-icon .ico, .rapida .ico { color: var(--accent); }
 .hero-badge .ico { width: 1em; height: 1em; }
+.calc-item-badge.nuevo { background: #F59E0B; color: #fff; }        /* «Nuevo»: ámbar (el verde es del calendario y el morado, de «Popular») */
+
+/* Los botones y las tarjetas nunca van subrayados (aunque estén dentro de un texto con enlaces subrayados) */
+a[class*="btn"], a[class*="boton"], button, .form-submit, .guides-more-btn, .about-teaser-link, .calc-group-guide, .chip-mas,
+a.situacion, a.calc-item, a.modelo-card, a.rapida, a.guide-card, .chips a, .siguiente a, .result-actions a, .busca-fila { text-decoration: none !important; }
+@media (min-width: 641px) { .hero-mini .respuesta-corta { margin-top: 28px; margin-bottom: 18px; } }   /* en ordenador, más aire entre la introducción y la respuesta rápida */
+.example-icon .ico { color: #fff; width: 28px; height: 28px; }      /* icono de persona, en blanco sobre el círculo de color */
+.faq-a { padding-top: 16px; }                                      /* la respuesta de los desplegables, con el mismo aire arriba que abajo */
