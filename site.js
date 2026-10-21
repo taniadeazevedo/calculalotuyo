@@ -127,7 +127,11 @@ window.googlefc=window.googlefc||{};                 // objeto que crea el mensa
 googlefc.callbackQueue=googlefc.callbackQueue||[];   // cola de tareas que se ejecutan cuando esté listo
 document.querySelectorAll('[data-cookies]').forEach(el=>el.addEventListener('click',e=>{
     e.preventDefault();                              // que el enlace "#" no salte arriba
-    googlefc.callbackQueue.push(()=>googlefc.showRevocationMessage());   // muestra otra vez el mensaje
+    if(typeof googlefc.showRevocationMessage==='function'){   // el mensaje de Google está cargado: lo abre otra vez
+        googlefc.showRevocationMessage();
+    }else{                                           // aún no lo está (p. ej., mientras AdSense revisa la web o con un bloqueador):
+        location.href='cookies#gestionar';           // lleva a la explicación de cómo gestionar las cookies
+    }
 }));
 
 // =====================================================================

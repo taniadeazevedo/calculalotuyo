@@ -72,8 +72,8 @@ cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}
 faqs = [('¿Cuánto le cuesta a una empresa un trabajador de 30.000 € brutos?', f'Unos <strong>{e(f30["coste"])} € al año</strong>, sumando el sueldo bruto y las cotizaciones de la empresa a la Seguridad Social (un 30,65 %).'),
         ('¿Qué parte del coste de un trabajador llega a su bolsillo?', f'Depende del sueldo: el <strong>{pct(fsmi["pct_neto"])}</strong> con el salario mínimo, el <strong>{pct(f30["pct_neto"])}</strong> con 30.000 € y el <strong>{pct(f60["pct_neto"])}</strong> con 60.000 € brutos.'),
         ('¿Puedo usar estos datos?', 'Sí, libremente, citando la fuente con un enlace a esta página. Puedes descargar los datos en CSV.')]
-pagina(SLUG, 'Informe 2026: cuánto cuesta un trabajador y cuánto llega a su bolsillo',
-       f'De cada 100 € que cuesta un trabajador con 30.000 € brutos, solo {e(f30["pct_neto"])} llegan a su bolsillo. Informe 2026 con el coste para la empresa, cotizaciones, IRPF y neto de cada sueldo.',
+pagina(SLUG, 'Informe 2026: lo que cuesta un trabajador y lo que cobra',
+       f'De cada 100 € que cuesta un trabajador con 30.000 € brutos, solo {e(f30["pct_neto"])} llegan a su bolsillo. Coste para la empresa, cotizaciones, IRPF y neto de cada sueldo.',
        'coste empresa trabajador 2026, cuánto cuesta un trabajador a la empresa, cuña fiscal España, cotizaciones empresa 2026, informe sueldo neto',
        [('Informe 2026', None)], cuerpo, faqs,
        'Cálculo propio de CalculaLoTuyo con las cifras oficiales de 2026: Orden PJC/297/2026 (cotizaciones) y algoritmo de retenciones de la Agencia Tributaria.', 'Nómina')

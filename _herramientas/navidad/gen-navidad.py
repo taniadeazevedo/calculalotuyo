@@ -179,7 +179,7 @@ faqs_p = [
     ('¿Si cobro en 12 pagas tengo paga de Navidad?', 'No aparte: las pagas extra ya van repartidas en tus 12 nóminas.'),
 ]
 pagina('paga-extra-navidad-2026', 'Paga extra de Navidad 2026: cuánto cobras y cuándo',
-    f'Paga extra de Navidad 2026: con 30.000 € brutos son unos {e(p30)} € netos. Tabla para cada sueldo, cuándo se cobra, cómo se calcula y qué pasa si no has trabajado todo el año.',
+    f'Paga extra de Navidad 2026: con 30.000 € brutos son unos {e(p30)} € netos. Tabla para cada sueldo, cuándo se cobra y cómo se calcula.',
     'paga extra navidad 2026, cuánto es la paga extra de navidad, cuándo se cobra la paga extra, paga extra neta, paga extra diciembre',
     [('Pagas extra', 'pagas-extra'), ('Paga extra de Navidad 2026', None)], cuerpo_p, faqs_p,
     f'{ET} (dos gratificaciones extraordinarias al año, una en Navidad). Retención de IRPF de cada sueldo según el algoritmo de la Agencia Tributaria para 2026.')

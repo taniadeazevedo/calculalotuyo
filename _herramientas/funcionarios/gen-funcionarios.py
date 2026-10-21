@@ -67,8 +67,8 @@ faqs = [
     ('¿Cuánto es un trienio en 2026?', f'Al mes: A1 {e(GRUPOS["A1"][1], 2)} €, A2 {e(GRUPOS["A2"][1], 2)} €, B {e(GRUPOS["B"][1], 2)} €, C1 {e(GRUPOS["C1"][1], 2)} €, C2 {e(GRUPOS["C2"][1], 2)} € y E {e(GRUPOS["E"][1], 2)} €.'),
     ('¿Cuánto han subido los sueldos de los funcionarios en 2026?', 'Un <strong>1,5 %</strong> desde el 1 de enero, y un 0,5 % más si el IPC de 2026 llega al 1,5 % (se pagaría a principios de 2027).'),
 ]
-pagina('sueldo-funcionario-2026', 'Sueldo de un funcionario en 2026: tabla por grupos A1, A2, C1 y C2',
-    f'Cuánto cobra un funcionario en 2026: sueldo base del A1 ({e(GRUPOS["A1"][0], 2)} €/mes) al E, trienios, pagas extra y complemento de destino por nivel. Tablas oficiales de Hacienda.',
+pagina('sueldo-funcionario-2026', 'Sueldo de un funcionario 2026: tabla por grupos A1, A2, C1 y C2',
+    f'Cuánto cobra un funcionario en 2026: sueldo base del A1 ({e(GRUPOS["A1"][0], 2)} €/mes) al E, trienios, pagas extra y complemento de destino. Tablas de Hacienda.',
     'sueldo funcionario 2026, cuánto cobra un funcionario, sueldo funcionario A1 2026, sueldo C1 2026, trienios 2026, complemento de destino 2026',
     [('Sueldo de un funcionario 2026', None)], cuerpo, faqs,
     f'<a href="{PDF}" target="_blank" rel="noopener">Retribuciones del personal funcionario 2026</a> (Secretaría de Estado de Presupuestos y Gastos, Ministerio de Hacienda), según el {RDL}, art. 2.1.')

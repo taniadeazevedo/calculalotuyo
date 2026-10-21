@@ -161,7 +161,7 @@ faqs = [
     ('¿Si cobro el ingreso mínimo vital tengo que declarar?', 'Sí. Quien cobra el ingreso mínimo vital, y todas las personas de su unidad de convivencia, tienen que presentar la declaración cada año.'),
 ]
 nombre = pagina(SLUG, '¿Tengo que hacer la declaración de la renta? Límites 2026',
-    'Comprueba en 1 minuto si estás obligado a hacer la renta de 2026: 22.000 € con un pagador, 15.876 € con dos, autónomos, paro, ingreso mínimo vital y cuándo te conviene aunque no estés obligado.',
+    'Comprueba en 1 minuto si tienes que hacer la renta de 2026: 22.000 € con un pagador, 15.876 € con dos, autónomos, paro y cuándo te conviene igualmente.',
     'obligado a declarar renta, tengo que hacer la declaración de la renta, límite renta 2026, cuánto hay que ganar para hacer la renta, dos pagadores renta, renta 2026',
     [('¿Tengo que declarar la renta?', None)], cuerpo, faqs, FUENTE)
 print('creada:', nombre)

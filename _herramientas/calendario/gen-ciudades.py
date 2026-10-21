@@ -62,7 +62,7 @@ for c in publicadas:
     paginas[sl] = (ciudad, c['ccaa'])
     titulo = f'Calendario laboral 2027 {ciudad}: festivos locales y puentes'
     if len(titulo) > 60: titulo = f'Calendario laboral 2027 {ciudad}: festivos'   # que Google no lo corte
-    pagina(sl, titulo, f'Festivos de {ciudad} en 2027 con las fiestas locales oficiales ({lista_loc[:60]}…), los de {cc["nombre"]}, puentes y días laborables por mes.',
+    pagina(sl, titulo, f'Festivos de {ciudad} en 2027: las fiestas locales oficiales, los festivos de {cc["nombre"]}, los puentes y los días laborables de cada mes.',
            f'calendario laboral 2027 {ciudad.lower()}, festivos {ciudad.lower()} 2027, fiestas locales {ciudad.lower()} 2027, puentes 2027 {ciudad.lower()}',
            ciudad, cuerpo, faqs, fuente)
 json.dump(paginas, open(os.path.join(AQUI, 'ciudades-generadas.json'), 'w', encoding='utf-8'), ensure_ascii=False)

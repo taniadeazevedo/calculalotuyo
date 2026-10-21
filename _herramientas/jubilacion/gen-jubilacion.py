@@ -146,8 +146,8 @@ faqs = [
     ('¿Cuántos años necesito para tener pensión?', 'Un mínimo de <strong>15 años cotizados</strong>, y al menos 2 de ellos en los últimos 15 años.'),
     ('¿Me puedo jubilar antes?', 'Sí, hasta <strong>2 años antes</strong> de tu edad ordinaria si tienes 35 años cotizados (jubilación anticipada voluntaria), aunque la pensión se reduce. Si te despiden por causas ajenas a tu voluntad hay otras opciones de jubilación anticipada.'),
 ]
-nombre = pagina('jubilacion', 'Calculadora de jubilación 2026: cuándo te jubilas y cuánto cobrarás',
-    'Calcula tu edad de jubilación (65 o 67 años), el porcentaje de pensión según tus años cotizados y una estimación de lo que cobrarás. Con las reglas y la pensión máxima de 2026.',
+nombre = pagina('jubilacion', 'Calculadora de jubilación 2026: cuándo y cuánto cobrarás',
+    'Calcula tu edad de jubilación (65 o 67 años), el porcentaje de pensión según tus años cotizados y cuánto cobrarás, con las reglas de 2026.',
     'calculadora jubilación, edad de jubilación 2027, cuánto cobraré de pensión, calcular pensión jubilación, años cotizados pensión 100%',
     [('Jubilación', None)], cuerpo, faqs, FUENTE, 'Nómina')
 print('creada:', nombre)

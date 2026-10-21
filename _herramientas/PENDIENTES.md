@@ -9,6 +9,12 @@
 - [ ] 👩 Bing Webmaster Tools: pulsar «Verificar» y añadir el sitemap.
 - [x] 👩 Decidir la revisión de ciudades → programada los días 1 y 15 de cada mes, a las 10:00, hasta enero (tarea «calculalotuyo-ciudades-fiestas-locales»).
 
+## ✉️ Correo profesional (21/10/2026)
+- [x] 👩 Strato → Correo electrónico → crear la redirección de **contacto@calculalotuyo.es** a tu Gmail (el dominio ya usa el correo de Strato). Probar enviando un correo de prueba.
+- [x] 🤖 Publicada la web con contacto@calculalotuyo.es (contacto, privacidad y aviso legal), el 21/10/2026.
+- [ ] 👩 Después: enviar una vez el formulario de contacto y confirmar el correo de activación de FormSubmit que llegará a contacto@.
+- [ ] 👩 Opcional: en Gmail → Configuración → Cuentas → «Enviar como» contacto@calculalotuyo.es, para responder desde esa dirección (necesita el servidor SMTP de Strato).
+
 ## 📣 Conseguir enlaces y visitas (gratis)
 - [x] 🤖 Correo para periodistas y blogs de finanzas: borrador en `_herramientas/correo-prensa.md`.
 - [ ] 👩 Enviarlo.
@@ -43,6 +49,9 @@
 - [x] Más fácil de usar: el paro pide el sueldo (no la base reguladora), «Más opciones» en 10 formularios y palabras normales (`_herramientas/formularios.py`), formulario más arriba en el móvil y portada un 32 % más corta.
 - [ ] 👩 Prueba con 3–5 personas que no sean del sector, en el móvil y sin ayudarlas: «te despiden tras 5 años cobrando 1.800 €, ¿cuánto te toca?» y «¿cuánto paro cobrarías?». Apunta dónde se atascan.
 
+## ⚡ Velocidad (21/10/2026)
+- Lighthouse en el móvil: 70–78 con el aviso de cookies de Google, 99–100 sin él. La web va bien; lo que pesa es el aviso de Google (solo sale la primera visita). Volver a medir cuando AdSense apruebe la web.
+
 ## 🗓️ Enero de 2027 (hay tarea programada el 11/01)
 - [ ] 🤖 Límites de la renta en `datos-2026.js` → `renta` (si cambian) y escala de rentas imputadas de 2027 si se convalida el RDL 29/2026.
 - [ ] 🤖 Cifras de 2027 en `datos-2026.js` (SMI, IPREM, cotizaciones, bases, pensión máxima) y `irpf-2026.js`.
@@ -52,7 +61,7 @@
 
 ## 🧱 Contenido nuevo (por orden de prioridad)
 - [x] 🤖 `sueldo-funcionario-2026`: tablas oficiales de Hacienda por grupo (20/10/2026). Generador `_herramientas/funcionarios/`. En enero, con la tabla de 2027.
-- [ ] 🤖 «¿Cuánto cobra un/a…?» por profesión (policía, profesor, enfermera…): necesita las tablas oficiales de cada cuerpo o comunidad.
+- [ ] 🤖 «¿Cuánto cobra un/a…?» por profesión: en octubre de 2026 no hay tabla oficial del complemento específico (policía, etc.). Revisar si Interior o las comunidades la publican.
 - [ ] 🤖 Novedades 2027 (SMI 2027, pensiones 2027, cambios laborales), en diciembre y enero.
 - [ ] 🤖 Guías «Qué hacer si…» (me despiden, me quedo en paro, me pongo de baja, nace mi hijo).
 - [ ] 🤖 Tablas salariales por convenio (hostelería, comercio, limpieza, metal…): mucho tráfico, pero mucho mantenimiento.
