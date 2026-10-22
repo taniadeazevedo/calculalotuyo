@@ -156,17 +156,40 @@ def svg_icono(nombre):
     import re
     return re.search(r'<svg[^>]*>(.*)</svg>', open(ruta, encoding='utf-8').read(), re.S).group(1)
 
+FOTOS = os.path.join(AQUI, 'fotos')                                    # fotos originales (Pexels, uso libre), ya recortadas a 1200×630
+COLOR_TEMA = {'Pensiones': '#6D28D9', 'Renta': '#2563EB', 'Sueldo': '#DB2777'}   # color del filtro según la categoría
+
 def foto(slug):
-    """Ruta de la portada: la foto real (img/novedades/<slug>.jpg, 1200×630) si existe; si no, la diseñada (.png)."""
-    return f'img/novedades/{slug}.jpg' if os.path.exists(os.path.join(RAIZ, 'img', 'novedades', slug + '.jpg')) else f'img/novedades/{slug}.png'
+    """Ruta de la portada: la foto con filtro (.jpg) si hay foto original; si no, la portada dibujada (.png)."""
+    return f'img/novedades/{slug}.jpg' if os.path.exists(os.path.join(FOTOS, slug + '.jpg')) else f'img/novedades/{slug}.png'
+
+def chrome(html, salida):
+    tmp = os.path.join(AQUI, '_portada-tmp.html'); open(tmp, 'w', encoding='utf-8').write(html)
+    subprocess.run(['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '--headless=new', '--hide-scrollbars', '--window-size=1200,630', f'--screenshot={salida}', 'file://' + tmp], capture_output=True, timeout=60)
+    os.remove(tmp)
 
 def imagen(a):
-    """Portada 1200×630. Con foto real se usa la foto; si no, se dibuja una portada con la cifra clave."""
-    if foto(a['slug']).endswith('.jpg'):
-        png = os.path.join(RAIZ, 'img', 'novedades', a['slug'] + '.png')
-        if os.path.exists(png): os.remove(png)                          # la portada dibujada ya no hace falta
-        return 'https://calculalotuyo.es/' + foto(a['slug'])
+    """Portada 1200×630 (artículo, tarjetas, compartir y Discover). Con foto: foto + filtro sutil del color de la categoría + icono de línea."""
     carpeta = os.path.join(RAIZ, 'img', 'novedades'); os.makedirs(carpeta, exist_ok=True)
+    p = PORTADAS[a['slug']]
+    original = os.path.join(FOTOS, a['slug'] + '.jpg')
+    if os.path.exists(original):
+        color = COLOR_TEMA.get(a['tema'], '#4F46E5')
+        html = f'''<!doctype html><meta charset="utf-8"><style>
+html,body{{margin:0;width:1200px;height:630px;overflow:hidden}}
+body{{background:url("file://{original}") center/cover no-repeat;position:relative}}
+.filtro{{position:absolute;inset:0;background:linear-gradient(135deg,{color}66 0%,{color}26 55%,{color}10 100%)}}
+.ico{{position:absolute;right:56px;bottom:52px;width:150px;height:150px;padding:30px;border-radius:40px;background:{color}8C;backdrop-filter:blur(6px)}}
+.ico svg{{width:100%;height:100%;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}}
+</style><div class="filtro"></div><div class="ico"><svg viewBox="0 0 24 24">{svg_icono(p["icono"])}</svg></div>'''
+        png = os.path.join(AQUI, '_portada.png'); chrome(html, png)
+        jpg = os.path.join(carpeta, a['slug'] + '.jpg')
+        subprocess.run(['sips', '-s', 'format', 'jpeg', '-s', 'formatOptions', '80', png, '--out', jpg], capture_output=True)
+        os.remove(png)
+        vieja = os.path.join(carpeta, a['slug'] + '.png')
+        if os.path.exists(vieja): os.remove(vieja)
+        return 'https://calculalotuyo.es/' + foto(a['slug'])
+    # sin foto: portada dibujada con la cifra clave
     png = os.path.join(carpeta, a['slug'] + '.png')
     p = PORTADAS[a['slug']]
     logo = open(os.path.join(RAIZ, 'favicon.svg'), encoding='utf-8').read()
@@ -230,7 +253,7 @@ for a in ARTICULOS:
         <p class="art-entradilla">{a["desc"]}</p>
         <p class="art-firma"><span class="art-logo"><img src="favicon.svg" alt="" width="36" height="36"></span><span><strong><a href="sobre-el-proyecto">CalculaLoTuyo</a></strong><br>{fecha_txt} · {minutos(cuerpo_html)} min de lectura</span></p>
     </div>
-    <figure class="art-portada"><img src="{foto(a["slug"])}" alt="{H.escape(PORTADAS[a["slug"]].get("alt") or (PORTADAS[a["slug"]]["cifra"] + ": " + PORTADAS[a["slug"]]["texto"]))}" width="1200" height="630" fetchpriority="high">{'<figcaption>Foto: Pexels</figcaption>' if foto(a["slug"]).endswith(".jpg") else ''}</figure>
+    <figure class="art-portada"><img src="{foto(a["slug"])}" alt="{H.escape(PORTADAS[a["slug"]].get("alt") or (PORTADAS[a["slug"]]["cifra"] + ": " + PORTADAS[a["slug"]]["texto"]))}" width="1200" height="630" fetchpriority="high"></figure>
     </header>
     <div class="art-col art-cuerpo">
         {CAJA_RESUMEN(a["resumen"])}
