@@ -4325,3 +4325,7 @@ a.situacion, a.calc-item, a.modelo-card, a.rapida, a.guide-card, .chips a, .sigu
 @media (max-width: 760px) { .nov-destacada { grid-template-columns: 1fr; } }
 .novedad-tarjeta img { width: calc(100% + 40px); margin: -18px -20px 6px; height: auto; border-radius: 14px 14px 0 0; display: block; }   /* imagen arriba de cada tarjeta, a sangre */
 .novedad-tarjeta { overflow: hidden; }
+.nov-filtro { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }   /* categorías de Novedades */
+.nov-filtro button { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--text); font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
+.nov-filtro button.activo { background: var(--c, var(--accent)); border-color: var(--c, var(--accent)); color: #fff; }
+.nov-destacada[hidden], .novedad-tarjeta[hidden] { display: none; }

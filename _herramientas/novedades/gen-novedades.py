@@ -71,7 +71,7 @@ ARTICULOS = [
   fuentes=f'{boe("BOE-A-2015-11724", "Ley General de la Seguridad Social, art. 58", True)}; {ine("09", "INE: IPC de septiembre de 2026")} y notas de enero a agosto; pensión máxima de 2026: {boe("BOE-A-2026-2548", "Real Decreto-ley 3/2026")}.',
   kw='subida pensiones 2027, cuánto suben las pensiones 2027, revalorización pensiones 2027, pensión máxima 2027'),
 
- dict(slug='deduccion-alquiler-renta', fecha='2026-10-22', actualizado='2026-10-22', tema='Renta',
+ dict(slug='deduccion-alquiler-renta', fecha='2026-10-22', actualizado='2026-10-22', tema='Impuestos',
   titulo='Nueva deducción del 10 % por alquiler en la renta',
   desc='Quien vive de alquiler y tiene una base imponible de menos de 33.007 € puede deducirse el 10 % de lo que paga. Requisitos, ejemplos y qué falta por aprobar.',
   h1='Nueva deducción del 10 % por el alquiler en la renta', sub='Quién puede aplicarla y cuánto ahorras',
@@ -156,8 +156,12 @@ def svg_icono(nombre):
     import re
     return re.search(r'<svg[^>]*>(.*)</svg>', open(ruta, encoding='utf-8').read(), re.S).group(1)
 
+import unicodedata as _ud
+slug_cat = lambda t: _ud.normalize('NFD', t.lower()).encode('ascii', 'ignore').decode().replace(' ', '-')   # «Empleo y paro» → «empleo-y-paro»
 FOTOS = os.path.join(AQUI, 'fotos')                                    # fotos originales (Pexels, uso libre), ya recortadas a 1200×630
-COLOR_TEMA = {'Pensiones': '#6D28D9', 'Renta': '#2563EB', 'Sueldo': '#DB2777'}   # color del filtro según la categoría
+# Categorías de Novedades y su color (sin verde: es el del calendario). El filtro de la portada y la pill usan este color.
+CATEGORIAS = {'Pensiones': '#6D28D9', 'Impuestos': '#2563EB', 'Sueldo': '#DB2777', 'Empleo y paro': '#EA580C', 'Autónomos': '#0E7490'}
+COLOR_TEMA = CATEGORIAS
 
 def foto(slug):
     """Ruta de la portada: la foto con filtro (.jpg) si hay foto original; si no, la portada dibujada (.png)."""
@@ -178,10 +182,9 @@ def imagen(a):
         html = f'''<!doctype html><meta charset="utf-8"><style>
 html,body{{margin:0;width:1200px;height:630px;overflow:hidden}}
 body{{background:url("file://{original}") center/cover no-repeat;position:relative}}
-.filtro{{position:absolute;inset:0;background:linear-gradient(135deg,{color}66 0%,{color}26 55%,{color}10 100%)}}
-.ico{{position:absolute;right:56px;bottom:52px;width:150px;height:150px;padding:30px;border-radius:40px;background:{color}8C;backdrop-filter:blur(6px)}}
-.ico svg{{width:100%;height:100%;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}}
-</style><div class="filtro"></div><div class="ico"><svg viewBox="0 0 24 24">{svg_icono(p["icono"])}</svg></div>'''
+.filtro{{position:absolute;inset:0;background:linear-gradient(200deg,{color}1F 0%,{color}55 50%,{color}B3 100%)}}   
+.pill{{position:absolute;left:56px;top:52px;background:{color};color:#fff;font:700 30px/1 -apple-system,"Helvetica Neue",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:16px 28px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25)}}
+</style><div class="filtro"></div><div class="pill">{H.escape(a['tema'])}</div>'''
         png = os.path.join(AQUI, '_portada.png'); chrome(html, png)
         jpg = os.path.join(carpeta, a['slug'] + '.jpg')
         subprocess.run(['sips', '-s', 'format', 'jpeg', '-s', 'formatOptions', '80', png, '--out', jpg], capture_output=True)
@@ -248,7 +251,7 @@ for a in ARTICULOS:
     otros = ''.join(f'<a href="{o["slug"]}" class="novedad-tarjeta"><img src="{foto(o["slug"])}" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{o["tema"]} · {larga(o["fecha"])}</span><strong>{o["titulo"]}</strong></a>' for o in [x for x in ARTICULOS if x is not a][:3])
     cuerpo = f'''    <article class="art">
     <header class="art-cabecera"><div class="art-col">{{{{MIGAS}}}}
-        <a href="novedades" class="art-tema">{a["tema"]}</a>
+        <a href="novedades#{slug_cat(a["tema"])}" class="art-tema" style="background:{CATEGORIAS[a["tema"]]}">{a["tema"]}</a>
         <h1>{a["h1"]}</h1>
         <p class="art-entradilla">{a["desc"]}</p>
         <p class="art-firma"><span class="art-logo"><img src="favicon.svg" alt="" width="36" height="36"></span><span><strong><a href="sobre-el-proyecto">CalculaLoTuyo</a></strong><br>{fecha_txt} · {minutos(cuerpo_html)} min de lectura</span></p>
@@ -272,10 +275,24 @@ for a in ARTICULOS:
 
 # ---- Portada de Novedades: la última, destacada con su portada; el resto, en tarjetas con imagen
 d = ARTICULOS[0]
-destacada = f'<a href="{d["slug"]}" class="nov-destacada"><img src="{foto(d["slug"])}" alt="" width="1200" height="630" fetchpriority="high"><div><span class="novedad-meta">{d["tema"]} · {larga(d["fecha"])}</span><h2>{d["titulo"]}</h2><p>{d["desc"]}</p><span class="novedad-leer">Leer el artículo {FLECHA}</span></div></a>'
-tarjetas = ''.join(f'''<a href="{a["slug"]}" class="novedad-tarjeta"><img src="{foto(a["slug"])}" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span>{a["desc"]}</span><span class="novedad-leer">Leer {FLECHA}</span></a>''' for a in ARTICULOS[1:])
+destacada = f'<a href="{d["slug"]}" class="nov-destacada" data-cat="{slug_cat(d["tema"])}"><img src="{foto(d["slug"])}" alt="" width="1200" height="630" fetchpriority="high"><div><span class="novedad-meta">{d["tema"]} · {larga(d["fecha"])}</span><h2>{d["titulo"]}</h2><p>{d["desc"]}</p><span class="novedad-leer">Leer el artículo {FLECHA}</span></div></a>'
+tarjetas = ''.join(f'''<a href="{a["slug"]}" class="novedad-tarjeta" data-cat="{slug_cat(a["tema"])}"><img src="{foto(a["slug"])}" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span>{a["desc"]}</span><span class="novedad-leer">Leer {FLECHA}</span></a>''' for a in ARTICULOS[1:])
 cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📰 Actualidad</div><h1>Novedades<br><span class="highlight">lo que cambia en tu sueldo, tu paro y tus impuestos</span></h1><p>Las noticias que afectan a tu bolsillo, explicadas fácil y con la fuente oficial. Sin opiniones: qué ha pasado, qué cambia para ti y cómo calcularlo.</p></div></section>
-    <section class="section"><div class="container">{destacada}<div class="novedades-lista" style="margin-top:20px">{tarjetas}</div>
+    <section class="section"><div class="container">
+    <div class="nov-filtro" role="group" aria-label="Filtrar por categoría"><button type="button" class="activo" data-filtro="">Todas</button>{''.join(f'<button type="button" data-filtro="{slug_cat(c)}" style="--c:{col}">{c}</button>' for c, col in CATEGORIAS.items() if any(x["tema"] == c for x in ARTICULOS))}</div>
+    {destacada}<div class="novedades-lista" style="margin-top:20px">{tarjetas}</div>
+    <script>
+    // Filtro por categoría: enseña solo los artículos de la categoría pulsada (también desde novedades#pensiones)
+    (function(){{
+        const botones=document.querySelectorAll('.nov-filtro button'), arts=document.querySelectorAll('[data-cat]');
+        function filtrar(cat){{
+            botones.forEach(b=>b.classList.toggle('activo',b.dataset.filtro===cat));
+            arts.forEach(a=>a.hidden=!!cat&&a.dataset.cat!==cat);
+        }}
+        botones.forEach(b=>b.addEventListener('click',()=>{{filtrar(b.dataset.filtro);history.replaceState(null,'',b.dataset.filtro?'#'+b.dataset.filtro:location.pathname)}}));
+        if(location.hash)filtrar(location.hash.slice(1));
+    }})();
+    </script>
     </div></section>
 '''
 pagina('novedades', 'Novedades laborales y fiscales 2026 explicadas fácil', 'Lo que cambia en tu sueldo, tu paro, tus impuestos y tu pensión, explicado fácil y con la fuente oficial: pensiones 2027, IPC, deducciones en la renta y más.',
