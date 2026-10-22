@@ -482,7 +482,7 @@ document.getElementById('calc').onsubmit=function(e){
     document.getElementById('resultSub').textContent='Cuota anual: '+fmt(anual);
     document.getElementById('details').innerHTML=
         '<div class="result-item"><p class="result-item-label">Rendimiento</p><p class="result-item-value">'+fmt(rendimiento)+'</p></div>'+
-        '<div class="result-item"><p class="result-item-label">Gastos deducidos</p><p class="result-item-value">'+(gastos*100)+'%</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Gastos deducidos</p><p class="result-item-value">'+Math.round(gastos*100)+' %</p></div>'+
         '<div class="result-item"><p class="result-item-label">Tarifa plana</p><p class="result-item-value">'+(primerAno==='si'?'Sí':'No')+'</p></div>'+
         '<div class="result-item"><p class="result-item-label">Cuota Cero</p><p class="result-item-value">'+(ccaa==='cuota0'&&primerAno==='si'?'Sí':'No')+'</p></div>';
     document.getElementById('fiscalContent').innerHTML=

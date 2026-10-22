@@ -61,7 +61,7 @@ function pagina(slug){
         for(const [k,val] of Object.entries(datos))g(k).value=String(val); // por si el código cambió algún campo al arrancar
         const form=g('calc'), ev={type:'submit',preventDefault(){}};
         if(form.onsubmit)form.onsubmit(ev); else form.dispatchEvent(ev);   // pulsa «Calcular»
-        return {total:g('total').textContent, sub:g('resultSub').textContent, error:error.m, el:g};
+        return {total:g('total').textContent, sub:g('resultSub').textContent, error:error.m, el:g, todos:els};
     };
 }
 const euros=t=>+String(t).replace(/[^\d,-]/g,'').replace(',','.');      // «1.225 €/mes» → 1225
@@ -109,6 +109,14 @@ const hacerFoto=process.argv.includes('--foto');
 const foto=fs.existsSync(FOTO)?JSON.parse(fs.readFileSync(FOTO,'utf8')):{};
 let mal=0;
 const cache={}; const calc=s=>cache[s]||(cache[s]=pagina(s));
+// Números mal redondeados en lo que pinta cada calculadora (p. ej. «7.000000000000001 %»)
+const LARGOS=/\d[.,]\d{6,}/;
+for(const [nombre,slug,datos] of FOTOS){
+    try{const r=calc(slug)(datos);
+        for(const [id,el] of Object.entries(r.todos)){const t=String(el.innerHTML||'')+' '+String(el.textContent||'');const m=t.match(LARGOS);
+            if(m&&!/^(wa|.*href)/.test(id)){mal++;console.log('❌ '+slug+' · #'+id+' muestra un número sin redondear: '+m[0])}}
+    }catch(e){}
+}
 for(const [txt,slug,datos,ok] of A_MANO){
     let r,bien=false; try{r=calc(slug)(datos);bien=ok(r)}catch(e){r={error:e.message}}
     if(!bien)mal++;
