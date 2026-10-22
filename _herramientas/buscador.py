@@ -3,12 +3,15 @@
 import glob, html as H, json, os, re
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 FUERA = {'404', 'gracias'}                              # páginas que no deben salir en el buscador
+try: NOVEDADES = {x['slug'] for x in json.load(open('_herramientas/novedades/lista.json', encoding='utf-8'))}   # artículos de Novedades
+except FileNotFoundError: NOVEDADES = set()
 
 def tipo(slug):
     """Categoría, icono y peso (las calculadoras salen antes que las páginas de detalle)."""
     calc = {'despido-improcedente', 'despido-objetivo', 'ere', 'finiquito', 'paro', 'sueldo-neto', 'irpf', 'horas-extra', 'pagas-extra',
             'vacaciones', 'subida-ipc', 'cuota-autonomos', 'facturas', 'baja-medica', 'reduccion-jornada', 'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion', 'obligado-a-declarar-renta', 'loteria-navidad-hacienda'}
     if slug in calc: return 'Calculadora', '🧮', 3
+    if slug == 'novedades' or slug in NOVEDADES: return 'Novedad', '📰', 1.8
     if slug.startswith('modelo'): return 'Modelo gratis', '📄', 2.2
     if slug.startswith('guia') or slug == 'guias': return 'Guía', '📚', 1.6
     if slug.startswith(('calendario-laboral', 'semana-santa', 'dias-laborables-', 'trabajar-en-festivo')): return 'Calendario', '📅', 1.5

@@ -4254,3 +4254,18 @@ a.situacion, a.calc-item, a.modelo-card, a.rapida, a.guide-card, .chips a, .sigu
 @media (min-width: 641px) { .hero-mini .respuesta-corta { margin-top: 28px; margin-bottom: 18px; } }   /* en ordenador, más aire entre la introducción y la respuesta rápida */
 .example-icon .ico { color: #fff; width: 28px; height: 28px; }      /* icono de persona, en blanco sobre el círculo de color */
 .faq-a { padding-top: 16px; }                                      /* la respuesta de los desplegables, con el mismo aire arriba que abajo */
+
+/* =====================================================================
+   NOVEDADES: tarjetas de artículos y botones a las calculadoras
+   ===================================================================== */
+.novedades-lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 14px; }
+.novedad-tarjeta { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; color: var(--text); text-decoration: none; transition: border-color .15s, transform .15s; }   /* cada artículo, una tarjeta */
+.novedad-tarjeta:hover { border-color: var(--accent); transform: translateY(-2px); }
+.novedad-tarjeta strong { font-size: 1.05rem; line-height: 1.35; }
+.novedad-tarjeta > span { color: var(--text2); font-size: 0.9rem; line-height: 1.5; }
+.novedad-tarjeta .novedad-meta { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); }   /* «PENSIONES · 22 DE OCTUBRE…» */
+.novedad-tarjeta .novedad-leer { margin-top: auto; color: var(--accent); font-weight: 600; display: inline-flex; align-items: center; gap: 4px; }
+.novedad-botones { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 16px; }
+.novedad-botones .btn { width: auto; flex: 0 1 auto; }                 /* los botones a las calculadoras, a su tamaño */
+.respuesta-corta ul { margin: 4px 0 0; padding-left: 18px; display: grid; gap: 6px; }   /* «En 30 segundos»: lista de 3 puntos */
+#novedades-portada { padding-top: 32px; }

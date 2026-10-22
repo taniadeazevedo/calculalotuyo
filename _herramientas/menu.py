@@ -21,10 +21,15 @@ GRUPOS = [
 CALENDARIO = [('calendario-laboral-2027', '📆 Calendario laboral 2027'), ('dias-laborables', '📅 Días laborables'), ('puentes-2027', '🗓️ Puentes 2027')]
 HACIENDA = [('obligado-a-declarar-renta', '🧾 ¿Tengo que hacer la renta?'), ('loteria-navidad-hacienda', '🎄 Lotería: cuánto se queda Hacienda')]
 
+# Artículos de Novedades (los escribe _herramientas/novedades/gen-novedades.py)
+import json as _json
+try: NOVEDADES = _json.load(open('_herramientas/novedades/lista.json', encoding='utf-8'))
+except FileNotFoundError: NOVEDADES = []
+
 # Sección de cada página según su nombre: la primera regla que encaja gana
 SECCION = [
     ('hacienda', r'^(obligado-a-declarar-renta|renta-.*|loteria-.*)$'),
-    ('guias', r'^guia.*$'),
+    ('guias', r'^(guia.*|novedades|' + '|'.join(re.escape(x['slug']) for x in NOVEDADES) + ')$'),
     ('modelos', r'^modelo.*$'),
     ('calendario', r'^(calendario-laboral-2027.*|dias-laborables.*|puentes-2027|semana-santa-2027|trabajar-en-festivo)$'),
     ('calculadoras', r'^(' + '|'.join(p for _, ls in GRUPOS for p, _ in ls) +
@@ -97,6 +102,8 @@ for f in sorted(glob.glob('*.html')):
     # «Cómo calculamos»: en el pie (tras «Sobre el Proyecto») y en la línea «Revisado el… · CalculaLoTuyo»
     if 'como-calculamos">Cómo calculamos' not in s:
         s = re.sub(r'(<a href="/?sobre-el-proyecto">Sobre el Proyecto</a>)', lambda m: m.group(1) + m.group(1).replace('sobre-el-proyecto', 'como-calculamos').replace('Sobre el Proyecto', 'Cómo calculamos'), s, count=1)
+    if 'href="novedades">Novedades</a>' not in s and 'href="/novedades">Novedades</a>' not in s:   # «Novedades» en el pie, tras «Cómo calculamos»
+        s = re.sub(r'(<a href="(/?)como-calculamos">Cómo calculamos</a>)', lambda m: m.group(1) + f'\n                <a href="{m.group(2)}novedades">Novedades</a>', s, count=1)
     if pag != 'como-calculamos':
         s = re.sub(r'(<p class="hero-meta">.*?<a href="sobre-el-proyecto">CalculaLoTuyo</a>)(</p>)', r'\1 · <a href="como-calculamos">Cómo calculamos</a>\2', s, count=1) if 'href="como-calculamos">Cómo calculamos</a></p>' not in s else s
     if s != o:

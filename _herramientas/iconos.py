@@ -30,7 +30,7 @@ MAPA = {
     '🎓': 'graduation-cap', '🏠': 'house', '🚗': 'car', '🍼': 'baby', '💳': 'credit-card', '📞': 'phone', '🌍': 'globe',
     '❌': 'circle-x', '⭐': 'star', '🔔': 'bell', '📦': 'package', '🖨️': 'printer', '✨': 'sparkles', '👉': 'arrow-right',
     '🏥': 'hospital', '💊': 'pill', '🤒': 'thermometer', '🏗️': 'hard-hat', '🛒': 'shopping-cart', '🍽️': 'utensils',
-    '📧': 'mail', '🗂️': 'folder-open', '🧭': 'compass', '🧑': 'user', '👤': 'user', '👩\u200d🎨': 'user', '🖼️': 'image', '🖨️': 'printer',
+    '📧': 'mail', '🗂️': 'folder-open', '🧭': 'compass', '🧑': 'user', '👤': 'user', '👩\u200d🎨': 'user', '🖼️': 'image', '👵': 'user', '🔮': 'telescope', '🖨️': 'printer',
 }
 # Emoji o secuencia: base + (unión + emoji)* + selector de variación opcional
 EMOJI = re.compile('(?:[\U0001F300-\U0001FAFF☀-➿⬀-⯿⌚-⏿]️?)(?:‍[\U0001F300-\U0001FAFF☀-➿]️?)*')

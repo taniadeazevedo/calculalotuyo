@@ -32,6 +32,8 @@ for f in glob.glob('*.html'):
     # AdSense ya no carga al entrar: lo carga site.js al primer gesto (más rápido). La verificación de AdSense
     # sigue con la etiqueta <meta name="google-adsense-account"> y con ads.txt.
     s = re.sub(r'\n\s*<script async src="https://pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js\?client=ca-pub-\d+" crossorigin="anonymous"></script>', '', s)
+    if 'name="robots"' not in s:                       # imágenes grandes en Google Discover y en las búsquedas
+        s = s.replace('<meta name="viewport"', '<meta name="robots" content="max-image-preview:large">\n    <meta name="viewport"', 1)
     if nombre in CALCULADORAS and '"WebApplication"' not in s:
         titulo = H.unescape(re.search(r'<title>(.*?)</title>', s).group(1))
         desc = H.unescape(re.search(r'name="description" content="(.*?)"', s).group(1))

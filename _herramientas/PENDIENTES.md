@@ -55,6 +55,12 @@
 ## ⚡ Velocidad (21/10/2026)
 - Lighthouse en el móvil: 70–78 con el aviso de cookies de Google, 99–100 sin él. La web va bien; lo que pesa es el aviso de Google (solo sale la primera visita). Volver a medir cuando AdSense apruebe la web.
 
+## 📰 Novedades (sección creada el 22/10/2026, generador `_herramientas/novedades/gen-novedades.py`)
+- [ ] 🤖 30/10: IPC adelantado de octubre → actualizar «subida-pensiones-2027» e «ipc-septiembre-2026-sueldo» (cambiar `actualizado` y la tabla `IPC`).
+- [ ] 🤖 Mediados de noviembre: ¿convalida el Congreso el RDL 29/2026? → actualizar «deduccion-alquiler-renta».
+- [ ] 🤖 Mediados de diciembre: IPC de noviembre → porcentaje definitivo de las pensiones de 2027.
+- [ ] 🤖 1–2 artículos nuevos por semana: SMI 2027, cuotas de autónomos 2027, calendarios de ciudades, novedades de enero… siempre con fuente oficial y sin opinar.
+
 ## 🗓️ Enero de 2027 (hay tarea programada el 11/01)
 - [ ] 🤖 Límites de la renta en `datos-2026.js` → `renta` (si cambian) y escala de rentas imputadas de 2027 si se convalida el RDL 29/2026.
 - [ ] 🤖 Cifras de 2027 en `datos-2026.js` (SMI, IPREM, cotizaciones, bases, pensión máxima) y `irpf-2026.js`.

@@ -53,6 +53,12 @@ Los resultados son orientativos y no sustituyen el asesoramiento de un abogado l
 
 - [Todas las guías](https://calculalotuyo.es/guias): despido, finiquito, paro, nómina, sueldo neto, baja médica, permisos, jornada, contratos, nacimiento y autónomos.
 
+## Novedades
+
+- [Subida de las pensiones en 2027](https://calculalotuyo.es/subida-pensiones-2027): las pensiones contributivas suben cada enero la media del IPC de diciembre a noviembre (art. 58 LGSS). Con el IPC de diciembre de 2025 a septiembre de 2026, la subida de 2027 rondaría el 3,5–3,7 %; el dato exacto, a mediados de diciembre de 2026.
+- [Deducción del 10 % por alquiler en la renta](https://calculalotuyo.es/deduccion-alquiler-renta): Real Decreto-ley 29/2026 (BOE 7/10/2026), nuevo art. 68.6 de la Ley del IRPF: 10 % del alquiler de la vivienda habitual con base imponible inferior a 33.007,20 €, máximo 11.630 € de alquiler al año. Pendiente de convalidación por el Congreso.
+- [IPC al 4,9 % en septiembre de 2026](https://calculalotuyo.es/ipc-septiembre-2026-sueldo): tasa anual del IPC de septiembre de 2026 según el INE; qué significa para sueldos, convenios, funcionarios (0,5 % extra del RDL 14/2025) y pensiones.
+
 ## Optional
 
 - [Cómo calculamos](https://calculalotuyo.es/como-calculamos): fuentes oficiales de cada calculadora y método de revisión.
