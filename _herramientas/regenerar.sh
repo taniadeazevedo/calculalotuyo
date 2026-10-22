@@ -20,3 +20,4 @@ python3 _herramientas/menu.py              # el mismo menú en todas las página
 python3 _herramientas/iconos.py            # iconos propios en vez de emojis (después del menú)
 python3 _herramientas/buscador.py           # índice del buscador (buscar.json), siempre al final
 node _herramientas/pruebas/pruebas.js | tail -1   # pruebas de las calculadoras: si algo cambia, lo avisa
+python3 _herramientas/sitemap.py           # fechas del sitemap (último cambio de cada página)
