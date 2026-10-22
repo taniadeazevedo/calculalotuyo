@@ -89,3 +89,7 @@
 - [x] Accesibilidad: «Saltar al contenido», marco visible con el tabulador (:focus-visible) y sin animaciones si se pide (prefers-reduced-motion).
 - [x] Portada: «21 calculadoras» (antes 16).
 - [ ] Más adelante: CI con GitHub Actions, cabecera/pie sin sacarlos de vacaciones.html, renombrar datos-2026.js en enero.
+
+## Diseño de apartados (anotado el 22/10/2026, revisar)
+- [ ] Algunas páginas (p. ej. `paro`, bloque de ejemplo «Pedro» y tabla de «Duración») tienen apartados con poco diseño: texto muy apilado (líneas de cálculo pegadas, sin aire) y tablas de dos columnas anchas y sosas.
+- [ ] Ideas: ejemplo con pasos en filas separadas y el resultado destacado; tablas con columnas más compactas, cifras alineadas y alguna marca visual (barra o fila resaltada). Revisar el resto de calculadoras y guías con el mismo criterio.
