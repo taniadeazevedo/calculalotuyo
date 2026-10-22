@@ -25,6 +25,7 @@
 - [ ] 👩 16/11/2026: revisar la indexación (hay recordatorio programado) y, si la mayoría de páginas están indexadas, pedir de nuevo la revisión de AdSense.
 - [ ] 👩 Cuando te aprueben: AdSense → Anuncios → Por unidad de anuncio → crear 3 unidades «de display»: «después del resultado», «mitad del texto» y «antes de preguntas». Pásame los códigos.
 - [ ] 🤖 Colocar esas 3 unidades en los huecos ya preparados de todas las páginas (con la altura reservada para que la página no salte).
+- [ ] 🤖 Tras la aprobación de AdSense: retrasar un poco la carga del script de anuncios (sin tocar el aviso de cookies) y medir la velocidad antes y después. Sin el aviso de Google la web saca 99–100.
 - [ ] 👩 En AdSense, anuncios automáticos: activar solo el anuncio fijo de abajo en el móvil («de anclaje») y desactivar los de pantalla completa («viñetas»).
 
 ## 📅 Calendario
