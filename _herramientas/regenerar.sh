@@ -16,6 +16,7 @@ python3 _herramientas/navidad/gen-navidad.py
 python3 _herramientas/funcionarios/gen-funcionarios.py
 python3 _herramientas/metodologia/gen-metodologia.py
 python3 _herramientas/seo-final.py
+python3 _herramientas/titulos.py           # títulos, descripciones y preguntas según cómo busca la gente
 python3 _herramientas/respuestas.py         # «Respuesta rápida» arriba de cada calculadora
 python3 _herramientas/menu.py              # el mismo menú en todas las páginas (después de generarlas)
 python3 _herramientas/iconos.py            # iconos propios en vez de emojis (después del menú)

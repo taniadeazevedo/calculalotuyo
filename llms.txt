@@ -14,6 +14,9 @@ Los resultados son orientativos y no sustituyen el asesoramiento de un abogado l
 - Renta de 2026 (se presenta en 2027): no hay que declarar con sueldos, paro o pensiones de hasta 22.000 € de un solo pagador, o 15.876 € con dos o más pagadores si del segundo y siguientes se cobraron más de 1.500 €. Autónomos y quien cobra el ingreso mínimo vital declaran siempre. Fuente: Ley 35/2006 del IRPF, art. 96.
 - Premios de lotería (Loterías y Apuestas del Estado, ONCE, Cruz Roja y loterías autonómicas): los primeros 40.000 € de cada décimo o apuesta están exentos y el resto paga un 20 % que se retiene al cobrar; no se incluyen en la renta. Del Gordo de Navidad (400.000 € por décimo) llegan 328.000 €. Fuente: Ley 35/2006 del IRPF, disposición adicional 33.ª.
 - Sueldo base de los funcionarios en 2026 (al mes, sin complementos): A1 1.387,24 €, A2 1.199,52 €, B 1.048,55 €, C1 900,63 €, C2 749,58 €, E 686,07 €. Subida de 2026: 1,5 % (+0,5 % si el IPC llega al 1,5 %). Fuente: Ministerio de Hacienda, Real Decreto-ley 14/2025.
+- Cuota de autónomos 2026: según los rendimientos netos al mes, de 205,88 € a 607,35 € al mes (31,5 % de la base mínima del tramo); tarifa plana de 88,64 € el primer año. Con 1.500 € netos al mes, 302,65 €.
+- Factura de autónomo: importe + 21 % de IVA − 15 % de retención de IRPF (7 % los tres primeros años). Con 1.000 € de base se cobran 1.060 €.
+- Vacaciones: 30 días naturales al año como mínimo, 2,5 por mes trabajado (art. 38 del Estatuto de los Trabajadores).
 - Indemnización por despido: improcedente, 33 días de salario por año (máximo 24 mensualidades; 45 días por año hasta el 11/02/2012); objetivo o ERE, 20 días por año (máximo 12 mensualidades); fin de contrato temporal, 12 días por año.
 
 ## Calendario laboral 2027
