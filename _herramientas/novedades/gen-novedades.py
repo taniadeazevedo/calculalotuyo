@@ -167,13 +167,27 @@ def foto(slug):
     """Ruta de la portada: la foto con filtro (.jpg) si hay foto original; si no, la portada dibujada (.png)."""
     return f'img/novedades/{slug}.jpg' if os.path.exists(os.path.join(FOTOS, slug + '.jpg')) else f'img/novedades/{slug}.png'
 
+def limpia(slug):
+    """Foto en blanco y negro SIN la pill (para la web: la pill se pone encima con HTML y así sale igual en todas las tarjetas)."""
+    return f'img/novedades/{slug}-foto.jpg' if os.path.exists(os.path.join(FOTOS, slug + '.jpg')) else foto(slug)
+
+def tarjeta(a, texto=True, extra=''):
+    """Tarjeta de un artículo, la misma en Novedades, en la portada de la web y en «Más novedades»."""
+    color = COLOR_TEMA.get(a['tema'], '#4F46E5')                                    # color de su categoría
+    resumen = f'<span>{a["desc"]}</span>' if texto else ''                          # el resumen solo donde hay sitio
+    return (f'<a href="{a["slug"]}" class="novedad-tarjeta" data-cat="{slug_cat(a["tema"])}"{extra}>'
+            f'<span class="novedad-foto"><img src="{limpia(a["slug"])}" alt="" loading="lazy" width="1200" height="630">'
+            f'<span class="novedad-esquina" style="background:{color}"><span>{a["tema"]}</span></span></span>'   # esquina del color de la categoría (el nombre, solo para lectores de pantalla)
+            f'<span class="novedad-meta">{larga(a["fecha"])}</span><strong>{a["titulo"]}</strong>{resumen}'
+            f'<span class="novedad-leer">Leer el artículo {FLECHA}</span></a>')
+
 def chrome(html, salida):
     tmp = os.path.join(AQUI, '_portada-tmp.html'); open(tmp, 'w', encoding='utf-8').write(html)
     subprocess.run(['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '--headless=new', '--hide-scrollbars', '--window-size=1200,630', f'--screenshot={salida}', 'file://' + tmp], capture_output=True, timeout=60)
     os.remove(tmp)
 
 def imagen(a):
-    """Portada 1200×630 (artículo, tarjetas, compartir y Discover). Con foto: foto + filtro sutil del color de la categoría + icono de línea."""
+    """Portada 1200×630 (artículo, tarjetas, compartir y Discover). Con foto: foto en blanco y negro + pill con la categoría en su color."""
     carpeta = os.path.join(RAIZ, 'img', 'novedades'); os.makedirs(carpeta, exist_ok=True)
     p = PORTADAS[a['slug']]
     original = os.path.join(FOTOS, a['slug'] + '.jpg')
@@ -181,13 +195,17 @@ def imagen(a):
         color = COLOR_TEMA.get(a['tema'], '#4F46E5')
         html = f'''<!doctype html><meta charset="utf-8"><style>
 html,body{{margin:0;width:1200px;height:630px;overflow:hidden}}
-body{{background:url("file://{original}") center/cover no-repeat;position:relative}}
-.filtro{{position:absolute;inset:0;background:linear-gradient(200deg,{color}1F 0%,{color}55 50%,{color}B3 100%)}}   
+body{{position:relative;background:#111}}
+.foto{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(.97)}}   
 .pill{{position:absolute;left:56px;top:52px;background:{color};color:#fff;font:700 30px/1 -apple-system,"Helvetica Neue",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:16px 28px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25)}}
-</style><div class="filtro"></div><div class="pill">{H.escape(a['tema'])}</div>'''
+</style><img class="foto" src="file://{original}" alt=""><div class="pill">{H.escape(a['tema'])}</div>'''
         png = os.path.join(AQUI, '_portada.png'); chrome(html, png)
         jpg = os.path.join(carpeta, a['slug'] + '.jpg')
         subprocess.run(['sips', '-s', 'format', 'jpeg', '-s', 'formatOptions', '80', png, '--out', jpg], capture_output=True)
+        os.remove(png)
+        html_limpio = html.replace(f'<div class="pill">{H.escape(a["tema"])}</div>', '')   # misma foto, sin la pill
+        chrome(html_limpio, png)
+        subprocess.run(['sips', '-s', 'format', 'jpeg', '-s', 'formatOptions', '80', png, '--out', os.path.join(carpeta, a['slug'] + '-foto.jpg')], capture_output=True)
         os.remove(png)
         vieja = os.path.join(carpeta, a['slug'] + '.png')
         if os.path.exists(vieja): os.remove(vieja)
@@ -248,7 +266,7 @@ for a in ARTICULOS:
     cuerpo_html, indice = con_indice(a['cuerpo']().replace('class="tabla-festivos', 'class="tabla-art tabla-festivos'))
     fecha_txt = f'Publicado el {larga(a["fecha"])}' + (f' · actualizado el {larga(a["actualizado"])}' if a['actualizado'] != a['fecha'] else '')
     botones = ''.join(f'<a href="{h}" class="art-boton">{t} {FLECHA}</a>' for h, t in a['calculadoras'])
-    otros = ''.join(f'<a href="{o["slug"]}" class="novedad-tarjeta"><img src="{foto(o["slug"])}" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{o["tema"]} · {larga(o["fecha"])}</span><strong>{o["titulo"]}</strong></a>' for o in [x for x in ARTICULOS if x is not a][:3])
+    otros = ''.join(tarjeta(o, texto=False) for o in [x for x in ARTICULOS if x is not a][:3])
     cuerpo = f'''    <article class="art">
     <header class="art-cabecera"><div class="art-col">{{{{MIGAS}}}}
         <a href="novedades#{slug_cat(a["tema"])}" class="art-tema" style="background:{CATEGORIAS[a["tema"]]}">{a["tema"]}</a>
@@ -256,7 +274,7 @@ for a in ARTICULOS:
         <p class="art-entradilla">{a["desc"]}</p>
         <p class="art-firma"><span class="art-logo"><img src="favicon.svg" alt="" width="36" height="36"></span><span><strong><a href="sobre-el-proyecto">CalculaLoTuyo</a></strong><br>{fecha_txt} · {minutos(cuerpo_html)} min de lectura</span></p>
     </div>
-    <figure class="art-portada"><img src="{foto(a["slug"])}" alt="{H.escape(PORTADAS[a["slug"]].get("alt") or (PORTADAS[a["slug"]]["cifra"] + ": " + PORTADAS[a["slug"]]["texto"]))}" width="1200" height="630" fetchpriority="high"></figure>
+    <figure class="art-portada"><img src="{limpia(a["slug"])}" alt="{H.escape(PORTADAS[a["slug"]].get("alt") or (PORTADAS[a["slug"]]["cifra"] + ": " + PORTADAS[a["slug"]]["texto"]))}" width="1200" height="630" fetchpriority="high"></figure>
     </header>
     <div class="art-col art-cuerpo">
         {CAJA_RESUMEN(a["resumen"])}
@@ -273,14 +291,13 @@ for a in ARTICULOS:
     texto = cabeza_extra(open(f, encoding='utf-8').read(), a, img)          # primero se lee (abrir para escribir lo vaciaría)
     open(f, 'w', encoding='utf-8').write(texto)
 
-# ---- Portada de Novedades: la última, destacada con su portada; el resto, en tarjetas con imagen
+# ---- Portada de Novedades: todas las tarjetas iguales, la más reciente primero
 d = ARTICULOS[0]
-destacada = f'<a href="{d["slug"]}" class="nov-destacada" data-cat="{slug_cat(d["tema"])}"><img src="{foto(d["slug"])}" alt="" width="1200" height="630" fetchpriority="high"><div><span class="novedad-meta">{d["tema"]} · {larga(d["fecha"])}</span><h2>{d["titulo"]}</h2><p>{d["desc"]}</p><span class="novedad-leer">Leer el artículo {FLECHA}</span></div></a>'
-tarjetas = ''.join(f'''<a href="{a["slug"]}" class="novedad-tarjeta" data-cat="{slug_cat(a["tema"])}"><img src="{foto(a["slug"])}" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span>{a["desc"]}</span><span class="novedad-leer">Leer {FLECHA}</span></a>''' for a in ARTICULOS[1:])
+tarjetas = ''.join(tarjeta(a) for a in ARTICULOS)   # todas iguales, la más reciente primero
 cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📰 Actualidad</div><h1>Novedades<br><span class="highlight">lo que cambia en tu sueldo, tu paro y tus impuestos</span></h1><p>Las noticias que afectan a tu bolsillo, explicadas fácil y con la fuente oficial. Sin opiniones: qué ha pasado, qué cambia para ti y cómo calcularlo.</p></div></section>
     <section class="section"><div class="container">
     <div class="nov-filtro" role="group" aria-label="Filtrar por categoría"><button type="button" class="activo" data-filtro="">Todas</button>{''.join(f'<button type="button" data-filtro="{slug_cat(c)}" style="--c:{col}">{c}</button>' for c, col in CATEGORIAS.items() if any(x["tema"] == c for x in ARTICULOS))}</div>
-    {destacada}<div class="novedades-lista" style="margin-top:20px">{tarjetas}</div>
+    <div class="novedades-lista" style="margin-top:20px">{tarjetas}</div>
     <script>
     // Filtro por categoría: enseña solo los artículos de la categoría pulsada (también desde novedades#pensiones)
     (function(){{
@@ -322,7 +339,7 @@ def poner_bloque(archivo, html, antes_de=None, despues_de=None):
     elif antes_de: i = s.index(antes_de); s = s[:i] + bloque + s[i:]
     else: i = s.index(despues_de) + len(despues_de); s = s[:i] + '\n' + bloque + s[i:]
     open(ruta, 'w', encoding='utf-8').write(s)
-mini = ''.join(f'<a href="{a["slug"]}" class="novedad-tarjeta"><img src="{foto(a["slug"])}" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span class="novedad-leer">Leer {FLECHA}</span></a>' for a in ARTICULOS[:3])
+mini = ''.join(tarjeta(a, texto=False) for a in ARTICULOS[:3])
 bloque = f'''    <section class="section-flat" id="novedades-portada"><div class="container">
             <h2 class="bloque-titulo">📰 Novedades</h2>
             <p class="bloque-desc">Lo que cambia en tu sueldo, tu paro y tus impuestos, con la fuente oficial</p>

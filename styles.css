@@ -4323,7 +4323,13 @@ a.situacion, a.calc-item, a.modelo-card, a.rapida, a.guide-card, .chips a, .sigu
 .nov-destacada .novedad-meta { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); }
 .nov-destacada .novedad-leer { color: var(--accent); font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
 @media (max-width: 760px) { .nov-destacada { grid-template-columns: 1fr; } }
-.novedad-tarjeta img { width: calc(100% + 40px); margin: -18px -20px 6px; height: auto; border-radius: 14px 14px 0 0; display: block; }   /* imagen arriba de cada tarjeta, a sangre */
+.novedad-foto { position: relative; display: block; margin: -18px -20px 8px; }   /* foto arriba de cada tarjeta, a sangre */
+.novedad-foto img { width: 100%; height: auto; aspect-ratio: 1200 / 630; object-fit: cover; display: block; }
+.novedad-esquina { position: absolute; left: 0; top: 0; width: 46px; height: 46px; clip-path: polygon(0 0, 100% 0, 0 100%); }   /* detalle de color en la esquina: la categoría sin repetir el texto */
+.novedad-esquina span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }   /* el nombre, oculto a la vista pero lo leen los lectores de pantalla */
+.nov-filtro button[style]::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--c); margin-right: 7px; vertical-align: 1px; }   /* puntito de color en cada categoría, para unirla con la esquina de las tarjetas */
+.nov-filtro button.activo::before { background: #fff; }
+.novedad-tarjeta .novedad-meta { color: var(--text2); }   /* la fecha, discreta: la categoría ya va en la pill */
 .novedad-tarjeta { overflow: hidden; }
 .nov-filtro { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; }   /* categorías de Novedades */
 .nov-filtro button { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--text); font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
