@@ -196,7 +196,7 @@ def imagen(a):
         html = f'''<!doctype html><meta charset="utf-8"><style>
 html,body{{margin:0;width:1200px;height:630px;overflow:hidden}}
 body{{position:relative;background:#111}}
-.foto{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.08) brightness(.97)}}   
+.foto{{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1)}}   
 .pill{{position:absolute;left:56px;top:52px;background:{color};color:#fff;font:700 30px/1 -apple-system,"Helvetica Neue",Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:16px 28px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.25)}}
 </style><img class="foto" src="file://{original}" alt=""><div class="pill">{H.escape(a['tema'])}</div>'''
         png = os.path.join(AQUI, '_portada.png'); chrome(html, png)
