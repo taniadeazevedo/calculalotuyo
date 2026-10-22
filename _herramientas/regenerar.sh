@@ -3,6 +3,7 @@
 cd "$(dirname "$0")/.." || exit 1
 python3 _herramientas/minificar-css.py      # styles.css (con comentarios) → styles.min.css (lo que carga la web)
 node _herramientas/sueldos/calcular.js >/dev/null && python3 _herramientas/sueldos/gen-sueldos.py
+python3 _herramientas/sueldos/tablas-irpf-ipc.py   # tablas y preguntas de las páginas de IRPF y subida del IPC
 node _herramientas/paro/calcular.js >/dev/null && python3 _herramientas/paro/gen-paro.py
 node _herramientas/despido/calcular.js >/dev/null && python3 _herramientas/despido/gen-despido.py
 python3 _herramientas/calendario/gen-ciudades.py >/dev/null   # ciudades con fiestas locales publicadas (antes de gen-seo, que las enlaza)
