@@ -24,7 +24,11 @@ for f in glob.glob('*.html'):
     img = next((i for i, patron in SECCIONES if re.match(patron, nombre)), 'og-image.png')
     s = re.sub(r'(https://calculalotuyo\.es/)og-[a-z]+\.png(?:\?v=\d+)?', rf'\g<1>{img}?v={VERSION_OG}', s)      # og:image y twitter:image (con ?v=: al cambiar la imagen, WhatsApp y las redes la vuelven a bajar)
     s = re.sub(r'logo-512\.png(?:\?v=\d+)?', f'logo-512.png?v={VERSION_OG}', s)   # logo de los datos para Google
-    s = re.sub(r'(favicon\.svg|favicon-32\.png|apple-touch-icon\.png)(?:\?v=\d+)?"', rf'\1?v={VERSION_OG}"', s)   # el logo de la pestaña, del móvil y de la cabecera: que no se quede el antiguo guardado
+    # Iconos que pide Google para los resultados (múltiplos de 48 px) y favicon.ico: se añaden tras el de 32 px si faltan
+    if 'favicon-48.png' not in s:
+        s = re.sub(r'(\n(\s*)<link rel="icon" type="image/png" sizes="32x32" href="(/?)favicon-32\.png[^"]*">)',
+                   lambda m: m.group(1) + f'\n{m.group(2)}<link rel="icon" type="image/png" sizes="48x48" href="{m.group(3)}favicon-48.png">\n{m.group(2)}<link rel="icon" type="image/png" sizes="96x96" href="{m.group(3)}favicon-96.png">\n{m.group(2)}<link rel="icon" href="{m.group(3)}favicon.ico" sizes="any">', s, count=1)
+    s = re.sub(r'(favicon\.svg|favicon-32\.png|favicon-48\.png|favicon-96\.png|favicon\.ico|apple-touch-icon\.png)(?:\?v=\d+)?"', rf'\1?v={VERSION_OG}"', s)   # el logo de la pestaña, del móvil y de la cabecera: que no se quede el antiguo guardado
     if nombre in CALCULADORAS and '"WebApplication"' not in s:
         titulo = H.unescape(re.search(r'<title>(.*?)</title>', s).group(1))
         desc = H.unescape(re.search(r'name="description" content="(.*?)"', s).group(1))
