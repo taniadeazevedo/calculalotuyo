@@ -122,11 +122,29 @@ function cargarAnalytics(){
 if(document.readyState==='complete')cargarAnalytics();         // la página ya había terminado de cargar
 else window.addEventListener('load',cargarAnalytics,{once:true});   // si no, espera a que termine (una sola vez)
 
+// ---------- AdSense (y su aviso de cookies), al primer gesto ----------
+// Antes se cargaba al entrar y era lo que más frenaba la web (el aviso de Google tapaba la página mientras cargaba).
+// Ahora se carga en cuanto la persona baja, toca, hace clic, mueve el ratón o pulsa una tecla, o a los 10 segundos.
+// Mientras no carga no se mide ni se muestra nada: el consentimiento sigue «denegado» por defecto (arriba).
+const ID_ADSENSE='ca-pub-4853214655991551';
+let adsenseCargado=false;
+function cargarAdsense(){
+    if(adsenseCargado)return; adsenseCargado=true;
+    ['scroll','mousemove','touchstart','keydown','click'].forEach(ev=>window.removeEventListener(ev,cargarAdsense));
+    const s=document.createElement('script');
+    s.async=true; s.crossOrigin='anonymous';
+    s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client='+ID_ADSENSE;
+    document.head.appendChild(s);
+}
+['scroll','mousemove','touchstart','keydown','click'].forEach(ev=>window.addEventListener(ev,cargarAdsense,{once:true,passive:true}));
+window.addEventListener('load',()=>setTimeout(cargarAdsense,10000),{once:true});   // por si no hace nada: a los 10 s
+
 // Cualquier enlace con data-cookies vuelve a abrir el mensaje de Google para cambiar la decisión
 window.googlefc=window.googlefc||{};                 // objeto que crea el mensaje de Google
 googlefc.callbackQueue=googlefc.callbackQueue||[];   // cola de tareas que se ejecutan cuando esté listo
 document.querySelectorAll('[data-cookies]').forEach(el=>el.addEventListener('click',e=>{
     e.preventDefault();                              // que el enlace "#" no salte arriba
+    if(!adsenseCargado){cargarAdsense();googlefc.callbackQueue.push(()=>googlefc.showRevocationMessage());return}   // aún no cargado: se carga y se abre al estar listo
     if(typeof googlefc.showRevocationMessage==='function'){   // el mensaje de Google está cargado: lo abre otra vez
         googlefc.showRevocationMessage();
     }else{                                           // aún no lo está (p. ej., mientras AdSense revisa la web o con un bloqueador):

@@ -29,6 +29,9 @@ for f in glob.glob('*.html'):
         s = re.sub(r'(\n(\s*)<link rel="icon" type="image/png" sizes="32x32" href="(/?)favicon-32\.png[^"]*">)',
                    lambda m: m.group(1) + f'\n{m.group(2)}<link rel="icon" type="image/png" sizes="48x48" href="{m.group(3)}favicon-48.png">\n{m.group(2)}<link rel="icon" type="image/png" sizes="96x96" href="{m.group(3)}favicon-96.png">\n{m.group(2)}<link rel="icon" href="{m.group(3)}favicon.ico" sizes="any">', s, count=1)
     s = re.sub(r'(favicon\.svg|favicon-32\.png|favicon-48\.png|favicon-96\.png|favicon\.ico|apple-touch-icon\.png)(?:\?v=\d+)?"', rf'\1?v={VERSION_OG}"', s)   # el logo de la pestaña, del móvil y de la cabecera: que no se quede el antiguo guardado
+    # AdSense ya no carga al entrar: lo carga site.js al primer gesto (más rápido). La verificación de AdSense
+    # sigue con la etiqueta <meta name="google-adsense-account"> y con ads.txt.
+    s = re.sub(r'\n\s*<script async src="https://pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js\?client=ca-pub-\d+" crossorigin="anonymous"></script>', '', s)
     if nombre in CALCULADORAS and '"WebApplication"' not in s:
         titulo = H.unescape(re.search(r'<title>(.*?)</title>', s).group(1))
         desc = H.unescape(re.search(r'name="description" content="(.*?)"', s).group(1))
