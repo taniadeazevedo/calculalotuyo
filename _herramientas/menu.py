@@ -29,7 +29,8 @@ except FileNotFoundError: NOVEDADES = []
 # Sección de cada página según su nombre: la primera regla que encaja gana
 SECCION = [
     ('hacienda', r'^(obligado-a-declarar-renta|renta-.*|loteria-.*)$'),
-    ('guias', r'^(guia.*|novedades|' + '|'.join(re.escape(x['slug']) for x in NOVEDADES) + ')$'),
+    ('novedades', r'^(novedades|' + '|'.join(re.escape(x['slug']) for x in NOVEDADES) + ')$'),   # Novedades, sección propia
+    ('guias', r'^guia.*$'),
     ('modelos', r'^modelo.*$'),
     ('calendario', r'^(calendario-laboral-2027.*|dias-laborables.*|puentes-2027|semana-santa-2027|trabajar-en-festivo)$'),
     ('calculadoras', r'^(' + '|'.join(p for _, ls in GRUPOS for p, _ in ls) +
@@ -60,6 +61,7 @@ def menus(pag, raiz=''):
                 </div>
             </div>
             <a href="{h('guias')}" class="nav-link{act('guias')}"{cur('guias')}>Guías</a>
+            <a href="{h('novedades')}" class="nav-link{act('novedades')}"{cur('novedades')}>Novedades</a>
             <a href="{h('modelos')}" class="nav-link{act('modelos')}"{cur('modelos')}>Modelos</a>
             <div class="nav-dropdown nav-cal" data-dropdown>
                 <button class="nav-link{act('calendario')}" data-dropdown-btn>📅 Calendario 2027 {FLECHA}</button>
@@ -83,6 +85,7 @@ def menus(pag, raiz=''):
     </div>
     <div class="mobile-nav-section mobile-nav-sueltos">
         <a href="{h('guias')}" class="mobile-nav-link"{cur('guias')}>📚 Guías</a>
+        <a href="{h('novedades')}" class="mobile-nav-link"{cur('novedades')}>📰 Novedades</a>
         <a href="{h('modelos')}" class="mobile-nav-link"{cur('modelos')}>📄 Modelos gratis</a>
     </div>
     <div class="mobile-nav-section mobile-nav-cal open">

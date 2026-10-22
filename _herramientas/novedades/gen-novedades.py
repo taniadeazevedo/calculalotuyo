@@ -330,7 +330,7 @@ open(os.path.join(RAIZ, 'feed.xml'), 'w', encoding='utf-8').write(f'''<?xml vers
   <description>Lo que cambia en tu sueldo, tu paro, tus impuestos y tu pensión, con la fuente oficial.</description><language>es-es</language>
 {items}</channel></rss>
 ''')
-# ---- Bloque «Novedades» en la portada y en Guías (las 3 últimas), entre marcas para poder rehacerlo
+# ---- Bloque «Novedades» en la portada (las 3 últimas), entre marcas para poder rehacerlo
 import re
 def poner_bloque(archivo, html, antes_de=None, despues_de=None):
     ruta = os.path.join(RAIZ, archivo); s = open(ruta, encoding='utf-8').read()
@@ -347,7 +347,9 @@ bloque = f'''    <section class="section-flat" id="novedades-portada"><div class
             <a href="novedades" class="calc-group-guide">Ver todas las novedades →</a>
     </div></section>'''
 poner_bloque('index.html', bloque, antes_de='    <!-- GUÍAS Y MODELOS')
-poner_bloque('guias.html', bloque, despues_de='</section>')            # justo después de la cabecera de Guías
+# En Guías ya no va: Novedades tiene su propio sitio en el menú (22/10/2026). Se quita si quedó de antes.
+g = os.path.join(RAIZ, 'guias.html'); t = open(g, encoding='utf-8').read()
+open(g, 'w', encoding='utf-8').write(re.sub(r'\n?<!-- NOVEDADES -->.*?<!-- /NOVEDADES -->\n', '', t, flags=re.S))
 
 json.dump([{k: a[k] for k in ('slug', 'titulo', 'desc', 'fecha', 'actualizado', 'tema')} for a in ARTICULOS], open(os.path.join(AQUI, 'lista.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 print('novedades:', len(ARTICULOS), 'artículos · pensiones 2027 ≈', pc(CENTRAL, 2), '· deducción alquiler 25.000 € ≈', e(ded(21375.0)), '€')
