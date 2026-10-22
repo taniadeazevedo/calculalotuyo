@@ -82,3 +82,10 @@
 - [ ] 👩 Cuenta de Google Ads solo para usar el Planificador de palabras clave (sin campañas).
 - [ ] Con más de unas 20.000 visitas al mes: pasar a Ezoic y, más adelante, a Mediavine o Raptive.
 - [ ] Más adelante: chat con IA que solo responda con las páginas de la web y cite la fuente.
+
+## Informe técnico externo (22/10/2026)
+- [x] `regenerar.sh` se para si un paso falla (set -e, pruebas sin `| tail -1`) y avisa con ❌.
+- [x] Las pruebas ya no se callan los errores de una calculadora y comprueban los enlaces internos rotos de todas las páginas.
+- [x] Accesibilidad: «Saltar al contenido», marco visible con el tabulador (:focus-visible) y sin animaciones si se pide (prefers-reduced-motion).
+- [x] Portada: «21 calculadoras» (antes 16).
+- [ ] Más adelante: CI con GitHub Actions, cabecera/pie sin sacarlos de vacaciones.html, renombrar datos-2026.js en enero.

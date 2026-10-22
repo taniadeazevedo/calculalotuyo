@@ -1,13 +1,19 @@
 #!/bin/sh
 # Regenera todas las páginas generadas y aplica el paso final de SEO. Uso: sh _herramientas/regenerar.sh
 cd "$(dirname "$0")/.." || exit 1
+set -e   # si un paso falla, el script se para ahí (y no termina como si todo hubiera ido bien)
+trap 'printf "\n❌ regenerar.sh se ha parado: el último paso ha fallado. No publiques hasta arreglarlo.\n" >&2' EXIT
 python3 _herramientas/minificar-css.py      # styles.css (con comentarios) → styles.min.css (lo que carga la web)
-node _herramientas/sueldos/calcular.js >/dev/null && python3 _herramientas/sueldos/gen-sueldos.py
+node _herramientas/sueldos/calcular.js >/dev/null
+python3 _herramientas/sueldos/gen-sueldos.py
 python3 _herramientas/sueldos/tablas-irpf-ipc.py   # tablas y preguntas de las páginas de IRPF y subida del IPC
-node _herramientas/paro/calcular.js >/dev/null && python3 _herramientas/paro/gen-paro.py
-node _herramientas/despido/calcular.js >/dev/null && python3 _herramientas/despido/gen-despido.py
+node _herramientas/paro/calcular.js >/dev/null
+python3 _herramientas/paro/gen-paro.py
+node _herramientas/despido/calcular.js >/dev/null
+python3 _herramientas/despido/gen-despido.py
 python3 _herramientas/calendario/gen-ciudades.py >/dev/null   # ciudades con fiestas locales publicadas (antes de gen-seo, que las enlaza)
-python3 _herramientas/calendario/gen-seo.py >/dev/null && python3 _herramientas/calendario/build-puentes.py
+python3 _herramientas/calendario/gen-seo.py >/dev/null
+python3 _herramientas/calendario/build-puentes.py
 python3 _herramientas/modelos/gen-modelos.py   # sin python-docx/openpyxl solo rehace las páginas, no los archivos
 python3 _herramientas/jubilacion/gen-jubilacion.py
 python3 _herramientas/informe/gen-informe.py
@@ -22,5 +28,10 @@ python3 _herramientas/respuestas.py         # «Respuesta rápida» arriba de ca
 python3 _herramientas/menu.py              # el mismo menú en todas las páginas (después de generarlas)
 python3 _herramientas/iconos.py            # iconos propios en vez de emojis (después del menú)
 python3 _herramientas/buscador.py           # índice del buscador (buscar.json), siempre al final
-node _herramientas/pruebas/pruebas.js | tail -1   # pruebas de las calculadoras: si algo cambia, lo avisa
+# pruebas de las calculadoras y de los enlaces: se guarda la salida para enseñar solo el resumen,
+# pero el script se para si fallan (con «| tail -1» se perdía el aviso)
+if ! salida=$(node _herramientas/pruebas/pruebas.js); then echo "$salida"; exit 1; fi
+echo "$salida" | tail -1
 python3 _herramientas/sitemap.py           # fechas del sitemap (último cambio de cada página)
+trap - EXIT   # todo ha ido bien: sin aviso de error
+echo "✅ Web regenerada sin errores"

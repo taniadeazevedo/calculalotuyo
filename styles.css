@@ -4335,3 +4335,13 @@ a.situacion, a.calc-item, a.modelo-card, a.rapida, a.guide-card, .chips a, .sigu
 .nov-filtro button { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--text); font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
 .nov-filtro button.activo { background: var(--c, var(--accent)); border-color: var(--c, var(--accent)); color: #fff; }
 .nov-destacada[hidden], .novedad-tarjeta[hidden] { display: none; }
+
+/* ===== Accesibilidad (22/10/2026) ===== */
+.saltar { position: absolute; left: 12px; top: -60px; z-index: 1000; background: var(--accent); color: #fff; padding: 10px 16px; border-radius: 10px; font-weight: 700; text-decoration: none; transition: top .15s; }   /* escondido arriba… */
+.saltar:focus { top: 12px; }   /* …y aparece al pulsar el tabulador */
+main:focus { outline: none; }   /* al saltar, sin marco alrededor de todo el contenido */
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }   /* marco visible al moverse con el teclado (con ratón no sale) */
+.form-input:focus-visible, .form-select:focus-visible, .busca-input:focus-visible { outline-offset: 0; }
+@media (prefers-reduced-motion: reduce) {   /* si la persona lo pide en su móvil u ordenador: sin animaciones */
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

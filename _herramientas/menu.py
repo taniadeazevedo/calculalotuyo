@@ -110,6 +110,11 @@ for f in sorted(glob.glob('*.html')):
         s = re.sub(r'(Sobre el Proyecto</a>\s*<a href="(/?)como-calculamos">Cómo calculamos</a>)', lambda m: m.group(1) + f'\n                <a href="{m.group(2)}novedades">Novedades</a>', s, count=1)
     if pag != 'como-calculamos':
         s = re.sub(r'(<p class="hero-meta">.*?<a href="sobre-el-proyecto">CalculaLoTuyo</a>)(</p>)', r'\1 · <a href="como-calculamos">Cómo calculamos</a>\2', s, count=1) if 'href="como-calculamos">Cómo calculamos</a></p>' not in s else s
+    # Accesibilidad: «Saltar al contenido» para quien navega con teclado (lo primero de la página) y destino en <main>
+    s = re.sub(r'<main(?![^>]*id=)', '<main id="contenido" tabindex="-1"', s, count=1)
+    s = s.replace('<main id="contenido">', '<main id="contenido" tabindex="-1">', 1)   # tabindex: el teclado sigue desde ahí
+    if 'class="saltar"' not in s:
+        s = re.sub(r'(<body[^>]*>)', r'\1\n<a class="saltar" href="#contenido">Saltar al contenido</a>', s, count=1)
     if s != o:
         open(f, 'w', encoding='utf-8').write(s); cambiadas += 1
 print('menú actualizado en', cambiadas, 'páginas')

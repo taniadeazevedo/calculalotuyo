@@ -115,8 +115,23 @@ for(const [nombre,slug,datos] of FOTOS){
     try{const r=calc(slug)(datos);
         for(const [id,el] of Object.entries(r.todos)){const t=String(el.innerHTML||'')+' '+String(el.textContent||'');const m=t.match(LARGOS);
             if(m&&!/^(wa|.*href)/.test(id)){mal++;console.log('❌ '+slug+' · #'+id+' muestra un número sin redondear: '+m[0])}}
-    }catch(e){}
+    }catch(e){mal++;console.log('❌ '+slug+' · la calculadora da error: '+e.message)}   // antes se callaba
 }
+// Enlaces rotos: cada href/src interno de todas las páginas tiene que llevar a un archivo que exista
+const existe=u=>{u=decodeURIComponent(u.split('#')[0].split('?')[0]).replace(/^\//,'');
+    if(u===''||u==='.')return true;                                                   // la portada
+    const f=path.join(RAIZ,u);
+    return fs.existsSync(f)&&fs.statSync(f).isFile()||fs.existsSync(f+'.html')||fs.existsSync(path.join(f,'index.html'));};
+let rotos=0;
+for(const pag of fs.readdirSync(RAIZ).filter(f=>f.endsWith('.html'))){
+    const html=fs.readFileSync(path.join(RAIZ,pag),'utf8').replace(/<script[\s\S]*?<\/script>/g,'');   // lo de dentro de los scripts no son enlaces
+    for(const [,u] of html.matchAll(/(?:href|src)="([^"]*)"/g)){
+        if(/^(https?:|mailto:|tel:|#|javascript:|data:|\{)/.test(u)||u==='')continue;   // externos, anclas y plantillas
+        if(!existe(u)){rotos++;if(rotos<=20)console.log('❌ enlace roto en '+pag+': '+u)}
+    }
+}
+if(rotos){mal++;console.log((rotos>20?'   … y '+(rotos-20)+' más. ':'')+'❌ '+rotos+' enlace(s) roto(s)')}
+else console.log('✅ ningún enlace interno roto');
 for(const [txt,slug,datos,ok] of A_MANO){
     let r,bien=false; try{r=calc(slug)(datos);bien=ok(r)}catch(e){r={error:e.message}}
     if(!bien)mal++;
