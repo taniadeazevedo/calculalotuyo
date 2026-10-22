@@ -147,17 +147,25 @@ FLECHA = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="cu
 
 # Portada de cada artículo: cifra o idea clave grande, icono y color por tema (también es su imagen para compartir y Discover)
 PORTADAS = {
-    'subida-pensiones-2027': dict(cifra='≈ 3,6 %', texto='Lo que subirían las pensiones en enero de 2027', icono='piggy-bank', color=('#312E81', '#6D28D9')),
-    'deduccion-alquiler-renta': dict(cifra='10 %', texto='Del alquiler de tu casa, deducible en la renta', icono='house', color=('#0F766E', '#4F46E5')),
-    'ipc-septiembre-2026-sueldo': dict(cifra='4,9 %', texto='IPC de septiembre: el más alto desde 2023', icono='trending-up', color=('#9A3412', '#BE185D')),
+    'subida-pensiones-2027': dict(cifra='≈ 3,6 %', texto='Lo que subirían las pensiones en enero de 2027', icono='piggy-bank', color=('#312E81', '#6D28D9'), alt='Dos hombres mayores sentados de espaldas en un banco de un parque'),
+    'deduccion-alquiler-renta': dict(cifra='10 %', texto='Del alquiler de tu casa, deducible en la renta', icono='house', color=('#0F766E', '#4F46E5'), alt='Edificios de viviendas con miradores junto a la ría de Bilbao'),
+    'ipc-septiembre-2026-sueldo': dict(cifra='4,9 %', texto='IPC de septiembre: el más alto desde 2023', icono='trending-up', color=('#9A3412', '#BE185D'), alt='Una mano sujeta un billete de 100 euros'),
 }
 def svg_icono(nombre):
     ruta = os.path.join(RAIZ, '_herramientas', 'iconos', nombre + '.svg')
     import re
     return re.search(r'<svg[^>]*>(.*)</svg>', open(ruta, encoding='utf-8').read(), re.S).group(1)
 
+def foto(slug):
+    """Ruta de la portada: la foto real (img/novedades/<slug>.jpg, 1200×630) si existe; si no, la diseñada (.png)."""
+    return f'img/novedades/{slug}.jpg' if os.path.exists(os.path.join(RAIZ, 'img', 'novedades', slug + '.jpg')) else f'img/novedades/{slug}.png'
+
 def imagen(a):
-    """Portada 1200×630: se rehace cada vez (si cambia la cifra, cambia la imagen)."""
+    """Portada 1200×630. Con foto real se usa la foto; si no, se dibuja una portada con la cifra clave."""
+    if foto(a['slug']).endswith('.jpg'):
+        png = os.path.join(RAIZ, 'img', 'novedades', a['slug'] + '.png')
+        if os.path.exists(png): os.remove(png)                          # la portada dibujada ya no hace falta
+        return 'https://calculalotuyo.es/' + foto(a['slug'])
     carpeta = os.path.join(RAIZ, 'img', 'novedades'); os.makedirs(carpeta, exist_ok=True)
     png = os.path.join(carpeta, a['slug'] + '.png')
     p = PORTADAS[a['slug']]
@@ -214,7 +222,7 @@ for a in ARTICULOS:
     cuerpo_html, indice = con_indice(a['cuerpo']().replace('class="tabla-festivos', 'class="tabla-art tabla-festivos'))
     fecha_txt = f'Publicado el {larga(a["fecha"])}' + (f' · actualizado el {larga(a["actualizado"])}' if a['actualizado'] != a['fecha'] else '')
     botones = ''.join(f'<a href="{h}" class="art-boton">{t} {FLECHA}</a>' for h, t in a['calculadoras'])
-    otros = ''.join(f'<a href="{o["slug"]}" class="novedad-tarjeta"><img src="img/novedades/{o["slug"]}.png" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{o["tema"]} · {larga(o["fecha"])}</span><strong>{o["titulo"]}</strong></a>' for o in [x for x in ARTICULOS if x is not a][:3])
+    otros = ''.join(f'<a href="{o["slug"]}" class="novedad-tarjeta"><img src="{foto(o["slug"])}" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{o["tema"]} · {larga(o["fecha"])}</span><strong>{o["titulo"]}</strong></a>' for o in [x for x in ARTICULOS if x is not a][:3])
     cuerpo = f'''    <article class="art">
     <header class="art-cabecera"><div class="art-col">{{{{MIGAS}}}}
         <a href="novedades" class="art-tema">{a["tema"]}</a>
@@ -222,7 +230,7 @@ for a in ARTICULOS:
         <p class="art-entradilla">{a["desc"]}</p>
         <p class="art-firma"><span class="art-logo"><img src="favicon.svg" alt="" width="36" height="36"></span><span><strong><a href="sobre-el-proyecto">CalculaLoTuyo</a></strong><br>{fecha_txt} · {minutos(cuerpo_html)} min de lectura</span></p>
     </div>
-    <figure class="art-portada"><img src="img/novedades/{a["slug"]}.png" alt="{H.escape(PORTADAS[a["slug"]]["cifra"] + ": " + PORTADAS[a["slug"]]["texto"])}" width="1200" height="630" fetchpriority="high"></figure>
+    <figure class="art-portada"><img src="{foto(a["slug"])}" alt="{H.escape(PORTADAS[a["slug"]].get("alt") or (PORTADAS[a["slug"]]["cifra"] + ": " + PORTADAS[a["slug"]]["texto"]))}" width="1200" height="630" fetchpriority="high">{'<figcaption>Foto: Pexels</figcaption>' if foto(a["slug"]).endswith(".jpg") else ''}</figure>
     </header>
     <div class="art-col art-cuerpo">
         {CAJA_RESUMEN(a["resumen"])}
@@ -241,11 +249,11 @@ for a in ARTICULOS:
 
 # ---- Portada de Novedades: la última, destacada con su portada; el resto, en tarjetas con imagen
 d = ARTICULOS[0]
-destacada = f'<a href="{d["slug"]}" class="nov-destacada"><img src="img/novedades/{d["slug"]}.png" alt="" width="1200" height="630" fetchpriority="high"><div><span class="novedad-meta">{d["tema"]} · {larga(d["fecha"])}</span><h2>{d["titulo"]}</h2><p>{d["desc"]}</p><span class="novedad-leer">Leer el artículo {FLECHA}</span></div></a>'
-tarjetas = ''.join(f'''<a href="{a["slug"]}" class="novedad-tarjeta"><img src="img/novedades/{a["slug"]}.png" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span>{a["desc"]}</span><span class="novedad-leer">Leer {FLECHA}</span></a>''' for a in ARTICULOS[1:])
+destacada = f'<a href="{d["slug"]}" class="nov-destacada"><img src="{foto(d["slug"])}" alt="" width="1200" height="630" fetchpriority="high"><div><span class="novedad-meta">{d["tema"]} · {larga(d["fecha"])}</span><h2>{d["titulo"]}</h2><p>{d["desc"]}</p><span class="novedad-leer">Leer el artículo {FLECHA}</span></div></a>'
+tarjetas = ''.join(f'''<a href="{a["slug"]}" class="novedad-tarjeta"><img src="{foto(a["slug"])}" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span>{a["desc"]}</span><span class="novedad-leer">Leer {FLECHA}</span></a>''' for a in ARTICULOS[1:])
 cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📰 Actualidad</div><h1>Novedades<br><span class="highlight">lo que cambia en tu sueldo, tu paro y tus impuestos</span></h1><p>Las noticias que afectan a tu bolsillo, explicadas fácil y con la fuente oficial. Sin opiniones: qué ha pasado, qué cambia para ti y cómo calcularlo.</p></div></section>
     <section class="section"><div class="container">{destacada}<div class="novedades-lista" style="margin-top:20px">{tarjetas}</div>
-    <p class="nota-corta" style="margin-top:24px">Síguelas también por <a href="feed.xml">RSS</a>.</p></div></section>
+    </div></section>
 '''
 pagina('novedades', 'Novedades laborales y fiscales 2026 explicadas fácil', 'Lo que cambia en tu sueldo, tu paro, tus impuestos y tu pensión, explicado fácil y con la fuente oficial: pensiones 2027, IPC, deducciones en la renta y más.',
        'novedades laborales, noticias sueldo, pensiones 2027, ipc 2026, renta 2026', [('Novedades', None)], cuerpo,
@@ -274,7 +282,7 @@ def poner_bloque(archivo, html, antes_de=None, despues_de=None):
     elif antes_de: i = s.index(antes_de); s = s[:i] + bloque + s[i:]
     else: i = s.index(despues_de) + len(despues_de); s = s[:i] + '\n' + bloque + s[i:]
     open(ruta, 'w', encoding='utf-8').write(s)
-mini = ''.join(f'<a href="{a["slug"]}" class="novedad-tarjeta"><img src="img/novedades/{a["slug"]}.png" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span class="novedad-leer">Leer {FLECHA}</span></a>' for a in ARTICULOS[:3])
+mini = ''.join(f'<a href="{a["slug"]}" class="novedad-tarjeta"><img src="{foto(a["slug"])}" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span class="novedad-leer">Leer {FLECHA}</span></a>' for a in ARTICULOS[:3])
 bloque = f'''    <section class="section-flat" id="novedades-portada"><div class="container">
             <h2 class="bloque-titulo">📰 Novedades</h2>
             <p class="bloque-desc">Lo que cambia en tu sueldo, tu paro y tus impuestos, con la fuente oficial</p>

@@ -4325,3 +4325,4 @@ a.situacion, a.calc-item, a.modelo-card, a.rapida, a.guide-card, .chips a, .sigu
 @media (max-width: 760px) { .nov-destacada { grid-template-columns: 1fr; } }
 .novedad-tarjeta img { width: calc(100% + 40px); margin: -18px -20px 6px; height: auto; border-radius: 14px 14px 0 0; display: block; }   /* imagen arriba de cada tarjeta, a sangre */
 .novedad-tarjeta { overflow: hidden; }
+.art-portada figcaption { font-size: 0.75rem; color: var(--text2); text-align: right; margin-top: 6px; }   /* «Foto: Pexels» */
