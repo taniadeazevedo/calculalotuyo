@@ -102,8 +102,9 @@ for f in sorted(glob.glob('*.html')):
     # «Cómo calculamos»: en el pie (tras «Sobre el Proyecto») y en la línea «Revisado el… · CalculaLoTuyo»
     if 'como-calculamos">Cómo calculamos' not in s:
         s = re.sub(r'(<a href="/?sobre-el-proyecto">Sobre el Proyecto</a>)', lambda m: m.group(1) + m.group(1).replace('sobre-el-proyecto', 'como-calculamos').replace('Sobre el Proyecto', 'Cómo calculamos'), s, count=1)
-    if 'href="novedades">Novedades</a>' not in s and 'href="/novedades">Novedades</a>' not in s:   # «Novedades» en el pie, tras «Cómo calculamos»
-        s = re.sub(r'(<a href="(/?)como-calculamos">Cómo calculamos</a>)', lambda m: m.group(1) + f'\n                <a href="{m.group(2)}novedades">Novedades</a>', s, count=1)
+    s = re.sub(r'\n\s*<a href="/?novedades">Novedades</a>(</p>)', r'\1', s)   # quita el que se coló en «Revisado el…» (22/10/2026)
+    if not re.search(r'Cómo calculamos</a>\s*<a href="/?novedades">Novedades</a>', s):   # «Novedades» en el pie, justo tras «Cómo calculamos»
+        s = re.sub(r'(Sobre el Proyecto</a>\s*<a href="(/?)como-calculamos">Cómo calculamos</a>)', lambda m: m.group(1) + f'\n                <a href="{m.group(2)}novedades">Novedades</a>', s, count=1)
     if pag != 'como-calculamos':
         s = re.sub(r'(<p class="hero-meta">.*?<a href="sobre-el-proyecto">CalculaLoTuyo</a>)(</p>)', r'\1 · <a href="como-calculamos">Cómo calculamos</a>\2', s, count=1) if 'href="como-calculamos">Cómo calculamos</a></p>' not in s else s
     if s != o:

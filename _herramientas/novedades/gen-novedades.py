@@ -55,7 +55,7 @@ ARTICULOS = [
 <h2>📌 Qué dice la ley</h2>
 <p>Desde 2024, las pensiones contributivas de la Seguridad Social se revalorizan al empezar cada año en el porcentaje del <strong>valor medio de las tasas anuales del IPC de los doce meses anteriores a diciembre</strong>: de diciembre del año anterior a noviembre. Si esa media fuera negativa, las pensiones no bajarían. La pensión máxima y las mínimas se actualizan en ese mismo porcentaje en los Presupuestos.</p>
 <h2>📊 El IPC de 2026 mes a mes</h2>
-<div class="tabla-wrap"><table class="tabla-festivos tabla-corta"><thead><tr><th>Mes</th><th>IPC anual</th></tr></thead><tbody>{''.join(f'<tr><td>{m}</td><td>{pc(v)}</td></tr>' for m, v in IPC)}<tr><td>oct y nov</td><td>pendientes</td></tr></tbody></table></div>
+<div class="tabla-wrap"><table class="tabla-festivos tabla-corta"><thead><tr><th>Mes</th><th>IPC anual</th></tr></thead><tbody>{''.join(f'<tr><td>{m}</td><td><span class="barra-celda" style="--v:{v / 5.5 * 100:.0f}%"></span>{pc(v)}</td></tr>' for m, v in IPC)}<tr><td>oct y nov</td><td>pendientes</td></tr></tbody></table></div>
 <p>La media de los diez meses conocidos es del <strong>{pc(suma / len(IPC), 2)}</strong>. Faltan octubre y noviembre, y como la inflación ha subido en los últimos meses, la media final será algo mayor.</p>
 <h2>🔮 Tres escenarios para 2027</h2>
 <div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Si el IPC de octubre y noviembre es del…</th><th>Las pensiones subirían</th><th>Pensión máxima en 2027</th></tr></thead><tbody>{''.join(f'<tr><td>{pc(o)}</td><td><strong>{pc(r, 2)}</strong></td><td>{e(PENSION_MAX * (1 + r / 100), 2)} € al mes</td></tr>' for o, r in ESC)}</tbody></table></div>
@@ -120,7 +120,7 @@ ARTICULOS = [
   cuerpo=lambda: f'''
 <h2>📌 Qué ha pasado</h2>
 <p>Según el INE, la tasa anual del IPC subió en septiembre de 2026 hasta el <strong>4,9 %</strong>. La subyacente (sin alimentos frescos ni energía) quedó en el 3,1 %. El grupo que más subió fue el transporte, por los carburantes.</p>
-<div class="tabla-wrap"><table class="tabla-festivos tabla-corta"><thead><tr><th>Mes de 2026</th><th>IPC anual</th></tr></thead><tbody>{''.join(f'<tr><td>{m}</td><td>{pc(v)}</td></tr>' for m, v in IPC[1:])}</tbody></table></div>
+<div class="tabla-wrap"><table class="tabla-festivos tabla-corta"><thead><tr><th>Mes de 2026</th><th>IPC anual</th></tr></thead><tbody>{''.join(f'<tr><td>{m}</td><td><span class="barra-celda" style="--v:{v / 5.5 * 100:.0f}%"></span>{pc(v)}</td></tr>' for m, v in IPC[1:])}</tbody></table></div>
 <h2>💼 Qué significa para tu sueldo</h2>
 <ul>
 <li><strong>Por ley, la empresa no está obligada a subirte el sueldo con el IPC.</strong> Solo si lo dice tu convenio o tu contrato.</li>
@@ -145,18 +145,39 @@ from plantilla import REVISADO
 CAJA_RESUMEN = lambda items: '<div class="respuesta-corta"><span>⚡ En 30 segundos</span><ul>' + ''.join(f'<li>{x}</li>' for x in items) + '</ul></div>'
 FLECHA = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>'
 
+# Portada de cada artículo: cifra o idea clave grande, icono y color por tema (también es su imagen para compartir y Discover)
+PORTADAS = {
+    'subida-pensiones-2027': dict(cifra='≈ 3,6 %', texto='Lo que subirían las pensiones en enero de 2027', icono='piggy-bank', color=('#312E81', '#6D28D9')),
+    'deduccion-alquiler-renta': dict(cifra='10 %', texto='Del alquiler de tu casa, deducible en la renta', icono='house', color=('#0F766E', '#4F46E5')),
+    'ipc-septiembre-2026-sueldo': dict(cifra='4,9 %', texto='IPC de septiembre: el más alto desde 2023', icono='trending-up', color=('#9A3412', '#BE185D')),
+}
+def svg_icono(nombre):
+    ruta = os.path.join(RAIZ, '_herramientas', 'iconos', nombre + '.svg')
+    import re
+    return re.search(r'<svg[^>]*>(.*)</svg>', open(ruta, encoding='utf-8').read(), re.S).group(1)
+
 def imagen(a):
-    """Imagen grande (1200×630) para Google Discover y para compartir; se hace con Chrome solo si no existe."""
+    """Portada 1200×630: se rehace cada vez (si cambia la cifra, cambia la imagen)."""
     carpeta = os.path.join(RAIZ, 'img', 'novedades'); os.makedirs(carpeta, exist_ok=True)
     png = os.path.join(carpeta, a['slug'] + '.png')
-    if not os.path.exists(png):
-        plantilla_og = open(os.path.join(RAIZ, '_herramientas', 'og', 'og-image.html'), encoding='utf-8').read()
-        import re
-        h = re.sub(r'<h1>.*?</h1><div class="s">.*?</div><div class="p">.*?</div>',
-                   f'<h1 style="font-size:72px">{H.escape(a["img"][0])}</h1><div class="s">{H.escape(a["img"][1])}</div><div class="p">Novedades · {larga(a["fecha"])}</div>', plantilla_og, flags=re.S)
-        tmp = os.path.join(AQUI, '_og-tmp.html'); open(tmp, 'w', encoding='utf-8').write(h)
-        subprocess.run(['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '--headless=new', '--hide-scrollbars', '--window-size=1200,630', f'--screenshot={png}', 'file://' + tmp], capture_output=True, timeout=60)
-        os.remove(tmp)
+    p = PORTADAS[a['slug']]
+    logo = open(os.path.join(RAIZ, 'favicon.svg'), encoding='utf-8').read()
+    html = f'''<!doctype html><meta charset="utf-8"><style>
+html,body{{margin:0;width:1200px;height:630px;font-family:-apple-system,"Helvetica Neue",Arial,sans-serif;overflow:hidden}}
+body{{background:linear-gradient(135deg,{p["color"][0]},{p["color"][1]});color:#fff;position:relative}}
+.ico{{position:absolute;right:-40px;bottom:-60px;width:520px;height:520px;opacity:.16}}
+.ico svg{{width:100%;height:100%;fill:none;stroke:#fff;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}}
+.tema{{position:absolute;left:80px;top:72px;font-size:26px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.16);padding:10px 20px;border-radius:999px}}
+.cifra{{position:absolute;left:76px;top:170px;font-size:190px;font-weight:800;letter-spacing:-4px;line-height:1}}
+.texto{{position:absolute;left:80px;top:390px;width:820px;font-size:44px;font-weight:600;line-height:1.2}}
+.marca{{position:absolute;left:80px;bottom:56px;display:flex;align-items:center;gap:16px;font-size:30px;font-weight:700}}
+.marca svg{{width:52px;height:52px}}
+</style><div class="ico"><svg viewBox="0 0 24 24">{svg_icono(p["icono"])}</svg></div>
+<div class="tema">{H.escape(a["tema"])}</div><div class="cifra">{H.escape(p["cifra"])}</div><div class="texto">{H.escape(p["texto"])}</div>
+<div class="marca">{logo}<span>CalculaLoTuyo</span></div>'''
+    tmp = os.path.join(AQUI, '_portada-tmp.html'); open(tmp, 'w', encoding='utf-8').write(html)
+    subprocess.run(['/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', '--headless=new', '--hide-scrollbars', '--window-size=1200,630', f'--screenshot={png}', 'file://' + tmp], capture_output=True, timeout=60)
+    os.remove(tmp)
     return f'https://calculalotuyo.es/img/novedades/{a["slug"]}.png'
 
 def marcado(a, img):
@@ -176,30 +197,54 @@ def cabeza_extra(s, a, img):
     s = s.replace('</head>', extra + '</head>', 1)
     return s.replace('https://calculalotuyo.es/og-image.png', img)                          # su propia imagen al compartir
 
+import re as _re
+minutos = lambda html: max(2, round(len(_re.sub(r'<[^>]+>', ' ', html).split()) / 200))     # tiempo de lectura (200 palabras/minuto)
+def con_indice(html):
+    """Pone un id a cada <h2> y devuelve (html, índice «En este artículo»)."""
+    titulos = []
+    def poner(m):
+        n = len(titulos) + 1; titulos.append(_re.sub(r'<[^>]+>|^[^\wÀ-ÿ¿¡]+', '', m.group(1)).strip())
+        return f'<h2 id="s{n}">{m.group(1)}</h2>'
+    html = _re.sub(r'<h2>(.*?)</h2>', poner, html)
+    indice = '<nav class="art-indice" aria-label="En este artículo"><span>En este artículo</span><ol>' + ''.join(f'<li><a href="#s{n}">{t}</a></li>' for n, t in enumerate(titulos, 1)) + '</ol></nav>'
+    return html, indice
+
 for a in ARTICULOS:
     img = imagen(a)
-    fecha_txt = f'📅 Publicado el {larga(a["fecha"])}' + (f' · actualizado el {larga(a["actualizado"])}' if a['actualizado'] != a['fecha'] else '')
-    botones = ''.join(f'<a href="{h}" class="btn">{t}</a>' for h, t in a['calculadoras'])
-    cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📰 Novedades · {a["tema"]}</div><h1>{a["h1"]}<br><span class="highlight">{a["sub"]}</span></h1>
-            {CAJA_RESUMEN(a["resumen"])}
-            <p class="hero-meta">{fecha_txt} · ✍️ <a href="sobre-el-proyecto">CalculaLoTuyo</a></p></div></section>
-
-    <section class="section"><div class="container"><article class="seo-section novedad">
-{a["cuerpo"]()}
-<h2>🧮 Calcula cómo te afecta</h2>
-<div class="novedad-botones">{botones}</div>
-<p class="nota-corta">Información neutral basada en las normas y los datos oficiales citados. No opinamos sobre las medidas: contamos qué dicen y a quién afectan. <a href="novedades">Más novedades</a>.</p>
-</article></div></section>
+    cuerpo_html, indice = con_indice(a['cuerpo']().replace('class="tabla-festivos', 'class="tabla-art tabla-festivos'))
+    fecha_txt = f'Publicado el {larga(a["fecha"])}' + (f' · actualizado el {larga(a["actualizado"])}' if a['actualizado'] != a['fecha'] else '')
+    botones = ''.join(f'<a href="{h}" class="art-boton">{t} {FLECHA}</a>' for h, t in a['calculadoras'])
+    otros = ''.join(f'<a href="{o["slug"]}" class="novedad-tarjeta"><img src="img/novedades/{o["slug"]}.png" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{o["tema"]} · {larga(o["fecha"])}</span><strong>{o["titulo"]}</strong></a>' for o in [x for x in ARTICULOS if x is not a][:3])
+    cuerpo = f'''    <article class="art">
+    <header class="art-cabecera"><div class="art-col">{{{{MIGAS}}}}
+        <a href="novedades" class="art-tema">{a["tema"]}</a>
+        <h1>{a["h1"]}</h1>
+        <p class="art-entradilla">{a["desc"]}</p>
+        <p class="art-firma"><span class="art-logo"><img src="favicon.svg" alt="" width="36" height="36"></span><span><strong><a href="sobre-el-proyecto">CalculaLoTuyo</a></strong><br>{fecha_txt} · {minutos(cuerpo_html)} min de lectura</span></p>
+    </div>
+    <figure class="art-portada"><img src="img/novedades/{a["slug"]}.png" alt="{H.escape(PORTADAS[a["slug"]]["cifra"] + ": " + PORTADAS[a["slug"]]["texto"])}" width="1200" height="630" fetchpriority="high"></figure>
+    </header>
+    <div class="art-col art-cuerpo">
+        {CAJA_RESUMEN(a["resumen"])}
+        {indice}
+{cuerpo_html}
+        <div class="art-calcula"><h2>🧮 Calcula cómo te afecta</h2><div class="art-botones">{botones}</div></div>
+        <p class="art-nota">Información neutral basada en las normas y los datos oficiales citados. No opinamos sobre las medidas: contamos qué dicen y a quién afectan. Puedes revisar las fuentes al final de la página o ver <a href="como-calculamos">cómo trabajamos</a>.</p>
+    </div>
+    </article>
+    <section class="section"><div class="container"><h2 class="bloque-titulo">📰 Más novedades</h2><div class="novedades-lista">{otros}</div></div></section>
 '''
-    pagina(a['slug'], a['titulo'], a['desc'], a['kw'], [('Novedades', 'novedades'), (a['titulo'], None)], cuerpo, a['faqs'], a['fuentes'])
+    pagina(a['slug'], a['titulo'], a['desc'], a['kw'], [('Novedades', 'novedades'), (a['tema'], None)], cuerpo, a['faqs'], a['fuentes'])
     f = os.path.join(RAIZ, a['slug'] + '.html')
     texto = cabeza_extra(open(f, encoding='utf-8').read(), a, img)          # primero se lee (abrir para escribir lo vaciaría)
     open(f, 'w', encoding='utf-8').write(texto)
 
-# ---- Portada de Novedades
-tarjetas = ''.join(f'''<a href="{a["slug"]}" class="novedad-tarjeta"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span>{a["desc"]}</span><span class="novedad-leer">Leer {FLECHA}</span></a>''' for a in ARTICULOS)
+# ---- Portada de Novedades: la última, destacada con su portada; el resto, en tarjetas con imagen
+d = ARTICULOS[0]
+destacada = f'<a href="{d["slug"]}" class="nov-destacada"><img src="img/novedades/{d["slug"]}.png" alt="" width="1200" height="630" fetchpriority="high"><div><span class="novedad-meta">{d["tema"]} · {larga(d["fecha"])}</span><h2>{d["titulo"]}</h2><p>{d["desc"]}</p><span class="novedad-leer">Leer el artículo {FLECHA}</span></div></a>'
+tarjetas = ''.join(f'''<a href="{a["slug"]}" class="novedad-tarjeta"><img src="img/novedades/{a["slug"]}.png" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span>{a["desc"]}</span><span class="novedad-leer">Leer {FLECHA}</span></a>''' for a in ARTICULOS[1:])
 cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📰 Actualidad</div><h1>Novedades<br><span class="highlight">lo que cambia en tu sueldo, tu paro y tus impuestos</span></h1><p>Las noticias que afectan a tu bolsillo, explicadas fácil y con la fuente oficial. Sin opiniones: qué ha pasado, qué cambia para ti y cómo calcularlo.</p></div></section>
-    <section class="section"><div class="container"><div class="novedades-lista">{tarjetas}</div>
+    <section class="section"><div class="container">{destacada}<div class="novedades-lista" style="margin-top:20px">{tarjetas}</div>
     <p class="nota-corta" style="margin-top:24px">Síguelas también por <a href="feed.xml">RSS</a>.</p></div></section>
 '''
 pagina('novedades', 'Novedades laborales y fiscales 2026 explicadas fácil', 'Lo que cambia en tu sueldo, tu paro, tus impuestos y tu pensión, explicado fácil y con la fuente oficial: pensiones 2027, IPC, deducciones en la renta y más.',
@@ -229,7 +274,7 @@ def poner_bloque(archivo, html, antes_de=None, despues_de=None):
     elif antes_de: i = s.index(antes_de); s = s[:i] + bloque + s[i:]
     else: i = s.index(despues_de) + len(despues_de); s = s[:i] + '\n' + bloque + s[i:]
     open(ruta, 'w', encoding='utf-8').write(s)
-mini = ''.join(f'<a href="{a["slug"]}" class="novedad-tarjeta"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span class="novedad-leer">Leer {FLECHA}</span></a>' for a in ARTICULOS[:3])
+mini = ''.join(f'<a href="{a["slug"]}" class="novedad-tarjeta"><img src="img/novedades/{a["slug"]}.png" alt="" loading="lazy" width="1200" height="630"><span class="novedad-meta">{a["tema"]} · {larga(a["fecha"])}</span><strong>{a["titulo"]}</strong><span class="novedad-leer">Leer {FLECHA}</span></a>' for a in ARTICULOS[:3])
 bloque = f'''    <section class="section-flat" id="novedades-portada"><div class="container">
             <h2 class="bloque-titulo">📰 Novedades</h2>
             <p class="bloque-desc">Lo que cambia en tu sueldo, tu paro y tus impuestos, con la fuente oficial</p>
