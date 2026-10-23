@@ -4394,3 +4394,13 @@ main:focus { outline: none; }   /* al saltar, sin marco alrededor de todo el con
 }
 .chips a.chip-mas { margin-top: 0; padding: 9px 4px; }   /* dentro de la fila de chips, alineado con ellos */
 .calc-group-guide:hover, .guides-more-btn:hover, .chips a.chip-mas:hover { gap: 8px; color: color-mix(in srgb, var(--accent) 80%, #000); background: none; text-decoration: none; }   /* al pasar el ratón, la flecha se mueve un poco */
+
+/* ===== Tablas con enlaces y botones con icono (23/10/2026) ===== */
+.tabla-festivos td a, .info-table td a { color: var(--accent); font-weight: 600; text-decoration: none; }   /* enlaces de las tablas: morados, sin el azul subrayado del navegador */
+.tabla-festivos td a:hover, .info-table td a:hover { color: color-mix(in srgb, var(--accent) 75%, #000); }
+.tabla-sueldos td:first-child a::after { content: " →"; opacity: .5; }   /* flechita: ese sueldo tiene su propia página */
+.btn .ico { margin-right: 8px; vertical-align: -3px; }   /* icono separado del texto en cualquier botón */
+a.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: auto; min-width: 240px; text-decoration: none; }   /* botón-enlace: a su tamaño, no a todo el ancho */
+a.btn .ico { margin-right: 0; }
+@media (max-width: 640px) { a.btn { width: 100%; } }   /* en el móvil, a todo el ancho (más fácil de pulsar) */
+.btn-secondary .ico, .related-card .ico, .enlaces-sueldo a .ico { margin-right: 6px; }   /* icono con aire en botones secundarios, tarjetas y enlaces de modelos */
