@@ -4386,3 +4386,11 @@ main:focus { outline: none; }   /* al saltar, sin marco alrededor de todo el con
 .seo-section .calc-step strong { font-size: 1rem; }
 .seo-section .calc-step p { font-size: 0.92rem; line-height: 1.6; margin-top: 6px; }
 .seo-section .step-num { width: 32px; height: 32px; font-size: 0.9rem; }
+
+/* ===== Enlaces «Ver todas…» iguales en toda la web (23/10/2026): texto morado con flecha, nunca botón ===== */
+.calc-group-guide, .guides-more-btn, .chips a.chip-mas, .chips a.chip-mas:hover {
+  display: inline-flex; align-items: center; gap: 4px; padding: 0; margin-top: 12px; border: 0; border-radius: 0; background: none;
+  color: var(--accent); font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: gap .15s, color .15s;
+}
+.chips a.chip-mas { margin-top: 0; padding: 9px 4px; }   /* dentro de la fila de chips, alineado con ellos */
+.calc-group-guide:hover, .guides-more-btn:hover, .chips a.chip-mas:hover { gap: 8px; color: color-mix(in srgb, var(--accent) 80%, #000); background: none; text-decoration: none; }   /* al pasar el ratón, la flecha se mueve un poco */
