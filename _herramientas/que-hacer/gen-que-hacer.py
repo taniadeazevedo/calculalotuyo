@@ -264,3 +264,77 @@ pagina('que-hacer-si-voy-a-tener-un-hijo', 'Qué hacer si vas a tener un hijo: p
 registrar('que-hacer-si-voy-a-tener-un-hijo', 'Salud y familia', '🧭', 'Qué hacer si vas a tener un hijo',
           'Los pasos en orden: las 19 semanas de permiso, la prestación del INSS, la lactancia y tus opciones después.')
 print('creada: que-hacer-si-voy-a-tener-un-hijo')
+
+# ===================== «Qué hacer si te quedas en paro» =====================
+# Datos de la guía del paro (revisada contra el BOE el 14/10/2026) y art. 268 LGSS (15 días, inscripción y acuerdo
+# de actividad, pérdida de días si se pide tarde), comprobado el 23/10/2026.
+PASOS_PARO = [
+    ('Comprueba que tienes derecho',
+     'Necesitas estar en <strong>situación legal de desempleo</strong> (despido, fin de contrato, ERE…) y haber cotizado <strong>al menos 360 días en los últimos 6 años</strong>. Si te has ido tú de forma voluntaria, en general <strong>no hay paro</strong>, salvo casos como un traslado o una modificación de condiciones que te perjudica.'),
+    ('Apúntate y pide el paro en 15 días hábiles',
+     f'Inscríbete como <strong>demandante de empleo</strong> en el servicio de empleo de tu comunidad y pide la prestación al SEPE en los <strong>15 días hábiles</strong> siguientes a quedarte sin trabajo. Al pedirla firmas el <strong>acuerdo de actividad</strong> (el compromiso de buscar empleo) ({LGSS(268)}). Si tenías vacaciones sin disfrutar, el plazo empieza cuando acaban.'),
+    ('Si lo pides tarde, pierdes días',
+     'Lo cobras igualmente, pero desde el día en que lo pides: <strong>pierdes un día de paro por cada día de retraso</strong>. Por eso conviene no esperar al último momento.'),
+    ('Calcula cuánto vas a cobrar',
+     'Los <strong>6 primeros meses</strong> cobras el <strong>70 %</strong> de tu base reguladora (la media de lo cotizado en los últimos 180 días) y después el <strong>60 %</strong>, con un mínimo y un máximo según tus hijos. Hazlo con la <a href="paro">calculadora del paro</a>.'),
+    ('Mira cuánto tiempo lo cobrarás',
+     'Depende de lo cotizado en los últimos 6 años: <strong>4 meses</strong> con 360 días y hasta <strong>24 meses</strong> con 2.160 días o más. Lo tienes en la <a href="tabla-paro-2026">tabla del paro 2026</a>.'),
+    ('Cumple tus obligaciones mientras cobras',
+     'Mantén la <strong>inscripción como demandante de empleo</strong> durante todo el paro (si no, se suspende el pago), acude a las citas del servicio de empleo y comunica cualquier cambio, como empezar a trabajar.'),
+    ('Cuando se acabe, mira el subsidio',
+     'Si agotas el paro, o no llegas a los 360 días cotizados, puedes tener derecho a un <strong>subsidio por desempleo</strong> si cumples sus requisitos. Infórmate en el SEPE antes de que termine.'),
+]
+pasos_paro = '\n'.join(f'    <div class="calc-step"><span class="step-num">{i}</span><div><strong>{t}</strong><p>{x}</p></div></div>'
+                       for i, (t, x) in enumerate(PASOS_PARO, 1))
+TOPES = [('Sin hijos', '560 €', '1.225 €'), ('Con 1 hijo', '749 €', '1.400 €'), ('Con 2 o más hijos', '749 €', '1.575 €')]
+filas_paro = ''.join(f'<tr><td>{a}</td><td>{b}</td><td><strong>{c}</strong></td></tr>' for a, b, c in TOPES)
+
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">🧭 Paso a paso</div><h1>Qué hacer si te quedas en paro<br><span class="highlight">los pasos y los plazos, en orden</span></h1><p>Si tienes derecho, dónde apuntarte, el plazo para pedirlo, cuánto y cuánto tiempo cobrarás y qué tienes que cumplir, según la Ley General de la Seguridad Social.</p>
+            {REV}</div></section>
+
+    <section class="section"><div class="container"><article class="seo-section">
+<div class="respuesta-corta"><strong>⚡ En 30 segundos</strong><ul>
+<li>Necesitas <strong>360 días cotizados</strong> en los últimos 6 años y no haberte ido de forma voluntaria.</li>
+<li>Pídelo en los <strong>15 días hábiles</strong> siguientes: si tardas, pierdes días de paro.</li>
+<li>Cobras el <strong>70 %</strong> de tu base los 6 primeros meses y el <strong>60 %</strong> después, con un máximo de 1.225 € sin hijos.</li>
+<li>Dura de <strong>4 a 24 meses</strong>, según lo cotizado.</li>
+</ul></div>
+
+<h2>✅ Los pasos, en orden</h2>
+<div class="calc-steps">
+{pasos_paro}
+</div>
+
+<h2>💶 Mínimo y máximo del paro en 2026</h2>
+<table class="info-table"><tr><th>Situación</th><th>Mínimo al mes</th><th>Máximo al mes</th></tr>{filas_paro}</table>
+<p>Cuantías brutas a jornada completa, calculadas sobre el IPREM de 600 € más una sexta parte. Del paro se descuenta tu cotización a la Seguridad Social y, si corresponde, el IRPF.</p>
+
+<h2>🧮 Pon cifras a tu caso</h2>
+<p>Calcula lo que cobrarás con la <a href="paro">calculadora del paro</a>. Si vienes de un despido, mira también la guía <a href="que-hacer-si-me-despiden">qué hacer si te despiden</a>. Todo el detalle (fijos discontinuos, baja médica durante el paro, IRPF) está en la <a href="guia-paro">guía del paro</a>.</p>
+
+<h2>⚠️ Ten en cuenta</h2>
+<ul>
+<li>El plazo de 15 días hábiles cuenta desde el día siguiente a quedarte sin trabajo, o desde el final de las vacaciones no disfrutadas.</li>
+<li>Esta guía es orientativa. Para tu caso, consulta con el SEPE, un graduado social o tu sindicato.</li>
+</ul>
+</article></div></section>
+'''
+faqs = [
+    ('¿Qué tengo que hacer cuando me quedo en paro?',
+     'Inscribirte como <strong>demandante de empleo</strong> y pedir la prestación al SEPE en los <strong>15 días hábiles</strong> siguientes, firmando el acuerdo de actividad. Después, mantener la inscripción y acudir a las citas mientras cobras.'),
+    ('¿Cuánto tiempo tengo para pedir el paro?',
+     '<strong>15 días hábiles</strong> desde que te quedas sin trabajo (o desde que acaban tus vacaciones no disfrutadas). Si lo pides después, lo cobras desde la fecha de la solicitud y <strong>pierdes un día por cada día de retraso</strong> (artículo 268 de la Ley General de la Seguridad Social).'),
+    ('¿Cuántos días tengo que haber cotizado para cobrar el paro?',
+     'Al menos <strong>360 días en los últimos 6 años</strong>. Con 360 días cobras 4 meses, y el máximo son 24 meses con 2.160 días o más.'),
+    ('¿Si me voy de la empresa tengo paro?',
+     'En general <strong>no</strong>: la baja voluntaria no da derecho a paro. Hay excepciones, como un traslado o una modificación sustancial de condiciones que te perjudica, o ser víctima de violencia de género.'),
+]
+pagina('que-hacer-si-me-quedo-en-paro', 'Qué hacer si te quedas en paro: pasos y plazos (2026)',
+    'Me he quedado en paro, ¿qué hago? Apúntate y pide el paro en 15 días hábiles, cobra el 70 % y luego el 60 % de 4 a 24 meses. Paso a paso, con la ley.',
+    'qué hacer si me quedo en paro, cómo pedir el paro, plazo para pedir el paro, me he quedado sin trabajo qué hago',
+    [('Guías', 'guias'), ('Qué hacer si te quedas en paro', None)], cuerpo, faqs,
+    'Ley General de la Seguridad Social (arts. 262 a 273, en especial el 268), versión consolidada del BOE, y cuantías del SEPE para 2026.',
+    menu_activo='Guías')
+registrar('que-hacer-si-me-quedo-en-paro', 'Despido y fin del contrato', '🧭', 'Qué hacer si te quedas en paro',
+          'Los pasos en orden: si tienes derecho, el plazo de 15 días, cuánto y cuánto tiempo cobrarás.')
+print('creada: que-hacer-si-me-quedo-en-paro')

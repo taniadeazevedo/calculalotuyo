@@ -72,7 +72,7 @@
 - [x] 🤖 `sueldo-funcionario-2026`: tablas oficiales de Hacienda por grupo (20/10/2026). Generador `_herramientas/funcionarios/`. En enero, con la tabla de 2027.
 - [ ] 🤖 «¿Cuánto cobra un/a…?» por profesión: en octubre de 2026 no hay tabla oficial del complemento específico (policía, etc.). Revisar si Interior o las comunidades la publican.
 - [ ] 🤖 Novedades 2027 (SMI 2027, pensiones 2027, cambios laborales), en diciembre y enero.
-- [ ] 🤖 Guías «Qué hacer si…» (me despiden, me quedo en paro, me pongo de baja, nace mi hijo).
+- [x] 🤖 (23/10) Guías «Qué hacer si…»: me despiden, me quedo en paro, me pongo de baja, voy a tener un hijo (`_herramientas/que-hacer/gen-que-hacer.py`).
 - [ ] 🤖 Tablas salariales por convenio (hostelería, comercio, limpieza, metal…): mucho tráfico, pero mucho mantenimiento.
 
 ## 💼 Más ingresos (más adelante)
