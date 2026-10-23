@@ -41,6 +41,9 @@ cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}
     <div class="calc-step"><span class="step-num">4</span><div><strong>Revisión continua</strong><p>Revisamos el BOE cada mes y actualizamos las cifras de cada año en cuanto se publican (normalmente en enero). Cada página muestra la fecha de su última revisión.</p></div></div>
 </div>
 
+<h2>🔎 Última comprobación completa</h2>
+<p>El <strong>23 de octubre de 2026</strong> contrastamos una a una, con el texto del BOE, todas las cifras que usa el cálculo del sueldo neto y del IRPF: la escala de retención y el tope del 43 % (arts. 85 y 86 del Reglamento del IRPF), los importes por debajo de los cuales no se retiene (art. 81), los 2.000 € de gastos y su aumento por discapacidad (art. 19 de la Ley del IRPF), la reducción por rendimientos del trabajo (art. 20), los mínimos personal, por hijos, por ascendientes y por discapacidad (arts. 57 a 60) y los tipos de cotización y la cuota de solidaridad de 2026 (Orden PJC/297/2026). Todas coinciden.</p>
+
 <h2>📚 Fuentes de cada calculadora</h2>
 <div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Tema</th><th>Fuente oficial</th></tr></thead><tbody>{filas}</tbody></table></div>
 

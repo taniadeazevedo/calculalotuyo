@@ -105,3 +105,4 @@
 - [x] Texto del buscador más corto (no se corta en el móvil).
 - [ ] 👩 Aviso de cookies: el mensaje RGPD está creado y publicado en AdSense (desde el 14/10), pero Google aún responde «sin mensaje» (NOT_CONFIGURED), casi seguro porque la web no está aprobada todavía. Tras la aprobación de AdSense: probar en incógnito (scroll o 10 s) que sale, que «Aceptar»/«No aceptar» funcionan y que «Gestionar cookies» del pie lo reabre. Mientras tanto no se guardan cookies de anuncios ni analítica (todo denegado por defecto).
 - [x] (23/10) Proyecto de Netlify borrado: la dirección antigua da 404 y los buscadores la irán quitando solos (no es tuya en Search Console, no hace falta hacer nada).
+- [x] (23/10) Comprobación completa del motor de IRPF y cotizaciones contra el BOE (arts. 19, 20, 57–60 LIRPF; 81, 83, 85, 86 RIRPF; Orden PJC/297/2026): todo coincide. Anotado en «Cómo calculamos».
