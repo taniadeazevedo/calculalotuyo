@@ -20,7 +20,7 @@ slug = lambda b: f'{b}-euros-brutos-en-netos'
 
 # ---------------- plantilla común (menú y pie de vacaciones.html, con "Nómina" marcado)
 v = open('vacaciones.html', encoding='utf-8').read()
-NAV = v[v.index('<body>') + len('<body>\n'):v.index('<main>')].replace(' aria-current="page"', '')
+NAV = v[v.index('<body>') + len('<body>\n'):v.index('<main')].replace(' aria-current="page"', '')
 FOOT = v[v.index('<footer'):v.index('<script src="site.js')]
 FAQ_HTML = lambda faqs: ''.join(f'<div class="faq-item"><button class="faq-q"><span>{q}</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></button><div class="faq-a"><p>{a}</p></div></div>' for q, a in faqs)
 limpio = lambda t: re.sub(r'<[^>]+>', '', t)

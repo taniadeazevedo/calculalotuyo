@@ -14,7 +14,7 @@ def pct(n, dec=2):
     return f'{n:.{dec}f}'.replace('.', ',') + ' %'
 
 _v = leer('vacaciones.html')
-_NAV = _v[_v.index('<body>') + len('<body>\n'):_v.index('<main>')].replace(' aria-current="page"', '').replace('class="nav-link active" data-dropdown-btn>Nómina', 'class="nav-link" data-dropdown-btn>Nómina')
+_NAV = _v[_v.index('<body>') + len('<body>\n'):_v.index('<main')].replace(' aria-current="page"', '').replace('class="nav-link active" data-dropdown-btn>Nómina', 'class="nav-link" data-dropdown-btn>Nómina')
 _FOOT = _v[_v.index('<footer'):_v.index('<script src="site.js')]
 _CSS = re.search(r'styles(?:\.min)?\.css\?v=[0-9a-z]+', leer('index.html')).group(0)
 _limpio = lambda t: re.sub(r'<[^>]+>', '', t)

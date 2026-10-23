@@ -33,7 +33,7 @@ for k in sorted(d, key=lambda x: nombres.get(x, x)):
 
 # ---- 3) Página nueva, con el menú y el pie de vacaciones.html
 v = open('vacaciones.html', encoding='utf-8').read()
-nav = v[v.index('<body>') + len('<body>\n'):v.index('<main>')]
+nav = v[v.index('<body>') + len('<body>\n'):v.index('<main')]
 nav = nav.replace(' aria-current="page"', '').replace('class="nav-link active" data-dropdown-btn>Nómina', 'class="nav-link" data-dropdown-btn>Nómina')
 nav = nav.replace('class="nav-link" data-dropdown-btn>📅 Calendario', 'class="nav-link active" data-dropdown-btn>📅 Calendario')
 nav = nav.replace('<a href="puentes-2027">', '<a href="puentes-2027" aria-current="page">')

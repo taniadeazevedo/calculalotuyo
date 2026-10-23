@@ -109,7 +109,7 @@ LEYENDA = '<div class="cal-leyenda"><span><i class="cal-festivo"></i>Festivo</sp
 
 # ---------------------------------------------------------------- plantilla
 v = open('vacaciones.html', encoding='utf-8').read()
-NAV = v[v.index('<body>') + len('<body>\n'):v.index('<main>')]
+NAV = v[v.index('<body>') + len('<body>\n'):v.index('<main')]
 NAV = NAV.replace(' aria-current="page"', '').replace('class="nav-link active" data-dropdown-btn>Nómina', 'class="nav-link" data-dropdown-btn>Nómina')
 NAV = NAV.replace('class="nav-link" data-dropdown-btn>📅 Calendario', 'class="nav-link active" data-dropdown-btn>📅 Calendario')
 FOOT = v[v.index('<footer'):v.index('<script src="site.js')]
