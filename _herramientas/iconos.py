@@ -16,7 +16,7 @@ MAPA = {
     '🧾': 'receipt', '🩺': 'stethoscope', '🏛️': 'landmark', '🏖️': 'tree-palm', '💶': 'euro', '📋': 'clipboard-list',
     '🏦': 'wallet', '💵': 'banknote', '🕒': 'clock', '📑': 'file-text', '⏰': 'alarm-clock', '🎁': 'gift', '📈': 'trending-up',
     '🔁': 'repeat', '🎄': 'tree-pine', '🌅': 'sunset', '📚': 'library', '📄': 'file-text', '✍️': 'pen-line', '❓': 'circle-help',
-    '❔': 'circle-help', '🧮': 'calculator', '✅': 'circle-check', '📝': 'pencil-line', '🎉': 'party-popper', '⏱️': 'timer',
+    '❔': 'circle-help', '🧮': 'calculator', '📐': 'ruler', '✅': 'circle-check', '📝': 'pencil-line', '🎉': 'party-popper', '⏱️': 'timer',
     '🔄': 'rotate-ccw', '⚠️': 'triangle-alert', '📱': 'smartphone', '💡': 'lightbulb', '🔗': 'link', '🗺️': 'map',
     '📖': 'book-open', '⚡': 'zap', '🚪': 'door-open', '✉️': 'mail', '🤝': 'handshake', '⏸️': 'circle-pause', '📕': 'file-down',
     '👀': 'eye', '💰': 'piggy-bank', '⏳': 'hourglass', '📉': 'trending-down', '🏙️': 'building-2', '📜': 'scroll-text',

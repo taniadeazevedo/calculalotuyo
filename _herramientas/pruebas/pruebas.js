@@ -132,6 +132,14 @@ for(const pag of fs.readdirSync(RAIZ).filter(f=>f.endsWith('.html'))){
 }
 if(rotos){mal++;console.log((rotos>20?'   … y '+(rotos-20)+' más. ':'')+'❌ '+rotos+' enlace(s) roto(s)')}
 else console.log('✅ ningún enlace interno roto');
+// Emojis: en la web van iconos propios (iconos.py); si alguno se queda sin icono, avisa (el ♥ del pie es texto)
+const EMOJI=/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}]/u;
+let emojis=0;
+for(const pag of fs.readdirSync(RAIZ).filter(f=>f.endsWith('.html'))){
+    const t=fs.readFileSync(path.join(RAIZ,pag),'utf8').replace(/<head>[\s\S]*?<\/head>|<script[\s\S]*?<\/script>/g,'').replace(/<[^>]+>/g,' ').replace(/♥/g,'');
+    const m=t.match(EMOJI); if(m){emojis++;if(emojis<=10)console.log('❌ emoji sin icono en '+pag+': '+m[0]+' (añádelo en iconos.py)')}
+}
+if(emojis)mal++; else console.log('✅ ningún emoji sin icono');
 for(const [txt,slug,datos,ok] of A_MANO){
     let r,bien=false; try{r=calc(slug)(datos);bien=ok(r)}catch(e){r={error:e.message}}
     if(!bien)mal++;

@@ -21,6 +21,7 @@ python3 _herramientas/renta/gen-renta.py
 python3 _herramientas/navidad/gen-navidad.py
 python3 _herramientas/funcionarios/gen-funcionarios.py
 python3 _herramientas/metodologia/gen-metodologia.py
+python3 _herramientas/irpf/gen-tramos.py   # página «Tramos del IRPF 2026»
 python3 _herramientas/que-hacer/gen-que-hacer.py   # guía «Qué hacer si te despiden»
 python3 _herramientas/novedades/gen-novedades.py   # sección Novedades (artículos, portada, RSS)
 python3 _herramientas/seo-final.py

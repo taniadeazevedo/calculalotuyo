@@ -19,7 +19,7 @@ GRUPOS = [
     ('💼 Autónomos', [('cuota-autonomos', '💼 Cuota de autónomos'), ('facturas', '🧾 Facturas')]),
 ]
 CALENDARIO = [('calendario-laboral-2027', '📆 Calendario laboral 2027'), ('dias-laborables', '📅 Días laborables'), ('puentes-2027', '🗓️ Puentes 2027')]
-HACIENDA = [('obligado-a-declarar-renta', '🧾 ¿Tengo que hacer la renta?'), ('loteria-navidad-hacienda', '🎄 Lotería: cuánto se queda Hacienda')]
+HACIENDA = [('obligado-a-declarar-renta', '🧾 ¿Tengo que hacer la renta?'), ('tramos-irpf-2026', '📊 Tramos del IRPF 2026'), ('loteria-navidad-hacienda', '🎄 Lotería: cuánto se queda Hacienda')]
 
 # Artículos de Novedades (los escribe _herramientas/novedades/gen-novedades.py)
 import json as _json
@@ -28,7 +28,7 @@ except FileNotFoundError: NOVEDADES = []
 
 # Sección de cada página según su nombre: la primera regla que encaja gana
 SECCION = [
-    ('hacienda', r'^(obligado-a-declarar-renta|renta-.*|loteria-.*)$'),
+    ('hacienda', r'^(obligado-a-declarar-renta|renta-.*|loteria-.*|tramos-irpf-.*)$'),
     ('novedades', r'^(novedades|' + '|'.join(re.escape(x['slug']) for x in NOVEDADES) + ')$'),   # Novedades, sección propia
     ('guias', r'^(guia.*|que-hacer-.*)$'),
     ('modelos', r'^modelo.*$'),
