@@ -23,6 +23,8 @@ TITULOS = {
                         'Tu cuota de autónomos 2026 según lo que ganas: de 205,88 € a 607,35 € al mes, o 88,64 € con tarifa plana. Con 1.500 € netos al mes, 302,65 €.'),
     'pagas-extra': ('Calcular paga extra 2026: verano y Navidad',
                     'Calcula tu paga extra de verano o de Navidad 2026 y la parte que llevas generada si no has trabajado todo el periodo. En 14, 15 o 16 pagas.'),
+    'irpf': ('Calcular IRPF 2026: calculadora de retención como Hacienda',   # lo más buscado de la web (Search Console, 23/10/2026)
+             'Calculadora de IRPF 2026 con el algoritmo de Hacienda: calcula tu retención en 1 minuto. Con 30.000 € brutos, un 16,42 %. Con hijos y tabla por sueldo.'),
     'vacaciones': ('Calculadora de vacaciones 2026: días que te corresponden',
                    'Calcula cuántos días de vacaciones te corresponden: 30 naturales al año, 2,5 por mes trabajado. Cuántos te quedan y cuánto valen en dinero.'),
 }
@@ -32,6 +34,12 @@ FAQS = {
     'cuota-autonomos': [('¿Cómo se calcula la cuota de autónomos en 2026?', 'Según tus <strong>rendimientos netos al mes</strong> (ingresos menos gastos, con un 7 % más de gastos si eres persona física), que te colocan en un tramo con una base mínima. La cuota es el <strong>31,5 %</strong> de esa base. Con 1.500 € netos al mes, la base es de 960,78 € y la cuota, <strong>302,65 €</strong>.')],
     'pagas-extra': [('¿Cómo se calcula la paga extra de verano?', 'Normalmente equivale a <strong>un mes de salario base</strong> (lo fija tu convenio) y se genera de enero a junio. Si no has trabajado esos 6 meses, cobras la parte proporcional: con 3 meses trabajados, <strong>la mitad</strong>.')],
     'vacaciones': [('¿Cuántos días de vacaciones me corresponden si llevo 6 meses trabajando?', '<strong>15 días naturales</strong>. Las vacaciones se generan a razón de <strong>2,5 días por mes trabajado</strong> (30 al año), salvo que tu convenio dé más.')],
+    'irpf': [
+        ('¿Cómo se calcula el IRPF de la nómina?', 'Hacienda parte de tu <strong>sueldo bruto anual</strong> y le resta las cotizaciones a la Seguridad Social, <strong>2.000 € de gastos</strong> y, con sueldos bajos, una reducción por rendimientos del trabajo. A lo que queda le aplica la escala del IRPF y le descuenta la parte que corresponde a tu <strong>mínimo personal (5.550 €)</strong> y al de tus hijos. Ese impuesto dividido entre tu bruto es el <strong>porcentaje de retención</strong> de cada nómina.'),
+        ('¿Esta calculadora de IRPF es la misma que la de Hacienda?', 'Usa el <strong>algoritmo oficial de retenciones de 2026</strong> que publica la Agencia Tributaria, el mismo que aplican las empresas en la nómina. Hacienda también tiene su simulador; aquí lo calculas en un minuto y con menos datos.'),
+        ('¿Cómo calcular el IRPF si tengo hijos?', 'Cada hijo menor de 25 años que vive contigo aumenta el mínimo que no paga impuestos (<strong>2.400 € el primero, 2.700 € el segundo, 4.000 € el tercero y 4.500 € a partir del cuarto</strong>, la mitad si lo compartís los dos progenitores), así que te retienen menos. Indícalo en la calculadora.'),
+        ('¿Vale para el País Vasco y Navarra?', '<strong>No.</strong> El País Vasco y Navarra tienen sus propias tablas de retención, que publican sus haciendas forales. Esta calculadora sigue las de la Agencia Tributaria, que se aplican en el resto de España.'),
+    ],
     'despido-objetivo': [('¿Cuánto me corresponde por despido objetivo con 10 años?', '<strong>20 días de sueldo por año</strong>: 200 días en total. Con 2.000 € brutos al mes en 14 pagas, unos <strong>15.342 €</strong>.')],
 }
 
@@ -45,7 +53,7 @@ def cabecera(s, titulo, desc):
     return re.sub(r'("@type": "WebApplication",\s*"name": ")[^"]*(",\s*"url": "[^"]*",\s*"description": ")[^"]*', rf'\g<1>{titulo}\g<2>{desc}', s, count=1)
 
 def poner_faqs(s, faqs):
-    for q, a in faqs:
+    for q, a in reversed(faqs):                                                    # al revés: cada una se pone delante, así quedan en el orden de la lista
         if q in s or '<div class="faq-item">' not in s: continue                 # página sin preguntas: no se inventa la sección
         item = f'<div class="faq-item"><button class="faq-q"><span>{q}</span>{FLECHA}</button><div class="faq-a"><p>{a}</p></div></div>\n'
         i = s.index('<div class="faq-item">')                                      # delante de la primera pregunta que ya hay
