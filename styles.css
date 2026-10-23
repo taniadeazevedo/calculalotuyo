@@ -4345,3 +4345,26 @@ main:focus { outline: none; }   /* al saltar, sin marco alrededor de todo el con
 @media (prefers-reduced-motion: reduce) {   /* si la persona lo pide en su móvil u ordenador: sin animaciones */
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* ===== Ejemplos y tablas con más diseño (23/10/2026) ===== */
+/* Ejemplo práctico: cada paso del cálculo en su propia fila, con aire, y el resultado destacado */
+.example-box > h4 { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; font-size: 1.05rem; }
+.example-box > h4 + p { color: var(--text2); margin: 0 0 16px; line-height: 1.6; }
+.calc-line { position: relative; background: var(--bg); border-radius: 10px; padding: 10px 14px 10px 34px; margin: 6px 0; font-variant-numeric: tabular-nums; line-height: 1.5; }   /* un paso del cálculo */
+.calc-line::before { content: ""; position: absolute; left: 15px; top: 50%; width: 7px; height: 7px; margin-top: -3.5px; border-radius: 50%; background: var(--accent); opacity: .55; }   /* puntito a la izquierda */
+.result-highlight { margin: 14px 0 0; padding: 14px 16px; border-radius: 12px; background: color-mix(in srgb, var(--accent) 10%, transparent); border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); color: var(--text); font-weight: 700; font-size: 1.02rem; }   /* el resultado final */
+
+/* Tablas de información: marco redondeado, cabecera discreta, filas alternas y cifras alineadas */
+.info-table { border-collapse: separate; border-spacing: 0; border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin: 16px 0 24px; font-variant-numeric: tabular-nums; }
+.info-table th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text2); background: color-mix(in srgb, var(--accent) 7%, var(--card)); padding: 12px 16px; }
+.info-table td { padding: 11px 16px; }
+.info-table tr:last-child td { border-bottom: 0; }
+.info-table tr:nth-child(even) td { background: color-mix(in srgb, var(--bg) 60%, transparent); }   /* filas alternas: se lee mejor */
+.info-table tr:hover td { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+.info-table td:first-child { color: var(--text); font-weight: 600; white-space: nowrap; }
+.info-table td:last-child { color: var(--text); }
+
+/* Tablas de sueldos, calendarios, etc.: misma cabecera y cifras alineadas */
+.tabla-festivos { font-variant-numeric: tabular-nums; }
+.tabla-festivos th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text2); }
+.tabla-festivos tbody tr:hover td { background: color-mix(in srgb, var(--accent) 5%, transparent); }

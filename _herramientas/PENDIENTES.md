@@ -91,5 +91,5 @@
 - [ ] Más adelante: CI con GitHub Actions, cabecera/pie sin sacarlos de vacaciones.html, renombrar datos-2026.js en enero.
 
 ## Diseño de apartados (anotado el 22/10/2026, revisar)
-- [ ] Algunas páginas (p. ej. `paro`, bloque de ejemplo «Pedro» y tabla de «Duración») tienen apartados con poco diseño: texto muy apilado (líneas de cálculo pegadas, sin aire) y tablas de dos columnas anchas y sosas.
+- [x] (23/10) Ejemplos con pasos en filas y resultado destacado; tablas `info-table` con marco, cabecera y filas alternas. Falta: listas numeradas («Cómo solicitar…») como pasos. Antes: algunas páginas (p. ej. `paro`, bloque de ejemplo «Pedro» y tabla de «Duración») tienen apartados con poco diseño: texto muy apilado (líneas de cálculo pegadas, sin aire) y tablas de dos columnas anchas y sosas.
 - [ ] Ideas: ejemplo con pasos en filas separadas y el resultado destacado; tablas con columnas más compactas, cifras alineadas y alguna marca visual (barra o fila resaltada). Revisar el resto de calculadoras y guías con el mismo criterio.
