@@ -188,3 +188,79 @@ pagina('que-hacer-si-me-pongo-de-baja', 'Qué hacer si te pones de baja: pasos (
 registrar('que-hacer-si-me-pongo-de-baja', 'Salud y familia', '🧭', 'Qué hacer si te pones de baja',
           'Los pasos en orden: a qué médico ir, qué hacer con el parte, cuánto cobras y las revisiones.')
 print('creada: que-hacer-si-me-pongo-de-baja')
+
+# ===================== «Qué hacer si vas a tener un hijo» =====================
+# Datos de la guía del permiso por nacimiento (revisada contra el BOE el 14/10/2026) y comprobados el 23/10/2026:
+# art. 48.4 ET (19 semanas), art. 37.4 ET (lactancia hasta los 9 meses), arts. 177-179 LGSS (prestación del 100 %).
+PASOS_HIJO = [
+    ('Decide cuándo contarlo en el trabajo',
+     'No estás obligada a comunicar el embarazo, y la protección frente al despido existe aunque la empresa no lo sepa. Pero decirlo <strong>por escrito</strong> te permite pedir que adapten tu puesto si tiene riesgos y deja constancia de la fecha.'),
+    ('Usa tus permisos durante el embarazo',
+     'Tienes <strong>permiso retribuido</strong> para los exámenes prenatales y la preparación al parto si son en horario de trabajo. Si tu puesto supone un riesgo y no pueden cambiarlo, existe la prestación por riesgo durante el embarazo, al 100 %.'),
+    ('Planifica las 19 semanas de cada progenitor',
+     f'Cada progenitor tiene <strong>19 semanas</strong> ({ET("48.4")}): <strong>6 obligatorias</strong> justo después del parto, <strong>11 flexibles</strong> hasta que el bebé cumple 12 meses (avisando a la empresa con 15 días de antelación) y <strong>2 más</strong> hasta los 8 años. En familias monoparentales son 32 semanas. No se pueden ceder al otro progenitor.'),
+    ('Pide la prestación al INSS',
+     f'Durante el permiso no cobras sueldo, sino una prestación del <strong>100 % de tu base reguladora</strong> ({LGSS(179)}) que paga directamente el INSS, por internet o en una oficina. <strong>No paga IRPF.</strong> Necesitas haber cotizado 180 días en los últimos 7 años (menos si tienes menos de 26 años).'),
+    ('Inscribe al bebé y avisa de los cambios',
+     'Inscribe el nacimiento en el Registro Civil (en muchos hospitales se tramita desde allí) y comunica a la empresa el nacimiento para que lo tenga en cuenta en la nómina: los hijos <strong>bajan la retención de IRPF</strong>.'),
+    ('Aprovecha la lactancia al volver',
+     f'Hasta que el bebé cumple <strong>9 meses</strong>, cada progenitor tiene una <strong>hora diaria retribuida</strong> ({ET("37.4")}), que puede cambiar por media hora menos de jornada o <strong>acumular en días completos</strong>.'),
+    ('Conoce tus opciones después',
+     'Puedes <strong>reducir la jornada</strong> hasta que tu hijo cumpla 12 años (con la parte proporcional de sueldo) o pedir una <strong>excedencia</strong> de hasta 3 años. Y el despido es nulo durante el embarazo, el permiso y hasta 12 meses después del nacimiento, salvo causa real ajena a la maternidad o paternidad.'),
+]
+pasos_hijo = '\n'.join(f'    <div class="calc-step"><span class="step-num">{i}</span><div><strong>{t}</strong><p>{x}</p></div></div>'
+                       for i, (t, x) in enumerate(PASOS_HIJO, 1))
+SEMANAS = [('Obligatorias', '6', 'Seguidas, justo después del parto'),
+           ('Flexibles', '11', 'Por semanas, hasta los 12 meses del bebé'),
+           ('Cuidado del menor', '2', 'Por semanas, hasta los 8 años')]
+filas_hijo = ''.join(f'<tr><td>{a}</td><td><strong>{b} semanas</strong></td><td>{c}</td></tr>' for a, b, c in SEMANAS)
+
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">🧭 Paso a paso</div><h1>Qué hacer si vas a tener un hijo<br><span class="highlight">permisos y trámites, en orden</span></h1><p>Desde el embarazo hasta la vuelta al trabajo: qué permisos tienes, cuánto cobras, qué pedir al INSS y qué opciones tienes después, según el Estatuto de los Trabajadores.</p>
+            {REV}</div></section>
+
+    <section class="section"><div class="container"><article class="seo-section">
+<div class="respuesta-corta"><strong>⚡ En 30 segundos</strong><ul>
+<li>Cada progenitor tiene <strong>19 semanas</strong> de permiso (32 en familias monoparentales).</li>
+<li>Cobras el <strong>100 % de tu base reguladora</strong>, lo paga el INSS y <strong>no tributa en el IRPF</strong>.</li>
+<li>Al volver, <strong>1 hora diaria de lactancia</strong> hasta los 9 meses, que se puede acumular en días.</li>
+<li>El despido es <strong>nulo</strong> desde el embarazo hasta 12 meses después del nacimiento, salvo causa ajena.</li>
+</ul></div>
+
+<h2>✅ Los pasos, en orden</h2>
+<div class="calc-steps">
+{pasos_hijo}
+</div>
+
+<h2>📆 Cómo se reparten las 19 semanas</h2>
+<table class="info-table"><tr><th>Tramo</th><th>Semanas</th><th>Cuándo</th></tr>{filas_hijo}</table>
+<p>La madre biológica puede adelantar hasta 4 semanas antes de la fecha prevista de parto. Hay semanas extra por parto múltiple, discapacidad o bebés prematuros u hospitalizados.</p>
+
+<h2>🧮 Pon cifras a tu caso</h2>
+<p>Si vas a reducir la jornada, mira cuánto cobrarías con la <a href="reduccion-jornada">calculadora de reducción de jornada</a>. Todo el detalle (requisitos por edad, riesgo durante el embarazo, excedencia y autónomos) está en la <a href="guia-nacimiento">guía del permiso por nacimiento</a> y en la <a href="guia-permisos">guía de permisos</a>.</p>
+
+<h2>⚠️ Ten en cuenta</h2>
+<ul>
+<li>Tu <strong>convenio colectivo</strong> puede mejorar estos permisos o complementar la prestación.</li>
+<li>Esta guía es orientativa. Para tu caso concreto, consulta con el INSS, un graduado social o tu sindicato.</li>
+</ul>
+</article></div></section>
+'''
+faqs = [
+    ('¿Qué tengo que hacer si voy a tener un hijo?',
+     'Planificar las <strong>19 semanas</strong> de permiso de cada progenitor, pedir la <strong>prestación al INSS</strong>, inscribir al bebé en el Registro Civil y avisar a la empresa. Al volver, puedes usar la hora de lactancia, reducir la jornada o pedir una excedencia.'),
+    ('¿Cuánto se cobra durante el permiso por nacimiento?',
+     'El <strong>100 % de tu base reguladora</strong> (la base de cotización del mes anterior), que paga directamente el INSS. Está <strong>exenta de IRPF</strong>.'),
+    ('¿Cuántas semanas de permiso tiene cada progenitor en 2026?',
+     '<strong>19 semanas</strong>: 6 obligatorias después del parto, 11 flexibles hasta los 12 meses y 2 hasta que el menor cumple 8 años (artículo 48.4 del Estatuto de los Trabajadores). En familias monoparentales, 32.'),
+    ('¿Me pueden despedir si estoy embarazada?',
+     'El despido es <strong>nulo</strong> durante el embarazo (aunque la empresa no lo sepa), el permiso y hasta 12 meses después del nacimiento, salvo que la empresa demuestre una causa real ajena a la maternidad o paternidad. Nulo significa readmisión y pago de los salarios no cobrados.'),
+]
+pagina('que-hacer-si-voy-a-tener-un-hijo', 'Qué hacer si vas a tener un hijo: permisos y trámites',
+    'Vas a tener un hijo: 19 semanas de permiso por progenitor, prestación del 100 % sin IRPF, lactancia y trámites en orden. Paso a paso, con la ley del BOE.',
+    'qué hacer si voy a tener un hijo, permiso por nacimiento 2026, baja por maternidad paternidad, trámites nacimiento',
+    [('Guías', 'guias'), ('Qué hacer si vas a tener un hijo', None)], cuerpo, faqs,
+    'Estatuto de los Trabajadores (arts. 37.4 y 48.4) y Ley General de la Seguridad Social (arts. 177 a 179), versiones consolidadas del BOE.',
+    menu_activo='Guías')
+registrar('que-hacer-si-voy-a-tener-un-hijo', 'Salud y familia', '🧭', 'Qué hacer si vas a tener un hijo',
+          'Los pasos en orden: las 19 semanas de permiso, la prestación del INSS, la lactancia y tus opciones después.')
+print('creada: que-hacer-si-voy-a-tener-un-hijo')
