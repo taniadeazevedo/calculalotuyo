@@ -4368,3 +4368,8 @@ main:focus { outline: none; }   /* al saltar, sin marco alrededor de todo el con
 .tabla-festivos { font-variant-numeric: tabular-nums; }
 .tabla-festivos th { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text2); }
 .tabla-festivos tbody tr:hover td { background: color-mix(in srgb, var(--accent) 5%, transparent); }
+
+/* ===== Listas numeradas como pasos (23/10/2026): «Cómo solicitar el paro», etc. ===== */
+.seo-section ol, .guide-content ol, .guide-section ol { list-style: none; counter-reset: paso; margin: 16px 0 24px; padding: 0; display: grid; gap: 10px; }
+.seo-section ol > li, .guide-content ol > li, .guide-section ol > li { counter-increment: paso; position: relative; margin: 0; padding: 12px 16px 12px 56px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; line-height: 1.55; color: var(--text2); }   /* cada paso, una tarjetita */
+.seo-section ol > li::before, .guide-content ol > li::before, .guide-section ol > li::before { content: counter(paso); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }   /* el número en un círculo */
