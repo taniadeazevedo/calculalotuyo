@@ -16,7 +16,7 @@ TITULOS = {
     'puentes-2027': ('Puentes 2027: los mejores de tu comunidad autónoma',
                      'Qué días pedir en 2027 para encadenar más días libres en tu comunidad, con los festivos oficiales del BOE. Elige tu comunidad y míralo en el calendario.'),
     'guias': ('Guías laborales 2026 en lenguaje claro: despido, paro…',
-              '14 guías laborales de 2026 explicadas fácil: despido, finiquito, paro, nómina, baja médica, permisos, contratos, jornada y autónomos.'),
+              '15 guías laborales de 2026 explicadas fácil: despido, finiquito, paro, nómina, baja médica, permisos, contratos, jornada y autónomos.'),
     'facturas': ('Calcular factura de autónomo 2026: IVA y retención IRPF',
                  'Calcula tu factura de autónomo: base, 21 % de IVA y 15 % de IRPF (7 % los primeros años). Con 1.000 € de base cobras 1.060 €. Gratis.'),
     'cuota-autonomos': ('Calcular cuota de autónomos 2026 según tus ingresos',

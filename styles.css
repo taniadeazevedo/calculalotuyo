@@ -4373,3 +4373,16 @@ main:focus { outline: none; }   /* al saltar, sin marco alrededor de todo el con
 .seo-section ol, .guide-content ol, .guide-section ol { list-style: none; counter-reset: paso; margin: 16px 0 24px; padding: 0; display: grid; gap: 10px; }
 .seo-section ol > li, .guide-content ol > li, .guide-section ol > li { counter-increment: paso; position: relative; margin: 0; padding: 12px 16px 12px 56px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; line-height: 1.55; color: var(--text2); }   /* cada paso, una tarjetita */
 .seo-section ol > li::before, .guide-content ol > li::before, .guide-section ol > li::before { content: counter(paso); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.85rem; display: flex; align-items: center; justify-content: center; }   /* el número en un círculo */
+
+/* ===== «En 30 segundos» y pasos en guías y artículos (23/10/2026): más destacado y con aire ===== */
+.seo-section > .respuesta-corta, .art-cuerpo .respuesta-corta { max-width: none; margin: 0 0 44px; padding: 22px 26px; border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent); border-left: 5px solid var(--accent); background: color-mix(in srgb, var(--accent) 7%, var(--card)); box-shadow: 0 10px 30px rgba(30, 27, 75, 0.06); font-size: 1rem; }   /* caja tintada, a todo el ancho, separada de lo siguiente */
+.seo-section > .respuesta-corta > strong, .art-cuerpo .respuesta-corta > strong { display: flex; align-items: center; gap: 8px; font-size: 1.05rem; color: var(--accent); margin-bottom: 10px; }   /* el título «En 30 segundos», en morado */
+.seo-section > .respuesta-corta ul, .art-cuerpo .respuesta-corta ul { gap: 10px; margin: 0; }
+.seo-section > .respuesta-corta li, .art-cuerpo .respuesta-corta li { margin: 0; line-height: 1.55; color: var(--text); }   /* sin el margen extra de las listas: puntos más juntos */
+.seo-section > .respuesta-corta li::marker, .art-cuerpo .respuesta-corta li::marker { color: var(--accent); }
+/* Pasos (1, 2, 3…) de las guías: cada uno en su tarjeta, como las listas numeradas */
+.seo-section .calc-steps { gap: 12px; margin: 18px 0 36px; }
+.seo-section .calc-step { padding: 16px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; }
+.seo-section .calc-step strong { font-size: 1rem; }
+.seo-section .calc-step p { font-size: 0.92rem; line-height: 1.6; margin-top: 6px; }
+.seo-section .step-num { width: 32px; height: 32px; font-size: 0.9rem; }

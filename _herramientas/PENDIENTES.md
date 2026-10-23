@@ -93,3 +93,6 @@
 ## Diseño de apartados (anotado el 22/10/2026, revisar)
 - [x] (23/10) Ejemplos con pasos en filas y resultado destacado; tablas `info-table` con marco, cabecera y filas alternas; listas numeradas como pasos con número en círculo. Antes: algunas páginas (p. ej. `paro`, bloque de ejemplo «Pedro» y tabla de «Duración») tienen apartados con poco diseño: texto muy apilado (líneas de cálculo pegadas, sin aire) y tablas de dos columnas anchas y sosas.
 - [ ] Ideas: ejemplo con pasos en filas separadas y el resultado destacado; tablas con columnas más compactas, cifras alineadas y alguna marca visual (barra o fila resaltada). Revisar el resto de calculadoras y guías con el mismo criterio.
+
+## Enlaces que se vuelven botón (anotado el 23/10/2026, no urgente)
+- [ ] Al pasar el ratón, algunos enlaces de «ver todo» no cambian y otros se convierten en botón con borde (p. ej. «Ver todas las novedades →» es texto, «Ver los 14 modelos →» es botón). Unificar: que ninguno forme botón (mismo estilo de enlace con flecha en toda la web). Revisar `.calc-group-guide`, `.chip-mas` y similares.

@@ -91,22 +91,100 @@ pagina('que-hacer-si-me-despiden', 'Qué hacer si te despiden: pasos y plazos (2
     'Estatuto de los Trabajadores (arts. 49, 53, 55, 56 y 59), Ley reguladora de la jurisdicción social (arts. 65 y 103) y Ley General de la Seguridad Social (art. 268), versiones consolidadas del BOE.',
     menu_activo='Guías')
 
-# Sitemap: se añade la página si aún no está (sitemap.py pone la fecha)
-sm = os.path.join(RAIZ, 'sitemap.xml'); s = open(sm, encoding='utf-8').read()
-if '/que-hacer-si-me-despiden<' not in s:
-    linea = '    <url><loc>https://calculalotuyo.es/que-hacer-si-me-despiden</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>\n'
-    s = s.replace('</urlset>', linea + '</urlset>'); open(sm, 'w', encoding='utf-8').write(s)
-
-# Tarjeta en la página de Guías, la primera de «Despido y fin del contrato» (solo si no está)
-g = os.path.join(RAIZ, 'guias.html'); s = open(g, encoding='utf-8').read()
-if 'href="que-hacer-si-me-despiden"' not in s:
-    tarjeta = '''<a href="que-hacer-si-me-despiden" class="guide-card">
-                    <span class="guide-icon">🧭</span>
-                    <h3>Qué hacer si te despiden</h3>
-                    <p>Los pasos en orden: qué firmar, cuándo pedir el paro y hasta cuándo puedes reclamar.</p>
+def registrar(slug, seccion, icono, titulo, resumen):
+    """Añade la guía al sitemap (si falta) y su tarjeta, la primera de su sección en la página de Guías."""
+    sm = os.path.join(RAIZ, 'sitemap.xml'); s = open(sm, encoding='utf-8').read()
+    if f'/{slug}<' not in s:                                            # sitemap.py pone luego la fecha buena
+        s = s.replace('</urlset>', f'    <url><loc>https://calculalotuyo.es/{slug}</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>\n</urlset>')
+        open(sm, 'w', encoding='utf-8').write(s)
+    g = os.path.join(RAIZ, 'guias.html'); s = open(g, encoding='utf-8').read()
+    if f'href="{slug}"' not in s:                                       # la tarjeta, solo una vez
+        tarjeta = f"""<a href="{slug}" class="guide-card">
+                    <span class="guide-icon">{icono}</span>
+                    <h3>{titulo}</h3>
+                    <p>{resumen}</p>
                     <span class="guide-link">Leer guía →</span>
                 </a>
-                '''
-    s = re.sub(r'(<h2>Despido y fin del contrato</h2>\s*<div class="guides-grid">\s*)', lambda m: m.group(1) + tarjeta, s, count=1)
-    open(g, 'w', encoding='utf-8').write(s)
+                """
+        s = re.sub(rf'(<h2>{seccion}</h2>\s*<div class="guides-grid">\s*)', lambda m: m.group(1) + tarjeta, s, count=1)
+        open(g, 'w', encoding='utf-8').write(s)
+
+registrar('que-hacer-si-me-despiden', 'Despido y fin del contrato', '🧭', 'Qué hacer si te despiden',
+          'Los pasos en orden: qué firmar, cuándo pedir el paro y hasta cuándo puedes reclamar.')
 print('creada: que-hacer-si-me-despiden')
+
+# ===================== «Qué hacer si te pones de baja» =====================
+# Datos: arts. 169, 172, 173 y 174 de la LGSS (duración, 180 días cotizados, quién paga cada día, extinción) y los
+# porcentajes (60 % y 75 %) de la guía de la baja médica, ya revisada contra el BOE el 14/10/2026.
+PASOS_BAJA = [
+    ('Ve al médico que te corresponde',
+     'Si es una <strong>enfermedad común</strong> o un accidente fuera del trabajo, al médico de cabecera de la sanidad pública. Si es un <strong>accidente de trabajo</strong> (también yendo o volviendo) o una enfermedad profesional, a la <strong>mutua</strong> de tu empresa. Es quien te da el parte de baja.'),
+    ('Avisa a la empresa, pero no le lleves el parte',
+     'Desde abril de 2023 el parte <strong>le llega a la empresa por vía telemática</strong>: tú solo te quedas tu copia. Aun así, avisa cuanto antes de que estás de baja; tu convenio puede pedirlo.'),
+    ('Calcula cuánto vas a cobrar',
+     f'Con enfermedad común, los <strong>3 primeros días no se cobran</strong> (salvo convenio), del 4 al 20 cobras el <strong>60 %</strong> de tu base reguladora y desde el 21, el <strong>75 %</strong>. Con accidente de trabajo, el 75 % desde el día siguiente. Para la enfermedad común necesitas <strong>180 días cotizados en los últimos 5 años</strong> ({LGSS(172)}). Hazlo con la <a href="baja-medica">calculadora de la baja médica</a>.'),
+    ('Mira tu convenio',
+     'Muchos convenios obligan a la empresa a <strong>completar hasta el 100 % del sueldo</strong>, a veces desde el primer día. Es lo que más cambia lo que cobras.'),
+    ('Sigue cobrando en tu nómina',
+     f'La empresa te adelanta el dinero en la nómina. En la enfermedad común, los días 4 a 15 los paga ella y desde el 16, la Seguridad Social o la mutua ({LGSS(173)}). Si se acaba tu contrato estando de baja, pasas a cobrar directamente de la Seguridad Social o la mutua.'),
+    ('Acude a todas las revisiones',
+     f'Ve a las revisiones del médico y a las citas de la mutua. <strong>No presentarte sin una causa justificada</strong> puede hacer que pierdas la prestación ({LGSS(174)}).'),
+    ('Cuando te den el alta, vuelve al trabajo',
+     f'Te incorporas al día siguiente del alta. La baja dura como mucho <strong>365 días</strong>, ampliables otros 180 ({LGSS(169)}). Si después de los 365 días el INSS te da el alta y no estás de acuerdo, tienes solo <strong>4 días naturales</strong> para decirlo ante la inspección médica.'),
+]
+pasos_baja = '\n'.join(f'    <div class="calc-step"><span class="step-num">{i}</span><div><strong>{t}</strong><p>{x}</p></div></div>'
+                        for i, (t, x) in enumerate(PASOS_BAJA, 1))
+# Cuánto se cobra según el día de baja: (días, enfermedad común, accidente de trabajo)
+COBRO = [('Del 1 al 3', 'Nada (salvo convenio)', '75 % (el día del accidente, la empresa)'),
+         ('Del 4 al 20', '60 %', '75 %'), ('Desde el 21', '75 %', '75 %')]
+filas_baja = ''.join(f'<tr><td>{a}</td><td><strong>{b}</strong></td><td><strong>{c}</strong></td></tr>' for a, b, c in COBRO)
+
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">🧭 Paso a paso</div><h1>Qué hacer si te pones de baja<br><span class="highlight">los pasos, en orden</span></h1><p>A qué médico ir, qué hacer con el parte, cuánto vas a cobrar y qué tienes que cumplir mientras estás de baja, según la Ley General de la Seguridad Social.</p>
+            {REV}</div></section>
+
+    <section class="section"><div class="container"><article class="seo-section">
+<div class="respuesta-corta"><strong>⚡ En 30 segundos</strong><ul>
+<li>Enfermedad común: médico de cabecera. Accidente de trabajo: <strong>la mutua</strong>.</li>
+<li>El parte ya <strong>no tienes que llevarlo</strong> a la empresa.</li>
+<li>Cobras <strong>nada los 3 primeros días</strong>, el 60 % hasta el día 20 y el 75 % después (salvo convenio).</li>
+<li>Acude a todas las revisiones: si faltas sin motivo, puedes perder la prestación.</li>
+</ul></div>
+
+<h2>✅ Los pasos, en orden</h2>
+<div class="calc-steps">
+{pasos_baja}
+</div>
+
+<h2>💶 Cuánto cobras según el día de baja</h2>
+<table class="info-table"><tr><th>Días de baja</th><th>Enfermedad común</th><th>Accidente de trabajo</th></tr>{filas_baja}</table>
+<p>Porcentajes sobre tu base reguladora: la base de cotización del mes anterior a la baja dividida entre 30.</p>
+
+<h2>🧮 Pon cifras a tu caso</h2>
+<p>Calcula lo que vas a cobrar con la <a href="baja-medica">calculadora de la baja médica</a>. Todo el detalle (bajas especiales, controles de la mutua, qué pasa a partir de los 365 días) está en la <a href="guia-baja-medica">guía de la baja médica</a>.</p>
+
+<h2>⚠️ Ten en cuenta</h2>
+<ul>
+<li>Tu <strong>convenio colectivo</strong> puede mejorar mucho estas cantidades: revísalo.</li>
+<li>Esta guía es orientativa. Ante dudas con un alta o una revisión, consulta con tu médico, la mutua, un graduado social o tu sindicato.</li>
+</ul>
+</article></div></section>
+'''
+faqs = [
+    ('¿Qué tengo que hacer si me pongo de baja?',
+     'Ir al médico de cabecera (o a la <strong>mutua</strong> si es un accidente de trabajo), avisar a la empresa, revisar tu convenio y acudir a todas las revisiones. El parte ya no tienes que llevarlo: le llega a la empresa por vía telemática.'),
+    ('¿Tengo que llevar el parte de baja a la empresa?',
+     '<strong>No.</strong> Desde abril de 2023 el servicio de salud o la mutua se lo comunica a la empresa por vía telemática. Tú solo recibes tu copia.'),
+    ('¿Cuánto cobro los primeros días de baja?',
+     'Con enfermedad común, <strong>nada los 3 primeros días</strong> (salvo que tu convenio lo mejore), el <strong>60 %</strong> de la base reguladora del día 4 al 20 y el <strong>75 %</strong> desde el 21. Con accidente de trabajo, el 75 % desde el día siguiente.'),
+    ('¿Quién me paga la baja?',
+     'Lo cobras en tu nómina. En la enfermedad común, los días 4 a 15 los paga la empresa y desde el día 16, la Seguridad Social o la mutua (artículo 173 de la Ley General de la Seguridad Social).'),
+]
+pagina('que-hacer-si-me-pongo-de-baja', 'Qué hacer si te pones de baja: pasos (2026)',
+    'Me he puesto de baja, ¿qué hago? A qué médico ir, si llevar el parte a la empresa, cuánto cobras (60 % y 75 %) y las revisiones. Paso a paso, con la ley.',
+    'qué hacer si me pongo de baja, baja médica qué hacer, parte de baja empresa, cuánto se cobra de baja',
+    [('Guías', 'guias'), ('Qué hacer si te pones de baja', None)], cuerpo, faqs,
+    'Ley General de la Seguridad Social (arts. 169, 172, 173 y 174), versión consolidada del BOE, y normativa de los partes de incapacidad temporal.',
+    menu_activo='Guías')
+registrar('que-hacer-si-me-pongo-de-baja', 'Salud y familia', '🧭', 'Qué hacer si te pones de baja',
+          'Los pasos en orden: a qué médico ir, qué hacer con el parte, cuánto cobras y las revisiones.')
+print('creada: que-hacer-si-me-pongo-de-baja')
