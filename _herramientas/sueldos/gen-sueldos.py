@@ -11,8 +11,13 @@ SMI = R['smi']
 # Sueldos que tienen página propia (los más buscados)
 PAGINAS = [18000, 20000, 21000, 22000, 24000, 25000, 26000, 27000, 28000, 30000, 32000, 33000, 35000, 36000, 38000, 40000, 42000, 45000, 50000, 55000, 60000, 70000, 80000]
 
+import decimal as _dec
+def _redondeo(n, dec):
+    """2962.5 → 2963 (no 2962): el mismo redondeo que hacen las calculadoras en el navegador."""
+    return float(_dec.Decimal(repr(n)).quantize(_dec.Decimal(1).scaleb(-dec), rounding=_dec.ROUND_HALF_UP))
+
 def e(n, dec=0):                                   # 1927.5 → "1.928" (formato español, con punto de miles)
-    t = f'{n:,.{dec}f}'
+    t = f'{_redondeo(n, dec):,.{dec}f}'   # redondeo «,5» hacia arriba, como la calculadora (Python redondearía al par)
     return t.replace(',', 'X').replace('.', ',').replace('X', '.')
 def pct(n):
     return f'{n:.2f}'.replace('.', ',') + ' %'

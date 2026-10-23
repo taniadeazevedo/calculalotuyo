@@ -76,6 +76,8 @@ const A_MANO=[
     ['Paro: menos de 1 año trabajado → avisa de que no hay derecho','paro',{sueldoMes:1500,pagas:14,anios:0,meses:9,hijos:0},r=>/al menos 1 año/.test(r.error)],
     ['Despido improcedente: 28.000 €/año, 5 años justos → 33 días × 5 = 12.658 €','despido-improcedente',{salario:28000,inicio:'2021-10-20',despido:'2026-10-19'},
         r=>Math.abs(euros(r.total)-28000/365*33*5)<2],
+    ['Despido improcedente ANTERIOR a 2012: 24.000 €/año, del 01/01/2006 al 01/01/2011 → 61 meses × 45 días = 15.041 € (no hasta el 12/02/2012)','despido-improcedente',{salario:24000,inicio:'2006-01-01',despido:'2011-01-01'},
+        r=>Math.abs(euros(r.total)-24000/365*61*45/12)<2],
     ['Lotería: el Gordo (400.000 €) → te llegan 328.000 €','loteria-navidad-hacienda',{premio:'400000',como:'decimo',decimos:1},r=>euros(r.total)===328000],
     ['Lotería: participación de 5 € del Gordo → 82.000 €','loteria-navidad-hacienda',{premio:'400000',como:'participacion',jugado:5},r=>euros(r.total)===82000],
     ['Lotería: cuarto premio (20.000 €) → no paga nada','loteria-navidad-hacienda',{premio:'20000',como:'decimo',decimos:1},r=>euros(r.total)===20000],

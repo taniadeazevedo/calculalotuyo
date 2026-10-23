@@ -6,8 +6,13 @@ RAIZ = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 def leer(nombre):
     return open(os.path.join(RAIZ, nombre), encoding='utf-8').read()
 
+import decimal as _dec
+def _redondeo(n, dec):
+    """2962.5 → 2963 (no 2962): el mismo redondeo que hacen las calculadoras en el navegador."""
+    return float(_dec.Decimal(repr(n)).quantize(_dec.Decimal(1).scaleb(-dec), rounding=_dec.ROUND_HALF_UP))
+
 def e(n, dec=0):                                   # 1927.5 → "1.928" (formato español)
-    t = f'{n:,.{dec}f}'
+    t = f'{_redondeo(n, dec):,.{dec}f}'   # redondeo «,5» hacia arriba, como la calculadora (Python redondearía al par)
     return t.replace(',', 'X').replace('.', ',').replace('X', '.')
 
 def pct(n, dec=2):

@@ -96,3 +96,12 @@
 
 ## Enlaces que se vuelven botón (anotado el 23/10/2026, no urgente)
 - [x] (23/10) Unificados como texto con flecha. Antes: al pasar el ratón, algunos enlaces de «ver todo» no cambian y otros se convierten en botón con borde (p. ej. «Ver todas las novedades →» es texto, «Ver los 14 modelos →» es botón). Unificar: que ninguno forme botón (mismo estilo de enlace con flecha en toda la web). Revisar `.calc-group-guide`, `.chip-mas` y similares.
+
+## Auditoría externa SEO/GEO/monetización (23/10/2026)
+- [x] Despido: el tramo de 45 días ya no se cuenta hasta el 12/02/2012 si el despido fue anterior (prueba añadida).
+- [x] Sueldo neto con 14 pagas: «/paga» (media) + desglose «cada mes ≈ X € y 2 pagas extra de ≈ Y €».
+- [x] H1 de sueldo neto descriptivo («Calculadora de sueldo neto 2026»).
+- [x] Redondeo de los generadores igual que la calculadora (2.962,5 → 2.963).
+- [x] Texto del buscador más corto (no se corta en el móvil).
+- [ ] 👩 Desde tu móvil o portátil en España, en una ventana de incógnito: comprobar que sale el aviso de cookies de Google, que «Aceptar» y «Rechazar» funcionan y que «Gestionar cookies» del pie lo vuelve a abrir.
+- [ ] 👩 calculalotuyo.netlify.app sigue saliendo en buscadores (da 404). Si aún tienes acceso a Netlify, dime y preparo una redirección a calculalotuyo.es; si no, pedir su retirada en Search Console / Bing.

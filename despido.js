@@ -24,8 +24,10 @@ function indemnizacionImprocedente(salarioAnual,inicio,despido){
     const pre=inicio<CORTE_2012;                               // contrato anterior a la reforma
     const fin=diaSiguiente(despido);
     const diario=salarioAnual/365;
-    const mesesPre=pre?mesesProrrateados(inicio,CORTE_2012):0;
-    const mesesPost=mesesProrrateados(pre?CORTE_2012:inicio,fin);
+    // Si el despido fue antes de la reforma, el tramo de 45 días llega solo hasta el despido (no hasta el corte)
+    const finPre=fin<CORTE_2012?fin:CORTE_2012;
+    const mesesPre=pre?mesesProrrateados(inicio,finPre):0;
+    const mesesPost=fin>CORTE_2012?mesesProrrateados(pre?CORTE_2012:inicio,fin):0;
     const diasPre=mesesPre*45/12;                              // 45 días por año hasta el 11/02/2012
     const diasPost=mesesPost*33/12;                            // 33 días por año desde el 12/02/2012
     // Topes: 720 días de salario; si el tramo anterior a 2012 ya los supera, ese importe (máx. 42 mensualidades)

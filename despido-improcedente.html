@@ -417,7 +417,7 @@ document.getElementById('calc').onsubmit=function(e){
     document.getElementById('details').innerHTML=
         '<div class="result-item"><p class="result-item-label">Salario diario</p><p class="result-item-value">'+fmtDec(r.diario)+'</p></div>'+
         '<div class="result-item"><p class="result-item-label">Antigüedad</p><p class="result-item-value">'+anos+'a '+meses+'m</p></div>'+
-        '<div class="result-item"><p class="result-item-label">Días/año</p><p class="result-item-value">'+(pre?'45+33':'33')+'</p></div>'+
+        '<div class="result-item"><p class="result-item-label">Días/año</p><p class="result-item-value">'+(pre?(r.mesesPost>0?'45+33':'45'):'33')+'</p></div>'+
         '<div class="result-item"><p class="result-item-label">Tope</p><p class="result-item-value">'+(topeApl||'No')+'</p></div>';
     let fc='<div class="fiscal-row"><span>Indemnización bruta</span><span>'+fmt(indem)+'</span></div>';
     if(pre)fc+='<div class="fiscal-row"><span>└ Tramo pre-2012 ('+r.mesesPre+' meses)</span><span>'+fmt(r.tramoPre)+'</span></div><div class="fiscal-row"><span>└ Tramo post-2012 ('+r.mesesPost+' meses)</span><span>'+fmt(r.tramoPost)+'</span></div>';

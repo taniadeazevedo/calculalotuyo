@@ -172,7 +172,7 @@
         <div class="container">
             <nav class="breadcrumb" aria-label="Estás en"><a href="./">Inicio</a> <span class="breadcrumb-sep">›</span> <span aria-current="page">Sueldo neto</span></nav>
             <div class="hero-badge"><svg class="ico" aria-hidden="true"><use href="/iconos.svg#i-wallet"/></svg> Nómina 2026</div>
-            <h1>No te lleves sorpresas<br>Descubre cuánto llegará a tu banco</h1>
+            <h1>Calculadora de sueldo neto 2026<br><span class="highlight">descubre cuánto llegará a tu banco</span></h1>
             <p>Calcula tu sueldo neto real con IRPF actualizado y deducciones por hijos.</p>
             <p class="respuesta-corta"><span><svg class="ico" aria-hidden="true"><use href="/iconos.svg#i-zap"/></svg> Respuesta rápida</span>Con <strong>30.000 € brutos al año cobras unos 1.927 € netos al mes</strong> en 12 pagas (2026, sin hijos, contrato indefinido). Con 20.000 €, unos 1.411 €; con 40.000 €, unos 2.471 €.</p>
             <p class="hero-meta"><svg class="ico" aria-hidden="true"><use href="/iconos.svg#i-calendar"/></svg> Revisado el 15 de octubre de 2026 · <svg class="ico" aria-hidden="true"><use href="/iconos.svg#i-pen-line"/></svg> <a href="sobre-el-proyecto">CalculaLoTuyo</a> · <a href="como-calculamos">Cómo calculamos</a></p>
@@ -437,8 +437,18 @@ document.getElementById('calc').onsubmit=function(e){
     const netoMes=r.neto/pagas;
     const pct=n=>n.toLocaleString('es-ES',{minimumFractionDigits:2,maximumFractionDigits:2})+' %';
 
-    document.getElementById('total').textContent=fmt(netoMes)+'/mes';
-    document.getElementById('resultSub').textContent='Neto anual: '+fmt(r.neto)+' en '+pagas+' pagas';
+    if(pagas===14){
+        // Con 14 pagas la Seguridad Social se descuenta solo en las 12 nóminas normales (las extras van prorrateadas
+        // en la cotización): la nómina de cada mes es algo menor que la media y la paga extra, algo mayor
+        const paga=bruto/14;
+        const normal=paga-r.ss/12-paga*r.tipo/100;        // nómina normal: sueldo − Seguridad Social − IRPF
+        const extra=paga-paga*r.tipo/100;                 // paga extra: solo IRPF
+        document.getElementById('total').textContent=fmt(netoMes)+'/paga';
+        document.getElementById('resultSub').textContent='Cada mes ≈ '+fmt(normal)+' y 2 pagas extra de ≈ '+fmt(extra)+' · neto anual: '+fmt(r.neto);
+    }else{
+        document.getElementById('total').textContent=fmt(netoMes)+'/mes';
+        document.getElementById('resultSub').textContent='Neto anual: '+fmt(r.neto)+' en 12 pagas';
+    }
     document.getElementById('details').innerHTML=
         '<div class="result-item"><p class="result-item-label">Bruto anual</p><p class="result-item-value">'+fmt(bruto)+'</p></div>'+
         '<div class="result-item"><p class="result-item-label">IRPF anual</p><p class="result-item-value">'+fmt(r.irpf)+'</p></div>'+
