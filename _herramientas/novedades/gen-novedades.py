@@ -41,7 +41,58 @@ FILAS_ALQ = [(22000, 17227.65), (25000, 21375.00), (28000, 24180.00), (30000, 26
 ded = lambda bi: min(0.10 * min(ALQ, base_max(bi)), cuota_estatal(bi))
 
 # ================================================================ ARTÍCULOS (el más nuevo, primero)
+# Festivos de 2027 por comunidad, leídos de festivos-2027.js (BOE-A-2026-21254): nada se escribe a mano
+import datetime as _dt, re
+_fj = open(os.path.join(RAIZ, 'festivos-2027.js'), encoding='utf-8').read()
+FEST = {m.group(2): dict(re.findall(r"\['(\d{4}-\d\d-\d\d)','([^']+)'\]", m.group(3)))
+        for m in re.finditer(r"'([a-z-]+)':\{nombre:'([^']+)',festivos:\[(.*?)\]\}", _fj, re.S)}
+_DIAS = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo']
+_MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+def fecha_larga(d):
+    f = _dt.date.fromisoformat(d); return f'{_DIAS[f.weekday()]} {f.day} de {_MESES[f.month - 1]}'
+COMUNES = [d for d in sorted({d for v in FEST.values() for d in v}) if all(d in v for v in FEST.values())]   # en todas
+quien = lambda d: [k for k, v in FEST.items() if d in v]
+NOMBRE = lambda d: next(v[d] for v in FEST.values() if d in v)
+
 ARTICULOS = [
+ dict(slug='festivos-2027', fecha='2026-10-23', actualizado='2026-10-23', tema='Calendario',
+  titulo='Festivos 2027 en España: el calendario oficial del BOE',
+  desc=f'Los festivos de 2027 ya son oficiales: {len(COMUNES)} comunes en toda España y los de cada comunidad. Qué días caen en fin de semana y los mejores puentes.',
+  h1='Festivos 2027: el calendario laboral oficial', sub='Publicado en el BOE el 13 de octubre de 2026',
+  img=['Festivos 2027', 'el calendario oficial del BOE'],
+  resumen=[f'El BOE publicó el 13 de octubre de 2026 las fiestas laborales de 2027: <strong>{len(COMUNES)} son comunes en toda España</strong> y el resto las elige cada comunidad, hasta 12 en total (más 2 locales de tu municipio).',
+           f'El <strong>1 de mayo y el 25 de diciembre caen en sábado</strong>, y el 15 de agosto en domingo: {len(quien("2027-08-16"))} comunidades lo pasan al lunes 16.',
+           'Los mejores puentes: <strong>Semana Santa</strong> (del 25 al 28 de marzo en casi toda España), el <strong>12 de octubre</strong> (martes) y el de <strong>diciembre</strong> (lunes 6 y miércoles 8).'],
+  calculadoras=[('calendario-laboral-2027', '📆 Calendario laboral 2027 de tu comunidad'), ('puentes-2027', '🗓️ Los mejores puentes de 2027'), ('dias-laborables', '📅 Cuenta tus días laborables')],
+  cuerpo=lambda: f"""
+<h2>📌 Qué ha publicado el BOE</h2>
+<p>La {boe("BOE-A-2026-21254", "Resolución de 8 de octubre de 2026 de la Dirección General de Trabajo")} (BOE del 13 de octubre) fija las fiestas laborales de 2027 en cada comunidad autónoma, Ceuta y Melilla. Son como máximo <strong>12 días al año</strong>, a los que se suman <strong>2 fiestas locales</strong> que elige cada ayuntamiento y se publican después en el boletín de cada provincia o comunidad.</p>
+<h2>📆 Los {len(COMUNES)} festivos comunes en toda España</h2>
+<div class="tabla-wrap"><table class="tabla-festivos tabla-corta"><thead><tr><th>Fecha</th><th>Fiesta</th></tr></thead><tbody>{''.join(f'<tr><td>{fecha_larga(d)}</td><td>{NOMBRE(d)}</td></tr>' for d in COMUNES)}</tbody></table></div>
+<p>Dos de ellos caen en <strong>sábado</strong> (1 de mayo y 25 de diciembre) y no se trasladan, así que en la práctica no añaden un día libre a quien trabaja de lunes a viernes.</p>
+<h2>🗺️ Lo que cambia según tu comunidad</h2>
+<ul>
+<li><strong>Jueves Santo (25 de marzo):</strong> festivo en {len(quien("2027-03-25"))} de los {len(FEST)} territorios; no lo es en {" ni en ".join(k for k in FEST if "2027-03-25" not in FEST[k])}.</li>
+<li><strong>Lunes de Pascua (29 de marzo):</strong> {", ".join(quien("2027-03-29"))}.</li>
+<li><strong>San José (19 de marzo, viernes):</strong> {", ".join(quien("2027-03-19"))}.</li>
+<li><strong>Lunes 16 de agosto</strong>, en lugar del 15 que cae en domingo: {", ".join(quien("2027-08-16"))}.{" Extremadura lo traslada al lunes 11 de octubre." if "2027-10-11" in FEST.get("Extremadura", {}) else ""}</li>
+<li>Y cada comunidad tiene su <strong>día propio</strong> (Día de Andalucía, San Jorge, Día de Asturias, la Diada…). Los tienes todos en el <a href="calendario-laboral-2027">calendario laboral 2027</a>.</li>
+</ul>
+<h2>🗓️ Los mejores puentes de 2027</h2>
+<ul>
+<li><strong>Semana Santa:</strong> del jueves 25 al domingo 28 de marzo (y hasta el lunes 29 donde es festivo el Lunes de Pascua).</li>
+<li><strong>Fiesta Nacional:</strong> el 12 de octubre cae en <strong>martes</strong>: pidiendo el lunes 11, cuatro días seguidos.</li>
+<li><strong>Todos los Santos:</strong> el 1 de noviembre es <strong>lunes</strong>, fin de semana largo sin pedir nada.</li>
+<li><strong>Diciembre:</strong> lunes 6 (Constitución) y miércoles 8 (Inmaculada). Pidiendo el martes 7, cinco días seguidos.</li>
+</ul>
+<p>Calcula los de tu comunidad, con los días que tendrías que pedir, en <a href="puentes-2027">puentes 2027</a>.</p>
+<h2>⏳ Qué falta por saber</h2>
+<p>Las <strong>2 fiestas locales</strong> de cada municipio. Las comunidades y provincias las van publicando entre noviembre y enero; las añadimos al calendario de cada ciudad en cuanto salen en su boletín.</p>""",
+  faqs=[('¿Cuántos festivos hay en 2027?', f'<strong>12 como máximo</strong> en cada comunidad (en algunas, 11), más <strong>2 fiestas locales</strong> de tu municipio. De ellos, {len(COMUNES)} son comunes en toda España.'),
+        ('¿Qué festivos caen en fin de semana en 2027?', 'El <strong>1 de mayo</strong> y el <strong>25 de diciembre</strong> caen en sábado, y el <strong>15 de agosto</strong> en domingo. Varias comunidades pasan el 15 de agosto al lunes 16.'),
+        ('¿Cuándo es Semana Santa en 2027?', 'El <strong>Jueves Santo es el 25 de marzo</strong> y el <strong>Viernes Santo el 26</strong>. El Lunes de Pascua (29 de marzo) es festivo solo en algunas comunidades.')],
+  fuentes=f'{boe("BOE-A-2026-21254", "Resolución de 8 de octubre de 2026, de la Dirección General de Trabajo")} (BOE núm. 254, de 13 de octubre de 2026).',
+  kw='festivos 2027, calendario laboral 2027, festivos nacionales 2027, puentes 2027, semana santa 2027'),
  dict(slug='subida-pensiones-2027', fecha='2026-10-22', actualizado='2026-10-22', tema='Pensiones',
   titulo='Subida de las pensiones en 2027: cuánto subirán',
   desc=f'Con el IPC de 2026, las pensiones subirían en enero de 2027 en torno a un {pc(CENTRAL)}. Cómo se calcula, escenarios y cuánto más cobrarás al mes.',
@@ -147,8 +198,9 @@ FLECHA = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="cu
 
 # Portada de cada artículo: cifra o idea clave grande, icono y color por tema (también es su imagen para compartir y Discover)
 PORTADAS = {
-    'subida-pensiones-2027': dict(cifra='≈ 3,6 %', texto='Lo que subirían las pensiones en enero de 2027', icono='piggy-bank', color=('#312E81', '#6D28D9'), alt='Dos hombres mayores sentados de espaldas en un banco de un parque'),
+    'subida-pensiones-2027': dict(cifra='≈ 3,6 %', texto='Lo que subirían las pensiones en enero de 2027', icono='piggy-bank', color=('#312E81', '#6D28D9'), alt='Dos mujeres mayores sentadas de espaldas en un banco, delante de una puerta antigua'),
     'deduccion-alquiler-renta': dict(cifra='10 %', texto='Del alquiler de tu casa, deducible en la renta', icono='house', color=('#0F766E', '#4F46E5'), alt='Edificios de viviendas con miradores junto a la ría de Bilbao'),
+    'festivos-2027': dict(cifra='12 festivos', texto='El calendario laboral de 2027, ya oficial', icono='calendar-days', color=('#0F766E', '#115E59'), alt='Fuegos artificiales sobre la bahía de La Concha, en San Sebastián, con gente mirando desde la playa'),
     'ipc-septiembre-2026-sueldo': dict(cifra='4,9 %', texto='IPC de septiembre: el más alto desde 2023', icono='trending-up', color=('#9A3412', '#BE185D'), alt='Una mano sujeta un billete de 100 euros'),
 }
 def svg_icono(nombre):
@@ -160,7 +212,7 @@ import unicodedata as _ud
 slug_cat = lambda t: _ud.normalize('NFD', t.lower()).encode('ascii', 'ignore').decode().replace(' ', '-')   # «Empleo y paro» → «empleo-y-paro»
 FOTOS = os.path.join(AQUI, 'fotos')                                    # fotos originales (Pexels, uso libre), ya recortadas a 1200×630
 # Categorías de Novedades y su color (sin verde: es el del calendario). El filtro de la portada y la pill usan este color.
-CATEGORIAS = {'Pensiones': '#6D28D9', 'Impuestos': '#2563EB', 'Sueldo': '#DB2777', 'Empleo y paro': '#EA580C', 'Autónomos': '#0E7490'}
+CATEGORIAS = {'Pensiones': '#6D28D9', 'Impuestos': '#2563EB', 'Sueldo': '#DB2777', 'Empleo y paro': '#EA580C', 'Autónomos': '#0E7490', 'Calendario': '#0F766E'}   # Calendario: el mismo verde del botón «Calendario 2027»
 COLOR_TEMA = CATEGORIAS
 
 def foto(slug):
@@ -353,3 +405,10 @@ open(g, 'w', encoding='utf-8').write(re.sub(r'\n?<!-- NOVEDADES -->.*?<!-- /NOVE
 
 json.dump([{k: a[k] for k in ('slug', 'titulo', 'desc', 'fecha', 'actualizado', 'tema')} for a in ARTICULOS], open(os.path.join(AQUI, 'lista.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 print('novedades:', len(ARTICULOS), 'artículos · pensiones 2027 ≈', pc(CENTRAL, 2), '· deducción alquiler 25.000 € ≈', e(ded(21375.0)), '€')
+
+# Sitemap: cada artículo que falte se añade solo (sitemap.py pone luego la fecha buena)
+_sm = os.path.join(RAIZ, 'sitemap.xml'); _s = open(_sm, encoding='utf-8').read()
+_faltan = [a['slug'] for a in ARTICULOS if f"/{a['slug']}<" not in _s]
+if _faltan:
+    _s = _s.replace('</urlset>', ''.join(f'    <url><loc>https://calculalotuyo.es/{x}</loc><lastmod>2026-10-23</lastmod><priority>0.8</priority></url>\n' for x in _faltan) + '</urlset>')
+    open(_sm, 'w', encoding='utf-8').write(_s)
