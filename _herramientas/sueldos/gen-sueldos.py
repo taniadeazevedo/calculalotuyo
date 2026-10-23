@@ -9,7 +9,7 @@ R = json.load(open(f'{AQUI}/sueldos.json'))
 DAT = {int(k): v for k, v in R['datos'].items()}
 SMI = R['smi']
 # Sueldos que tienen página propia (los más buscados)
-PAGINAS = [18000, 20000, 21000, 22000, 24000, 25000, 26000, 27000, 28000, 30000, 32000, 33000, 35000, 36000, 38000, 40000, 42000, 45000, 50000, 55000, 60000, 70000, 80000]
+PAGINAS = [18000, 19000, 20000, 21000, 22000, 23000, 24000, 25000, 26000, 27000, 28000, 29000, 30000, 31000, 32000, 33000, 34000, 35000, 36000, 37000, 38000, 39000, 40000, 41000, 42000, 43000, 44000, 45000, 46000, 47000, 48000, 50000, 55000, 60000, 65000, 70000, 75000, 80000, 90000, 100000]   # 23/10/2026: +17 sueldos frecuentes
 
 import decimal as _dec
 def _redondeo(n, dec):
@@ -185,3 +185,11 @@ faqs = [
 generadas.append(pagina('sueldo-bruto-a-neto-2026', 'Tabla de sueldo bruto a neto 2026: cuánto cobras al mes', f'Tabla 2026 para pasar de sueldo bruto a neto: de {e(SMI)} a 100.000 € brutos al año, con el neto al mes en 12 y 14 pagas y la retención de IRPF.', 'sueldo bruto a neto 2026, tabla bruto neto, de bruto a neto, cuánto cobro neto', 'Tabla bruto a neto 2026', cuerpo, faqs))
 json.dump(generadas, open(f'{AQUI}/generadas.json', 'w'))
 print(len(generadas), 'páginas')
+
+# Sitemap: cada página de sueldo que falte se añade sola (sitemap.py pone luego la fecha buena)
+_sm = 'sitemap.xml'                                   # ya estamos en la carpeta de la web (os.chdir de arriba)
+_s = open(_sm, encoding='utf-8').read()
+_faltan = [f'{b}-euros-brutos-en-netos' for b in PAGINAS if f'/{b}-euros-brutos-en-netos<' not in _s]
+if _faltan:
+    _s = _s.replace('</urlset>', ''.join(f'    <url><loc>https://calculalotuyo.es/{p}</loc><lastmod>2026-10-23</lastmod><priority>0.7</priority></url>\n' for p in _faltan) + '</urlset>')
+    open(_sm, 'w', encoding='utf-8').write(_s)
