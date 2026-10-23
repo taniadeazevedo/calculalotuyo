@@ -103,5 +103,5 @@
 - [x] H1 de sueldo neto descriptivo («Calculadora de sueldo neto 2026»).
 - [x] Redondeo de los generadores igual que la calculadora (2.962,5 → 2.963).
 - [x] Texto del buscador más corto (no se corta en el móvil).
-- [ ] 👩 Desde tu móvil o portátil en España, en una ventana de incógnito: comprobar que sale el aviso de cookies de Google, que «Aceptar» y «Rechazar» funcionan y que «Gestionar cookies» del pie lo vuelve a abrir.
-- [ ] 👩 calculalotuyo.netlify.app sigue saliendo en buscadores (da 404). Si aún tienes acceso a Netlify, dime y preparo una redirección a calculalotuyo.es; si no, pedir su retirada en Search Console / Bing.
+- [ ] 👩 Aviso de cookies: probado el 23/10 → la web carga el sistema de Google, pero Google responde «sin mensaje configurado» (NOT_CONFIGURED). Hay que crearlo en AdSense → Privacidad y mensajes → Reglamentos europeos (RGPD) → Crear mensaje → elegir calculalotuyo.es → Publicar. Si aun publicado no sale, puede ser porque Google aún no ha aprobado la web: volver a probar tras la aprobación.
+- [x] (23/10) Proyecto de Netlify borrado: la dirección antigua da 404 y los buscadores la irán quitando solos (no es tuya en Search Console, no hace falta hacer nada).
