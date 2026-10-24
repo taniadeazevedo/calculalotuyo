@@ -4404,3 +4404,5 @@ a.btn { display: inline-flex; align-items: center; justify-content: center; gap:
 a.btn .ico { margin-right: 0; }
 @media (max-width: 640px) { a.btn { width: 100%; } }   /* en el móvil, a todo el ancho (más fácil de pulsar) */
 .btn-secondary .ico, .related-card .ico, .enlaces-sueldo a .ico { margin-right: 6px; }   /* icono con aire en botones secundarios, tarjetas y enlaces de modelos */
+.art-cuerpo table.tabla-art.tabla-corta { max-width: none; }   /* en los artículos la tabla llena su marco (antes se quedaba a la mitad) */
+.art-cuerpo table.tabla-art td:first-child, .art-cuerpo table.tabla-art th:first-child { width: 42%; white-space: nowrap; }   /* fecha o mes en una línea */

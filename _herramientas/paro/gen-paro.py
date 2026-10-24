@@ -11,7 +11,7 @@ SMI_MES, SMI_ANUAL, TOP, DUR = R['smiMes'], R['smiAnual'], R['topes'], R['duraci
 REV = REVISADO.format(fecha='19 de octubre de 2026')
 FUENTE = 'Art. 270 de la <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724" target="_blank">Ley General de la Seguridad Social</a> (cuantía: 70 % los 180 primeros días y 60 % después; topes según el IPREM) y art. 269 (duración). IPREM de 2026: 600 € al mes.'
 MIGA_PARO = [('Paro', 'paro')]
-PAGINAS = [SMI_MES, 1300, 1400, 1500, 1600, 1700, 1800, 2000]   # sin 1.900: sale casi igual que 2.000 (los dos en el máximo)
+PAGINAS = []   # 24/10/2026: «paro con X €» unidas en tabla-paro-2026 (ver consolidar.py)
 slug = lambda s: f'paro-con-{s}-euros'
 nombre_s = lambda s: f'{e(s)} €' + (' (SMI)' if s == SMI_MES else '')
 anios = lambda dias: dias / 360

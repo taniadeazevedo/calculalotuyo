@@ -26,6 +26,7 @@ for f in sorted(glob.glob('*.html')):
     slug = f[:-5]
     if slug in FUERA: continue
     s = open(f, encoding='utf-8').read()
+    if 'noindex' in s: continue                          # páginas de traslado (consolidar.py): no se buscan
     g = lambda p: (re.search(p, s, re.S) or [None, ''])[1]
     titulo = limpio(g(r'<title>(.*?)</title>')) or limpio(g(r'<h1[^>]*>(.*?)</h1>'))   # el título corto de la pestaña se lee mejor
     cat, icono, peso = tipo(slug)

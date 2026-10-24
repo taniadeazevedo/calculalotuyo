@@ -9,7 +9,7 @@ R = json.load(open(f'{AQUI}/sueldos.json'))
 DAT = {int(k): v for k, v in R['datos'].items()}
 SMI = R['smi']
 # Sueldos que tienen página propia (los más buscados)
-PAGINAS = [18000, 19000, 20000, 21000, 22000, 23000, 24000, 25000, 26000, 27000, 28000, 29000, 30000, 31000, 32000, 33000, 34000, 35000, 36000, 37000, 38000, 39000, 40000, 41000, 42000, 43000, 44000, 45000, 46000, 47000, 48000, 50000, 55000, 60000, 65000, 70000, 75000, 80000, 90000, 100000]   # 23/10/2026: +17 sueldos frecuentes
+PAGINAS = [18000, 20000, 22000, 24000, 25000, 28000, 30000, 35000, 40000, 45000, 50000, 60000]   # 24/10/2026: solo las más buscadas (el resto, en la tabla; ver consolidar.py)
 
 import decimal as _dec
 def _redondeo(n, dec):

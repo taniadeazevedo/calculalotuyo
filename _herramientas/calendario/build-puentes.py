@@ -6,6 +6,7 @@ r = lambda n: open(f'{S}/{n}', encoding='utf-8').read()
 # ---- 1) Menú: "Puentes 2027" debajo de "Días laborables" en todas las páginas
 for f in glob.glob('*.html'):
     s = open(f, encoding='utf-8').read()
+    if 'noindex' in s and 'nav-link' not in s: continue   # páginas de traslado (consolidar.py): sin menú
     if 'puentes-2027"' not in s:
         p = '/' if f == '404.html' else ''
         a = f'<a href="{p}dias-laborables"'

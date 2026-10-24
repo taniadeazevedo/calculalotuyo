@@ -12,7 +12,7 @@ SM = R['sueldosMes']
 EJ = 2000                                               # sueldo de ejemplo (brutos al mes en 14 pagas)
 REV = REVISADO.format(fecha='19 de octubre de 2026')
 FUENTE = 'Arts. 49.1.c, 53.1.b y 56 del <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank">Estatuto de los Trabajadores</a> (12, 20 y 33 días por año) y su disposición transitoria 11.ª (45 días por año hasta el 11 de febrero de 2012). Mismo cálculo que nuestra calculadora de despido improcedente.'
-PAGINAS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20]
+PAGINAS = []   # 24/10/2026: «despido con X años» unidas en tabla-indemnizacion-despido (ver consolidar.py)
 slug = lambda a: f'indemnizacion-despido-{a}-anos'
 anos = lambda a: f'{a} {"año" if a == 1 else "años"}'
 dias_txt = lambda d: e(d, 0 if float(d).is_integer() else 2)

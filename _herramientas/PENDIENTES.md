@@ -106,3 +106,9 @@
 - [ ] 👩 Aviso de cookies: el mensaje RGPD está creado y publicado en AdSense (desde el 14/10), pero Google aún responde «sin mensaje» (NOT_CONFIGURED), casi seguro porque la web no está aprobada todavía. Tras la aprobación de AdSense: probar en incógnito (scroll o 10 s) que sale, que «Aceptar»/«No aceptar» funcionan y que «Gestionar cookies» del pie lo reabre. Mientras tanto no se guardan cookies de anuncios ni analítica (todo denegado por defecto).
 - [x] (23/10) Proyecto de Netlify borrado: la dirección antigua da 404 y los buscadores la irán quitando solos (no es tuya en Search Console, no hace falta hacer nada).
 - [x] (23/10) Comprobación completa del motor de IRPF y cotizaciones contra el BOE (arts. 19, 20, 57–60 LIRPF; 81, 83, 85, 86 RIRPF; Orden PJC/297/2026): todo coincide. Anotado en «Cómo calculamos».
+
+## AdSense rechazado (24/10/2026): «Su cuenta no se ha aprobado · Debe solucionar varios problemas»
+- [x] Consolidadas 49 páginas de plantilla casi iguales en sus tablas (`_herramientas/consolidar.py`): sueldos de 40 a 12, «paro con X €» y «despido con X años» → tablas. Sitemap: 182 → 133 URLs; las de plantilla bajan del 55 % al 38 %. Las direcciones antiguas llevan a la tabla (noindex + canonical).
+- [ ] 👩 Leer el motivo exacto: correo de AdSense y AdSense → Centro de políticas. Pásamelo.
+- [ ] 👩 NO volver a enviar enseguida: esperar 2–3 semanas a que Google vuelva a rastrear (pedir indexación de la portada y reenviar el sitemap en Search Console ya).
+- [ ] 🤖 Siguiente mejora: dar contenido propio a las 12 páginas de sueldo y a los calendarios por comunidad (no solo cifras cambiadas).
