@@ -82,7 +82,7 @@ def pagina(nombre, titulo, desc, keywords, migas, cuerpo, faqs, fuente, menu_act
     <section class="section"><div class="container"><div class="source-box"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><div><strong>Fuente:</strong><p>{fuente}</p></div></div></div></section>
 </main>
 
-{_FOOT}<script src="site.js?v=20261022b"></script>
+{_FOOT}<script src="site.js?v=20261024a"></script>
 </body>
 </html>
 '''

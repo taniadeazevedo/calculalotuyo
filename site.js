@@ -130,6 +130,7 @@ const ID_ADSENSE='ca-pub-4853214655991551';
 let adsenseCargado=false;
 function cargarAdsense(){
     if(adsenseCargado)return; adsenseCargado=true;
+    if(document.querySelector('script[src*="adsbygoogle.js"]'))return;   // ya viene en la cabecera de la página (mientras Google revisa la web)
     ['scroll','mousemove','touchstart','keydown','click'].forEach(ev=>window.removeEventListener(ev,cargarAdsense));
     const s=document.createElement('script');
     s.async=true; s.crossOrigin='anonymous';

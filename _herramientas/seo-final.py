@@ -29,9 +29,14 @@ for f in glob.glob('*.html'):
         s = re.sub(r'(\n(\s*)<link rel="icon" type="image/png" sizes="32x32" href="(/?)favicon-32\.png[^"]*">)',
                    lambda m: m.group(1) + f'\n{m.group(2)}<link rel="icon" type="image/png" sizes="48x48" href="{m.group(3)}favicon-48.png">\n{m.group(2)}<link rel="icon" type="image/png" sizes="96x96" href="{m.group(3)}favicon-96.png">\n{m.group(2)}<link rel="icon" href="{m.group(3)}favicon.ico" sizes="any">', s, count=1)
     s = re.sub(r'(favicon\.svg|favicon-32\.png|favicon-48\.png|favicon-96\.png|favicon\.ico|apple-touch-icon\.png)(?:\?v=\d+)?"', rf'\1?v={VERSION_OG}"', s)   # el logo de la pestaña, del móvil y de la cabecera: que no se quede el antiguo guardado
-    # AdSense ya no carga al entrar: lo carga site.js al primer gesto (más rápido). La verificación de AdSense
-    # sigue con la etiqueta <meta name="google-adsense-account"> y con ads.txt.
+    # AdSense: mientras Google revisa la web (24/10/2026), el código va en la cabecera de TODAS las páginas, como pide
+    # Google para «conectar el sitio». Cuando aprueben la cuenta se puede volver a la carga al primer gesto
+    # (más rápida) poniendo EN_CABECERA = False: entonces se quita y lo carga site.js.
+    EN_CABECERA = True
+    ADS = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4853214655991551" crossorigin="anonymous"></script>'
     s = re.sub(r'\n\s*<script async src="https://pagead2\.googlesyndication\.com/pagead/js/adsbygoogle\.js\?client=ca-pub-\d+" crossorigin="anonymous"></script>', '', s)
+    if EN_CABECERA and 'noindex' not in s and '</head>' in s:
+        s = s.replace('</head>', '    ' + ADS + '\n</head>', 1)
     if 'name="robots"' not in s:                       # imágenes grandes en Google Discover y en las búsquedas
         s = s.replace('<meta name="viewport"', '<meta name="robots" content="max-image-preview:large">\n    <meta name="viewport"', 1)
     if nombre in CALCULADORAS and '"WebApplication"' not in s:
