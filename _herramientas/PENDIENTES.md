@@ -111,4 +111,4 @@
 - [x] Consolidadas 49 páginas de plantilla casi iguales en sus tablas (`_herramientas/consolidar.py`): sueldos de 40 a 12, «paro con X €» y «despido con X años» → tablas. Sitemap: 182 → 133 URLs; las de plantilla bajan del 55 % al 38 %. Las direcciones antiguas llevan a la tabla (noindex + canonical).
 - [ ] 👩 Leer el motivo exacto: correo de AdSense y AdSense → Centro de políticas. Pásamelo.
 - [ ] 👩 NO volver a enviar enseguida: esperar 2–3 semanas a que Google vuelva a rastrear (pedir indexación de la portada y reenviar el sitemap en Search Console ya).
-- [ ] 🤖 Siguiente mejora: dar contenido propio a las 12 páginas de sueldo y a los calendarios por comunidad (no solo cifras cambiadas).
+- [x] (24/10) Las 12 páginas de sueldo tienen «Si te suben el sueldo» (tabla y pregunta propias de cada sueldo). Los calendarios por comunidad ya tenían contenido propio (sus festivos, días laborables y puentes).

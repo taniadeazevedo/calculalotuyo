@@ -112,6 +112,13 @@ for b in PAGINAS:
     vecinos = [p for p in PAGINAS[max(0, i - 3):i + 4] if p != b]
     enl = '<div class="enlaces-sueldo">' + ''.join(f'<a href="{slug(p)}">{e(p)} €</a>' for p in vecinos) + '<a href="sueldo-bruto-a-neto-2026">Ver todos →</a></div>'
     dif_hijo = x['hijo1']['neto'] / 12 - m12
+    # Si te suben el sueldo: con los sueldos siguientes que tiene el motor (de mil en mil; por encima de 60.000, de cinco en cinco mil)
+    siguientes = [k for k in sorted(DAT) if k > b][:3]
+    subidas = [(k, k - b, DAT[k]['base']['neto'] - base['neto']) for k in siguientes]
+    filas_sub = ''.join(f'<tr><td>+{e(sub)} € (a {e(k)} €)</td><td><strong>+{e(extra)} €</strong></td><td>+{e(extra / 14)} €</td><td>{e(extra / sub * 100)} €</td></tr>' for k, sub, extra in subidas)
+    k1, sub1, extra1 = subidas[0]
+    quedan = extra1 / sub1 * 100                          # de cada 100 € de subida, lo que llega al banco
+    tipo_sig = DAT[k1]['base']['tipo']
     cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">🏦 Nómina 2026</div><h1>{e(b)} € brutos en netos<br><span class="highlight">{e(m12)} € al mes</span></h1><p>Con un sueldo de {e(b)} € brutos al año en 2026, sin hijos y con contrato indefinido, te quedan <strong>{e(base["neto"])} € netos</strong>.</p>
             {REVISADO}</div></section>
 
@@ -137,6 +144,9 @@ for b in PAGINAS:
 <p>A la empresa, este sueldo le cuesta unos <strong>{e(base["coste"])} €</strong> al año, porque además paga su parte de la Seguridad Social (alrededor del 30,65 %).</p>
 <h2>👶 ¿Y si tienes hijos?</h2>
 <p>Con un hijo, la retención baja al {pct(x["hijo1"]["tipo"])} y cobras unos <strong>{e(dif_hijo)} € más al mes</strong>. Con dos, el neto sube a {e(x["hijos2"]["neto"] / 12)} € al mes. Con un contrato temporal pagas algo más de Seguridad Social (6,55 % en vez de 6,50 %).</p>
+<h2>📈 Si te suben el sueldo</h2>
+<p>Con {e(b)} € brutos, de cada 100 € de subida te llegan unos <strong>{e(quedan)} €</strong>: el resto se va en Seguridad Social y en IRPF, porque al cobrar más también sube el porcentaje de retención (con {e(k1)} € pasaría del {pct(base["tipo"])} al {pct(tipo_sig)}). Aun así, una subida nunca te deja con menos dinero neto que antes.</p>
+<div class="tabla-wrap"><table class="tabla-festivos tabla-sueldos"><thead><tr><th>Subida</th><th>Neto al año</th><th>Al mes (14 pagas)</th><th>De cada 100 €</th></tr></thead><tbody>{filas_sub}</tbody></table></div>
 <h2>❔ Por qué tu nómina puede ser un poco distinta</h2>
 <p>La retención es un adelanto del IRPF. En la declaración de la renta se ajusta con la escala de tu comunidad autónoma, y también cambia si tienes horas extra, pagas en especie o un cambio de sueldo a mitad de año. Para tu caso exacto, usa la <a href="sueldo-neto">calculadora de sueldo neto</a>, y para ver el IRPF tramo a tramo, la <a href="irpf">calculadora de IRPF</a>.</p>
 <h2>💶 Sueldos parecidos</h2>
@@ -147,6 +157,7 @@ for b in PAGINAS:
         (f'¿Cuánto son {e(b)} € brutos en netos al mes?', f'<strong>{e(m12)} € al mes</strong> si cobras en 12 pagas, o <strong>{e(m14)} €</strong> si son 14 pagas (con dos pagas extra). Es para una persona sin hijos y con contrato indefinido en 2026.'),
         (f'¿Cuánto IRPF se paga con {e(b)} € brutos?', f'La retención es del <strong>{pct(base["tipo"])}</strong>: unos {e(base["irpf"])} € al año. Con hijos, baja.'),
         (f'¿Cuánto le cuesta a la empresa un sueldo de {e(b)} € brutos?', f'Unos <strong>{e(base["coste"])} €</strong> al año, sumando la cotización a la Seguridad Social que paga la empresa.'),
+        (f'¿Cuánto cobro más si me suben {e(sub1)} € con un sueldo de {e(b)} €?', f'Unos <strong>{e(extra1)} € netos más al año</strong> ({e(extra1 / 14)} € al mes en 14 pagas): de cada 100 € de subida te quedan unos {e(quedan)} €.'),
         (f'¿{e(b)} € brutos son mucho o poco?', f'El salario mínimo de 2026 es de {e(SMI)} € brutos al año. Un sueldo de {e(b)} € es {e(b / SMI, 1)} veces el salario mínimo.'),
     ]
     generadas.append(pagina(slug(b), f'{e(b)} € brutos en netos 2026: {e(m12)} € al mes', f'{e(b)} euros brutos al año son {e(base["neto"])} € netos en 2026: {e(m12)} € al mes en 12 pagas o {e(m14)} € en 14. Retención del {pct(base["tipo"])}, con y sin hijos.', f'{b} brutos en netos, {e(b)} euros brutos en netos, {b} brutos anuales cuánto es neto, sueldo {b} brutos al mes', f'{e(b)} € brutos', cuerpo, faqs))
