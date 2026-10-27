@@ -54,17 +54,37 @@ t30 = D['30000']['base']['tipo']
 s = cabecera(s, 'Calculadora IRPF 2026: calcula la retención de tu nómina',
     f'Calcula qué IRPF te corresponde en 2026 con el mismo algoritmo que Hacienda. Con 30.000 € brutos, un {pc(t30)}. Tabla de retención por sueldo e hijos.',
     '<h1>Calculadora de IRPF 2026<br><span class="highlight">¿qué retención te corresponde?</span></h1>')
-filas = ''.join(f'<tr><td>{e(b)} €{" (SMI)" if b == SMI else ""}</td><td><strong>{pc(D[str(b)]["base"]["tipo"])}</strong></td><td>{pc(D[str(b)]["hijo1"]["tipo"])}</td><td>{pc(D[str(b)]["hijos2"]["tipo"])}</td><td>{e(D[str(b)]["base"]["irpf"] / 12)} €</td></tr>' for b in SUELDOS)
+tc = lambda b, k: pc(D[str(b)][k]["tipo"])                          # tipo de retención de un sueldo y un caso
+filas = ''.join(f'<tr><td>{e(b)} €{" (SMI)" if b == SMI else ""}</td><td><strong>{tc(b, "base")}</strong></td><td>{tc(b, "hijo1")}</td><td>{tc(b, "hijos2")}</td><td>{tc(b, "hijos3")}</td><td>{tc(b, "mono1")}</td><td>{e(D[str(b)]["base"]["irpf"] / 12)} €</td></tr>' for b in SUELDOS)
+# Tres casos reales (mismo motor que la calculadora): quién, sueldo, caso del motor y explicación
+def caso(nombre, quien, b, k, explica):
+    x = D[str(b)][k]; base = D[str(b)]['base']
+    comparacion = '' if k == 'base' else f' (sin hijos sería el {pc(base["tipo"])})'   # con hijos, se compara con el caso sin hijos
+    return (f'<div class="example-box"><h4>👩‍💼 {nombre}: {quien}</h4><p>{explica}</p>'
+            f'<div class="calc-line">Sueldo bruto: {e(b)} € al año ({e(b / 14)} € al mes en 14 pagas)</div>'
+            f'<div class="calc-line">Retención de IRPF: <strong>{pc(x["tipo"])}</strong>{comparacion}</div>'
+            f'<div class="calc-line">IRPF al año: {e(x["irpf"])} € · Seguridad Social: {e(x["ss"])} €</div>'
+            f'<p class="result-highlight">Le quedan {e(x["neto"] / 14)} € netos al mes en 14 pagas ({e(x["neto"])} € al año)</p></div>')
+casos_html = (caso('Lucía', 'administrativa, 22.000 € y sin hijos', 22000, 'base', 'Contrato indefinido, sin hijos ni nadie a su cargo. Es el caso más sencillo: solo cuentan su sueldo y el mínimo personal de 5.550 €.')
+    + caso('Javier', 'técnico, 35.000 € y dos hijos', 35000, 'hijos2menor3', 'Dos hijos, uno de ellos menor de 3 años, y su pareja también trabaja, así que el mínimo por hijos se reparte a medias. El menor de 3 años suma 2.800 € más a ese mínimo.')
+    + caso('Marta', 'enfermera, 28.000 € y madre sola con un hijo', 28000, 'mono1', 'Vive sola con su hijo: es una familia monoparental, así que se aplica todo el mínimo por el hijo (no la mitad) y un límite propio para empezar a retener.'))
 tabla = f'''    <section class="section"><div class="container"><article class="seo-section">
 <h2>📊 ¿Qué IRPF me corresponde? Retención según tu sueldo (2026)</h2>
 <p>El porcentaje que te retienen en la nómina depende sobre todo de tu sueldo bruto al año y de tus hijos. Así queda en 2026, calculado con el <strong>mismo algoritmo que usa la Agencia Tributaria</strong> (el de su calculadora de retenciones):</p>
-<div class="tabla-wrap"><table class="tabla-festivos tabla-sueldos"><thead><tr><th>Sueldo bruto al año</th><th>Sin hijos</th><th>1 hijo</th><th>2 hijos</th><th>IRPF al mes (sin hijos, 12 pagas)</th></tr></thead><tbody>{filas}</tbody></table></div>
-<p class="nota-corta">Contrato indefinido y menor de 65 años. Con hijos, el mínimo por descendientes se reparte con el otro progenitor (lo habitual). Para tu caso exacto, usa la calculadora de arriba.</p>
+<div class="tabla-wrap"><table class="tabla-festivos tabla-sueldos"><thead><tr><th>Sueldo bruto al año</th><th>Sin hijos</th><th>1 hijo</th><th>2 hijos</th><th>3 hijos</th><th>Sola/o con 1 hijo</th><th>IRPF al mes (sin hijos, 12 pagas)</th></tr></thead><tbody>{filas}</tbody></table></div>
+<p class="nota-corta">Contrato indefinido y menor de 65 años. Con hijos, el mínimo por descendientes se reparte con el otro progenitor (lo habitual); «Sola/o con 1 hijo» es una familia monoparental, que se lo queda entero y retiene menos. Para tu caso exacto, usa la calculadora de arriba.</p>
 <h3>Cómo saber qué IRPF te corresponde</h3>
 <ol><li>Busca tu <strong>sueldo bruto al año</strong>, con las pagas extra (en la nómina: el bruto del mes × 12 o × 14).</li><li>Mira la fila de tu sueldo en la tabla, o pon tus datos en la calculadora para tener en cuenta tu situación familiar, discapacidad o tu edad.</li><li>Compara con el porcentaje de IRPF de tu nómina. Si te retienen menos, en la <a href="obligado-a-declarar-renta">declaración de la renta</a> te puede salir a pagar; si te retienen más, a devolver. Puedes pedir a tu empresa que te suba el porcentaje (modelo 145).</li></ol>
+
+<h3>👥 Tres casos reales, calculados</h3>
+{casos_html}
 </article></div></section>
 '''
 s = poner_bloque(s, 'TABLA-IRPF', tabla, '    <div class="container"><div class="ad"></div></div>\n\n    <!-- EJEMPLO PRÁCTICO -->')
+s = poner_faqs(s, [
+    ('¿Cuánto IRPF me quitan con 2 hijos?', f'Depende del sueldo. Con 30.000 € brutos y dos hijos (el mínimo por hijos a medias con tu pareja), la retención baja al <strong>{tc(30000, "hijos2")}</strong>, frente al {pc(t30)} sin hijos. Con tres hijos, al <strong>{tc(30000, "hijos3")}</strong>.'),
+    ('¿Cuánto IRPF paga una madre o un padre solo con un hijo?', f'Menos que si comparte el hijo: se queda entero el mínimo por descendiente y tiene un límite propio. Con 28.000 € brutos y un hijo, la retención es del <strong>{tc(28000, "mono1")}</strong>, frente al {tc(28000, "hijo1")} si el mínimo se reparte con el otro progenitor.'),
+])
 s = poner_faqs(s, [
     ('¿Cómo sé qué IRPF me corresponde?', f'Depende de tu sueldo bruto anual, tus hijos y tu situación familiar. Como referencia, en 2026 y sin hijos: un <strong>{pc(D["20000"]["base"]["tipo"])}</strong> con 20.000 €, un <strong>{pc(t30)}</strong> con 30.000 € y un <strong>{pc(D["40000"]["base"]["tipo"])}</strong> con 40.000 €. Para tu caso exacto, usa la calculadora.'),
     ('¿Cuánto IRPF me quitan con 30.000 € brutos?', f'Un <strong>{pc(t30)}</strong> en 2026 si no tienes hijos: unos <strong>{e(D["30000"]["base"]["irpf"])} € al año</strong> ({e(D["30000"]["base"]["irpf"] / 12)} € al mes en 12 pagas). Con un hijo, un {pc(D["30000"]["hijo1"]["tipo"])}.'),
