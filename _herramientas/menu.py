@@ -110,6 +110,9 @@ for f in sorted(glob.glob('*.html')):
         s = re.sub(r'(Sobre el Proyecto</a>\s*<a href="(/?)como-calculamos">Cómo calculamos</a>)', lambda m: m.group(1) + f'\n                <a href="{m.group(2)}novedades">Novedades</a>', s, count=1)
     if pag != 'como-calculamos':
         s = re.sub(r'(<p class="hero-meta">.*?<a href="sobre-el-proyecto">CalculaLoTuyo</a>)(</p>)', r'\1 · <a href="como-calculamos">Cómo calculamos</a>\2', s, count=1) if 'href="como-calculamos">Cómo calculamos</a></p>' not in s else s
+    # Instagram en el pie, discreto: un enlace más junto a «Novedades» (27/10/2026)
+    if 'instagram.com/calculalotuyo/" target' not in s:
+        s = re.sub(r'(<a href="(/?)novedades">Novedades</a>)(?!\s*<a href="https://www\.instagram)', r'\1\n                <a href="https://www.instagram.com/calculalotuyo/" target="_blank" rel="noopener">Instagram</a>', s, count=1)
     # Accesibilidad: «Saltar al contenido» para quien navega con teclado (lo primero de la página) y destino en <main>
     s = re.sub(r'<main(?![^>]*id=)', '<main id="contenido" tabindex="-1"', s, count=1)
     s = s.replace('<main id="contenido">', '<main id="contenido" tabindex="-1">', 1)   # tabindex: el teclado sigue desde ahí
