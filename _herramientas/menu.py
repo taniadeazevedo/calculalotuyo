@@ -37,6 +37,30 @@ SECCION = [
      r'|\d+-euros-brutos-en-netos|paga-extra-navidad-2026|sueldo-funcionario-2026|sueldo-bruto-a-neto-2026|paro-.*|tabla-paro-2026|cuanto-paro-me-corresponde|indemnizacion-despido-.*|tabla-indemnizacion-despido)$'),
 ]
 
+# Pie de todas las páginas (27/10/2026): cada columna, un tipo de cosa. Para cambiarlo, se cambia aquí.
+PIE = [
+    ('Calculadoras', [('sueldo-neto', 'Sueldo neto'), ('irpf', 'Retención de IRPF'), ('despido-improcedente', 'Despido improcedente'),
+                      ('finiquito', 'Finiquito'), ('paro', 'Paro'), ('cuota-autonomos', 'Cuota de autónomos'), ('./#calculadoras', 'Todas las calculadoras')]),
+    ('Guías', [('guias', 'Todas las guías'), ('que-hacer-si-me-despiden', 'Qué hacer si te despiden'), ('guia-despido', 'Guía del despido'),
+               ('guia-paro', 'Guía del paro'), ('guia-sueldo-neto', 'Guía del sueldo neto'), ('modelos', 'Modelos gratis'), ('novedades', 'Novedades')]),
+    ('Datos 2026', [('sueldo-bruto-a-neto-2026', 'Tabla bruto a neto'), ('tramos-irpf-2026', 'Tramos del IRPF'), ('tabla-paro-2026', 'Tabla del paro'),
+                    ('tabla-indemnizacion-despido', 'Tabla de indemnización'), ('smi-2026', 'Salario mínimo (SMI)'), ('iprem-2026', 'IPREM'),
+                    ('calendario-laboral-2027', 'Calendario laboral 2027'), ('informe-sueldo-coste-empresa-2026', 'Coste de un trabajador')]),
+    ('CalculaLoTuyo', [('sobre-el-proyecto', 'Sobre el proyecto'), ('como-calculamos', 'Cómo calculamos'), ('contacto', 'Contacto'),
+                       ('privacidad', 'Privacidad'), ('cookies', 'Cookies'), ('#', 'Gestionar cookies'), ('aviso-legal', 'Aviso legal'), ('terminos', 'Términos')]),
+]
+
+def pie(raiz=''):
+    """Columnas del pie (sin la marca, que se queda como está). raiz='/' en la 404."""
+    cols = ''
+    for titulo, enlaces in PIE:
+        cols += f'\n            <div class="footer-col">\n                <h4>{titulo}</h4>'
+        for href, texto in enlaces:
+            if href == '#': cols += '\n                <a href="#" data-cookies>Gestionar cookies</a>'
+            else: cols += f'\n                <a href="{raiz + href if not href.startswith("./") else (raiz or "./") + href[2:]}">{texto}</a>'
+        cols += '\n            </div>'
+    return cols
+
 def menus(pag, raiz=''):
     """Devuelve (menú de ordenador, menú del móvil) para la página «pag». raiz='/' en la 404 (rutas absolutas)."""
     sec = next((s for s, r in SECCION if re.match(r, pag)), '')
@@ -110,9 +134,13 @@ for f in sorted(glob.glob('*.html')):
         s = re.sub(r'(Sobre el Proyecto</a>\s*<a href="(/?)como-calculamos">Cómo calculamos</a>)', lambda m: m.group(1) + f'\n                <a href="{m.group(2)}novedades">Novedades</a>', s, count=1)
     if pag != 'como-calculamos':
         s = re.sub(r'(<p class="hero-meta">.*?<a href="sobre-el-proyecto">CalculaLoTuyo</a>)(</p>)', r'\1 · <a href="como-calculamos">Cómo calculamos</a>\2', s, count=1) if 'href="como-calculamos">Cómo calculamos</a></p>' not in s else s
-    # Instagram en el pie, discreto: un enlace más junto a «Novedades» (27/10/2026)
-    if 'instagram.com/calculalotuyo/" target' not in s:
-        s = re.sub(r'(<a href="(/?)novedades">Novedades</a>)(?!\s*<a href="https://www\.instagram)', r'\1\n                <a href="https://www.instagram.com/calculalotuyo/" target="_blank" rel="noopener">Instagram</a>', s, count=1)
+    # Pie: se conserva la marca (logo y texto) y se rehacen las columnas
+    s = re.sub(r'(<div class="footer-grid-4">\s*<div class="footer-brand">.*?</div>\s*</div>)(.*?)(\n\s*</div>\n\s*<div class="footer-bottom">)',
+               lambda m: m.group(1) + pie('/' if pag == '404' else '') + m.group(3), s, count=1, flags=re.S)
+    # Instagram: un iconito discreto al final de la línea «© 2026 CalculaLoTuyo…» (27/10/2026)
+    s = re.sub(r'\n\s*<a href="https://www\.instagram\.com/calculalotuyo/" target="_blank" rel="noopener">Instagram</a>', '', s)   # quita el enlace de texto que iba en la columna de guías
+    if 'class="footer-ig"' not in s:
+        s = s.replace('Hecho con ♥ en España</p>', 'Hecho con ♥ en España <a class="footer-ig" href="https://www.instagram.com/calculalotuyo/" target="_blank" rel="noopener" aria-label="CalculaLoTuyo en Instagram" title="Instagram"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg></a></p>', 1)
     # Accesibilidad: «Saltar al contenido» para quien navega con teclado (lo primero de la página) y destino en <main>
     s = re.sub(r'<main(?![^>]*id=)', '<main id="contenido" tabindex="-1"', s, count=1)
     s = s.replace('<main id="contenido">', '<main id="contenido" tabindex="-1">', 1)   # tabindex: el teclado sigue desde ahí

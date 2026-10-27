@@ -4406,3 +4406,12 @@ a.btn .ico { margin-right: 0; }
 .btn-secondary .ico, .related-card .ico, .enlaces-sueldo a .ico { margin-right: 6px; }   /* icono con aire en botones secundarios, tarjetas y enlaces de modelos */
 .art-cuerpo table.tabla-art.tabla-corta { max-width: none; }   /* en los artículos la tabla llena su marco (antes se quedaba a la mitad) */
 .art-cuerpo table.tabla-art td:first-child, .art-cuerpo table.tabla-art th:first-child { width: 42%; white-space: nowrap; }   /* fecha o mes en una línea */
+
+/* Instagram: iconito discreto al final de la línea del © (27/10/2026) */
+.footer-ig { display: inline-flex; vertical-align: -3px; margin-left: 8px; color: var(--muted); opacity: .75; transition: color .15s, opacity .15s; }
+.footer-ig:hover { color: var(--accent); opacity: 1; }
+
+/* Pie reorganizado (27/10/2026): marca + Calculadoras · Guías · Datos 2026 · CalculaLoTuyo */
+.footer-grid-4 { grid-template-columns: 1.4fr repeat(4, 1fr); gap: 32px; }
+@media (max-width: 1000px) { .footer-grid-4 { grid-template-columns: 1fr 1fr; } .footer-grid-4 .footer-brand { grid-column: 1 / -1; } }
+@media (max-width: 600px) { .footer-grid-4 { grid-template-columns: 1fr 1fr; text-align: left; } }   /* en el móvil, dos columnas: más corto */
