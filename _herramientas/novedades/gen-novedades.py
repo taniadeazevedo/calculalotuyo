@@ -55,6 +55,41 @@ quien = lambda d: [k for k, v in FEST.items() if d in v]
 NOMBRE = lambda d: next(v[d] for v in FEST.values() if d in v)
 
 ARTICULOS = [
+ dict(slug='elecciones-29n-pensiones-smi-2027', fecha='2026-10-28', actualizado='2026-10-28', tema='Pensiones',
+  titulo='Elecciones 29-N: qué pasa con las pensiones y el SMI 2027',
+  desc=f'Con las elecciones del 29 de noviembre, ¿subirán las pensiones y el salario mínimo en enero de 2027? Qué dice la ley, qué pasó en 2020 y qué te afecta.',
+  h1='Elecciones del 29-N: ¿subirán las pensiones y el SMI en 2027?', sub='Qué dice la ley y qué pasó la última vez',
+  img=['Pensiones y SMI 2027', 'qué pasa con las elecciones'],
+  resumen=['La subida de las <strong>pensiones</strong> está garantizada por ley (la media del IPC), pero necesita un decreto; con las elecciones del <strong>29 de noviembre</strong>, puede aprobarse más tarde de lo habitual.',
+           'En 2020 pasó lo mismo: la subida se aprobó el <strong>14 de enero</strong> con efectos desde el <strong>1 de enero</strong>, y la diferencia se cobró después.',
+           f'El <strong>salario mínimo</strong> lo fija el Gobierno cada año; mientras no haya uno nuevo, sigue el de 2026 ({e(1221)} € al mes en 14 pagas).'],
+  calculadoras=[('subida-pensiones-2027', '👵 Cuánto subirán las pensiones'), ('smi-2026', '💶 El salario mínimo de 2026'), ('jubilacion', '🌅 Calcula tu jubilación')],
+  cuerpo=lambda: f"""
+<h2>📌 Qué ha pasado</h2>
+<p>El {boe("BOE-A-2026-20742", "Real Decreto 806/2026")} (BOE del 6 de octubre) disolvió el Congreso y el Senado y convocó <strong>elecciones generales para el 29 de noviembre de 2026</strong>. Las nuevas Cortes se constituirán el <strong>23 de diciembre</strong>. Justo en esas semanas se suelen aprobar la subida de las pensiones y el salario mínimo del año siguiente.</p>
+<h2>👵 Las pensiones: la subida la marca la ley</h2>
+<p>Las pensiones contributivas suben cada enero según la <strong>media del IPC de diciembre a noviembre</strong> ({boe("BOE-A-2015-11724", "artículo 58 de la Ley General de la Seguridad Social", True)}). Con los datos de 2026, rondaría el <strong>{pc(CENTRAL)}</strong> (lo explicamos en <a href="subida-pensiones-2027">cuánto subirán las pensiones en 2027</a>). Pero para aplicarla hace falta aprobar un decreto, y el dato de noviembre del INE se conoce a finales de mes, alrededor de las elecciones.</p>
+<h2>⚖️ Qué puede hacer el Gobierno</h2>
+<ul>
+<li><strong>Hasta las elecciones</strong>, el Gobierno puede aprobar decretos-leyes. Como las Cortes están disueltas, los convalida la <strong>Diputación Permanente</strong> del Congreso ({boe("BOE-A-1978-31229", "artículos 78 y 86 de la Constitución", True)}).</li>
+<li><strong>Después del 29-N</strong>, el Gobierno queda <strong>en funciones</strong> y debe limitarse al «despacho ordinario de los asuntos públicos», salvo casos de <strong>urgencia</strong> o <strong>interés general</strong> que lo justifiquen expresamente ({boe("BOE-A-1997-25336", "artículo 21 de la Ley del Gobierno", True)}).</li>
+</ul>
+<h2>🗓️ El precedente: lo que pasó en 2020</h2>
+<p>Tras las elecciones del 10 de noviembre de 2019, la subida de las pensiones de 2020 (un 0,9 %) se aprobó con el {boe("BOE-A-2020-501", "Real Decreto-ley 1/2020, de 14 de enero")}, con efectos desde el <strong>1 de enero</strong>. El propio decreto explica que, por las limitaciones del Gobierno en funciones, «resultó inevitable posponer» la medida hasta que se formó el nuevo Gobierno. El salario mínimo de 2020 se aprobó el 4 de febrero ({boe("BOE-A-2020-1652", "Real Decreto 231/2020", True)}), también con efectos desde el 1 de enero.</p>
+<h2>💶 El salario mínimo de 2027</h2>
+<p>El SMI lo fija el Gobierno <strong>cada año por real decreto</strong>, después de consultar a sindicatos y empresarios ({boe("BOE-A-2015-11430", "artículo 27 del Estatuto de los Trabajadores", True)}). Mientras no se apruebe el de 2027, se sigue aplicando el de 2026: <strong>{e(1221)} € al mes en 14 pagas</strong> ({e(17094)} € al año). Lo tienes todo en <a href="smi-2026">el salario mínimo de 2026</a>.</p>
+<h2>🧾 Qué significa para ti</h2>
+<ul>
+<li><strong>Si cobras una pensión:</strong> la subida no se pierde, porque la marca la ley. Si el decreto llega tarde, puede que la pensión de enero llegue sin subir y que la diferencia se pague después, como en 2020.</li>
+<li><strong>Si cobras el salario mínimo:</strong> hasta que haya uno nuevo, tu nómina seguirá con el de 2026. Si luego se aprueba con efectos desde el 1 de enero, la empresa tendrá que pagarte la diferencia.</li>
+</ul>
+<h2>⏳ Qué falta por saber</h2>
+<p>El IPC de octubre (30 de octubre) y el de noviembre (finales de noviembre), que fijan el porcentaje exacto de las pensiones, y cuándo y cómo se aprueban los dos decretos. Actualizaremos este artículo con cada novedad publicada en el BOE.</p>""",
+  faqs=[('¿Subirán las pensiones en enero de 2027 si hay elecciones?', f'La subida está fijada por ley: la media del IPC de diciembre de 2025 a noviembre de 2026, en torno al {pc(CENTRAL)}. Lo que puede cambiar es la fecha del decreto: en 2020, tras unas elecciones, se aprobó el 14 de enero con efectos desde el 1 de enero.'),
+        ('¿Puede un Gobierno en funciones subir las pensiones?', 'La Ley del Gobierno le limita al despacho ordinario, salvo urgencia o interés general debidamente justificados (artículo 21). En 2019, el Gobierno en funciones no la aprobó y se hizo en enero de 2020, ya con el nuevo Gobierno.'),
+        ('¿Qué salario mínimo se cobra en enero de 2027 si no hay uno nuevo?', f'Se sigue aplicando el de 2026: {e(1221)} € al mes en 14 pagas. Si el nuevo se aprueba después con efectos desde el 1 de enero, la empresa paga la diferencia, como pasó en 2020.')],
+  fuentes=f'{boe("BOE-A-2026-20742", "Real Decreto 806/2026")}, {boe("BOE-A-2015-11724", "Ley General de la Seguridad Social (art. 58)", True)}, {boe("BOE-A-1997-25336", "Ley 50/1997 del Gobierno (art. 21)", True)}, {boe("BOE-A-1978-31229", "Constitución (arts. 78 y 86)", True)}, {boe("BOE-A-2020-501", "Real Decreto-ley 1/2020")} y {boe("BOE-A-2020-1652", "Real Decreto 231/2020", True)}.',
+  kw='elecciones 29n pensiones, subida pensiones 2027 elecciones, smi 2027 elecciones, gobierno en funciones pensiones'),
  dict(slug='festivos-2027', fecha='2026-10-23', actualizado='2026-10-23', tema='Calendario',
   titulo='Festivos 2027 en España: el calendario oficial del BOE',
   desc=f'Los festivos de 2027 ya son oficiales: {len(COMUNES)} comunes en toda España y los de cada comunidad. Qué días caen en fin de semana y los mejores puentes.',
@@ -200,6 +235,7 @@ FLECHA = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="cu
 PORTADAS = {
     'subida-pensiones-2027': dict(cifra='≈ 3,6 %', texto='Lo que subirían las pensiones en enero de 2027', icono='piggy-bank', color=('#312E81', '#6D28D9'), alt='Dos mujeres mayores sentadas de espaldas en un banco, delante de una puerta antigua'),
     'deduccion-alquiler-renta': dict(cifra='10 %', texto='Del alquiler de tu casa, deducible en la renta', icono='house', color=('#0F766E', '#4F46E5'), alt='Edificios de viviendas con miradores junto a la ría de Bilbao'),
+    'elecciones-29n-pensiones-smi-2027': dict(cifra='29-N', texto='Pensiones y SMI 2027: qué pasa con las elecciones', icono='landmark', color=('#4C1D95', '#6D28D9'), alt='Ilustración de un colegio electoral: personas votando en las urnas de unas elecciones generales'),
     'festivos-2027': dict(cifra='12 festivos', texto='El calendario laboral de 2027, ya oficial', icono='calendar-days', color=('#0F766E', '#115E59'), alt='Fuegos artificiales sobre la bahía de La Concha, en San Sebastián, con gente mirando desde la playa'),
     'ipc-septiembre-2026-sueldo': dict(cifra='4,9 %', texto='IPC de septiembre: el más alto desde 2023', icono='trending-up', color=('#9A3412', '#BE185D'), alt='Una mano sujeta un billete de 100 euros'),
 }
