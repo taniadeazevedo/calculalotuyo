@@ -100,7 +100,7 @@ cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}
 <p>El paro se calcula sobre tu <strong>base de cotización</strong> de los últimos 180 días: tu sueldo bruto mensual más la parte de las pagas extra. Por eso, con el mismo sueldo, cobras más paro si te pagan en 14 pagas que si las extra ya van incluidas en 12.</p>
 <p>Los 6 primeros meses cobras el 70 % de esa base y después el 60 %, pero siempre entre un mínimo y un máximo. Sin hijos, a partir de unos {e(max70_14)} € brutos al mes en 14 pagas ya cobras el máximo los primeros meses, y desde unos {e(max60_14)} € también después. Mira los <a href="paro-maximo-minimo-2026">topes del paro de 2026</a> y <a href="cuanto-paro-me-corresponde">cuánto tiempo te corresponde</a>.</p>
 <h2>🔎 Sueldos más buscados</h2>
-<div class="enlaces-sueldo">{"".join(f'<a href="{slug(p)}">{nombre_s(p)}</a>' for p in PAGINAS)}</div>
+<div class="enlaces-sueldo">{"".join(f'<a href="#sueldo-{p}">{nombre_s(p)}</a>' for p in [SMI_MES, 1300, 1400, 1500, 1600, 1700, 1800, 2000] if p in S)}</div>
 </article></div></section>
 '''
 faqs = [

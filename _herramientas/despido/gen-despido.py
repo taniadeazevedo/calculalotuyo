@@ -100,7 +100,7 @@ cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}
 <p>Busca tu antigüedad y mira los días de salario que te corresponden. Para pasarlos a euros, multiplícalos por tu <strong>salario diario</strong>: tu sueldo bruto anual con pagas extra dividido entre 365. Si llevas años sueltos y meses, cuentan también los meses: cada mes suma la doceava parte de un año.</p>
 <p>Para tu caso exacto, con tus fechas, usa la calculadora de <a href="despido-improcedente">despido improcedente</a>, la de <a href="despido-objetivo">despido objetivo</a> o la del <a href="ere">ERE</a>. Y no olvides el <a href="finiquito">finiquito</a>, que se cobra aparte.</p>
 <h2>📅 Antigüedades más buscadas</h2>
-<div class="enlaces-sueldo">{"".join(f'<a href="{slug(p)}">{anos(p)}</a>' for p in PAGINAS)}</div>
+<div class="enlaces-sueldo">{"".join(f'<a href="#anos-{p}">{anos(p)}</a>' for p in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20] if p in D)}</div>
 </article></div></section>
 '''
 faqs = [
