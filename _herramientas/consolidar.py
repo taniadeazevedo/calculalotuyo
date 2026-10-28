@@ -15,10 +15,14 @@ TABLA_DESPIDO = ('tabla-indemnizacion-despido', 'la tabla de indemnización por 
 SUELDOS_QUE_QUEDAN = {18000, 20000, 22000, 24000, 25000, 28000, 30000, 35000, 40000, 45000, 50000, 60000}   # = PAGINAS de gen-sueldos.py
 
 DESTINO = {}
+# Cada dirección antigua lleva a SU fila de la tabla (ancla #…), que se ve resaltada (28/10/2026)
 for f in glob.glob('*-euros-brutos-en-netos.html'):                     # sueldos que ya no tienen página propia
-    if int(f.split('-')[0]) not in SUELDOS_QUE_QUEDAN: DESTINO[f[:-5]] = TABLA_SUELDOS
-for f in glob.glob('paro-con-*-euros.html'): DESTINO[f[:-5]] = TABLA_PARO               # todas las de «paro con X €»
-for f in glob.glob('indemnizacion-despido-*-ano*.html'): DESTINO[f[:-5]] = TABLA_DESPIDO   # todas las de «X años»
+    b = int(f.split('-')[0])
+    if b not in SUELDOS_QUE_QUEDAN: DESTINO[f[:-5]] = (TABLA_SUELDOS[0] + f'#bruto-{b}', TABLA_SUELDOS[1])
+for f in glob.glob('paro-con-*-euros.html'):                             # todas las de «paro con X €»
+    DESTINO[f[:-5]] = (TABLA_PARO[0] + '#sueldo-' + f.split('-')[2], TABLA_PARO[1])
+for f in glob.glob('indemnizacion-despido-*-ano*.html'):                 # todas las de «X años»
+    DESTINO[f[:-5]] = (TABLA_DESPIDO[0] + '#anos-' + f.split('-')[2], TABLA_DESPIDO[1])
 
 def pagina_traslado(destino, nombre):
     """Página mínima: lleva al momento a la tabla y le dice a Google que no la guarde (y cuál es la buena)."""
@@ -29,7 +33,7 @@ def pagina_traslado(destino, nombre):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Esta página está ahora en {nombre}</title>
 <meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://calculalotuyo.es/{destino}">
+<link rel="canonical" href="https://calculalotuyo.es/{destino.split('#')[0]}">
 <meta http-equiv="refresh" content="0; url=/{destino}">
 </head>
 <body>

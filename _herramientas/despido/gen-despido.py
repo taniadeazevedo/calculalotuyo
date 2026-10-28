@@ -83,7 +83,7 @@ filas = ''
 for a in sorted(D):
     ej = D[a]['sueldos'][str(EJ)]
     nom = f'<a href="{slug(a)}">{anos(a)}</a>' if a in PAGINAS else anos(a)
-    filas += f'<tr><td>{nom}{" *" if ej["pre"] else ""}</td><td>{dias_txt(ej["impDias"])}</td><td><strong>{e(ej["imp"])} €</strong></td><td>{dias_txt(min(20 * a, 365))}</td><td>{e(ej["obj"])} €</td></tr>'
+    filas += f'<tr id="anos-{a}"><td>{nom}{" *" if ej["pre"] else ""}</td><td>{dias_txt(ej["impDias"])}</td><td><strong>{e(ej["imp"])} €</strong></td><td>{dias_txt(min(20 * a, 365))}</td><td>{e(ej["obj"])} €</td></tr>'
 cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">⚖️ Despido 2026</div><h1>Tabla de indemnización por despido<br><span class="highlight">de 1 a 25 años</span></h1><p>Cuántos días de salario y cuánto dinero te corresponden según tu antigüedad, si el despido es improcedente u objetivo.</p>
             {REV}</div></section>
 

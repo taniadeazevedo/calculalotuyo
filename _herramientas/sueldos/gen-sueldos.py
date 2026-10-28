@@ -167,7 +167,7 @@ filas = ''
 for b in sorted(DAT):
     c = DAT[b]['base']
     nom = f'<a href="{slug(b)}">{e(b)} €</a>' if b in PAGINAS else (f'{e(b)} € <small>(SMI)</small>' if b == SMI else f'{e(b)} €')
-    filas += f'<tr><td>{nom}</td><td>{e(b / 14)} €</td><td><strong>{e(c["neto"] / 12)} €</strong></td><td>{e(c["neto"] / 14)} €</td><td>{pct(c["tipo"])}</td></tr>'
+    filas += f'<tr id="bruto-{b}"><td>{nom}</td><td>{e(b / 14)} €</td><td><strong>{e(c["neto"] / 12)} €</strong></td><td>{e(c["neto"] / 14)} €</td><td>{pct(c["tipo"])}</td></tr>'
 cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">🏦 Nómina 2026</div><h1>Tabla de sueldo bruto a neto<br><span class="highlight">2026</span></h1><p>Cuánto te queda al mes de cada sueldo, de {e(SMI)} € (el salario mínimo) a 100.000 € brutos al año.</p>
             {REVISADO}</div></section>
 

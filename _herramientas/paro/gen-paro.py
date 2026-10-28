@@ -83,7 +83,7 @@ for s in sorted(S):
     d = S[s]; c14, c12 = d['catorce'][0], d['doce'][0]
     nom = f'<a href="{slug(s)}">{nombre_s(s)}</a>' if s in PAGINAS else nombre_s(s)
     doce = f'<td>{e(c12["m70"])} €</td><td>{e(c12["m60"])} €</td>' if s * 12 >= SMI_ANUAL else '<td>—</td><td>—</td>'
-    filas += f'<tr><td>{nom}</td><td><strong>{e(c14["m70"])} €</strong></td><td>{e(c14["m60"])} €</td>{doce}</tr>'
+    filas += f'<tr id="sueldo-{s}"><td>{nom}</td><td><strong>{e(c14["m70"])} €</strong></td><td>{e(c14["m60"])} €</td>{doce}</tr>'
 cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📊 Paro 2026</div><h1>Tabla del paro 2026<br><span class="highlight">cuánto cobras según tu sueldo</span></h1><p>El paro que te corresponde con cada sueldo, de {e(SMI_MES)} € (el salario mínimo) a 5.000 € brutos al mes.</p>
             {REV}</div></section>
 
