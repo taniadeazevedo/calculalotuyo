@@ -30,7 +30,7 @@ except FileNotFoundError: NOVEDADES = []
 SECCION = [
     ('hacienda', r'^(obligado-a-declarar-renta|renta-.*|loteria-.*|tramos-irpf-.*)$'),
     ('novedades', r'^(novedades|' + '|'.join(re.escape(x['slug']) for x in NOVEDADES) + ')$'),   # Novedades, sección propia
-    ('guias', r'^(guia.*|que-hacer-.*)$'),
+    ('guias', r'^(guia.*|que-hacer-.*|baja-\d+-dias-.*)$'),
     ('modelos', r'^modelo.*$'),
     ('calendario', r'^(calendario-laboral-2027.*|dias-laborables.*|puentes-2027|semana-santa-2027|trabajar-en-festivo)$'),
     ('calculadoras', r'^(' + '|'.join(p for _, ls in GRUPOS for p, _ in ls) +

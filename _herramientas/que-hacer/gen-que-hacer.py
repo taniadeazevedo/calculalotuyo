@@ -122,7 +122,7 @@ PASOS_BAJA = [
     ('Avisa a la empresa, pero no le lleves el parte',
      'Desde abril de 2023 el parte <strong>le llega a la empresa por vía telemática</strong>: tú solo te quedas tu copia. Aun así, avisa cuanto antes de que estás de baja; tu convenio puede pedirlo.'),
     ('Calcula cuánto vas a cobrar',
-     f'Con enfermedad común, los <strong>3 primeros días no se cobran</strong> (salvo convenio), del 4 al 20 cobras el <strong>60 %</strong> de tu base reguladora y desde el 21, el <strong>75 %</strong>. Con accidente de trabajo, el 75 % desde el día siguiente. Para la enfermedad común necesitas <strong>180 días cotizados en los últimos 5 años</strong> ({LGSS(172)}). Hazlo con la <a href="baja-medica">calculadora de la baja médica</a>.'),
+     f'Con enfermedad común, los <strong>3 primeros días no se cobran</strong> (salvo convenio), del 4 al 20 cobras el <strong>60 %</strong> de tu base reguladora y desde el 21, el <strong>75 %</strong>. Con accidente de trabajo, el 75 % desde el día siguiente. Para la enfermedad común necesitas <strong>180 días cotizados en los últimos 5 años</strong> ({LGSS(172)}). Hazlo con la <a href="baja-medica">calculadora de la baja médica</a> o mira el ejemplo de una <a href="baja-15-dias-cuanto-cobro">baja de 15 días</a>.'),
     ('Mira tu convenio',
      'Muchos convenios obligan a la empresa a <strong>completar hasta el 100 % del sueldo</strong>, a veces desde el primer día. Es lo que más cambia lo que cobras.'),
     ('Sigue cobrando en tu nómina',
