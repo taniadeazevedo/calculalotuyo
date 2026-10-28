@@ -56,6 +56,33 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
     });
 });
 
+// ---------- Avisos propios en español para los campos (28/10/2026) ----------
+// El aviso del navegador sale en el idioma de cada persona y con su estilo: aquí se cambia por uno nuestro,
+// con el nombre del campo y un ejemplo, y el campo se marca en rojo hasta que se corrige.
+let ultimoAviso=0;                                                          // para avisar solo del primer campo mal
+document.addEventListener('invalid',function(e){
+    const campo=e.target, form=campo.form;
+    if(!form)return;
+    e.preventDefault();                                                     // sin el globo del navegador
+    campo.classList.add('campo-error');
+    const ahora=Date.now(); if(ahora-ultimoAviso<300)return; ultimoAviso=ahora;   // solo el primero de cada envío
+    const etiqueta=(form.querySelector('label[for="'+campo.id+'"]')||{}).textContent||'este dato';
+    const nombre='«'+etiqueta.trim().replace(/[:?¿]/g,'')+'»';
+    const v=campo.validity; let msg;
+    if(v.valueMissing)msg='Falta '+nombre+(campo.placeholder?' (por ejemplo, '+campo.placeholder+')':'')+'.';
+    else if(v.rangeUnderflow)msg=nombre+' tiene que ser como mínimo '+campo.min+'.';
+    else if(v.rangeOverflow)msg=nombre+' tiene que ser como máximo '+campo.max+'.';
+    else msg='Revisa '+nombre+'.';
+    if(form.id==='calc')mostrarError(msg);                                  // calculadoras: el aviso encima del botón
+    else{campo.setCustomValidity(msg);campo.reportValidity();campo.setCustomValidity('')}
+    campo.focus({preventScroll:true});
+},true);
+document.addEventListener('input',function(e){                              // al escribir, se quita la marca roja y el aviso
+    if(!e.target.classList||!e.target.classList.contains('campo-error'))return;
+    e.target.classList.remove('campo-error');
+    if(e.target.form&&e.target.form.id==='calc'&&typeof mostrarError==='function')mostrarError('');
+});
+
 // ---------- Errores de formulario (sustituye a alert) ----------
 // Muestra el mensaje encima del botón de calcular; con '' lo oculta.
 function mostrarError(mensaje){
@@ -224,7 +251,9 @@ function pintarResultados(lista,resultados,consulta,activo){
     if(!consulta.trim()){lista.hidden=true;lista.innerHTML='';return}         // caja vacía: no se enseña nada
     lista.hidden=false;
     if(!resultados.length){                                                    // nada encontrado: sugerencias
-        lista.innerHTML='<p class="busca-nada">No hemos encontrado nada. Prueba con «paro», «despido», «vacaciones» o «factura».</p>';
+        lista.innerHTML='<p class="busca-nada">No hemos encontrado nada con esas palabras. Lo más usado:</p>'+   // y atajos a lo más usado
+            [['sueldo-neto','Sueldo neto'],['irpf','Retención de IRPF'],['paro','Paro'],['despido-improcedente','Indemnización por despido'],['finiquito','Finiquito'],['calendario-laboral-2027','Calendario laboral 2027']]
+            .map(([u,t])=>'<a href="/'+u+'" class="busca-res" role="option"><span>'+t+'</span></a>').join('');
         return;
     }
     const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));   // evita que un texto rompa el HTML

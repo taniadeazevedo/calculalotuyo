@@ -133,7 +133,7 @@ for f in sorted(glob.glob('*.html')):
     if not re.search(r'Cómo calculamos</a>\s*<a href="/?novedades">Novedades</a>', s):   # «Novedades» en el pie, justo tras «Cómo calculamos»
         s = re.sub(r'(Sobre el Proyecto</a>\s*<a href="(/?)como-calculamos">Cómo calculamos</a>)', lambda m: m.group(1) + f'\n                <a href="{m.group(2)}novedades">Novedades</a>', s, count=1)
     if pag != 'como-calculamos':
-        s = re.sub(r'(<p class="hero-meta">.*?<a href="sobre-el-proyecto">CalculaLoTuyo</a>)(</p>)', r'\1 · <a href="como-calculamos">Cómo calculamos</a>\2', s, count=1) if 'href="como-calculamos">Cómo calculamos</a></p>' not in s else s
+        s = re.sub(r'(<p class="hero-meta">.*?<a href="sobre-el-proyecto">(?:CalculaLoTuyo|Tania de Azevedo)</a>)(</p>)', r'\1 · <a href="como-calculamos">Cómo calculamos</a>\2', s, count=1) if 'href="como-calculamos">Cómo calculamos</a></p>' not in s else s
     # Pie: se conserva la marca (logo y texto) y se rehacen las columnas
     s = re.sub(r'(<div class="footer-grid-4">\s*<div class="footer-brand">.*?</div>\s*</div>)(.*?)(\n\s*</div>\n\s*<div class="footer-bottom">)',
                lambda m: m.group(1) + pie('/' if pag == '404' else '') + m.group(3), s, count=1, flags=re.S)

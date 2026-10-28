@@ -2,6 +2,11 @@
 #  1) cada página usa la imagen para compartir de su sección (og-calendario, og-sueldo, og-paro, og-despido)
 #  2) las calculadoras llevan el marcado WebApplication (Google sabe que son herramientas gratis)
 import glob, html as H, json, os, re
+import json as _json
+# La autora, como la quiere Google para los artículos y guías (E-E-A-T): persona real, con su página y sus perfiles
+AUTORA = _json.dumps({"@type": "Person", "name": "Tania de Azevedo", "url": "https://calculalotuyo.es/sobre-el-proyecto",
+                      "jobTitle": "Desarrolladora web", "address": {"@type": "PostalAddress", "addressLocality": "Bilbao", "addressCountry": "ES"},
+                      "sameAs": ["https://taniadeazevedo.es/", "https://www.instagram.com/calculalotuyo/"]}, ensure_ascii=False)
 os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
 # ---- 1) Imagen de cada sección: la primera regla que encaja gana
@@ -29,6 +34,12 @@ for f in glob.glob('*.html'):
         s = re.sub(r'(\n(\s*)<link rel="icon" type="image/png" sizes="32x32" href="(/?)favicon-32\.png[^"]*">)',
                    lambda m: m.group(1) + f'\n{m.group(2)}<link rel="icon" type="image/png" sizes="48x48" href="{m.group(3)}favicon-48.png">\n{m.group(2)}<link rel="icon" type="image/png" sizes="96x96" href="{m.group(3)}favicon-96.png">\n{m.group(2)}<link rel="icon" href="{m.group(3)}favicon.ico" sizes="any">', s, count=1)
     s = re.sub(r'(favicon\.svg|favicon-32\.png|favicon-48\.png|favicon-96\.png|favicon\.ico|apple-touch-icon\.png)(?:\?v=\d+)?"', rf'\1?v={VERSION_OG}"', s)   # el logo de la pestaña, del móvil y de la cabecera: que no se quede el antiguo guardado
+    # Autora con nombre (28/10/2026, aprobado por Tania): firma visible y, para Google, una persona en vez de una organización
+    if 'noindex' not in s:
+        s = s.replace('Por <a href="sobre-el-proyecto">CalculaLoTuyo</a>', 'Por <a href="sobre-el-proyecto">Tania de Azevedo</a>')            # guías
+        s = re.sub(r'(<p class="hero-meta">.*?<a href="sobre-el-proyecto">)CalculaLoTuyo(</a>)', r'\1Tania de Azevedo\2', s, count=1, flags=re.S)   # «Revisado el… · ✍️»
+        s = s.replace('<strong><a href="sobre-el-proyecto">CalculaLoTuyo</a></strong><br>Publicado', '<strong><a href="sobre-el-proyecto">Tania de Azevedo</a></strong><br>Publicado')   # artículos
+        s = re.sub(r'"(author|founder)": \{\s*"@type": "Organization",\s*"name": "CalculaLoTuyo",\s*"url": "[^"]*"\s*\}', lambda m: f'"{m.group(1)}": ' + AUTORA, s)
     # AdSense: mientras Google revisa la web (24/10/2026), el código va en la cabecera de TODAS las páginas, como pide
     # Google para «conectar el sitio». Cuando aprueben la cuenta se puede volver a la carga al primer gesto
     # (más rápida) poniendo EN_CABECERA = False: entonces se quita y lo carga site.js.

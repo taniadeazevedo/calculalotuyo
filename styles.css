@@ -4420,3 +4420,6 @@ a.btn .ico { margin-right: 0; }
 .tabla-festivos tr[id] { scroll-margin-top: 170px; }
 .tabla-festivos tr:target td { background: color-mix(in srgb, var(--accent) 14%, var(--card)); font-weight: 700; }
 .tabla-festivos tr:target td:first-child { box-shadow: inset 4px 0 0 var(--accent); }
+
+/* Campo con error (aviso propio en español, 28/10/2026) */
+.campo-error { border-color: #DC2626 !important; box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15) !important; }
