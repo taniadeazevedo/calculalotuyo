@@ -29,9 +29,9 @@
 - [ ] 👩 En AdSense, anuncios automáticos: activar solo el anuncio fijo de abajo en el móvil («de anclaje») y desactivar los de pantalla completa («viñetas»).
 
 ## 📅 Calendario
-- [ ] 🤖 Añadir las 32 ciudades pendientes según publiquen sus boletines (noviembre–enero): Cataluña (8), Madrid (4), Comunitat Valenciana (4), País Vasco (3), Aragón (3), Castilla-La Mancha (5), Cantabria, Burgos, Valladolid, Pamplona y Ceuta.
+- [ ] 🤖 Añadir las 32 ciudades pendientes según publiquen sus boletines (noviembre–enero): Cataluña (8), Madrid (4), Comunitat Valenciana (4), País Vasco (3), Aragón (3), Castilla-La Mancha (5), Cantabria, Burgos, Valladolid, Pamplona y Ceuta. Datos en `_herramientas/calendario/fiestas-locales-2027.json`; luego `sh _herramientas/regenerar.sh`.
 - [x] 🤖 (02/11) Añadidas Andalucía (10, BOJA n.º 210 de 29/10/2026) y Extremadura (2, DOE n.º 207 de 27/10/2026). Los boletines solo dan fechas, así que salen como «Fiesta local». Ojo: `regenerar.sh` no mete las ciudades nuevas en `sitemap.xml`; hay que añadirlas a mano detrás de Logroño.
-- [x] 🤖 (02/11) Publicadas las 12 ciudades nuevas (200 comprobado y aviso a Bing con IndexNow). Datos en `_herramientas/calendario/fiestas-locales-2027.json`; luego `sh _herramientas/regenerar.sh`.
+- [x] 🤖 (02/11) Publicadas las 12 ciudades nuevas (200 comprobado y aviso a Bing con IndexNow).
 - [ ] 🤖 Octubre de 2027: calendario 2028 cuando el BOE publique las fiestas.
 
 ## 🧾 Renta (la de 2026, que se presenta en abril–junio de 2027)
