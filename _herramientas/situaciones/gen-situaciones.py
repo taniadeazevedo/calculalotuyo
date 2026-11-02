@@ -312,3 +312,138 @@ for f in ['paro.html', 'guia-paro.html']:
     ancla = next((x for x in ['<section class="faq">', '<section id="calculadoras" class="guide-section"', '<section class="section section-alt">'] if x in t), None)
     if '<!-- SITUACION-TEMPORAL -->' not in t and ancla:
         t = t.replace(ancla, CAJA_T + ancla, 1); open(ruta, 'w', encoding='utf-8').write(t)
+
+# ===================== «¿Cuándo se cobra el paro?» (02/11/2026) =====================
+# Fuente: preguntas frecuentes del SEPE (pago y cuantía): el pago es el día 10 de cada mes (si es festivo, el primer
+# día hábil siguiente), por mensualidades de 30 días, en el mes siguiente al devengo y sin pagas extra.
+import datetime as _dt
+SEPE_FAQ = 'https://www.sepe.es/HomeSepe/prestaciones-desempleo/FAQS/pago-cuantia-prestaciones/abono-nomina-prestacion.html'
+_MES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+_DIA = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo']
+NACIONALES = {'2026-12-08', '2026-12-25', '2027-01-01', '2027-01-06', '2027-03-26', '2027-05-01', '2027-10-12', '2027-11-01', '2027-12-06', '2027-12-08', '2027-12-25'}
+def dia_pago(anio, mes):
+    """Día 10; si cae en fin de semana o festivo nacional, el siguiente día hábil."""
+    d = _dt.date(anio, mes, 10)
+    while d.weekday() >= 5 or d.isoformat() in NACIONALES: d += _dt.timedelta(days=1)
+    return d
+hoy = _dt.date.today()                                                 # la tabla empieza en el próximo pago (se rehace al regenerar)
+a, m = hoy.year, hoy.month
+if hoy > dia_pago(a, m): m, a = (1, a + 1) if m == 12 else (m + 1, a)
+prox = dia_pago(a, m)
+pagos = []
+for _ in range(12):                                                    # los 12 próximos pagos
+    d = dia_pago(a, m); prev = (m - 2) % 12
+    pagos.append(f'<tr><td>{_MES[m - 1].capitalize()} {a}</td><td><strong>{_DIA[d.weekday()]} {d.day}</strong></td><td>El paro de {_MES[prev]}</td></tr>')
+    m += 1
+    if m == 13: m, a = 1, a + 1
+filas_pago = ''.join(pagos)
+
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📊 Paro</div><h1>¿Cuándo se cobra el paro?<br><span class="highlight">el día de pago, mes a mes</span></h1><p>Qué día del mes ingresa el SEPE el paro, por qué cobras el mes anterior, cuándo llega el primer pago y las fechas de los próximos meses.</p>
+            {REV.replace("28 de octubre", "2 de noviembre")}</div></section>
+
+    <section class="section"><div class="container"><article class="seo-section">
+<div class="respuesta-corta"><strong>⚡ En 30 segundos</strong><ul>
+<li>El SEPE paga el paro el <strong>día 10 de cada mes</strong>; si es festivo, el primer día hábil siguiente.</li>
+<li>Se cobra <strong>a mes vencido</strong>: el día 10 de cada mes llega el paro del mes anterior.</li>
+<li>El próximo pago es el <strong>{_DIA[prox.weekday()]} {prox.day} de {_MES[prox.month - 1]}</strong>. Muchos bancos lo adelantan unos días.</li>
+<li>Se paga siempre por <strong>meses de 30 días</strong> y el paro <strong>no tiene pagas extra</strong>.</li>
+</ul></div>
+
+<h2>📆 Fechas de pago del paro</h2>
+<table class="info-table"><tr><th>Mes</th><th>Día de pago</th><th>Qué cobras</th></tr>{filas_pago}</table>
+<p class="nota-corta">Fecha de referencia del SEPE (día 10 o el siguiente día hábil). Tu banco puede ingresarlo antes: depende de cada entidad.</p>
+
+<h2>⏰ El primer pago</h2>
+<p>El primer ingreso llega el <strong>día 10 del mes siguiente</strong> a que el SEPE apruebe tu paro, con lo que corresponda desde la fecha de inicio. Si la aprobación tarda, ese primer pago incluye también los días anteriores. Por eso conviene pedirlo cuanto antes: el plazo es de <strong>15 días hábiles</strong> (lo explicamos en <a href="que-hacer-si-me-quedo-en-paro">qué hacer si te quedas en paro</a>).</p>
+
+<h2>❓ Dudas frecuentes sobre el cobro</h2>
+<ul>
+<li><strong>¿Cobro más los meses de 31 días?</strong> No: el SEPE paga siempre mensualidades de <strong>30 días</strong>.</li>
+<li><strong>¿Hay pagas extra?</strong> No: ni el paro ni el subsidio tienen pagas extra.</li>
+<li><strong>¿Dónde veo lo que me van a pagar?</strong> En tu Área personal del SEPE, con certificado digital, Cl@ve o un PIN que te mandan al móvil.</li>
+</ul>
+<p>¿Cuánto vas a cobrar? Calcúlalo en la <a href="paro">calculadora del paro</a> o mira la <a href="tabla-paro-2026">tabla del paro 2026</a>.</p>
+<p class="nota-corta">Fuente: <a href="{SEPE_FAQ}" target="_blank" rel="noopener">preguntas frecuentes del SEPE sobre el pago y la cuantía de las prestaciones</a>.</p>
+</article></div></section>
+'''
+faqs = [
+    ('¿Qué día se cobra el paro?', 'El <strong>día 10 de cada mes</strong>. Si ese día es festivo, el primer día hábil siguiente. Muchos bancos lo adelantan unos días.'),
+    ('¿El paro se cobra a mes vencido?', '<strong>Sí.</strong> El día 10 cobras el paro del mes anterior: en noviembre, el de octubre.'),
+    ('¿Se cobra más paro los meses de 31 días?', '<strong>No.</strong> El SEPE paga siempre mensualidades de 30 días, tenga el mes 28, 30 o 31.'),
+]
+pagina('cuando-se-cobra-el-paro', '¿Cuándo se cobra el paro? Día de pago y fechas',
+    f'El SEPE paga el paro el día 10 de cada mes (o el siguiente día hábil), a mes vencido y por meses de 30 días. Próximo pago: {prox.day} de {_MES[prox.month - 1]}.',
+    'cuándo se cobra el paro, qué día pagan el paro, día de pago del paro, cuando ingresan el paro',
+    [('Guías', 'guias'), ('¿Cuándo se cobra el paro?', None)], cuerpo, faqs,
+    'Preguntas frecuentes del SEPE sobre el pago y la cuantía de las prestaciones por desempleo.',
+    menu_activo='Guías')
+sitemap('cuando-se-cobra-el-paro')
+print('creada: cuando-se-cobra-el-paro · próximo pago', prox.isoformat())
+
+# ===================== «Me despiden estando de baja: qué hacer» (02/11/2026) =====================
+# Ley 15/2022 (art. 2.1: «enfermedad o condición de salud»; art. 26: nulidad), LGSS art. 283 (baja y paro),
+# LRJS art. 103 (20 días hábiles), ET arts. 55.1 (carta), 56.1 (33 días) y 49.2 (finiquito). Todo comprobado en el BOE.
+PASOS_BD = [
+    ('Lee la carta y no la firmes sin más', 'El despido tiene que ser por escrito, con la causa y la fecha. Fírmala como <strong>«recibido, no conforme»</strong> y guárdala: los plazos cuentan desde la fecha de efectos.'),
+    ('Ten en cuenta que no pueden despedirte por estar enfermo', f'Estar de baja no impide el despido, pero la <strong>enfermedad o condición de salud</strong> es una causa de discriminación prohibida ({boe("BOE-A-2022-11589", "artículo 2.1 de la Ley 15/2022")}). Si hay indicios de que te despiden <em>por</em> la baja (llega pocos días después y sin una causa creíble), el despido puede declararse <strong>nulo</strong> ({boe("BOE-A-2022-11589", "artículo 26")}): readmisión y pago de los salarios no cobrados.'),
+    ('Reclama en 20 días hábiles, aunque sigas de baja', f'El plazo para impugnar el despido es de <strong>20 días hábiles</strong> y <strong>no se para por estar de baja</strong> ({boe("BOE-A-2011-15936", "artículo 103 de la Ley de la jurisdicción social")}). Empieza por la papeleta de conciliación.'),
+    ('Revisa el finiquito y la indemnización', 'El finiquito (días del mes, vacaciones y pagas extra) se cobra siempre. Si el despido es improcedente, la indemnización es de <strong>33 días por año</strong>; si es objetivo, de 20. Calcúlalo en la <a href="despido-improcedente">calculadora de despido</a>.'),
+    ('Sigues cobrando la baja, pero como si fuera paro', f'Si la baja es por <strong>enfermedad común</strong>, sigues de baja hasta el alta, pero cobras <strong>lo mismo que te correspondería de paro</strong>, y ese tiempo se descuenta luego del paro ({boe("BOE-A-2015-11724", "artículo 283 de la Ley General de la Seguridad Social")}). Si es por accidente de trabajo, mantienes la cuantía de la baja.'),
+    ('Cuando te den el alta, pide el paro', 'Con el alta pasas a la situación de desempleo: pide el paro en los <strong>15 días hábiles</strong> siguientes. Lo explicamos en <a href="que-hacer-si-me-quedo-en-paro">qué hacer si te quedas en paro</a>.'),
+]
+pasos_bd = '\n'.join(f'    <div class="calc-step"><span class="step-num">{i}</span><div><strong>{t}</strong><p>{x}</p></div></div>' for i, (t, x) in enumerate(PASOS_BD, 1))
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">🧭 Paso a paso</div><h1>Me despiden estando de baja<br><span class="highlight">qué hacer y qué cobras</span></h1><p>Si te despiden mientras estás de baja médica: si puede ser nulo, el plazo para reclamar, qué cobras hasta el alta y cuándo pedir el paro.</p>
+            {REV.replace("28 de octubre", "2 de noviembre")}</div></section>
+
+    <section class="section"><div class="container"><article class="seo-section">
+<div class="respuesta-corta"><strong>⚡ En 30 segundos</strong><ul>
+<li>Pueden despedirte estando de baja, pero <strong>no por estar enfermo</strong>: si hay indicios de eso, el despido puede ser <strong>nulo</strong>.</li>
+<li>Tienes <strong>20 días hábiles</strong> para reclamar, y el plazo <strong>no se para</strong> por estar de baja.</li>
+<li>Sigues de baja hasta el alta, pero (en enfermedad común) cobras <strong>lo que te tocaría de paro</strong>, y ese tiempo se descuenta del paro.</li>
+<li>Con el alta, pide el paro en <strong>15 días hábiles</strong>.</li>
+</ul></div>
+
+<h2>✅ Los pasos, en orden</h2>
+<div class="calc-steps">
+{pasos_bd}
+</div>
+
+<h2>⚖️ Nulo, improcedente o procedente</h2>
+<table class="info-table"><tr><th>Si el juez lo declara…</th><th>Qué pasa</th></tr>
+<tr><td>Nulo</td><td>Readmisión en tu puesto y pago de los salarios que no cobraste</td></tr>
+<tr><td>Improcedente</td><td>La empresa elige: readmitirte o pagarte 33 días por año (máximo 24 mensualidades)</td></tr>
+<tr><td>Procedente</td><td>Se mantiene el despido; si es objetivo, cobras 20 días por año</td></tr></table>
+<p class="nota-corta">Estar de baja no basta por sí solo para la nulidad: hay que aportar indicios de que el despido se debe a la enfermedad, y entonces la empresa tiene que demostrar una causa real y ajena a ella. Los tribunales aún no aplican un criterio único.</p>
+
+<h2>⚠️ Ten en cuenta</h2>
+<ul>
+<li>Todo el detalle de la baja está en la <a href="guia-baja-medica">guía de la baja médica</a>, y el del despido, en la <a href="guia-despido">guía del despido</a>.</li>
+<li>Esta página es orientativa. Antes de reclamar, consulta con un abogado laboralista, un graduado social o tu sindicato.</li>
+</ul>
+</article></div></section>
+'''
+faqs = [
+    ('¿Me pueden despedir estando de baja?', 'Sí, la baja no protege del despido. Pero no pueden despedirte <strong>por estar enfermo</strong>: la enfermedad es una causa de discriminación prohibida (Ley 15/2022) y, si hay indicios de que el despido se debe a ella, puede declararse nulo.'),
+    ('¿Qué cobro si me despiden estando de baja?', 'Sigues de baja hasta el alta, pero si es por enfermedad común cobras lo mismo que te correspondería de paro, y ese tiempo se descuenta después del paro (artículo 283 de la Ley General de la Seguridad Social). Además, el finiquito y, si corresponde, la indemnización.'),
+    ('¿El plazo para reclamar el despido se para si estoy de baja?', '<strong>No.</strong> Son 20 días hábiles desde el despido, estés o no de baja. No esperes al alta para presentar la papeleta de conciliación.'),
+]
+pagina('despido-estando-de-baja', 'Me despiden estando de baja: qué hacer y qué cobro',
+    'Si te despiden estando de baja: puede ser nulo si es por la enfermedad, tienes 20 días hábiles para reclamar y cobras la baja como si fuera paro. Paso a paso.',
+    'me despiden estando de baja, despido estando de baja, despido durante baja médica, qué cobro si me despiden de baja',
+    [('Guías', 'guias'), ('Me despiden estando de baja', None)], cuerpo, faqs,
+    'Ley 15/2022 (arts. 2.1 y 26), Ley General de la Seguridad Social (art. 283), Ley reguladora de la jurisdicción social (art. 103) y Estatuto de los Trabajadores (arts. 49, 55 y 56), versiones consolidadas del BOE.',
+    menu_activo='Guías')
+sitemap('despido-estando-de-baja')
+CAJA_BD = '<!-- SITUACION-DESPIDO-BAJA --><p class="nota-corta">📋 <strong>¿Te han despedido estando de baja?</strong> Los pasos en orden en <a href="despido-estando-de-baja">me despiden estando de baja</a>.</p><!-- /SITUACION-DESPIDO-BAJA -->\n'
+for f in ['baja-medica.html', 'despido-improcedente.html']:
+    ruta = os.path.join(RAIZ, f); t = open(ruta, encoding='utf-8').read()
+    ancla = next((x for x in ['<section class="faq">', '<section class="section section-alt">'] if x in t), None)
+    if '<!-- SITUACION-DESPIDO-BAJA -->' not in t and ancla:
+        t = t.replace(ancla, CAJA_BD + ancla, 1); open(ruta, 'w', encoding='utf-8').write(t)
+print('creada: despido-estando-de-baja')
+CAJA_CP = '<!-- SITUACION-COBRO-PARO --><p class="nota-corta">📆 <strong>¿Qué día se cobra?</strong> El día 10 de cada mes: mira las fechas en <a href="cuando-se-cobra-el-paro">cuándo se cobra el paro</a>.</p><!-- /SITUACION-COBRO-PARO -->\n'
+for f in ['paro.html', 'guia-paro.html', 'tabla-paro-2026.html']:
+    ruta = os.path.join(RAIZ, f); t = open(ruta, encoding='utf-8').read()
+    ancla = next((x for x in ['<section class="faq">', '<section id="calculadoras" class="guide-section"', '<section class="section section-alt">'] if x in t), None)
+    if '<!-- SITUACION-COBRO-PARO -->' not in t and ancla:
+        t = t.replace(ancla, CAJA_CP + ancla, 1); open(ruta, 'w', encoding='utf-8').write(t)

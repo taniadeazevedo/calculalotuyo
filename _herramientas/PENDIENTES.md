@@ -114,3 +114,6 @@
 - [ ] 👩 Leer el motivo exacto: correo de AdSense y AdSense → Centro de políticas. Pásamelo.
 - [ ] 👩 NO volver a enviar enseguida: esperar 2–3 semanas a que Google vuelva a rastrear (pedir indexación de la portada y reenviar el sitemap en Search Console ya).
 - [x] (24/10) Las 12 páginas de sueldo tienen «Si te suben el sueldo» (tabla y pregunta propias de cada sueldo). Los calendarios por comunidad ya tenían contenido propio (sus festivos, días laborables y puentes).
+
+## Enero 2027: pasar de 2026 a 2027 sin perder posiciones (anotado el 02/11/2026)
+- [ ] 🤖 Mantener las direcciones que llevan «2026» (tabla-paro-2026, sueldo-bruto-a-neto-2026, tramos-irpf-2026, smi-2026, iprem-2026…): actualizar contenido y títulos en la MISMA URL, o crear la de 2027 y llevar la de 2026 a ella. No dejar dos páginas casi iguales.
