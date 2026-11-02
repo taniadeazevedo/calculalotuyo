@@ -135,6 +135,37 @@ gtag('consent','default',{                           // estado inicial: sin perm
     analytics_storage:'denied',                      // cookies de analítica
     wait_for_update:500                              // espera medio segundo a que responda el aviso
 });
+// ---------- Aviso de cookies propio, solo para Analytics (02/11/2026) ----------
+// El mensaje de Google no aparece hasta que AdSense aprueba la web, y sin él nadie puede aceptar.
+// Mientras tanto, este aviso pregunta SOLO por Analytics (los anuncios siguen denegados).
+// CUANDO AdSense APRUEBE LA WEB: poner AVISO_PROPIO=false para que quede solo el de Google.
+const AVISO_PROPIO=true;
+const CLAVE_AVISO='clt-analytics';                   // donde se guarda la decisión en este navegador: 'si' o 'no'
+function leerDecision(){try{return localStorage.getItem(CLAVE_AVISO)}catch(e){return null}}   // en modo privado puede fallar
+function guardarDecision(v){try{localStorage.setItem(CLAVE_AVISO,v)}catch(e){}}
+if(AVISO_PROPIO&&leerDecision()==='si')gtag('consent','update',{analytics_storage:'granted'});   // ya aceptó en otra visita
+function mostrarAviso(){
+    if(document.querySelector('.aviso-cookies'))return;   // ya está en pantalla
+    const aviso=document.createElement('div');
+    aviso.className='aviso-cookies';
+    aviso.setAttribute('role','dialog');             // para lectores de pantalla: es un cuadro de diálogo
+    aviso.setAttribute('aria-label','Aviso de cookies');
+    aviso.innerHTML='<p>Usamos cookies de <strong>Google Analytics</strong> para saber qué páginas se visitan, solo si aceptas. <a href="cookies">Más información</a></p>'
+        +'<div class="aviso-cookies-botones"><button type="button" data-decision="no">Rechazar</button><button type="button" data-decision="si">Aceptar</button></div>';
+    aviso.addEventListener('click',e=>{
+        const b=e.target.closest('[data-decision]'); if(!b)return;   // solo los dos botones
+        const v=b.dataset.decision;
+        guardarDecision(v);                          // se recuerda para las próximas visitas
+        gtag('consent','update',{analytics_storage:v==='si'?'granted':'denied'});   // se lo dice a Analytics al momento
+        if(v==='si')gtag('event','page_view');       // y cuenta ya esta página (la primera visita se envió sin permiso)
+        aviso.remove();                              // y se cierra
+    });
+    document.body.appendChild(aviso);
+}
+if(AVISO_PROPIO&&!leerDecision()){                   // primera visita (o borró las cookies): se pregunta
+    if(document.body)mostrarAviso();
+    else document.addEventListener('DOMContentLoaded',mostrarAviso,{once:true});
+}
 gtag('js',new Date());                               // marca el momento de carga
 gtag('config',ID_ANALYTICS);                         // activa Analytics con nuestro identificador
 // El script de Analytics se descarga cuando la página ya se ve (evento «load»):
@@ -172,6 +203,7 @@ window.googlefc=window.googlefc||{};                 // objeto que crea el mensa
 googlefc.callbackQueue=googlefc.callbackQueue||[];   // cola de tareas que se ejecutan cuando esté listo
 document.querySelectorAll('[data-cookies]').forEach(el=>el.addEventListener('click',e=>{
     e.preventDefault();                              // que el enlace "#" no salte arriba
+    if(AVISO_PROPIO){mostrarAviso();return}          // mientras usamos el aviso propio, se vuelve a abrir ese
     if(!adsenseCargado){cargarAdsense();googlefc.callbackQueue.push(()=>googlefc.showRevocationMessage());return}   // aún no cargado: se carga y se abre al estar listo
     if(typeof googlefc.showRevocationMessage==='function'){   // el mensaje de Google está cargado: lo abre otra vez
         googlefc.showRevocationMessage();

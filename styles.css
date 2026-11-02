@@ -4449,3 +4449,17 @@ a.btn .ico { margin-right: 0; }
 .mobile-nav-cal { margin-top: 18px; }
 .mobile-nav-cal .mobile-nav-link .ico, .mobile-nav-cal .mobile-nav-title .ico { color: #0F766E; }   /* en el bloque del calendario, todos los iconos en su verde */
 .mobile-nav-sueltos { border-top: 0; margin-top: 10px; }   /* una sola línea bajo «Hacienda» (antes salían dos) */
+
+/* Aviso de cookies propio (solo Analytics, mientras AdSense no apruebe la web; 02/11/2026) */
+.aviso-cookies { position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1000; max-width: 560px; margin: 0 auto; display: flex; align-items: center; gap: 16px; padding: 14px 16px; background: var(--card); color: var(--text2); border: 1px solid var(--border-h); border-radius: 14px; box-shadow: 0 10px 30px rgba(17, 24, 39, .15); font-size: .9rem; line-height: 1.45; }
+.aviso-cookies p { margin: 0; flex: 1; }
+.aviso-cookies a { color: var(--accent); }
+.aviso-cookies-botones { display: flex; gap: 8px; flex-shrink: 0; }
+/* Los dos botones iguales: rechazar tiene que ser igual de fácil que aceptar */
+.aviso-cookies button { font: inherit; font-weight: 600; padding: 8px 16px; border-radius: 10px; border: 1px solid var(--border-h); background: var(--card); color: var(--text); cursor: pointer; }
+.aviso-cookies button:hover { background: var(--card-h); border-color: var(--accent); }
+.aviso-cookies button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 560px) {
+    .aviso-cookies { flex-direction: column; align-items: stretch; gap: 12px; }
+    .aviso-cookies-botones button { flex: 1; }
+}
