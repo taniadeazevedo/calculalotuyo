@@ -1,95 +1,185 @@
 {
- "actualizado": "2026-10-19",
+ "actualizado": "2026-11-02",
  "ciudades": [
   {
    "ciudad": "Almería",
    "provincia": "Almería",
    "ccaa": "andalucia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-06-24",
+     "Fiesta local"
+    ],
+    [
+     "2027-08-28",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "BOJA n.º 210 de 29/10/2026 (Resolución de 23 de octubre de 2026, de la Dirección General de Trabajo, Seguridad y Salud Laboral)",
+   "url": "https://www.juntadeandalucia.es/boja/2026/210/25.html"
   },
   {
    "ciudad": "Cádiz",
    "provincia": "Cádiz",
    "ccaa": "andalucia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-02-08",
+     "Fiesta local"
+    ],
+    [
+     "2027-10-07",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "BOJA n.º 210 de 29/10/2026 (Resolución de 23 de octubre de 2026, de la Dirección General de Trabajo, Seguridad y Salud Laboral)",
+   "url": "https://www.juntadeandalucia.es/boja/2026/210/25.html"
   },
   {
    "ciudad": "Córdoba",
    "provincia": "Córdoba",
    "ccaa": "andalucia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-09-08",
+     "Fiesta local"
+    ],
+    [
+     "2027-10-25",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "BOJA n.º 210 de 29/10/2026 (Resolución de 23 de octubre de 2026, de la Dirección General de Trabajo, Seguridad y Salud Laboral)",
+   "url": "https://www.juntadeandalucia.es/boja/2026/210/25.html"
   },
   {
    "ciudad": "Granada",
    "provincia": "Granada",
    "ccaa": "andalucia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-05-03",
+     "Fiesta local"
+    ],
+    [
+     "2027-05-27",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "BOJA n.º 210 de 29/10/2026 (Resolución de 23 de octubre de 2026, de la Dirección General de Trabajo, Seguridad y Salud Laboral)",
+   "url": "https://www.juntadeandalucia.es/boja/2026/210/25.html"
   },
   {
    "ciudad": "Huelva",
    "provincia": "Huelva",
    "ccaa": "andalucia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-08-03",
+     "Fiesta local"
+    ],
+    [
+     "2027-09-08",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "BOJA n.º 210 de 29/10/2026 (Resolución de 23 de octubre de 2026, de la Dirección General de Trabajo, Seguridad y Salud Laboral)",
+   "url": "https://www.juntadeandalucia.es/boja/2026/210/25.html"
   },
   {
    "ciudad": "Jaén",
    "provincia": "Jaén",
    "ccaa": "andalucia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-06-11",
+     "Fiesta local"
+    ],
+    [
+     "2027-10-18",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "BOJA n.º 210 de 29/10/2026 (Resolución de 23 de octubre de 2026, de la Dirección General de Trabajo, Seguridad y Salud Laboral)",
+   "url": "https://www.juntadeandalucia.es/boja/2026/210/25.html"
   },
   {
    "ciudad": "Málaga",
    "provincia": "Málaga",
    "ccaa": "andalucia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-08-19",
+     "Fiesta local"
+    ],
+    [
+     "2027-09-08",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "BOJA n.º 210 de 29/10/2026 (Resolución de 23 de octubre de 2026, de la Dirección General de Trabajo, Seguridad y Salud Laboral)",
+   "url": "https://www.juntadeandalucia.es/boja/2026/210/25.html"
   },
   {
    "ciudad": "Sevilla",
    "provincia": "Sevilla",
    "ccaa": "andalucia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-04-14",
+     "Fiesta local"
+    ],
+    [
+     "2027-05-27",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "BOJA n.º 210 de 29/10/2026 (Resolución de 23 de octubre de 2026, de la Dirección General de Trabajo, Seguridad y Salud Laboral)",
+   "url": "https://www.juntadeandalucia.es/boja/2026/210/25.html"
   },
   {
    "ciudad": "Jerez de la Frontera",
    "provincia": "Cádiz",
    "ccaa": "andalucia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-04-26",
+     "Fiesta local"
+    ],
+    [
+     "2027-09-24",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "BOJA n.º 210 de 29/10/2026 (Resolución de 23 de octubre de 2026, de la Dirección General de Trabajo, Seguridad y Salud Laboral)",
+   "url": "https://www.juntadeandalucia.es/boja/2026/210/25.html"
   },
   {
    "ciudad": "Marbella",
    "provincia": "Málaga",
    "ccaa": "andalucia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-06-11",
+     "Fiesta local"
+    ],
+    [
+     "2027-10-19",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "BOJA n.º 210 de 29/10/2026 (Resolución de 23 de octubre de 2026, de la Dirección General de Trabajo, Seguridad y Salud Laboral)",
+   "url": "https://www.juntadeandalucia.es/boja/2026/210/25.html"
   },
   {
    "ciudad": "Huesca",
@@ -482,19 +572,37 @@
    "ciudad": "Badajoz",
    "provincia": "Badajoz",
    "ccaa": "extremadura",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-02-09",
+     "Fiesta local"
+    ],
+    [
+     "2027-06-24",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "DOE n.º 207 de 27/10/2026 (Resolución de 15 de octubre de 2026, de la Dirección General de Trabajo)",
+   "url": "https://doe.juntaex.es/pdfs/doe/2026/2070o/26062650.pdf"
   },
   {
    "ciudad": "Cáceres",
    "provincia": "Cáceres",
    "ccaa": "extremadura",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-04-23",
+     "Fiesta local"
+    ],
+    [
+     "2027-05-28",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "DOE n.º 207 de 27/10/2026 (Resolución de 15 de octubre de 2026, de la Dirección General de Trabajo)",
+   "url": "https://doe.juntaex.es/pdfs/doe/2026/2070o/26062650.pdf"
   },
   {
    "ciudad": "A Coruña",
