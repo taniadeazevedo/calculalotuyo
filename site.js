@@ -122,7 +122,8 @@ document.querySelectorAll('[data-correo]').forEach(el=>{
 // ---------- Cookies: el aviso lo muestra Google (CMP certificada de AdSense) ----------
 // El script de AdSense va fijo en el <head> de cada página y trae el mensaje de
 // consentimiento que configuramos en AdSense > Privacidad y mensajes.
-const ID_ANALYTICS='G-QLGOQ6JB5J';                  // propiedad «Calculalotuyo.es» (ojo: la 4.ª letra tras «G-» es la O, no un cero; corregido el 02/11/2026)
+const ID_ANALYTICS='G-QLG0Q6JB5J';                  // propiedad «Calculalotuyo.es» (con CERO). No se puede cargar suelta: va dentro de la etiqueta de abajo
+const ETIQUETA_GOOGLE='G-Z1JPGHYYP6';                // etiqueta de Google de la cuenta «Calcula lo tuyo» que contiene esa propiedad (comprobado el 02/11/2026)
 
 // Google Analytics con el modo de consentimiento: por defecto todo denegado,
 // y el mensaje de Google lo actualiza cuando el visitante acepta
@@ -167,14 +168,14 @@ if(AVISO_PROPIO&&!leerDecision()){                   // primera visita (o borró
     else document.addEventListener('DOMContentLoaded',mostrarAviso,{once:true});
 }
 gtag('js',new Date());                               // marca el momento de carga
-gtag('config',ID_ANALYTICS);                         // activa Analytics con nuestro identificador
+gtag('config',ETIQUETA_GOOGLE);                      // activa la etiqueta: envía a sus destinos, entre ellos ID_ANALYTICS
 // El script de Analytics se descarga cuando la página ya se ve (evento «load»):
 // así no compite con el contenido en móviles con conexión lenta.
 // Las órdenes de arriba esperan en dataLayer y se envían en cuanto llega.
 function cargarAnalytics(){
     const scriptAnalytics=document.createElement('script');   // crea la etiqueta <script> de Analytics
     scriptAnalytics.async=true;                      // que no frene nada mientras se descarga
-    scriptAnalytics.src='https://www.googletagmanager.com/gtag/js?id='+ID_ANALYTICS;
+    scriptAnalytics.src='https://www.googletagmanager.com/gtag/js?id='+ETIQUETA_GOOGLE;   // se descarga la etiqueta, y config() elige la propiedad
     document.head.appendChild(scriptAnalytics);      // la añade al <head>
 }
 if(document.readyState==='complete')cargarAnalytics();         // la página ya había terminado de cargar
