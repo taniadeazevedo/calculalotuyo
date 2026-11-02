@@ -447,3 +447,217 @@ for f in ['paro.html', 'guia-paro.html', 'tabla-paro-2026.html']:
     ancla = next((x for x in ['<section class="faq">', '<section id="calculadoras" class="guide-section"', '<section class="section section-alt">'] if x in t), None)
     if '<!-- SITUACION-COBRO-PARO -->' not in t and ancla:
         t = t.replace(ancla, CAJA_CP + ancla, 1); open(ruta, 'w', encoding='utf-8').write(t)
+
+# ===================== «¿Puedo cobrar paro e indemnización a la vez?» (02/11/2026) =====================
+# LGSS art. 267.1.a (el despido es situación legal de desempleo), art. 282 (incompatibilidades: la indemnización no está),
+# art. 297.2 (el SEPE puede pedir que acredites haberla cobrado) y art. 275.5.b (no cuenta como renta para el subsidio);
+# Ley del IRPF art. 7.e (indemnización legal exenta hasta 180.000 €). Todo comprobado en el BOE.
+REV_N = REVISADO.format(fecha='2 de noviembre de 2026')
+SUELDO_I, ANOS_I = 2000, 5                                              # el ejemplo: 2.000 € brutos al mes en 14 pagas, 5 años
+anual_i = SUELDO_I * 14
+diario_i = anual_i / 365                                                # salario de un día
+improc_i = diario_i * 33 * ANOS_I                                       # despido improcedente: 33 días por año
+objet_i = diario_i * 20 * ANOS_I                                        # despido objetivo: 20 días por año
+dias_i = dias_paro(365 * ANOS_I)                                        # 1.825 días cotizados → días de paro
+paro_i = min(anual_i / 12 * 0.70, 1225)                                 # 70 % con el tope sin hijos de 2026
+
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📊 Paro</div><h1>¿Puedo cobrar paro e indemnización a la vez?<br><span class="highlight">sí, y te explicamos cuánto</span></h1><p>Si te despiden, la indemnización no te quita el paro ni lo reduce. Con un ejemplo calculado y lo que pasa con Hacienda.</p>
+            {REV_N}</div></section>
+
+    <section class="section"><div class="container"><article class="seo-section">
+<div class="respuesta-corta"><strong>⚡ En 30 segundos</strong><ul>
+<li><strong>Sí:</strong> si te despiden, cobras la indemnización y además el paro completo. Una cosa no descuenta la otra.</li>
+<li>La indemnización <strong>no está en la lista</strong> de cosas incompatibles con el paro de la ley.</li>
+<li>La indemnización legal <strong>no paga IRPF</strong> (hasta 180.000 €); el paro, sí.</li>
+<li>Lo que no da paro es irte tú o pactar la salida sin despido: ahí normalmente no hay ni paro ni indemnización.</li>
+</ul></div>
+
+<h2>✅ Por qué son compatibles</h2>
+<p>El despido te deja en <strong>situación legal de desempleo</strong>, que es lo que pide el SEPE para darte el paro ({boe("BOE-A-2015-11724", "artículo 267 de la Ley General de la Seguridad Social")}). Y el {boe("BOE-A-2015-11724", "artículo 282")}, que enumera lo que es incompatible con el paro (trabajar, otras prestaciones…), <strong>no incluye la indemnización</strong>. Son dos cosas distintas: la indemnización la paga la empresa por quitarte el trabajo; el paro lo paga el SEPE con lo que has cotizado.</p>
+
+<h2>🧮 Un ejemplo: Ana, 5 años en la empresa</h2>
+<div class="example-box">
+    <h4>👩‍💼 Ana: {e(SUELDO_I)} € brutos al mes en 14 pagas, despedida tras {ANOS_I} años</h4>
+    <div class="calc-line">Sueldo de un día: {e(anual_i)} € ÷ 365 = {e(diario_i, 2)} €</div>
+    <div class="calc-line">Si el despido es improcedente: 33 días × {ANOS_I} años × {e(diario_i, 2)} € = <strong>{e(improc_i)} €</strong></div>
+    <div class="calc-line">Si es objetivo: 20 días × {ANOS_I} años = <strong>{e(objet_i)} €</strong></div>
+    <div class="calc-line">Paro: {e(365 * ANOS_I)} días cotizados → <strong>{dias_i // 30} meses</strong> de {e(paro_i)} € brutos al mes (con el tope sin hijos)</div>
+    <p class="result-highlight">Ana cobra la indemnización entera y, además, {dias_i // 30} meses de paro: unos {e(paro_i * dias_i / 30)} € en total</p>
+</div>
+<p>Calcula tu caso en la <a href="despido-improcedente">calculadora de despido</a> y en la <a href="paro">calculadora del paro</a>.</p>
+
+<h2>🧾 Y Hacienda, ¿qué se queda?</h2>
+<table class="info-table"><tr><th></th><th>Indemnización legal</th><th>Paro</th></tr>
+<tr><td>IRPF</td><td><strong>Exenta</strong> hasta 180.000 €</td><td>Tributa, como un sueldo</td></tr>
+<tr><td>¿Retención?</td><td>No, en la parte legal</td><td>Sí, si la pides o te corresponde</td></tr>
+<tr><td>¿Va en la renta?</td><td>Sí, pero como exenta</td><td>Sí, como rendimiento del trabajo</td></tr></table>
+<p class="nota-corta">Está exenta la indemnización <strong>que marca la ley</strong> ({boe("BOE-A-2006-20764", "artículo 7.e de la Ley del IRPF")}). Si la empresa te paga más de lo legal, ese exceso sí tributa.</p>
+
+<h2>⚠️ Ten en cuenta</h2>
+<ul>
+<li><strong>Si no te pagan la indemnización</strong> y no reclamas, el SEPE puede pedir a la Inspección de Trabajo que compruebe que el despido es real ({boe("BOE-A-2015-11724", "artículo 297.2")}). Si la empresa no paga, reclama: el FOGASA responde si es insolvente.</li>
+<li><strong>Para el subsidio</strong> (cuando se acaba el paro), la indemnización legal no cuenta como ingreso; lo que pase de lo legal, sí ({boe("BOE-A-2015-11724", "artículo 275")}).</li>
+<li><strong>Baja voluntaria o «acuerdo»:</strong> si te vas tú, no hay paro. Lo explicamos en <a href="baja-voluntaria-tengo-paro">¿tengo paro si me voy por baja voluntaria?</a></li>
+<li>Pide el paro en los <strong>15 días hábiles</strong> siguientes al despido: paso a paso en <a href="que-hacer-si-me-despiden">qué hacer si te despiden</a>.</li>
+</ul>
+</article></div></section>
+'''
+faqs = [
+    ('¿Se puede cobrar el paro y la indemnización por despido a la vez?', '<strong>Sí.</strong> La indemnización no es incompatible con el paro (artículo 282 de la Ley General de la Seguridad Social) y no lo reduce: cobras las dos cosas completas.'),
+    ('¿La indemnización reduce el paro que me corresponde?', '<strong>No.</strong> El paro depende de lo que has cotizado y de tu base de cotización, no de la indemnización.'),
+    ('¿Hay que pagar IRPF por la indemnización?', 'La indemnización <strong>legal</strong> está exenta hasta 180.000 € (artículo 7.e de la Ley del IRPF). Lo que la empresa pague por encima de lo legal tributa. El paro sí paga IRPF.'),
+]
+pagina('paro-e-indemnizacion-a-la-vez', '¿Puedo cobrar paro e indemnización a la vez? Sí: cuánto',
+    f'Sí: si te despiden cobras la indemnización y el paro completo, sin descuentos. Ejemplo: 5 años con 2.000 €/mes → {e(improc_i)} € y {dias_i // 30} meses de paro.',
+    'paro e indemnización a la vez, cobrar paro e indemnización, la indemnización quita el paro, indemnización despido paro compatible',
+    [('Guías', 'guias'), ('Paro e indemnización a la vez', None)], cuerpo, faqs,
+    'Ley General de la Seguridad Social (arts. 267, 275, 282 y 297) y Ley del IRPF (art. 7.e), versiones consolidadas del BOE.',
+    menu_activo='Guías')
+sitemap('paro-e-indemnizacion-a-la-vez')
+print('creada: paro-e-indemnizacion-a-la-vez · Ana →', e(improc_i), '€ +', dias_i // 30, 'meses de', e(paro_i), '€')
+
+# ===================== «¿Tengo paro si me voy por baja voluntaria?» (02/11/2026) =====================
+# LGSS art. 267.2.a (el cese voluntario no es situación legal de desempleo), 267.1.a.5.º (excepciones: ET arts. 40,
+# 41.3, 49.1.m y 50) y 267.1.a.7.º (no superar el período de prueba en un trabajo nuevo). Comprobado en el BOE.
+CASOS_BV = [
+    ('Te vas porque quieres (dimisión)', 'No', 'No es una situación legal de desempleo.'),
+    ('Te trasladan a otra ciudad con cambio de casa y no aceptas', 'Sí', 'Extinción por traslado (art. 40 del Estatuto).'),
+    ('Te cambian el horario, el sueldo o las funciones de forma sustancial y te perjudica', 'Sí', 'Extinción por modificación sustancial (art. 41.3).'),
+    ('Eres víctima de violencia de género o sexual', 'Sí', 'Art. 49.1.m del Estatuto.'),
+    ('La empresa no te paga o se retrasa de forma grave y continuada', 'Con sentencia', 'Hay que pedir la extinción al juez (art. 50); no basta con irte.'),
+    ('Dimites, empiezas otro trabajo y no superas el período de prueba', 'Depende', 'Sí, si han pasado 3 meses desde que dejaste el anterior.'),
+]
+# Dos columnas (la primera es corta: en el móvil no se parte) y el porqué debajo de cada situación
+filas_bv = ''.join(f'<tr><td>{p}</td><td>{c}<br><small>{n}</small></td></tr>' for c, p, n in CASOS_BV)
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📊 Paro</div><h1>¿Tengo paro si me voy por baja voluntaria?<br><span class="highlight">no, salvo en estos casos</span></h1><p>Si dejas el trabajo por tu cuenta no cobras paro. Pero hay situaciones en las que irte sí da derecho, y una forma de recuperarlo más adelante.</p>
+            {REV_N}</div></section>
+
+    <section class="section"><div class="container"><article class="seo-section">
+<div class="respuesta-corta"><strong>⚡ En 30 segundos</strong><ul>
+<li>Si te vas porque quieres, <strong>no tienes paro</strong> ni indemnización.</li>
+<li><strong>Excepciones:</strong> traslado, cambio sustancial que te perjudica, violencia de género o sexual, o impagos graves (con sentencia).</li>
+<li>Lo cotizado <strong>no se pierde</strong>: si en tu siguiente trabajo te despiden, cuenta para el paro.</li>
+<li>Si no superas el período de prueba del trabajo nuevo, tienes paro si han pasado <strong>3 meses</strong> desde que te fuiste del anterior.</li>
+</ul></div>
+
+<h2>⚠️ Por qué la baja voluntaria no da paro</h2>
+<p>El paro es para quien se queda sin trabajo <strong>sin quererlo</strong>. La ley dice expresamente que no está en situación legal de desempleo quien deja el trabajo por su cuenta ({boe("BOE-A-2015-11724", "artículo 267.2 de la Ley General de la Seguridad Social")}). Tampoco cuenta la «baja pactada» o el acuerdo con la empresa sin despido.</p>
+
+<h2>📋 Cuándo irte sí da paro</h2>
+<table class="info-table"><tr><th>¿Paro?</th><th>Situación</th></tr>{filas_bv}</table>
+<p class="nota-corta">Supuestos del {boe("BOE-A-2015-11724", "artículo 267.1.a de la Ley General de la Seguridad Social")} (párrafos 5.º y 7.º). En los casos de traslado, modificación sustancial e impagos, además del paro tienes indemnización.</p>
+
+<h2>🔁 Lo que has cotizado no se pierde</h2>
+<div class="example-box">
+    <h4>👩‍💼 Laura: 3 años en una empresa, se va y encuentra otro trabajo</h4>
+    <div class="calc-line">Deja la primera empresa por su cuenta: no tiene paro ese día</div>
+    <div class="calc-line">Trabaja 8 meses en la segunda y la despiden</div>
+    <div class="calc-line">Para el paro cuentan los 6 últimos años: 3 años + 8 meses = {e(365 * 3 + 243)} días cotizados</div>
+    <p class="result-highlight">Laura tiene {dias_paro(365 * 3 + 243) // 30} meses de paro, contando también los años de la primera empresa</p>
+</div>
+<p>Si no superas el período de prueba en el trabajo nuevo, el paro depende del tiempo: si dejaste el anterior hace <strong>menos de 3 meses</strong>, no tienes derecho; <strong>pasados 3 meses</strong>, sí.</p>
+
+<h2>⚠️ Antes de irte</h2>
+<ul>
+<li>Avisa con el <strong>preaviso</strong> de tu convenio (suele ser 15 días): si no, te lo pueden descontar del finiquito.</li>
+<li>El finiquito te lo pagan siempre: calcúlalo en la <a href="finiquito">calculadora de finiquito</a>.</li>
+<li>Todo el detalle (preaviso, carta y alternativas) en la <a href="guia-baja-voluntaria">guía de la baja voluntaria</a>, con un <a href="modelo-carta-baja-voluntaria">modelo de carta</a>.</li>
+<li>Si te despiden, en cambio, cobras paro e indemnización: lo explicamos en <a href="paro-e-indemnizacion-a-la-vez">paro e indemnización a la vez</a>.</li>
+</ul>
+</article></div></section>
+'''
+faqs = [
+    ('¿Si me voy voluntariamente cobro el paro?', '<strong>No.</strong> La baja voluntaria no es una situación legal de desempleo (artículo 267.2 de la Ley General de la Seguridad Social). Las excepciones son el traslado con cambio de residencia, la modificación sustancial que te perjudica, la violencia de género o sexual y los impagos graves con sentencia.'),
+    ('¿Pierdo lo cotizado si me voy por baja voluntaria?', '<strong>No.</strong> Esos días siguen contando. Si en tu siguiente trabajo te despiden o se acaba el contrato, se suman para calcular el paro (con los 6 últimos años).'),
+    ('¿Tengo paro si no supero el período de prueba después de una baja voluntaria?', 'Solo si han pasado <strong>3 meses</strong> desde que dejaste el trabajo anterior (artículo 267.1.a.7.º de la Ley General de la Seguridad Social). Si ha pasado menos, no.'),
+]
+pagina('baja-voluntaria-tengo-paro', '¿Tengo paro si me voy por baja voluntaria? Excepciones',
+    'Si te vas por baja voluntaria no hay paro, salvo traslado, cambio sustancial, violencia de género o impagos. Lo cotizado no se pierde: casos y la regla de los 3 meses.',
+    'baja voluntaria paro, tengo paro si me voy, paro baja voluntaria, me voy de la empresa tengo derecho a paro, periodo de prueba paro',
+    [('Guías', 'guias'), ('Baja voluntaria y paro', None)], cuerpo, faqs,
+    'Ley General de la Seguridad Social (art. 267) y Estatuto de los Trabajadores (arts. 40, 41, 49 y 50), versiones consolidadas del BOE.',
+    menu_activo='Guías')
+sitemap('baja-voluntaria-tengo-paro')
+print('creada: baja-voluntaria-tengo-paro · Laura →', dias_paro(365 * 3 + 243) // 30, 'meses')
+
+# ===================== «Tarifa plana de autónomos 2026» (02/11/2026) =====================
+# Estatuto del trabajo autónomo art. 38 ter (requisitos, 12 + 12 meses, 3 años si ya la tuviste, 24/36 meses con
+# discapacidad o violencia). Importe: 80 €/mes fijados por el RDL 13/2022 (disp. trans. 5.ª) para 2023-2025; desde 2026
+# lo fija la Ley de Presupuestos, que no hay, así que se sigue aplicando. Los tramos y la cuota salen de datos-2026.js.
+import re as _re
+_datos = open(os.path.join(RAIZ, 'datos-2026.js'), encoding='utf-8').read()
+TIPO_A = float(_re.search(r'autonomos:\{\s*tipo:([\d.]+)', _datos).group(1))      # 0,315
+PLANA = float(_re.search(r'tarifaPlana:([\d.]+)', _datos).group(1))                # 88,64
+TRAMOS_A = [(float('inf') if h == 'Infinity' else float(h), float(b)) for h, b in
+            _re.findall(r'\[(\d+(?:\.\d+)?|Infinity),(\d+(?:\.\d+)?)\]', _re.search(r'tramos:\[(.*?)\]\s*\}', _datos, _re.S).group(1))]
+SMI_A = int(_re.search(r'smi:\{[^}]*anual:(\d+)', _datos).group(1))
+def cuota_normal(rend):
+    """Cuota mínima del tramo según el rendimiento neto mensual (tabla general 2026)."""
+    return next(b for h, b in TRAMOS_A if rend <= h) * TIPO_A
+REND_A = [700, 1000, 1300, 1700, 2000]
+filas_a = ''.join(f'<tr><td>{e(r)} €</td><td>{e(cuota_normal(r), 2)} €</td><td>{e(PLANA, 2)} €</td><td><strong>{e((cuota_normal(r) - PLANA) * 12)} €</strong></td></tr>' for r in REND_A)
+ah_1000 = (cuota_normal(1000) - PLANA) * 12
+
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">💼 Autónomos</div><h1>Tarifa plana de autónomos 2026<br><span class="highlight">requisitos y cuánto ahorras</span></h1><p>Quién puede pedirla, cuánto se paga, cuánto dura y cuánto te ahorras frente a la cuota normal, con cifras calculadas.</p>
+            {REV_N}</div></section>
+
+    <section class="section"><div class="container"><article class="seo-section">
+<div class="respuesta-corta"><strong>⚡ En 30 segundos</strong><ul>
+<li>Pagas <strong>{e(PLANA, 2)} € al mes</strong> (80 € más el MEI) durante los <strong>12 primeros meses</strong>, ganes lo que ganes.</li>
+<li>Es para quien se da de alta <strong>por primera vez</strong> o lleva <strong>2 años</strong> sin ser autónomo (3 si ya la tuvo).</li>
+<li>Se alarga <strong>otros 12 meses</strong> si tus rendimientos netos quedan por debajo del SMI ({e(SMI_A)} € al año).</li>
+<li>Hay que pedirla <strong>al darte de alta</strong>: después no se puede.</li>
+</ul></div>
+
+<h2>✅ Requisitos</h2>
+<ul>
+<li><strong>Alta inicial</strong> en el régimen de autónomos, o no haber estado de alta en los <strong>2 años</strong> anteriores. Si ya disfrutaste la tarifa plana en tu anterior alta, tienen que ser <strong>3 años</strong>.</li>
+<li><strong>Pedirla en el momento del alta</strong>, en la solicitud a la Seguridad Social.</li>
+<li><strong>No es para familiares</strong> del autónomo (hasta segundo grado) que se den de alta como autónomos colaboradores.</li>
+<li>Vale también para socios de sociedades y cooperativas que coticen como autónomos, y aunque contrates trabajadores.</li>
+</ul>
+<p class="nota-corta">Requisitos del {boe("BOE-A-2007-13409", "artículo 38 ter del Estatuto del trabajo autónomo")}.</p>
+
+<h2>💶 Cuánto ahorras el primer año</h2>
+<table class="info-table"><tr><th>Rendimiento neto al mes</th><th>Cuota normal mínima</th><th>Tarifa plana</th><th>Ahorro en 12 meses</th></tr>{filas_a}</table>
+<p class="nota-corta">Cuota normal: base mínima del tramo de 2026 × {e(TIPO_A * 100, 2)} %. Las tablas de tramos de 2025 siguen vigentes en 2026 ({boe("BOE-A-2026-2548", "Real Decreto-ley 3/2026")}). Calcula la tuya en la <a href="cuota-autonomos">calculadora de cuota de autónomos</a>.</p>
+
+<h2>📆 El segundo año</h2>
+<p>Pasados los 12 primeros meses, puedes seguir pagando la tarifa plana <strong>otros 12</strong> si tus rendimientos netos van a ser <strong>menores que el SMI</strong> ({e(SMI_A)} € al año en 2026). Hay que pedirlo <strong>antes</strong> de que empiece ese segundo año, con una declaración de lo que prevés ganar. Si al final ganas más, la Seguridad Social te pide la diferencia.</p>
+
+<h2>⚠️ Ten en cuenta</h2>
+<ul>
+<li><strong>Si te das de baja</strong> mientras la disfrutas, la pierdes.</li>
+<li><strong>Con discapacidad del 33 % o más</strong>, o si eres víctima de violencia de género o de terrorismo, dura <strong>24 meses</strong> el primer periodo y 36 el segundo.</li>
+<li>Durante la tarifa plana, la baja médica y las demás prestaciones se calculan con la <strong>base mínima</strong>, así que cobrarías poco.</li>
+<li>La cifra de 80 € la fijó el Real Decreto-ley 13/2022 hasta 2025; desde 2026 la debe fijar la Ley de Presupuestos y, al seguir prorrogados, se mantiene. Si cambia, lo actualizaremos.</li>
+<li>Los primeros pasos (alta en Hacienda, IVA, facturas) están en la <a href="guia-autonomos">guía del primer año como autónomo</a>.</li>
+</ul>
+</article></div></section>
+'''
+faqs = [
+    ('¿Cuánto es la tarifa plana de autónomos en 2026?', f'<strong>{e(PLANA, 2)} € al mes</strong>: 80 € de cuota reducida más el Mecanismo de Equidad Intergeneracional (MEI). Dura 12 meses y se puede alargar otros 12 si ganas menos del SMI.'),
+    ('¿Quién puede pedir la tarifa plana?', 'Quien se da de alta como autónomo por primera vez o no ha estado de alta en los 2 años anteriores (3 si ya la disfrutó). Hay que pedirla al darse de alta (artículo 38 ter del Estatuto del trabajo autónomo).'),
+    ('¿Cuánto me ahorro con la tarifa plana?', f'Depende de lo que ganes. Con 1.000 € netos al mes, la cuota normal mínima es de {e(cuota_normal(1000), 2)} €, así que ahorras unos <strong>{e(ah_1000)} € el primer año</strong>.'),
+]
+pagina('tarifa-plana-autonomos-2026', 'Tarifa plana de autónomos 2026: requisitos y ahorro',
+    f'Tarifa plana de autónomos 2026: {e(PLANA, 2)} € al mes durante 12 meses (24 si ganas menos del SMI). Requisitos, cómo pedirla y cuánto ahorras: {e(ah_1000)} € con 1.000 €/mes.',
+    'tarifa plana autónomos 2026, tarifa plana autónomos requisitos, cuota reducida autónomos, 80 euros autónomos, tarifa plana segundo año',
+    [('Guías', 'guias'), ('Tarifa plana de autónomos 2026', None)], cuerpo, faqs,
+    'Estatuto del trabajo autónomo (art. 38 ter), Real Decreto-ley 13/2022 (disp. trans. 5.ª) y Real Decreto-ley 3/2026, versiones consolidadas del BOE.',
+    menu_activo='Guías')
+sitemap('tarifa-plana-autonomos-2026')
+print('creada: tarifa-plana-autonomos-2026 · ahorro con 1.000 €/mes →', e(ah_1000), '€')
+
+# Enlaces desde las páginas relacionadas
+for marca, caja, ficheros in [
+    ('SITUACION-PARO-INDEM', '📋 <strong>¿La indemnización te quita el paro?</strong> No: lo explicamos con un ejemplo en <a href="paro-e-indemnizacion-a-la-vez">paro e indemnización a la vez</a>.', ['despido-improcedente.html', 'paro.html', 'guia-despido.html']),
+    ('SITUACION-BAJA-VOL', '📋 <strong>¿Te vas de la empresa?</strong> Mira cuándo hay paro y cuándo no en <a href="baja-voluntaria-tengo-paro">¿tengo paro si me voy por baja voluntaria?</a>', ['guia-baja-voluntaria.html', 'finiquito.html', 'guia-paro.html']),
+    ('SITUACION-TARIFA', '📋 <strong>¿Te das de alta por primera vez?</strong> Requisitos y ahorro en <a href="tarifa-plana-autonomos-2026">tarifa plana de autónomos 2026</a>.', ['cuota-autonomos.html', 'guia-autonomos.html']),
+]:
+    bloque = f'<!-- {marca} --><p class="nota-corta">{caja}</p><!-- /{marca} -->\n'
+    for f in ficheros:
+        ruta = os.path.join(RAIZ, f); t = open(ruta, encoding='utf-8').read()
+        ancla = next((x for x in ['<section class="faq">', '<section id="calculadoras" class="guide-section"', '<section class="section section-alt">'] if x in t), None)
+        if f'<!-- {marca} -->' not in t and ancla:
+            t = t.replace(ancla, bloque + ancla, 1); open(ruta, 'w', encoding='utf-8').write(t)
