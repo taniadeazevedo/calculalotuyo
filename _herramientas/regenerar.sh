@@ -31,6 +31,7 @@ python3 _herramientas/titulos.py           # títulos, descripciones y preguntas
 python3 _herramientas/respuestas.py         # «Respuesta rápida» arriba de cada calculadora
 python3 _herramientas/menu.py              # el mismo menú en todas las páginas (después de generarlas)
 python3 _herramientas/iconos.py            # iconos propios en vez de emojis (después del menú)
+python3 _herramientas/tablas.py            # tablas que se deslizan en el móvil (después de los iconos)
 python3 _herramientas/buscador.py           # índice del buscador (buscar.json), siempre al final
 # pruebas de las calculadoras y de los enlaces: se guarda la salida para enseñar solo el resumen,
 # pero el script se para si fallan (con «| tail -1» se perdía el aviso)

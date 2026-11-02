@@ -4463,3 +4463,13 @@ a.btn .ico { margin-right: 0; }
     .aviso-cookies { flex-direction: column; align-items: stretch; gap: 12px; }
     .aviso-cookies-botones button { flex: 1; }
 }
+
+/* Tablas que se deslizan en el móvil (02/11/2026): _herramientas/tablas.py mete cada info-table y doc-tabla en esta caja */
+.tabla-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0 24px; border-radius: 14px; }
+.tabla-scroll > table { margin: 0; }
+@media (max-width: 600px) {
+    /* más compactas: muchas caben enteras y las demás se deslizan con el dedo */
+    .info-table { font-size: 0.85rem; }
+    .info-table th { padding: 10px; font-size: 0.7rem; letter-spacing: 0.02em; }
+    .info-table td { padding: 9px 10px; }
+}
