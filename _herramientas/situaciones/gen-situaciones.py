@@ -174,3 +174,141 @@ for f in ['paro.html', 'baja-medica.html', 'jubilacion.html']:
     ancla = next((x for x in ['<section class="faq">', '<section class="section section-alt">'] if x in t), None)   # antes de las preguntas frecuentes
     if '<!-- DEFINICION-BR -->' not in t and ancla:
         t = t.replace(ancla, DEF + ancla, 1); open(ruta, 'w', encoding='utf-8').write(t)
+
+# ===================== «¿Qué es el finiquito?» (definición, 02/11/2026) =====================
+# Datos de la guía del finiquito (revisada contra el BOE): art. 49.2 ET (propuesta de liquidación y representante),
+# art. 59 ET (un año para reclamar cantidades) y el ejemplo de Marta, calculado allí paso a paso.
+DIFERENCIAS = [
+    ('Qué paga', 'Lo que ya has trabajado y aún no has cobrado', 'La pérdida del empleo'),
+    ('Cuándo existe', 'Siempre, termine como termine el contrato', 'Solo en algunos casos (despido, fin de contrato temporal…)'),
+    ('Si te vas tú', 'Sí lo cobras', 'En general, no'),
+    ('IRPF', 'Tributa como tu sueldo', 'La legal está exenta (hasta 180.000 €)'),
+]
+filas_dif = ''.join(f'<tr><td>{a}</td><td>{b}</td><td>{c}</td></tr>' for a, b, c in DIFERENCIAS)
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📖 Definición</div><h1>¿Qué es el finiquito?<br><span class="highlight">y qué tiene que incluir</span></h1><p>Qué es el finiquito, qué conceptos lleva, en qué se diferencia de la indemnización y qué hacer antes de firmarlo, según el Estatuto de los Trabajadores.</p>
+            {REV.replace("28 de octubre", "2 de noviembre")}</div></section>
+
+    <section class="section"><div class="container"><article class="seo-section">
+<div class="respuesta-corta"><strong>⚡ En 30 segundos</strong><ul>
+<li>El <strong>finiquito</strong> es el pago de todo lo que la empresa te debe el día que termina tu contrato.</li>
+<li>Lo cobras <strong>siempre</strong>: si te despiden, si te vas tú o si se acaba un contrato temporal.</li>
+<li>Incluye el <strong>sueldo de los días del mes</strong>, las <strong>vacaciones no disfrutadas</strong> y la <strong>parte de las pagas extra</strong> que llevas generada.</li>
+<li><strong>No es la indemnización:</strong> esa solo existe en algunos casos y se suma aparte.</li>
+</ul></div>
+
+<h2>🧾 Los conceptos que debe incluir</h2>
+<div class="calc-steps">
+    <div class="calc-step"><span class="step-num">1</span><div><strong>Sueldo de los días trabajados del mes</strong><p>Desde el día 1 hasta tu último día. Con sueldo mensual: tu sueldo ÷ 30 × días trabajados.</p></div></div>
+    <div class="calc-step"><span class="step-num">2</span><div><strong>Vacaciones generadas y no disfrutadas</strong><p>Se generan día a día (2,5 días por mes con el mínimo legal de 30). Las que no hayas disfrutado se pagan: es el único caso en que se cambian por dinero.</p></div></div>
+    <div class="calc-step"><span class="step-num">3</span><div><strong>La parte de las pagas extra ya generada</strong><p>Si cobras 14 pagas, la parte de la próxima paga extra que ya llevas acumulada. Si las tienes prorrateadas en 12 pagas, no queda nada pendiente.</p></div></div>
+    <div class="calc-step"><span class="step-num">4</span><div><strong>Cualquier otra cosa pendiente</strong><p>Horas extra sin pagar, comisiones, pluses o días de descanso que te deban.</p></div></div>
+</div>
+<p>Un ejemplo real: con 1.800 € brutos al mes en 14 pagas, dejando la empresa el 20 de mayo y con 5 días de vacaciones disfrutados, el finiquito sale de unos <strong>2.990 € brutos</strong>. Lo tienes paso a paso en la <a href="guia-finiquito">guía del finiquito</a>, y con tus datos en la <a href="finiquito">calculadora de finiquito</a>.</p>
+
+<h2>⚖️ Finiquito e indemnización: no son lo mismo</h2>
+<table class="info-table"><tr><th></th><th>Finiquito</th><th>Indemnización</th></tr>{filas_dif}</table>
+<p>A menudo vienen en el mismo papel, pero son cosas distintas. Si te despiden, mira también cuánto te corresponde de <a href="despido-improcedente">indemnización por despido</a>.</p>
+
+<h2>✍️ Antes de firmarlo</h2>
+<ul>
+<li>La empresa tiene que darte una <strong>propuesta del finiquito</strong> junto con la carta de fin de contrato, y puedes pedir que esté delante un representante de los trabajadores al firmar ({boe("BOE-A-2015-11430", "artículo 49.2 del Estatuto de los Trabajadores")}).</li>
+<li>Si no estás de acuerdo con las cifras, firma como <strong>«recibido, no conforme»</strong>: así dejas claro que solo lo has recibido.</li>
+<li>Para reclamar dinero que te deban tienes <strong>un año</strong> desde que pudiste reclamarlo ({boe("BOE-A-2015-11430", "artículo 59 del Estatuto de los Trabajadores")}).</li>
+</ul>
+<p>Si te han despedido, sigue los pasos en <a href="que-hacer-si-me-despiden">qué hacer si te despiden</a>.</p>
+</article></div></section>
+'''
+faqs = [
+    ('¿Qué es el finiquito?', 'El pago de todo lo que la empresa te debe al terminar el contrato: el sueldo de los días del mes, las vacaciones no disfrutadas y la parte de las pagas extra ya generada. Se cobra siempre, también si te vas tú.'),
+    ('¿El finiquito y la indemnización son lo mismo?', '<strong>No.</strong> El finiquito paga lo ya trabajado y se cobra siempre; la indemnización compensa la pérdida del empleo y solo existe en algunos casos, como un despido o el fin de un contrato temporal.'),
+    ('¿Si me voy de la empresa cobro finiquito?', '<strong>Sí.</strong> El finiquito se cobra termine como termine el contrato. Lo que no suele haber al irte tú es indemnización.'),
+]
+pagina('que-es-el-finiquito', '¿Qué es el finiquito? Qué incluye y en qué se diferencia',
+    'El finiquito es lo que te debe la empresa al acabar el contrato: días del mes, vacaciones y pagas extra. Qué incluye, en qué se diferencia de la indemnización.',
+    'qué es el finiquito, qué incluye el finiquito, finiquito e indemnización diferencia, finiquito si me voy',
+    [('Guías', 'guias'), ('¿Qué es el finiquito?', None)], cuerpo, faqs,
+    'Estatuto de los Trabajadores (arts. 49.2 y 59), versión consolidada del BOE, y la guía del finiquito de CalculaLoTuyo.',
+    menu_activo='Guías')
+sitemap('que-es-el-finiquito')
+DEF2 = '<!-- DEFINICION-FQ --><p class="nota-corta">📖 ¿Finiquito o indemnización? Te lo explicamos en <a href="que-es-el-finiquito">qué es el finiquito</a>.</p><!-- /DEFINICION-FQ -->\n'
+for f in ['finiquito.html', 'despido-improcedente.html']:
+    ruta = os.path.join(RAIZ, f); t = open(ruta, encoding='utf-8').read()
+    ancla = next((x for x in ['<section class="faq">', '<section class="section section-alt">'] if x in t), None)
+    if '<!-- DEFINICION-FQ -->' not in t and ancla:
+        t = t.replace(ancla, DEF2 + ancla, 1); open(ruta, 'w', encoding='utf-8').write(t)
+print('creada: que-es-el-finiquito')
+
+# ===================== «Paro tras un contrato temporal» (02/11/2026) =====================
+# LGSS arts. 266 (requisitos), 267.1.a.6.º (fin de contrato temporal = situación legal de desempleo), 268 (15 días),
+# 269 (escala de duración) y 270 (base reguladora); ET art. 49.1.c (12 días por año al acabar el contrato).
+ESCALA_PARO = [(360, 120), (540, 180), (720, 240), (900, 300), (1080, 360), (1260, 420), (1440, 480), (1620, 540), (1800, 600), (1980, 660), (2160, 720)]
+def dias_paro(cotizados):
+    """Días de paro según los días cotizados en los últimos 6 años (art. 269 LGSS)."""
+    return max([p for c, p in ESCALA_PARO if cotizados >= c], default=0)
+SUELDO_T = 1600                                                         # el ejemplo: 1.600 € brutos al mes en 14 pagas
+anual_t = SUELDO_T * 14
+base_t = anual_t / 12                                                   # base de cotización mensual
+paro_t = min(base_t * 0.70, 1225)                                       # 70 % con el tope sin hijos de 2026
+indem = lambda dias: anual_t / 365 * 12 * dias / 365                     # 12 días de salario por año, en proporción
+CONTRATOS = [('6 meses', 182), ('1 año', 365), ('18 meses', 547), ('2 años', 730), ('3 años', 1095)]
+filas_t = ''.join(f'<tr><td>{n}</td><td>{d}</td><td><strong>{dias_paro(d) // 30} meses</strong></td><td>{e(indem(d))} €</td></tr>' if dias_paro(d) else
+                  f'<tr><td>{n}</td><td>{d}</td><td>Sin paro (menos de 360 días)</td><td>{e(indem(d))} €</td></tr>' for n, d in CONTRATOS)
+
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">📊 Paro</div><h1>Paro tras un contrato temporal<br><span class="highlight">cuánto y cuánto tiempo</span></h1><p>Si se te acaba un contrato temporal: si tienes derecho a paro, cuánto tiempo lo cobrarás, cuánto al mes y la indemnización de 12 días por año.</p>
+            {REV.replace("28 de octubre", "2 de noviembre")}</div></section>
+
+    <section class="section"><div class="container"><article class="seo-section">
+<div class="respuesta-corta"><strong>⚡ En 30 segundos</strong><ul>
+<li>Que se acabe un contrato temporal <strong>da derecho a paro</strong>, como un despido, si has cotizado <strong>al menos 360 días</strong> en los últimos 6 años.</li>
+<li>Con un contrato de <strong>1 año</strong> (y nada más cotizado) cobras <strong>4 meses</strong> de paro.</li>
+<li>Además, al acabar el contrato te corresponden <strong>12 días de sueldo por año</strong> de indemnización (salvo en los contratos formativos y de sustitución).</li>
+<li>Pídelo en los <strong>15 días hábiles</strong> siguientes: si tardas, pierdes días.</li>
+</ul></div>
+
+<h2>✅ ¿Tengo derecho a paro?</h2>
+<p>Sí, si se cumplen dos cosas: que el contrato <strong>termine porque se acaba</strong> (no porque lo dejes tú) y que hayas cotizado <strong>360 días o más en los últimos 6 años</strong>, sumando todos tus contratos que no hayas usado ya para otro paro ({boe("BOE-A-2015-11724", "artículos 266 y 267 de la Ley General de la Seguridad Social")}).</p>
+
+<h2>📆 Cuánto paro te corresponde según lo que duró el contrato</h2>
+<table class="info-table"><tr><th>Contrato</th><th>Días cotizados</th><th>Paro</th><th>Indemnización (12 días/año)</th></tr>{filas_t}</table>
+<p class="nota-corta">Si es tu único contrato en los últimos 6 años y cobras {e(SUELDO_T)} € brutos al mes en 14 pagas. Si has trabajado antes, se suman esos días y el paro dura más (hasta 24 meses con 2.160 días). Escala del {boe("BOE-A-2015-11724", "artículo 269 de la Ley General de la Seguridad Social")}.</p>
+
+<h2>🧮 Un ejemplo: Pablo, contrato de un año</h2>
+<div class="example-box">
+    <h4>👨‍🔧 Pablo: 1.600 € brutos al mes en 14 pagas, contrato temporal de 12 meses</h4>
+    <p>Es su primer trabajo, así que tiene 365 días cotizados.</p>
+    <div class="calc-line">Paro: 365 días cotizados → <strong>4 meses</strong> (120 días)</div>
+    <div class="calc-line">Base reguladora: 1.600 × 14 ÷ 12 = {e(base_t, 2)} € al mes</div>
+    <div class="calc-line">70 % = {e(base_t * 0.70)} € → con el tope sin hijos de 2026, <strong>{e(paro_t)} € al mes</strong></div>
+    <div class="calc-line">Indemnización por fin de contrato: {e(anual_t)} € ÷ 365 × 12 días = <strong>{e(indem(365))} €</strong></div>
+    <p class="result-highlight">Pablo cobra {e(indem(365))} € al terminar y {e(paro_t)} € brutos al mes de paro durante 4 meses</p>
+</div>
+<p>Calcula tu caso, con tu sueldo y tus días cotizados, en la <a href="paro">calculadora del paro</a>. Si no sabes qué es la base reguladora, lo explicamos en <a href="que-es-la-base-reguladora">qué es la base reguladora</a>.</p>
+
+<h2>⚠️ Ten en cuenta</h2>
+<ul>
+<li><strong>Vacaciones sin disfrutar:</strong> si te las pagan en el finiquito, el paro empieza cuando acabarían esos días, y el plazo de 15 días cuenta desde entonces.</li>
+<li><strong>Si no llegas a 360 días</strong>, puede corresponderte un <strong>subsidio por desempleo</strong> si cumples sus requisitos: pregúntalo en el SEPE.</li>
+<li>La indemnización de 12 días <strong>no se cobra</strong> en los contratos formativos ni en los de sustitución ({boe("BOE-A-2015-11430", "artículo 49.1.c del Estatuto de los Trabajadores")}).</li>
+<li>Paso a paso para pedirlo: <a href="que-hacer-si-me-quedo-en-paro">qué hacer si te quedas en paro</a>.</li>
+</ul>
+</article></div></section>
+'''
+faqs = [
+    ('¿Se cobra paro cuando se acaba un contrato temporal?', '<strong>Sí</strong>, si el contrato termina porque se acaba (no porque lo dejes tú) y has cotizado al menos <strong>360 días en los últimos 6 años</strong>. Es una situación legal de desempleo, igual que un despido (artículo 267 de la Ley General de la Seguridad Social).'),
+    ('¿Cuánto paro me queda con un contrato de un año?', 'Si no has cotizado nada más en los últimos 6 años, <strong>4 meses</strong>: con 360 a 539 días cotizados corresponden 120 días de paro. Si sumas otros contratos, dura más.'),
+    ('¿Me pagan indemnización al acabar un contrato temporal?', f'Sí: <strong>12 días de sueldo por año trabajado</strong>, en proporción al tiempo del contrato (artículo 49.1.c del Estatuto de los Trabajadores). Con 1.600 € al mes en 14 pagas y un año de contrato, unos <strong>{e(indem(365))} €</strong>. No se cobra en los contratos formativos ni en los de sustitución.'),
+]
+pagina('paro-tras-contrato-temporal', 'Paro tras un contrato temporal: cuánto y cuánto tiempo',
+    f'Al acabar un contrato temporal tienes paro si has cotizado 360 días: con un año, 4 meses. Y 12 días por año de indemnización ({e(indem(365))} € con 1.600 €/mes).',
+    'paro contrato temporal, paro fin de contrato temporal, cuánto paro con un contrato de un año, indemnización fin contrato temporal',
+    [('Guías', 'guias'), ('Paro tras un contrato temporal', None)], cuerpo, faqs,
+    'Ley General de la Seguridad Social (arts. 266 a 270) y Estatuto de los Trabajadores (art. 49.1.c), versiones consolidadas del BOE.',
+    menu_activo='Guías')
+sitemap('paro-tras-contrato-temporal')
+print('creada: paro-tras-contrato-temporal · 1 año → paro', dias_paro(365) // 30, 'meses de', e(paro_t), '€ · indemnización', e(indem(365)), '€')
+CAJA_T = '<!-- SITUACION-TEMPORAL --><p class="nota-corta">📋 <strong>¿Se te acaba un contrato temporal?</strong> Mira cuánto paro y qué indemnización te corresponden en <a href="paro-tras-contrato-temporal">paro tras un contrato temporal</a>.</p><!-- /SITUACION-TEMPORAL -->\n'
+for f in ['paro.html', 'guia-paro.html']:
+    ruta = os.path.join(RAIZ, f); t = open(ruta, encoding='utf-8').read()
+    ancla = next((x for x in ['<section class="faq">', '<section id="calculadoras" class="guide-section"', '<section class="section section-alt">'] if x in t), None)
+    if '<!-- SITUACION-TEMPORAL -->' not in t and ancla:
+        t = t.replace(ancla, CAJA_T + ancla, 1); open(ruta, 'w', encoding='utf-8').write(t)

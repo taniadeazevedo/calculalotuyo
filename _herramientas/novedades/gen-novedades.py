@@ -15,9 +15,9 @@ ine = lambda mes, txt: f'<a href="https://www.ine.es/dyngs/Prensa/IPC{mes}26.htm
 
 # ================================================================ DATOS (todos comprobados en fuente oficial el 22/10/2026)
 # IPC general, tasa anual (INE, notas de prensa de cada mes). La revalorización de las pensiones usa la media de diciembre a noviembre.
-IPC = [('dic 2025', 2.9), ('ene', 2.3), ('feb', 2.3), ('mar', 3.4), ('abr', 3.2), ('may', 3.2), ('jun', 3.2), ('jul', 3.6), ('ago', 4.3), ('sep', 4.9)]
+IPC = [('dic 2025', 2.9), ('ene', 2.3), ('feb', 2.3), ('mar', 3.4), ('abr', 3.2), ('may', 3.2), ('jun', 3.2), ('jul', 3.6), ('ago', 4.3), ('sep', 4.9), ('oct', 4.9)]   # octubre: dato adelantado del INE (30/10/2026)
 suma = sum(v for _, v in IPC)
-escenario = lambda octnov: (suma + 2 * octnov) / 12                    # media de los 12 meses si octubre y noviembre quedan en ese valor
+escenario = lambda nov: (suma + nov) / 12                              # media de los 12 meses según el IPC de noviembre (el único que falta)
 ESC = [(4.5, escenario(4.5)), (4.9, escenario(4.9)), (5.3, escenario(5.3))]
 CENTRAL = ESC[1][1]
 PENSION_MAX = 3359.60                                                   # 2026, RDL 3/2026
@@ -55,7 +55,7 @@ quien = lambda d: [k for k, v in FEST.items() if d in v]
 NOMBRE = lambda d: next(v[d] for v in FEST.values() if d in v)
 
 ARTICULOS = [
- dict(slug='elecciones-29n-pensiones-smi-2027', fecha='2026-10-28', actualizado='2026-10-28', tema='Pensiones',
+ dict(slug='elecciones-29n-pensiones-smi-2027', fecha='2026-10-28', actualizado='2026-11-02', tema='Pensiones',
   titulo='Elecciones 29-N: qué pasa con las pensiones y el SMI 2027',
   desc=f'Con las elecciones del 29 de noviembre, ¿subirán las pensiones y el salario mínimo en enero de 2027? Qué dice la ley, qué pasó en 2020 y qué te afecta.',
   h1='Elecciones del 29-N: ¿subirán las pensiones y el SMI en 2027?', sub='Qué dice la ley y qué pasó la última vez',
@@ -84,7 +84,7 @@ ARTICULOS = [
 <li><strong>Si cobras el salario mínimo:</strong> hasta que haya uno nuevo, tu nómina seguirá con el de 2026. Si luego se aprueba con efectos desde el 1 de enero, la empresa tendrá que pagarte la diferencia.</li>
 </ul>
 <h2>⏳ Qué falta por saber</h2>
-<p>El IPC de octubre (30 de octubre) y el de noviembre (finales de noviembre), que fijan el porcentaje exacto de las pensiones, y cuándo y cómo se aprueban los dos decretos. Actualizaremos este artículo con cada novedad publicada en el BOE.</p>""",
+<p>El IPC de octubre ya se conoce: un 4,9 %, igual que en septiembre (dato adelantado del INE). Falta el de noviembre (finales de noviembre), que cierra el porcentaje exacto de las pensiones, y cuándo y cómo se aprueban los dos decretos. Actualizaremos este artículo con cada novedad publicada en el BOE.</p>""",
   faqs=[('¿Subirán las pensiones en enero de 2027 si hay elecciones?', f'La subida está fijada por ley: la media del IPC de diciembre de 2025 a noviembre de 2026, en torno al {pc(CENTRAL)}. Lo que puede cambiar es la fecha del decreto: en 2020, tras unas elecciones, se aprobó el 14 de enero con efectos desde el 1 de enero.'),
         ('¿Puede un Gobierno en funciones subir las pensiones?', 'La Ley del Gobierno le limita al despacho ordinario, salvo urgencia o interés general debidamente justificados (artículo 21). En 2019, el Gobierno en funciones no la aprobó y se hizo en enero de 2020, ya con el nuevo Gobierno.'),
         ('¿Qué salario mínimo se cobra en enero de 2027 si no hay uno nuevo?', f'Se sigue aplicando el de 2026: {e(1221)} € al mes en 14 pagas. Si el nuevo se aprueba después con efectos desde el 1 de enero, la empresa paga la diferencia, como pasó en 2020.')],
@@ -128,36 +128,36 @@ ARTICULOS = [
         ('¿Cuándo es Semana Santa en 2027?', 'El <strong>Jueves Santo es el 25 de marzo</strong> y el <strong>Viernes Santo el 26</strong>. El Lunes de Pascua (29 de marzo) es festivo solo en algunas comunidades.')],
   fuentes=f'{boe("BOE-A-2026-21254", "Resolución de 8 de octubre de 2026, de la Dirección General de Trabajo")} (BOE núm. 254, de 13 de octubre de 2026).',
   kw='festivos 2027, calendario laboral 2027, festivos nacionales 2027, puentes 2027, semana santa 2027'),
- dict(slug='subida-pensiones-2027', fecha='2026-10-22', actualizado='2026-10-22', tema='Pensiones',
+ dict(slug='subida-pensiones-2027', fecha='2026-10-22', actualizado='2026-11-02', tema='Pensiones',
   titulo='Subida de las pensiones en 2027: cuánto subirán',
   desc=f'Con el IPC de 2026, las pensiones subirían en enero de 2027 en torno a un {pc(CENTRAL)}. Cómo se calcula, escenarios y cuánto más cobrarás al mes.',
   h1='¿Cuánto subirán las pensiones en 2027?', sub=f'En torno a un {pc(CENTRAL)}, según el IPC de 2026',
   img=['Pensiones 2027', f'subirían en torno a un {pc(CENTRAL)}'],
   resumen=[f'Las pensiones contributivas suben cada enero lo mismo que la <strong>media del IPC de diciembre a noviembre</strong> (art. 58 de la Ley General de la Seguridad Social).',
-           f'Con los datos del INE hasta septiembre, la subida de 2027 rondaría el <strong>{pc(ESC[0][1])}–{pc(ESC[2][1])}</strong>.',
+           f'Con los datos del INE hasta octubre (4,9 %, igual que septiembre), la subida de 2027 rondaría el <strong>{pc(ESC[0][1])}–{pc(ESC[2][1])}</strong>.',
            'El dato exacto se sabrá a <strong>mediados de diciembre</strong>, cuando el INE publique el IPC de noviembre.'],
   calculadoras=[('jubilacion', '🌅 Calcula tu jubilación'), ('obligado-a-declarar-renta', '🧾 Con pensión, ¿tienes que hacer la renta?')],
   cuerpo=lambda: f'''
 <h2>📌 Qué dice la ley</h2>
 <p>Desde 2024, las pensiones contributivas de la Seguridad Social se revalorizan al empezar cada año en el porcentaje del <strong>valor medio de las tasas anuales del IPC de los doce meses anteriores a diciembre</strong>: de diciembre del año anterior a noviembre. Si esa media fuera negativa, las pensiones no bajarían. La pensión máxima y las mínimas se actualizan en ese mismo porcentaje en los Presupuestos.</p>
 <h2>📊 El IPC de 2026 mes a mes</h2>
-<div class="tabla-wrap"><table class="tabla-festivos tabla-corta"><thead><tr><th>Mes</th><th>IPC anual</th></tr></thead><tbody>{''.join(f'<tr><td>{m}</td><td><span class="barra-celda" style="--v:{v / 5.5 * 100:.0f}%"></span>{pc(v)}</td></tr>' for m, v in IPC)}<tr><td>oct y nov</td><td>pendientes</td></tr></tbody></table></div>
-<p>La media de los diez meses conocidos es del <strong>{pc(suma / len(IPC), 2)}</strong>. Faltan octubre y noviembre, y como la inflación ha subido en los últimos meses, la media final será algo mayor.</p>
+<div class="tabla-wrap"><table class="tabla-festivos tabla-corta"><thead><tr><th>Mes</th><th>IPC anual</th></tr></thead><tbody>{''.join(f'<tr><td>{m}</td><td><span class="barra-celda" style="--v:{v / 5.5 * 100:.0f}%"></span>{pc(v)}</td></tr>' for m, v in IPC)}<tr><td>nov</td><td>pendiente</td></tr></tbody></table></div>
+<p>La media de los {len(IPC)} meses conocidos es del <strong>{pc(suma / len(IPC), 2)}</strong>. Solo falta noviembre, y como la inflación lleva dos meses en el 4,9 %, la media final será algo mayor. El dato de octubre es el adelantado del INE (30 de octubre); el definitivo sale a mediados de noviembre.</p>
 <h2>🔮 Tres escenarios para 2027</h2>
-<div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Si el IPC de octubre y noviembre es del…</th><th>Las pensiones subirían</th><th>Pensión máxima en 2027</th></tr></thead><tbody>{''.join(f'<tr><td>{pc(o)}</td><td><strong>{pc(r, 2)}</strong></td><td>{e(PENSION_MAX * (1 + r / 100), 2)} € al mes</td></tr>' for o, r in ESC)}</tbody></table></div>
+<div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Si el IPC de noviembre es del…</th><th>Las pensiones subirían</th><th>Pensión máxima en 2027</th></tr></thead><tbody>{''.join(f'<tr><td>{pc(o)}</td><td><strong>{pc(r, 2)}</strong></td><td>{e(PENSION_MAX * (1 + r / 100), 2)} € al mes</td></tr>' for o, r in ESC)}</tbody></table></div>
 <p class="nota-corta">Cálculo propio con los datos oficiales del INE. Es una estimación: el porcentaje definitivo lo fija el Gobierno con el IPC de noviembre.</p>
 <h2>💶 Cuánto más cobrarías al mes</h2>
 <div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Pensión en 2026</th><th>Con una subida del {pc(CENTRAL)}</th><th>Al mes</th><th>Al año (14 pagas)</th></tr></thead><tbody>{''.join(f'<tr><td>{e(p)} €</td><td><strong>{e(p * (1 + CENTRAL / 100), 2)} €</strong></td><td>+{e(p * CENTRAL / 100, 2)} €</td><td>+{e(p * CENTRAL / 100 * 14)} €</td></tr>' for p in (800, 1000, 1200, 1500, 2000, 2500))}</tbody></table></div>
 <h2>⏳ Qué falta por saber</h2>
-<ul><li>El <strong>IPC de octubre</strong> (adelantado a finales de octubre) y el de <strong>noviembre</strong> (a mediados de diciembre).</li><li>El porcentaje lo aprueba el Gobierno y se aplica en la nómina de <strong>enero de 2027</strong>.</li><li>Las pensiones <strong>no contributivas</strong> y las mínimas pueden tener subidas distintas: se fijan aparte.</li></ul>
+<ul><li>El <strong>IPC de noviembre</strong>: el adelantado a finales de noviembre y el definitivo a mediados de diciembre.</li><li>El porcentaje lo aprueba el Gobierno y se aplica en la nómina de <strong>enero de 2027</strong>.</li><li>Las pensiones <strong>no contributivas</strong> y las mínimas pueden tener subidas distintas: se fijan aparte.</li></ul>
 <p>Actualizaremos este artículo con cada dato nuevo del INE.</p>''',
-  faqs=[('¿Cuánto subirán las pensiones en 2027?', f'Con los datos del IPC hasta septiembre, en torno a un <strong>{pc(CENTRAL)}</strong> (entre un {pc(ESC[0][1])} y un {pc(ESC[2][1])} según el IPC de octubre y noviembre). El dato exacto se sabrá a mediados de diciembre.'),
+  faqs=[('¿Cuánto subirán las pensiones en 2027?', f'Con los datos del IPC hasta octubre, en torno a un <strong>{pc(CENTRAL)}</strong> (entre un {pc(ESC[0][1])} y un {pc(ESC[2][1])} según el IPC de noviembre). El dato exacto se sabrá a mediados de diciembre.'),
         ('¿Cómo se calcula la subida de las pensiones?', 'Es la media de las tasas anuales del IPC de diciembre del año anterior a noviembre del año en curso (art. 58 de la Ley General de la Seguridad Social).'),
         ('¿Cuándo se cobra la subida de las pensiones de 2027?', 'En la nómina de enero de 2027, una vez el Gobierno apruebe el porcentaje con el IPC de noviembre.')],
-  fuentes=f'{boe("BOE-A-2015-11724", "Ley General de la Seguridad Social, art. 58", True)}; {ine("09", "INE: IPC de septiembre de 2026")} y notas de enero a agosto; pensión máxima de 2026: {boe("BOE-A-2026-2548", "Real Decreto-ley 3/2026")}.',
+  fuentes=f'{boe("BOE-A-2015-11724", "Ley General de la Seguridad Social, art. 58", True)}; <a href="https://www.ine.es/dyngs/Prensa/adIPC1026.htm" target="_blank" rel="noopener">INE: IPC adelantado de octubre de 2026</a>, {ine("09", "IPC de septiembre")} y notas de enero a agosto; pensión máxima de 2026: {boe("BOE-A-2026-2548", "Real Decreto-ley 3/2026")}.',
   kw='subida pensiones 2027, cuánto suben las pensiones 2027, revalorización pensiones 2027, pensión máxima 2027'),
 
- dict(slug='deduccion-alquiler-renta', fecha='2026-10-22', actualizado='2026-10-22', tema='Impuestos',
+ dict(slug='deduccion-alquiler-renta', fecha='2026-10-22', actualizado='2026-11-02', tema='Impuestos',
   titulo='Nueva deducción del 10 % por alquiler en la renta',
   desc='Quien vive de alquiler y tiene una base imponible de menos de 33.007 € puede deducirse el 10 % de lo que paga. Requisitos, ejemplos y qué falta por aprobar.',
   h1='Nueva deducción del 10 % por el alquiler en la renta', sub='Quién puede aplicarla y cuánto ahorras',
@@ -183,7 +183,7 @@ ARTICULOS = [
 <p class="nota-corta">Persona sola, sin hijos ni otros ingresos, contrato indefinido. Cálculo propio y aproximado: la deducción no puede ser mayor que la parte estatal del impuesto, así que con sueldos bajos el ahorro real puede ser menor.</p>
 <h2>⏳ Qué falta por saber</h2>
 <ul>
-<li><strong>La convalidación:</strong> un real decreto-ley tiene que ser convalidado por el Congreso en unos 30 días. El anterior (Real Decreto-ley 26/2026, de 29 de septiembre) <strong>fue derogado</strong>, así que hasta entonces esta deducción no es segura.</li>
+<li><strong>La convalidación:</strong> un real decreto-ley tiene que ser convalidado por el Congreso en unos 30 días; como las Cortes están disueltas por las elecciones del 29 de noviembre, lo vota la <strong>Diputación Permanente</strong>, como tarde a mediados de noviembre (a 2 de noviembre aún no se había votado). El anterior (Real Decreto-ley 26/2026, de 29 de septiembre) <strong>fue derogado</strong>, así que hasta entonces esta deducción no es segura.</li>
 <li><strong>Desde cuándo cuenta el alquiler:</strong> está en vigor desde el 8 de octubre de 2026. Falta que Hacienda aclare si en la renta de 2026 cuentan todos los alquileres del año o solo los pagados desde esa fecha.</li>
 <li>Es una deducción <strong>estatal</strong>: muchas comunidades autónomas tienen además las suyas propias.</li>
 </ul>
@@ -194,7 +194,7 @@ ARTICULOS = [
   fuentes=f'{boe("BOE-A-2026-20823", "Real Decreto-ley 29/2026, de 6 de octubre")} (art. 6, apartado segundo, cuatro: nuevo artículo 68.6 de la Ley 35/2006 del IRPF); {boe("BOE-A-2006-20764", "Ley 35/2006 del IRPF", True)}.',
   kw='deducción alquiler renta 2026, deducción alquiler vivienda habitual, real decreto ley 29/2026, desgravar alquiler renta'),
 
- dict(slug='ipc-septiembre-2026-sueldo', fecha='2026-10-22', actualizado='2026-10-22', tema='Sueldo',
+ dict(slug='ipc-septiembre-2026-sueldo', fecha='2026-10-22', actualizado='2026-11-02', tema='Sueldo',
   titulo='IPC al 4,9 % en septiembre: qué significa para tu sueldo',
   desc='La inflación sube al 4,9 % en septiembre de 2026, la más alta desde 2023. Qué pasa con las subidas de sueldo, los convenios, los funcionarios y las pensiones.',
   h1='IPC al 4,9 %: qué significa para tu sueldo', sub='La inflación más alta desde febrero de 2023',
@@ -218,7 +218,7 @@ ARTICULOS = [
 <h2>👵 Pensiones</h2>
 <p>Las pensiones subirán en enero de 2027 según la media del IPC de diciembre de 2025 a noviembre de 2026. Con estos datos, rondaría el {pc(CENTRAL)}: lo explicamos en <a href="subida-pensiones-2027">cuánto subirán las pensiones en 2027</a>.</p>
 <h2>⏳ Qué falta por saber</h2>
-<p>El dato adelantado de octubre sale a finales de mes y el de diciembre, que es el que usan muchos convenios, a mediados de enero de 2027. Actualizaremos este artículo con cada dato nuevo.</p>''',
+<p><strong>Actualización (2 de noviembre):</strong> según el dato adelantado del INE, el IPC de octubre se mantiene en el <strong>4,9 %</strong>, con la subyacente en el 3,1 %. El de diciembre, que es el que usan muchos convenios, se publicará a mediados de enero de 2027. Actualizaremos este artículo con cada dato nuevo.</p>''',
   faqs=[('¿Cuánto es el IPC de septiembre de 2026?', 'Un <strong>4,9 %</strong> de tasa anual, según el INE: seis décimas más que en agosto y el más alto desde febrero de 2023.'),
         ('¿Me tienen que subir el sueldo con el IPC?', 'No por ley. Solo si lo dice tu convenio colectivo o tu contrato; muchos convenios tienen una cláusula de revisión según el IPC de diciembre.'),
         ('¿Cobrarán los funcionarios el 0,5 % extra de 2026?', 'Lo prevé el Real Decreto-ley 14/2025 si el IPC de 2026 llega al 1,5 %. Con la inflación actual todo apunta a que sí; se aprobaría con el dato de 2026 y se cobraría a principios de 2027.')],

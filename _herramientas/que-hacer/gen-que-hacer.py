@@ -278,7 +278,7 @@ PASOS_PARO = [
     ('Calcula cuánto vas a cobrar',
      'Los <strong>6 primeros meses</strong> cobras el <strong>70 %</strong> de tu base reguladora (la media de lo cotizado en los últimos 180 días) y después el <strong>60 %</strong>, con un mínimo y un máximo según tus hijos. Hazlo con la <a href="paro">calculadora del paro</a>.'),
     ('Mira cuánto tiempo lo cobrarás',
-     'Depende de lo cotizado en los últimos 6 años: <strong>4 meses</strong> con 360 días y hasta <strong>24 meses</strong> con 2.160 días o más. Lo tienes en la <a href="tabla-paro-2026">tabla del paro 2026</a>.'),
+     'Depende de lo cotizado en los últimos 6 años: <strong>4 meses</strong> con 360 días y hasta <strong>24 meses</strong> con 2.160 días o más. Lo tienes en la <a href="tabla-paro-2026">tabla del paro 2026</a>; si vienes de un contrato temporal, mira <a href="paro-tras-contrato-temporal">paro tras un contrato temporal</a>.'),
     ('Cumple tus obligaciones mientras cobras',
      'Mantén la <strong>inscripción como demandante de empleo</strong> durante todo el paro (si no, se suspende el pago), acude a las citas del servicio de empleo y comunica cualquier cambio, como empezar a trabajar.'),
     ('Cuando se acabe, mira el subsidio',
