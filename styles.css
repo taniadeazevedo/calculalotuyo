@@ -4423,3 +4423,29 @@ a.btn .ico { margin-right: 0; }
 
 /* Campo con error (aviso propio en español, 28/10/2026) */
 .campo-error { border-color: #DC2626 !important; box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15) !important; }
+
+/* ===== Menú del móvil unificado (02/11/2026): todo alineado a la izquierda, mismos tamaños y separaciones ===== */
+.mobile-nav-title, .mobile-nav-sueltos .mobile-nav-link {                   /* grupos («Sueldo y nómina»…) y enlaces sueltos («Guías»…): misma fila */
+  display: flex; align-items: center; justify-content: flex-start; gap: 12px; width: 100%;
+  padding: 14px 8px; font-size: 1rem; font-weight: 600; color: var(--text); text-align: left; line-height: 1.3;
+}
+.mobile-nav-title > svg:last-child { margin-left: auto; color: var(--text2); }   /* la flecha, a la derecha */
+.mobile-nav-title .ico, .mobile-nav-sueltos .mobile-nav-link .ico { width: 20px; height: 20px; flex-shrink: 0; margin: 0; }
+.mobile-nav-links .mobile-nav-link {                                       /* enlaces dentro de cada grupo: más pequeños y con sangría */
+  display: flex; align-items: center; gap: 10px; padding: 10px 8px 10px 40px; font-size: 0.95rem; font-weight: 400; color: var(--text2);
+}
+.mobile-nav-links .mobile-nav-link .ico { width: 18px; height: 18px; flex-shrink: 0; margin: 0; }
+.mobile-nav-sueltos { border-bottom: 1px solid var(--border); }
+.mobile-nav-cal { padding: 0 6px; }                                         /* el calendario: mismas filas, con su verde */
+.mobile-nav-cal .mobile-nav-title { color: #0F766E; }
+.mobile-nav-grupo { margin: 4px 8px 4px; }
+/* Más compacto y con los grupos bien diferenciados (02/11/2026) */
+.mobile-nav-title, .mobile-nav-sueltos .mobile-nav-link { padding: 10px 8px; font-size: 0.98rem; }
+.mobile-nav-links .mobile-nav-link { padding: 7px 8px 7px 40px; }
+.mobile-nav-links { padding-bottom: 6px; }
+.mobile-nav-grupo { margin: 2px 8px 6px; }
+.mobile-nav-sueltos { margin-top: 18px; padding: 0; border-bottom: 0; border-top: 1px solid var(--border); }
+.mobile-nav-sueltos::before { content: "Guías y recursos"; display: block; margin: 14px 8px 4px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text3, #6B7280); }   /* cabecera del segundo grupo, como «CALCULADORAS» */
+.mobile-nav-cal { margin-top: 18px; }
+.mobile-nav-cal .mobile-nav-link .ico, .mobile-nav-cal .mobile-nav-title .ico { color: #0F766E; }   /* en el bloque del calendario, todos los iconos en su verde */
+.mobile-nav-sueltos { border-top: 0; margin-top: 10px; }   /* una sola línea bajo «Hacienda» (antes salían dos) */
