@@ -122,7 +122,7 @@ document.querySelectorAll('[data-correo]').forEach(el=>{
 // ---------- Cookies: el aviso lo muestra Google (CMP certificada de AdSense) ----------
 // El script de AdSense va fijo en el <head> de cada página y trae el mensaje de
 // consentimiento que configuramos en AdSense > Privacidad y mensajes.
-const ID_ANALYTICS='G-QLG0Q6JB5J';                  // propiedad «Calculalotuyo.es» de la cuenta «Calcula lo tuyo» (desde el 22/10/2026)
+const ID_ANALYTICS='G-QLGOQ6JB5J';                  // propiedad «Calculalotuyo.es» (ojo: la 4.ª letra tras «G-» es la O, no un cero; corregido el 02/11/2026)
 
 // Google Analytics con el modo de consentimiento: por defecto todo denegado,
 // y el mensaje de Google lo actualiza cuando el visitante acepta
