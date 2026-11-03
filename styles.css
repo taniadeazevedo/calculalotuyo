@@ -4552,3 +4552,9 @@ main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box
     .situaciones .situacion-cal .situacion-extra { gap: 18px; }       /* más aire entre las etiquetas */
     .situacion-extra b { margin-left: 22px; }                          /* y antes de «Ver calendario» */
 }
+/* «Ver las 17 guías →» y «Ver los 14 modelos →»: enlace de texto, sin el fondo gris de las etiquetas de esa franja */
+#guias-modelos .chips a.chip-mas { background: none; border: 0; }
+/* Tarjetas «Nuevo» (p. ej. Tarifa plana 2026): mismo realce que «Más usada», pero en el naranja de su etiqueta */
+#calculadoras .calc-item.novedad { background: color-mix(in srgb, #F59E0B 8%, var(--card)); border-color: color-mix(in srgb, #F59E0B 45%, var(--border)); box-shadow: inset 4px 0 0 #F59E0B; }
+#calculadoras .calc-item.novedad h3 { color: #B45309; }
+#calculadoras .calc-item.novedad:hover { border-color: #F59E0B; }
