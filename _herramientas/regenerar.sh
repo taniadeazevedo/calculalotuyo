@@ -28,6 +28,7 @@ python3 _herramientas/novedades/gen-novedades.py   # sección Novedades (artícu
 python3 _herramientas/consolidar.py      # páginas de plantilla unidas en sus tablas (24/10/2026)
 python3 _herramientas/seo-final.py
 python3 _herramientas/titulos.py           # títulos, descripciones y preguntas según cómo busca la gente
+python3 _herramientas/faq-grupos.py        # preguntas frecuentes agrupadas por temas donde hay muchas (después de titulos.py)
 python3 _herramientas/respuestas.py         # «Respuesta rápida» arriba de cada calculadora
 python3 _herramientas/menu.py              # el mismo menú en todas las páginas (después de generarlas)
 python3 _herramientas/iconos.py            # iconos propios en vez de emojis (después del menú)

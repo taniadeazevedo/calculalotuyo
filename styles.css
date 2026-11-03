@@ -4514,3 +4514,6 @@ main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box
 .mobile-nav-cal-link span { display: flex; flex-direction: column; line-height: 1.3; }
 .mobile-nav-cal-link small { color: #115E59; font-size: 0.8rem; font-weight: 400; }
 .mobile-nav-cal-link.actual { border-color: #0F766E; }
+/* Títulos de los temas dentro de las preguntas frecuentes («Hijos y familia»…), 03/11/2026 */
+.faq-list .faq-grupo { margin: 28px 0 10px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); }
+.faq-list .faq-grupo:first-child { margin-top: 4px; }
