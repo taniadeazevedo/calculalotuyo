@@ -4558,3 +4558,36 @@ main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box
 #calculadoras .calc-item.novedad { background: color-mix(in srgb, #F59E0B 8%, var(--card)); border-color: color-mix(in srgb, #F59E0B 45%, var(--border)); box-shadow: inset 4px 0 0 #F59E0B; }
 #calculadoras .calc-item.novedad h3 { color: #B45309; }
 #calculadoras .calc-item.novedad:hover { border-color: #F59E0B; }
+
+/* «Normativa aplicable»: sin el hueco de arriba (el título heredaba el margen de los títulos del texto), 03/11/2026 */
+.legal-sources h3, .seo-section .legal-sources h3 { margin-top: 0; }
+
+/* ===== Página de Guías más visual (03/11/2026): cada tema con su color, portadas en las tarjetas y atajos ===== */
+.guias-atajos { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 0 0 40px; }
+.guias-atajos a { padding: 8px 16px; border-radius: 999px; border: 1px solid color-mix(in srgb, var(--tema) 30%, var(--border)); background: color-mix(in srgb, var(--tema) 7%, var(--card)); color: var(--tema); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
+.guias-atajos a:hover { border-color: var(--tema); }
+.guias-bloque { margin-bottom: 56px; scroll-margin-top: 90px; }      /* el ancla no queda tapada por la cabecera */
+.section-guides .guias-bloque h2 { display: flex; align-items: center; gap: 12px; text-align: left; margin-bottom: 20px; }
+.section-guides .guias-bloque h2::before { content: ""; width: 6px; height: 1.3em; border-radius: 3px; background: var(--tema); }   /* barrita del color del tema */
+.guias-bloque-desc { color: var(--muted); margin: -12px 0 20px; }
+/* Tarjeta con «portada»: franja de color suave con el icono grande */
+.guias-bloque .guide-card { padding: 0 0 20px; background: var(--card); overflow: hidden; display: flex; flex-direction: column; }
+.guias-bloque .guide-card > :not(.guide-icon) { margin-left: 22px; margin-right: 22px; }
+.guias-bloque .guide-icon { display: flex; align-items: center; height: 92px; padding: 0 22px; margin: 0 0 18px; background: color-mix(in srgb, var(--tema) 10%, var(--card)); border-bottom: 1px solid color-mix(in srgb, var(--tema) 18%, var(--border)); }
+.guias-bloque .guide-icon .ico { width: 40px; height: 40px; color: var(--tema); }
+.guias-bloque .guide-card .guide-link { margin-top: auto; color: var(--tema); font-weight: 600; }
+.guias-bloque .guide-card:hover { border-color: var(--tema); }
+/* Casos concretos: tarjetas cortas, en rejilla */
+.casos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.caso-card { display: flex; flex-direction: column; gap: 4px; padding: 16px 18px; border: 1px solid var(--border); border-left: 4px solid var(--tema); border-radius: 12px; background: var(--card); text-decoration: none; transition: border-color .15s, transform .15s; }
+.caso-card strong { color: var(--text); font-size: 0.98rem; }
+.caso-card span { color: var(--muted); font-size: 0.85rem; }
+.caso-card:hover { border-color: var(--tema); transform: translateY(-2px); }
+@media (max-width: 600px) {
+    .guias-atajos { justify-content: flex-start; margin-bottom: 28px; }
+    .guias-bloque { margin-bottom: 40px; }
+    .guias-bloque .guide-icon { height: 72px; }
+}
+/* Enlaces de las notas sueltas («Ejemplo ya calculado…»): en el morado de la web, no en el azul del navegador */
+.nota-corta a { color: var(--accent); font-weight: 600; text-decoration: none; }
+.nota-corta a:hover { text-decoration: underline; }
