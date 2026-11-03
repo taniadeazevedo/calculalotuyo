@@ -4877,3 +4877,18 @@ main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }
 /* Todos los enlaces «Ver…» / «Guía…» reaccionan igual: la flecha se aparta un poco y el color se oscurece, sin subrayado ni saltos */
 .dir-guia { transition: gap .15s, color .15s; }
 .dir-guia:hover { gap: 8px; color: color-mix(in srgb, var(--accent) 80%, #000); text-decoration: none; }
+
+/* ===== Recuadro «Calcula tu…» al principio de guías, casos, modelos y novedades (03/11/2026) =====
+   Todo el recuadro es el enlace; el «botón» es parte de él (un solo clic, una sola parada del teclado) */
+.cta-calc { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 24px 0 32px; padding: 18px 20px 18px 22px; border-radius: 16px; background: color-mix(in srgb, var(--accent) 7%, var(--card)); border: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border)); text-decoration: none; transition: border-color .15s, background .15s; }
+.cta-calc:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, var(--card)); }
+.cta-calc:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.cta-calc-texto { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.cta-calc-texto strong { color: var(--text); font-size: 1.05rem; line-height: 1.3; }
+.cta-calc-texto span { color: var(--text2); font-size: 0.88rem; }
+.cta-calc-boton { flex-shrink: 0; display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.95rem; transition: gap .15s; }
+.cta-calc:hover .cta-calc-boton { gap: 11px; }
+@media (max-width: 600px) {
+    .cta-calc { flex-direction: column; align-items: stretch; padding: 16px; }
+    .cta-calc-boton { justify-content: center; }
+}
