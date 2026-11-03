@@ -4643,3 +4643,25 @@ main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box
 }
 .seo-section .calc-line { padding-left: 18px; }                      /* sitio para el puntito… */
 .seo-section .calc-line::before { left: 2px; }                       /* …que ya no pisa la primera letra */
+
+/* ===== Más mejoras «sin cajas dentro de cajas» (03/11/2026) ===== */
+/* 1. Página de Modelos: sin la caja blanca que envolvía las tarjetas, y con el estilo de Guías (cuadradito de color por tipo) */
+.calc-section .card:has(> .modelos-grid) { background: none; border: 0; box-shadow: none; padding: 0; }
+.modelo-card { --tema: var(--accent); padding: 20px 20px 18px; gap: 6px; }
+.modelo-card[href^="modelo-solicitud"], .modelo-card[href="modelo-adaptacion-jornada"], .modelo-card[href="modelo-permiso-retribuido"], .modelo-card[href="modelo-excedencia-voluntaria"] { --tema: #2563EB; }   /* solicitudes a la empresa: azul */
+.modelo-card[href*="factura"], .modelo-card[href*="presupuesto"], .modelo-card[href*="registro-jornada"], .modelo-card[href*="nomina"] { --tema: #D97706; }   /* plantillas: naranja */
+.modelo-card[href*="reclamacion"] { --tema: #DB2777; }               /* reclamaciones: rosa */
+.modelo-card .modelo-icono { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-bottom: 8px; border-radius: 12px; background: color-mix(in srgb, var(--tema) 11%, var(--card)); }
+.modelo-card .modelo-icono .ico { width: 22px; height: 22px; color: var(--tema); }
+.modelo-card small { color: var(--tema); }
+.modelo-card:hover { border-color: var(--tema); }
+/* 3. Cifras clave de las tablas (70 % · 60 % · 1.225 €): sin cajitas, separadas por una línea fina */
+.cifras { gap: 0; margin-bottom: 16px; }
+.cifras div { background: none; border: 0; border-left: 1px solid var(--border); border-radius: 0; padding: 4px 16px; text-align: left; }
+.cifras div:first-child { border-left: 0; padding-left: 0; }
+.cifras strong { font-weight: 800; }
+@media (max-width: 600px) { .cifras div { padding: 4px 10px; } }
+/* 4. Fórmulas de las guías: una sola caja (la fórmula ya no lleva su propio recuadro dentro) */
+.guide-formula { background: var(--bg); border: 0; border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; }
+.guide-formula code { background: none; padding: 0; font-size: 1.02rem; font-weight: 600; }
+.cifras span { display: block; line-height: 1.35; margin-top: 4px; }   /* el texto bajo cada cifra, más junto */
