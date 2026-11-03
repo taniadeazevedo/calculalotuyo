@@ -9,6 +9,6 @@ tar --exclude=./dist \
     --exclude=./.git \
     --exclude=./_herramientas \
     --exclude='.DS_Store' --exclude=./.gitignore \
-    --exclude=./CNAME \
+    --exclude=./CNAME --exclude=./netlify.toml \
     -cf - . | tar -xf - -C dist          # empaqueta todo lo demás y lo desempaqueta dentro de dist
 echo "Archivos publicados: $(find dist -type f | wc -l)"   # muestra cuántos archivos se suben

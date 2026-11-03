@@ -1,0 +1,4 @@
+# Configuración de Netlify (dónde está alojada la web desde el 03/11/2026)
+[build]
+  command = "bash _herramientas/cloudflare-build.sh"   # prepara la carpeta dist sin herramientas internas
+  publish = "dist"                                     # carpeta que se publica
