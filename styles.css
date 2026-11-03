@@ -3152,23 +3152,20 @@ body {
     }
 
     
+    /* Preguntas frecuentes en el móvil: tarjetas como en el ordenador, con aire a los lados
+       (antes se quedaban sin borde ni margen y el texto iba pegado al borde de la pantalla; cambiado el 03/11/2026) */
     .faq-item {
-        border: none;
-        border-bottom: 1px solid #e5e7eb;
-        border-radius: 0;
-        margin-bottom: 0;
-    }
-    
-    .faq-item:last-child {
-        border-bottom: none;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin-bottom: 10px;
     }
     
     .faq-q {
-        padding: 16px 0;
+        padding: 14px 16px;
     }
     
     .faq-a {
-        padding: 0 0 16px;
+        padding: 0 16px 14px;
     }
     
     /* Related calculators: Lista simple */
@@ -4473,3 +4470,30 @@ a.btn .ico { margin-right: 0; }
     .info-table th { padding: 10px; font-size: 0.7rem; letter-spacing: 0.02em; }
     .info-table td { padding: 9px 10px; }
 }
+
+/* ===== Móvil con menos cajas dentro de cajas (03/11/2026) =====
+   En pantallas estrechas se apilaban sección + caja del ejemplo + tarjeta del texto + tarjeta de cada paso,
+   y el texto quedaba en una columna muy estrecha. Aquí se deja una sola caja por bloque. */
+.example-calc h4 { margin-top: 24px; }                       /* «Cálculo de su IRPF» separado de lo de arriba (también en el ordenador) */
+@media (max-width: 700px) {
+    .guide-toc > .container,
+    .guide-content > .container { width: auto; margin: 0 12px; }   /* la caja de las guías centrada: antes se salía por la derecha */
+    .guide-content > .container { padding: 24px 16px; }
+}
+@media (max-width: 600px) {
+    .seo-section { padding: 22px 16px; }                     /* menos relleno en la caja de cada sección */
+    .example-box { margin: 0; padding: 16px 14px; border-radius: 12px; }   /* el ejemplo: una caja gris, sin salirse */
+    .example-story { padding: 0; background: none; border: 0; border-radius: 0; }   /* el relato va directo, sin otra tarjeta */
+    .example-calc h4 { margin-top: 20px; }
+    /* Los pasos (1, 2, 3…): lista con separadores en vez de una tarjeta por paso */
+    .seo-section .calc-steps, .calc-steps { gap: 0; margin: 12px 0 20px; }
+    .seo-section .calc-step, .calc-step { padding: 14px 0; background: none; border: 0; border-radius: 0; border-top: 1px solid var(--border); }
+    .seo-section .calc-step:first-child, .calc-step:first-child { border-top: 0; padding-top: 4px; }
+    .seo-section .step-num, .step-num { width: 28px; height: 28px; font-size: 0.85rem; }
+}
+/* Notas sueltas («¿Te vas de la empresa?…») que quedan fuera de una caja: mismo ancho y márgenes que el contenido */
+main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box-sizing: border-box; }
+@media (max-width: 600px) { main > p.nota-corta { padding: 0 16px; } }
+/* Tarjetas «Calculadoras relacionadas» dentro de las guías: sin los márgenes de los títulos del texto (dejaban un hueco arriba) */
+.calc-item .calc-item-info h3 { margin: 0 0 4px; }
+.calc-item .calc-item-info p { margin: 0; }
