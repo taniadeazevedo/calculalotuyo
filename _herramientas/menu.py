@@ -94,28 +94,25 @@ def menus(pag, raiz=''):
                 </div>
             </div>
         </nav>'''
-    # ---- Móvil: los mismos grupos en acordeón; se abre el grupo de la página actual
-    abierto = lambda ls: ' open' if any(p == pag for p, _ in ls) else ''
+    # ---- Móvil (rediseñado el 03/11/2026 para que sea más claro):
+    #   · los grupos de calculadoras, TODOS CERRADOS al abrir el menú; el de la página actual sale en morado (sin abrirse)
+    #   · Guías, Novedades y Modelos: tres botones en fila (no parecen desplegables)
+    #   · Calendario 2027: una sola tarjeta verde que lleva a su página
+    actual = lambda ls: ' actual' if any(p == pag for p, _ in ls) else ''
     grupos_m = ''.join(f'''
-    <div class="mobile-nav-section{abierto(ls)}">
+    <div class="mobile-nav-section{actual(ls)}">
         <button class="mobile-nav-title" data-mobile-toggle>{t} {FLECHA_M}</button>
         <div class="mobile-nav-links">{''.join(f'<a href="{h(p)}" class="mobile-nav-link"{cur(p)}>{x}</a>' for p, x in ls)}</div>
-    </div>''' for t, ls in GRUPOS)
+    </div>''' for t, ls in GRUPOS + [('🏛️ Hacienda', HACIENDA)])
+    en_cal = any(p == pag for p, _ in CALENDARIO)
     movil = f'''<nav class="mobile-nav" id="mobileNav">
     <p class="mobile-nav-grupo">Calculadoras</p>{grupos_m}
-    <div class="mobile-nav-section{abierto(HACIENDA)}">
-        <button class="mobile-nav-title" data-mobile-toggle>🏛️ Hacienda {FLECHA_M}</button>
-        <div class="mobile-nav-links">{''.join(f'<a href="{h(p)}" class="mobile-nav-link"{cur(p)}>{x}</a>' for p, x in HACIENDA)}</div>
+    <div class="mobile-nav-recursos">
+        <a href="{h('guias')}"{cur('guias')}>📚 Guías</a>
+        <a href="{h('novedades')}"{cur('novedades')}>📰 Novedades</a>
+        <a href="{h('modelos')}"{cur('modelos')}>📄 Modelos</a>
     </div>
-    <div class="mobile-nav-section mobile-nav-sueltos">
-        <a href="{h('guias')}" class="mobile-nav-link"{cur('guias')}>📚 Guías</a>
-        <a href="{h('novedades')}" class="mobile-nav-link"{cur('novedades')}>📰 Novedades</a>
-        <a href="{h('modelos')}" class="mobile-nav-link"{cur('modelos')}>📄 Modelos gratis</a>
-    </div>
-    <div class="mobile-nav-section mobile-nav-cal open">
-        <button class="mobile-nav-title" data-mobile-toggle>📅 Calendario 2027 {FLECHA_M}</button>
-        <div class="mobile-nav-links">{''.join(f'<a href="{h(p)}" class="mobile-nav-link"{cur(p)}>{x}</a>' for p, x in CALENDARIO)}</div>
-    </div>
+    <a class="mobile-nav-cal-link{' actual' if en_cal else ''}" href="{h('calendario-laboral-2027')}">📅 <span><strong>Calendario laboral 2027</strong><small>Festivos y puentes de tu comunidad</small></span></a>
 </nav>'''
     return nav, movil
 

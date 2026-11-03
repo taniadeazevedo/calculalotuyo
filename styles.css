@@ -4497,3 +4497,20 @@ main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box
 /* Tarjetas «Calculadoras relacionadas» dentro de las guías: sin los márgenes de los títulos del texto (dejaban un hueco arriba) */
 .calc-item .calc-item-info h3 { margin: 0 0 4px; }
 .calc-item .calc-item-info p { margin: 0; }
+
+/* ===== Menú del móvil más claro (03/11/2026) ===== */
+.mobile-nav-section.actual > .mobile-nav-title { color: var(--accent); }   /* el grupo de la página actual, en morado (pero cerrado) */
+.mobile-nav-links .mobile-nav-link .ico { display: none; }               /* dentro de cada grupo, solo texto: menos ruido */
+.mobile-nav-links .mobile-nav-link { padding: 9px 8px 9px 40px; font-size: 0.95rem; color: var(--text2); }
+.mobile-nav-links .mobile-nav-link[aria-current="page"] { color: var(--accent); font-weight: 600; }
+/* Guías, Novedades y Modelos: tres botones en fila */
+.mobile-nav-recursos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 18px 0 0; }
+.mobile-nav-recursos a { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 12px 6px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); color: var(--text); font-size: 0.85rem; font-weight: 600; text-decoration: none; text-align: center; }
+.mobile-nav-recursos a .ico { width: 22px; height: 22px; color: var(--accent); margin: 0; }
+.mobile-nav-recursos a[aria-current="page"] { border-color: var(--accent); color: var(--accent); }
+/* Calendario 2027: una tarjeta verde que lleva a su página */
+.mobile-nav-cal-link { display: flex; align-items: center; gap: 12px; margin: 10px 0 4px; padding: 12px 14px; background: #F0FDFA; border: 1px solid #99F6E4; border-radius: 12px; color: #0F766E; text-decoration: none; }
+.mobile-nav-cal-link .ico { width: 22px; height: 22px; color: #0F766E; flex-shrink: 0; margin: 0; }
+.mobile-nav-cal-link span { display: flex; flex-direction: column; line-height: 1.3; }
+.mobile-nav-cal-link small { color: #115E59; font-size: 0.8rem; font-weight: 400; }
+.mobile-nav-cal-link.actual { border-color: #0F766E; }
