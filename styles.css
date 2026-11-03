@@ -4872,3 +4872,8 @@ main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }
    (antes ocupaba también el margen interior de la caja y sobresalía por los lados) */
 #respuestas > .container { box-sizing: border-box; width: calc(100% - 48px); max-width: calc(1200px - 48px); margin: 0 auto; }
 @media (max-width: 600px) { #respuestas > .container { width: calc(100% - 32px); margin: 0 auto; } }
+/* «Ver las 17 guías →» y «Ver los 14 modelos →»: sin salto al pasar el ratón (la regla común les ponía margin-top al hacer hover) */
+.chips a.chip-mas, .chips a.chip-mas:hover { margin-top: 0; padding: 9px 4px; border: 0; }
+/* Todos los enlaces «Ver…» / «Guía…» reaccionan igual: la flecha se aparta un poco y el color se oscurece, sin subrayado ni saltos */
+.dir-guia { transition: gap .15s, color .15s; }
+.dir-guia:hover { gap: 8px; color: color-mix(in srgb, var(--accent) 80%, #000); text-decoration: none; }
