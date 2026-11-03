@@ -20,6 +20,7 @@ def slug_ciudad(c):
 paginas = {}
 for c in publicadas:
     cc = CCAA[c['ccaa']]; ciudad = c['ciudad']; sl = slug_ciudad(c)
+    if sl.endswith('-ciudad'): ciudad += ' capital'                 # «Madrid capital», para no confundirla con la Comunidad de Madrid (03/11/2026)
     locales = {f: n for f, n in c['fiestas']}
     fest = dict(cc['festivos']); fest.update(locales)          # festivos de la comunidad + los 2 locales
     ps = puentes(fest)
@@ -32,7 +33,7 @@ for c in publicadas:
     otras = ''.join(f'<a href="{slug_ciudad(o)}">{o["ciudad"]}</a>' for o in hermanas)
     nota_finde = f' Ojo: {"la fiesta local cae" if len(finde_local) == 1 else "las fiestas locales caen"} en fin de semana, así que no se notan en el calendario laboral.' if finde_local else ''
     mejor = max((p for p in ps if p['coger']), key=lambda p: (p['dias'] / len(p['coger']), p['dias']), default=None)
-    cuerpo = hero('', f'Calendario laboral 2027 {ciudad}', 'festivos locales y puentes', f'Los {len(fest)} festivos de {ciudad} en 2027: los de {cc["nombre"]} y las fiestas locales del municipio, según su boletín oficial.') + f'''
+    cuerpo = hero('', f'Calendario laboral 2027 {ciudad}', 'festivos locales y puentes', f'Los {len(fest)} festivos de {ciudad} en 2027: los de {cc["nombre"]} y las fiestas locales del municipio, según la fuente oficial.') + f'''
     <section class="calc-section"><div class="container"><div class="card">
         {resumen([(len(fest), 'festivos'), (len(locales), 'locales de ' + ciudad), (sum(lab), 'días laborables*')])}
         <h2 class="puentes-titulo">🗓️ Calendario 2027 · {ciudad}</h2>

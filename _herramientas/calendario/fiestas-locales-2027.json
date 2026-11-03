@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-02",
+ "actualizado": "2026-11-03",
  "ciudades": [
   {
    "ciudad": "Almería",
@@ -500,10 +500,19 @@
    "ciudad": "Barcelona",
    "provincia": "Barcelona",
    "ccaa": "cataluna",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-05-17",
+     "Lunes de Pascua Granada"
+    ],
+    [
+     "2027-09-24",
+     "La Mercè"
+    ]
+   ],
+   "fuente": "Ajuntament de Barcelona: calendario de festivos 2027 (decreto de Alcaldía)",
+   "url": "https://ajuntament.barcelona.cat/calendarifestius/ca/"
   },
   {
    "ciudad": "Girona",
@@ -698,10 +707,19 @@
    "ciudad": "Madrid",
    "provincia": "Madrid",
    "ccaa": "madrid",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-05-15",
+     "San Isidro Labrador"
+    ],
+    [
+     "2027-11-09",
+     "Nuestra Señora de la Almudena"
+    ]
+   ],
+   "fuente": "Ayuntamiento de Madrid: calendario oficial laboral 2027 (fiestas locales aprobadas en el Pleno de 29/09/2026)",
+   "url": "https://www.madrid.es/portales/munimadrid/es/Inicio/Actividad-economica-y-hacienda/Empresa-y-comercio/Calendario-oficial-laboral-y-de-dias-inhabiles-y-festivos-2027-para-Madrid/?vgnextfmt=default&vgnextoid=f67c646ba5011a10VgnVCM100000891ecb1aRCRD&vgnextchannel=78da6d5ef88fe410VgnVCM1000000b205a0aRCRD"
   },
   {
    "ciudad": "Móstoles",
@@ -842,10 +860,19 @@
    "ciudad": "Valencia",
    "provincia": "Valencia",
    "ccaa": "valencia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-01-22",
+     "Sant Vicent Màrtir"
+    ],
+    [
+     "2027-04-05",
+     "Sant Vicent Ferrer"
+    ]
+   ],
+   "fuente": "Ajuntament de València: fiestas locales de 2027 aprobadas por el Pleno (pendiente de su publicación en el DOGV)",
+   "url": "https://www.valencia.es/cas/actualidad/-/content/fiestas-locales-val%C3%A8ncia-2027"
   },
   {
    "ciudad": "Elche",
