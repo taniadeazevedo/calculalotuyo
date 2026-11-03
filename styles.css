@@ -4710,11 +4710,14 @@ main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box
 .hero-mini, .page-header, .guide-header, .hero-clean.hero-situaciones { position: relative; isolation: isolate; }
 .hero-mini::before, .page-header::before, .guide-header::before, .hero-clean.hero-situaciones::before {
     content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-    background-image: radial-gradient(color-mix(in srgb, var(--accent) 55%, transparent) 1.5px, transparent 1.8px);
+    background-image: radial-gradient(color-mix(in srgb, var(--accent) 32%, transparent) 1.3px, transparent 1.6px);   /* puntos más suaves */
     background-size: 22px 22px; background-position: center top;
     /* los puntos enmarcan la cabecera por los lados y se aclaran en el centro, donde va el texto (03/11/2026) */
-    -webkit-mask-image: radial-gradient(ellipse 42% 75% at 50% 45%, transparent 0%, transparent 60%, #000 100%);
-            mask-image: radial-gradient(ellipse 42% 75% at 50% 45%, transparent 0%, transparent 60%, #000 100%);
+    /* dos máscaras a la vez: se aclaran en el centro (el texto) y se desvanecen al final de la cabecera (sin corte brusco) */
+    -webkit-mask-image: radial-gradient(ellipse 42% 75% at 50% 45%, transparent 0%, transparent 60%, #000 100%), linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+    -webkit-mask-composite: source-in;
+            mask-image: radial-gradient(ellipse 42% 75% at 50% 45%, transparent 0%, transparent 60%, #000 100%), linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+            mask-composite: intersect;
 }
 @media (max-width: 700px) {                                           /* en el móvil el texto ocupa casi todo el ancho: puntos más suaves */
     .hero-mini::before, .page-header::before, .guide-header::before, .hero-clean.hero-situaciones::before { opacity: .45; }
