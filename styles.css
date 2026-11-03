@@ -4868,3 +4868,7 @@ main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }
 .dir-grupo.dir-nomina { grid-row: span 2; }
 @media (max-width: 960px) { .directorio { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .directorio { display: flex; flex-direction: column; } .dir-grupo.dir-nomina { grid-row: auto; } }
+/* Panel oscuro de «Respuestas rápidas»: mismo ancho que el contenido de las demás secciones
+   (antes ocupaba también el margen interior de la caja y sobresalía por los lados) */
+#respuestas > .container { box-sizing: border-box; width: calc(100% - 48px); max-width: calc(1200px - 48px); margin: 0 auto; }
+@media (max-width: 600px) { #respuestas > .container { width: calc(100% - 32px); margin: 0 auto; } }
