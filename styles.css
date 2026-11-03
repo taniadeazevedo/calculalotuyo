@@ -4623,3 +4623,23 @@ main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box
 .hero-meta a:hover, .guide-meta a:hover { color: var(--accent); }
 .hero-meta .ico, .guide-meta .ico { width: 12px; height: 12px; color: var(--muted); }
 .guide-meta { gap: 4px 14px; }
+
+/* ===== Ejemplos dentro de las secciones: una sola caja (03/11/2026) =====
+   El ejemplo ya va dentro de la caja blanca de la sección, así que no lleva caja propia.
+   Solo el resultado (lo importante) conserva su recuadro; el consejo es una cita con una línea verde. */
+.seo-section .example-box { background: none; border: 0; border-radius: 0; padding: 0; margin-top: 24px; }
+.seo-section .example-box + .example-box { border-top: 1px solid var(--border); padding-top: 28px; margin-top: 32px; }   /* varios ejemplos seguidos: una línea entre ellos */
+.seo-section .example-tip { background: none; border: 0; border-left: 3px solid var(--success); border-radius: 0; padding: 4px 0 4px 16px; margin: 20px 0 0; color: var(--text2); font-style: italic; }
+.example-tip strong { display: inline; margin: 0; }                  /* las negritas del texto, en línea («desglosadas» salía partido) */
+.example-tip > strong:first-child { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; font-style: normal; color: var(--success); }   /* el título «Consejo de…» */
+.example-tip > strong:first-child .ico { color: var(--success); }
+/* Líneas de cálculo («Seg. Social: 30.000 € × 6,50 %…»): sin cajita cada una, separadas por una línea fina */
+.seo-section .calc-line { background: none; border: 0; border-radius: 0; border-bottom: 1px solid var(--border); padding: 9px 0; margin: 0; }
+.seo-section .calc-line:last-of-type { border-bottom: 0; }
+/* Resultado del ejemplo en el móvil: concepto a la izquierda y cifra a la derecha, como en el ordenador */
+@media (max-width: 600px) {
+    .example-result-row { display: flex; flex-direction: row; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .example-result-row .amount { text-align: right; white-space: nowrap; }
+}
+.seo-section .calc-line { padding-left: 18px; }                      /* sitio para el puntito… */
+.seo-section .calc-line::before { left: 2px; }                       /* …que ya no pisa la primera letra */
