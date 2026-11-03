@@ -4541,3 +4541,10 @@ main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box
 }
 /* 10 situaciones (03/11/2026, se añadió el IRPF): en el ordenador, 3 filas de 3 y el calendario a lo ancho; en el móvil, 5 filas de 2 */
 @media (min-width: 861px) { .situaciones .situacion-cal { grid-column: 1 / -1; } }
+/* La tarjeta ancha del calendario (solo ordenador): a la derecha, lo que hay dentro y «Ver calendario →», para que no quede vacía */
+.situacion-extra { display: none; }
+@media (min-width: 861px) {
+    .situaciones .situacion-cal .situacion-extra { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-wrap: wrap; justify-content: flex-end; }
+    .situacion-extra span { padding: 5px 12px; border-radius: 999px; background: #fff; border: 1px solid #99F6E4; color: #115E59; font-size: 0.85rem; }
+    .situacion-extra b { margin-left: 8px; color: #0F766E; font-size: 0.95rem; white-space: nowrap; }
+}
