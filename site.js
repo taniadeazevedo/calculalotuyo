@@ -519,3 +519,26 @@ async function compartirImagen(){
         setTimeout(()=>URL.revokeObjectURL(a.href),2000);
     }
 }
+
+// ---------- Portada: grupos de calculadoras largos, plegados (03/11/2026) ----------
+// Si un grupo tiene más de 4 tarjetas, se ven las 3 primeras y un botón despliega el resto.
+// Sin JavaScript se ven todas (y para Google todas siguen en la página).
+document.querySelectorAll('#calculadoras .calc-list').forEach(lista=>{
+    const tarjetas=lista.querySelectorAll(':scope > .calc-item');
+    if(tarjetas.length<=4)return;                    // grupos cortos: se quedan como están
+    lista.classList.add('plegada');                  // el CSS oculta de la 4.ª en adelante
+    lista.id=lista.id||'lista-'+Math.random().toString(36).slice(2,8);   // para aria-controls
+    const boton=document.createElement('button');
+    boton.type='button';
+    boton.className='calc-ver-mas';
+    boton.setAttribute('aria-expanded','false');
+    boton.setAttribute('aria-controls',lista.id);
+    const textoCerrado='Ver las '+tarjetas.length+' calculadoras ↓';
+    boton.textContent=textoCerrado;
+    boton.addEventListener('click',()=>{
+        const abierta=lista.classList.toggle('plegada')===false;   // al quitar «plegada», se ven todas
+        boton.setAttribute('aria-expanded',String(abierta));
+        boton.textContent=abierta?'Ver menos ↑':textoCerrado;
+    });
+    lista.after(boton);                              // el botón, justo debajo de la lista
+});
