@@ -146,3 +146,12 @@ for f in sorted(glob.glob('*.html')):
     if s != o:
         open(f, 'w', encoding='utf-8').write(s); cambiadas += 1
 print('menú actualizado en', cambiadas, 'páginas')
+
+# Portada: «Actualizado en <mes> de <año>» con el mes en que se regenera la web (03/11/2026; antes había que cambiarlo a mano)
+import datetime
+MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
+hoy = datetime.date.today()
+p = open('index.html', encoding='utf-8').read()
+n = re.sub(r'(<span class="hero-update">Actualizado en )[a-z]+ de \d{4}(</span>)', rf'\g<1>{MESES[hoy.month - 1]} de {hoy.year}\g<2>', p)
+if n != p: open('index.html', 'w', encoding='utf-8').write(n)
+
