@@ -4735,3 +4735,76 @@ body { background: var(--fondo); }
 #respuestas, #guias-modelos { background: var(--franja); border-color: color-mix(in srgb, var(--accent) 10%, var(--border)); }
 #respuestas .rapida, #guias-modelos .chips a:not(.chip-mas) { background: var(--card); }
 .guide-content { background: transparent; }
+
+/* ===== Paleta con más contraste entre fondos (03/11/2026) =====
+   Antes había tres tonos casi iguales (casi blanco, lila muy suave y gris) que se confundían.
+   Ahora: fondo blanco · franjas en un lila que se nota · grises interiores con un toque frío que combina con el lila. */
+:root { --fondo: #FFFFFF; --franja: #F1EFFF; --bg: #F3F3F8; --bg2: #E6E6EF; --border: #E3E3EC; }
+#respuestas, #guias-modelos { background: var(--franja); border: 0; }
+.hero-mini, .page-header, .guide-header, .hero-clean.hero-situaciones, .hero-clean { background-image: linear-gradient(180deg, #ECEAFF 0%, var(--fondo) 100%); }
+.tema-calendario .hero-mini { background-image: linear-gradient(180deg, #D5F7EF 0%, var(--fondo) 100%); }
+.section-calendario { border: 0; }
+
+/* ===== Pie de página oscuro (03/11/2026): ancla la página y marca dónde acaba el contenido ===== */
+.footer { background: #1A1840; border-top: 0; color: #C9C8E3; }
+.footer .logo-text { color: #fff; }
+.footer .logo-accent { color: #A5B4FC; }
+.footer-desc, .footer-desc a { color: #C9C8E3; }
+.footer-badge { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.14); color: #A7F3D0; }
+.footer-col h4 { color: #fff; }
+.footer-col a { color: #C9C8E3; }
+.footer-col a:hover, .footer-bottom a:hover, .footer-external a:hover { color: #fff; }
+.footer-bottom { border-top-color: rgba(255,255,255,.12); }
+.footer-copy, .footer-bottom, .footer-bottom a, .footer-external a { color: #A9A8C9; }
+.footer-ig { color: #A9A8C9; opacity: 1; }
+.footer-ig:hover { color: #fff; }
+.footer-disclaimer { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.12); color: #C9C8E3; }
+.footer-disclaimer strong { color: #fff; }
+.footer :focus-visible { outline: 2px solid #A5B4FC; outline-offset: 2px; }
+
+/* «Sobre CalculaLoTuyo» de la portada: en franja lila, sin caja blanca sobre blanco */
+.section-about-teaser { background: var(--franja); padding: 56px 0; }
+.section-about-teaser .about-teaser { background: none; border: 0; box-shadow: none; padding: 0; max-width: 760px; }
+.about-teaser-content h3 { font-size: 1.25rem; }
+main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }    /* la franja lila llega hasta el pie, sin hueco blanco */
+.footer-disclaimer p { color: #C9C8E3; }                              /* el aviso del pie, legible sobre el fondo oscuro */
+
+/* ===== Portada con ritmo homogéneo (03/11/2026): las secciones alternan blanco y lila, sin excepciones =====
+   cabecera (degradado lila) → calculadoras (blanco) → respuestas (lila) → calendario (blanco) → novedades (lila)
+   → guías y modelos (blanco) → sobre CalculaLoTuyo (lila) → pie oscuro.
+   El calendario conserva su verde solo en los detalles (título, iconos, bordes), no en el fondo. */
+#calculadoras, #calendario, #guias-modelos { background: var(--fondo); border: 0; }
+#respuestas, #novedades-portada, .section-about-teaser { background: var(--franja); border: 0; }
+#novedades-portada { padding-top: 56px; }
+.section-calendario { background: var(--fondo); }
+.section-calendario .calc-item { border-color: color-mix(in srgb, #0F766E 22%, var(--border)); }
+.section-calendario .calc-item:hover { border-color: #0F766E; }
+.section-calendario .calc-group-header h2 .ico { color: #0F766E; }
+#guias-modelos .chips a:not(.chip-mas) { background: var(--card); }  /* etiquetas blancas con borde sobre blanco */
+#novedades-portada .novedad-card, #novedades-portada article { background: var(--card); }   /* tarjetas de novedades, blancas sobre lila */
+
+/* ===== Portada sin franjas (03/11/2026): fondo blanco continuo y dos paneles con carácter =====
+   · Las secciones se separan por espacio y por su título, no por bandas de color de lado a lado.
+   · «Respuestas rápidas»: panel oscuro redondeado, del mismo morado profundo que el pie (el momento fuerte de la página).
+   · «Sobre CalculaLoTuyo»: panel lila redondeado dentro del contenido. */
+#calculadoras, #respuestas, #calendario, #novedades-portada, #guias-modelos, .section-about-teaser, .section-calendario { background: var(--fondo); border: 0; }
+/* Respuestas rápidas: el panel es el contenedor de la sección */
+#respuestas { padding: 24px 0; }
+#respuestas > .container { background: #1A1840; border-radius: 28px; padding: 48px 44px; color: #C9C8E3; }
+#respuestas .bloque-titulo { color: #fff; }
+#respuestas .bloque-titulo .ico { color: #A5B4FC; }
+#respuestas .bloque-desc { color: #C9C8E3; }
+#respuestas .rapida { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); }
+#respuestas .rapida:hover { border-color: #A5B4FC; background: rgba(255,255,255,.09); }
+#respuestas .rapida-pregunta { color: #C9C8E3; }
+#respuestas .rapida-respuesta { color: #fff; }
+#respuestas .rapida-enlace { color: #A5B4FC; }
+#respuestas a:focus-visible { outline: 2px solid #A5B4FC; outline-offset: 2px; }
+/* Sobre CalculaLoTuyo: panel lila redondeado */
+.section-about-teaser { padding: 24px 0 64px; }
+.section-about-teaser > .container { background: var(--franja); border-radius: 28px; padding: 44px; }
+.section-about-teaser .about-teaser { max-width: 720px; }
+main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }
+@media (max-width: 600px) {
+    #respuestas > .container, .section-about-teaser > .container { border-radius: 20px; padding: 28px 18px; margin: 0 12px; width: auto; }
+}
