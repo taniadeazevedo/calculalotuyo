@@ -4517,3 +4517,27 @@ main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box
 /* Títulos de los temas dentro de las preguntas frecuentes («Hijos y familia»…), 03/11/2026 */
 .faq-list .faq-grupo { margin: 28px 0 10px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); }
 .faq-list .faq-grupo:first-child { margin-top: 4px; }
+
+/* ===== Portada con más jerarquía (03/11/2026) ===== */
+/* 1. Las 4 calculadoras más usadas (IRPF, sueldo neto, despido y paro) destacan dentro de su grupo */
+#calculadoras .calc-item.destacada { background: color-mix(in srgb, var(--accent) 6%, var(--card)); border-color: color-mix(in srgb, var(--accent) 35%, var(--border)); box-shadow: inset 4px 0 0 var(--accent); }
+#calculadoras .calc-item.destacada h3 { color: var(--accent); }
+.calc-item-badge.mas-usada { background: var(--accent); color: #fff; }
+/* 2. El resto de tarjetas, más compactas: la portada es más corta */
+#calculadoras .calc-item { padding: 13px 16px; }
+#calculadoras .calc-item-info h3 { font-size: 0.97rem; }
+#calculadoras .calc-group { margin-bottom: 36px; }
+#calculadoras .calc-group-header { margin-bottom: 12px; }
+/* 3. Más aire y franjas alternas (gris / blanco) para distinguir cada bloque */
+.section-flat { padding: 56px 0; }
+#respuestas, #guias-modelos { background: var(--card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+#respuestas .rapida, #guias-modelos .chip, #guias-modelos .chips a { background: var(--bg); }
+/* 4. Las cifras de «Respuestas rápidas», más grandes: son el gancho */
+.rapida-respuesta { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.01em; }
+@media (max-width: 600px) {
+    .section-flat { padding: 40px 0; }
+    #calculadoras .calc-item { padding: 12px 14px; }
+    .rapida-respuesta { font-size: 1.3rem; }
+}
+/* 10 situaciones (03/11/2026, se añadió el IRPF): en el ordenador, 3 filas de 3 y el calendario a lo ancho; en el móvil, 5 filas de 2 */
+@media (min-width: 861px) { .situaciones .situacion-cal { grid-column: 1 / -1; } }
