@@ -4665,3 +4665,58 @@ main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box
 .guide-formula { background: var(--bg); border: 0; border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; }
 .guide-formula code { background: none; padding: 0; font-size: 1.02rem; font-weight: 600; }
 .cifras span { display: block; line-height: 1.35; margin-top: 4px; }   /* el texto bajo cada cifra, más junto */
+
+/* ===== Más profesional y accesible (03/11/2026) ===== */
+/* A. Accesibilidad: contraste mínimo AA (4,5:1) en textos secundarios y letra legible */
+:root { --muted: #5B6472; }                                           /* el gris de los textos secundarios, un poco más oscuro (antes 4,4:1) */
+.hero-trust, .hero-trust span { color: var(--muted); }                /* «Basado en el BOE · 100 % gratis…» (antes muy clara) */
+.hero-update { color: #047857; }                                      /* «Actualizado en…», verde más oscuro */
+.calc-item-badge.nuevo { background: #B45309; }                       /* «Nuevo»: blanco sobre naranja oscuro, se lee bien */
+#calculadoras .calc-item.novedad { box-shadow: inset 4px 0 0 #D97706; }
+.modelo-card[href*="factura"], .modelo-card[href*="presupuesto"], .modelo-card[href*="registro-jornada"], .modelo-card[href*="nomina"] { --tema: #B45309; }
+.hero-meta, .hero-mini .hero-meta, .guide-meta { font-size: 0.78rem; }   /* «Revisado el…»: discreta pero legible (12,5 px) */
+
+/* B. Sin rasgos de «plantilla»: */
+/* 1. La segunda línea del título ya no va en morado ni en degradado: es un subtítulo gris, más pequeño */
+.hero-mini h1 .highlight, .tema-calendario .hero-mini h1 .highlight, h1 .highlight, .hero-accent {
+    display: block; margin-top: 10px; background: none; -webkit-background-clip: initial; background-clip: initial;
+    -webkit-text-fill-color: currentColor; color: var(--text2); font-size: 0.6em; font-weight: 500; letter-spacing: 0; line-height: 1.3;
+}
+/* 2. La «pastilla» encima del título pasa a ser una etiqueta de texto pequeña, sin caja */
+.hero-badge, .tema-calendario .hero-badge {
+    background: none; border: 0; box-shadow: none; padding: 0; margin-bottom: 12px; color: var(--accent);
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.hero-badge .ico { display: none; }
+/* 3. Cabeceras con fondo liso (sin puntitos) */
+.hero-mini, .page-header, .guide-header { background-image: linear-gradient(180deg, #EEF2FF 0%, var(--bg) 100%); background-size: 100% 100%; }
+.tema-calendario .hero-mini { background-image: linear-gradient(180deg, #CCFBF1 0%, var(--bg) 100%); }
+.hero-clean, .hero-situaciones { background-image: none; }
+/* 4. El círculo de cada ejemplo (Laura, Elena…): color liso, sin degradado */
+.example-icon { background: color-mix(in srgb, var(--accent) 12%, var(--card)); width: 48px; height: 48px; }
+.example-icon .ico { color: var(--accent); }
+/* La etiqueta «Guía Legal» de las guías, igual que la de las calculadoras: texto pequeño, sin pastilla */
+.guide-category { background: none; border: 0; box-shadow: none; padding: 0; color: var(--accent); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.guide-category .ico { display: none; }
+/* Toques de carácter (03/11/2026) */
+/* La portada, con el mismo degradado lila suave que las demás cabeceras (sin él quedaba sosa) */
+.hero-clean.hero-situaciones { background-image: linear-gradient(180deg, #EEF2FF 0%, var(--bg) 100%); }
+/* Ejemplos: si hay foto de la persona (img/personas/…), llena el círculo */
+.example-icon.example-foto { padding: 0; overflow: hidden; background: var(--bg2); }
+.example-icon.example-foto img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; display: block; }
+
+/* Puntitos con personalidad en las cabeceras (03/11/2026): la trama, en el color de la web, se concentra arriba
+   y se va difuminando hacia abajo y hacia los lados (antes era una trama plana por toda la cabecera) */
+.hero-mini, .page-header, .guide-header, .hero-clean.hero-situaciones { position: relative; isolation: isolate; }
+.hero-mini::before, .page-header::before, .guide-header::before, .hero-clean.hero-situaciones::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background-image: radial-gradient(color-mix(in srgb, var(--accent) 55%, transparent) 1.5px, transparent 1.8px);
+    background-size: 22px 22px; background-position: center top;
+    /* los puntos enmarcan la cabecera por los lados y se aclaran en el centro, donde va el texto (03/11/2026) */
+    -webkit-mask-image: radial-gradient(ellipse 42% 75% at 50% 45%, transparent 0%, transparent 60%, #000 100%);
+            mask-image: radial-gradient(ellipse 42% 75% at 50% 45%, transparent 0%, transparent 60%, #000 100%);
+}
+@media (max-width: 700px) {                                           /* en el móvil el texto ocupa casi todo el ancho: puntos más suaves */
+    .hero-mini::before, .page-header::before, .guide-header::before, .hero-clean.hero-situaciones::before { opacity: .45; }
+}
+@media (prefers-reduced-transparency: reduce) { .hero-mini::before, .page-header::before, .guide-header::before, .hero-clean.hero-situaciones::before { display: none; } }
