@@ -4596,3 +4596,30 @@ main > p.nota-corta { max-width: 1100px; margin: 12px auto; padding: 0 24px; box
 .guias-bloque .guide-icon { width: 46px; height: 46px; padding: 0; margin: 0 22px 16px; justify-content: center; border: 0; border-radius: 12px; background: color-mix(in srgb, var(--tema) 11%, var(--card)); }
 .guias-bloque .guide-icon .ico { width: 24px; height: 24px; }
 @media (max-width: 600px) { .guias-bloque .guide-icon { height: 42px; width: 42px; } }
+
+/* ===== Ejemplos («El caso de Elena…») más sencillos (03/11/2026) =====
+   Una sola caja (la del ejemplo): el relato va como texto y los pasos ya no son tarjetas.
+   En el ordenador, los pasos van en columnas con una línea de color arriba (como una línea de tiempo). */
+.example-story, .seo-section .example-story { padding: 0; background: none; border: 0; border-radius: 0; margin-bottom: 4px; }
+.example-story p { color: var(--text2); }
+.example-box .calc-steps, .seo-section .example-box .calc-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px 24px; margin: 6px 0 24px; }
+.example-box .calc-step, .seo-section .example-box .calc-step,
+.example-box .calc-step:first-child, .seo-section .example-box .calc-step:first-child {
+    flex-direction: column; gap: 10px; padding: 14px 0 0; background: none; border: 0; border-radius: 0;
+    border-top: 3px solid color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.example-box .calc-step p { margin-top: 4px; }
+@media (max-width: 600px) {
+    /* en el móvil, una columna: número a la izquierda y una línea fina entre pasos */
+    .example-box .calc-steps, .seo-section .example-box .calc-steps { grid-template-columns: 1fr; gap: 0; }
+    .example-box .calc-step, .seo-section .example-box .calc-step { flex-direction: row; gap: 12px; padding: 14px 0; border-top: 1px solid var(--border); }
+    .example-box .calc-step:first-child, .seo-section .example-box .calc-step:first-child { flex-direction: row; gap: 12px; border-top: 0; padding-top: 4px; }
+}
+
+/* «Revisado el… · Tania de Azevedo · Cómo calculamos» (y la línea de autor de las guías): pequeña y discreta,
+   que no compita con el título ni con la calculadora (03/11/2026) */
+.hero-meta, .hero-mini .hero-meta, .guide-meta { font-size: 0.72rem; color: var(--muted); }
+.hero-meta a, .guide-meta a { color: var(--muted); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--muted) 40%, transparent); text-underline-offset: 2px; }
+.hero-meta a:hover, .guide-meta a:hover { color: var(--accent); }
+.hero-meta .ico, .guide-meta .ico { width: 12px; height: 12px; color: var(--muted); }
+.guide-meta { gap: 4px 14px; }
