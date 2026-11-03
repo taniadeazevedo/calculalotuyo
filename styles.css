@@ -4827,3 +4827,44 @@ main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }
 .calc-ver-mas { display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 9px 16px; border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border)); border-radius: 999px; background: var(--card); color: var(--accent); font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
 .calc-ver-mas:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, var(--card)); }
 .calc-ver-mas:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ===== Directorio de calculadoras de la portada (03/11/2026) =====
+   3 columnas; cada grupo es una tarjeta con su lista. Cada fila: icono · nombre · etiqueta (siempre a la derecha) · flecha */
+.directorio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+.dir-col { display: flex; flex-direction: column; gap: 20px; }
+.dir-grupo { background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 20px 18px 10px; box-shadow: 0 1px 2px rgba(26,24,64,.04); }
+.dir-grupo h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; padding: 0 4px; font-size: 1.02rem; font-weight: 700; color: var(--text); }
+.dir-grupo h3 .ico { width: 34px; height: 34px; padding: 7px; border-radius: 11px; background: var(--accent); color: #fff; flex-shrink: 0; }   /* icono del grupo en un cuadradito morado */
+.dir-grupo ul { list-style: none; margin: 0; padding: 0; }
+.dir-grupo li a { display: flex; align-items: center; gap: 12px; min-height: 46px; padding: 8px 6px; border-top: 1px solid var(--border); border-radius: 10px; color: var(--text2); text-decoration: none; font-size: 0.95rem; transition: background .15s, color .15s; }
+.dir-grupo li:first-child a { border-top-color: transparent; }
+.dir-grupo li a .ico { width: 18px; height: 18px; color: var(--accent); flex-shrink: 0; opacity: .85; }
+.dir-nombre { flex: 1; min-width: 0; }                                /* el nombre ocupa el espacio libre: así la etiqueta queda siempre a la derecha */
+.dir-grupo li a::after { content: "›"; color: var(--muted); font-size: 1.1rem; line-height: 1; margin-left: 4px; }
+.dir-grupo li a:hover { background: color-mix(in srgb, var(--accent) 6%, var(--card)); color: var(--accent); border-top-color: transparent; }
+.dir-grupo li a:hover + *, .dir-grupo li:hover + li a { border-top-color: transparent; }
+.dir-grupo li a.dir-destacada .dir-nombre { font-weight: 700; color: var(--text); }
+.dir-etiqueta { flex-shrink: 0; white-space: nowrap; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: var(--accent); padding: 4px 9px; border-radius: 999px; }
+.dir-etiqueta.dir-nuevo { background: #B45309; }
+.dir-grupo li a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 960px) { .directorio { grid-template-columns: 1fr 1fr; } .dir-col:last-child { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .directorio, .dir-col:last-child { grid-template-columns: 1fr; display: flex; flex-direction: column; } .directorio { gap: 16px; } .dir-col { gap: 16px; } }
+/* Directorio: enlace a la guía del grupo, al pie de cada tarjeta */
+.dir-guia { display: inline-flex; align-items: center; gap: 6px; margin: 6px 4px 8px; font-size: 0.85rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+.dir-guia .ico { width: 15px; height: 15px; }
+.dir-guia:hover { text-decoration: underline; }
+.dir-grupo { padding-bottom: 8px; }
+/* En el móvil y la tableta, «Más usada» pasa a ser una estrellita (el texto sigue ahí para lectores de pantalla) y nada se parte */
+@media (max-width: 960px) {
+    .dir-etiqueta:not(.dir-nuevo) { font-size: 0; padding: 3px 7px; }
+    .dir-etiqueta:not(.dir-nuevo)::before { content: "★"; font-size: 0.75rem; letter-spacing: 0; }
+}
+@media (max-width: 640px) { .directorio { align-items: stretch; } }   /* en el móvil, todas las tarjetas a todo el ancho */
+/* Directorio como rejilla alineada (03/11/2026): «Tu nómina» a doble altura a la izquierda y 2 filas de 2 a la derecha.
+   Las tarjetas de una fila miden lo mismo y el enlace a la guía queda siempre abajo, alineado. */
+.directorio { grid-template-columns: repeat(3, 1fr); grid-auto-rows: auto; align-items: stretch; }
+.dir-grupo { display: flex; flex-direction: column; }
+.dir-grupo .dir-guia { margin-top: auto; padding-top: 10px; }        /* el enlace a la guía, empujado al fondo de la tarjeta */
+.dir-grupo.dir-nomina { grid-row: span 2; }
+@media (max-width: 960px) { .directorio { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .directorio { display: flex; flex-direction: column; } .dir-grupo.dir-nomina { grid-row: auto; } }
