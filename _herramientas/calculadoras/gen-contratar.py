@@ -34,29 +34,75 @@ RESET = "document.getElementById('reset').onclick=function(){document.getElement
 MOSTRAR = "document.getElementById('result').classList.add('visible');document.getElementById('result').scrollIntoView({behavior:'smooth'});"
 
 # ================================================================ 1. COSTE DE UN TRABAJADOR PARA LA EMPRESA
-filas = ''.join(f'<tr><td>{e(b)} €</td><td><strong>{e(coste(b))} €</strong></td><td>{e(coste(b) / 12)} €</td><td>{e(coste(b) - b)} €</td><td>{e(S[b]["neto"] / 12)} €</td></tr>' for b in (18000, 20000, 25000, 30000, 35000, 40000, 50000) if b in S)
+# Responde a la vez a «cuánto cuesta alguien que cobra X € brutos» y «… X € netos» (el neto se pasa a bruto con el
+# mismo motor que neto-a-bruto), compara indefinido y temporal y da el coste por hora y por jornada.
+def bruto_de_neto(neto_anual):
+    """Bruto anual que deja ese neto (indefinido, sin hijos): el MISMO cálculo que hace la página en el navegador
+    (datos-2026.js + irpf-2026.js con node), para que la tabla y la calculadora den la misma cifra."""
+    import subprocess
+    js = (f"const fs=require('fs'),vm=require('vm');vm.runInThisContext(fs.readFileSync('{RAIZ}/datos-2026.js','utf8').replace('const DATOS','globalThis.DATOS'));"
+          f"vm.runInThisContext(fs.readFileSync('{RAIZ}/irpf-2026.js','utf8'));"
+          "const neto=b=>calcularRetencion({bruto:b,contrato:'indefinido',hijos:0,situacion:3}).neto;"
+          f"let lo=0,hi={neto_anual}*3;for(let i=0;i<60;i++){{const m=(lo+hi)/2;if(neto(m)<{neto_anual})lo=m;else hi=m;}}console.log(Math.round(hi));")
+    return int(subprocess.run(['node', '-e', js], capture_output=True, text=True, check=True).stdout)
+redondea = lambda x, a=10: round(x / a) * a
+SMI = 17094
+EJ = [  # (búsqueda, bruto anual)
+    ('1.500 € brutos al mes en 12 pagas', 18000), ('1.500 € brutos al mes en 14 pagas', 21000),
+    ('1.500 € netos al mes en 12 pagas', bruto_de_neto(18000)), ('1.500 € netos al mes en 14 pagas', bruto_de_neto(21000)),
+    ('20.000 € brutos al año', 20000), ('25.000 € brutos al año', 25000), ('30.000 € brutos al año', 30000), ('Salario mínimo (SMI) a jornada completa', SMI)]
+f_ej = ''.join(f'<tr><td>{t}</td><td>{e(b)} €</td><td><strong>{e(coste(b))} €</strong></td><td>{e(coste(b) / 12)} €</td></tr>' for t, b in EJ)
+f_jor = ''.join(f'<tr><td>{h} horas{" (media jornada)" if h == 20 else " (completa)" if h == 40 else ""}</td><td>{e(SMI * h / 40)} €</td><td><strong>{e(coste(SMI * h / 40))} €</strong></td><td>{e(coste(SMI * h / 40) / 12)} €</td><td>{e(coste(SMI * h / 40) / (h * 52), 2)} €</td></tr>' for h in (10, 15, 20, 25, 30, 40))
 c30 = coste(30000)
-cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">💼 Empresa 2026</div><h1>¿Cuánto cuesta contratar a un trabajador?<br><span class="highlight">Calculadora del coste para la empresa en 2026</span></h1>
-            <p class="respuesta-corta"><span>⚡ Respuesta rápida</span>Un trabajador cuesta a la empresa su sueldo bruto más <strong>alrededor de un 31-32 %</strong> de Seguridad Social. Con <strong>30.000 € brutos al año, unos {e(c30)} €</strong> ({e(c30 / 12)} € al mes), y él cobra unos {e(S[30000]["neto"] / 12)} € netos al mes.</p>
+B_MES, SS_MES = 2000, 2000 * (EMPRESA + AT_OFICINA)                          # ejemplo de la caja visual (bruto al mes, 12 pagas)
+N24 = S[24000]['neto'] / 12; SST24 = S[24000]['ss'] / 12; IRPF24 = S[24000]['irpf'] / 12
+b15n = bruto_de_neto(18000)
+
+cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">💼 Empresa 2026</div><h1>¿Cuánto cuesta contratar a un trabajador?<br><span class="highlight">Calcula el coste para la empresa, desde el bruto o desde el neto</span></h1>
+            <p class="respuesta-corta"><span>⚡ Respuesta rápida</span>Un trabajador cuesta su sueldo bruto más <strong>un 31,65 %</strong> de Seguridad Social de la empresa (oficina, contrato indefinido). Quien cobra <strong>1.500 € brutos al mes (12 pagas)</strong> cuesta {e(coste(18000))} € al año; quien cobra <strong>1.500 € netos</strong>, unos {e(coste(b15n))} €.</p>
             {REV}</div></section>
 
     <section class="calc-section"><div class="container"><div class="card">
         <div class="card-title"><div class="card-icon">💼</div>Datos del puesto</div>
         <form id="calc">
             <div class="form-grid">
-                <div class="form-group"><label class="form-label" for="bruto">Sueldo bruto al año (€)</label><input type="number" class="form-input" id="bruto" placeholder="30000" min="1" step="100" required><span class="form-hint">Con las pagas extra incluidas</span></div>
+                <div class="form-group"><label class="form-label" for="importe">Sueldo (€)</label><input type="number" class="form-input" id="importe" placeholder="1500" min="1" step="0.01" required></div>
+                <div class="form-group"><label class="form-label" for="tipo">Ese sueldo es…</label><select class="form-select" id="tipo"><option value="brutoMes">Bruto al mes</option><option value="netoMes">Neto al mes (lo que cobra)</option><option value="brutoAnual">Bruto al año</option></select></div>
+                <div class="form-group" id="pagasGrupo"><label class="form-label" for="pagas">Número de pagas</label><select class="form-select" id="pagas"><option value="12">12 (pagas extra repartidas)</option><option value="14">14 (dos pagas extra)</option></select></div>
                 <div class="form-group"><label class="form-label" for="contrato">Tipo de contrato</label><select class="form-select" id="contrato"><option value="indefinido">Indefinido</option><option value="temporal">Temporal</option></select></div>
-                <div class="form-group"><label class="form-label" for="at">Actividad (accidentes de trabajo)</label><select class="form-select" id="at"><option value="1">Oficina (1 %)</option><option value="1.5">Comercio y servicios (aprox. 1,5 %)</option><option value="3.5">Industria y transporte (aprox. 3,5 %)</option><option value="6.7">Construcción (6,7 %)</option></select><span class="form-hint">Depende de la actividad de la empresa</span></div>
-                <div class="form-group"><label class="form-label" for="horas">Horas a la semana (opcional)</label><input type="number" class="form-input" id="horas" placeholder="40" min="1" max="60"><span class="form-hint">Para ver el coste por hora</span></div>
+                <div class="form-group"><label class="form-label" for="at">Actividad (accidentes de trabajo)</label><select class="form-select" id="at"><option value="1">Oficina (1 %)</option><option value="1.5">Comercio y servicios (aprox. 1,5 %)</option><option value="3.5">Industria y transporte (aprox. 3,5 %)</option><option value="6.7">Construcción (6,7 %)</option></select></div>
+                <div class="form-group"><label class="form-label" for="horas">Horas a la semana</label><input type="number" class="form-input" id="horas" value="40" min="1" max="40" step="0.5"><span class="form-hint">Media jornada: 20. Pon el sueldo que cobra con esa jornada</span></div>
             </div>
             <button type="submit" class="btn">Calcular el coste</button>
             <p class="btn-text">100% privado · Tus datos no salen de tu dispositivo</p>
         </form>
-        {resultado('Coste total al año para la empresa', [('💶 Sueldo bruto', 'rBruto', ''), ('🏛️ Seguridad Social de la empresa', 'rSS', 'bruto'), ('💵 Lo que cobra el trabajador (neto)', 'rNeto', 'exento')])}
+        {resultado('Coste total al año para la empresa', [('💶 Sueldo bruto al año', 'rBruto', ''), ('🏛️ Seguridad Social de la empresa', 'rSS', 'bruto'), ('💵 Lo que cobra el trabajador (neto)', 'rNeto', 'exento')])}
     </div></div></section>
 ''' + AD + f'''
     <section class="section"><div class="container"><article class="seo-section">
-<h2>🧮 Qué paga la empresa además del sueldo</h2>
+<h2>🧮 Sueldo bruto y coste para la empresa: la diferencia</h2>
+<p>Con un sueldo de {e(B_MES)} € brutos al mes (12 pagas), oficina y contrato indefinido:</p>
+<div class="calc-steps">
+    <div class="calc-step"><span class="step-num">1</span><div><strong>Sueldo bruto: {e(B_MES)} €</strong><p>Lo que se pacta en el contrato, antes de descontar nada al trabajador.</p></div></div>
+    <div class="calc-step"><span class="step-num">2</span><div><strong>+ Seguridad Social de la empresa: {e(SS_MES)} €</strong><p>El {pcs(EMPRESA + AT_OFICINA)} del bruto. Lo paga la empresa aparte.</p></div></div>
+    <div class="calc-step"><span class="step-num">3</span><div><strong>= Coste para la empresa: {e(B_MES + SS_MES)} €</strong><p>Al año, {e((B_MES + SS_MES) * 12)} €.</p></div></div>
+</div>
+<p>Del bruto, al trabajador le descuentan su Seguridad Social (unos {e(SST24)} €) y la retención de IRPF (unos {e(IRPF24)} €), y cobra unos <strong>{e(N24)} € netos</strong>. El <strong>IRPF no es un coste más para la empresa</strong>: sale del sueldo bruto del trabajador; la empresa solo lo retiene y lo ingresa en Hacienda.</p>
+
+<h2>📋 Ejemplos: cuánto paga la empresa</h2>
+<div class="tabla-wrap"><table class="tabla-festivos tabla-texto"><thead><tr><th>Si el trabajador cobra…</th><th>Bruto al año</th><th>Coste para la empresa</th><th>Coste al mes</th></tr></thead><tbody>{f_ej}</tbody></table></div>
+<p class="nota-corta">Contrato indefinido, oficina (1 % de accidentes de trabajo), sin bonificaciones. Del neto al bruto: sin hijos, con el mismo cálculo que la <a href="neto-a-bruto">calculadora de neto a bruto</a>.</p>
+<p>Ojo con las pagas: <strong>1.500 € en 12 pagas son 18.000 € al año, y en 14 pagas, 21.000 €</strong>: no es el mismo sueldo. En cambio, un mismo sueldo anual cuesta lo mismo a la empresa cobrado en 12 o en 14 pagas: solo cambia cuándo se paga.</p>
+
+<h2>⏰ Contratar a media jornada o por horas</h2>
+<p>Con el salario mínimo de 2026 en proporción a las horas:</p>
+<div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Horas a la semana</th><th>Bruto al año</th><th>Coste para la empresa</th><th>Coste al mes</th><th>Coste por hora</th></tr></thead><tbody>{f_jor}</tbody></table></div>
+<p class="nota-corta">A tiempo parcial se cotiza por lo que se cobra, con una base mínima por hora. Si el convenio paga más que el SMI o hay complementos, pon el sueldo real en la calculadora.</p>
+
+<h2>⚖️ Indefinido o temporal</h2>
+<p>El temporal cuesta algo más: la empresa paga un <strong>6,70 % de desempleo en vez del 5,50 %</strong> (1,2 puntos más), y en contratos de menos de 30 días, una cotización extra al darlos de baja. Con 30.000 € brutos son {e(30000 * 0.012)} € más al año. Eso sí, el tipo de contrato no se elige por precio: el temporal solo se puede usar en los casos que permite la ley.</p>
+
+<h2>🏛️ Qué paga la empresa además del sueldo</h2>
 <div class="tabla-wrap"><table class="tabla-festivos tabla-texto"><thead><tr><th>Concepto</th><th>Tipo en 2026</th></tr></thead><tbody>
 <tr><td>Contingencias comunes</td><td>23,60 %</td></tr>
 <tr><td>Desempleo</td><td>5,50 % (6,70 % con contrato temporal)</td></tr>
@@ -66,43 +112,54 @@ cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}
 <tr><td>Accidentes de trabajo y enfermedades profesionales</td><td>Según la actividad: 1 % en oficinas, 6,70 % en construcción</td></tr>
 <tr><td><strong>Total</strong></td><td><strong>{pcs(EMPRESA)} + accidentes de trabajo</strong></td></tr>
 </tbody></table></div>
-<p>Se paga sobre el sueldo bruto mensual con las pagas extra repartidas, hasta la <strong>base máxima de {e(BASE_MAX, 2)} € al mes</strong>. Por encima, solo se paga la cuota de solidaridad, más pequeña.</p>
-<h2>📋 Coste de un trabajador según el sueldo</h2>
-<div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Sueldo bruto al año</th><th>Coste para la empresa</th><th>Coste al mes</th><th>Seguridad Social empresa</th><th>Neto del trabajador al mes</th></tr></thead><tbody>{filas}</tbody></table></div>
-<p class="nota-corta">Contrato indefinido, trabajo de oficina (1 % de accidentes de trabajo), neto en 12 pagas sin hijos. Mira cómo se reparte cada euro en nuestro <a href="informe-sueldo-coste-empresa-2026">informe del coste de un trabajador</a>.</p>
+<p>Se paga sobre el sueldo bruto mensual con las pagas extra repartidas, hasta la <strong>base máxima de {e(BASE_MAX, 2)} € al mes</strong>; por encima, solo la cuota de solidaridad. Mira cómo se reparte cada euro en nuestro <a href="informe-sueldo-coste-empresa-2026">informe del coste de un trabajador</a>.</p>
 </article></div></section>
 
 {SCRIPTS}<script>
-// Coste para la empresa: bruto + cotización de la empresa (tipos de datos-2026.js) + accidentes de trabajo; neto con el motor de irpf-2026.js
-{F2}document.getElementById('calc').onsubmit=function(ev){{
+// Coste para la empresa: bruto + cotización de la empresa (datos-2026.js) + accidentes de trabajo. Neto con irpf-2026.js.
+{F2}const ssEmpresa=(b,contrato,at)=>{{
+    const c=DATOS.cotizacion, mes=b/12;
+    let ss=Math.min(mes,c.baseMaximaMes)*(c.empresa+at+(contrato==='temporal'?0.012:0)), desde=c.baseMaximaMes;   // temporal: desempleo 6,70 % en vez de 5,50 %
+    for(const [hasta,t] of c.solidaridad){{ if(mes<=desde)break; ss+=(Math.min(mes,hasta)-desde)*t*5; desde=hasta; }}  // solidaridad: la empresa paga 5 de cada 6 partes
+    return ss*12;
+}};
+const neto=(b,contrato)=>calcularRetencion({{bruto:b,contrato:contrato,hijos:0,situacion:3}}).neto;
+// Del neto al bruto: búsqueda por mitades con el mismo motor (como la calculadora de neto a bruto)
+function brutoDeNeto(netoAnual,contrato){{ let lo=0,hi=netoAnual*3; for(let i=0;i<60;i++){{const m=(lo+hi)/2; if(neto(m,contrato)<netoAnual)lo=m; else hi=m;}} return Math.round(hi); }}
+document.getElementById('tipo').onchange=function(){{document.getElementById('pagasGrupo').style.display=this.value==='brutoAnual'?'none':''}};
+document.getElementById('calc').onsubmit=function(ev){{
     ev.preventDefault();
-    const b=+document.getElementById('bruto').value, contrato=document.getElementById('contrato').value, at=+document.getElementById('at').value/100, h=+document.getElementById('horas').value;
-    if(!b){{document.getElementById('bruto').focus();return}}
-    const c=DATOS.cotizacion, mes=b/12, base=Math.min(mes,c.baseMaximaMes);
-    let tipo=c.empresa+at+(contrato==='temporal'?0.012:0);                 // temporal: desempleo 6,70 % en vez de 5,50 %
-    let ssMes=base*tipo, desde=c.baseMaximaMes;
-    for(const [hasta,t] of c.solidaridad){{ if(mes<=desde)break; ssMes+=(Math.min(mes,hasta)-desde)*t*5; desde=hasta; }}   // solidaridad: la empresa paga 5 de cada 6 partes
-    const ss=ssMes*12, total=b+ss, r=calcularRetencion({{bruto:b,contrato:contrato,hijos:0,situacion:3}});
+    const x=+document.getElementById('importe').value, tipo=document.getElementById('tipo').value, pagas=+document.getElementById('pagas').value;
+    const contrato=document.getElementById('contrato').value, at=+document.getElementById('at').value/100, h=+document.getElementById('horas').value||40;
+    if(!x){{document.getElementById('importe').focus();return}}
+    const b=tipo==='brutoAnual'?x:tipo==='brutoMes'?x*pagas:brutoDeNeto(x*pagas,contrato);
+    const ss=ssEmpresa(b,contrato,at), total=b+ss, n=neto(b,contrato);
+    const otro=contrato==='indefinido'?'temporal':'indefinido', totalOtro=b+ssEmpresa(b,otro,at);
     document.getElementById('total').textContent=f0(total);
-    document.getElementById('resultSub').textContent=f0(total/12)+' al mes · el sueldo más un '+(ss/b*100).toLocaleString('es-ES',{{maximumFractionDigits:1}})+' %';
-    document.getElementById('rBruto').textContent=f0(b);
+    document.getElementById('resultSub').textContent=f0(total/12)+' al mes · el sueldo más un '+(ss/b*100).toLocaleString('es-ES',{{maximumFractionDigits:2}})+' %';
+    document.getElementById('rBruto').textContent=f0(b)+(tipo==='netoMes'?' (calculado desde el neto)':'');
     document.getElementById('rSS').textContent='+'+f0(ss);
-    document.getElementById('rNeto').textContent=f0(r.neto)+' ('+f0(r.neto/12)+' al mes)';
-    document.getElementById('details').innerHTML=`<div class="result-item"><p class="result-item-label">De cada 100 € que cuesta</p><p class="result-item-value">${{Math.round(r.neto/total*100)}} € llegan al trabajador</p></div><div class="result-item"><p class="result-item-label">Seguridad Social total</p><p class="result-item-value">${{f0(ss+r.ss)}} al año</p></div>`+(h?`<div class="result-item"><p class="result-item-label">Coste por hora</p><p class="result-item-value">${{f2(total/(h*52))}}</p></div>`:'');
+    document.getElementById('rNeto').textContent=f0(n/pagas)+' al mes en '+(tipo==='brutoAnual'?12:pagas)+' pagas';
+    document.getElementById('details').innerHTML=`<div class="result-item"><p class="result-item-label">Con contrato ${{otro}}</p><p class="result-item-value">${{f0(totalOtro)}} (${{totalOtro>total?'+':''}}${{f0(totalOtro-total)}})</p></div><div class="result-item"><p class="result-item-label">Coste por hora (${{h.toLocaleString('es-ES')}} h/semana)</p><p class="result-item-value">${{f2(total/(h*52))}}</p></div><div class="result-item"><p class="result-item-label">De cada 100 € que cuesta</p><p class="result-item-value">${{Math.round(n/total*100)}} € llegan al trabajador</p></div>`;
     {MOSTRAR}
 }};
-{RESET}</script>
+document.getElementById('reset').onclick=function(){{document.getElementById('calc').reset();document.getElementById('pagasGrupo').style.display='';document.getElementById('result').classList.remove('visible');window.scrollTo({{top:0,behavior:'smooth'}})}};
+</script>
 '''
 faqs = [
-    ('¿Cuánto cuesta un trabajador a la empresa en 2026?', f'Su sueldo bruto más alrededor de un <strong>31-32 %</strong> de Seguridad Social (más en construcción). Con 30.000 € brutos, unos <strong>{e(c30)} € al año</strong>.'),
-    ('¿Cuánto paga la empresa de Seguridad Social por un trabajador?', f'Un <strong>{pcs(EMPRESA)}</strong> del sueldo bruto (hasta la base máxima) más el tipo de accidentes de trabajo de su actividad, que va del 1 % en oficinas al 6,70 % en construcción.'),
-    ('¿Cuánto cuesta contratar a alguien por el salario mínimo?', f'Con el SMI de 2026 (17.094 € al año), unos <strong>{e(coste(17094))} € al año</strong> para la empresa, {e(coste(17094) / 12)} € al mes.'),
+    ('¿Cuánto paga una empresa por un trabajador de 1.500 € brutos?', f'En 12 pagas (18.000 € al año), <strong>{e(coste(18000))} € al año</strong>, {e(coste(18000) / 12)} € al mes. En 14 pagas (21.000 € al año), {e(coste(21000))} €. Oficina y contrato indefinido.'),
+    ('¿Cuánto cuesta a la empresa alguien que cobra 1.500 € netos?', f'Para cobrar 1.500 € netos al mes en 12 pagas hacen falta unos {e(b15n)} € brutos al año, así que a la empresa le cuesta unos <strong>{e(coste(b15n))} € al año</strong> ({e(coste(b15n) / 12)} € al mes).'),
+    ('¿Cuánto cuesta un trabajador con 20.000 € brutos al año?', f'Unos <strong>{e(coste(20000))} € al año</strong> para la empresa ({e(coste(20000) / 12)} € al mes), con contrato indefinido en una oficina.'),
+    ('¿Cuánto cuesta contratar a media jornada?', f'Con el salario mínimo a media jornada (20 horas, {e(SMI / 2)} € al año), unos <strong>{e(coste(SMI / 2))} € al año</strong>, {e(coste(SMI / 2) / 12)} € al mes.'),
+    ('¿Cuesta más un trabajador con 14 pagas que con 12?', '<strong>No</strong>, si el sueldo anual es el mismo: las pagas extra se cotizan repartidas en los 12 meses. Lo que cambia es cuándo se paga. Pero 1.500 € en 14 pagas son más sueldo al año que 1.500 € en 12.'),
+    ('¿El IRPF del trabajador lo paga la empresa?', '<strong>No</strong>: sale del sueldo bruto del trabajador. La empresa solo lo retiene de la nómina y lo ingresa en Hacienda; no es un coste añadido.'),
+    ('¿Cuánto cuesta un trabajador a la empresa en 2026?', f'Su sueldo bruto más un <strong>{pcs(EMPRESA)}</strong> de Seguridad Social y el tipo de accidentes de trabajo de su actividad (del 1 % al 6,70 %). Con 30.000 € brutos, unos {e(c30)} € al año.'),
     ('¿Cuesta más un contrato temporal?', 'Sí: la cotización por desempleo de la empresa es del <strong>6,70 %</strong> en vez del 5,50 %, y en contratos de menos de 30 días se paga además una cotización adicional al darlos de baja.'),
 ]
 fuente = '<a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724" target="_blank" rel="noopener">Ley General de la Seguridad Social</a> y orden de cotización de 2026 (tipos y bases); tarifa de accidentes de trabajo de la disposición adicional 4.ª de la Ley 42/2006.'
 pagina('coste-trabajador', 'Coste de un trabajador para la empresa 2026: calculadora',
-       f'¿Cuánto cuesta contratar a un trabajador? El sueldo más un 31-32 % de Seguridad Social: con 30.000 € brutos, unos {e(c30)} € al año. Calcula el coste exacto.',
-       'coste trabajador empresa, cuanto cuesta contratar a un trabajador, calculadora coste empresa, coste empresa trabajador 2026, seguridad social empresa',
+       f'¿Cuánto cuesta contratar a un trabajador? Desde el sueldo bruto o el neto: con 1.500 € brutos al mes, {e(coste(18000))} € al año. Media jornada, temporal e indefinido.',
+       'coste trabajador empresa, cuanto cuesta contratar a un trabajador, cuanto paga una empresa por un trabajador de 1500 euros, coste empresa sueldo 20000, coste media jornada, calculadora coste empresa 2026',
        [('Coste de un trabajador', None)], cuerpo, faqs, fuente)
 sitemap('coste-trabajador')
 
