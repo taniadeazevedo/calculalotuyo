@@ -4411,7 +4411,7 @@ a.btn .ico { margin-right: 0; }
 /* Pie reorganizado (27/10/2026): marca + Calculadoras · Guías · Datos 2026 · CalculaLoTuyo */
 .footer-grid-4 { grid-template-columns: 1.4fr repeat(4, 1fr); gap: 32px; }
 @media (max-width: 1000px) { .footer-grid-4 { grid-template-columns: 1fr 1fr; } .footer-grid-4 .footer-brand { grid-column: 1 / -1; } }
-@media (max-width: 600px) { .footer-grid-4 { grid-template-columns: 1fr 1fr; text-align: left; } }   /* en el móvil, dos columnas: más corto */
+@media (max-width: 600px) { .footer-grid-4 { grid-template-columns: 1fr 1fr; text-align: center; } }   /* en el móvil, dos columnas: más corto; todo centrado (texto de la marca y enlaces de dos líneas) */
 
 /* Fila de tabla a la que se llega desde una dirección antigua (#anos-7, #sueldo-1500…): resaltada y visible bajo la cabecera */
 .tabla-festivos tr[id] { scroll-margin-top: 170px; }
