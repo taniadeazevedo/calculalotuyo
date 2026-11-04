@@ -1,6 +1,6 @@
 # Generadores del calendario
 
-Esta carpeta empieza por `_`, así que GitHub Pages no la publica.
+Esta carpeta no se publica: `netlify-build.sh` la deja fuera al preparar la web para Netlify.
 
 - `boe/f2027.json`: festivos 2027 sacados de la tabla del BOE (BOE-A-2026-21254).
 - `build-puentes.py`: monta `puentes-2027.html` con `p-head.html`, `p-main.html` y `p-script.html`.

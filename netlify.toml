@@ -1,4 +1,11 @@
-# Configuración de Netlify (dónde está alojada la web desde el 03/11/2026)
+# Configuración de Netlify (dónde está alojada la web desde el 04/11/2026)
 [build]
-  command = "bash _herramientas/cloudflare-build.sh"   # prepara la carpeta dist sin herramientas internas
+  command = "bash _herramientas/netlify-build.sh"   # prepara la carpeta dist sin herramientas internas
   publish = "dist"                                     # carpeta que se publica
+
+# La dirección de prueba de Netlify manda siempre al dominio real (evita contenido duplicado en Google)
+[[redirects]]
+  from = "https://calculalotuyo.netlify.app/*"   # cualquier página de la dirección .netlify.app
+  to = "https://calculalotuyo.es/:splat"         # va a la misma página en calculalotuyo.es
+  status = 301                                   # redirección permanente
+  force = true                                   # aunque el archivo exista
