@@ -167,9 +167,9 @@ ARTICULOS = [
         ('¿Cuándo es Semana Santa en 2027?', 'El <strong>Jueves Santo es el 25 de marzo</strong> y el <strong>Viernes Santo el 26</strong>. El Lunes de Pascua (29 de marzo) es festivo solo en algunas comunidades.')],
   fuentes=f'{boe("BOE-A-2026-21254", "Resolución de 8 de octubre de 2026, de la Dirección General de Trabajo")} (BOE núm. 254, de 13 de octubre de 2026).',
   kw='festivos 2027, calendario laboral 2027, festivos nacionales 2027, puentes 2027, semana santa 2027'),
- dict(slug='subida-pensiones-2027', fecha='2026-10-22', actualizado='2026-11-02', tema='Pensiones',
-  titulo=f'Subida de las pensiones 2027: un {pc(CENTRAL)} según el IPC',   # con la cifra en el título: es lo que hace clicar
-  desc=f'Las pensiones subirían en enero de 2027 en torno a un {pc(CENTRAL)} con el IPC hasta octubre: con 1.200 € al mes, unos {e(1200 * CENTRAL / 100, 0)} € más. Escenarios y cómo se calcula.',
+ dict(slug='subida-pensiones-2027', fecha='2026-10-22', actualizado='2026-11-05', tema='Pensiones',
+  titulo=f'Subida de las pensiones 2027 con el IPC: un {pc(CENTRAL)} y tabla',   # con la cifra y «tabla»: así se busca (Search Console, 05/11/2026)
+  desc=f'Las pensiones subirían en enero de 2027 un {pc(CENTRAL)} con el IPC hasta octubre: con 1.200 € al mes, unos {e(1200 * CENTRAL / 100, 0)} € más. Tabla de pensiones 2027 y escenarios.',
   h1='¿Cuánto subirán las pensiones en 2027?', sub=f'En torno a un {pc(CENTRAL)}, según el IPC de 2026',
   img=['Pensiones 2027', f'subirían en torno a un {pc(CENTRAL)}'],
   resumen=[f'Las pensiones contributivas suben cada enero lo mismo que la <strong>media del IPC de diciembre a noviembre</strong> (art. 58 de la Ley General de la Seguridad Social).',
@@ -185,16 +185,20 @@ ARTICULOS = [
 <h2>🔮 Tres escenarios para 2027</h2>
 <div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Si el IPC de noviembre es del…</th><th>Las pensiones subirían</th><th>Pensión máxima en 2027</th></tr></thead><tbody>{''.join(f'<tr><td>{pc(o)}</td><td><strong>{pc(r, 2)}</strong></td><td>{e(PENSION_MAX * (1 + r / 100), 2)} € al mes</td></tr>' for o, r in ESC)}</tbody></table></div>
 <p class="nota-corta">Cálculo propio con los datos oficiales del INE. Es una estimación: el porcentaje definitivo lo fija el Gobierno con el IPC de noviembre.</p>
-<h2>💶 Cuánto más cobrarías al mes</h2>
-<div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Pensión en 2026</th><th>Con una subida del {pc(CENTRAL)}</th><th>Al mes</th><th>Al año (14 pagas)</th></tr></thead><tbody>{''.join(f'<tr><td>{e(p)} €</td><td><strong>{e(p * (1 + CENTRAL / 100), 2)} €</strong></td><td>+{e(p * CENTRAL / 100, 2)} €</td><td>+{e(p * CENTRAL / 100 * 14)} €</td></tr>' for p in (800, 1000, 1200, 1500, 2000, 2500))}</tbody></table></div>
+<h2>📋 Tabla de pensiones 2027: cuánto cobrarás</h2>
+<p>Busca tu pensión de 2026 (bruta, al mes) y mira cuánto cobrarías desde enero de 2027 con una subida del {pc(CENTRAL)}:</p>
+<div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Pensión en 2026</th><th>Pensión en 2027</th><th>Al mes</th><th>Al año (14 pagas)</th></tr></thead><tbody>{''.join(f'<tr><td>{e(p, 2 if p % 1 else 0)} €{" (máxima)" if p == PENSION_MAX else ""}</td><td><strong>{e(p * (1 + CENTRAL / 100), 2)} €</strong></td><td>+{e(p * CENTRAL / 100, 2)} €</td><td>+{e(p * CENTRAL / 100 * 14)} €</td></tr>' for p in (600, 700, 800, 900, 1000, 1100, 1200, 1300, 1500, 1800, 2000, 2500, 3000, PENSION_MAX))}</tbody></table></div>
+<p class="nota-corta">Pensiones contributivas (jubilación, viudedad, incapacidad…), en bruto. Si te retienen IRPF, la subida neta es algo menor. Las no contributivas y las mínimas se fijan aparte.</p>
 <h2>⏳ Qué falta por saber</h2>
 <ul><li>El <strong>IPC de noviembre</strong>: el adelantado a finales de noviembre y el definitivo a mediados de diciembre.</li><li>El porcentaje lo aprueba el Gobierno y se aplica en la nómina de <strong>enero de 2027</strong>.</li><li>Las pensiones <strong>no contributivas</strong> y las mínimas pueden tener subidas distintas: se fijan aparte.</li></ul>
 <p>Actualizaremos este artículo con cada dato nuevo del INE.</p>''',
   faqs=[('¿Cuánto subirán las pensiones en 2027?', f'Con los datos del IPC hasta octubre, en torno a un <strong>{pc(CENTRAL)}</strong> (entre un {pc(ESC[0][1])} y un {pc(ESC[2][1])} según el IPC de noviembre). El dato exacto se sabrá a mediados de diciembre.'),
+        ('¿Qué IPC se usa para subir las pensiones en 2027?', f'La <strong>media del IPC de diciembre de 2025 a noviembre de 2026</strong>. Con los datos hasta octubre (último, 4,9 %), sale un {pc(CENTRAL)}; falta el de noviembre.'),
+        ('¿Cuánto será la pensión máxima en 2027?', f'Unos <strong>{e(PENSION_MAX * (1 + CENTRAL / 100), 2)} € al mes</strong> (14 pagas) si sube un {pc(CENTRAL)}, desde los {e(PENSION_MAX, 2)} € de 2026. Lo confirmarán los Presupuestos o un real decreto.'),
         ('¿Cómo se calcula la subida de las pensiones?', 'Es la media de las tasas anuales del IPC de diciembre del año anterior a noviembre del año en curso (art. 58 de la Ley General de la Seguridad Social).'),
         ('¿Cuándo se cobra la subida de las pensiones de 2027?', 'En la nómina de enero de 2027, una vez el Gobierno apruebe el porcentaje con el IPC de noviembre.')],
   fuentes=f'{boe("BOE-A-2015-11724", "Ley General de la Seguridad Social, art. 58", True)}; <a href="https://www.ine.es/dyngs/Prensa/adIPC1026.htm" target="_blank" rel="noopener">INE: IPC adelantado de octubre de 2026</a>, {ine("09", "IPC de septiembre")} y notas de enero a agosto; pensión máxima de 2026: {boe("BOE-A-2026-2548", "Real Decreto-ley 3/2026")}.',
-  kw='subida pensiones 2027, cuánto suben las pensiones 2027, revalorización pensiones 2027, pensión máxima 2027'),
+  kw='subida pensiones 2027, tabla pensiones 2027, ipc pensiones 2027, cuánto suben las pensiones 2027, revalorización pensiones 2027, pensión máxima 2027'),
 
  dict(slug='deduccion-alquiler-renta', fecha='2026-10-22', actualizado='2026-11-02', tema='Impuestos',
   titulo='Nueva deducción del 10 % por alquiler en la renta',

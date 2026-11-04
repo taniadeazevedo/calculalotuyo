@@ -13,7 +13,7 @@ anos = lambda a: f'{a} {"año" if a == 1 else "años"}'                         
 
 # Porcentaje de subida de las pensiones, leído del propio artículo (así cambia solo cuando cambia el IPC)
 _pen = open('subida-pensiones-2027.html', encoding='utf-8').read()
-PENSIONES = re.search(r'Subida de las pensiones 2027: un ([\d,]+ %)', _pen).group(1)   # «3,59 %»
+PENSIONES = re.search(r'Subida de las pensiones 2027[^<]*?un ([\d,]+ %)', _pen).group(1)   # «3,59 %»
 
 # Página → enlaces del bloque «También te puede interesar» (dirección, texto)
 TAMBIEN = {
