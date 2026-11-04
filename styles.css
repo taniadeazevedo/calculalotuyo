@@ -4917,3 +4917,24 @@ main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }
 }
 .tabla-festivos td strong { white-space: nowrap; }
 .tabla-festivos:not(.tabla-texto) td:not(:first-child) { white-space: nowrap; }   /* columnas de cifras: el «€» nunca se queda solo en otra línea */
+
+/* ===== Tono más sobrio (05/11/2026, elegido por Tania: opción B) =====
+   El mismo morado de la marca, más profundo, y fondos grises con un ligero toque morado (en vez de lila claro).
+   Las etiquetas «Nuevo» y «Más usada», discretas. El logo no cambia. */
+:root { --accent: #3730A3; --accent-h: #312E81; --franja: #F2F1F7; --bg: #F3F2F8; --bg2: #E7E6EF; --border: #E3E2EC; }
+.hero-mini, .page-header, .guide-header, .hero-clean, .hero-clean.hero-situaciones { background-image: linear-gradient(180deg, #EFEEF6 0%, var(--fondo) 100%); }
+.result-hero { background: linear-gradient(135deg, #1E1B4B 0%, #3730A3 100%); }
+.art-calcula, .example-icon { background: #3730A3; }
+.dir-etiqueta, .dir-etiqueta.dir-nuevo, .calc-item-badge, .calc-item-badge.nuevo { background: transparent; color: var(--muted); border: 1px solid var(--border-h); }
+.dir-etiqueta.dir-nuevo { color: #B45309; border-color: color-mix(in srgb, #B45309 35%, transparent); }   /* «Nuevo»: solo el texto en naranja oscuro, sin fondo */
+.footer { background: #17153A; }
+.barra-celda { background: linear-gradient(90deg, var(--accent) var(--v), color-mix(in srgb, var(--accent) 14%, transparent) var(--v)); }
+/* Detalles en el morado vivo del logo (05/11/2026): el tono general es sobrio, pero los acentos pequeños llevan el color de la marca */
+:root { --marca: #4F46E5; }
+.dir-etiqueta:not(.dir-nuevo) { background: var(--marca); color: #fff; border-color: var(--marca); }   /* «Más usada» (la estrella en el móvil) */
+.dir-grupo h3 .ico { background: var(--marca); }                     /* iconos de los grupos de calculadoras */
+.step-num { background: var(--marca); }                               /* números de los pasos */
+.card-icon { color: var(--marca); }
+.respuesta-corta { border-left-color: var(--marca); }
+.respuesta-corta > span { color: var(--marca); }                     /* etiqueta «RESPUESTA RÁPIDA» */
+.seo-section h2 .ico, .art-cuerpo h2 .ico { color: var(--marca); }   /* iconos de los títulos */

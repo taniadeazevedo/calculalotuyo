@@ -39,10 +39,10 @@
 <script>
 // Cada versión: nombre, explicación, colores de muestra y el CSS que se pone encima de la web
 const VERSIONES = [
-    { nombre: 'A · La actual', texto: 'Morado vivo, franjas y cajas en lila claro.', muestras: ['#4F46E5', '#F1EFFF', '#1A1840'], css: '' },
-    { nombre: 'B · Sobria (mismo morado, más oscuro)', texto: 'El mismo color, más profundo; fondos en gris frío y etiquetas discretas.', muestras: ['#3730A3', '#F3F3F7', '#17153A'], css: `
-        :root { --accent:#3730A3 !important; --accent-h:#312E81 !important; --franja:#F3F3F7 !important; }
-        .hero-mini, .page-header, .guide-header, .hero-clean, .hero-clean.hero-situaciones { background-image: linear-gradient(180deg,#F0F0F6 0%,#fff 100%) !important; }
+    { nombre: 'A · La de antes', texto: 'Morado vivo, franjas y cajas en lila claro.', muestras: ['#4F46E5', '#F1EFFF', '#1A1840'], css: `:root { --accent:#4F46E5 !important; --accent-h:#4338CA !important; --franja:#F1EFFF !important; --bg:#F3F3F8 !important; } .hero-mini, .page-header, .guide-header, .hero-clean { background-image: linear-gradient(180deg,#ECEAFF 0%,#fff 100%) !important; } .result-hero { background: linear-gradient(135deg,#312E81 0%,#4F46E5 100%) !important; } .footer { background:#1A1840 !important; }` },
+    { nombre: 'B · Sobria (la elegida, ya en la web)', texto: 'El mismo color, más profundo; fondos grises con un toque morado y etiquetas discretas.', muestras: ['#3730A3', '#F2F1F7', '#17153A'], css: `
+        :root { --accent:#3730A3 !important; --accent-h:#312E81 !important; --franja:#F2F1F7 !important; --bg:#F3F2F8 !important; }
+        .hero-mini, .page-header, .guide-header, .hero-clean, .hero-clean.hero-situaciones { background-image: linear-gradient(180deg,#EFEEF6 0%,#fff 100%) !important; }
         .result-hero { background: linear-gradient(135deg,#1E1B4B 0%,#3730A3 100%) !important; }
         .art-calcula, .example-icon { background: #3730A3 !important; }
         .dir-etiqueta, .calc-item-badge { background: transparent !important; color: #4B5563 !important; border: 1px solid #D1D5DB !important; }

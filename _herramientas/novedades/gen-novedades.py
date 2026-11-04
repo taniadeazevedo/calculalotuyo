@@ -177,7 +177,7 @@ ARTICULOS = [
   img=['Pensiones 2027', f'subirían en torno a un {pc(CENTRAL)}'],
   resumen=[f'<strong>Última hora (5 de noviembre):</strong> con el IPC adelantado de octubre (4,9 %), la subida de 2027 rondaría el <strong>{pc(CENTRAL, 2)}</strong>. El IPC definitivo de octubre sale a mediados de noviembre y el de noviembre, a mediados de diciembre.',
            f'Las pensiones contributivas suben cada enero lo mismo que la <strong>media del IPC de diciembre a noviembre</strong> (art. 58 de la Ley General de la Seguridad Social).',
-           f'Con los datos del INE hasta octubre (4,9 %, igual que septiembre), la subida de 2027 rondaría el <strong>{pc(ESC[0][1])}–{pc(ESC[2][1])}</strong>.',
+           f'Con los datos del INE hasta octubre (4,9 %, igual que septiembre), la subida de 2027 rondaría el <strong>{pc(ESC[0][1], 2)}–{pc(ESC[2][1], 2)}</strong>.',
            'El dato exacto se sabrá a <strong>mediados de diciembre</strong>, cuando el INE publique el IPC de noviembre.'],
   calculadoras=[('jubilacion', '🌅 Calcula tu jubilación'), ('obligado-a-declarar-renta', '🧾 Con pensión, ¿tienes que hacer la renta?')],
   cuerpo=lambda: f'''
@@ -196,7 +196,7 @@ ARTICULOS = [
 <h2>⏳ Qué falta por saber</h2>
 <ul><li>El <strong>IPC de noviembre</strong>: el adelantado a finales de noviembre y el definitivo a mediados de diciembre.</li><li>El porcentaje lo aprueba el Gobierno y se aplica en la nómina de <strong>enero de 2027</strong>.</li><li>Las pensiones <strong>no contributivas</strong> y las mínimas pueden tener subidas distintas: se fijan aparte.</li></ul>
 <p>Actualizaremos este artículo con cada dato nuevo del INE.</p>''',
-  faqs=[('¿Cuánto subirán las pensiones en 2027?', f'Con los datos del IPC hasta octubre, en torno a un <strong>{pc(CENTRAL)}</strong> (entre un {pc(ESC[0][1])} y un {pc(ESC[2][1])} según el IPC de noviembre). El dato exacto se sabrá a mediados de diciembre.'),
+  faqs=[('¿Cuánto subirán las pensiones en 2027?', f'Con los datos del IPC hasta octubre, en torno a un <strong>{pc(CENTRAL)}</strong> (entre un {pc(ESC[0][1], 2)} y un {pc(ESC[2][1], 2)} según el IPC de noviembre). El dato exacto se sabrá a mediados de diciembre.'),
         ('¿Qué IPC se usa para subir las pensiones en 2027?', f'La <strong>media del IPC de diciembre de 2025 a noviembre de 2026</strong>. Con los datos hasta octubre (último, 4,9 %), sale un {pc(CENTRAL)}; falta el de noviembre.'),
         ('¿Cuánto será la pensión máxima en 2027?', f'Unos <strong>{e(PENSION_MAX * (1 + CENTRAL / 100), 2)} € al mes</strong> (14 pagas) si sube un {pc(CENTRAL)}, desde los {e(PENSION_MAX, 2)} € de 2026. Lo confirmarán los Presupuestos o un real decreto.'),
         ('¿Cómo se calcula la subida de las pensiones?', 'Es la media de las tasas anuales del IPC de diciembre del año anterior a noviembre del año en curso (art. 58 de la Ley General de la Seguridad Social).'),
