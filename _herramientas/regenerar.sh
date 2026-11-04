@@ -28,6 +28,8 @@ python3 _herramientas/irpf/gen-tramos-ccaa.py   # tramos del IRPF de Madrid y Bi
 python3 _herramientas/autonomos/gen-colaborador.py   # «Autónomo colaborador 2026»
 python3 _herramientas/situaciones/gen-situaciones.py   # «Baja de 15 días: cuánto cobro» y otras situaciones concretas
 python3 _herramientas/que-hacer/gen-que-hacer.py   # guía «Qué hacer si te despiden»
+python3 _herramientas/calculadoras/gen-contratar.py   # coste de un trabajador, sueldo por horas e IVA
+python3 _herramientas/hogar/gen-radiador.py   # prueba de «Hogar»: consumo de un radiador
 python3 _herramientas/alquiler/gen-alquiler.py   # calculadora de subida del alquiler (IRAV e IPC: añadir el dato nuevo cada mes)
 python3 _herramientas/novedades/gen-novedades.py   # sección Novedades (artículos, portada, RSS)
 python3 _herramientas/jubilacion/gen-pensiones-minimas.py   # «Pensión mínima y máxima 2026» (después de novedades: usa la subida de 2027)

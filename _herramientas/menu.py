@@ -11,13 +11,13 @@ FLECHA_M = FLECHA.replace('width="10" height="10"', 'width="12" height="12"')   
 GRUPOS = [
     ('💶 Sueldo y nómina', [('sueldo-neto', '🏦 Sueldo neto'), ('neto-a-bruto', '🔁 Neto a bruto'), ('irpf', '📑 Retención de IRPF'),
                            ('horas-extra', '⏰ Horas extra'), ('pagas-extra', '🎁 Pagas extra'), ('vacaciones', '🏖️ Vacaciones'),
-                           ('subida-ipc', '📈 Subida del IPC'), ('reduccion-jornada', '🕒 Reducción de jornada'),
+                           ('subida-ipc', '📈 Subida del IPC'), ('reduccion-jornada', '🕒 Reducción de jornada'), ('sueldo-por-horas', '⏰ Sueldo por horas'),
                            ('sueldo-funcionario-2026', '🏛️ Sueldo de funcionarios')]),
     ('⚖️ Despido y paro', [('despido-improcedente', '⚖️ Despido improcedente'), ('despido-objetivo', '📋 Despido objetivo'),
                           ('ere', '📊 ERE / colectivo'), ('finiquito', '💵 Finiquito'), ('paro', '📊 Paro')]),
     ('🩺 Bajas y jubilación', [('baja-medica', '🩺 Baja médica'), ('jubilacion', '🌅 Jubilación'), ('jubilacion-flexible', '⏳ Jubilación flexible')]),
-    ('💼 Autónomos', [('cuota-autonomos', '💼 Cuota de autónomos'), ('facturas', '🧾 Facturas')]),
-    ('🏠 Vivienda', [('subida-alquiler', '🏠 Subida del alquiler')]),
+    ('💼 Autónomos y empresas', [('cuota-autonomos', '💼 Cuota de autónomos'), ('facturas', '🧾 Facturas'), ('calculadora-iva', '🧾 Calculadora de IVA'), ('coste-trabajador', '💶 Coste de un trabajador')]),
+    ('🏠 Vivienda y hogar', [('subida-alquiler', '🏠 Subida del alquiler'), ('consumo-radiador-electrico', '⚡ Consumo de un radiador')]),
 ]
 CALENDARIO = [('calendario-laboral-2027', '📆 Calendario laboral 2027'), ('dias-laborables', '📅 Días laborables'), ('puentes-2027', '🗓️ Puentes 2027')]
 HACIENDA = [('obligado-a-declarar-renta', '🧾 ¿Tengo que hacer la renta?'), ('tramos-irpf-2026', '📊 Tramos del IRPF 2026'), ('loteria-navidad-hacienda', '🎄 Lotería: cuánto se queda Hacienda')]

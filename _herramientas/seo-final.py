@@ -19,7 +19,7 @@ SECCIONES = [
 # ---- 2) Calculadoras (las 16 laborales y las 2 del calendario)
 CALCULADORAS = ['despido-improcedente', 'despido-objetivo', 'ere', 'finiquito', 'paro', 'sueldo-neto', 'irpf', 'horas-extra',
                 'pagas-extra', 'vacaciones', 'subida-ipc', 'cuota-autonomos', 'facturas', 'baja-medica', 'reduccion-jornada',
-                'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion', 'obligado-a-declarar-renta', 'loteria-navidad-hacienda', 'subida-alquiler', 'jubilacion-flexible']
+                'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion', 'obligado-a-declarar-renta', 'loteria-navidad-hacienda', 'subida-alquiler', 'jubilacion-flexible', 'coste-trabajador', 'sueldo-por-horas', 'calculadora-iva', 'consumo-radiador-electrico']
 
 VERSION_OG = 2                                  # súbelo cuando cambien las imágenes para compartir (logo nuevo: 2, 21/10/2026)
 cambiadas = 0

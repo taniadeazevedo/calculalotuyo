@@ -24,11 +24,16 @@ TAMBIEN = {
     'irpf': [('tramos-irpf-2026', 'Tramos del IRPF 2026'), ('tramos-irpf-madrid-2026', 'Tramos del IRPF en Madrid'), ('tramos-irpf-bizkaia-2026', 'IRPF en Bizkaia (foral)')],
     'cuota-autonomos': [('autonomo-colaborador', 'Autónomo colaborador: bonificación del 50 %'), ('tarifa-plana-autonomos-2026', 'Tarifa plana 2026'), ('guia-autonomos', 'Guía del primer año como autónomo')],
     'guia-autonomos': [('autonomo-colaborador', 'Autónomo colaborador 2026'), ('cuota-autonomos', 'Calcula tu cuota de autónomos')],
+    'facturas': [('calculadora-iva', 'Calculadora de IVA: sumar y quitar el IVA'), ('cuota-autonomos', 'Cuota de autónomos 2026')],
+    'horas-extra': [('sueldo-por-horas', 'Calcula tu sueldo por horas'), ('sueldo-neto', 'Tu sueldo neto')],
+    'informe-sueldo-coste-empresa-2026': [('coste-trabajador', 'Calcula el coste de un trabajador'), ('sueldo-neto', 'Calcula un sueldo neto')],
+    'coste-trabajador': [('sueldo-por-horas', 'Sueldo por horas'), ('sueldo-neto', 'Sueldo neto'), ('calculadora-iva', 'Calculadora de IVA')],
+    'subida-alquiler': [('consumo-radiador-electrico', 'Cuánto te cuesta la calefacción con un radiador'), ('deduccion-alquiler-renta', 'Deducción del alquiler en la renta'), ('ipc-actual', 'IPC actual')],
     'paro': [('iprem-2026', 'IPREM 2026: 600 € al mes'), ('tabla-paro-2026', 'Tabla del paro 2026'), ('paro-maximo-minimo-2026', 'Paro máximo y mínimo 2026')],
     'vacaciones': [('puente-diciembre-2026', 'Puente de diciembre 2026: ¿es festivo el 7?'), ('puentes-2027', 'Los mejores puentes de 2027')],
     'dias-laborables': [('puente-diciembre-2026', 'Puente de diciembre 2026: ¿es festivo el 7?'), ('calendario-laboral-2027', 'Calendario laboral 2027')],
     'calendario-laboral-2027': [('puente-diciembre-2026', 'Puente de diciembre 2026: dónde es festivo el lunes 7'), ('puentes-2027', 'Los mejores puentes de 2027')],
-    'sueldo-neto': [('subida-ipc', 'Cuánto debería subir tu sueldo con el IPC'), ('sueldo-funcionario-2026', 'Sueldo de un funcionario 2026'), ('reduccion-jornada', 'Reducción de jornada: cuánto cobras')],
+    'sueldo-neto': [('sueldo-por-horas', 'Tu sueldo por horas'), ('coste-trabajador', 'Lo que le cuestas a tu empresa'), ('subida-ipc', 'Cuánto debería subir tu sueldo con el IPC'), ('sueldo-funcionario-2026', 'Sueldo de un funcionario 2026'), ('reduccion-jornada', 'Reducción de jornada: cuánto cobras')],
     'finiquito': [('tabla-indemnizacion-despido', 'Tabla de indemnización por despido'), ('indemnizacion-despido-7-anos', 'Despido con 7 años'), ('indemnizacion-despido-10-anos', 'Despido con 10 años')],
 }
 # Páginas con la lista de antigüedades (debajo del enlace a la tabla de indemnización)

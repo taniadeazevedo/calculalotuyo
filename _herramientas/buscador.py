@@ -9,7 +9,7 @@ except FileNotFoundError: NOVEDADES = set()
 def tipo(slug):
     """Categoría, icono y peso (las calculadoras salen antes que las páginas de detalle)."""
     calc = {'despido-improcedente', 'despido-objetivo', 'ere', 'finiquito', 'paro', 'sueldo-neto', 'irpf', 'horas-extra', 'pagas-extra',
-            'vacaciones', 'subida-ipc', 'cuota-autonomos', 'facturas', 'baja-medica', 'reduccion-jornada', 'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion', 'obligado-a-declarar-renta', 'loteria-navidad-hacienda', 'subida-alquiler', 'jubilacion-flexible'}
+            'vacaciones', 'subida-ipc', 'cuota-autonomos', 'facturas', 'baja-medica', 'reduccion-jornada', 'neto-a-bruto', 'dias-laborables', 'puentes-2027', 'jubilacion', 'obligado-a-declarar-renta', 'loteria-navidad-hacienda', 'subida-alquiler', 'jubilacion-flexible', 'coste-trabajador', 'sueldo-por-horas', 'calculadora-iva', 'consumo-radiador-electrico'}
     if slug in calc: return 'Calculadora', '🧮', 3
     if slug == 'novedades' or slug in NOVEDADES: return 'Novedad', '📰', 1.8
     if slug.startswith('modelo'): return 'Modelo gratis', '📄', 2.2

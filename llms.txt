@@ -29,6 +29,9 @@ Los resultados son orientativos y no sustituyen el asesoramiento de un abogado l
 - IRPF por territorio (2026): Madrid, escala autonómica del 8,5 % al 20,5 % (tipo total con la estatal, del 18 % al 45 %), Decreto Legislativo 1/2010 art. 1; Bizkaia, escala foral del 23 % al 49 % en 8 tramos y minoración de cuota de 1.615 €, Norma Foral 13/2013 arts. 75-77. [Tramos IRPF Madrid](https://calculalotuyo.es/tramos-irpf-madrid-2026), [tramos IRPF Bizkaia](https://calculalotuyo.es/tramos-irpf-bizkaia-2026).
 - Autónomo colaborador familiar: bonificación del 50 % durante 18 meses y del 25 % durante 6 meses de la cuota por contingencias comunes de la base mínima del tramo 1, si no estuvo de alta en los 5 años anteriores (Ley 20/2007, art. 35). [Autónomo colaborador](https://calculalotuyo.es/autonomo-colaborador).
 
+- Coste de un trabajador para la empresa (2026): sueldo bruto + 30,65 % de cotización (contingencias comunes 23,60; desempleo 5,50, o 6,70 temporal; FP 0,60; FOGASA 0,20; MEI 0,75) + accidentes de trabajo según actividad (1 % oficinas, 6,70 % construcción), hasta la base máxima de 5.101,20 €/mes. Con 30.000 € brutos y trabajo de oficina, unos 39.495 € al año. [Calculadora](https://calculalotuyo.es/coste-trabajador).
+- [Sueldo por horas](https://calculalotuyo.es/sueldo-por-horas): bruto anual ÷ (horas semanales × 52); con 30.000 € y 40 h, 14,42 € brutos por hora. [Calculadora de IVA](https://calculalotuyo.es/calculadora-iva): sumar = × 1,21; quitar = ÷ 1,21 (tipos 21, 10 y 4 %).
+
 ## Calendario laboral 2027
 
 - Festivos comunes a toda España en 2027 (9): 1 y 6 de enero, Viernes Santo (26 de marzo), 1 de mayo, 12 de octubre, 1 de noviembre, 6, 8 y 25 de diciembre. Cada comunidad completa hasta 12, más 2 fiestas locales. Fuente: BOE del 13 de octubre de 2026 (BOE-A-2026-21254).
