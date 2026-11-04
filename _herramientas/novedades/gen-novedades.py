@@ -247,7 +247,7 @@ ARTICULOS = [
   resumen=[f'El IPC de <strong>{MES_LARGO} de 2026 es del {pc(IPC[-1][1])}</strong> (tasa anual, dato {ESTADO_IPC} del INE), igual que en septiembre y el más alto desde febrero de 2023.',
            'Para no perder poder de compra, un sueldo tendría que subir más o menos lo mismo. <strong>Nadie está obligado por ley a subirlo</strong>: depende de tu convenio o tu contrato.',
            'Las <strong>pensiones</strong> subirán en enero según la media del IPC del año, y los <strong>funcionarios</strong> tienen asegurado un 0,5 % extra.'],
-  calculadoras=[('subida-ipc', '📈 Calcula cuánto debería subir tu sueldo'), ('sueldo-neto', '🏦 Tu sueldo neto'), ('subida-pensiones-2027', '👵 Cuánto subirán las pensiones')],
+  calculadoras=[('subida-ipc', '📈 Calcula cuánto debería subir tu sueldo'), ('subida-alquiler', '🏠 Cuánto te pueden subir el alquiler'), ('subida-pensiones-2027', '👵 Cuánto subirán las pensiones')],
   cuerpo=lambda: f"""
 <h2>📌 ¿Cuál es el IPC actual?</h2>
 <p>Según el INE, la tasa anual del IPC en <strong>{MES_LARGO} de 2026 es del {pc(IPC[-1][1])}</strong> ({ESTADO_IPC}, publicado el {FECHA_IPC}). Es la misma que en septiembre y la más alta desde febrero de 2023. La subyacente (sin alimentos frescos ni energía) está en el 3,1 %. Lo que más empuja son los carburantes.</p>

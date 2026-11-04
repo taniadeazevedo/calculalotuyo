@@ -16,6 +16,7 @@ python3 _herramientas/calendario/gen-seo.py >/dev/null
 python3 _herramientas/calendario/build-puentes.py
 python3 _herramientas/modelos/gen-modelos.py   # sin python-docx/openpyxl solo rehace las páginas, no los archivos
 python3 _herramientas/jubilacion/gen-jubilacion.py
+python3 _herramientas/jubilacion/gen-edad.py   # «Edad de jubilación 2027»
 python3 _herramientas/informe/gen-informe.py
 python3 _herramientas/renta/gen-renta.py
 python3 _herramientas/navidad/gen-navidad.py
@@ -24,6 +25,7 @@ python3 _herramientas/metodologia/gen-metodologia.py
 python3 _herramientas/irpf/gen-tramos.py   # página «Tramos del IRPF 2026»
 python3 _herramientas/situaciones/gen-situaciones.py   # «Baja de 15 días: cuánto cobro» y otras situaciones concretas
 python3 _herramientas/que-hacer/gen-que-hacer.py   # guía «Qué hacer si te despiden»
+python3 _herramientas/alquiler/gen-alquiler.py   # calculadora de subida del alquiler (IRAV e IPC: añadir el dato nuevo cada mes)
 python3 _herramientas/novedades/gen-novedades.py   # sección Novedades (artículos, portada, RSS)
 python3 _herramientas/consolidar.py      # páginas de plantilla unidas en sus tablas (24/10/2026)
 python3 _herramientas/seo-final.py

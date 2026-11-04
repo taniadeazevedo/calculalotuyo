@@ -23,6 +23,7 @@ RESPUESTAS = {
     'reduccion-jornada': 'Para cuidar de un hijo menor de 12 años puedes reducir <strong>entre un octavo y la mitad de tu jornada</strong>, con la misma reducción en el sueldo (art. 37.6 del Estatuto de los Trabajadores).',
     'neto-a-bruto': 'Para cobrar <strong>1.500 € netos al mes en 12 pagas necesitas unos 22.100 € brutos al año</strong> (2026, sin hijos). Para 2.000 € netos, unos 31.300 €.',
     'dias-laborables': 'Cuenta los días laborables entre dos fechas <strong>descontando los fines de semana y los festivos de tu comunidad</strong> (calendario oficial del BOE para 2026 y 2027).',
+    'subida-alquiler': 'Si el año de contrato se cumple <strong>entre el 8 de octubre de 2026 y el 31 de diciembre de 2027</strong>, te pueden subir el alquiler <strong>como mucho un 2 %</strong>, salvo que pactéis otra cosa (Real Decreto-ley 29/2026). Si tu contrato no dice nada, no sube.',   # revisar si el Congreso no convalida el RDL
     'jubilacion': 'En 2027 te jubilas a los <strong>67 años, o a los 65 si tienes 38 años y 6 meses cotizados</strong>. Necesitas 15 años cotizados para tener pensión y 37 para cobrar el 100 %.',
 }
 

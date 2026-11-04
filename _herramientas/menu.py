@@ -17,6 +17,7 @@ GRUPOS = [
                           ('ere', '📊 ERE / colectivo'), ('finiquito', '💵 Finiquito'), ('paro', '📊 Paro')]),
     ('🩺 Bajas y jubilación', [('baja-medica', '🩺 Baja médica'), ('jubilacion', '🌅 Jubilación')]),
     ('💼 Autónomos', [('cuota-autonomos', '💼 Cuota de autónomos'), ('facturas', '🧾 Facturas')]),
+    ('🏠 Vivienda', [('subida-alquiler', '🏠 Subida del alquiler')]),
 ]
 CALENDARIO = [('calendario-laboral-2027', '📆 Calendario laboral 2027'), ('dias-laborables', '📅 Días laborables'), ('puentes-2027', '🗓️ Puentes 2027')]
 HACIENDA = [('obligado-a-declarar-renta', '🧾 ¿Tengo que hacer la renta?'), ('tramos-irpf-2026', '📊 Tramos del IRPF 2026'), ('loteria-navidad-hacienda', '🎄 Lotería: cuánto se queda Hacienda')]

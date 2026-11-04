@@ -4893,10 +4893,13 @@ main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }
     .cta-calc-boton { justify-content: center; }
 }
 .guide-content .respuesta-corta { max-width: none; margin: 0 0 24px; padding: 20px 24px; }   /* en las guías, la caja de respuestas con el mismo ancho que el recuadro «Calcula…» y las tablas */
-/* Tablas de las guías: el mismo estilo que las de los artículos (tarjeta, cabecera de color, filas alternas) */
-.guide-content .tabla-wrap { border: 1px solid var(--border); border-radius: 14px; overflow-x: auto; margin: 12px 0 1.2em; background: var(--card); }
-.guide-content .tabla-festivos { font-size: 0.95rem; margin: 0; }
-.guide-content .tabla-festivos th { background: color-mix(in srgb, var(--accent) 10%, var(--card)); color: var(--text); font-weight: 700; padding: 12px 16px; font-size: 0.8rem; border: 0; }   /* cabecera tintada (también en modo oscuro) */
-.guide-content .tabla-festivos td { padding: 11px 16px; border: 0; border-top: 1px solid var(--border); }
-.guide-content .tabla-festivos tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--accent) 3.5%, transparent); }   /* filas alternas */
-.guide-content .tabla-festivos td strong { color: var(--accent); }   /* la cifra que importa, en morado */
+/* Tablas de las guías y de los textos de las calculadoras: el mismo estilo que las de los artículos (tarjeta, cabecera de color, filas alternas) */
+.guide-content .tabla-wrap, .seo-section .tabla-wrap { border: 1px solid var(--border); border-radius: 14px; overflow-x: auto; margin: 12px 0 1.2em; background: var(--card); }
+.guide-content .tabla-festivos, .seo-section .tabla-festivos { font-size: 0.95rem; margin: 0; }
+.guide-content .tabla-festivos th, .seo-section .tabla-festivos th { background: color-mix(in srgb, var(--accent) 10%, var(--card)); color: var(--text); font-weight: 700; padding: 12px 16px; font-size: 0.8rem; border: 0; }   /* cabecera tintada (también en modo oscuro) */
+.guide-content .tabla-festivos td, .seo-section .tabla-festivos td { padding: 11px 16px; border: 0; border-top: 1px solid var(--border); }
+.guide-content .tabla-festivos tbody tr:nth-child(even) td, .seo-section .tabla-festivos tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--accent) 3.5%, transparent); }   /* filas alternas */
+.guide-content .tabla-festivos td strong, .seo-section .tabla-festivos td strong { color: var(--accent); }   /* la cifra que importa, en morado */
+.tabla-texto td:first-child { white-space: normal; width: 42%; }   /* tablas con frases: la primera columna también se parte en líneas */
+.dir-grupo.dir-ancho { grid-column: 1 / -1; }   /* portada: Vivienda ocupa toda la fila, así no queda una tarjeta suelta */
+@media (min-width: 641px) { .dir-grupo.dir-ancho ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; } .dir-grupo.dir-ancho li:nth-child(2) a { border-top-color: transparent; } }   /* sus enlaces, en dos columnas */
