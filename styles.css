@@ -4901,8 +4901,6 @@ main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }
 .guide-content .tabla-festivos tbody tr:nth-child(even) td, .seo-section .tabla-festivos tbody tr:nth-child(even) td { background: color-mix(in srgb, var(--accent) 3.5%, transparent); }   /* filas alternas */
 .guide-content .tabla-festivos td strong, .seo-section .tabla-festivos td strong { color: var(--accent); }   /* la cifra que importa, en morado */
 .tabla-texto td:first-child { white-space: normal; width: 42%; }   /* tablas con frases: la primera columna también se parte en líneas */
-.dir-grupo.dir-ancho { grid-column: 1 / -1; }   /* portada: Vivienda ocupa toda la fila, así no queda una tarjeta suelta */
-@media (min-width: 641px) { .dir-grupo.dir-ancho ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; } .dir-grupo.dir-ancho li:nth-child(2) a { border-top-color: transparent; } }   /* sus enlaces, en dos columnas */
 /* Pasos de «Cómo se calcula» (05/11/2026): sin tarjeta dentro de tarjeta. En el ordenador, en columnas con una línea
    de color arriba, como los pasos de los ejemplos; en el móvil ya van en filas con una línea fina entre pasos. */
 @media (min-width: 601px) {
