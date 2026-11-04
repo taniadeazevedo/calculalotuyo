@@ -4903,3 +4903,12 @@ main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }
 .tabla-texto td:first-child { white-space: normal; width: 42%; }   /* tablas con frases: la primera columna también se parte en líneas */
 .dir-grupo.dir-ancho { grid-column: 1 / -1; }   /* portada: Vivienda ocupa toda la fila, así no queda una tarjeta suelta */
 @media (min-width: 641px) { .dir-grupo.dir-ancho ul { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; } .dir-grupo.dir-ancho li:nth-child(2) a { border-top-color: transparent; } }   /* sus enlaces, en dos columnas */
+/* Pasos de «Cómo se calcula» (05/11/2026): sin tarjeta dentro de tarjeta. En el ordenador, en columnas con una línea
+   de color arriba, como los pasos de los ejemplos; en el móvil ya van en filas con una línea fina entre pasos. */
+@media (min-width: 601px) {
+    .seo-section .calc-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px 24px; margin: 12px 0 28px; }
+    .seo-section .calc-step, .seo-section .calc-step:first-child { flex-direction: column; gap: 10px; padding: 14px 0 0; background: none; border: 0; border-radius: 0; border-top: 3px solid color-mix(in srgb, var(--accent) 28%, transparent); }
+}
+/* Listas de los artículos: la viñeta dentro de la columna de texto, alineada con los títulos y los párrafos */
+.art-cuerpo ul { padding-left: 1.3em; }
+.art-cuerpo ul li::marker { color: var(--accent); }
