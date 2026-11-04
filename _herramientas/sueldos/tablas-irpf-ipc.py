@@ -29,9 +29,11 @@ def poner_bloque(s, marca, html, antes_de):
     return s[:i] + bloque + s[i:]
 
 def poner_faqs(s, faqs):
-    """Añade preguntas al acordeón y al JSON-LD FAQPage, si aún no están."""
+    """Añade preguntas al acordeón y al JSON-LD FAQPage; si ya están, cambia la respuesta (las cifras cambian cada mes)."""
     for q, a in faqs:
-        if q in s: continue
+        qe = re.escape(q)
+        s = re.sub(rf'<div class="faq-item"><button class="faq-q"><span>{qe}</span>.*?</div></div>\n', '', s, count=1, flags=re.S)   # quita la versión anterior
+        s = re.sub(rf'\n  \{{"@type": "Question", "name": "{qe}".*?\}}\}},', '', s, count=1)                                       # y su marcado para Google
         item = f'<div class="faq-item"><button class="faq-q"><span>{q}</span>{FLECHA}</button><div class="faq-a"><p>{a}</p></div></div>\n'
         s = s.replace('<div class="faq-list">', '<div class="faq-list">\n' + item, 1)            # la primera de la lista
         ld = json.dumps({'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': limpio(a)}}, ensure_ascii=False)
@@ -96,19 +98,25 @@ f = os.path.join(RAIZ, 'subida-ipc.html'); s = open(f, encoding='utf-8').read()
 nuevo = lambda b: b * (1 + IPC / 100)
 ipc_txt = f'{IPC:g}'.replace('.', ',') + ' %'                       # «2,9 %»
 factor = f'{1 + IPC / 100:.3f}'.replace('.', ',')                   # «1,029»
-s = cabecera(s, f'Subida salarial IPC {ANIO_IPC + 1}: calcula cuánto sube tu nómina',
-    f'Calcula cuánto debe subir tu nómina con el IPC: con el {ipc_txt} de {ANIO_IPC}, 28.000 € pasan a {e(nuevo(28000))} €. Tabla por sueldo y cómo negociar la subida salarial.',
+# Último IPC mensual publicado por el INE: es lo que busca la gente ahora («IPC actual»). Cambiarlo cada mes
+# (el adelantado sale a final de mes y el definitivo a mediados del siguiente). Ojo: también en novedades/gen-novedades.py (IPC).
+MES_ULTIMO, IPC_ULTIMO, NOTA_ULTIMO = 'octubre de 2026', 4.9, 'dato adelantado del INE del 30 de octubre de 2026'
+ya = lambda b: b * (1 + IPC_ULTIMO / 100)                            # sueldo si sube lo que el último IPC
+ult_txt = f'{IPC_ULTIMO:g}'.replace('.', ',') + ' %'                # «4,9 %»
+s = cabecera(s, f'Subida salarial IPC: calcula tu nómina (IPC actual {ult_txt})',
+    f'Calcula cuánto debe subir tu sueldo con el IPC: con el {ult_txt} de {MES_ULTIMO.split(" de ")[0]}, 28.000 € pasan a {e(ya(28000))} €; con el {ipc_txt} de {ANIO_IPC}, a {e(nuevo(28000))} €. Tabla por sueldo.',
     f'<h1>Calcula la subida del IPC en tu nómina<br><span class="highlight">¿cuánto debería subir tu sueldo en {ANIO_IPC + 1}?</span></h1>')
-filas = ''.join(f'<tr><td>{e(b)} €</td><td><strong>{e(nuevo(b))} €</strong></td><td>+{e(nuevo(b) - b)} €</td><td>+{e((nuevo(b) - b) / 14)} €</td><td>+{e((nuevo(b) - b) / 12)} €</td></tr>' for b in [18000, 20000, 22000, 25000, 28000, 30000, 35000, 40000, 45000, 50000])
+filas = ''.join(f'<tr><td>{e(b)} €</td><td><strong>{e(nuevo(b))} €</strong></td><td>+{e((nuevo(b) - b) / 14)} €</td><td><strong>{e(ya(b))} €</strong></td><td>+{e((ya(b) - b) / 14)} €</td></tr>' for b in [18000, 20000, 22000, 25000, 28000, 30000, 35000, 40000, 45000, 50000])
 tabla = f'''<!-- tabla de subida con el último IPC -->
-<h2>📋 Tu subida con el IPC de {ANIO_IPC} ({ipc_txt})</h2>
-<p>Para no perder poder de compra en {ANIO_IPC + 1}, tu sueldo bruto tendría que subir un <strong>{ipc_txt}</strong>, el IPC de diciembre de {ANIO_IPC} (INE). Así queda cada sueldo:</p>
-<div class="tabla-wrap"><table class="tabla-festivos tabla-sueldos"><thead><tr><th>Sueldo bruto al año</th><th>Con la subida</th><th>Al año</th><th>Al mes (14 pagas)</th><th>Al mes (12 pagas)</th></tr></thead><tbody>{filas}</tbody></table></div>
-<p><strong>Cómo calcularlo a mano:</strong> multiplica tu sueldo bruto por {factor}. Por ejemplo, 28.000 € × {factor} = {e(nuevo(28000))} €. En la nómina de cada mes lo notarás en el salario base y los complementos que suban por convenio; el neto sube algo menos, porque una parte se va en IRPF y Seguridad Social (mírala en la <a href="sueldo-neto">calculadora de sueldo neto</a>).</p>
+<h2>📋 Tu subida con el IPC: el de {ANIO_IPC} ({ipc_txt}) y el actual ({ult_txt})</h2>
+<p>Hay dos cifras que importan. La que usan casi todos los convenios para revisar el sueldo de {ANIO_IPC + 1} es el <strong>IPC de diciembre de {ANIO_IPC}: {ipc_txt}</strong>. La inflación de ahora es más alta: el <strong>IPC de {MES_ULTIMO} es del {ult_txt}</strong> ({NOTA_ULTIMO}), y es la referencia para negociar la subida del año que viene. Así queda cada sueldo con una y otra:</p>
+<div class="tabla-wrap"><table class="tabla-festivos tabla-sueldos"><thead><tr><th>Sueldo bruto al año</th><th>Con el {ipc_txt} ({ANIO_IPC})</th><th>Al mes (14 pagas)</th><th>Con el {ult_txt} (actual)</th><th>Al mes (14 pagas)</th></tr></thead><tbody>{filas}</tbody></table></div>
+<p><strong>Cómo calcularlo a mano:</strong> multiplica tu sueldo bruto por {factor} (o por {f"{1 + IPC_ULTIMO / 100:.3f}".replace(".", ",")} con el IPC actual). Por ejemplo, 28.000 € × {factor} = {e(nuevo(28000))} €. En la nómina de cada mes lo notarás en el salario base y los complementos que suban por convenio; el neto sube algo menos, porque una parte se va en IRPF y Seguridad Social (mírala en la <a href="sueldo-neto">calculadora de sueldo neto</a>).</p>
 '''
 s = poner_bloque(s, 'TABLA-IPC', tabla, '<h2><svg class="ico" aria-hidden="true"><use href="/iconos.svg#i-file-text"/></svg> Cómo suben los sueldos en la práctica</h2>')
 s = poner_faqs(s, [
     (f'¿Cuánto me sube la nómina con el IPC de {ANIO_IPC}?', f'Un <strong>{ipc_txt}</strong> del bruto si tu convenio o tu contrato lo actualizan con el IPC. Con 28.000 € brutos al año, son {e(nuevo(28000) - 28000)} € más al año, unos {e((nuevo(28000) - 28000) / 14)} € al mes en 14 pagas.'),
+    (f'¿Cuál es el IPC actual?', f'El IPC de <strong>{MES_ULTIMO}</strong> es del <strong>{ult_txt}</strong> ({NOTA_ULTIMO}). Si tu sueldo subiera lo mismo, con 28.000 € brutos ganarías {e(ya(28000) - 28000)} € más al año. Para la revisión de los convenios cuenta el IPC de diciembre.'),
     (f'¿Cuál será el IPC de {ANIO_IPC + 1}?', f'El INE publica el dato adelantado de diciembre a finales de ese mes y el definitivo a mediados de enero de {ANIO_IPC + 2}. Es el que usan muchos convenios para la revisión salarial; hasta entonces, la referencia es el {ipc_txt} de {ANIO_IPC}.'),
 ])
 open(f, 'w', encoding='utf-8').write(s)

@@ -12,7 +12,7 @@ SM = R['sueldosMes']
 EJ = 2000                                               # sueldo de ejemplo (brutos al mes en 14 pagas)
 REV = REVISADO.format(fecha='19 de octubre de 2026')
 FUENTE = 'Arts. 49.1.c, 53.1.b y 56 del <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430" target="_blank">Estatuto de los Trabajadores</a> (12, 20 y 33 días por año) y su disposición transitoria 11.ª (45 días por año hasta el 11 de febrero de 2012). Mismo cálculo que nuestra calculadora de despido improcedente.'
-PAGINAS = []   # 24/10/2026: «despido con X años» unidas en tabla-indemnizacion-despido (ver consolidar.py)
+PAGINAS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20]   # 04/11/2026: recuperadas (estaban en el top 10 de Google); cada una con su bloque «años y meses»
 slug = lambda a: f'indemnizacion-despido-{a}-anos'
 anos = lambda a: f'{a} {"año" if a == 1 else "años"}'
 dias_txt = lambda d: e(d, 0 if float(d).is_integer() else 2)
@@ -41,6 +41,15 @@ for a in PAGINAS:
     else:
         pre = ''
         cuenta_imp = f'33 × {a} = {dias_txt(d_imp)} días'
+    if ej['pre']:
+        meses_html = ''                                                # con tramos antes/después de 2012 el prorrateo cambia: lo hace la calculadora
+    else:
+        fm = ''.join(f'<tr><td>{anos(a)}{f" y {m} meses" if m else ""}</td><td>{dias_txt(round(33 * (a + m / 12), 2))}</td><td><strong>{e(ej["diario"] * 33 * (a + m / 12))} €</strong></td><td>{e(ej["diario"] * min(20 * (a + m / 12), 365))} €</td></tr>' for m in (0, 3, 6, 9))
+        meses_html = f'''<h2>⏱️ Si llevas {anos(a)} y unos meses</h2>
+<p>Los meses sueltos también cuentan: la ley reparte los días por meses (art. 56.1 del Estatuto). Cada mes de más suma <strong>2,75 días</strong> de salario si el despido es improcedente y 1,67 si es objetivo. Con {e(EJ)} € brutos al mes:</p>
+<div class="tabla-wrap"><table class="tabla-festivos tabla-sueldos"><thead><tr><th>Antigüedad</th><th>Días (improcedente)</th><th>Improcedente</th><th>Objetivo</th></tr></thead><tbody>{fm}</tbody></table></div>
+<p class="nota-corta">Un mes empezado cuenta como mes entero. Para tu fecha exacta, usa la <a href="despido-improcedente">calculadora de despido</a>.</p>
+'''
     cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}<div class="hero-badge">⚖️ Despido 2026</div><h1>Despido con {anos(a)} de antigüedad<br><span class="highlight">{dias_txt(d_imp)} días de salario</span></h1><p>Si te despiden después de {anos(a)} en la empresa, te corresponden <strong>{dias_txt(d_imp)} días de salario</strong> si el despido es improcedente y <strong>{dias_txt(d_obj)}</strong> si es objetivo.</p>
             {REV}</div></section>
 
@@ -63,6 +72,7 @@ for a in PAGINAS:
     <div class="calc-step"><span class="step-num">3</span><div><strong>Indemnización:</strong><p>Improcedente: {e(ej["diario"], 2)} × {dias_txt(d_imp)} = <strong>{e(ej["imp"])} €</strong>. Objetivo: <strong>{e(ej["obj"])} €</strong>.</p></div></div>
 </div>
 {pre}
+{meses_html}
 <h2>❔ Qué tipo de despido es el tuyo</h2>
 <ul><li><strong>Improcedente (33 días por año):</strong> cuando el despido no está justificado o no se hizo bien, porque lo reconoce la empresa o lo dice un juez.</li><li><strong>Objetivo o ERE (20 días por año):</strong> por causas económicas, técnicas, organizativas o de producción, o por ineptitud del trabajador.</li><li><strong>Disciplinario procedente:</strong> sin indemnización. Si no está justificado, pasa a ser improcedente.</li><li><strong>Fin de contrato temporal (12 días por año):</strong> cuando se acaba un contrato temporal.</li></ul>
 <p>Además de la indemnización, te tienen que pagar el <a href="finiquito">finiquito</a> (sueldo del mes, vacaciones pendientes y parte de las pagas extra). La indemnización legal no paga IRPF (hasta 180.000 €). Y con {anos(a)} cotizados {"te corresponden" if a < 6 else "te corresponde el máximo de"} <strong>{MESES_PARO(a)} meses de paro</strong>: mira <a href="tabla-paro-2026">cuánto cobrarías</a>.</p>
@@ -100,7 +110,7 @@ cuerpo = f'''    <section class="hero-mini"><div class="container">{{{{MIGAS}}}}
 <p>Busca tu antigüedad y mira los días de salario que te corresponden. Para pasarlos a euros, multiplícalos por tu <strong>salario diario</strong>: tu sueldo bruto anual con pagas extra dividido entre 365. Si llevas años sueltos y meses, cuentan también los meses: cada mes suma la doceava parte de un año.</p>
 <p>Para tu caso exacto, con tus fechas, usa la calculadora de <a href="despido-improcedente">despido improcedente</a>, la de <a href="despido-objetivo">despido objetivo</a> o la del <a href="ere">ERE</a>. Y no olvides el <a href="finiquito">finiquito</a>, que se cobra aparte.</p>
 <h2>📅 Antigüedades más buscadas</h2>
-<div class="enlaces-sueldo">{"".join(f'<a href="#anos-{p}">{anos(p)}</a>' for p in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20] if p in D)}</div>
+<div class="enlaces-sueldo">{"".join(f'<a href="{slug(p) if p in PAGINAS else f"#anos-{p}"}">{anos(p)}</a>' for p in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20] if p in D)}</div>
 </article></div></section>
 '''
 faqs = [
@@ -112,3 +122,11 @@ gen.append(pagina('tabla-indemnizacion-despido', 'Tabla de indemnización por de
 
 json.dump(gen, open(f'{AQUI}/generadas.json', 'w'))
 print(len(gen), 'páginas')
+
+# Sitemap: cada página de «despido con X años» que falte se añade sola (sitemap.py pone luego la fecha buena)
+_sm = os.path.join(AQUI, '..', '..', 'sitemap.xml')
+_s = open(_sm, encoding='utf-8').read()
+_faltan = [slug(a) for a in PAGINAS if f'/{slug(a)}<' not in _s]
+if _faltan:
+    _s = _s.replace('</urlset>', ''.join(f'    <url><loc>https://calculalotuyo.es/{p}</loc><lastmod>2026-11-04</lastmod><priority>0.7</priority></url>\n' for p in _faltan) + '</urlset>')
+    open(_sm, 'w', encoding='utf-8').write(_s)

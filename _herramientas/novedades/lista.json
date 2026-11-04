@@ -1,5 +1,13 @@
 [
  {
+  "slug": "puente-diciembre-2026",
+  "titulo": "Puente de diciembre 2026: el 7 es festivo en 10 comunidades",
+  "desc": "Puente de la Constitución 2026: el lunes 7 de diciembre es festivo en 10 comunidades y el 8 en toda España. Dónde tienes 4 días libres sin pedir vacaciones.",
+  "fecha": "2026-11-04",
+  "actualizado": "2026-11-04",
+  "tema": "Calendario"
+ },
+ {
   "slug": "elecciones-29n-pensiones-smi-2027",
   "titulo": "Elecciones 29-N: qué pasa con las pensiones y el SMI 2027",
   "desc": "Con las elecciones del 29 de noviembre, ¿subirán las pensiones y el salario mínimo en enero de 2027? Qué dice la ley, qué pasó en 2020 y qué te afecta.",
@@ -17,8 +25,8 @@
  },
  {
   "slug": "subida-pensiones-2027",
-  "titulo": "Subida de las pensiones en 2027: cuánto subirán",
-  "desc": "Con el IPC de 2026, las pensiones subirían en enero de 2027 en torno a un 3,6 %. Cómo se calcula, escenarios y cuánto más cobrarás al mes.",
+  "titulo": "Subida de las pensiones 2027: un 3,6 % según el IPC",
+  "desc": "Las pensiones subirían en enero de 2027 en torno a un 3,6 % con el IPC hasta octubre: con 1.200 € al mes, unos 43 € más. Escenarios y cómo se calcula.",
   "fecha": "2026-10-22",
   "actualizado": "2026-11-02",
   "tema": "Pensiones"

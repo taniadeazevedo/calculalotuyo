@@ -40,6 +40,12 @@ ALQ = 8400                                                              # 700 �
 FILAS_ALQ = [(22000, 17227.65), (25000, 21375.00), (28000, 24180.00), (30000, 26050.00), (35000, 30725.00)]
 ded = lambda bi: min(0.10 * min(ALQ, base_max(bi)), cuota_estatal(bi))
 
+# Lunes 7 de diciembre de 2026 (traslado del Día de la Constitución), según el BOE-A-2025-21667 (fiestas de 2026)
+PUENTE_DIC = [('Andalucía', True), ('Aragón', True), ('Asturias', True), ('Illes Balears', False), ('Canarias', False), ('Cantabria', True),
+              ('Castilla-La Mancha', False), ('Castilla y León', True), ('Cataluña', False), ('Comunitat Valenciana', False), ('Extremadura', True),
+              ('Galicia', False), ('Comunidad de Madrid', True), ('Región de Murcia', True), ('Navarra', False), ('País Vasco', False),
+              ('La Rioja', True), ('Ceuta', False), ('Melilla', True)]
+
 # ================================================================ ARTÍCULOS (el más nuevo, primero)
 # Festivos de 2027 por comunidad, leídos de festivos-2027.js (BOE-A-2026-21254): nada se escribe a mano
 import datetime as _dt, re
@@ -55,6 +61,39 @@ quien = lambda d: [k for k, v in FEST.items() if d in v]
 NOMBRE = lambda d: next(v[d] for v in FEST.values() if d in v)
 
 ARTICULOS = [
+ dict(slug='puente-diciembre-2026', fecha='2026-11-04', actualizado='2026-11-04', tema='Calendario',
+  titulo='Puente de diciembre 2026: el 7 es festivo en 10 comunidades',
+  desc='Puente de la Constitución 2026: el lunes 7 de diciembre es festivo en 10 comunidades y el 8 en toda España. Dónde tienes 4 días libres sin pedir vacaciones.',
+  h1='Puente de diciembre 2026: dónde es festivo el lunes 7', sub='Del sábado 5 al martes 8, según tu comunidad',
+  img=['Puente de diciembre', 'el 7 es festivo en 10 comunidades'],
+  resumen=['El <strong>6 de diciembre de 2026 (Día de la Constitución) cae en domingo</strong>, así que 10 comunidades lo pasan al <strong>lunes 7</strong>.',
+           'El <strong>martes 8 (Inmaculada) es festivo en toda España</strong>.',
+           f'En esas 10 comunidades tienes <strong>4 días libres seguidos sin gastar vacaciones</strong> (del sábado 5 al martes 8). En el resto, pidiendo solo el lunes 7.'],
+  calculadoras=[('dias-laborables', '📅 Cuenta tus días laborables'), ('vacaciones', '🏖️ Calcula tus días de vacaciones'), ('calendario-laboral-2027', '🗓️ Calendario laboral 2027')],
+  cuerpo=lambda: f"""
+<h2>📌 ¿Es festivo el 7 de diciembre de 2026?</h2>
+<p>Depende de tu comunidad. El Día de la Constitución (6 de diciembre) cae en domingo y cada comunidad decide si lo pasa al lunes. Según el calendario oficial del BOE, <strong>el lunes 7 de diciembre de 2026 es festivo en 10 comunidades</strong> y laborable en las demás. El <strong>martes 8 de diciembre</strong> (Inmaculada Concepción) es festivo en toda España.</p>
+<div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Comunidad</th><th>Lunes 7</th><th>Martes 8</th><th>Puente</th></tr></thead><tbody>{''.join(f'<tr><td>{c}</td><td>{"<strong>Festivo</strong>" if si else "Laborable"}</td><td><strong>Festivo</strong></td><td>{"4 días sin pedir nada" if si else "4 días pidiendo el lunes 7"}</td></tr>' for c, si in PUENTE_DIC)}</tbody></table></div>
+<p class="nota-corta">Además, tu ayuntamiento puede tener una fiesta local ese día: mira el calendario de tu municipio.</p>
+<h2>🗓️ Cómo queda el puente</h2>
+<ul>
+<li><strong>Con el lunes 7 festivo</strong> ({sum(1 for _, si in PUENTE_DIC if si)} comunidades): sábado 5, domingo 6, lunes 7 y martes 8. <strong>4 días libres sin pedir vacaciones.</strong></li>
+<li><strong>Sin el lunes 7 festivo</strong> ({sum(1 for _, si in PUENTE_DIC if not si)} comunidades y ciudades): si pides el lunes 7 de vacaciones, tienes los mismos 4 días gastando solo <strong>1 día</strong>.</li>
+<li>Si además pides del miércoles 9 al viernes 11, juntas <strong>9 días libres seguidos</strong> (del 5 al 13) con 3 o 4 días de vacaciones.</li>
+</ul>
+<h2>🎄 Los demás festivos que quedan</h2>
+<ul>
+<li><strong>Viernes 25 de diciembre</strong> (Navidad): fin de semana largo en toda España. En <strong>Cataluña y Baleares</strong>, San Esteban (26) cae en sábado.</li>
+<li><strong>Viernes 1 de enero de 2027</strong> (Año Nuevo): otro fin de semana de 3 días.</li>
+<li><strong>Miércoles 6 de enero de 2027</strong> (Reyes): festivo en toda España. Para todo 2027, mira el <a href="calendario-laboral-2027">calendario laboral 2027</a> y los <a href="puentes-2027">mejores puentes de tu comunidad</a>.</li>
+</ul>
+<h2>💶 Si trabajas el 7 o el 8</h2>
+<p>Si te toca trabajar un festivo, tu empresa tiene que <strong>pagártelo con un recargo o darte otro día de descanso</strong>, según tu convenio. Lo explicamos en <a href="trabajar-en-festivo">trabajar un festivo: cuánto se cobra</a>.</p>""",
+  faqs=[('¿Es festivo el 7 de diciembre de 2026?', 'Sí en <strong>10 comunidades</strong>: Andalucía, Aragón, Asturias, Cantabria, Castilla y León, Extremadura, Comunidad de Madrid, Región de Murcia, La Rioja y Melilla. En el resto es laborable.'),
+        ('¿Es festivo el 8 de diciembre de 2026?', 'Sí, en <strong>toda España</strong>: es la Inmaculada Concepción, fiesta nacional que no se puede cambiar. Cae en martes.'),
+        ('¿Cuántos días dura el puente de diciembre de 2026?', '<strong>4 días</strong> (del sábado 5 al martes 8) donde el lunes 7 es festivo. En las demás comunidades, también 4 si pides el lunes 7 de vacaciones.')],
+  fuentes=f'{boe("BOE-A-2025-21667", "Resolución de 17 de octubre de 2025, de la Dirección General de Trabajo, por la que se publica la relación de fiestas laborales para el año 2026")}.',
+  kw='puente diciembre 2026, puente constitución 2026, 7 diciembre 2026 festivo, festivos diciembre 2026, puente inmaculada 2026'),
  dict(slug='elecciones-29n-pensiones-smi-2027', fecha='2026-10-28', actualizado='2026-11-02', tema='Pensiones',
   titulo='Elecciones 29-N: qué pasa con las pensiones y el SMI 2027',
   desc=f'Con las elecciones del 29 de noviembre, ¿subirán las pensiones y el salario mínimo en enero de 2027? Qué dice la ley, qué pasó en 2020 y qué te afecta.',
@@ -129,8 +168,8 @@ ARTICULOS = [
   fuentes=f'{boe("BOE-A-2026-21254", "Resolución de 8 de octubre de 2026, de la Dirección General de Trabajo")} (BOE núm. 254, de 13 de octubre de 2026).',
   kw='festivos 2027, calendario laboral 2027, festivos nacionales 2027, puentes 2027, semana santa 2027'),
  dict(slug='subida-pensiones-2027', fecha='2026-10-22', actualizado='2026-11-02', tema='Pensiones',
-  titulo='Subida de las pensiones en 2027: cuánto subirán',
-  desc=f'Con el IPC de 2026, las pensiones subirían en enero de 2027 en torno a un {pc(CENTRAL)}. Cómo se calcula, escenarios y cuánto más cobrarás al mes.',
+  titulo=f'Subida de las pensiones 2027: un {pc(CENTRAL)} según el IPC',   # con la cifra en el título: es lo que hace clicar
+  desc=f'Las pensiones subirían en enero de 2027 en torno a un {pc(CENTRAL)} con el IPC hasta octubre: con 1.200 € al mes, unos {e(1200 * CENTRAL / 100, 0)} € más. Escenarios y cómo se calcula.',
   h1='¿Cuánto subirán las pensiones en 2027?', sub=f'En torno a un {pc(CENTRAL)}, según el IPC de 2026',
   img=['Pensiones 2027', f'subirían en torno a un {pc(CENTRAL)}'],
   resumen=[f'Las pensiones contributivas suben cada enero lo mismo que la <strong>media del IPC de diciembre a noviembre</strong> (art. 58 de la Ley General de la Seguridad Social).',
@@ -233,6 +272,7 @@ FLECHA = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="cu
 
 # Portada de cada artículo: cifra o idea clave grande, icono y color por tema (también es su imagen para compartir y Discover)
 PORTADAS = {
+    'puente-diciembre-2026': dict(cifra='7 y 8 dic.', texto='Puente de diciembre: dónde es festivo el lunes 7', icono='calendar-days', color=('#0F766E', '#115E59'), alt='Calendario de diciembre de 2026'),
     'subida-pensiones-2027': dict(cifra='≈ 3,6 %', texto='Lo que subirían las pensiones en enero de 2027', icono='piggy-bank', color=('#312E81', '#6D28D9'), alt='Dos mujeres mayores sentadas de espaldas en un banco, delante de una puerta antigua'),
     'deduccion-alquiler-renta': dict(cifra='10 %', texto='Del alquiler de tu casa, deducible en la renta', icono='house', color=('#0F766E', '#4F46E5'), alt='Edificios de viviendas con miradores junto a la ría de Bilbao'),
     'elecciones-29n-pensiones-smi-2027': dict(cifra='29-N', texto='Pensiones y SMI 2027: qué pasa con las elecciones', icono='landmark', color=('#4C1D95', '#6D28D9'), alt='Ilustración de un colegio electoral: personas votando en las urnas de unas elecciones generales'),

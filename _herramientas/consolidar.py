@@ -21,8 +21,7 @@ for f in glob.glob('*-euros-brutos-en-netos.html'):                     # sueldo
     if b not in SUELDOS_QUE_QUEDAN: DESTINO[f[:-5]] = (TABLA_SUELDOS[0] + f'#bruto-{b}', TABLA_SUELDOS[1])
 for f in glob.glob('paro-con-*-euros.html'):                             # todas las de «paro con X €»
     DESTINO[f[:-5]] = (TABLA_PARO[0] + '#sueldo-' + f.split('-')[2], TABLA_PARO[1])
-for f in glob.glob('indemnizacion-despido-*-ano*.html'):                 # todas las de «X años»
-    DESTINO[f[:-5]] = (TABLA_DESPIDO[0] + '#anos-' + f.split('-')[2], TABLA_DESPIDO[1])
+# 04/11/2026: las de «despido con X años» vuelven a tener página propia (estaban en el top 10 de Google): ya no se unen
 
 def pagina_traslado(destino, nombre):
     """Página mínima: lleva al momento a la tabla y le dice a Google que no la guarde (y cuál es la buena)."""

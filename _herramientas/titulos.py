@@ -25,6 +25,8 @@ TITULOS = {
                     'Calcula tu paga extra de verano o de Navidad 2026 y la parte que llevas generada si no has trabajado todo el periodo. En 14, 15 o 16 pagas.'),
     'irpf': ('Calcular IRPF 2026: calculadora de retención como Hacienda',   # lo más buscado de la web (Search Console, 23/10/2026)
              'Calculadora de IRPF 2026 con el algoritmo de Hacienda: calcula tu retención en 1 minuto. Con 30.000 € brutos, un 16,42 %. Con hijos y tabla por sueldo.'),
+    'iprem-2026': ('IPREM 2026: 600 € al mes, 8.400 € al año y para qué sirve',   # posición 24 en Google (04/11/2026): con las cifras que se buscan
+                   'IPREM 2026: 600 € al mes, 20 € al día y 7.200 € al año (8.400 € con pagas extra). Para qué se usa: paro, subsidios, justicia gratuita y ayudas.'),
     'vacaciones': ('Calculadora de vacaciones 2026: días que te corresponden',
                    'Calcula cuántos días de vacaciones te corresponden: 30 naturales al año, 2,5 por mes trabajado. Cuántos te quedan y cuánto valen en dinero.'),
 }

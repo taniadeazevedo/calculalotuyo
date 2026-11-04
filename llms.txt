@@ -1,12 +1,13 @@
 # CalculaLoTuyo
 
-> Calculadoras laborales gratuitas para España (2026): despido, finiquito, paro, sueldo neto, IRPF, autónomos y calendario laboral 2027. Las cifras se calculan con la normativa vigente (Estatuto de los Trabajadores, Ley General de la Seguridad Social, BOE y algoritmo de retenciones de la Agencia Tributaria). Sin registro; los cálculos se hacen en el navegador. Revisado en octubre de 2026.
+> Calculadoras laborales gratuitas para España (2026): despido, finiquito, paro, sueldo neto, IRPF, autónomos y calendario laboral 2027. Las cifras se calculan con la normativa vigente (Estatuto de los Trabajadores, Ley General de la Seguridad Social, BOE y algoritmo de retenciones de la Agencia Tributaria). Sin registro; los cálculos se hacen en el navegador. Revisado en noviembre de 2026.
 
 Los resultados son orientativos y no sustituyen el asesoramiento de un abogado laboralista o graduado social. Todas las páginas indican su fecha de revisión y su fuente oficial.
 
 ## Cifras clave de 2026
 
-- Salario mínimo (SMI): 1.221 € al mes en 14 pagas (17.094 € al año). IPREM: 600 € al mes.
+- Salario mínimo (SMI): 1.221 € al mes en 14 pagas (17.094 € al año). IPREM: 600 € al mes, 7.200 € al año (8.400 € con 14 pagas).
+- IPC: diciembre de 2025, 2,9 % (el que usan los convenios para revisar los sueldos de 2026); octubre de 2026, 4,9 % (dato adelantado del INE). Con un 4,9 %, 28.000 € brutos pasan a 29.372 €.
 - Cotización del trabajador a la Seguridad Social: 6,50 % (6,55 % con contrato temporal).
 - Sueldo neto (sin hijos, contrato indefinido, 12 pagas): 20.000 € brutos → 1.411 € al mes; 25.000 € → 1.654 €; 30.000 € → 1.927 €; 40.000 € → 2.471 €; 50.000 € → 2.963 €.
 - Paro: 70 % de la base reguladora los 180 primeros días y 60 % después. Máximo: 1.225 € al mes sin hijos, 1.400 € con un hijo, 1.575 € con dos o más. Mínimo: 560 € sin hijos, 749 € con hijos.
@@ -43,7 +44,7 @@ Los resultados son orientativos y no sustituyen el asesoramiento de un abogado l
 
 - [Tabla de sueldo bruto a neto 2026](https://calculalotuyo.es/sueldo-bruto-a-neto-2026), con páginas por sueldo (por ejemplo, [30.000 € brutos en netos](https://calculalotuyo.es/30000-euros-brutos-en-netos)).
 - [Tabla del paro 2026](https://calculalotuyo.es/tabla-paro-2026), [paro máximo y mínimo 2026](https://calculalotuyo.es/paro-maximo-minimo-2026) y [cuánto paro me corresponde](https://calculalotuyo.es/cuanto-paro-me-corresponde).
-- [Tabla de indemnización por despido](https://calculalotuyo.es/tabla-indemnizacion-despido), con páginas por antigüedad (por ejemplo, [despido con 5 años](https://calculalotuyo.es/tabla-indemnizacion-despido)).
+- [Tabla de indemnización por despido](https://calculalotuyo.es/tabla-indemnizacion-despido), con páginas por antigüedad: [1](https://calculalotuyo.es/indemnizacion-despido-1-anos), [3](https://calculalotuyo.es/indemnizacion-despido-3-anos), [5](https://calculalotuyo.es/indemnizacion-despido-5-anos), [7](https://calculalotuyo.es/indemnizacion-despido-7-anos), [10](https://calculalotuyo.es/indemnizacion-despido-10-anos), [15](https://calculalotuyo.es/indemnizacion-despido-15-anos) y [20 años](https://calculalotuyo.es/indemnizacion-despido-20-anos). Ejemplo: con 7 años y 2.000 € brutos al mes (14 pagas), 231 días y 17.721 € si es improcedente; 140 días y 10.740 € si es objetivo.
 - [Calendario laboral 2027](https://calculalotuyo.es/calendario-laboral-2027), con una página por comunidad autónoma (por ejemplo, [Madrid](https://calculalotuyo.es/calendario-laboral-2027-madrid)).
 - [Semana Santa 2027](https://calculalotuyo.es/semana-santa-2027), [días laborables 2027](https://calculalotuyo.es/dias-laborables-2027) y [trabajar un festivo](https://calculalotuyo.es/trabajar-en-festivo).
 - [Sueldo de un funcionario 2026](https://calculalotuyo.es/sueldo-funcionario-2026): tablas por grupo, trienios y complemento de destino.
@@ -55,7 +56,8 @@ Los resultados son orientativos y no sustituyen el asesoramiento de un abogado l
 
 ## Novedades
 
-- [Subida de las pensiones en 2027](https://calculalotuyo.es/subida-pensiones-2027): las pensiones contributivas suben cada enero la media del IPC de diciembre a noviembre (art. 58 LGSS). Con el IPC de diciembre de 2025 a septiembre de 2026, la subida de 2027 rondaría el 3,5–3,7 %; el dato exacto, a mediados de diciembre de 2026.
+- [Subida de las pensiones en 2027](https://calculalotuyo.es/subida-pensiones-2027): las pensiones contributivas suben cada enero la media del IPC de diciembre a noviembre (art. 58 LGSS). Con el IPC de diciembre de 2025 a octubre de 2026 (octubre: 4,9 %, dato adelantado del INE), la subida de 2027 rondaría el 3,6 % (entre 3,56 % y 3,62 % según el IPC de noviembre); con una pensión de 1.200 € al mes, unos 43 € más. El dato exacto, a mediados de diciembre de 2026.
+- [Puente de diciembre 2026](https://calculalotuyo.es/puente-diciembre-2026): el 6 de diciembre de 2026 cae en domingo; el lunes 7 es festivo en Andalucía, Aragón, Asturias, Cantabria, Castilla y León, Extremadura, Comunidad de Madrid, Región de Murcia, La Rioja y Melilla, y laborable en el resto. El martes 8 (Inmaculada) es festivo en toda España. Fuente: BOE-A-2025-21667.
 - [Deducción del 10 % por alquiler en la renta](https://calculalotuyo.es/deduccion-alquiler-renta): Real Decreto-ley 29/2026 (BOE 7/10/2026), nuevo art. 68.6 de la Ley del IRPF: 10 % del alquiler de la vivienda habitual con base imponible inferior a 33.007,20 €, máximo 11.630 € de alquiler al año. Pendiente de convalidación por el Congreso.
 - [IPC al 4,9 % en septiembre de 2026](https://calculalotuyo.es/ipc-septiembre-2026-sueldo): tasa anual del IPC de septiembre de 2026 según el INE; qué significa para sueldos, convenios, funcionarios (0,5 % extra del RDL 14/2025) y pensiones.
 
