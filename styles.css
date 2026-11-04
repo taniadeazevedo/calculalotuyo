@@ -4912,3 +4912,10 @@ main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }
 /* Listas de los artículos: la viñeta dentro de la columna de texto, alineada con los títulos y los párrafos */
 .art-cuerpo ul { padding-left: 1.3em; }
 .art-cuerpo ul li::marker { color: var(--accent); }
+/* Tablas de los textos en el móvil: más compactas, la primera columna puede partirse y las cifras nunca se parten («1.256,60 €» en una línea) */
+@media (max-width: 640px) {
+    .seo-section .tabla-festivos th, .seo-section .tabla-festivos td, .guide-content .tabla-festivos th, .guide-content .tabla-festivos td { padding: 10px 10px; font-size: 0.85rem; }
+    .seo-section .tabla-festivos td:first-child, .guide-content .tabla-festivos td:first-child { white-space: normal; min-width: 7.5em; }
+}
+.tabla-festivos td strong { white-space: nowrap; }
+.tabla-festivos:not(.tabla-texto) td:not(:first-child) { white-space: nowrap; }   /* columnas de cifras: el «€» nunca se queda solo en otra línea */

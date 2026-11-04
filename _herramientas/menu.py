@@ -15,7 +15,7 @@ GRUPOS = [
                            ('sueldo-funcionario-2026', '🏛️ Sueldo de funcionarios')]),
     ('⚖️ Despido y paro', [('despido-improcedente', '⚖️ Despido improcedente'), ('despido-objetivo', '📋 Despido objetivo'),
                           ('ere', '📊 ERE / colectivo'), ('finiquito', '💵 Finiquito'), ('paro', '📊 Paro')]),
-    ('🩺 Bajas y jubilación', [('baja-medica', '🩺 Baja médica'), ('jubilacion', '🌅 Jubilación')]),
+    ('🩺 Bajas y jubilación', [('baja-medica', '🩺 Baja médica'), ('jubilacion', '🌅 Jubilación'), ('jubilacion-flexible', '⏳ Jubilación flexible')]),
     ('💼 Autónomos', [('cuota-autonomos', '💼 Cuota de autónomos'), ('facturas', '🧾 Facturas')]),
     ('🏠 Vivienda', [('subida-alquiler', '🏠 Subida del alquiler')]),
 ]

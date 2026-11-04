@@ -169,12 +169,14 @@ ARTICULOS = [
         ('¿Cuándo es Semana Santa en 2027?', 'El <strong>Jueves Santo es el 25 de marzo</strong> y el <strong>Viernes Santo el 26</strong>. El Lunes de Pascua (29 de marzo) es festivo solo en algunas comunidades.')],
   fuentes=f'{boe("BOE-A-2026-21254", "Resolución de 8 de octubre de 2026, de la Dirección General de Trabajo")} (BOE núm. 254, de 13 de octubre de 2026).',
   kw='festivos 2027, calendario laboral 2027, festivos nacionales 2027, puentes 2027, semana santa 2027'),
- dict(slug='subida-pensiones-2027', fecha='2026-10-22', actualizado='2026-11-05', tema='Pensiones',
+ dict(slug='subida-pensiones-2027', fecha='2026-10-22', actualizado='2026-11-05',   # «Última hora»: cambiar fecha y texto con cada dato nuevo del INE
+  tema='Pensiones',
   titulo=f'Subida de las pensiones 2027 con el IPC: un {pc(CENTRAL)} y tabla',   # con la cifra y «tabla»: así se busca (Search Console, 05/11/2026)
   desc=f'Las pensiones subirían en enero de 2027 un {pc(CENTRAL)} con el IPC hasta octubre: con 1.200 € al mes, unos {e(1200 * CENTRAL / 100, 0)} € más. Tabla de pensiones 2027 y escenarios.',
   h1='¿Cuánto subirán las pensiones en 2027?', sub=f'En torno a un {pc(CENTRAL)}, según el IPC de 2026',
   img=['Pensiones 2027', f'subirían en torno a un {pc(CENTRAL)}'],
-  resumen=[f'Las pensiones contributivas suben cada enero lo mismo que la <strong>media del IPC de diciembre a noviembre</strong> (art. 58 de la Ley General de la Seguridad Social).',
+  resumen=[f'<strong>Última hora (5 de noviembre):</strong> con el IPC adelantado de octubre (4,9 %), la subida de 2027 rondaría el <strong>{pc(CENTRAL, 2)}</strong>. El IPC definitivo de octubre sale a mediados de noviembre y el de noviembre, a mediados de diciembre.',
+           f'Las pensiones contributivas suben cada enero lo mismo que la <strong>media del IPC de diciembre a noviembre</strong> (art. 58 de la Ley General de la Seguridad Social).',
            f'Con los datos del INE hasta octubre (4,9 %, igual que septiembre), la subida de 2027 rondaría el <strong>{pc(ESC[0][1])}–{pc(ESC[2][1])}</strong>.',
            'El dato exacto se sabrá a <strong>mediados de diciembre</strong>, cuando el INE publique el IPC de noviembre.'],
   calculadoras=[('jubilacion', '🌅 Calcula tu jubilación'), ('obligado-a-declarar-renta', '🧾 Con pensión, ¿tienes que hacer la renta?')],
@@ -200,7 +202,7 @@ ARTICULOS = [
         ('¿Cómo se calcula la subida de las pensiones?', 'Es la media de las tasas anuales del IPC de diciembre del año anterior a noviembre del año en curso (art. 58 de la Ley General de la Seguridad Social).'),
         ('¿Cuándo se cobra la subida de las pensiones de 2027?', 'En la nómina de enero de 2027, una vez el Gobierno apruebe el porcentaje con el IPC de noviembre.')],
   fuentes=f'{boe("BOE-A-2015-11724", "Ley General de la Seguridad Social, art. 58", True)}; <a href="https://www.ine.es/dyngs/Prensa/adIPC1026.htm" target="_blank" rel="noopener">INE: IPC adelantado de octubre de 2026</a>, {ine("09", "IPC de septiembre")} y notas de enero a agosto; pensión máxima de 2026: {boe("BOE-A-2026-2548", "Real Decreto-ley 3/2026")}.',
-  kw='subida pensiones 2027, tabla pensiones 2027, ipc pensiones 2027, cuánto suben las pensiones 2027, revalorización pensiones 2027, pensión máxima 2027'),
+  kw='subida pensiones 2027, subida pensiones 2027 última hora, tabla pensiones 2027, ipc pensiones 2027, cuánto suben las pensiones 2027, revalorización pensiones 2027, pensión máxima 2027'),
 
  dict(slug='deduccion-alquiler-renta', fecha='2026-10-22', actualizado='2026-11-02', tema='Impuestos',
   titulo='Nueva deducción del 10 % por alquiler en la renta',
