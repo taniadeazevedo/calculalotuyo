@@ -24,6 +24,8 @@ python3 _herramientas/navidad/gen-navidad.py
 python3 _herramientas/funcionarios/gen-funcionarios.py
 python3 _herramientas/metodologia/gen-metodologia.py
 python3 _herramientas/irpf/gen-tramos.py   # página «Tramos del IRPF 2026»
+python3 _herramientas/irpf/gen-tramos-ccaa.py   # tramos del IRPF de Madrid y Bizkaia
+python3 _herramientas/autonomos/gen-colaborador.py   # «Autónomo colaborador 2026»
 python3 _herramientas/situaciones/gen-situaciones.py   # «Baja de 15 días: cuánto cobro» y otras situaciones concretas
 python3 _herramientas/que-hacer/gen-que-hacer.py   # guía «Qué hacer si te despiden»
 python3 _herramientas/alquiler/gen-alquiler.py   # calculadora de subida del alquiler (IRAV e IPC: añadir el dato nuevo cada mes)

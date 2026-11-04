@@ -26,6 +26,9 @@ Los resultados son orientativos y no sustituyen el asesoramiento de un abogado l
 - Pensiones 2026 (Real Decreto-ley 3/2026): máxima 3.359,60 € al mes (14 pagas); mínima de jubilación con 65 años, 936,20 € al mes sin cónyuge y 1.256,60 € con cónyuge a cargo; no contributiva, 628,80 €. [Pensión mínima y máxima 2026](https://calculalotuyo.es/pension-minima-maxima-2026).
 - Jubilación flexible (Real Decreto 416/2026, desde el 28/08/2026): trabajo a tiempo parcial del 33 % al 80 % de la jornada; la pensión baja en proporción y sube un 25 % (jornada del 55 al 80 %) o un 15 % (del 33 al 55 %) si se empieza 6 meses o más después de jubilarse; por cuenta propia, el 25 % de la pensión. [Calculadora de jubilación flexible](https://calculalotuyo.es/jubilacion-flexible).
 
+- IRPF por territorio (2026): Madrid, escala autonómica del 8,5 % al 20,5 % (tipo total con la estatal, del 18 % al 45 %), Decreto Legislativo 1/2010 art. 1; Bizkaia, escala foral del 23 % al 49 % en 8 tramos y minoración de cuota de 1.615 €, Norma Foral 13/2013 arts. 75-77. [Tramos IRPF Madrid](https://calculalotuyo.es/tramos-irpf-madrid-2026), [tramos IRPF Bizkaia](https://calculalotuyo.es/tramos-irpf-bizkaia-2026).
+- Autónomo colaborador familiar: bonificación del 50 % durante 18 meses y del 25 % durante 6 meses de la cuota por contingencias comunes de la base mínima del tramo 1, si no estuvo de alta en los 5 años anteriores (Ley 20/2007, art. 35). [Autónomo colaborador](https://calculalotuyo.es/autonomo-colaborador).
+
 ## Calendario laboral 2027
 
 - Festivos comunes a toda España en 2027 (9): 1 y 6 de enero, Viernes Santo (26 de marzo), 1 de mayo, 12 de octubre, 1 de noviembre, 6, 8 y 25 de diciembre. Cada comunidad completa hasta 12, más 2 fiestas locales. Fuente: BOE del 13 de octubre de 2026 (BOE-A-2026-21254).
