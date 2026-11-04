@@ -9,3 +9,10 @@
   to = "https://calculalotuyo.es/:splat"         # va a la misma página en calculalotuyo.es
   status = 301                                   # redirección permanente
   force = true                                   # aunque el archivo exista
+
+# El artículo del IPC tiene ahora una dirección fija que no cambia cada mes (05/11/2026)
+[[redirects]]
+  from = "/ipc-septiembre-2026-sueldo"   # dirección antigua
+  to = "/ipc-actual"                     # dirección nueva
+  status = 301                           # redirección permanente: Google pasa la posición a la nueva
+  force = true

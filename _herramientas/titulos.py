@@ -27,6 +27,8 @@ TITULOS = {
              'Calculadora de IRPF 2026 con el algoritmo de Hacienda: calcula tu retención en 1 minuto. Con 30.000 € brutos, un 16,42 %. Con hijos y tabla por sueldo.'),
     'iprem-2026': ('IPREM 2026: 600 € al mes, 8.400 € al año y para qué sirve',   # posición 24 en Google (04/11/2026): con las cifras que se buscan
                    'IPREM 2026: 600 € al mes, 20 € al día y 7.200 € al año (8.400 € con pagas extra). Para qué se usa: paro, subsidios, justicia gratuita y ayudas.'),
+    'guia-despido-disciplinario': ('Despido disciplinario 2026: ¿tiene paro? Causas y plazos',   # Trends 05/11/2026: «despido disciplinario tiene paro» +300 %
+                                   'Sí, el despido disciplinario da derecho a paro si has cotizado 360 días. Causas, carta, audiencia previa, 20 días para reclamar y si hay indemnización.'),
     'vacaciones': ('Calculadora de vacaciones 2026: días que te corresponden',
                    'Calcula cuántos días de vacaciones te corresponden: 30 naturales al año, 2,5 por mes trabajado. Cuántos te quedan y cuánto valen en dinero.'),
 }
@@ -43,7 +45,9 @@ FAQS = {
         ('¿Cómo calcular el IRPF si tengo hijos?', 'Cada hijo menor de 25 años que vive contigo aumenta el mínimo que no paga impuestos (<strong>2.400 € el primero, 2.700 € el segundo, 4.000 € el tercero y 4.500 € a partir del cuarto</strong>, la mitad si lo compartís los dos progenitores), así que te retienen menos. Indícalo en la calculadora.'),
         ('¿Vale para el País Vasco y Navarra?', '<strong>No.</strong> El País Vasco y Navarra tienen sus propias tablas de retención, que publican sus haciendas forales. Esta calculadora sigue las de la Agencia Tributaria, que se aplican en el resto de España.'),
     ],
-    'despido-objetivo': [('¿Cuánto me corresponde por despido objetivo con 10 años?', '<strong>20 días de sueldo por año</strong>: 200 días en total. Con 2.000 € brutos al mes en 14 pagas, unos <strong>15.342 €</strong>.')],
+    'despido-objetivo': [('¿Qué es un despido objetivo?', 'Es el despido por una causa que <strong>no depende de tu conducta</strong>: económica, técnica, organizativa o de producción, o por ineptitud o falta de adaptación al puesto (art. 52 del Estatuto). La empresa te tiene que dar una carta, <strong>15 días de preaviso</strong> y 20 días de sueldo por año trabajado. Da derecho a paro.'),
+                         ('¿Qué tipos de despido hay?', '<strong>Disciplinario</strong> (por tu conducta: sin indemnización si es procedente), <strong>objetivo</strong> (20 días por año), <strong>colectivo o ERE</strong> (20 días por año como mínimo) y, si cualquiera de ellos no está justificado, <strong>improcedente</strong> (33 días por año). Todos dan derecho a paro.'),
+                         ('¿Cuánto me corresponde por despido objetivo con 10 años?', '<strong>20 días de sueldo por año</strong>: 200 días en total. Con 2.000 € brutos al mes en 14 pagas, unos <strong>15.342 €</strong>.')],
 }
 
 def cabecera(s, titulo, desc):

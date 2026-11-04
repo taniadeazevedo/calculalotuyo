@@ -34,7 +34,7 @@ PAGINAS = {
     'modelo-plantilla-nomina': 'sueldo-neto',
     # novedades
     'subida-pensiones-2027': 'jubilacion', 'elecciones-29n-pensiones-smi-2027': 'jubilacion', 'deduccion-alquiler-renta': 'obligado-a-declarar-renta',
-    'ipc-septiembre-2026-sueldo': 'subida-ipc', 'festivos-2027': 'dias-laborables',
+    'ipc-actual': 'subida-ipc', 'festivos-2027': 'dias-laborables',
     # casos concretos y «qué hacer si…»
     'que-hacer-si-voy-a-tener-un-hijo': 'reduccion-jornada', 'que-hacer-si-me-quedo-en-paro': 'paro', 'baja-15-dias-cuanto-cobro': 'baja-medica',
     'que-es-el-finiquito': 'finiquito', 'paro-tras-contrato-temporal': 'paro', 'cuando-se-cobra-el-paro': 'paro',

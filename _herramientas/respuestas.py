@@ -7,7 +7,7 @@ os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))   # car
 
 RESPUESTAS = {
     'despido-improcedente': '<strong>33 días de sueldo por año trabajado</strong>, con un máximo de 24 mensualidades. Por el tiempo trabajado antes del 12 de febrero de 2012 se cuentan 45 días por año (art. 56 del Estatuto de los Trabajadores).',
-    'despido-objetivo': '<strong>20 días de sueldo por año trabajado</strong>, con un máximo de 12 mensualidades, y 15 días de preaviso (art. 53 del Estatuto de los Trabajadores).',
+    'despido-objetivo': 'Es el despido por causas <strong>económicas, técnicas, organizativas o de producción</strong>, o por ineptitud del trabajador (art. 52 del Estatuto). Te corresponden <strong>20 días de sueldo por año trabajado</strong>, con un máximo de 12 mensualidades y 15 días de preaviso, y da derecho a paro.',
     'ere': 'Como mínimo, <strong>20 días de sueldo por año trabajado</strong>, con un máximo de 12 mensualidades. En la negociación del ERE la empresa puede pactar más (art. 51 del Estatuto de los Trabajadores).',
     'finiquito': 'El finiquito suma <strong>los días trabajados del mes, las vacaciones que no has disfrutado y la parte de las pagas extra</strong> que llevas generada. Lo cobras siempre, también si te vas tú. La indemnización por despido va aparte.',
     'paro': 'Cobras el <strong>70 % de lo que cotizabas (más o menos, tu sueldo bruto) los 6 primeros meses y el 60 % después</strong>, entre 560 € y 1.225 € al mes sin hijos (2026). Con 1 año cotizado tienes 4 meses de paro; con 6 años, el máximo de 2 años.',
@@ -36,3 +36,34 @@ for pag, texto in RESPUESTAS.items():
     if s != o:
         open(f, 'w', encoding='utf-8').write(s); hechas += 1
 print('respuestas rápidas en', hechas, 'páginas')
+
+# ================================================================ GUÍAS: preguntas y respuestas cortas arriba del todo
+# Para las búsquedas que suben en Google Trends (05/11/2026). Van en una caja al principio del contenido y en el
+# marcado FAQPage para Google y las IAs. Se pone entre <!-- RESPUESTAS --> y <!-- /RESPUESTAS --> (y se sustituye).
+import json
+limpio = lambda t: re.sub(r'<[^>]+>', '', t)
+GUIAS = {
+    'guia-despido-disciplinario': [
+        ('¿El despido disciplinario tiene paro?', '<strong>Sí.</strong> Es una situación legal de desempleo: cobras el paro si has cotizado al menos <strong>360 días en los últimos 6 años</strong>, aunque no lo recurras.'),
+        ('¿Hay indemnización?', '<strong>No</strong>, salvo que un juez o la propia empresa lo declaren <strong>improcedente</strong>: entonces son 33 días de sueldo por año. El finiquito lo cobras siempre.'),
+        ('¿Cuánto tiempo tengo para reclamar?', '<strong>20 días hábiles</strong> desde la fecha del despido, empezando por la papeleta de conciliación.'),
+        ('¿Qué es la audiencia previa?', 'Desde la sentencia del Tribunal Supremo de 18 de noviembre de 2024, la empresa tiene que <strong>dejarte defenderte antes de despedirte</strong> por tu conducta.'),
+    ],
+    'guia-paro': [
+        ('¿Cuánto tiempo hay que trabajar para cobrar el paro?', 'Al menos <strong>360 días cotizados en los últimos 6 años</strong> (unos 12 meses). Con 360 días cobras 4 meses de paro; con 6 años o más, el máximo de <strong>2 años</strong>.'),
+        ('¿Cómo funciona el paro?', 'Lo pides al <strong>SEPE en los 15 días hábiles</strong> siguientes a quedarte sin trabajo. Cobras el <strong>70 % de tu base</strong> los 6 primeros meses y el 60 % después (entre 560 € y 1.225 € al mes sin hijos) y se paga hacia el <strong>día 10 de cada mes</strong>.'),
+        ('¿Me quedo sin paro si me voy yo?', '<strong>Sí</strong>, si te das de baja voluntaria no hay paro, salvo en algunos casos (por ejemplo, un cambio grave de condiciones o impagos).'),
+    ],
+}
+hechas = 0
+for pag, preguntas in GUIAS.items():
+    f = f'{pag}.html'
+    s = o = open(f, encoding='utf-8').read()
+    s = re.sub(r'<!-- RESPUESTAS -->.*?<!-- /RESPUESTAS -->\n?', '', s, flags=re.S)          # fuera las de una pasada anterior
+    caja = '<div class="respuesta-corta"><span>⚡ Respuesta rápida</span><ul>' + ''.join(f'<li><strong>{q}</strong> {a}</li>' for q, a in preguntas) + '</ul></div>'
+    ld = json.dumps({'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': limpio(a)}} for q, a in preguntas]}, ensure_ascii=False, indent=1)
+    i = s.index('<section id=', s.index('class="guide-content"'))                                 # delante del primer apartado de la guía
+    s = s[:i] + f'<!-- RESPUESTAS -->{caja}<!-- /RESPUESTAS -->\n' + s[i:]
+    s = s.replace('</head>', f'<!-- RESPUESTAS --><script type="application/ld+json">\n{ld}\n</script><!-- /RESPUESTAS -->\n</head>', 1)
+    if s != o: open(f, 'w', encoding='utf-8').write(s); hechas += 1
+print('respuestas de guías en', hechas, 'páginas')

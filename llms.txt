@@ -59,7 +59,7 @@ Los resultados son orientativos y no sustituyen el asesoramiento de un abogado l
 - [Subida de las pensiones en 2027](https://calculalotuyo.es/subida-pensiones-2027): las pensiones contributivas suben cada enero la media del IPC de diciembre a noviembre (art. 58 LGSS). Con el IPC de diciembre de 2025 a octubre de 2026 (octubre: 4,9 %, dato adelantado del INE), la subida de 2027 rondaría el 3,6 % (entre 3,56 % y 3,62 % según el IPC de noviembre); con una pensión de 1.200 € al mes, unos 43 € más. El dato exacto, a mediados de diciembre de 2026.
 - [Puente de diciembre 2026](https://calculalotuyo.es/puente-diciembre-2026): el 6 de diciembre de 2026 cae en domingo; el lunes 7 es festivo en Andalucía, Aragón, Asturias, Cantabria, Castilla y León, Extremadura, Comunidad de Madrid, Región de Murcia, La Rioja y Melilla, y laborable en el resto. El martes 8 (Inmaculada) es festivo en toda España. Fuente: BOE-A-2025-21667.
 - [Deducción del 10 % por alquiler en la renta](https://calculalotuyo.es/deduccion-alquiler-renta): Real Decreto-ley 29/2026 (BOE 7/10/2026), nuevo art. 68.6 de la Ley del IRPF: 10 % del alquiler de la vivienda habitual con base imponible inferior a 33.007,20 €, máximo 11.630 € de alquiler al año. Pendiente de convalidación por el Congreso.
-- [IPC al 4,9 % en septiembre de 2026](https://calculalotuyo.es/ipc-septiembre-2026-sueldo): tasa anual del IPC de septiembre de 2026 según el INE; qué significa para sueldos, convenios, funcionarios (0,5 % extra del RDL 14/2025) y pensiones.
+- [IPC actual](https://calculalotuyo.es/ipc-actual): octubre de 2026, 4,9 % (dato adelantado del INE, 30/10/2026); septiembre, 4,9 %; qué significa para sueldos, convenios, funcionarios (0,5 % extra del RDL 14/2025) y pensiones.
 
 ## Optional
 

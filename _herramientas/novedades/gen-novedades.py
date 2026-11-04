@@ -20,6 +20,8 @@ suma = sum(v for _, v in IPC)
 escenario = lambda nov: (suma + nov) / 12                              # media de los 12 meses según el IPC de noviembre (el único que falta)
 ESC = [(4.5, escenario(4.5)), (4.9, escenario(4.9)), (5.3, escenario(5.3))]
 CENTRAL = ESC[1][1]
+# Último IPC publicado (para el artículo «IPC actual»): cambiar cada mes junto con la lista IPC
+MES_LARGO, ESTADO_IPC, FECHA_IPC = 'octubre', 'adelantado', '30 de octubre de 2026'
 PENSION_MAX = 3359.60                                                   # 2026, RDL 3/2026
 
 # Deducción por alquiler (LIRPF art. 68.6, añadido por el RDL 29/2026)
@@ -237,36 +239,39 @@ ARTICULOS = [
   fuentes=f'{boe("BOE-A-2026-20823", "Real Decreto-ley 29/2026, de 6 de octubre")} (art. 6, apartado segundo, cuatro: nuevo artículo 68.6 de la Ley 35/2006 del IRPF); {boe("BOE-A-2006-20764", "Ley 35/2006 del IRPF", True)}.',
   kw='deducción alquiler renta 2026, deducción alquiler vivienda habitual, real decreto ley 29/2026, desgravar alquiler renta'),
 
- dict(slug='ipc-septiembre-2026-sueldo', fecha='2026-10-22', actualizado='2026-11-02', tema='Sueldo',
-  titulo='IPC al 4,9 % en septiembre: qué significa para tu sueldo',
-  desc='La inflación sube al 4,9 % en septiembre de 2026, la más alta desde 2023. Qué pasa con las subidas de sueldo, los convenios, los funcionarios y las pensiones.',
-  h1='IPC al 4,9 %: qué significa para tu sueldo', sub='La inflación más alta desde febrero de 2023',
-  img=['IPC al 4,9 %', 'qué significa para tu sueldo'],
-  resumen=['El IPC de septiembre de 2026 fue del <strong>4,9 %</strong> (INE), seis décimas más que en agosto y el más alto desde febrero de 2023.',
+ dict(slug='ipc-actual', fecha='2026-10-22', actualizado='2026-11-05', tema='Sueldo',   # dirección fija: cada mes se cambia el dato, no la URL (antes ipc-septiembre-2026-sueldo)
+  titulo=f'IPC de {MES_LARGO} 2026: {pc(IPC[-1][1])} (dato del INE)',
+  desc=f'El IPC de {MES_LARGO} de 2026 es del {pc(IPC[-1][1])} ({ESTADO_IPC} del INE), el más alto desde 2023. Qué significa para tu sueldo, los convenios y las pensiones.',
+  h1=f'IPC hoy: {pc(IPC[-1][1])} en {MES_LARGO} de 2026', sub=f'Dato {ESTADO_IPC} del INE ({FECHA_IPC})',
+  img=[f'IPC: {pc(IPC[-1][1])}', f'{MES_LARGO} de 2026'],
+  resumen=[f'El IPC de <strong>{MES_LARGO} de 2026 es del {pc(IPC[-1][1])}</strong> (tasa anual, dato {ESTADO_IPC} del INE), igual que en septiembre y el más alto desde febrero de 2023.',
            'Para no perder poder de compra, un sueldo tendría que subir más o menos lo mismo. <strong>Nadie está obligado por ley a subirlo</strong>: depende de tu convenio o tu contrato.',
-           'Los <strong>funcionarios</strong> tienen asegurado un 0,5 % extra si el IPC de 2026 llega al 1,5 %, y las <strong>pensiones</strong> subirán en enero según la media del año.'],
+           'Las <strong>pensiones</strong> subirán en enero según la media del IPC del año, y los <strong>funcionarios</strong> tienen asegurado un 0,5 % extra.'],
   calculadoras=[('subida-ipc', '📈 Calcula cuánto debería subir tu sueldo'), ('sueldo-neto', '🏦 Tu sueldo neto'), ('subida-pensiones-2027', '👵 Cuánto subirán las pensiones')],
-  cuerpo=lambda: f'''
-<h2>📌 Qué ha pasado</h2>
-<p>Según el INE, la tasa anual del IPC subió en septiembre de 2026 hasta el <strong>4,9 %</strong>. La subyacente (sin alimentos frescos ni energía) quedó en el 3,1 %. El grupo que más subió fue el transporte, por los carburantes.</p>
+  cuerpo=lambda: f"""
+<h2>📌 ¿Cuál es el IPC actual?</h2>
+<p>Según el INE, la tasa anual del IPC en <strong>{MES_LARGO} de 2026 es del {pc(IPC[-1][1])}</strong> ({ESTADO_IPC}, publicado el {FECHA_IPC}). Es la misma que en septiembre y la más alta desde febrero de 2023. La subyacente (sin alimentos frescos ni energía) está en el 3,1 %. Lo que más empuja son los carburantes.</p>
 <div class="tabla-wrap"><table class="tabla-festivos tabla-corta"><thead><tr><th>Mes de 2026</th><th>IPC anual</th></tr></thead><tbody>{''.join(f'<tr><td>{m}</td><td><span class="barra-celda" style="--v:{v / 5.5 * 100:.0f}%"></span>{pc(v)}</td></tr>' for m, v in IPC[1:])}</tbody></table></div>
+<p class="nota-corta">El IPC de diciembre de 2025 fue del 2,9 %: es el que usan la mayoría de convenios para revisar los sueldos de 2026.</p>
 <h2>💼 Qué significa para tu sueldo</h2>
 <ul>
 <li><strong>Por ley, la empresa no está obligada a subirte el sueldo con el IPC.</strong> Solo si lo dice tu convenio o tu contrato.</li>
 <li>Muchos convenios tienen una <strong>cláusula de revisión</strong>: si el IPC del año (normalmente el de diciembre) supera la subida pactada, se cobra la diferencia. Mira la de tu convenio en el boletín de tu provincia o comunidad.</li>
-<li>Para no perder poder de compra con un IPC del 4,9 %, un sueldo de 28.000 € brutos tendría que pasar a unos <strong>{e(28000 * 1.049)} €</strong>. Calcúlalo con tu sueldo en la calculadora de subida por IPC (opción «Personalizado»).</li>
+<li>Para no perder poder de compra con un IPC del {pc(IPC[-1][1])}, un sueldo de 28.000 € brutos tendría que pasar a unos <strong>{e(28000 * (1 + IPC[-1][1] / 100))} €</strong>. Calcúlalo con tu sueldo en la <a href="subida-ipc">calculadora de subida por IPC</a>.</li>
 </ul>
 <h2>🏛️ Funcionarios: el 0,5 % extra</h2>
-<p>El Real Decreto-ley 14/2025 subió los sueldos públicos un 1,5 % en 2026 y prevé <strong>un 0,5 % más si el IPC de 2026 llega al 1,5 %</strong>. Con la inflación actual todo apunta a que se cumplirá: se aprobaría con el dato del INE de 2026 y se cobraría en el primer trimestre de 2027. Mira las tablas en <a href="sueldo-funcionario-2026">sueldo de un funcionario en 2026</a>.</p>
+<p>El Real Decreto-ley 14/2025 subió los sueldos públicos un 1,5 % en 2026 y prevé <strong>un 0,5 % más si el IPC de 2026 llega al 1,5 %</strong>. Con la inflación actual se cumplirá: se aprobaría con el dato del INE de 2026 y se cobraría en el primer trimestre de 2027. Mira las tablas en <a href="sueldo-funcionario-2026">sueldo de un funcionario en 2026</a>.</p>
 <h2>👵 Pensiones</h2>
 <p>Las pensiones subirán en enero de 2027 según la media del IPC de diciembre de 2025 a noviembre de 2026. Con estos datos, rondaría el {pc(CENTRAL)}: lo explicamos en <a href="subida-pensiones-2027">cuánto subirán las pensiones en 2027</a>.</p>
-<h2>⏳ Qué falta por saber</h2>
-<p><strong>Actualización (2 de noviembre):</strong> según el dato adelantado del INE, el IPC de octubre se mantiene en el <strong>4,9 %</strong>, con la subyacente en el 3,1 %. El de diciembre, que es el que usan muchos convenios, se publicará a mediados de enero de 2027. Actualizaremos este artículo con cada dato nuevo.</p>''',
-  faqs=[('¿Cuánto es el IPC de septiembre de 2026?', 'Un <strong>4,9 %</strong> de tasa anual, según el INE: seis décimas más que en agosto y el más alto desde febrero de 2023.'),
+<h2>⏳ Próximos datos</h2>
+<ul><li><strong>IPC definitivo de octubre:</strong> a mediados de noviembre.</li><li><strong>IPC adelantado de noviembre:</strong> a finales de noviembre. Es el último que falta para saber la subida de las pensiones.</li><li><strong>IPC de diciembre</strong> (el de los convenios): adelantado a finales de diciembre y definitivo a mediados de enero de 2027.</li></ul>
+<p>Actualizamos este artículo con cada dato nuevo del INE.</p>""",
+  faqs=[('¿Cuál es el IPC actual en España?', f'El de <strong>{MES_LARGO} de 2026: {pc(IPC[-1][1])}</strong> de tasa anual (dato {ESTADO_IPC} del INE, {FECHA_IPC}).'),
+        ('¿Cuánto es el IPC de septiembre de 2026?', 'Un <strong>4,9 %</strong> de tasa anual, según el INE: seis décimas más que en agosto y el más alto desde febrero de 2023.'),
         ('¿Me tienen que subir el sueldo con el IPC?', 'No por ley. Solo si lo dice tu convenio colectivo o tu contrato; muchos convenios tienen una cláusula de revisión según el IPC de diciembre.'),
-        ('¿Cobrarán los funcionarios el 0,5 % extra de 2026?', 'Lo prevé el Real Decreto-ley 14/2025 si el IPC de 2026 llega al 1,5 %. Con la inflación actual todo apunta a que sí; se aprobaría con el dato de 2026 y se cobraría a principios de 2027.')],
-  fuentes=f'{ine("09", "INE: IPC de septiembre de 2026")} (14 de octubre de 2026) y notas de enero a agosto; {boe("BOE-A-2025-24445", "Real Decreto-ley 14/2025")} (art. 2.2).',
-  kw='ipc septiembre 2026, inflación septiembre 2026, subida sueldo ipc 2026, ipc 4,9'),
+        ('¿Cobrarán los funcionarios el 0,5 % extra de 2026?', 'Lo prevé el Real Decreto-ley 14/2025 si el IPC de 2026 llega al 1,5 %. Con la inflación actual, sí; se aprobaría con el dato de 2026 y se cobraría a principios de 2027.')],
+  fuentes=f'<a href="https://www.ine.es/dyngs/Prensa/adIPC1026.htm" target="_blank" rel="noopener">INE: IPC adelantado de octubre de 2026</a> (30 de octubre de 2026), {ine("09", "IPC de septiembre de 2026")} y notas de enero a agosto; {boe("BOE-A-2025-24445", "Real Decreto-ley 14/2025")} (art. 2.2).',
+  kw='ipc actual, ipc hoy, ipc octubre 2026, ipc adelantado octubre 2026, ipc 2026 españa, inflación octubre 2026'),
 ]
 
 # ================================================================ PÁGINAS
@@ -281,7 +286,7 @@ PORTADAS = {
     'deduccion-alquiler-renta': dict(cifra='10 %', texto='Del alquiler de tu casa, deducible en la renta', icono='house', color=('#0F766E', '#4F46E5'), alt='Edificios de viviendas con miradores junto a la ría de Bilbao'),
     'elecciones-29n-pensiones-smi-2027': dict(cifra='29-N', texto='Pensiones y SMI 2027: qué pasa con las elecciones', icono='landmark', color=('#4C1D95', '#6D28D9'), alt='Ilustración de un colegio electoral: personas votando en las urnas de unas elecciones generales'),
     'festivos-2027': dict(cifra='12 festivos', texto='El calendario laboral de 2027, ya oficial', icono='calendar-days', color=('#0F766E', '#115E59'), alt='Fuegos artificiales sobre la bahía de La Concha, en San Sebastián, con gente mirando desde la playa'),
-    'ipc-septiembre-2026-sueldo': dict(cifra='4,9 %', texto='IPC de septiembre: el más alto desde 2023', icono='trending-up', color=('#9A3412', '#BE185D'), alt='Una mano sujeta un billete de 100 euros'),
+    'ipc-actual': dict(cifra='4,9 %', texto='IPC de octubre de 2026 (adelantado)', icono='trending-up', color=('#9A3412', '#BE185D'), alt='Una mano sujeta un billete de 100 euros'),
 }
 def svg_icono(nombre):
     ruta = os.path.join(RAIZ, '_herramientas', 'iconos', nombre + '.svg')

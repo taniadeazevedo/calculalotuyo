@@ -18,7 +18,7 @@ PENSIONES = re.search(r'Subida de las pensiones 2027[^<]*?un ([\d,]+ %)', _pen).
 # Página → enlaces del bloque «También te puede interesar» (dirección, texto)
 TAMBIEN = {
     'jubilacion': [('subida-pensiones-2027', f'Cuánto subirán las pensiones en 2027 (≈ {PENSIONES})'), ('obligado-a-declarar-renta', 'Con pensión, ¿tengo que hacer la renta?')],
-    'subida-ipc': [('subida-pensiones-2027', f'Pensiones 2027: ≈ {PENSIONES} con el IPC'), ('ipc-septiembre-2026-sueldo', 'IPC al 4,9 %: qué significa para tu sueldo'), ('sueldo-funcionario-2026', 'Sueldo de un funcionario 2026')],
+    'subida-ipc': [('subida-pensiones-2027', f'Pensiones 2027: ≈ {PENSIONES} con el IPC'), ('ipc-actual', 'IPC actual: 4,9 % en octubre de 2026'), ('sueldo-funcionario-2026', 'Sueldo de un funcionario 2026')],
     'paro': [('iprem-2026', 'IPREM 2026: 600 € al mes'), ('tabla-paro-2026', 'Tabla del paro 2026'), ('paro-maximo-minimo-2026', 'Paro máximo y mínimo 2026')],
     'vacaciones': [('puente-diciembre-2026', 'Puente de diciembre 2026: ¿es festivo el 7?'), ('puentes-2027', 'Los mejores puentes de 2027')],
     'dias-laborables': [('puente-diciembre-2026', 'Puente de diciembre 2026: ¿es festivo el 7?'), ('calendario-laboral-2027', 'Calendario laboral 2027')],
