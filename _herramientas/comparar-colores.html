@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- Comparación de tonos (05/11/2026). Solo para decidir: está en _herramientas, así que no se publica.
+     Abre páginas reales de la web en tres columnas y a cada una le pone encima unos colores distintos. -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparar tonos de CalculaLoTuyo</title>
+<style>
+    body { margin: 0; font-family: -apple-system, system-ui, sans-serif; background: #E9EAF0; color: #111827; }
+    header { position: sticky; top: 0; z-index: 2; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; padding: 12px 18px; background: #fff; border-bottom: 1px solid #DDD; }
+    header strong { font-size: 1rem; }
+    header label { font-size: .85rem; color: #374151; }
+    select, button { font: inherit; font-size: .85rem; padding: 6px 10px; border: 1px solid #D1D5DB; border-radius: 8px; background: #fff; }
+    .columnas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 16px; }
+    .col h2 { margin: 0 0 4px; font-size: 1rem; min-height: 2.6em; }
+    .col p { margin: 0 0 10px; font-size: .8rem; color: #4B5563; min-height: 3.8em; }
+    .marco { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.08); margin: 0 auto; }
+    iframe { display: block; width: 100%; height: calc(100vh - 190px); min-height: 520px; border: 0; }   /* cada versión se desplaza por dentro, sin mover las demás */
+    body.movil .marco { width: 390px; max-width: 100%; }
+    body.movil iframe { height: calc(100vh - 190px); }
+    .muestras { display: flex; gap: 6px; margin-bottom: 8px; }
+    .muestras span { width: 26px; height: 26px; border-radius: 6px; border: 1px solid rgba(0,0,0,.1); }
+</style>
+</head>
+<body>
+<header>
+    <strong>¿Qué tono le va mejor a CalculaLoTuyo?</strong>
+    <label>Página: <select id="pagina">
+        <option value="/coste-trabajador.html">Calculadora (coste de un trabajador)</option>
+        <option value="/index.html">Portada</option>
+        <option value="/guia-paro.html">Guía del paro</option>
+        <option value="/subida-pensiones-2027.html">Artículo de pensiones</option>
+    </select></label>
+    <label>Vista: <select id="vista"><option value="pc">Ordenador</option><option value="movil">Móvil</option></select></label>
+</header>
+<div class="columnas" id="columnas"></div>
+
+<script>
+// Cada versión: nombre, explicación, colores de muestra y el CSS que se pone encima de la web
+const VERSIONES = [
+    { nombre: 'A · La actual', texto: 'Morado vivo, franjas y cajas en lila claro.', muestras: ['#4F46E5', '#F1EFFF', '#1A1840'], css: '' },
+    { nombre: 'B · Sobria (mismo morado, más oscuro)', texto: 'El mismo color, más profundo; fondos en gris frío y etiquetas discretas.', muestras: ['#3730A3', '#F3F3F7', '#17153A'], css: `
+        :root { --accent:#3730A3 !important; --accent-h:#312E81 !important; --franja:#F3F3F7 !important; }
+        .hero-mini, .page-header, .guide-header, .hero-clean, .hero-clean.hero-situaciones { background-image: linear-gradient(180deg,#F0F0F6 0%,#fff 100%) !important; }
+        .result-hero { background: linear-gradient(135deg,#1E1B4B 0%,#3730A3 100%) !important; }
+        .art-calcula, .example-icon { background: #3730A3 !important; }
+        .dir-etiqueta, .calc-item-badge { background: transparent !important; color: #4B5563 !important; border: 1px solid #D1D5DB !important; }
+        .footer { background: #17153A !important; }` },
+    { nombre: 'C · Seria (azul tinta)', texto: 'Azul casi marino, como un banco o una gestoría; fondos grises neutros.', muestras: ['#1E3A8A', '#F2F4F8', '#0F172A'], css: `
+        :root { --accent:#1E3A8A !important; --accent-h:#172554 !important; --franja:#F2F4F8 !important; --bg:#F3F5F9 !important; --border:#E2E6EE !important; }
+        .hero-mini, .page-header, .guide-header, .hero-clean, .hero-clean.hero-situaciones { background-image: linear-gradient(180deg,#EDF1F7 0%,#fff 100%) !important; }
+        .result-hero { background: linear-gradient(135deg,#0F1E46 0%,#1E3A8A 100%) !important; }
+        .art-calcula, .example-icon { background: #1E3A8A !important; }
+        .dir-etiqueta, .calc-item-badge { background: transparent !important; color: #4B5563 !important; border: 1px solid #D1D5DB !important; }
+        .footer { background: #0F172A !important; }
+        .footer .logo-accent { color: #93C5FD !important; }` },
+];
+const cont = document.getElementById('columnas');
+function pintar() {
+    const url = document.getElementById('pagina').value;
+    document.body.classList.toggle('movil', document.getElementById('vista').value === 'movil');
+    cont.innerHTML = '';
+    VERSIONES.forEach(v => {
+        const col = document.createElement('div'); col.className = 'col';
+        col.innerHTML = `<h2>${v.nombre}</h2><p>${v.texto}</p><div class="muestras">${v.muestras.map(c => `<span style="background:${c}" title="${c}"></span>`).join('')}</div><div class="marco"><iframe src="${url}?tono=${encodeURIComponent(v.nombre)}"></iframe></div>`;
+        cont.appendChild(col);
+        const f = col.querySelector('iframe');
+        f.onload = () => {
+            const d = f.contentDocument;
+            const st = d.createElement('style'); st.textContent = v.css; d.head.appendChild(st);   // los colores de esta versión, encima de los de la web
+            // En la calculadora, se rellena y se calcula para que se vea también el resultado
+            const imp = d.getElementById('importe');
+            if (imp && d.getElementById('calc')) { imp.value = 1500; d.getElementById('calc').onsubmit({ preventDefault() {} }); f.contentWindow.scrollTo(0, 0); window.scrollTo(0, 0); }
+        };
+    });
+}
+document.getElementById('pagina').onchange = pintar;
+document.getElementById('vista').onchange = pintar;
+pintar();
+</script>
+</body>
+</html>
