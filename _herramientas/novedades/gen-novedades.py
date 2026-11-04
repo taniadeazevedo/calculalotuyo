@@ -272,7 +272,7 @@ FLECHA = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="cu
 
 # Portada de cada artículo: cifra o idea clave grande, icono y color por tema (también es su imagen para compartir y Discover)
 PORTADAS = {
-    'puente-diciembre-2026': dict(cifra='7 y 8 dic.', texto='Puente de diciembre: dónde es festivo el lunes 7', icono='calendar-days', color=('#0F766E', '#115E59'), alt='Calendario de diciembre de 2026'),
+    'puente-diciembre-2026': dict(cifra='7 y 8 dic.', texto='Puente de diciembre: dónde es festivo el lunes 7', icono='calendar-days', color=('#0F766E', '#115E59'), alt='La Plaza de España de Sevilla reflejada en el agua del canal'),
     'subida-pensiones-2027': dict(cifra='≈ 3,6 %', texto='Lo que subirían las pensiones en enero de 2027', icono='piggy-bank', color=('#312E81', '#6D28D9'), alt='Dos mujeres mayores sentadas de espaldas en un banco, delante de una puerta antigua'),
     'deduccion-alquiler-renta': dict(cifra='10 %', texto='Del alquiler de tu casa, deducible en la renta', icono='house', color=('#0F766E', '#4F46E5'), alt='Edificios de viviendas con miradores junto a la ría de Bilbao'),
     'elecciones-29n-pensiones-smi-2027': dict(cifra='29-N', texto='Pensiones y SMI 2027: qué pasa con las elecciones', icono='landmark', color=('#4C1D95', '#6D28D9'), alt='Ilustración de un colegio electoral: personas votando en las urnas de unas elecciones generales'),
