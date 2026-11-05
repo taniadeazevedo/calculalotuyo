@@ -28,7 +28,8 @@ for pag, grupos in GRUPOS.items():
     def sin_repetidas(m):                                              # …y del marcado de Google (FAQPage)
         datos = json.loads(m.group(2))
         if datos.get('@type') != 'FAQPage': return m.group(0)
-        datos['mainEntity'] = [x for x in datos['mainEntity'] if x.get('name') not in QUITAR.get(pag, [])]
+        vistas = set()                                                 # cada pregunta una sola vez (la primera es la más reciente)
+        datos['mainEntity'] = [x for x in datos['mainEntity'] if x.get('name') not in QUITAR.get(pag, []) and not (x.get('name') in vistas or vistas.add(x.get('name')))]
         return m.group(1) + json.dumps(datos, ensure_ascii=False, indent=1) + m.group(3)
     s = re.sub(r'(<script type="application/ld\+json">\s*)(\{.*?\})(\s*</script>)', sin_repetidas, s, flags=re.S)
     ini = s.index('<div class="faq-list">') + len('<div class="faq-list">')

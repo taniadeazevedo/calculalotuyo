@@ -128,3 +128,14 @@
 - [ ] 👩🤖 Hacia el 20/12/2026: ¿tiene impresiones `consumo-radiador-electrico` en Search Console? Si sí, seguir con la familia «Hogar» (lavadora, aire acondicionado, coche eléctrico); si no, dejarla. Revisar también coste-trabajador, sueldo-por-horas y calculadora-iva.
 - [ ] 🤖 9/12/2026: quitar el puente de diciembre de los enlaces de `enlaces-internos.py` (ya habrá pasado).
 - [x] **Mudanza a Netlify (hecha el 04/11/2026):** web en Netlify (proyecto calculalotuyo), DNS en Strato: A 75.2.60.5, CNAME www → calculalotuyo.netlify.app, sin AAAA. GitHub Pages desactivado. Cada push a main publica solo.
+
+## Revisión «como Google» antes de volver a pedir AdSense (5/11/2026)
+- **Riesgo principal: páginas en serie.** 12 «X euros brutos en netos» (plantilla 100 % igual, solo cambian las cifras;
+  casi 0 impresiones) y 13 «indemnización despido X años» (85 % iguales, pero posición 4-9 en Google).
+  Todas creadas el mismo día (19/10). Propuesta: noindex a las 12 de brutos; las de despido se quedan.
+- Calendarios de comunidades (19): se parecen un 56 %, normal (festivos distintos). Se quedan.
+- Sin problemas: enlaces rotos 0, aviso legal con titular/NIF/domicilio, privacidad y cookies mencionan AdSense,
+  ads.txt bien, huecos de anuncio ocultos (no se ven cajas vacías), 404 propia.
+- Lo demás es antigüedad: el dominio tiene semanas. Reenviar entre el 5 y el 10/12.
+- HECHO 5/11: noindex a las 12 de brutos (_herramientas/sueldos/noindex-brutos.py). Volver a indexar tras la aprobación.
+- HECHO 5/11: arreglado irpf.html, que tenía 149 preguntas en el marcado FAQPage (13 repetidas ~11 veces cada una).

@@ -38,7 +38,7 @@ def poner_faqs(s, faqs):
         s = s.replace('<div class="faq-list">', '<div class="faq-list">\n' + item, 1)            # la primera de la lista
         ld = json.dumps({'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': limpio(a)}}, ensure_ascii=False)
         s = s.replace('"mainEntity": [', '"mainEntity": [\n  ' + ld + ',', 1)
-    return s
+    return re.sub(r'\n(?:[ \t]*\n){2,}', '\n\n', re.sub(r'(</div></div>)\n(?:[ \t]*\n)+(?=[ \t]*<div class="faq-item">)', r'\1\n', s))   # sin líneas vacías entre preguntas (se acumulaban en cada regeneración)
 
 def cabecera(s, titulo, desc, h1):
     s = re.sub(r'<title>.*?</title>', f'<title>{titulo}</title>', s, count=1)

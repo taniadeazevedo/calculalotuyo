@@ -35,6 +35,7 @@ python3 _herramientas/novedades/gen-novedades.py   # sección Novedades (artícu
 python3 _herramientas/jubilacion/gen-pensiones-minimas.py   # «Pensión mínima y máxima 2026» (después de novedades: usa la subida de 2027)
 python3 _herramientas/consolidar.py      # páginas de plantilla unidas en sus tablas (24/10/2026)
 python3 _herramientas/calendario/noindex-ciudades.py   # calendarios de ciudades fuera del índice mientras AdSense revisa (05/11/2026)
+python3 _herramientas/sueldos/noindex-brutos.py         # páginas «X euros brutos en netos» fuera del índice mientras AdSense revisa (05/11/2026)
 python3 _herramientas/seo-final.py
 python3 _herramientas/titulos.py           # títulos, descripciones y preguntas según cómo busca la gente
 python3 _herramientas/faq-grupos.py        # preguntas frecuentes agrupadas por temas donde hay muchas (después de titulos.py)
