@@ -236,6 +236,69 @@ PARO = f'''<h2>{ico('triangle-alert')} Errores que cuestan días de paro</h2>
 <li>Si encuentras trabajo y lo vuelves a perder antes de agotar el paro, puedes <strong>reanudar</strong> el que te quedaba.</li>
 </ul>'''
 
+# ---------------------------------------------------------------- IRPF
+IRPF = f'''<h2>{ico('triangle-alert')} Errores frecuentes con la retención</h2>
+<ul>
+<li><strong>Confundir tu retención con tu tramo.</strong> Que ganes 30.000 € no significa que te quiten un 30 %: los tramos se aplican por partes y, con el mínimo personal, la retención se queda en torno al 16 %.</li>
+<li><strong>No avisar a la empresa cuando cambia tu situación.</strong> Si tienes un hijo, te separas o te reconocen una discapacidad, rellena de nuevo el <strong>modelo 145</strong>. Si no, te retienen de más (o de menos) todo el año.</li>
+<li><strong>Tener dos pagadores y no hacer cuentas.</strong> Si has cambiado de trabajo o has cobrado el paro, cada pagador retiene como si fuera el único. Lo normal es que en la renta te salga a pagar.</li>
+<li><strong>Pensar que una subida de sueldo te deja con menos dinero.</strong> No pasa: solo tributa más la parte que supera cada tramo. Lo explicamos en la <a href="sueldo-neto">calculadora de sueldo neto</a>.</li>
+<li><strong>Olvidar los contratos cortos.</strong> Con un contrato temporal de menos de un año, la retención mínima es del <strong>2 %</strong> aunque ganes poco.</li>
+</ul>
+
+<h2>{ico('pen-line')} Cómo cambiar tu retención</h2>
+<ul>
+<li><strong>Para que te retengan más</strong> (y no te toque pagar en la renta): pídelo por escrito a tu empresa indicando el porcentaje. La ley lo permite siempre.</li>
+<li><strong>Para que te retengan menos</strong>: no se puede pedir un porcentaje a la carta. Lo que sí puedes es actualizar el modelo 145 con tus datos reales (hijos, ascendientes, discapacidad, hipoteca anterior a 2013) para que la empresa lo recalcule.</li>
+<li>Los cambios se aplican a partir de la siguiente nómina, y la empresa <strong>regulariza</strong> el resto del año: por eso a veces el porcentaje cambia a mitad de año.</li>
+</ul>
+
+<h2>{ico('folder-open')} Dónde mirar tus datos</h2>
+<ul>
+<li><strong>En la nómina:</strong> el porcentaje aparece en la línea «Retención IRPF» y la base sobre la que se aplica.</li>
+<li><strong>En el certificado de retenciones</strong> que te da la empresa a principios de año: lo que cobraste y lo que te retuvieron en total.</li>
+<li><strong>En los datos fiscales</strong> de la Agencia Tributaria (con Cl@ve) desde marzo: ahí ves todos tus pagadores antes de hacer la renta.</li>
+</ul>'''
+
+# ---------------------------------------------------------------- SUELDO NETO
+SUELDO_NETO = f'''<h2>{ico('triangle-alert')} Errores frecuentes al comparar sueldos</h2>
+<ul>
+<li><strong>Comparar ofertas por el sueldo al mes.</strong> 2.000 € en 14 pagas y 2.333 € en 12 pagas son el mismo sueldo: <strong>28.000 € al año</strong>. Compara siempre el bruto anual.</li>
+<li><strong>Olvidar lo que no es dinero.</strong> El seguro médico, los tickets restaurante o el coche de empresa son retribución en especie: pueden subir tu IRPF aunque no cobres más en la cuenta.</li>
+<li><strong>Esperar el mismo neto todos los meses.</strong> Si te suben el sueldo a mitad de año o cobras un bonus, la empresa recalcula la retención y el neto de los meses siguientes puede bajar un poco.</li>
+<li><strong>Pensar que las pagas extra tributan más.</strong> Llevan el mismo porcentaje de IRPF que el resto; parecen menores porque en muchas nóminas no llevan pluses.</li>
+</ul>
+
+<h2>{ico('search')} Si tu nómina no cuadra con la calculadora</h2>
+<ol>
+<li><strong>Compara el bruto.</strong> En la nómina pueden sumar horas extra, pluses o especie que aquí no has puesto.</li>
+<li><strong>Mira el porcentaje de IRPF.</strong> Si es muy distinto, puede que la empresa no tenga tus datos actualizados (modelo 145).</li>
+<li><strong>Revisa la Seguridad Social.</strong> Debe ser el 6,50 % (6,55 % con contrato temporal) de tu base de cotización, que incluye la parte proporcional de las pagas extra.</li>
+<li><strong>Consulta tu convenio</strong> para ver si cobras lo que te corresponde por tu categoría.</li>
+<li><strong>Pregunta a tu empresa</strong> por escrito. Si te deben dinero, tienes <strong>un año</strong> para reclamarlo (art. 59 del Estatuto).</li>
+</ol>'''
+
+# ---------------------------------------------------------------- CUOTA DE AUTÓNOMOS
+CUOTA_AUTONOMOS = f'''<h2>{ico('triangle-alert')} Errores frecuentes</h2>
+<ul>
+<li><strong>Elegir el tramo más bajo «por si acaso».</strong> Si al final ganas más, la Seguridad Social te reclama la diferencia de golpe al año siguiente, en la regularización.</li>
+<li><strong>No cambiar el tramo cuando cambian tus ingresos.</strong> Puedes cambiarlo <strong>hasta 6 veces al año</strong> desde Import@ss. Hacerlo a tiempo evita sustos en la regularización.</li>
+<li><strong>Confundir la cuota con los impuestos.</strong> La cuota es la Seguridad Social. El IRPF (modelo 130) y el IVA (modelo 303) se pagan aparte, cada trimestre, a Hacienda.</li>
+<li><strong>No contar la cuota como gasto.</strong> Lo que pagas de autónomos se resta de tus ingresos en el IRPF.</li>
+<li><strong>Dejar un recibo sin pagar.</strong> Tiene un recargo del 10 % si lo pagas el mes siguiente y del 20 % después. Además, con deudas puedes perder la tarifa plana y las ayudas.</li>
+</ul>
+
+<h2>{ico('alarm-clock')} Plazos que conviene tener claros</h2>
+<ul>
+<li><strong>Alta:</strong> en Hacienda (modelo 036 o 037) y en la Seguridad Social <strong>antes de empezar</strong> a trabajar. La tarifa plana hay que pedirla en el momento del alta.</li>
+<li><strong>La cuota</strong> se cobra por domiciliación el último día hábil de cada mes.</li>
+<li><strong>Los impuestos trimestrales</strong> se presentan del 1 al 20 de abril, julio y octubre, y del 1 al 30 de enero.</li>
+<li><strong>La regularización</strong> llega cuando Hacienda pasa tus ingresos reales a la Seguridad Social, normalmente en la segunda mitad del año siguiente.</li>
+</ul>
+
+<h2>{ico('handshake')} Dónde pedir ayuda</h2>
+<p>Las <strong>cámaras de comercio</strong> y los puntos PAE (Punto de Atención al Emprendedor) te ayudan a darte de alta gratis. Muchos ayuntamientos y comunidades tienen servicios de asesoramiento para nuevos autónomos. Para la contabilidad y los impuestos de cada trimestre, una gestoría suele costar entre 40 y 80 € al mes.</p>'''
+
 # Página → contenido nuevo
 PAGINAS = {
     'despido-improcedente': DESPIDO_IMPROCEDENTE,
@@ -244,6 +307,9 @@ PAGINAS = {
     'baja-medica': BAJA_MEDICA,
     'jubilacion': JUBILACION,
     'paro': PARO,
+    'irpf': IRPF,
+    'sueldo-neto': SUELDO_NETO,
+    'cuota-autonomos': CUOTA_AUTONOMOS,
 }
 
 for pag, html in PAGINAS.items():
