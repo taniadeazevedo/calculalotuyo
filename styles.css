@@ -4940,5 +4940,5 @@ main:has(> .section-about-teaser:last-child) { padding-bottom: 0; }
 .seo-section h2 .ico, .art-cuerpo h2 .ico { color: var(--marca); }   /* iconos de los títulos */
 /* Calendario (05/11/2026): sin el fondo verde menta en la cabecera (no pegaba con el resto). La cabecera es la misma
    que en toda la web y el verde queda solo en los detalles (etiqueta, botones, iconos y respuesta rápida). */
-.tema-calendario .hero-mini { background-image: linear-gradient(180deg, #EFEEF6 0%, var(--fondo) 100%); }
+.tema-calendario .hero-mini { background-image: linear-gradient(180deg, #E4EFEB 0%, var(--fondo) 100%); }   /* verde grisáceo suave, en la misma gama que los grises morados del resto */
 body.tema-calendario { --marca: #0F766E; }                           /* en el calendario, los acentos pequeños van en su verde */
