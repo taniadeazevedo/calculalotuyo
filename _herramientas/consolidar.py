@@ -41,8 +41,24 @@ def pagina_traslado(destino, nombre):
 </html>
 '''
 
-for slug, (destino, nombre) in DESTINO.items():
-    open(f'{slug}.html', 'w', encoding='utf-8').write(pagina_traslado(destino, nombre))
+# 05/11/2026: en vez de páginas mínimas con «refresh» (páginas vacías que Google y AdSense ven como contenido pobre),
+# redirecciones 301 de Netlify en el archivo _redirects y fuera los .html de traslado.
+# La lista se guarda en redirecciones.json, porque al borrar los .html el glob de arriba ya no los encuentra.
+import json
+RJ = os.path.join('_herramientas', 'redirecciones.json')
+guardadas = json.load(open(RJ, encoding='utf-8')) if os.path.exists(RJ) else {}
+guardadas.update({k: list(v) for k, v in DESTINO.items()})
+DESTINO = {k: tuple(v) for k, v in guardadas.items()}
+json.dump(guardadas, open(RJ, 'w', encoding='utf-8'), ensure_ascii=False, indent=1, sort_keys=True)
+with open('_redirects', 'w', encoding='utf-8') as fr:
+    fr.write('# Redirecciones 301 de Netlify (las escribe _herramientas/consolidar.py: no editar a mano)\n')
+    for slug, (destino, _) in sorted(DESTINO.items()):
+        fr.write(f'/{slug}  /{destino}  301!\n')
+        fr.write(f'/{slug}.html  /{destino}  301!\n')
+borradas = 0
+for slug in DESTINO:
+    if os.path.exists(f'{slug}.html'): os.remove(f'{slug}.html'); borradas += 1
+print('redirecciones 301:', len(DESTINO), '· páginas de traslado borradas:', borradas)
 
 # Fuera del sitemap
 sm = open('sitemap.xml', encoding='utf-8').read()
