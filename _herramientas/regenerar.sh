@@ -43,6 +43,7 @@ python3 _herramientas/respuestas.py         # «Respuesta rápida» arriba de ca
 python3 _herramientas/menu.py              # el mismo menú en todas las páginas (después de generarlas)
 python3 _herramientas/iconos.py            # iconos propios en vez de emojis (después del menú)
 python3 _herramientas/enlaces-internos.py  # enlaces hacia las páginas que Google ya coloca bien (después de los iconos)
+python3 _herramientas/ampliar-guias.py     # casos, errores, documentos y cuándo pedir ayuda en las calculadoras principales (05/11/2026)
 python3 _herramientas/tablas.py            # tablas que se deslizan en el móvil (después de los iconos)
 python3 _herramientas/ejemplos.py          # foto de la persona en los ejemplos, si la hay (después de los iconos)
 python3 _herramientas/cta.py               # recuadro «Calcula tu…» al principio de guías, casos, modelos y novedades
