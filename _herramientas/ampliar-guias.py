@@ -65,9 +65,185 @@ DESPIDO_IMPROCEDENTE = f'''<h2>{ico('users')} Tres casos con cifras</h2>
 <li><strong>Inspección de Trabajo:</strong> sirve para denunciar impagos, horas sin cotizar o contratos fraudulentos, pero <strong>no decide si un despido es improcedente</strong>: eso lo hace el Juzgado de lo Social.</li>
 </ul>'''
 
+# ---------------------------------------------------------------- DESPIDO OBJETIVO
+# Casos: (nombre, situación, sueldo bruto anual, días por 20/año sin tope)
+CASOS_DO = [
+    ('Laura', 'dependienta · 1.400 €/mes × 14 · 2 años y 4 meses', 1400 * 14, 20 * 28 / 12),
+    ('Javier', 'técnico · 2.200 €/mes × 14 · 11 años', 2200 * 14, 20 * 11),
+    ('Pedro', 'administrativo · 2.000 €/mes × 14 · 20 años', 2000 * 14, 20 * 20),
+]
+filas_do = ''.join(
+    f'<tr><td><strong>{n}</strong><br><small>{t}</small></td><td><strong>{eur(dia(a) * min(d, 360))}</strong></td>'
+    f'<td>{eur(dia(a) * min(d * 33 / 20, 720))}</td><td>{min(d, 360):g}{" (tope)" if d > 360 else ""}</td></tr>'
+    for n, t, a, d in CASOS_DO)
+
+DESPIDO_OBJETIVO = f'''<h2>{ico('users')} Tres casos con cifras</h2>
+<p>La indemnización del despido objetivo es de <strong>20 días por año</strong> con un tope de <strong>12 mensualidades</strong> (360 días). El tope se alcanza a los 18 años de antigüedad, como le pasa a Pedro:</p>
+<div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Caso</th><th>Objetivo</th><th>Si fuera improcedente</th><th>Días</th></tr></thead><tbody>{filas_do}</tbody></table></div>
+<p>La diferencia entre las dos columnas es lo que está en juego si reclamas y el juez dice que el despido no estaba justificado.</p>
+
+<h2>{ico('clipboard-list')} Lo que la empresa tiene que cumplir</h2>
+<p>El despido objetivo tiene requisitos de forma (art. 53 del Estatuto). Si la empresa se salta alguno, el despido puede declararse <strong>improcedente</strong> y pasar a 33 días por año:</p>
+<ul>
+<li><strong>Carta por escrito</strong> que explique la causa concreta: no basta con «causas económicas», tiene que decir cuáles.</li>
+<li><strong>La indemnización, al mismo tiempo que la carta</strong> (normalmente por transferencia ese día). Solo puede retrasarla si la causa es económica y lo explica en la carta.</li>
+<li><strong>15 días de preaviso.</strong> Si no lo da, te tiene que pagar esos días, pero el despido sigue siendo válido.</li>
+<li><strong>Durante el preaviso</strong> tienes <strong>6 horas a la semana</strong> de permiso pagado para buscar trabajo.</li>
+<li>Si hay representantes de los trabajadores, la empresa les tiene que dar una copia de la carta.</li>
+</ul>
+
+<h2>{ico('triangle-alert')} Errores frecuentes</h2>
+<ul>
+<li><strong>Pensar que cobrar la indemnización es aceptar el despido.</strong> Puedes cobrar los 20 días y reclamar a la vez: si ganas, te pagan la diferencia hasta los 33.</li>
+<li><strong>Dejar pasar los 20 días hábiles</strong> para presentar la papeleta de conciliación. Es el mismo plazo que en cualquier despido.</li>
+<li><strong>No comprobar el salario que usan.</strong> Tiene que ser el bruto anual con pagas extra y pluses fijos; si falta algo, la indemnización es menor de lo debido.</li>
+<li><strong>Firmar «conforme».</strong> Firma con «no conforme» y la fecha: solo acreditas que la has recibido.</li>
+</ul>
+
+<h2>{ico('handshake')} Cuándo merece la pena reclamar</h2>
+<ul>
+<li>Si la carta es genérica y no explica <strong>qué pérdidas o qué cambios</strong> justifican el despido.</li>
+<li>Si la empresa <strong>contrata a otra persona</strong> para tu puesto poco después.</li>
+<li>Si no te dieron la indemnización con la carta o el cálculo es menor del que da esta calculadora.</li>
+<li>Si te despiden estando embarazada, de baja por nacimiento o con reducción de jornada por cuidado de hijos: el despido podría ser <strong>nulo</strong>.</li>
+</ul>
+<p>Para el juicio, los trabajadores tienen derecho a <strong>abogado de oficio gratis</strong> sea cual sea su sueldo (Ley 1/1996, art. 2). Los sindicatos también asesoran y acompañan en la conciliación.</p>'''
+
+# ---------------------------------------------------------------- FINIQUITO
+FINIQUITO = f'''<h2>{ico('clipboard-list')} Qué tiene que llevar tu finiquito</h2>
+<p>El finiquito es la liquidación de lo que la empresa te debe el día que terminas. Revisa que estén estas partidas:</p>
+<ul>
+<li><strong>Los días trabajados del último mes</strong> que todavía no has cobrado.</li>
+<li><strong>Las vacaciones generadas y no disfrutadas</strong>: unos 2,5 días por mes trabajado en el año (con 30 días naturales al año).</li>
+<li><strong>La parte proporcional de las pagas extra</strong>, si no las cobras prorrateadas cada mes.</li>
+<li><strong>Horas extra, comisiones o pluses</strong> pendientes.</li>
+<li><strong>Descuentos</strong>: el preaviso que no hayas dado (en una baja voluntaria), anticipos o lo que hayas cobrado de más.</li>
+</ul>
+<p>La <strong>indemnización por despido</strong> no forma parte del finiquito: si te corresponde, va aparte y no paga IRPF (dentro del límite legal). El finiquito sí tributa, como cualquier nómina.</p>
+
+<h2>{ico('triangle-alert')} Errores frecuentes</h2>
+<ul>
+<li><strong>Firmar sin revisar.</strong> Si no estás de acuerdo, firma con «<strong>no conforme</strong>» y la fecha: así cobras lo que te dan y puedes reclamar el resto.</li>
+<li><strong>Olvidar las vacaciones del año en curso.</strong> Es la partida que más se «pierde».</li>
+<li><strong>Contar dos veces las pagas extra</strong> cuando ya las cobras prorrateadas en la nómina.</li>
+<li><strong>No dar el preaviso en una baja voluntaria.</strong> Si tu convenio lo exige (lo normal es 15 días), la empresa puede descontarte los días que falten.</li>
+<li><strong>Pensar que firmar el finiquito te impide reclamar.</strong> Si hay un error en las cifras, se puede reclamar igualmente.</li>
+</ul>
+
+<h2>{ico('alarm-clock')} Plazos y derechos</h2>
+<ul>
+<li><strong>Un año</strong> para reclamar cantidades que te deban (art. 59 del Estatuto), contado desde el día en que terminó el contrato.</li>
+<li>Puedes pedir que un <strong>representante de los trabajadores</strong> esté presente cuando firmes (art. 49 del Estatuto).</li>
+<li>La empresa tiene que darte el <strong>certificado de empresa</strong> (lo envía al SEPE) para que puedas pedir el paro, si te corresponde.</li>
+</ul>
+
+<h2>{ico('folder-open')} Qué documentos tener a mano</h2>
+<ul>
+<li>Tu <strong>contrato</strong> y las <strong>últimas nóminas</strong>, para comprobar el sueldo y si las pagas van prorrateadas.</li>
+<li>Un registro de las <strong>vacaciones</strong> que ya has disfrutado este año (correos, solicitudes, el portal del empleado).</li>
+<li>Tu <strong>convenio colectivo</strong>: fija los días de preaviso, las pagas extra y cuándo se generan.</li>
+<li>La carta de despido o tu carta de baja voluntaria, con la fecha.</li>
+</ul>'''
+
+# ---------------------------------------------------------------- BAJA MÉDICA
+BR = 1800 / 30                                                      # base reguladora diaria del ejemplo
+BAJA_COMUN = 17 * BR * 0.60 + 10 * BR * 0.75                        # 30 días por enfermedad común
+BAJA_ACC = 30 * BR * 0.75                                           # 30 días por accidente de trabajo
+BAJA_MEDICA = f'''<h2>{ico('users')} El mismo mes de baja, dos casos</h2>
+<p>Marta tiene una base de cotización de 1.800 € al mes ({eur(BR)} al día) y su convenio no complementa la baja. Está de baja 30 días:</p>
+<div class="tabla-wrap"><table class="tabla-festivos"><thead><tr><th>Motivo</th><th>Total</th></tr></thead><tbody>
+<tr><td><strong>Enfermedad común</strong><br><small>días 1-3: nada · 4-20: 17 × {eur(BR * 0.6)} · 21-30: 10 × {eur(BR * 0.75)}</small></td><td><strong>{eur(BAJA_COMUN)}</strong></td></tr>
+<tr><td><strong>Accidente de trabajo</strong><br><small>30 × {eur(BR * 0.75)} (75 % desde el primer día)</small></td><td><strong>{eur(BAJA_ACC)}</strong></td></tr>
+</tbody></table></div>
+<p>Son cantidades brutas: luego se restan el IRPF y la Seguridad Social, como en una nómina normal.</p>
+
+<h2>{ico('triangle-alert')} Errores frecuentes</h2>
+<ul>
+<li><strong>Llevar el parte a la empresa.</strong> Desde abril de 2023 no hace falta: el médico lo envía directamente a la Seguridad Social y esta avisa a la empresa.</li>
+<li><strong>Dar por perdidas las vacaciones.</strong> Si la baja coincide con tus vacaciones, las conservas y puedes cogerlas después, hasta 18 meses desde el final del año en que se generaron (art. 38 del Estatuto).</li>
+<li><strong>No mirar el convenio.</strong> Muchos complementan la baja hasta el 100 % del sueldo, a veces desde el primer día.</li>
+<li><strong>Faltar a una revisión de la mutua o del INSS</strong> sin justificarlo: te pueden suspender la prestación.</li>
+</ul>
+
+<h2>{ico('scale')} Si no estás de acuerdo con el alta</h2>
+<ul>
+<li>Si el <strong>INSS</strong> te da el alta y crees que no puedes trabajar, puedes presentar una <strong>disconformidad en 4 días naturales</strong> ante la inspección médica de tu comunidad. Mientras se resuelve, tienes que reincorporarte.</li>
+<li>Si la <strong>mutua</strong> propone el alta, la decisión final es de tu médico de cabecera o de la inspección médica.</li>
+<li>Una baja dura como máximo <strong>365 días</strong>, prorrogables otros 180 si se prevé que te vas a curar.</li>
+</ul>
+
+<h2>{ico('handshake')} Si te despiden estando de baja</h2>
+<p>Estar de baja no impide que te despidan, pero si el motivo real es la enfermedad, el despido puede ser <strong>nulo</strong> por discriminación (Ley 15/2022): la empresa tendría que readmitirte y pagarte los salarios que no cobraste. Tienes 20 días hábiles para reclamar, y aquí merece la pena consultar con un abogado laboralista o un sindicato. Lo explicamos en <a href="despido-estando-de-baja">despido estando de baja</a>.</p>'''
+
+# ---------------------------------------------------------------- JUBILACIÓN
+JUBILACION = f'''<h2>{ico('clipboard-list')} Antes de pedirla: revisa tu vida laboral</h2>
+<p>La pensión sale de lo que la Seguridad Social tiene registrado. Un error ahí cuesta dinero todos los meses, así que conviene revisarlo con tiempo:</p>
+<ul>
+<li>Descarga tu <strong>informe de vida laboral</strong> y tu <strong>informe de bases de cotización</strong> en la sede de la Seguridad Social (con Cl@ve o certificado digital). Son gratis.</li>
+<li>Comprueba que estén <strong>todos tus trabajos</strong> y que las fechas cuadren con tus contratos. Los años en el extranjero, la mili o el servicio social y los cuidados de hijos pueden sumar en algunos casos.</li>
+<li>Si falta algo, reclámalo con contratos o nóminas antes de jubilarte: después cuesta más.</li>
+<li>Usa el <strong>simulador de jubilación</strong> de «Tu Seguridad Social»: con tus bases reales da una cifra más exacta que cualquier calculadora.</li>
+</ul>
+
+<h2>{ico('alarm-clock')} Cuándo y cómo pedirla</h2>
+<ul>
+<li>Puedes presentar la solicitud <strong>hasta 3 meses antes</strong> de la fecha en que quieres jubilarte, por internet o en un centro de la Seguridad Social.</li>
+<li>Si la pides <strong>dentro de los 3 meses siguientes</strong> a dejar de trabajar, la cobras desde el día siguiente al cese. Si tardas más, solo te pagan con efectos de los 3 meses anteriores a la solicitud: el resto se pierde.</li>
+<li>La pensión se cobra en <strong>14 pagas</strong> (las extra en junio y noviembre) y sube cada enero con el IPC medio.</li>
+</ul>
+
+<h2>{ico('triangle-alert')} Errores frecuentes</h2>
+<ul>
+<li><strong>Jubilarse un mes antes de tiempo.</strong> En la anticipada, la reducción se aplica por cada mes que adelantas: a veces esperar uno o dos meses cambia mucho la pensión.</li>
+<li><strong>No contar las lagunas.</strong> Los meses sin cotizar dentro del periodo de cálculo se rellenan con la base mínima (o la mitad), y bajan la base reguladora.</li>
+<li><strong>Olvidar que la pensión tributa.</strong> Paga IRPF como un sueldo, y con otro ingreso puede obligarte a hacer la renta.</li>
+<li><strong>Pensar que jubilarse es dejar de trabajar del todo.</strong> Con la jubilación activa o la <a href="jubilacion-flexible">jubilación flexible</a> puedes compaginar pensión y trabajo.</li>
+</ul>
+
+<h2>{ico('handshake')} Dónde pedir ayuda</h2>
+<p>Los <strong>centros de atención de la Seguridad Social</strong> (CAISS) revisan tu caso gratis con cita previa. Si te deniegan la pensión o no estás de acuerdo con la cantidad, tienes <strong>30 días</strong> para presentar una reclamación previa antes de ir al juzgado; ahí ya conviene un abogado o un sindicato.</p>'''
+
+# ---------------------------------------------------------------- PARO
+PARO = f'''<h2>{ico('triangle-alert')} Errores que cuestan días de paro</h2>
+<ul>
+<li><strong>Pedirlo tarde.</strong> Tienes <strong>15 días hábiles</strong> desde el día siguiente al despido o al fin del contrato. Si lo pides después, no lo pierdes, pero pierdes los días de retraso.</li>
+<li><strong>Esperar a la conciliación o al juicio.</strong> Puedes pedir el paro y reclamar el despido a la vez.</li>
+<li><strong>Irte de vacaciones sin avisar.</strong> Si sales de España tienes que comunicarlo. Hasta 15 días al año no afecta a tu prestación; más tiempo, la suspende.</li>
+<li><strong>No renovar la demanda de empleo</strong> en la fecha que te dan o no ir a una cita: pueden quitarte un mes de paro.</li>
+<li><strong>Rechazar una oferta de empleo adecuada</strong> o un curso: también tiene sanción.</li>
+<li><strong>Trabajar unas horas sin avisar.</strong> Un trabajo a tiempo parcial es compatible con el paro, pero hay que comunicarlo y se cobra la parte proporcional.</li>
+</ul>
+
+<h2>{ico('folder-open')} Qué documentos necesitas</h2>
+<ul>
+<li><strong>DNI o NIE</strong> y tu número de cuenta.</li>
+<li>El <strong>certificado de empresa</strong>: lo envía la empresa directamente al SEPE. Si no lo ha hecho, pídeselo.</li>
+<li>Si tienes hijos a cargo, el <strong>libro de familia</strong> o el certificado de nacimiento: sube el tope de lo que cobras.</li>
+<li>Estar inscrita o inscrito como <strong>demandante de empleo</strong> en tu servicio autonómico de empleo.</li>
+</ul>
+
+<h2>{ico('scale')} Si te lo deniegan o te pagan menos</h2>
+<ul>
+<li>Revisa la resolución: muchas veces es un dato que falta (un contrato que no aparece, días cotizados sin contar).</li>
+<li>Tienes <strong>30 días hábiles</strong> para presentar una <strong>reclamación previa</strong> ante el SEPE. Si la rechazan, puedes ir al Juzgado de lo Social.</li>
+<li>Los sindicatos y las oficinas de empleo te ayudan a prepararla. Para el juicio tienes derecho a abogado de oficio gratis.</li>
+</ul>
+
+<h2>{ico('lightbulb')} Lo que poca gente sabe</h2>
+<ul>
+<li>El paro <strong>tributa en el IRPF</strong>. Si en el año has tenido dos pagadores (tu empresa y el SEPE), puede que tengas que hacer la renta: míralo en <a href="obligado-a-declarar-renta">¿tengo que hacer la renta?</a></li>
+<li>Mientras cobras el paro, el SEPE <strong>cotiza por ti para la jubilación</strong>.</li>
+<li>Si encuentras trabajo y lo vuelves a perder antes de agotar el paro, puedes <strong>reanudar</strong> el que te quedaba.</li>
+</ul>'''
+
 # Página → contenido nuevo
 PAGINAS = {
     'despido-improcedente': DESPIDO_IMPROCEDENTE,
+    'despido-objetivo': DESPIDO_OBJETIVO,
+    'finiquito': FINIQUITO,
+    'baja-medica': BAJA_MEDICA,
+    'jubilacion': JUBILACION,
+    'paro': PARO,
 }
 
 for pag, html in PAGINAS.items():
