@@ -149,3 +149,7 @@
   Google clasifica la web como de poco valor y deja de indexarla. Seguramente es también el motivo de AdSense: no aprueba una web que Google no indexa.
 - Plan: no tocar la estructura; pedir indexación a mano de las ~10 mejores; conseguir enlaces y menciones;
   no reenviar AdSense hasta tener 60-80 páginas indexadas.
+- HECHO 12/11: sitemap reenviado (Google no lo leía desde el 28/10) y pedida la indexación de 10 páginas:
+  sueldo-neto, irpf, despido-improcedente, finiquito, paro, calendario-laboral-2027, baja-medica, jubilacion,
+  subida-pensiones-2027, cuota-autonomos. La portada ya estaba indexada. Su último rastreo era del 14-28/10,
+  antes de las mejoras del 5/11. Revisar hacia el 19/11; si siguen fuera, pedir otras 10.
