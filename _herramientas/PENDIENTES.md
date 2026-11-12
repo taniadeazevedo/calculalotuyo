@@ -139,3 +139,13 @@
 - Lo demás es antigüedad: el dominio tiene semanas. Reenviar entre el 5 y el 10/12.
 - HECHO 5/11: noindex a las 12 de brutos (_herramientas/sueldos/noindex-brutos.py). Volver a indexar tras la aprobación.
 - HECHO 5/11: arreglado irpf.html, que tenía 149 preguntas en el marcado FAQPage (13 repetidas ~11 veces cada una).
+
+## Search Console 12/11/2026: Google ha sacado casi toda la web del índice
+- Indexadas: 17. «Rastreada: actualmente sin indexar»: 118 (salto de golpe el ~25/10). «Descubierta sin indexar»: 44.
+- Las impresiones caen a casi 0 el mismo 25/10. 3 clics en 3 meses. Posición media 55.
+- Sin acciones manuales; técnico correcto (200, canónicas bien, sin noindex, netlify.app y www redirigen con 301).
+- Enlaces externos: 1 (taniadeazevedo.es).
+- Causa probable: dominio nuevo, cero enlaces y ~180 páginas publicadas y cambiadas en 10 días (19-24/10, muchas de plantilla).
+  Google clasifica la web como de poco valor y deja de indexarla. Seguramente es también el motivo de AdSense: no aprueba una web que Google no indexa.
+- Plan: no tocar la estructura; pedir indexación a mano de las ~10 mejores; conseguir enlaces y menciones;
+  no reenviar AdSense hasta tener 60-80 páginas indexadas.
