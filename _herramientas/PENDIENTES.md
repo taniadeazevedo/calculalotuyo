@@ -29,7 +29,8 @@
 - [ ] 👩 En AdSense, anuncios automáticos: activar solo el anuncio fijo de abajo en el móvil («de anclaje») y desactivar los de pantalla completa («viñetas»).
 
 ## 📅 Calendario
-- [ ] 🤖 Añadir las 32 ciudades pendientes según publiquen sus boletines (noviembre–enero): Cataluña (8), Madrid (4), Comunitat Valenciana (4), País Vasco (3), Aragón (3), Castilla-La Mancha (5), Cantabria, Burgos, Valladolid, Pamplona y Ceuta. Datos en `_herramientas/calendario/fiestas-locales-2027.json`; luego `sh _herramientas/regenerar.sh`.
+- [ ] 🤖 Añadir las 22 ciudades pendientes según publiquen sus boletines (noviembre–enero): Cataluña (7: Girona, Lleida, Tarragona, L'Hospitalet, Badalona, Terrassa, Sabadell), Madrid (3: Móstoles, Alcalá de Henares, Getafe), Castellón de la Plana, Aragón (3), Castilla-La Mancha (5), Santander, Burgos y Pamplona. Datos en `_herramientas/calendario/fiestas-locales-2027.json`; luego `sh _herramientas/regenerar.sh`.
+- [x] 🤖 (15/11) Añadidas 7: Ceuta (BOCCE n.º 6.666 de 3/11/2026), Alicante y Elche (BOP de Alicante n.º 210 de 4/11/2026), Vitoria-Gasteiz (BOTHA n.º 116 de 9/10/2026), Bilbao (BOB n.º 181 de 22/9/2026), San Sebastián (BOG n.º 187 de 1/10/2026) y Valladolid (BOP de Valladolid n.º 204 de 23/10/2026). Falta publicarlas (esperando el sí de Tania). No van al sitemap a propósito (noindex de ciudades mientras AdSense revisa). Burgos capital: aprobadas por el Ayuntamiento, pero sin boletín encontrado (según una web no sale en el BOP n.º 145 de 4/8/2026, sin comprobar); Pamplona solo tiene el 3 de diciembre común (falta su otra fiesta).
 - [x] 🤖 (02/11) Añadidas Andalucía (10, BOJA n.º 210 de 29/10/2026) y Extremadura (2, DOE n.º 207 de 27/10/2026). Los boletines solo dan fechas, así que salen como «Fiesta local». Ojo: `regenerar.sh` no mete las ciudades nuevas en `sitemap.xml`; hay que añadirlas a mano detrás de Logroño.
 - [x] 🤖 (02/11) Publicadas las 12 ciudades nuevas (200 comprobado y aviso a Bing con IndexNow).
 - [ ] 🤖 Octubre de 2027: calendario 2028 cuando el BOE publique las fiestas.
@@ -153,3 +154,6 @@
   sueldo-neto, irpf, despido-improcedente, finiquito, paro, calendario-laboral-2027, baja-medica, jubilacion,
   subida-pensiones-2027, cuota-autonomos. La portada ya estaba indexada. Su último rastreo era del 14-28/10,
   antes de las mejoras del 5/11. Revisar hacia el 19/11; si siguen fuera, pedir otras 10.
+- 17/11: nada se mueve. 17 indexadas, 119 «rastreada sin indexar». Google volvió a visitar sueldo-neto y
+  despido-improcedente el 12/11 (ya mejoradas) y siguió sin indexarlas → es confianza en el dominio, no rastreo.
+  Sitemap leído el 12/11 sin problemas.
