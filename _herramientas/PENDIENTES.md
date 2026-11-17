@@ -157,3 +157,6 @@
 - 17/11: nada se mueve. 17 indexadas, 119 «rastreada sin indexar». Google volvió a visitar sueldo-neto y
   despido-improcedente el 12/11 (ya mejoradas) y siguió sin indexarlas → es confianza en el dominio, no rastreo.
   Sitemap leído el 12/11 sin problemas.
+- HECHO 17/11: poda publicada (_herramientas/noindex-poda.py): 40 páginas fuera del índice, sitemap 96 URLs.
+  Revisar Search Console hacia el 1/12. Cuando las principales estén indexadas, quitar la poda por grupos
+  (primero los calendarios de comunidades, que tienen búsquedas en diciembre-enero).
