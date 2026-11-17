@@ -36,6 +36,7 @@ python3 _herramientas/jubilacion/gen-pensiones-minimas.py   # «Pensión mínima
 python3 _herramientas/consolidar.py      # páginas de plantilla unidas en sus tablas (24/10/2026)
 python3 _herramientas/calendario/noindex-ciudades.py   # calendarios de ciudades fuera del índice mientras AdSense revisa (05/11/2026)
 python3 _herramientas/sueldos/noindex-brutos.py         # páginas «X euros brutos en netos» fuera del índice mientras AdSense revisa (05/11/2026)
+python3 _herramientas/noindex-poda.py         # poda temporal: páginas casi iguales o cortas fuera del índice (17/11/2026)
 python3 _herramientas/seo-final.py
 python3 _herramientas/titulos.py           # títulos, descripciones y preguntas según cómo busca la gente
 python3 _herramientas/faq-grupos.py        # preguntas frecuentes agrupadas por temas donde hay muchas (después de titulos.py)

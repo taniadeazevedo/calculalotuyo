@@ -1,5 +1,5 @@
 {
- "actualizado": "2026-11-03",
+ "actualizado": "2026-11-15",
  "ciudades": [
   {
    "ciudad": "Almería",
@@ -473,10 +473,19 @@
    "ciudad": "Valladolid",
    "provincia": "Valladolid",
    "ccaa": "castilla-y-leon",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-05-13",
+     "Fiesta local"
+    ],
+    [
+     "2027-09-08",
+     "Fiesta local"
+    ]
+   ],
+   "fuente": "BOP de Valladolid n.º 2026/204 de 23/10/2026 (Resolución de 16 de octubre de 2026, de la Oficina Territorial de Trabajo de Valladolid)",
+   "url": "https://bop.sede.diputaciondevalladolid.es/boletines/2026/octubre/23/BOPVA-A-2026-03085.pdf"
   },
   {
    "ciudad": "Zamora",
@@ -797,28 +806,55 @@
    "ciudad": "Vitoria-Gasteiz",
    "provincia": "Araba/Álava",
    "ccaa": "pais-vasco",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-04-28",
+     "San Prudencio"
+    ],
+    [
+     "2027-08-05",
+     "Virgen Blanca"
+    ]
+   ],
+   "fuente": "BOTHA n.º 116 de 9/10/2026 (Resolución de 5 de octubre de 2026 del delegado territorial de Álava del Departamento de Economía, Trabajo y Empleo)",
+   "url": "https://www.araba.eus/botha/Boletines/2026/116/2026_116_02851_C.pdf"
   },
   {
    "ciudad": "Bilbao",
    "provincia": "Bizkaia",
    "ccaa": "pais-vasco",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-07-31",
+     "San Ignacio de Loyola"
+    ],
+    [
+     "2027-08-27",
+     "Viernes de la Semana Grande"
+    ]
+   ],
+   "fuente": "BOB n.º 181 de 22/9/2026 (Resolución de 12 de septiembre de 2026, de la delegada territorial de Trabajo y Seguridad Social de Bizkaia)",
+   "url": "https://www.bizkaia.eus/lehendakaritza/Bao_bob/2026/09/22/III-145_cas.pdf"
   },
   {
    "ciudad": "San Sebastián",
    "provincia": "Gipuzkoa",
    "ccaa": "pais-vasco",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-01-20",
+     "Fiesta local"
+    ],
+    [
+     "2027-07-31",
+     "San Ignacio de Loyola"
+    ]
+   ],
+   "fuente": "BOG n.º 187 de 1/10/2026 (Resolución de 21 de septiembre de 2026 del delegado territorial de Trabajo y Seguridad Social de Gipuzkoa)",
+   "url": "https://egoitza.gipuzkoa.eus/gao-bog/castell/bog/2026/10/01/c2606250.pdf"
   },
   {
    "ciudad": "Logroño",
@@ -842,10 +878,19 @@
    "ciudad": "Alicante",
    "provincia": "Alicante",
    "ccaa": "valencia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-04-08",
+     "Festividad de Santa Faz"
+    ],
+    [
+     "2027-06-24",
+     "Fogueres de Sant Joan"
+    ]
+   ],
+   "fuente": "BOP de Alicante n.º 210 de 4/11/2026 (Resolución de 29 de octubre de 2026, de la Dirección Territorial de Vivienda, Empleo, Juventud e Igualdad de Alicante, anuncio 8352)",
+   "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/11/04_210/2026_008352.pdf"
   },
   {
    "ciudad": "Castellón de la Plana",
@@ -878,19 +923,37 @@
    "ciudad": "Elche",
    "provincia": "Alicante",
    "ccaa": "valencia",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-04-05",
+     "Festividad de San Vicente"
+    ],
+    [
+     "2027-12-29",
+     "Festividad de la Venida de la Virgen"
+    ]
+   ],
+   "fuente": "BOP de Alicante n.º 210 de 4/11/2026 (Resolución de 29 de octubre de 2026, de la Dirección Territorial de Vivienda, Empleo, Juventud e Igualdad de Alicante, anuncio 8352)",
+   "url": "https://www.dip-alicante.es/bop2/pdftotal/2026/11/04_210/2026_008352.pdf"
   },
   {
    "ciudad": "Ceuta",
    "provincia": "Ceuta",
    "ccaa": "ceuta",
-   "estado": "pendiente",
-   "fiestas": [],
-   "fuente": "",
-   "url": ""
+   "estado": "publicado",
+   "fiestas": [
+    [
+     "2027-03-10",
+     "Fiesta de Culminación de Ramadán Eid al-Fitr"
+    ],
+    [
+     "2027-09-02",
+     "Día de Ceuta"
+    ]
+   ],
+   "fuente": "BOCCE n.º 6.666 de 3/11/2026 (Resolución de 28 de octubre de 2026, de la Delegación del Gobierno en Ceuta, anuncio 731)",
+   "url": "https://www.ceuta.es/ceuta/component/jdownloads/finish/1983-noviembre/23314-bocce-6666-03-11-2026?Itemid=0"
   },
   {
    "ciudad": "Melilla",
